@@ -1,17 +1,41 @@
-import React from "react";
+
+import React, { useRef, useEffect } from "react";
 
 interface HeroSectionProps {
   className?: string;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // 비디오가 로드되면 자동 재생
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("비디오 자동 재생 에러:", error);
+      });
+    }
+  }, []);
+
   return (
     <div className={`relative overflow-hidden rounded-2xl ${className}`}>
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/45741cfa84be8d9b12526837717601fa41dc0ed3"
-        alt="Hero background"
+      {/* 배경 비디오 */}
+      <video
+        ref={videoRef}
         className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover"
-      />
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/path/to/your/video.mp4" type="video/mp4" />
+        {/* 비디오가 지원되지 않을 경우 대체 이미지 표시 */}
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/45741cfa84be8d9b12526837717601fa41dc0ed3"
+          alt="Hero background"
+          className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover"
+        />
+      </video>
 
       <div className="absolute left-14 top-14 max-sm:left-5 max-sm:top-5">
         <img
