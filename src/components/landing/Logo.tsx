@@ -1,3 +1,4 @@
+
 import React from "react";
 
 interface LogoProps {
@@ -7,7 +8,7 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ className = "" }) => {
   return (
     <img
-      src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cefe0787bd532a22673fbaad1a5c5aa7f0ab263"
+      src="/lovable-uploads/13b4fb30-cd5c-42ae-b804-679c42c226d5.png"
       alt="Company Logo"
       className={`w-[123px] h-[50px] ${className}`}
     />
