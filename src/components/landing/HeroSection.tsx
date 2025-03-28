@@ -38,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
       </video>
 
       <div className="absolute left-14 top-14 max-sm:left-5 max-sm:top-5">
-        <h2 className="font-gotham font-bold text-[891px] max-lg:text-[600px] max-sm:text-[280px] text-[#F9F9FB] leading-none tracking-tight">
+        <h2 className="font-gotham font-bold text-[300px] max-lg:text-[200px] max-sm:text-[120px] text-[#F9F9FB] leading-none tracking-tight">
           REV7:17
         </h2>
         <h1 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">
