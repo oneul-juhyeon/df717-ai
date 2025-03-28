@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,18 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot');
+    src: url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.eot?#iefix') format('embedded-opentype'),
+        url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff2') format('woff2'),
+        url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.woff') format('woff'),
+        url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.ttf') format('truetype'),
+        url('https://db.onlinewebfonts.com/t/3a47f5f06b5484abfeee9eac90348a9c.svg#Gotham Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
   }
 }

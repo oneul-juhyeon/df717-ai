@@ -38,11 +38,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
       </video>
 
       <div className="absolute left-14 top-14 max-sm:left-5 max-sm:top-5">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/accb95c776f733b687666411d4085dc095962eff"
-          alt="Hero logo"
-          className="w-[891px] max-lg:w-[600px] max-sm:w-[280px] h-auto"
-        />
+        <h2 className="font-gotham font-bold text-[891px] max-lg:text-[600px] max-sm:text-[280px] text-[#F9F9FB] leading-none tracking-tight">
+          REV7:17
+        </h2>
         <h1 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">
           상황・감정으로 연결하는 AI와 나의 연결고리
         </h1>
