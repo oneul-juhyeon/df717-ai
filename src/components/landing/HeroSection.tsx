@@ -1,0 +1,41 @@
+import React from "react";
+
+interface HeroSectionProps {
+  className?: string;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
+  return (
+    <div className={`relative overflow-hidden rounded-2xl ${className}`}>
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/45741cfa84be8d9b12526837717601fa41dc0ed3"
+        alt="Hero background"
+        className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover"
+      />
+
+      <div className="absolute left-14 top-14 max-sm:left-5 max-sm:top-5">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/accb95c776f733b687666411d4085dc095962eff"
+          alt="Hero logo"
+          className="w-[891px] max-lg:w-[600px] max-sm:w-[280px] h-auto"
+        />
+        <h1 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">
+          상황・감정으로 연결하는 AI와 나의 연결고리
+        </h1>
+      </div>
+
+      <div className="absolute flex items-center gap-4 left-14 bottom-14 max-sm:left-5 max-sm:bottom-5">
+        <span className="text-[29px] text-[#F9F9FB] max-md:text-2xl max-sm:text-xl">
+          회사소개 및 AI기술 소개
+        </span>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1be2ad89b8db772253e55d39509db1772f4acf6"
+          alt="Information icon"
+          className="w-[48px] h-[48px]"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default HeroSection;
