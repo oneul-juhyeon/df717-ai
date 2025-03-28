@@ -28,7 +28,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
         muted
         playsInline
       >
-        <source src="/path/to/your/video.mp4" type="video/mp4" />
+        <source src="/main.mp4" type="video/mp4" />
         {/* 비디오가 지원되지 않을 경우 대체 이미지 표시 */}
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/45741cfa84be8d9b12526837717601fa41dc0ed3"
