@@ -1,13 +1,11 @@
-
 import React, { useRef, useEffect } from "react";
-
 interface HeroSectionProps {
   className?: string;
 }
-
-const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
+const HeroSection: React.FC<HeroSectionProps> = ({
+  className = ""
+}) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-
   useEffect(() => {
     // 비디오가 로드되면 자동 재생
     if (videoRef.current) {
@@ -16,31 +14,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
       });
     }
   }, []);
-
-  return (
-    <div className={`relative overflow-hidden rounded-2xl ${className}`}>
+  return <div className={`relative overflow-hidden rounded-2xl ${className}`}>
       {/* 배경 비디오 */}
-      <video
-        ref={videoRef}
-        className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
+      <video ref={videoRef} className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover" autoPlay loop muted playsInline>
         <source src="/main.mp4" type="video/mp4" />
         {/* 비디오가 지원되지 않을 경우 대체 이미지 표시 */}
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/45741cfa84be8d9b12526837717601fa41dc0ed3"
-          alt="Hero background"
-          className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover"
-        />
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45741cfa84be8d9b12526837717601fa41dc0ed3" alt="Hero background" className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover" />
       </video>
 
       <div className="absolute left-14 top-14 max-sm:left-5 max-sm:top-5">
-        <h2 className="font-gotham font-bold text-[300px] max-lg:text-[200px] max-sm:text-[120px] text-[#F9F9FB] leading-none tracking-tight">
-          REV7:17
-        </h2>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/accb95c776f733b687666411d4085dc095962eff" alt="Hero logo" className="w-[450px] max-lg:w-[300px] max-sm:w-[140px] h-auto" />
         <h1 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">
           상황・감정으로 연결하는 AI와 나의 연결고리
         </h1>
@@ -50,14 +33,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = "" }) => {
         <span className="text-[29px] text-[#F9F9FB] max-md:text-2xl max-sm:text-xl">
           회사소개 및 AI기술 소개
         </span>
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1be2ad89b8db772253e55d39509db1772f4acf6"
-          alt="Information icon"
-          className="w-[48px] h-[48px]"
-        />
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1be2ad89b8db772253e55d39509db1772f4acf6" alt="Information icon" className="w-[48px] h-[48px]" />
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HeroSection;
