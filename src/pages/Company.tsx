@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -6,7 +5,6 @@ import { Lightbulb, Heart } from "lucide-react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import WhyDFSection from "@/components/company/WhyDFSection";
 import ValueSection from "@/components/company/ValueSection";
-
 const Company: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -14,9 +12,7 @@ const Company: React.FC = () => {
       behavior: 'smooth'
     });
   };
-
-  return (
-    <main className="w-full min-h-screen bg-[#161616] flex flex-col">
+  return <main className="w-full min-h-screen bg-[#161616] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <CompanyHeader scrollToTop={scrollToTop} />
         
@@ -24,23 +20,15 @@ const Company: React.FC = () => {
           <Card className="bg-[#232323] border-gray-700 text-white shadow-md">
             <CardContent className="p-12 max-sm:p-6">
               <div className="max-w-5xl mx-auto">
-                <h1 className="text-5xl mb-10 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">
-                  About December & Company
-                </h1>
+                <h1 className="text-5xl mb-10 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">About DF717 & Company</h1>
                 
                 <Tabs defaultValue="why-df" className="w-full">
                   <TabsList className="w-full mb-8 bg-[#1a1a1a] border-b border-gray-700">
-                    <TabsTrigger 
-                      value="why-df" 
-                      className="text-lg font-medium"
-                    >
+                    <TabsTrigger value="why-df" className="text-lg font-medium">
                       <Lightbulb className="mr-2 h-4 w-4" />
                       Why DF?
                     </TabsTrigger>
-                    <TabsTrigger 
-                      value="value" 
-                      className="text-lg font-medium"
-                    >
+                    <TabsTrigger value="value" className="text-lg font-medium">
                       <Heart className="mr-2 h-4 w-4" />
                       Value
                     </TabsTrigger>
@@ -59,8 +47,6 @@ const Company: React.FC = () => {
           </Card>
         </section>
       </div>
-    </main>
-  );
+    </main>;
 };
-
 export default Company;
