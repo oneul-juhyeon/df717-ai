@@ -6,6 +6,10 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const CompanyIntro: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
@@ -14,13 +18,20 @@ const CompanyIntro: React.FC = () => {
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <Link to="/" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToTop();
+                  }} 
+                  className="text-white hover:text-gray-300 px-4 py-2 transition"
+                >
                   Home
-                </Link>
+                </a>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="#about" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  About
+                <Link to="#company" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Company
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
