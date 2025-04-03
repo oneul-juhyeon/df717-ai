@@ -20,11 +20,16 @@ const HomeIntro: React.FC = () => {
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
+                <Link to="/" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  Home
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
                 <a href="#" onClick={e => {
                 e.preventDefault();
                 scrollToTop();
               }} className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
-                  Home
+                  Introduction
                 </a>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -33,7 +38,9 @@ const HomeIntro: React.FC = () => {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="#services" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">Technology</Link>
+                <Link to="/technology" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  Technology
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="#team" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
