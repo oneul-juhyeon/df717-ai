@@ -44,6 +44,16 @@ const HomeIntro: React.FC = () => {
                   DF Robot
                 </Link>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/axi-cfd" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  AXI CFD
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/contact" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  Contact
+                </Link>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </header>
