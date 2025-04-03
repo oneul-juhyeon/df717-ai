@@ -1,18 +1,16 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-
 interface HeroSectionProps {
   className?: string;
 }
-
-const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
-  return (
-    <div className={className}>
+const HeroSection: React.FC<HeroSectionProps> = ({
+  className
+}) => {
+  return <div className={className}>
       <div className="space-y-4 container mx-auto py-14 max-sm:py-6">
-        <h1 className="text-white text-8xl leading-[1.1] font-gotham font-bold tracking-tight max-md:text-6xl max-sm:text-5xl mb-10">
+        <h1 className="text-white leading-[1.1] font-gotham tracking-tight mb-10 font-extrabold text-9xl">
           AI FINANCE<br />
         </h1>
         
@@ -36,8 +34,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
           </Button>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HeroSection;
