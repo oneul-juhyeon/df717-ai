@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
 const HomeContent: React.FC = () => {
-  return (
-    <Card className="bg-[#232323] border-gray-700 text-white shadow-md">
+  return <Card className="bg-[#232323] border-gray-700 text-white shadow-md">
       <CardContent className="p-12 max-sm:p-6">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-5xl mb-10 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">
@@ -29,7 +26,7 @@ const HomeContent: React.FC = () => {
             </div>
             
             <div className="mt-8 md:mt-0">
-              <h2 className="text-3xl font-bold text-white mb-5">December & Company</h2>
+              <h2 className="text-3xl font-bold text-white mb-5">DF717 & Company</h2>
               <p className="text-lg text-gray-300 mb-6">
                 We are a team of experts in AI, machine learning, and financial markets, 
                 dedicated to bringing innovative solutions to traders worldwide.
@@ -80,8 +77,6 @@ const HomeContent: React.FC = () => {
           </div>
         </div>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
-
 export default HomeContent;
