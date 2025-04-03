@@ -5,7 +5,7 @@ import Logo from "@/components/landing/Logo";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/components/ui/navigation-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Robot as RobotIcon, Cpu, Bolt, Sparkles, Server, BarChart4, Brain } from "lucide-react";
+import { Cpu, Bolt, Sparkles, Server, BarChart4, Brain, Monitor } from "lucide-react";
 
 const Robot: React.FC = () => {
   const scrollToTop = () => {
@@ -66,7 +66,7 @@ const Robot: React.FC = () => {
                   <TabsContent value="overview" className="p-6 bg-[#191942] rounded-md">
                     <div className="prose prose-invert max-w-4xl mx-auto">
                       <h2 className="text-4xl font-bold mb-6 text-white flex items-center">
-                        <RobotIcon className="mr-4 h-10 w-10 text-indigo-400" />
+                        <Monitor className="mr-4 h-10 w-10 text-indigo-400" />
                         TRADING ROBOT
                       </h2>
                       <p className="text-xl text-gray-300 mb-12">
