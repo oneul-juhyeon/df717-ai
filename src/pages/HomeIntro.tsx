@@ -1,3 +1,4 @@
+
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
@@ -40,7 +41,7 @@ const HomeIntro: React.FC = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="/robot" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
-                  Robot
+                  DF Robot
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
