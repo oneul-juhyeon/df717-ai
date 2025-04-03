@@ -1,15 +1,18 @@
+
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/components/ui/navigation-menu";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-const CompanyIntro: React.FC = () => {
+
+const HomeIntro: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
+
   return <main className="w-full min-h-screen bg-[#161616] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
@@ -25,7 +28,7 @@ const CompanyIntro: React.FC = () => {
                 </a>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="#company" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                <Link to="/company" className="text-white hover:text-gray-300 px-4 py-2 transition">
                   Company
                 </Link>
               </NavigationMenuItem>
@@ -109,4 +112,5 @@ const CompanyIntro: React.FC = () => {
       </div>
     </main>;
 };
-export default CompanyIntro;
+
+export default HomeIntro;
