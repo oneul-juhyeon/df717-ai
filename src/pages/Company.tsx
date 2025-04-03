@@ -1,3 +1,4 @@
+
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
@@ -43,7 +44,17 @@ const Company: React.FC = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="/robot" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
-                  Robot
+                  DF Robot
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/axi-cfd" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  AXI CFD
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/contact" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  Contact
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>

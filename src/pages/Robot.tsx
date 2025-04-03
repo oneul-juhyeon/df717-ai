@@ -44,8 +44,18 @@ const Robot: React.FC = () => {
                   e.preventDefault();
                   scrollToTop();
                 }} className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Robot
+                  DF Robot
                 </a>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/axi-cfd" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  AXI CFD
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/contact" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Contact
+                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
