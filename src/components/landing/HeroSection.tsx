@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,8 +17,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
         </h1>
         
         <p className="text-3xl text-white max-sm:text-lg mb-10 max-w-md">
-          Beyond the ordinary in technical research,<br />
-          Maximizing Capital Efficiency.
+          Automate Your Investment with DF717
         </p>
         
         <div className="flex gap-6 max-sm:flex-col max-sm:gap-4">
