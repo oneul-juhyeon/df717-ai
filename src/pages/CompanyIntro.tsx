@@ -2,6 +2,7 @@
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 const CompanyIntro: React.FC = () => {
   return (
@@ -9,33 +10,62 @@ const CompanyIntro: React.FC = () => {
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
           <Logo />
-          <Link 
-            to="/" 
-            className="text-white hover:text-gray-300 transition"
-          >
-            홈으로 돌아가기
-          </Link>
+          <NavigationMenu>
+            <NavigationMenuList className="gap-2">
+              <NavigationMenuItem>
+                <Link to="/" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Home
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="#about" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  About
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="#services" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Services
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="#team" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Team
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="#contact" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Contact
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </header>
         
         <section className="mt-20 mb-20">
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 p-12 max-sm:p-6">
-            <div className="absolute top-0 left-0 w-full h-full opacity-20">
-              <div className="w-full h-full bg-[url('/lovable-uploads/5e944c9d-56dc-42b0-90e3-87b017e3bb8a.png')] bg-cover bg-center"></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h1 className="text-6xl mb-16 text-white font-gotham font-bold max-md:text-5xl max-sm:text-4xl max-sm:mb-10">
+          <div className="relative rounded-2xl overflow-hidden bg-[#161616] text-white p-12 max-sm:p-6">
+            <div className="max-w-3xl mx-auto">
+              <h1 className="text-5xl mb-16 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl max-sm:mb-10">
                 상황AI와 감정AI의 어셈블!
               </h1>
               
-              <h2 className="text-5xl text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">
+              <h2 className="text-4xl text-white font-gotham font-bold max-md:text-3xl max-sm:text-2xl mb-10">
                 inDJ TACT AI <span className="text-3xl max-md:text-2xl max-sm:text-xl">논치 AI</span>
               </h2>
               
-              <p className="text-xl text-white mt-10 max-w-2xl max-sm:text-lg">
-                inDJ는 사용자의 상황과 감정에 딱 맞는 솔루션을 제공합니다.<br />
-                나보다 나를 더 잘 아는 논치있는 AI를 만나보세요.
-              </p>
+              <div className="prose prose-invert max-w-3xl text-lg space-y-6">
+                <p className="text-white/90 italic">
+                  "Matthew 24:7, "The nation will rise against the nation, the nation against the nation, and there will be famine and earthquakes everywhere."
+                </p>
+                
+                <p className="text-white/90">
+                  Since thousands of years ago, the Bible has foreshadowed the era of famine at the end.
+                  Living in the last era, we are already experiencing global economic hardship.
+                </p>
+                
+                <p className="text-white/90 font-bold mt-6">
+                  DF717 is an ark of salvation to prepare for famine through financial innovation using AI technology.
+                </p>
+              </div>
               
               <div className="mt-16 flex gap-6 max-sm:flex-col">
                 <div className="bg-white/10 backdrop-blur-md p-8 rounded-xl max-w-md max-sm:p-6">
