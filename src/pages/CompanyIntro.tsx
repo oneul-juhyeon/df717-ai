@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const CompanyIntro: React.FC = () => {
   return (
-    <main className="w-full min-h-screen bg-[#161616] flex flex-col">
+    <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
           <Logo />
@@ -18,7 +18,7 @@ const CompanyIntro: React.FC = () => {
         </header>
         
         <section className="mt-20 mb-20">
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 p-12 max-sm:p-6">
+          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900/60 via-purple-900/60 to-pink-900/60 p-12 max-sm:p-6">
             <div className="absolute top-0 left-0 w-full h-full opacity-20">
               <div className="w-full h-full bg-[url('/lovable-uploads/5e944c9d-56dc-42b0-90e3-87b017e3bb8a.png')] bg-cover bg-center"></div>
             </div>
