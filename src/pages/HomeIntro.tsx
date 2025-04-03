@@ -1,4 +1,3 @@
-
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
@@ -13,7 +12,8 @@ const HomeIntro: React.FC = () => {
     });
   };
 
-  return <main className="w-full min-h-screen bg-[#161616] flex flex-col">
+  return (
+    <main className="w-full min-h-screen bg-[#161616] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
           <Link to="/">
@@ -22,12 +22,11 @@ const HomeIntro: React.FC = () => {
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <a href="#" onClick={e => {
-                e.preventDefault();
-                scrollToTop();
-              }} className="text-white hover:text-gray-300 px-4 py-2 transition">
+                <Link to="/home-intro" onClick={e => {
+                  scrollToTop();
+                }} className="text-white hover:text-gray-300 px-4 py-2 transition">
                   Home
-                </a>
+                </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="/company" className="text-white hover:text-gray-300 px-4 py-2 transition">
@@ -119,7 +118,8 @@ const HomeIntro: React.FC = () => {
           </Card>
         </section>
       </div>
-    </main>;
+    </main>
+  );
 };
 
 export default HomeIntro;
