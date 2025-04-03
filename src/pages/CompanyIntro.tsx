@@ -1,31 +1,26 @@
-
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const CompanyIntro: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <main className="w-full min-h-screen bg-[#161616] flex flex-col">
+  return <main className="w-full min-h-screen bg-[#161616] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
           <Logo />
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <a 
-                  href="#" 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToTop();
-                  }} 
-                  className="text-white hover:text-gray-300 px-4 py-2 transition"
-                >
+                <a href="#" onClick={e => {
+                e.preventDefault();
+                scrollToTop();
+              }} className="text-white hover:text-gray-300 px-4 py-2 transition">
                   Home
                 </a>
               </NavigationMenuItem>
@@ -35,9 +30,7 @@ const CompanyIntro: React.FC = () => {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="#services" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Services
-                </Link>
+                <Link to="#services" className="text-white hover:text-gray-300 px-4 py-2 transition">Technology</Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="#team" className="text-white hover:text-gray-300 px-4 py-2 transition">
@@ -130,8 +123,6 @@ const CompanyIntro: React.FC = () => {
           </Card>
         </section>
       </div>
-    </main>
-  );
+    </main>;
 };
-
 export default CompanyIntro;
