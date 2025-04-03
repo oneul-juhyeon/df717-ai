@@ -1,11 +1,16 @@
+
 import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 interface HeroSectionProps {
   className?: string;
 }
+
 const HeroSection: React.FC<HeroSectionProps> = ({
   className = ""
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     // 비디오가 로드되면 자동 재생
     if (videoRef.current) {
@@ -14,6 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       });
     }
   }, []);
+
   return <div className={`relative overflow-hidden rounded-2xl ${className}`}>
       {/* 배경 비디오 */}
       <video ref={videoRef} className="w-full h-[712px] max-lg:h-[500px] max-sm:h-[400px] object-cover" autoPlay loop muted playsInline>
@@ -29,10 +35,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <h2 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">Automate Your Investment with DF717</h2>
       </div>
 
-      <div className="absolute flex items-center gap-4 left-14 bottom-14 max-sm:left-5 max-sm:bottom-5">
-        <span className="text-[29px] text-[#F9F9FB] max-md:text-2xl max-sm:text-xl">Introduction of company and AI technology</span>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1be2ad89b8db772253e55d39509db1772f4acf6" alt="Information icon" className="w-[48px] h-[48px]" />
-      </div>
+      <Link to="/company-intro" className="absolute flex items-center gap-4 left-14 bottom-14 max-sm:left-5 max-sm:bottom-5 hover:opacity-80 transition-opacity cursor-pointer group">
+        <span className="text-[29px] text-[#F9F9FB] max-md:text-2xl max-sm:text-xl group-hover:underline">Introduction of company and AI technology</span>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1be2ad89b8db772253e55d39509db1772f4acf6" alt="Information icon" className="w-[48px] h-[48px] group-hover:translate-x-1 transition-transform" />
+      </Link>
     </div>;
 };
+
 export default HeroSection;
