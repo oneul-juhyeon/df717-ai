@@ -10,6 +10,7 @@ import Company from "./pages/Company";
 import Technology from "./pages/Technology";
 import NotFound from "./pages/NotFound";
 import Robot from "./pages/Robot";
+import AxiCFD from "./pages/AxiCFD";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +26,7 @@ const App = () => (
           <Route path="/company" element={<Company />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/robot" element={<Robot />} />
-          <Route path="/axi-cfd" element={<NotFound />} />
+          <Route path="/axi-cfd" element={<AxiCFD />} />
           <Route path="/contact" element={<NotFound />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
