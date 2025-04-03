@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 interface HeroSectionProps {
   className?: string;
@@ -27,9 +26,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <h1 className="text-[120px] leading-tight text-white font-gotham font-bold max-lg:text-[90px] max-md:text-[70px] max-sm:text-[50px]">
           AI FINANCE
         </h1>
-        <h2 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">
-          상황・감정으로 연결하는 AI와 나의 연결고리
-        </h2>
+        <h2 className="text-[40px] text-[#F9F9FB] font-[350] mt-8 max-md:text-[32px] max-sm:text-2xl">Automate Your Investment with DF717</h2>
       </div>
 
       <div className="absolute flex items-center gap-4 left-14 bottom-14 max-sm:left-5 max-sm:bottom-5">
