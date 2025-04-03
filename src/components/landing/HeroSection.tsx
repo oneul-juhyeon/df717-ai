@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -13,8 +12,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className }) => {
     <div className={className}>
       <div className="space-y-4 container mx-auto py-14 max-sm:py-6">
         <h1 className="text-white text-8xl leading-[1.1] font-gotham font-bold tracking-tight max-md:text-6xl max-sm:text-5xl mb-10">
-          Global Future<br />
-          Ready For.
+          AI FINANCE<br />
         </h1>
         
         <p className="text-3xl text-white max-sm:text-lg mb-10 max-w-md">
