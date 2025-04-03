@@ -27,10 +27,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </Button>
           
           <Button asChild variant="outline" className="border-white text-white hover:bg-gray-900 px-8 py-6 text-lg rounded-full">
-            <Link to="/technology">
-              Technology
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Link>
+            
           </Button>
         </div>
       </div>
