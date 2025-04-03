@@ -100,23 +100,7 @@ const CompanyIntro: React.FC = () => {
                 </div>
                 
                 <div className="absolute right-10 bottom-10 max-sm:right-5 max-sm:bottom-5">
-                  <div className="flex flex-col items-center">
-                    <div className="flex">
-                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-2">
-                        <div className="w-8 h-8 bg-pink-600 rounded-full relative">
-                          <div className="absolute w-4 h-4 bg-white rounded-full top-1 left-1"></div>
-                        </div>
-                      </div>
-                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                        <div className="w-8 h-8 bg-pink-600 rounded-full relative">
-                          <div className="absolute w-4 h-4 bg-white rounded-full top-1 left-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-4 px-3 py-2 rounded-full bg-white/20 backdrop-blur">
-                      <span className="text-white font-bold">Need AI</span>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </CardContent>
