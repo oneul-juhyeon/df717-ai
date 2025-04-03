@@ -2,6 +2,7 @@
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import HeroSection from "@/components/landing/HeroSection";
+import { Link } from "react-router-dom";
 
 const Index: React.FC = () => {
   return (
@@ -22,7 +23,9 @@ const Index: React.FC = () => {
       
       <div className="relative z-20 max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="pt-14 max-sm:pt-5">
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </header>
 
         <section className="mt-14">

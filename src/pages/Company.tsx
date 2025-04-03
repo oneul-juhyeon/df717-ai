@@ -1,4 +1,3 @@
-
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
@@ -19,11 +18,13 @@ const Company: React.FC = () => {
     <main className="w-full min-h-screen bg-[#f5f5f7] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
-                <Link to="/home-intro" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                <Link to="/" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
                   Home
                 </Link>
               </NavigationMenuItem>
@@ -36,16 +37,13 @@ const Company: React.FC = () => {
                 </a>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="#services" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">Technology</Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="#team" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
-                  Team
+                <Link to="/technology" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  Technology
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="#contact" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
-                  Contact
+                <Link to="/robot" className="text-gray-800 hover:text-gray-600 px-4 py-2 transition">
+                  Robot
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>

@@ -19,17 +19,14 @@ const Technology: React.FC = () => {
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <header className="flex justify-between items-center pt-14 max-sm:pt-5">
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
           <NavigationMenu>
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
                 <Link to="/" className="text-white hover:text-gray-300 px-4 py-2 transition">
                   Home
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/home-intro" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Introduction
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -44,6 +41,11 @@ const Technology: React.FC = () => {
                 }} className="text-white hover:text-gray-300 px-4 py-2 transition">
                   Technology
                 </a>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/robot" className="text-white hover:text-gray-300 px-4 py-2 transition">
+                  Robot
+                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
