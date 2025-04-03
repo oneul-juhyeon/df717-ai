@@ -141,7 +141,7 @@ const Company: React.FC = () => {
                     </div>
                   </TabsContent>
                   
-                  <TabsContent value="value" className="p-6 bg-gray-50 rounded-md">
+                  <TabsContent value="value" className="p-6 bg-white rounded-md">
                     <div className="prose prose-slate max-w-4xl">
                       <h2 className="text-3xl font-bold mb-6 flex items-center text-gray-900">
                         <Heart className="mr-3 h-6 w-6 text-red-500" />
@@ -150,13 +150,13 @@ const Company: React.FC = () => {
                       
                       <div className="mb-10">
                         <h3 className="text-2xl font-bold mb-4 text-gray-800">가치</h3>
-                        <p className="text-lg text-gray-700">디셈버앤컴퍼니는 더욱 뛰어난 기술을 연구합니다.<br />
+                        <p className="text-lg text-gray-800">디셈버앤컴퍼니는 더욱 뛰어난 기술을 연구합니다.<br />
                         정교한 기술과 데이터를 바탕으로 보다 나은 삶을 설계합니다.</p>
                       </div>
                       
                       <div className="mb-10">
                         <h3 className="text-2xl font-bold mb-4 text-gray-800">기업 브랜드 정의</h3>
-                        <p className="text-lg text-gray-700">기술력을 기반으로 금융시장의 변화와 혁신을 이루는 기업</p>
+                        <p className="text-lg text-gray-800">기술력을 기반으로 금융시장의 변화와 혁신을 이루는 기업</p>
                       </div>
                       
                       <div className="mb-10">
@@ -178,7 +178,7 @@ const Company: React.FC = () => {
                           </CardHeader>
                           <CardContent>
                             <h4 className="font-bold mb-4 text-gray-800">세상을 바꾸는 혁신적인 관점</h4>
-                            <p className="text-gray-700">디셈버앤컴퍼니는 어려운 길을 피하지 않고 혁신을 추구합니다. 세상에 없던 독창적인 사고로 새로운 길을 개척하며 세상을 바꿀 만한 길을 제시합니다.</p>
+                            <p className="text-gray-800">디셈버앤컴퍼니는 어려운 길을 피하지 않고 혁신을 추구합니다. 세상에 없던 독창적인 사고로 새로운 길을 개척하며 세상을 바꿀 만한 길을 제시합니다.</p>
                           </CardContent>
                         </Card>
                         
@@ -191,7 +191,7 @@ const Company: React.FC = () => {
                           </CardHeader>
                           <CardContent>
                             <h4 className="font-bold mb-4 text-gray-800">독보적인 테크놀로지</h4>
-                            <p className="text-gray-700">디셈버앤컴퍼니는 우수한 연구 개발진을 통해 지속적으로 기술을 연구합니다. 정교한 기술과 데이터를 통해 보다 나은 삶을 설계하고 만들어갑니다.</p>
+                            <p className="text-gray-800">디셈버앤컴퍼니는 우수한 연구 개발진을 통해 지속적으로 기술을 연구합니다. 정교한 기술과 데이터를 통해 보다 나은 삶을 설계하고 만들어갑니다.</p>
                           </CardContent>
                         </Card>
                         
@@ -204,7 +204,7 @@ const Company: React.FC = () => {
                           </CardHeader>
                           <CardContent>
                             <h4 className="font-bold mb-4 text-gray-800">신뢰할 수 있는 태도</h4>
-                            <p className="text-gray-700">디셈버앤컴퍼니는 사람들에게 필요한 편리하고 가치있는 서비스를 제공합니다. 꾸준하고 안정감이 느껴지는 신뢰할 수 있는 태도를 견지합니다.</p>
+                            <p className="text-gray-800">디셈버앤컴퍼니는 사람들에게 필요한 편리하고 가치있는 서비스를 제공합니다. 꾸준하고 안정감이 느껴지는 신뢰할 수 있는 태도를 견지합니다.</p>
                           </CardContent>
                         </Card>
                       </div>
