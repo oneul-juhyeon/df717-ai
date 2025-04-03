@@ -30,9 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       <div className="absolute flex items-center gap-4 left-14 bottom-14 max-sm:left-5 max-sm:bottom-5">
-        <span className="text-[29px] text-[#F9F9FB] max-md:text-2xl max-sm:text-xl">
-          회사소개 및 AI기술 소개
-        </span>
+        <span className="text-[29px] text-[#F9F9FB] max-md:text-2xl max-sm:text-xl">회사소개 및 AI기술 소개</span>
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a1be2ad89b8db772253e55d39509db1772f4acf6" alt="Information icon" className="w-[48px] h-[48px]" />
       </div>
     </div>;
