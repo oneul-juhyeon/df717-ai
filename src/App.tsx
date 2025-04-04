@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,11 +15,10 @@ import AxiCFD from "./pages/AxiCFD";
 import AxiTrust from "./pages/AxiTrust";
 import AxiPricing from "./pages/AxiPricing";
 import AxiAward from "./pages/AxiAward";
-import { useState } from "react";
 
 function App() {
-  // Create a client
-  const [queryClient] = useState(() => new QueryClient());
+  // Create a query client
+  const queryClient = React.useMemo(() => new QueryClient(), []);
 
   return (
     <QueryClientProvider client={queryClient}>

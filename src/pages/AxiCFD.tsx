@@ -49,7 +49,7 @@ const AxiCFD: React.FC = () => {
         {/* Hero Image */}
         <div className="mb-12">
           <img 
-            src="/lovable-uploads/d57930be-ecff-4f0b-bdae-0fdfc2b837a0.png" 
+            src="/lovable-uploads/axi-cfd1.png" 
             alt="CFD Trading Guide" 
             className="w-full h-auto rounded-lg shadow-md"
           />
@@ -66,7 +66,7 @@ const AxiCFD: React.FC = () => {
           {/* Market Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/69ab221f-737c-46f1-b14c-a0169588c8e1.png" 
+              src="/lovable-uploads/axi-cfd2.png" 
               alt="CFD Markets" 
               className="w-full h-auto rounded-lg"
             />
@@ -123,7 +123,7 @@ const AxiCFD: React.FC = () => {
           {/* Buy/Sell Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/e65a7610-e9d4-4d63-856e-04cb57ee8e39.png" 
+              src="/lovable-uploads/axi-cfd3.png" 
               alt="Buy and Sell CFDs" 
               className="w-full h-auto rounded-lg"
             />
@@ -154,7 +154,7 @@ const AxiCFD: React.FC = () => {
           {/* Trading Platform Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/6b5132a0-2e57-4507-846c-6e962f480353.png" 
+              src="/lovable-uploads/axi-cfd4.png" 
               alt="Trading Platform" 
               className="w-full h-auto rounded-lg"
             />
@@ -169,7 +169,7 @@ const AxiCFD: React.FC = () => {
           {/* Trading Guide Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/bd5e51bf-1129-4811-ad7f-805bb861b12c.png" 
+              src="/lovable-uploads/axi-cfd5.png" 
               alt="Trading Guide" 
               className="w-full h-auto rounded-lg"
             />
@@ -306,7 +306,7 @@ const AxiCFD: React.FC = () => {
           {/* Risk Management Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/23e4b516-70c0-44d2-af42-79642b97d739.png" 
+              src="/lovable-uploads/axi-cfd6.png" 
               alt="Risk Management" 
               className="w-full h-auto rounded-lg"
             />
@@ -418,3 +418,4 @@ const AxiCFD: React.FC = () => {
 };
 
 export default AxiCFD;
+
