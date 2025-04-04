@@ -1,4 +1,3 @@
-
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
 import { Link } from "react-router-dom";
@@ -17,13 +16,29 @@ const AxiCFD: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-white flex flex-col">
-      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] bg-[#161616]">
-        <AxiCFDHeader scrollToTop={scrollToTop} />
+      {/* Header with Red Background */}
+      <div className="w-full bg-red-600 text-white">
+        <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] py-8">
+          <div className="flex justify-between items-center">
+            <Link to="/" className="text-white text-3xl font-bold">axi</Link>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/axi-edge" className="text-white hover:text-yellow-300">Our Edge</Link>
+              <Link to="#" className="text-white hover:text-yellow-300">Markets</Link>
+              <Link to="#" className="text-white hover:text-yellow-300">Trading Platforms</Link>
+              <Link to="#" className="text-white hover:text-yellow-300">Learn to Trade</Link>
+              <Link to="#" className="text-white hover:text-yellow-300">Partnerships</Link>
+              <Link to="/company" className="text-white hover:text-yellow-300">Company</Link>
+            </div>
+            <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-4 py-2">
+              OPEN ACCOUNT
+            </Button>
+          </div>
+        </div>
       </div>
       
-      {/* Breadcrumb */}
-      <div className="w-full bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 md:px-10 lg:px-[154px] py-3">
+      {/* Breadcrumb with white background */}
+      <div className="w-full bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4 md:px-10 lg:px-[154px] py-2">
           <div className="flex items-center text-sm text-gray-500">
             <Link to="/" className="hover:text-red-500">Home</Link>
             <span className="mx-2">/</span>
@@ -418,4 +433,3 @@ const AxiCFD: React.FC = () => {
 };
 
 export default AxiCFD;
-
