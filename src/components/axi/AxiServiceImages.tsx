@@ -42,8 +42,8 @@ const AxiServiceImages: React.FC = () => {
           className="max-w-full rounded-xl shadow-lg hover:scale-[1.02] transition-transform duration-300"
         />
       </div>
-      <div className="md:order-2 order-1">
-        <h2 className="text-3xl font-bold text-white mb-6 service-animate opacity-0">Personalised service</h2>
+      <div className="md:order-2 order-1 text-white">
+        <h2 className="text-3xl font-bold mb-6 service-animate opacity-0">Personalised service</h2>
         <p className="text-gray-300 leading-relaxed service-animate opacity-0">
           Because trading is a personal journey and every trader is different, we give you personalised service. 
           The moment you join Axi we'll connect you with a Relationship Manager dedicated to ensuring you have 

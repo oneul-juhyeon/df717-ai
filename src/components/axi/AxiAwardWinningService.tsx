@@ -16,7 +16,11 @@ const AxiAwardWinningService: React.FC = () => {
         const elementPosition = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         if (elementPosition < windowHeight * 0.85) {
-          element.classList.add('animate-fade-in');
+          if (element.classList.contains('animate-fade-in-right')) return;
+          if (element.classList.contains('animate-fade-in-left')) return;
+          if (element.classList.contains('animate-fade-in-up')) return;
+          
+          element.classList.add('animate-fade-in-up');
           element.classList.remove('opacity-0');
         }
       });
@@ -62,10 +66,10 @@ const AxiAwardWinningService: React.FC = () => {
       {/* 24/5 Award-winning service */}
       <div className="py-16 bg-[#1A1A1A]">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-2 scroll-animate opacity-0">
+          <h2 className="text-4xl font-bold mb-2 scroll-animate opacity-0 text-white">
             <span className="text-red-500">24/5 award-winning</span> service.
           </h2>
-          <h3 className="text-3xl font-bold mb-6 scroll-animate opacity-0" style={{ transitionDelay: '100ms' }}>
+          <h3 className="text-3xl font-bold mb-6 scroll-animate opacity-0 text-white" style={{ transitionDelay: '100ms' }}>
             100% committed to you.
           </h3>
           
@@ -101,8 +105,8 @@ const AxiAwardWinningService: React.FC = () => {
                 className="max-w-full h-auto rounded-xl"
               />
             </div>
-            <div className="order-1 md:order-2 scroll-animate opacity-0">
-              <h2 className="text-3xl font-bold text-white mb-6">The right account for you</h2>
+            <div className="order-1 md:order-2 scroll-animate opacity-0 text-white">
+              <h2 className="text-3xl font-bold mb-6">The right account for you</h2>
               <p className="text-gray-300 leading-relaxed">
                 No matter your level of experience or trading goals, we have a trading account to suit. Whether you want a classic no-commission account or you're a high volume trader looking for preferential pricing, you can choose the account that's right for you.
               </p>
@@ -115,8 +119,8 @@ const AxiAwardWinningService: React.FC = () => {
       <div className="py-16 bg-[#161616]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="scroll-animate opacity-0">
-              <h2 className="text-3xl font-bold text-white mb-6">24 hour, multi-lingual support</h2>
+            <div className="scroll-animate opacity-0 text-white">
+              <h2 className="text-3xl font-bold mb-6">24 hour, multi-lingual support</h2>
               <p className="text-gray-300 leading-relaxed">
                 When you need help, we speak your language. Our award-winning, multi-lingual Client Experience team is available to help you any time the markets are open. From personal account managers and online chat to social channels and community forums, our friendly team is easy to get in touch with.
               </p>
@@ -143,8 +147,8 @@ const AxiAwardWinningService: React.FC = () => {
                 className="max-w-full h-auto rounded-xl"
               />
             </div>
-            <div className="order-1 md:order-2 scroll-animate opacity-0">
-              <h2 className="text-3xl font-bold text-white mb-6">A truly global broker</h2>
+            <div className="order-1 md:order-2 scroll-animate opacity-0 text-white">
+              <h2 className="text-3xl font-bold mb-6">A truly global broker</h2>
               <p className="text-gray-300 leading-relaxed">
                 Axi has offices in 8 regions where we use our local expertise to help you find your trading edge.
                 In financial strongholds and emerging markets, our service is strategically positioned to help you succeed and develop your trading, wherever you are in the world.
@@ -158,8 +162,8 @@ const AxiAwardWinningService: React.FC = () => {
       <div className="py-16 bg-[#161616]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="scroll-animate opacity-0">
-              <h2 className="text-3xl font-bold text-white mb-6">Low trading costs</h2>
+            <div className="scroll-animate opacity-0 text-white">
+              <h2 className="text-3xl font-bold mb-6">Low trading costs</h2>
               <p className="text-gray-300 leading-relaxed">
                 Because we want you to have more to trade with, we keep our trading costs low. That means no setup fees, no transaction fees and no commission accounts. And when you're ready to experience low pricing across the full range of trading products, compare ours.
               </p>
