@@ -1,8 +1,17 @@
+
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #161616;
 }
 
 .logo {
@@ -39,4 +48,11 @@
 
 .read-the-docs {
   color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation-menu-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }

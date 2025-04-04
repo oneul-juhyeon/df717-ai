@@ -1,8 +1,11 @@
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+
 const HomeContent: React.FC = () => {
-  return <Card className="bg-[#232323] border-gray-700 text-white shadow-md">
+  return <Card className="bg-[#232323] border-gray-700 text-white shadow-md w-full">
       <CardContent className="p-12 max-sm:p-6">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-5xl mb-10 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">
@@ -20,9 +23,11 @@ const HomeContent: React.FC = () => {
                 Our proprietary algorithms and machine learning models can identify patterns 
                 that humans might miss, giving you a competitive edge in trading.
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Learn More
-              </Button>
+              <Link to="/technology">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Learn More
+                </Button>
+              </Link>
             </div>
             
             <div className="mt-8 md:mt-0">
@@ -35,9 +40,11 @@ const HomeContent: React.FC = () => {
                 Our mission is to democratize access to sophisticated trading algorithms, 
                 making them accessible to both institutions and individual traders.
               </p>
-              <Button className="bg-green-600 hover:bg-green-700 text-white">
-                About Us
-              </Button>
+              <Link to="/company">
+                <Button className="bg-green-600 hover:bg-green-700 text-white">
+                  About Us
+                </Button>
+              </Link>
             </div>
           </div>
           
@@ -49,9 +56,11 @@ const HomeContent: React.FC = () => {
                 <p className="text-gray-300 mb-6">
                   Fully-automated trading system powered by advanced AI algorithms.
                 </p>
-                <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
-                  Explore
-                </Button>
+                <Link to="/robot">
+                  <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
+                    Explore
+                  </Button>
+                </Link>
               </div>
               
               <div className="bg-[#2a2a2a] p-6 rounded-lg">
@@ -59,9 +68,11 @@ const HomeContent: React.FC = () => {
                 <p className="text-gray-300 mb-6">
                   Contract for Difference trading with enhanced accuracy and risk management.
                 </p>
-                <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
-                  Explore
-                </Button>
+                <Link to="/axi-cfd">
+                  <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
+                    Explore
+                  </Button>
+                </Link>
               </div>
               
               <div className="bg-[#2a2a2a] p-6 rounded-lg">

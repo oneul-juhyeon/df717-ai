@@ -13,10 +13,10 @@ const HomeIntro: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
+      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
         <HomeHeader scrollToTop={scrollToTop} />
         
-        <section className="mt-20 mb-20">
+        <section className="mt-20 mb-20 w-full">
           <HomeContent />
         </section>
       </div>
