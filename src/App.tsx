@@ -16,6 +16,7 @@ import AxiEdge from "./pages/AxiEdge";
 import AxiTrust from "./pages/AxiTrust";
 import AxiPricing from "./pages/AxiPricing";
 import AxiAward from "./pages/AxiAward";
+import Contact from "./pages/Contact";
 
 function App() {
   // Create a query client
@@ -38,7 +39,7 @@ function App() {
             <Route path="/axi-trust" element={<AxiTrust />} />
             <Route path="/axi-pricing" element={<AxiPricing />} />
             <Route path="/axi-award" element={<AxiAward />} />
-            <Route path="/contact" element={<NotFound />} />
+            <Route path="/contact" element={<Contact />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
