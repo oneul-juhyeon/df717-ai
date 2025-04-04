@@ -25,19 +25,19 @@ const AxiCFD: React.FC = () => {
           <AxiHero />
         </section>
         
-        <section className="mt-20 mb-20 w-full">
+        <section id="edge-section" className="mt-20 mb-20 w-full">
           <AxiEdgeSection />
         </section>
         
-        <section className="mt-20 mb-20 w-full">
+        <section id="features-section" className="mt-20 mb-20 w-full">
           <AxiFeatures />
         </section>
         
-        <section className="mt-20 mb-20 w-full">
+        <section id="trusted-partner-section" className="mt-20 mb-20 w-full">
           <AxiTrustedPartner />
         </section>
         
-        <section className="mt-20 mb-20 w-full">
+        <section id="award-winning-section" className="mt-20 mb-20 w-full">
           <AxiBottomFeatures />
         </section>
         

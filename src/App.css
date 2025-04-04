@@ -56,3 +56,28 @@ body, html {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* Add styles for navigation dropdown */
+[data-radix-popper-content-wrapper] {
+  z-index: 100 !important;
+}
+
+.navigation-dropdown {
+  background-color: #232323;
+  border: 1px solid #333;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  min-width: 200px;
+}
+
+.navigation-dropdown-item {
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.navigation-dropdown-item:hover {
+  background-color: #333333;
+  border-radius: 4px;
+}
