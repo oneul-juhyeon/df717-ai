@@ -32,7 +32,7 @@ const AxiFlexibleLeverage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 flex justify-center">
             <img 
-              src="/lovable-uploads/ee164e58-7962-4059-9bce-c619cf1a4484.png" 
+              src="/lovable-uploads/4a8bd229-fcbc-4cab-95c6-e3f8953a0d26.png" 
               alt="Leverage trading chart" 
               className="max-w-full h-auto rounded-xl"
             />
