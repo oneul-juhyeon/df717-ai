@@ -14,33 +14,37 @@ import AxiCFD from "./pages/AxiCFD";
 import AxiTrust from "./pages/AxiTrust";
 import AxiPricing from "./pages/AxiPricing";
 import AxiAward from "./pages/AxiAward";
+import { useState } from "react";
 
-const queryClient = new QueryClient();
+function App() {
+  // Create a client
+  const [queryClient] = useState(() => new QueryClient());
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/home-intro" element={<HomeIntro />} />
-          <Route path="/company" element={<Company />} />
-          <Route path="/technology" element={<Technology />} />
-          <Route path="/robot" element={<Robot />} />
-          <Route path="/axi-edge" element={<Navigate to="/axi-cfd" replace />} />
-          <Route path="/axi-cfd" element={<AxiCFD />} />
-          <Route path="/axi-trust" element={<AxiTrust />} />
-          <Route path="/axi-pricing" element={<AxiPricing />} />
-          <Route path="/axi-award" element={<AxiAward />} />
-          <Route path="/contact" element={<NotFound />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/home-intro" element={<HomeIntro />} />
+            <Route path="/company" element={<Company />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/robot" element={<Robot />} />
+            <Route path="/axi-edge" element={<Navigate to="/axi-cfd" replace />} />
+            <Route path="/axi-cfd" element={<AxiCFD />} />
+            <Route path="/axi-trust" element={<AxiTrust />} />
+            <Route path="/axi-pricing" element={<AxiPricing />} />
+            <Route path="/axi-award" element={<AxiAward />} />
+            <Route path="/contact" element={<NotFound />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;
