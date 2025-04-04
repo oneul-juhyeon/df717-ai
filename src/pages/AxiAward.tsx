@@ -2,7 +2,8 @@
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
 import AxiAwardWinningService from "@/components/axi/AxiAwardWinningService";
-import AxiCallToAction from "@/components/axi/AxiCallToAction";
+import AxiReadyTrade from "@/components/axi/AxiReadyTrade";
+import AxiHero from "@/components/axi/AxiHero";
 
 const AxiAward: React.FC = () => {
   const scrollToTop = () => {
@@ -17,14 +18,15 @@ const AxiAward: React.FC = () => {
       <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
-        <section className="mt-20 mb-20 w-full">
+        <section className="mt-10 mb-16 w-full">
+          <div className="mb-10">
+            <AxiHero />
+          </div>
           <AxiAwardWinningService />
         </section>
-        
-        <section className="mb-20 w-full">
-          <AxiCallToAction />
-        </section>
       </div>
+      
+      <AxiReadyTrade />
     </main>
   );
 };
