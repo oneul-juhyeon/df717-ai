@@ -10,7 +10,14 @@ const AxiCFDArticleHeader: React.FC = () => {
       <div className="flex items-center gap-2 mb-8">
         <Badge variant="outline" className="bg-gray-100 text-gray-700 hover:bg-gray-100">Education</Badge>
         <span className="text-gray-500">/</span>
-        <span className="text-gray-700 font-medium">Milan Cutkovic</span>
+        <a 
+          href="https://www.axi.com/kr/blog/authors/milan-cutkovic" 
+          className="text-gray-700 font-medium hover:underline"
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          Milan Cutkovic
+        </a>
       </div>
       
       {/* Hero Image */}
