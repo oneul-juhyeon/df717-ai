@@ -2,11 +2,17 @@
 import React, { useState } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger
+} from "@/components/ui/navigation-menu";
 
 interface AxiCFDHeaderProps {
   scrollToTop: () => void;
@@ -38,7 +44,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     { name: "DF Robot", path: "/robot" },
     { 
       name: "AXI CFD", 
-      path: "#",
+      path: "/axi-cfd",
       hasSubmenu: true,
       submenu: axiCfdSubmenu,
     },
@@ -95,21 +101,21 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
         <NavigationMenu className="navigation-menu-container">
           <NavigationMenuList className="gap-2 flex-wrap justify-end">
             {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.name}>
+              <NavigationMenuItem key={item.name} className="relative">
                 {item.hasSubmenu ? (
-                  <div className="relative group">
+                  <div className="relative">
                     <NavigationMenuTrigger
                       onClick={scrollToTop}
-                      className="text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap"
+                      className="text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap axi-cfd-button"
                     >
                       {item.name}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="absolute bg-[#232323] rounded-md p-2 min-w-[200px] z-50">
-                      <div className="flex flex-col space-y-2">
+                    <NavigationMenuContent className="navigation-dropdown absolute left-0 top-full">
+                      <div className="flex flex-col space-y-1 p-2">
                         {item.submenu?.map((subItem) => (
                           <div
                             key={subItem.name}
-                            className="px-4 py-2 text-white hover:bg-[#333333] rounded-md cursor-pointer transition"
+                            className="navigation-dropdown-item"
                             onClick={() => scrollToSection(subItem.id)}
                           >
                             {subItem.name}
