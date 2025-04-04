@@ -71,6 +71,8 @@ const HomeIntro: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <h3 className="text-2xl font-medium text-white border-l-2 border-red-600 pl-4">Technologies</h3>
               <p className="text-gray-300 leading-relaxed">
@@ -81,13 +83,17 @@ const HomeIntro: React.FC = () => {
                 Our proprietary algorithms and machine learning models can identify patterns 
                 that humans might miss, giving you a competitive edge in trading.
               </p>
-              <div className="pt-4">
+              <motion.div 
+                className="pt-4"
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
                 <Link to="/technology">
                   <Button className="bg-transparent hover:bg-red-600 border border-red-600 text-white px-8 py-6 rounded-none transition-all">
                     Explore Technology
                   </Button>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
             
             <motion.div 
@@ -95,6 +101,8 @@ const HomeIntro: React.FC = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <h3 className="text-2xl font-medium text-white border-l-2 border-red-600 pl-4">DF717 & Company</h3>
               <p className="text-gray-300 leading-relaxed">
@@ -105,13 +113,17 @@ const HomeIntro: React.FC = () => {
                 Our mission is to democratize access to sophisticated trading algorithms, 
                 making them accessible to both institutions and individual traders.
               </p>
-              <div className="pt-4">
+              <motion.div 
+                className="pt-4"
+                whileHover={{ x: 5 }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
                 <Link to="/company">
                   <Button className="bg-transparent hover:bg-red-600 border border-red-600 text-white px-8 py-6 rounded-none transition-all">
                     About Us
                   </Button>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
           
@@ -121,42 +133,68 @@ const HomeIntro: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.7 }}
           >
-            <div className="bg-[#1a1a1a] p-8 border-t-2 border-red-600">
-              <h3 className="text-xl font-medium text-white mb-4">DF Robot</h3>
-              <p className="text-gray-300 mb-8 h-24">
-                Fully-automated trading system powered by advanced AI algorithms.
-              </p>
-              <Link to="/robot">
-                <Button variant="ghost" className="text-red-500 hover:text-white hover:bg-red-600 px-0 group">
-                  Explore
-                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="bg-[#1a1a1a] p-8 border-t-2 border-red-600">
-              <h3 className="text-xl font-medium text-white mb-4">AXI CFD</h3>
-              <p className="text-gray-300 mb-8 h-24">
-                Contract for Difference trading with enhanced accuracy and risk management.
-              </p>
-              <Link to="/axi-cfd">
-                <Button variant="ghost" className="text-red-500 hover:text-white hover:bg-red-600 px-0 group">
-                  Explore
-                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </Button>
-              </Link>
-            </div>
-            
-            <div className="bg-[#1a1a1a] p-8 border-t-2 border-red-600">
-              <h3 className="text-xl font-medium text-white mb-4">API Integration</h3>
-              <p className="text-gray-300 mb-8 h-24">
-                Seamlessly integrate our algorithms with your existing trading platforms.
-              </p>
-              <Button variant="ghost" className="text-red-500 hover:text-white hover:bg-red-600 px-0 group">
-                Explore
-                <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-              </Button>
-            </div>
+            {[
+              {
+                title: "DF Robot",
+                description: "Fully-automated trading system powered by advanced AI algorithms.",
+                link: "/robot"
+              },
+              {
+                title: "AXI CFD",
+                description: "Contract for Difference trading with enhanced accuracy and risk management.",
+                link: "/axi-cfd"
+              },
+              {
+                title: "API Integration",
+                description: "Seamlessly integrate our algorithms with your existing trading platforms.",
+                link: "#"
+              }
+            ].map((card, index) => (
+              <motion.div 
+                key={index}
+                className="bg-[#1a1a1a] p-8 border-t-2 border-red-600"
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0 10px 30px rgba(255, 0, 0, 0.1)"
+                }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <motion.h3 
+                  className="text-xl font-medium text-white mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 + (0.2 * index), duration: 0.5 }}
+                >
+                  {card.title}
+                </motion.h3>
+                <motion.p 
+                  className="text-gray-300 mb-8 h-24"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.2 + (0.2 * index), duration: 0.5 }}
+                >
+                  {card.description}
+                </motion.p>
+                <Link to={card.link}>
+                  <motion.div
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <Button variant="ghost" className="text-red-500 hover:text-white hover:bg-red-600 px-0 group">
+                      Explore
+                      <motion.span 
+                        className="ml-2 inline-block"
+                        initial={{ x: 0 }}
+                        whileHover={{ x: 3 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        →
+                      </motion.span>
+                    </Button>
+                  </motion.div>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
