@@ -68,7 +68,7 @@ const SharesHeader: React.FC<SharesHeaderProps> = ({ scrollToTop }) => {
   ];
 
   return (
-    <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6">
       <Link to="/">
         <Logo />
       </Link>
@@ -122,7 +122,7 @@ const SharesHeader: React.FC<SharesHeaderProps> = ({ scrollToTop }) => {
         </Sheet>
       ) : (
         <NavigationMenu className="navigation-menu-container">
-          <NavigationMenuList className="gap-2 flex-wrap justify-end">
+          <NavigationMenuList className="gap-1 flex-wrap justify-end">
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.name} className="relative">
                 {item.hasSubmenu ? (

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
@@ -55,7 +56,7 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
   ];
 
   return (
-    <header className="flex justify-between items-center pt-14 max-sm:pt-5">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 gap-6">
       <Link to="/">
         <Logo />
       </Link>
@@ -99,7 +100,7 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
         </Sheet>
       ) : (
         <NavigationMenu>
-          <NavigationMenuList className="gap-2">
+          <NavigationMenuList className="gap-1">
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.name}>
                 {item.hasSubmenu ? (

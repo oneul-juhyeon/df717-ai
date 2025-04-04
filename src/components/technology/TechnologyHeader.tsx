@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/landing/Logo";
@@ -27,12 +26,12 @@ const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
   ];
 
   return (
-    <header className="flex justify-between items-center pt-14 max-sm:pt-5">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 gap-6">
       <Link to="/">
         <Logo />
       </Link>
       <NavigationMenu>
-        <NavigationMenuList className="gap-2">
+        <NavigationMenuList className="gap-1">
           <NavigationMenuItem>
             <Link to="/home-intro" className="text-white hover:text-gray-300 px-4 py-2 transition">
               Home
