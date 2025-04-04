@@ -19,7 +19,7 @@ const AxiEdgeContent: React.FC = () => {
             <div className="absolute -inset-2 bg-red-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
             <div className="relative z-10 overflow-hidden rounded-xl shadow-lg aspect-video w-full">
               <iframe 
-                src="https://www.youtube.com/embed/BKvaiKZga0s" 
+                src="https://www.youtube.com/embed/BKvaiKZga0s?modestbranding=1&showinfo=0&controls=0&rel=0" 
                 title="Axi Edge Video"
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
