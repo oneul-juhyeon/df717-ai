@@ -1,7 +1,6 @@
 
 import React from "react";
 import HomeHeader from "@/components/home/HomeHeader";
-import HomeContent from "@/components/home/HomeContent";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -16,7 +15,7 @@ const HomeIntro: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
-      <div className="w-full mx-auto px-[154px] pt-8 max-md:px-10 max-sm:px-5">
+      <div className="w-full mx-auto px-[154px] pt-8 pb-12 max-md:px-10 max-sm:px-5">
         <HomeHeader scrollToTop={scrollToTop} />
       </div>
         
