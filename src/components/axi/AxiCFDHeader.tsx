@@ -121,9 +121,9 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                       {item.name}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="navigation-dropdown">
-                      <div className="horizontal-dropdown bg-[rgba(30,30,30,0.95)] p-4 rounded-lg border border-gray-700 shadow-xl">
+                      <ul className="horizontal-dropdown py-2 px-4">
                         {item.submenu?.map((subItem, index) => (
-                          <React.Fragment key={subItem.name}>
+                          <li key={subItem.name} className="list-none">
                             <Link
                               to={subItem.path}
                               className={`navigation-dropdown-item ${
@@ -140,9 +140,9 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                             {index < item.submenu.length - 1 && (
                               <span className="dropdown-divider"></span>
                             )}
-                          </React.Fragment>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </NavigationMenuContent>
                   </div>
                 ) : (
