@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Tool, Cpu, LineChart } from "lucide-react";
+import { Wrench, Cpu, LineChart } from "lucide-react";
 
 const AxiTrustTools: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ const AxiTrustTools: React.FC = () => {
               <LineChart className="h-10 w-10 text-red-500" />
             </div>
             <div className="p-4 bg-[#282828] rounded-lg">
-              <Tool className="h-10 w-10 text-red-500" />
+              <Wrench className="h-10 w-10 text-red-500" />
             </div>
             <div className="p-4 bg-[#282828] rounded-lg">
               <Cpu className="h-10 w-10 text-red-500" />
