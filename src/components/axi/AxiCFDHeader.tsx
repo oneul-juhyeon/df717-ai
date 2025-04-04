@@ -26,7 +26,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
   useEffect(() => {
     // Set active section based on current URL
     const path = location.pathname;
-    if (path.includes('cfd')) {
+    if (path.includes('edge')) {
       setActiveSection('edge-section');
     } else if (path.includes('trust')) {
       setActiveSection('trusted-partner-section');
@@ -38,7 +38,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
   }, [location]);
 
   const axiCfdSubmenu = [
-    { name: "Our Edge", id: "edge-section", path: "/axi-cfd" },
+    { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
     { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
     { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
     { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
@@ -51,7 +51,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     { name: "DF Robot", path: "/robot" },
     { 
       name: "AXI CFD", 
-      path: "/axi-cfd",
+      path: "/axi-edge",
       hasSubmenu: true,
       submenu: axiCfdSubmenu,
     },

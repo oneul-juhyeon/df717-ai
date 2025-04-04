@@ -29,8 +29,8 @@ const App = () => (
           <Route path="/company" element={<Company />} />
           <Route path="/technology" element={<Technology />} />
           <Route path="/robot" element={<Robot />} />
-          <Route path="/axi-cfd" element={<AxiCFD />} />
-          <Route path="/axi-edge" element={<Navigate to="/axi-cfd" replace />} />
+          <Route path="/axi-edge" element={<AxiCFD />} />
+          <Route path="/axi-cfd" element={<Navigate to="/axi-edge" replace />} />
           <Route path="/axi-trust" element={<AxiTrust />} />
           <Route path="/axi-pricing" element={<AxiPricing />} />
           <Route path="/axi-award" element={<AxiAward />} />
