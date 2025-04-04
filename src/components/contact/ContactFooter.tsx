@@ -10,7 +10,7 @@ export function ContactFooter() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center text-center">
-            <div className="bg-purple-800/30 p-4 rounded-full mb-4">
+            <div className="bg-[#b30d28] p-4 rounded-full mb-4">
               <Phone className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Phone</h3>
@@ -19,7 +19,7 @@ export function ContactFooter() {
           </div>
           
           <div className="flex flex-col items-center text-center">
-            <div className="bg-purple-800/30 p-4 rounded-full mb-4">
+            <div className="bg-[#b30d28] p-4 rounded-full mb-4">
               <Mail className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Email</h3>
@@ -28,7 +28,7 @@ export function ContactFooter() {
           </div>
           
           <div className="flex flex-col items-center text-center">
-            <div className="bg-purple-800/30 p-4 rounded-full mb-4">
+            <div className="bg-[#b30d28] p-4 rounded-full mb-4">
               <MapPin className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-semibold mb-2">Address</h3>
