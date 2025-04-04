@@ -1,7 +1,6 @@
 
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
-import AxiHero from "@/components/axi/AxiHero";
 import AxiAwardWinningService from "@/components/axi/AxiAwardWinningService";
 import AxiCallToAction from "@/components/axi/AxiCallToAction";
 
@@ -18,15 +17,11 @@ const AxiAward: React.FC = () => {
       <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
-        <section className="mt-20 mb-10 w-full">
-          <AxiHero />
-        </section>
-        
         <section className="mt-20 mb-20 w-full">
           <AxiAwardWinningService />
         </section>
         
-        <section className="mt-20 mb-20 w-full">
+        <section className="mb-20 w-full">
           <AxiCallToAction />
         </section>
       </div>

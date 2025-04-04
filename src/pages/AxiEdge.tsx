@@ -18,15 +18,11 @@ const AxiEdge: React.FC = () => {
       <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
-        <section className="mt-20 mb-10 w-full">
-          <AxiHero />
-        </section>
-        
         <section className="mt-20 mb-20 w-full">
           <AxiEdgeSection />
         </section>
         
-        <section className="mt-20 mb-20 w-full">
+        <section className="mb-20 w-full">
           <AxiCallToAction />
         </section>
       </div>
