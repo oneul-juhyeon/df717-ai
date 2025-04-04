@@ -26,6 +26,7 @@ const AxiAward: React.FC = () => {
         </section>
       </div>
       
+      {/* Ready to trade section */}
       <AxiReadyTrade />
     </main>
   );

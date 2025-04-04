@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const AxiReadyTrade: React.FC = () => {
   return (
-    <div className="w-full bg-[#212121] py-16">
+    <div className="w-full bg-[#e5323e] py-16">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-white mb-4">Ready to trade your edge?</h2>
         <p className="text-xl text-white mb-8">
