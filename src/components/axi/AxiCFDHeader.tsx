@@ -114,9 +114,6 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                 {item.hasSubmenu ? (
                   <div className="relative">
                     <NavigationMenuTrigger
-                      onClick={() => {
-                        window.location.href = item.path;
-                      }}
                       className={`nav-menu-trigger text-black px-4 py-2 transition whitespace-nowrap ${
                         location.pathname.includes('axi-') ? 'text-red-500' : ''
                       }`}
@@ -124,13 +121,13 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                       {item.name}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="navigation-dropdown">
-                      <div className="horizontal-dropdown bg-white backdrop-blur-md p-4 rounded-lg border border-gray-200 shadow-xl">
+                      <div className="horizontal-dropdown bg-[rgba(30,30,30,0.95)] p-4 rounded-lg border border-gray-700 shadow-xl">
                         {item.submenu?.map((subItem, index) => (
                           <React.Fragment key={subItem.name}>
                             <Link
                               to={subItem.path}
                               className={`navigation-dropdown-item ${
-                                location.pathname === subItem.path ? 'text-red-500 bg-red-50' : ''
+                                location.pathname === subItem.path ? 'text-red-500 bg-red-50/10' : ''
                               }`}
                               onClick={() => {
                                 setActiveSection(subItem.id);
