@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Coins, TrendingUp, BarChart4, Layers, Gold, Oil, Bitcoin } from "lucide-react";
+import { Coins, TrendingUp, BarChart4, Layers, CircleDollarSign, Fuel, Bitcoin } from "lucide-react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 
 const FinancialProducts: React.FC = () => {
@@ -45,13 +45,13 @@ const FinancialProducts: React.FC = () => {
     {
       title: "Gold",
       description: "Trade gold with competitive spreads and reliable execution.",
-      icon: <Gold className="h-8 w-8 text-yellow-600" />,
+      icon: <CircleDollarSign className="h-8 w-8 text-yellow-600" />,
       path: "/financial-products/gold"
     },
     {
       title: "Oil",
       description: "Access global oil markets with advanced trading tools.",
-      icon: <Oil className="h-8 w-8 text-gray-700" />,
+      icon: <Fuel className="h-8 w-8 text-gray-700" />,
       path: "/financial-products/oil"
     },
     {

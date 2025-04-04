@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
@@ -85,7 +84,7 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
                         <Link 
                           key={subItem.name} 
                           to={subItem.path}
-                          className="text-gray-300 hover:text-white py-1 text-md transition cursor-pointer"
+                          className={`text-gray-300 hover:text-white py-1 text-md transition cursor-pointer`}
                           onClick={scrollToTop}
                         >
                           {subItem.name}

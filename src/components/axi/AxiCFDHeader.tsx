@@ -101,21 +101,27 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                   
                   {item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
-                      {item.submenu?.map((subItem) => (
-                        <Link 
-                          key={subItem.name} 
-                          to={subItem.path}
-                          className={`text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer ${
-                            activeSection === subItem.id ? 'text-red-500 font-medium' : ''
-                          }`}
-                          onClick={() => {
-                            setActiveSection(subItem.id);
-                            scrollToTop();
-                          }}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
+                      {item.submenu?.map((subItem) => {
+                        // Check if this is an AxiCFD submenu item (which has id property)
+                        const isAxiItem = 'id' in subItem;
+                        return (
+                          <Link 
+                            key={subItem.name} 
+                            to={subItem.path}
+                            className={`text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer ${
+                              isAxiItem && activeSection === subItem.id ? 'text-red-500 font-medium' : ''
+                            }`}
+                            onClick={() => {
+                              if (isAxiItem) {
+                                setActiveSection(subItem.id);
+                              }
+                              scrollToTop();
+                            }}
+                          >
+                            {subItem.name}
+                          </Link>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -139,26 +145,32 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="navigation-dropdown">
                       <ul className="horizontal-dropdown py-2 px-4">
-                        {item.submenu?.map((subItem, index) => (
-                          <li key={subItem.name} className="list-none">
-                            <Link
-                              to={subItem.path}
-                              className={`navigation-dropdown-item ${
-                                location.pathname === subItem.path ? 'text-red-500 bg-red-50/10' : ''
-                              }`}
-                              onClick={() => {
-                                setActiveSection(subItem.id);
-                                scrollToTop();
-                              }}
-                            >
-                              <ArrowRight className="h-4 w-4 transition-transform duration-200" />
-                              {subItem.name}
-                            </Link>
-                            {index < item.submenu.length - 1 && (
-                              <span className="dropdown-divider"></span>
-                            )}
-                          </li>
-                        ))}
+                        {item.submenu?.map((subItem, index) => {
+                          // Check if this is an AxiCFD submenu item (which has id property)
+                          const isAxiItem = 'id' in subItem;
+                          return (
+                            <li key={subItem.name} className="list-none">
+                              <Link
+                                to={subItem.path}
+                                className={`navigation-dropdown-item ${
+                                  location.pathname === subItem.path ? 'text-red-500 bg-red-50/10' : ''
+                                }`}
+                                onClick={() => {
+                                  if (isAxiItem) {
+                                    setActiveSection(subItem.id);
+                                  }
+                                  scrollToTop();
+                                }}
+                              >
+                                <ArrowRight className="h-4 w-4 transition-transform duration-200" />
+                                {subItem.name}
+                              </Link>
+                              {index < item.submenu.length - 1 && (
+                                <span className="dropdown-divider"></span>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </NavigationMenuContent>
                   </div>

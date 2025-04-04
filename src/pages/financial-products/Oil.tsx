@@ -1,7 +1,7 @@
 
 import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Oil as OilIcon } from "lucide-react";
+import { Fuel } from "lucide-react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 
 const Oil: React.FC = () => {
@@ -25,7 +25,7 @@ const Oil: React.FC = () => {
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-16 h-16 rounded-full bg-[#191942] flex items-center justify-center">
-                <OilIcon className="h-8 w-8 text-gray-700" />
+                <Fuel className="h-8 w-8 text-gray-700" />
               </div>
               <h1 className="text-5xl font-bold text-white">Oil Trading</h1>
             </div>
