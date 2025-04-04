@@ -1,4 +1,3 @@
-
 #root {
   width: 100%;
   margin: 0 auto;
@@ -86,19 +85,26 @@ body, html {
   border-radius: 4px;
 }
 
-/* Style for AXI CFD button to match other nav items */
-.axi-cfd-button {
+/* Fix for navigation menu trigger styling */
+.nav-menu-trigger {
+  background-color: transparent !important;
+  border: none !important;
   color: white !important;
-  background-color: #232323 !important;
-  padding: 6px 12px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: background-color 0.2s;
 }
 
-.axi-cfd-button:hover, 
-.axi-cfd-button[data-state="open"] {
+.nav-menu-trigger:hover, 
+.nav-menu-trigger[data-state="open"] {
   background-color: #333333 !important;
+  border-radius: 4px;
+}
+
+/* Override the default Radix UI trigger style */
+.NavigationMenuTrigger {
+  background-color: transparent;
+  border: none;
+}
+
+/* Fix the Radix navigation menu content to only show on hover */
+.NavigationMenuItem:not(:hover) .NavigationMenuContent {
+  display: none;
 }

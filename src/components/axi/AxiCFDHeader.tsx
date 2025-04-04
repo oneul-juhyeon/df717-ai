@@ -106,11 +106,11 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                   <div className="relative">
                     <NavigationMenuTrigger
                       onClick={scrollToTop}
-                      className="text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap axi-cfd-button"
+                      className="nav-menu-trigger text-white px-4 py-2 transition whitespace-nowrap"
                     >
                       {item.name}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="navigation-dropdown absolute left-0 top-full">
+                    <NavigationMenuContent className="navigation-dropdown">
                       <div className="flex flex-col space-y-1 p-2">
                         {item.submenu?.map((subItem) => (
                           <div
