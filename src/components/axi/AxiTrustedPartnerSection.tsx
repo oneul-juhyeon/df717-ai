@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, Award, ShieldCheck, Users, Handshake } from "lucide-react";
 
 const AxiTrustedPartnerSection: React.FC = () => {
   return (
@@ -37,12 +37,23 @@ const AxiTrustedPartnerSection: React.FC = () => {
           </Button>
         </div>
         
-        <div className="flex justify-center">
-          <img 
-            src="/lovable-uploads/badd2a00-6a59-4dc9-bd14-d603006d51e8.png" 
-            alt="Trusted Trading Partners" 
-            className="max-w-full rounded-xl"
-          />
+        <div className="flex justify-center items-center">
+          <div className="flex flex-col items-center">
+            <div className="bg-white p-8 rounded-full shadow-lg mb-4">
+              <Handshake className="h-32 w-32 text-red-500" strokeWidth={1.5} />
+            </div>
+            <div className="flex gap-6 mt-4">
+              <div className="bg-white p-4 rounded-full shadow-md">
+                <Award className="h-12 w-12 text-red-500" strokeWidth={1.5} />
+              </div>
+              <div className="bg-white p-4 rounded-full shadow-md">
+                <ShieldCheck className="h-12 w-12 text-red-500" strokeWidth={1.5} />
+              </div>
+              <div className="bg-white p-4 rounded-full shadow-md">
+                <Users className="h-12 w-12 text-red-500" strokeWidth={1.5} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
