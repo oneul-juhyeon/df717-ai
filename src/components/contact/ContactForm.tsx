@@ -25,6 +25,7 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
+  referrerName: z.string().optional(),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
@@ -44,6 +45,7 @@ export function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
+      referrerName: "",
       message: "",
       agreeToTerms: false,
     },
@@ -87,9 +89,9 @@ export function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Name <span className="text-[#D11C36]">*</span></FormLabel>
                 <FormControl>
-                  <Input placeholder="Your name" {...field} />
+                  <Input placeholder="Your name" {...field} required />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -101,9 +103,23 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Email <span className="text-[#D11C36]">*</span></FormLabel>
                 <FormControl>
-                  <Input placeholder="Your email address" {...field} />
+                  <Input placeholder="Your email address" {...field} required />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="referrerName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Referrer Name (Optional)</FormLabel>
+                <FormControl>
+                  <Input placeholder="Name of the person who referred you" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -115,12 +131,13 @@ export function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel>Message <span className="text-[#D11C36]">*</span></FormLabel>
                 <FormControl>
                   <Textarea 
                     placeholder="Please describe your inquiry in detail" 
                     className="min-h-[150px]"
-                    {...field} 
+                    {...field}
+                    required 
                   />
                 </FormControl>
                 <FormMessage />
