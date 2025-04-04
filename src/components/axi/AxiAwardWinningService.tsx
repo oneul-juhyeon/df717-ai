@@ -6,7 +6,6 @@ import { Users, Headphones, Globe, DollarSign } from "lucide-react";
 import AxiAwardCards from "./AxiAwardCards";
 import AxiTestimonials from "./AxiTestimonials";
 import AxiServiceImages from "./AxiServiceImages";
-import AxiReadyTrade from "./AxiReadyTrade";
 
 const AxiAwardWinningService: React.FC = () => {
   // Add scroll animation effects
