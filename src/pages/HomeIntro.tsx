@@ -3,7 +3,6 @@ import React from "react";
 import HomeHeader from "@/components/home/HomeHeader";
 import HeroSection from "@/components/home/HeroSection";
 import TextSection from "@/components/home/TextSection";
-import ContentSection from "@/components/home/ContentSection";
 
 const HomeIntro: React.FC = () => {
   const scrollToTop = () => {
@@ -21,7 +20,7 @@ const HomeIntro: React.FC = () => {
       
       <HeroSection />
       <TextSection />
-      <ContentSection />
+      {/* ContentSection 컴포넌트가 제거되었습니다 */}
     </main>
   );
 };
