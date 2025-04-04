@@ -39,7 +39,7 @@ const AxiSuperiorSetup: React.FC = () => {
           </div>
           <div className="flex justify-center">
             <img 
-              src="/lovable-uploads/ee164e58-7962-4059-9bce-c619cf1a4484.png" 
+              src="/lovable-uploads/2f166595-ff86-495d-82d2-dc88c58f3d63.png" 
               alt="Multi-device trading setup" 
               className="max-w-full h-auto rounded-xl"
             />

@@ -43,7 +43,7 @@ const AxiExcellenceExecution: React.FC = () => {
           </div>
           <div className="flex justify-center">
             <img 
-              src="/lovable-uploads/ee164e58-7962-4059-9bce-c619cf1a4484.png" 
+              src="/lovable-uploads/7d472582-2363-43c5-a528-62cc31984704.png" 
               alt="Execution performance chart" 
               className="max-w-full h-auto rounded-xl"
             />
@@ -53,7 +53,7 @@ const AxiExcellenceExecution: React.FC = () => {
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 flex justify-center">
             <img 
-              src="/lovable-uploads/ee164e58-7962-4059-9bce-c619cf1a4484.png" 
+              src="/lovable-uploads/ab227cf6-54f6-4b18-a524-ff414ddf1729.png" 
               alt="ECN network diagram" 
               className="max-w-full h-auto rounded-xl"
             />

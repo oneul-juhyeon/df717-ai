@@ -34,14 +34,14 @@ const AxiTopTierLiquidity: React.FC = () => {
             <h2 className="text-3xl font-bold text-white mb-6">Top tier liquidity. Always.</h2>
             <p className="text-gray-300 mb-6">
               For more than a decade, Axi has built strong relationships with top liquidity providers around the world. 
-              Thanks to these trusted partnerships, we're able to deliver you a more reliable trading service with better pricing 
-              and faster execution speeds.
+              Thanks to these trusted partnerships, we're able to deliver you a more reliable trading service with better 
+              pricing and faster execution speeds.
             </p>
           </div>
           <div className="flex justify-center">
             <img 
-              src="/lovable-uploads/ee164e58-7962-4059-9bce-c619cf1a4484.png" 
-              alt="Liquidity providers chart" 
+              src="/lovable-uploads/dc155393-715d-4340-920f-f555d7e47b99.png" 
+              alt="Top tier liquidity providers" 
               className="max-w-full h-auto rounded-xl"
             />
           </div>

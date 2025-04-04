@@ -36,6 +36,14 @@ const AxiPricingHero: React.FC = () => {
           Lower latency, faster execution and better pricing. Trade your edge.
         </p>
       </div>
+      
+      <div className="mt-10 flex justify-center">
+        <img 
+          src="/lovable-uploads/23029a1d-27ab-431a-b439-e361ac5e7371.png" 
+          alt="Trading execution visualization" 
+          className="max-w-full h-auto rounded-xl"
+        />
+      </div>
     </div>
   );
 };
