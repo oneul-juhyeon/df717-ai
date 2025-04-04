@@ -14,7 +14,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           AI FINANCE<br />
         </h1>
         
-        <p className="text-3xl text-white max-sm:text-lg mb-10 max-w-xl font-normal">Automate Your Investment with DF717</p>
+        <p className="text-3xl text-white max-sm:text-lg mb-10 max-w-xl font-normal text-left">Automate Your Investment with DF717</p>
         
         <div className="flex gap-6 max-sm:flex-col max-sm:gap-4">
           <Button asChild className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg rounded-full">
