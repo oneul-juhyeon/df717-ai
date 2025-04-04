@@ -18,6 +18,13 @@ interface AxiCFDHeaderProps {
   scrollToTop: () => void;
 }
 
+// Add this interface to properly type the submenu items
+interface SubmenuItem {
+  name: string;
+  path: string;
+  id?: string; // Make id optional since not all submenu items have it
+}
+
 const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
   const isMobile = useIsMobile();
   const location = useLocation();
@@ -37,7 +44,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     }
   }, [location]);
 
-  const axiCfdSubmenu = [
+  const axiCfdSubmenu: SubmenuItem[] = [
     { name: "CFD", id: "cfd-section", path: "/axi-cfd" },
     { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
     { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
@@ -45,7 +52,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
   ];
 
-  const financialProductsSubmenu = [
+  const financialProductsSubmenu: SubmenuItem[] = [
     { name: "Forex", path: "/financial-products/forex" },
     { name: "Shares", path: "/financial-products/shares" },
     { name: "Indices", path: "/financial-products/indices" },
@@ -112,7 +119,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                               isAxiItem && activeSection === subItem.id ? 'text-red-500 font-medium' : ''
                             }`}
                             onClick={() => {
-                              if (isAxiItem) {
+                              if (isAxiItem && subItem.id) {
                                 setActiveSection(subItem.id);
                               }
                               scrollToTop();
@@ -156,7 +163,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                                   location.pathname === subItem.path ? 'text-red-500 bg-red-50/10' : ''
                                 }`}
                                 onClick={() => {
-                                  if (isAxiItem) {
+                                  if (isAxiItem && subItem.id) {
                                     setActiveSection(subItem.id);
                                   }
                                   scrollToTop();
