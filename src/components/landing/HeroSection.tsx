@@ -10,13 +10,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return <div className={className}>
       <div className="space-y-4 container mx-auto py-14 max-sm:py-6">
-        <h1 className="text-white leading-[1.1] font-gotham tracking-tight mb-10 font-extrabold text-9xl">
+        <h1 className="text-white leading-[1.1] font-gotham tracking-tight mb-10 font-extrabold text-9xl text-left">
           AI FINANCE<br />
         </h1>
         
-        <p className="text-3xl text-white max-sm:text-lg mb-10 max-w-md">
-          Automate Your Investment with DF717
-        </p>
+        <p className="text-3xl text-white max-sm:text-lg mb-10 max-w-md">Automate Your Investment with DF717</p>
         
         <div className="flex gap-6 max-sm:flex-col max-sm:gap-4">
           <Button asChild className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg rounded-full">
