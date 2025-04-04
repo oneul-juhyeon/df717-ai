@@ -38,7 +38,7 @@ const HomeIntro: React.FC = () => {
         </div>
       </section>
       
-      {/* Text Section */}
+      {/* Text Section - Updated to only animate on scroll */}
       <section className="w-full bg-[#111111] py-24 px-4">
         <motion.div 
           ref={textSectionRef}
@@ -46,7 +46,7 @@ const HomeIntro: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          transition={{ duration: 0.7 }}
         >
           <p className="font-sans text-xl md:text-2xl text-[#EEEEEE] mb-12 leading-relaxed">
             Since thousands of years ago, the Bible has foreshadowed the era of famine at the end.<br/>
