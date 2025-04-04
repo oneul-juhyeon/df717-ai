@@ -1,7 +1,7 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import HomeHeader from "@/components/home/HomeHeader";
-import { motion } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,11 @@ const HomeIntro: React.FC = () => {
       behavior: 'smooth'
     });
   };
+
+  // Refs for scroll animations
+  const textSectionRef = useRef(null);
+  const featureSectionRef = useRef(null);
+  const cardsSectionRef = useRef(null);
 
   return (
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
@@ -36,9 +41,11 @@ const HomeIntro: React.FC = () => {
       {/* Text Section */}
       <section className="w-full bg-[#111111] py-24 px-4">
         <motion.div 
+          ref={textSectionRef}
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
           <p className="font-sans text-xl md:text-2xl text-[#EEEEEE] mb-12 leading-relaxed">
@@ -56,23 +63,25 @@ const HomeIntro: React.FC = () => {
       <section className="w-full bg-[#161616] py-24">
         <div className="max-w-6xl mx-auto px-8 md:px-12">
           <motion.div 
+            ref={featureSectionRef}
             className="mb-16"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
             <h2 className="text-4xl font-bold text-white mb-6 text-center">Data Driven, Life Inspired</h2>
-            <div className="w-20 h-1 bg-red-600 mx-auto mb-12"></div>
+            <div className="w-60 h-1 bg-red-600 mx-auto mb-12"></div>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <motion.div 
               className="space-y-6"
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.3, duration: 0.6 }}
               whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
               <h3 className="text-2xl font-medium text-white border-l-2 border-red-600 pl-4">Technologies</h3>
               <p className="text-gray-300 leading-relaxed">
@@ -86,7 +95,6 @@ const HomeIntro: React.FC = () => {
               <motion.div 
                 className="pt-4"
                 whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400 }}
               >
                 <Link to="/technology">
                   <Button className="bg-transparent hover:bg-red-600 border border-red-600 text-white px-8 py-6 rounded-none transition-all">
@@ -99,10 +107,10 @@ const HomeIntro: React.FC = () => {
             <motion.div 
               className="space-y-6"
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.4, duration: 0.6 }}
               whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
               <h3 className="text-2xl font-medium text-white border-l-2 border-red-600 pl-4">DF717 & Company</h3>
               <p className="text-gray-300 leading-relaxed">
@@ -116,7 +124,6 @@ const HomeIntro: React.FC = () => {
               <motion.div 
                 className="pt-4"
                 whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400 }}
               >
                 <Link to="/company">
                   <Button className="bg-transparent hover:bg-red-600 border border-red-600 text-white px-8 py-6 rounded-none transition-all">
@@ -128,10 +135,12 @@ const HomeIntro: React.FC = () => {
           </div>
           
           <motion.div 
+            ref={cardsSectionRef}
             className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.7 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.2, duration: 0.7 }}
           >
             {[
               {
@@ -153,32 +162,24 @@ const HomeIntro: React.FC = () => {
               <motion.div 
                 key={index}
                 className="bg-[#1a1a1a] p-8 border-t-2 border-red-600"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.3 + (0.1 * index), duration: 0.5 }}
                 whileHover={{ 
                   y: -10,
                   boxShadow: "0 10px 30px rgba(255, 0, 0, 0.1)"
                 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.h3 
-                  className="text-xl font-medium text-white mb-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1 + (0.2 * index), duration: 0.5 }}
-                >
+                <h3 className="text-xl font-medium text-white mb-4">
                   {card.title}
-                </motion.h3>
-                <motion.p 
-                  className="text-gray-300 mb-8 h-24"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 + (0.2 * index), duration: 0.5 }}
-                >
+                </h3>
+                <p className="text-gray-300 mb-8 h-24">
                   {card.description}
-                </motion.p>
+                </p>
                 <Link to={card.link}>
                   <motion.div
                     whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400 }}
                   >
                     <Button variant="ghost" className="text-red-500 hover:text-white hover:bg-red-600 px-0 group">
                       Explore
@@ -186,7 +187,6 @@ const HomeIntro: React.FC = () => {
                         className="ml-2 inline-block"
                         initial={{ x: 0 }}
                         whileHover={{ x: 3 }}
-                        transition={{ type: "spring", stiffness: 300 }}
                       >
                         →
                       </motion.span>
