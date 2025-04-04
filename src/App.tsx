@@ -11,6 +11,10 @@ import Technology from "./pages/Technology";
 import NotFound from "./pages/NotFound";
 import Robot from "./pages/Robot";
 import AxiCFD from "./pages/AxiCFD";
+import AxiEdge from "./pages/AxiEdge";
+import AxiTrust from "./pages/AxiTrust";
+import AxiPricing from "./pages/AxiPricing";
+import AxiAward from "./pages/AxiAward";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +31,10 @@ const App = () => (
           <Route path="/technology" element={<Technology />} />
           <Route path="/robot" element={<Robot />} />
           <Route path="/axi-cfd" element={<AxiCFD />} />
+          <Route path="/axi-edge" element={<AxiEdge />} />
+          <Route path="/axi-trust" element={<AxiTrust />} />
+          <Route path="/axi-pricing" element={<AxiPricing />} />
+          <Route path="/axi-award" element={<AxiAward />} />
           <Route path="/contact" element={<NotFound />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

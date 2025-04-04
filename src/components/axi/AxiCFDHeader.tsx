@@ -1,7 +1,7 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "@/components/landing/Logo";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, ChevronDown, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -20,21 +20,28 @@ interface AxiCFDHeaderProps {
 
 const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
   const isMobile = useIsMobile();
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+  useEffect(() => {
+    // Set active section based on current URL
+    const path = location.pathname;
+    if (path.includes('edge')) {
+      setActiveSection('edge-section');
+    } else if (path.includes('trust')) {
+      setActiveSection('trusted-partner-section');
+    } else if (path.includes('pricing')) {
+      setActiveSection('features-section');
+    } else if (path.includes('award')) {
+      setActiveSection('award-winning-section');
     }
-    setActiveSection(sectionId);
-  };
+  }, [location]);
 
   const axiCfdSubmenu = [
-    { name: "Edge", id: "edge-section" },
-    { name: "Trade With Trust", id: "trusted-partner-section" },
-    { name: "Best Pricing & Execution", id: "features-section" },
-    { name: "Award-Winning Service", id: "award-winning-section" },
+    { name: "Edge", id: "edge-section", path: "/axi-edge" },
+    { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
+    { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
+    { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
   ];
 
   const navigationItems = [
@@ -44,7 +51,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     { name: "DF Robot", path: "/robot" },
     { 
       name: "AXI CFD", 
-      path: "/axi-cfd",
+      path: "/axi-edge",
       hasSubmenu: true,
       submenu: axiCfdSubmenu,
     },
@@ -71,10 +78,6 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                   <Link 
                     to={item.path} 
                     className="text-white hover:text-gray-300 py-2 text-lg transition"
-                    onClick={item.name === "AXI CFD" ? (e) => {
-                      e.preventDefault();
-                      scrollToTop();
-                    } : undefined}
                   >
                     {item.name}
                   </Link>
@@ -82,13 +85,19 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                   {item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => (
-                        <div 
+                        <Link 
                           key={subItem.name} 
-                          className="text-gray-300 hover:text-white py-1 text-md transition cursor-pointer"
-                          onClick={() => scrollToSection(subItem.id)}
+                          to={subItem.path}
+                          className={`text-gray-300 hover:text-white py-1 text-md transition cursor-pointer ${
+                            activeSection === subItem.id ? 'text-red-500 font-medium' : ''
+                          }`}
+                          onClick={() => {
+                            setActiveSection(subItem.id);
+                            scrollToTop();
+                          }}
                         >
                           {subItem.name}
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -105,22 +114,32 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                 {item.hasSubmenu ? (
                   <div className="relative">
                     <NavigationMenuTrigger
-                      onClick={scrollToTop}
-                      className="nav-menu-trigger text-white px-4 py-2 transition whitespace-nowrap"
+                      onClick={() => {
+                        window.location.href = item.path;
+                      }}
+                      className={`nav-menu-trigger text-white px-4 py-2 transition whitespace-nowrap ${
+                        location.pathname.includes('axi-') ? 'text-red-500' : ''
+                      }`}
                     >
                       {item.name}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="navigation-dropdown">
-                      <div className="horizontal-dropdown">
+                      <div className="horizontal-dropdown bg-[#1E1E1E]/90 backdrop-blur-md p-4 rounded-lg border border-gray-800 shadow-xl">
                         {item.submenu?.map((subItem, index) => (
                           <React.Fragment key={subItem.name}>
-                            <div
-                              className="navigation-dropdown-item"
-                              onClick={() => scrollToSection(subItem.id)}
+                            <Link
+                              to={subItem.path}
+                              className={`navigation-dropdown-item ${
+                                location.pathname === subItem.path ? 'text-red-500 bg-red-500/10' : ''
+                              }`}
+                              onClick={() => {
+                                setActiveSection(subItem.id);
+                                scrollToTop();
+                              }}
                             >
                               <ArrowRight className="h-4 w-4 transition-transform duration-200" />
                               {subItem.name}
-                            </div>
+                            </Link>
                             {index < item.submenu.length - 1 && (
                               <span className="dropdown-divider"></span>
                             )}
@@ -132,7 +151,9 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                 ) : (
                   <Link 
                     to={item.path}
-                    className="text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap"
+                    className={`text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap ${
+                      location.pathname === item.path ? 'text-red-500' : ''
+                    }`}
                   >
                     {item.name}
                   </Link>
