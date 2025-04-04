@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import HomeHeader from "@/components/home/HomeHeader";
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -77,10 +76,10 @@ const HomeIntro: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <motion.div 
               className="space-y-6"
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
               whileHover={{ scale: 1.02 }}
             >
               <h3 className="text-2xl font-medium text-white border-l-2 border-red-600 pl-4">Technologies</h3>
@@ -106,10 +105,10 @@ const HomeIntro: React.FC = () => {
             
             <motion.div 
               className="space-y-6"
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
               whileHover={{ scale: 1.02 }}
             >
               <h3 className="text-2xl font-medium text-white border-l-2 border-red-600 pl-4">DF717 & Company</h3>
