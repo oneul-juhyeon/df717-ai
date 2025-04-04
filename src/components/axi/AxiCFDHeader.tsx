@@ -118,7 +118,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                               className="navigation-dropdown-item"
                               onClick={() => scrollToSection(subItem.id)}
                             >
-                              <ArrowRight className="h-4 w-4" />
+                              <ArrowRight className="h-4 w-4 transition-transform duration-200" />
                               {subItem.name}
                             </div>
                             {index < item.submenu.length - 1 && (
