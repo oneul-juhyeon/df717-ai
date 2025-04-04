@@ -49,7 +49,7 @@ const AxiCFD: React.FC = () => {
         {/* Hero Image */}
         <div className="mb-12">
           <img 
-            src="/lovable-uploads/d488028f-2d10-4256-9360-0b7856ee4740.png" 
+            src="/lovable-uploads/d57930be-ecff-4f0b-bdae-0fdfc2b837a0.png" 
             alt="CFD Trading Guide" 
             className="w-full h-auto rounded-lg shadow-md"
           />
@@ -66,7 +66,7 @@ const AxiCFD: React.FC = () => {
           {/* Market Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/a0a5e7cb-53cc-4cc0-a1a4-30566c7d0157.png" 
+              src="/lovable-uploads/69ab221f-737c-46f1-b14c-a0169588c8e1.png" 
               alt="CFD Markets" 
               className="w-full h-auto rounded-lg"
             />
@@ -123,7 +123,7 @@ const AxiCFD: React.FC = () => {
           {/* Buy/Sell Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/f1c39aba-cbbe-4154-a842-6913aa1f556c.png" 
+              src="/lovable-uploads/e65a7610-e9d4-4d63-856e-04cb57ee8e39.png" 
               alt="Buy and Sell CFDs" 
               className="w-full h-auto rounded-lg"
             />
@@ -154,7 +154,7 @@ const AxiCFD: React.FC = () => {
           {/* Trading Platform Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/1499522d-f20a-4a9c-8f70-2c7dbc780b94.png" 
+              src="/lovable-uploads/6b5132a0-2e57-4507-846c-6e962f480353.png" 
               alt="Trading Platform" 
               className="w-full h-auto rounded-lg"
             />
@@ -169,7 +169,7 @@ const AxiCFD: React.FC = () => {
           {/* Trading Guide Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/c9467b07-61ec-43aa-ba70-b266acee18f2.png" 
+              src="/lovable-uploads/bd5e51bf-1129-4811-ad7f-805bb861b12c.png" 
               alt="Trading Guide" 
               className="w-full h-auto rounded-lg"
             />
@@ -306,7 +306,7 @@ const AxiCFD: React.FC = () => {
           {/* Risk Management Image */}
           <div className="my-8">
             <img 
-              src="/lovable-uploads/75b399ff-8601-4f80-969f-bb0f933f0e5c.png" 
+              src="/lovable-uploads/23e4b516-70c0-44d2-af42-79642b97d739.png" 
               alt="Risk Management" 
               className="w-full h-auto rounded-lg"
             />
