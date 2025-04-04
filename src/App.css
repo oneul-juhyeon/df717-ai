@@ -1,3 +1,4 @@
+
 #root {
   width: 100%;
   margin: 0 auto;
@@ -75,6 +76,19 @@ body, html {
   min-width: 320px !important;
 }
 
+.horizontal-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  background-color: rgba(30, 30, 30, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
 .navigation-dropdown-item {
   color: white;
   padding: 10px 12px;
@@ -120,11 +134,6 @@ body, html {
   border: none;
 }
 
-/* Fix the Radix navigation menu content to only show on hover */
-.NavigationMenuItem:not(:hover) .NavigationMenuContent {
-  display: none;
-}
-
 /* Horizontal dropdown menu */
 .horizontal-dropdown {
   display: flex;
@@ -166,4 +175,11 @@ body, html {
 /* Fix for dropdown container */
 .NavigationMenuContent > div {
   width: 100% !important;
+}
+
+/* Fix for navigation dropdown background */
+[data-radix-navigation-menu-viewport] {
+  background-color: rgba(30, 30, 30, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
 }
