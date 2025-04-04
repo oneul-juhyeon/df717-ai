@@ -7,6 +7,7 @@ import AxiFeatures from "@/components/axi/AxiFeatures";
 import AxiTrustedPartner from "@/components/axi/AxiTrustedPartner";
 import AxiBottomFeatures from "@/components/axi/AxiBottomFeatures";
 import AxiCallToAction from "@/components/axi/AxiCallToAction";
+import AxiAwardWinningService from "@/components/axi/AxiAwardWinningService";
 
 const AxiCFD: React.FC = () => {
   const scrollToTop = () => {
@@ -38,7 +39,7 @@ const AxiCFD: React.FC = () => {
         </section>
         
         <section id="award-winning-section" className="mt-20 mb-20 w-full">
-          <AxiBottomFeatures />
+          <AxiAwardWinningService />
         </section>
         
         <section className="mt-20 mb-20 w-full">

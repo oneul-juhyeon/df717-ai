@@ -1,5 +1,4 @@
 
-
 #root {
   width: 100%;
   margin: 0 auto;
@@ -61,6 +60,8 @@ body, html {
 /* Fix for dropdown positioning and styling */
 [data-radix-popper-content-wrapper] {
   z-index: 100 !important;
+  width: auto !important;
+  transform-origin: top center !important;
 }
 
 .navigation-dropdown {
@@ -156,5 +157,12 @@ body, html {
 .NavigationMenuContent {
   animation: none !important;
   transition: opacity 0.2s ease !important;
+  width: auto !important;
+  min-width: 280px !important;
+  transform: none !important;
 }
 
+/* Fix for dropdown container */
+.NavigationMenuContent > div {
+  width: 100% !important;
+}
