@@ -1,3 +1,4 @@
+
 #root {
   width: 100%;
   margin: 0 auto;
@@ -66,11 +67,12 @@ body, html {
   border: 1px solid #333;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  min-width: 200px;
+  min-width: 220px;
   position: absolute !important;
   top: 100% !important;
   left: 0 !important;
   margin-top: 8px;
+  padding: 8px;
 }
 
 .navigation-dropdown-item {
@@ -78,6 +80,10 @@ body, html {
   padding: 8px 12px;
   cursor: pointer;
   transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 12px;
 }
 
 .navigation-dropdown-item:hover {
@@ -107,4 +113,27 @@ body, html {
 /* Fix the Radix navigation menu content to only show on hover */
 .NavigationMenuItem:not(:hover) .NavigationMenuContent {
   display: none;
+}
+
+/* Horizontal dropdown menu */
+.horizontal-dropdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+}
+
+/* Divider */
+.dropdown-divider {
+  width: 2px;
+  height: 18px;
+  background-color: #444;
+  display: inline-block;
+  margin: 0 8px;
+  opacity: 0.7;
+}
+
+/* No right margin for the last item */
+.navigation-dropdown-item:last-child {
+  margin-right: 0;
 }

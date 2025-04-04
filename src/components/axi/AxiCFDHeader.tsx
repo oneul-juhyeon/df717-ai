@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -111,15 +111,20 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                       {item.name}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="navigation-dropdown">
-                      <div className="flex flex-col space-y-1 p-2">
-                        {item.submenu?.map((subItem) => (
-                          <div
-                            key={subItem.name}
-                            className="navigation-dropdown-item"
-                            onClick={() => scrollToSection(subItem.id)}
-                          >
-                            {subItem.name}
-                          </div>
+                      <div className="horizontal-dropdown">
+                        {item.submenu?.map((subItem, index) => (
+                          <React.Fragment key={subItem.name}>
+                            <div
+                              className="navigation-dropdown-item"
+                              onClick={() => scrollToSection(subItem.id)}
+                            >
+                              <ArrowRight className="h-4 w-4" />
+                              {subItem.name}
+                            </div>
+                            {index < item.submenu.length - 1 && (
+                              <span className="dropdown-divider"></span>
+                            )}
+                          </React.Fragment>
                         ))}
                       </div>
                     </NavigationMenuContent>
