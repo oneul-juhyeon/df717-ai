@@ -2,13 +2,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/landing/Logo";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/components/ui/navigation-menu";
+import { 
+  NavigationMenu, 
+  NavigationMenuList, 
+  NavigationMenuItem, 
+  NavigationMenuTrigger,
+  NavigationMenuContent
+} from "@/components/ui/navigation-menu";
+import { ChevronDown, ArrowRight } from "lucide-react";
 
 interface TechnologyHeaderProps {
   scrollToTop: () => void;
 }
 
 const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
+  const financialProductsSubmenu = [
+    { name: "Forex", path: "/financial-products/forex" },
+    { name: "Shares", path: "/financial-products/shares" },
+    { name: "Indices", path: "/financial-products/indices" },
+    { name: "Commodities", path: "/financial-products/commodities" },
+    { name: "Gold", path: "/financial-products/gold" },
+    { name: "Oil", path: "/financial-products/oil" },
+    { name: "Crypto", path: "/financial-products/crypto" },
+  ];
+
   return (
     <header className="flex justify-between items-center pt-14 max-sm:pt-5">
       <Link to="/">
@@ -33,6 +50,34 @@ const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
             }} className="text-white hover:text-gray-300 px-4 py-2 transition">
               Technology
             </a>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div className="relative">
+              <NavigationMenuTrigger
+                className="text-white hover:text-gray-300 px-4 py-2 transition"
+              >
+                Financial Products
+              </NavigationMenuTrigger>
+              <NavigationMenuContent className="navigation-dropdown">
+                <ul className="horizontal-dropdown py-2 px-4">
+                  {financialProductsSubmenu.map((subItem, index) => (
+                    <li key={subItem.name} className="list-none">
+                      <Link
+                        to={subItem.path}
+                        className="navigation-dropdown-item"
+                        onClick={scrollToTop}
+                      >
+                        <ArrowRight className="h-4 w-4 transition-transform duration-200" />
+                        {subItem.name}
+                      </Link>
+                      {index < financialProductsSubmenu.length - 1 && (
+                        <span className="dropdown-divider"></span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </div>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link to="/robot" className="text-white hover:text-gray-300 px-4 py-2 transition">

@@ -17,6 +17,14 @@ import AxiTrust from "./pages/AxiTrust";
 import AxiPricing from "./pages/AxiPricing";
 import AxiAward from "./pages/AxiAward";
 import Contact from "./pages/Contact";
+import FinancialProducts from "./pages/FinancialProducts";
+import Forex from "./pages/financial-products/Forex";
+import Shares from "./pages/financial-products/Shares";
+import Indices from "./pages/financial-products/Indices";
+import Commodities from "./pages/financial-products/Commodities";
+import Gold from "./pages/financial-products/Gold";
+import Oil from "./pages/financial-products/Oil";
+import Crypto from "./pages/financial-products/Crypto";
 
 function App() {
   // Create a query client
@@ -33,6 +41,14 @@ function App() {
             <Route path="/home-intro" element={<HomeIntro />} />
             <Route path="/company" element={<Company />} />
             <Route path="/technology" element={<Technology />} />
+            <Route path="/financial-products" element={<FinancialProducts />} />
+            <Route path="/financial-products/forex" element={<Forex />} />
+            <Route path="/financial-products/shares" element={<Shares />} />
+            <Route path="/financial-products/indices" element={<Indices />} />
+            <Route path="/financial-products/commodities" element={<Commodities />} />
+            <Route path="/financial-products/gold" element={<Gold />} />
+            <Route path="/financial-products/oil" element={<Oil />} />
+            <Route path="/financial-products/crypto" element={<Crypto />} />
             <Route path="/robot" element={<Robot />} />
             <Route path="/axi-cfd" element={<AxiCFD />} />
             <Route path="/axi-edge" element={<AxiEdge />} />

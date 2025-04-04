@@ -1,11 +1,12 @@
 
+// Only updating the header part of the Robot page to include the new Financial Products menu
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/landing/Logo";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from "@/components/ui/navigation-menu";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent } from "@/components/ui/navigation-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cpu, Bolt, Sparkles, Server, BarChart4, Brain, Monitor } from "lucide-react";
+import { Cpu, Bolt, Sparkles, Server, BarChart4, Brain, Monitor, ArrowRight } from "lucide-react";
 
 const Robot: React.FC = () => {
   const scrollToTop = () => {
@@ -14,6 +15,16 @@ const Robot: React.FC = () => {
       behavior: 'smooth'
     });
   };
+
+  const financialProductsSubmenu = [
+    { name: "Forex", path: "/financial-products/forex" },
+    { name: "Shares", path: "/financial-products/shares" },
+    { name: "Indices", path: "/financial-products/indices" },
+    { name: "Commodities", path: "/financial-products/commodities" },
+    { name: "Gold", path: "/financial-products/gold" },
+    { name: "Oil", path: "/financial-products/oil" },
+    { name: "Crypto", path: "/financial-products/crypto" },
+  ];
 
   return (
     <main className="w-full min-h-screen bg-[#0a0a1e] flex flex-col">
@@ -38,6 +49,34 @@ const Robot: React.FC = () => {
                 <Link to="/technology" className="text-white hover:text-gray-300 px-4 py-2 transition">
                   Technology
                 </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <div className="relative">
+                  <NavigationMenuTrigger
+                    className="text-white hover:text-gray-300 px-4 py-2 transition"
+                  >
+                    Financial Products
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="navigation-dropdown">
+                    <ul className="horizontal-dropdown py-2 px-4">
+                      {financialProductsSubmenu.map((subItem, index) => (
+                        <li key={subItem.name} className="list-none">
+                          <Link
+                            to={subItem.path}
+                            className="navigation-dropdown-item"
+                            onClick={scrollToTop}
+                          >
+                            <ArrowRight className="h-4 w-4 transition-transform duration-200" />
+                            {subItem.name}
+                          </Link>
+                          {index < financialProductsSubmenu.length - 1 && (
+                            <span className="dropdown-divider"></span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </div>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <a href="#" onClick={e => {

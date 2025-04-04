@@ -24,10 +24,26 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
     { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
   ];
 
+  const financialProductsSubmenu = [
+    { name: "Forex", path: "/financial-products/forex" },
+    { name: "Shares", path: "/financial-products/shares" },
+    { name: "Indices", path: "/financial-products/indices" },
+    { name: "Commodities", path: "/financial-products/commodities" },
+    { name: "Gold", path: "/financial-products/gold" },
+    { name: "Oil", path: "/financial-products/oil" },
+    { name: "Crypto", path: "/financial-products/crypto" },
+  ];
+
   const navigationItems = [
     { name: "Home", path: "/home-intro" },
     { name: "Company", path: "/company" },
     { name: "Technology", path: "/technology" },
+    { 
+      name: "Financial Products", 
+      path: "/financial-products",
+      hasSubmenu: true,
+      submenu: financialProductsSubmenu,
+    },
     { name: "DF Robot", path: "/robot" },
     { 
       name: "AXI CFD", 
