@@ -3,11 +3,11 @@ import React from "react";
 
 const AxiEdgeContent: React.FC = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-[#161616] text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
         <div className="order-2 md:order-1">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">Trade your edge</h2>
-          <p className="text-gray-700 leading-relaxed mb-6">
+          <h2 className="text-3xl font-bold mb-6 text-white">Trade your edge</h2>
+          <p className="text-gray-300 leading-relaxed mb-6">
             Whether you're new or a pro, if gold is your goal or
             analytics are your answer, there's one thing that every
             trader looks for. Edge. At Axi, we've got all the trading
