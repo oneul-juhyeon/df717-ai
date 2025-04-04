@@ -1,7 +1,7 @@
 
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
-import AxiHero from "@/components/axi/AxiHero";
+import AxiEdgeHero from "@/components/axi/AxiEdgeHero";
 import AxiEdgeContent from "@/components/axi/AxiEdgeContent";
 import AxiFeatureBenefits from "@/components/axi/AxiFeatureBenefits";
 import AxiTrustedPartnerSection from "@/components/axi/AxiTrustedPartnerSection";
@@ -23,7 +23,7 @@ const AxiCFD: React.FC = () => {
       </div>
       
       {/* Hero Section */}
-      <AxiHero />
+      <AxiEdgeHero />
       
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] py-10">
         {/* Edge Content Section */}

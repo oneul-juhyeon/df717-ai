@@ -39,7 +39,7 @@ const AxiTrustedPartnerSection: React.FC = () => {
         
         <div className="flex justify-center">
           <img 
-            src="/lovable-uploads/afc8cb24-dc30-445b-92f1-a0b5a49eefce.png" 
+            src="/lovable-uploads/badd2a00-6a59-4dc9-bd14-d603006d51e8.png" 
             alt="Trusted Trading Partners" 
             className="max-w-full rounded-xl"
           />

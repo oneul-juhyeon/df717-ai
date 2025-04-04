@@ -5,7 +5,7 @@ const AxiEdgeContent: React.FC = () => {
   return (
     <section className="py-16 bg-[#161616] text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-        <div className="order-2 md:order-1">
+        <div>
           <h2 className="text-3xl font-bold mb-6 text-white">Trade your edge</h2>
           <p className="text-gray-300 leading-relaxed mb-6">
             Whether you're new or a pro, if gold is your goal or
@@ -14,11 +14,11 @@ const AxiEdgeContent: React.FC = () => {
             tools to help you unleash yours.
           </p>
         </div>
-        <div className="flex justify-center order-1 md:order-2">
+        <div className="flex justify-center">
           <div className="relative">
             <div className="absolute -inset-2 bg-red-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
             <img 
-              src="/lovable-uploads/e3d5c6d1-9c63-48be-9c8e-69d26cd2eb20.png" 
+              src="/lovable-uploads/badd2a00-6a59-4dc9-bd14-d603006d51e8.png" 
               alt="Edge Concept Visualization" 
               className="relative z-10 max-w-full rounded-xl shadow-lg"
             />
