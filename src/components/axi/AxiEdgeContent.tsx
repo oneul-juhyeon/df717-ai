@@ -17,11 +17,15 @@ const AxiEdgeContent: React.FC = () => {
         <div className="flex justify-center">
           <div className="relative">
             <div className="absolute -inset-2 bg-red-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
-            <img 
-              src="/lovable-uploads/badd2a00-6a59-4dc9-bd14-d603006d51e8.png" 
-              alt="Edge Concept Visualization" 
-              className="relative z-10 max-w-full rounded-xl shadow-lg"
-            />
+            <div className="relative z-10 overflow-hidden rounded-xl shadow-lg aspect-video w-full">
+              <iframe 
+                src="https://www.youtube.com/embed/BKvaiKZga0s" 
+                title="Axi Edge Video"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
