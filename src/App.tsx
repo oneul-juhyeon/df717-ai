@@ -33,8 +33,8 @@ function App() {
             <Route path="/company" element={<Company />} />
             <Route path="/technology" element={<Technology />} />
             <Route path="/robot" element={<Robot />} />
-            <Route path="/axi-edge" element={<AxiEdge />} />
             <Route path="/axi-cfd" element={<AxiCFD />} />
+            <Route path="/axi-edge" element={<AxiEdge />} />
             <Route path="/axi-trust" element={<AxiTrust />} />
             <Route path="/axi-pricing" element={<AxiPricing />} />
             <Route path="/axi-award" element={<AxiAward />} />

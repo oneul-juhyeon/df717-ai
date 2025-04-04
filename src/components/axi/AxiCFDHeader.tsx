@@ -38,6 +38,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
   }, [location]);
 
   const axiCfdSubmenu = [
+    { name: "CFD", id: "cfd-section", path: "/axi-cfd" },
     { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
     { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
     { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
@@ -51,7 +52,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     { name: "DF Robot", path: "/robot" },
     { 
       name: "AXI CFD", 
-      path: "/axi-edge",
+      path: "/axi-cfd",
       hasSubmenu: true,
       submenu: axiCfdSubmenu,
     },
