@@ -49,8 +49,8 @@ const AxiTrustGlobal: React.FC = () => {
       
       <div className="flex items-center justify-center">
         <img 
-          src="/lovable-uploads/47da434e-f908-45c4-9123-e76bd07867fc.png" 
-          alt="Trader" 
+          src="/lovable-uploads/30eee2f6-1007-434f-97ed-1b71bffda0ea.png" 
+          alt="Trading Analytics Dashboard" 
           className="max-w-full h-auto rounded-xl object-cover"
         />
       </div>
