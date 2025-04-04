@@ -12,6 +12,7 @@ import Technology from "./pages/Technology";
 import NotFound from "./pages/NotFound";
 import Robot from "./pages/Robot";
 import AxiCFD from "./pages/AxiCFD";
+import AxiEdge from "./pages/AxiEdge";
 import AxiTrust from "./pages/AxiTrust";
 import AxiPricing from "./pages/AxiPricing";
 import AxiAward from "./pages/AxiAward";
@@ -32,7 +33,7 @@ function App() {
             <Route path="/company" element={<Company />} />
             <Route path="/technology" element={<Technology />} />
             <Route path="/robot" element={<Robot />} />
-            <Route path="/axi-edge" element={<Navigate to="/axi-cfd" replace />} />
+            <Route path="/axi-edge" element={<AxiEdge />} />
             <Route path="/axi-cfd" element={<AxiCFD />} />
             <Route path="/axi-trust" element={<AxiTrust />} />
             <Route path="/axi-pricing" element={<AxiPricing />} />
