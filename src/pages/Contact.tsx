@@ -1,6 +1,6 @@
 
 import React from "react";
-import { CompanyHeader } from "@/components/company/CompanyHeader";
+import CompanyHeader from "@/components/company/CompanyHeader";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactFooter } from "@/components/contact/ContactFooter";
 
