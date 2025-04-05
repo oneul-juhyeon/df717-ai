@@ -14,7 +14,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-[#1A1F2C] text-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <ContactHeader scrollToTop={scrollToTop} />
         
         <div className="mt-16 mb-8 text-center">

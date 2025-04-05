@@ -1,37 +1,22 @@
 
-import React, { useState } from "react";
-import Logo from "@/components/landing/Logo";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "@/components/landing/Logo";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { NavDropdown } from "@/components/ui/dropdown-nav";
 
 interface ContactHeaderProps {
   scrollToTop: () => void;
 }
 
-interface SubmenuItem {
-  name: string;
-  path: string;
-  id?: string;
-}
-
 const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
   const isMobile = useIsMobile();
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  const axiCfdSubmenu: SubmenuItem[] = [
-    { name: "CFD", id: "cfd-section", path: "/axi-cfd" },
-    { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
-    { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
-    { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
-    { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
-  ];
-
-  const financialProductsSubmenu: SubmenuItem[] = [
+  const financialProductsSubmenu = [
     { name: "Forex", path: "/financial-products/forex" },
     { name: "Shares", path: "/financial-products/shares" },
     { name: "Indices", path: "/financial-products/indices" },
@@ -41,28 +26,36 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
+  const axiCfdSubmenu = [
+    { name: "AXI CFD", path: "/axi-cfd" },
+    { name: "Edge", path: "/axi-edge" },
+    { name: "Trade With Trust", path: "/axi-trust" },
+    { name: "Best Pricing & Execution", path: "/axi-pricing" },
+    { name: "Award-Winning Service", path: "/axi-award" },
+  ];
+
   const navigationItems = [
-    { name: "Home", path: "/home-intro" },
-    { name: "Company", path: "/company" },
-    { name: "Technology", path: "/technology" },
+    { name: "Home", path: "/home-intro", hasSubmenu: false },
+    { name: "Company", path: "/company", hasSubmenu: false },
+    { name: "Technology", path: "/technology", hasSubmenu: false },
     { 
       name: "Financial Products", 
       path: "/financial-products",
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF Robot", path: "/robot" },
+    { name: "DF Robot", path: "/robot", hasSubmenu: false },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
       hasSubmenu: true,
       submenu: axiCfdSubmenu,
     },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/contact", hasSubmenu: false },
   ];
 
   return (
-    <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 gap-6 z-50 relative">
       <Link to="/">
         <Logo />
       </Link>
@@ -74,7 +67,7 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-white border-gray-200 text-black">
+          <SheetContent side="right" className="bg-white text-black z-50">
             <div className="flex flex-col mt-8 space-y-4">
               {navigationItems.map((item) => (
                 <div key={item.name}>
@@ -87,26 +80,16 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
                   
                   {item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
-                      {item.submenu?.map((subItem) => {
-                        const isAxiItem = 'id' in subItem;
-                        return (
-                          <Link 
-                            key={subItem.name} 
-                            to={subItem.path}
-                            className={`text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer ${
-                              isAxiItem && activeSection === subItem.id ? 'text-red-500 font-medium' : ''
-                            }`}
-                            onClick={() => {
-                              if (isAxiItem && subItem.id) {
-                                setActiveSection(subItem.id);
-                              }
-                              scrollToTop();
-                            }}
-                          >
-                            {subItem.name}
-                          </Link>
-                        );
-                      })}
+                      {item.submenu?.map((subItem) => (
+                        <Link 
+                          key={subItem.name} 
+                          to={subItem.path}
+                          className="flex items-center gap-2 text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer"
+                          onClick={scrollToTop}
+                        >
+                          <span>{subItem.name}</span>
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -117,31 +100,22 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
       ) : (
         <div className="flex items-center gap-1">
           {navigationItems.map((item) => (
-            'hasSubmenu' in item && item.hasSubmenu ? (
+            item.hasSubmenu ? (
               <NavDropdown 
                 key={item.name}
                 name={item.name}
                 path={item.path}
                 items={item.submenu.map(subItem => ({
                   ...subItem,
-                  scrollToTop: () => {
-                    if ('id' in subItem && subItem.id) {
-                      setActiveSection(subItem.id);
-                    }
-                    scrollToTop();
-                  }
+                  scrollToTop
                 }))}
-                isActive={location.pathname.includes(item.path)}
-                textColor="text-white"
-                hoverColor="hover:text-red-500"
+                isActive={location.pathname === item.path}
               />
             ) : (
               <Link 
                 key={item.name}
                 to={item.path}
-                className={`text-white hover:text-red-500 px-4 py-2 transition whitespace-nowrap ${
-                  location.pathname === item.path ? 'text-red-500' : ''
-                }`}
+                className="text-white hover:text-red-500 px-4 py-2 transition"
               >
                 {item.name}
               </Link>
