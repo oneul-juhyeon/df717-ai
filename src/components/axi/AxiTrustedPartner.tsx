@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 
 const AxiTrustedPartner: React.FC = () => {
   const benefits = [
@@ -33,13 +33,9 @@ const AxiTrustedPartner: React.FC = () => {
         </Button>
       </div>
       
-      <div className="relative bg-white/10">
+      <div className="relative bg-white/10 flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-bl from-transparent to-red-600/40"></div>
-        <img 
-          src="/lovable-uploads/c43ab5c9-b974-4e74-9969-26f6d6e49f47.png" 
-          alt="Trusted Partners" 
-          className="w-full h-full object-cover"
-        />
+        <ShieldCheck className="text-white h-48 w-48 relative z-10 opacity-80" />
       </div>
     </div>
   );
