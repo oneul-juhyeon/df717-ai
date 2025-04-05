@@ -1,3 +1,4 @@
+
 #root {
   width: 100%;
   margin: 0 auto;
@@ -108,6 +109,7 @@ video {
   transition: all 0.3s ease;
   width: auto !important;
   min-width: 320px !important;
+  max-width: none !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   z-index: 999;
@@ -120,7 +122,7 @@ video {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  width: 100%;
+  width: auto !important;
   background-color: rgba(30, 30, 30, 0.95) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
@@ -143,6 +145,7 @@ video {
   font-weight: 500;
   opacity: 1 !important;
   visibility: visible !important;
+  white-space: nowrap;
 }
 
 .navigation-dropdown-item:hover {
@@ -213,6 +216,7 @@ video {
   transition: opacity 0.2s ease !important;
   width: auto !important;
   min-width: 320px !important;
+  max-width: none !important;
   transform: none !important;
   display: block !important;
   opacity: 1 !important;
@@ -221,7 +225,8 @@ video {
 
 /* Fix for dropdown container */
 .NavigationMenuContent > div {
-  width: 100% !important;
+  width: auto !important;
+  max-width: none !important;
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
@@ -236,6 +241,8 @@ video {
   display: block !important;
   opacity: 1 !important;
   visibility: visible !important;
+  width: auto !important;
+  max-width: none !important;
 }
 
 /* Fade-in animation for scrolling elements */

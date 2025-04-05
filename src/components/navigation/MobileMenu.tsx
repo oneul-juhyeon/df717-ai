@@ -47,7 +47,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                       <Link 
                         key={subItem.name} 
                         to={subItem.path}
-                        className={`flex items-center gap-2 text-gray-300 hover:text-red-400 py-1 text-md transition cursor-pointer ${
+                        className={`flex items-center gap-2 text-gray-300 hover:text-red-400 py-1 text-md transition cursor-pointer whitespace-nowrap ${
                           isActive ? 'text-red-400 font-medium' : ''
                         }`}
                         onClick={() => {
@@ -57,7 +57,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                           scrollToTop();
                         }}
                       >
-                        <ArrowRight className="h-5 w-5 text-gray-400" />
+                        <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
                         <span>{subItem.name}</span>
                       </Link>
                     );
