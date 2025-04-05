@@ -1,8 +1,8 @@
 
 import React from "react";
-import CompanyHeader from "@/components/company/CompanyHeader";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactFooter } from "@/components/contact/ContactFooter";
+import ContactHeader from "@/components/contact/ContactHeader";
 
 const Contact = () => {
   const scrollToTop = () => {
@@ -15,7 +15,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-[#1A1F2C] text-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
-        <CompanyHeader scrollToTop={scrollToTop} />
+        <ContactHeader scrollToTop={scrollToTop} />
         
         <div className="mt-16 mb-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Contact Us</h1>
