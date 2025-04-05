@@ -3,111 +3,109 @@ import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { CircleDollarSign, Clock, LineChart } from "lucide-react";
+import { Zap, Timer, Shield } from "lucide-react";
 
 const Execution: React.FC = () => {
   return (
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="Execution Logic Tailored for the CFD Market"
-          subtitle="Asset-aware, symbol-specific execution for global CFD instruments"
+          title="Execution Logic"
+          subtitle="How DF717 translates signals into precise market actions"
         />
         
         <div className="mb-14 animate-fade-in-up delay-100">
           <p className="text-gray-300 leading-relaxed">
-            Since CFD trading spans currencies, indices, commodities, and synthetic equity instruments, 
-            DF717 incorporates a flexible and asset-aware execution model:
+            DF717's execution logic is designed to translate trading signals into optimal market actions with minimal slippage 
+            and maximum precision. Our adaptive execution algorithms adjust to real-time market conditions, ensuring 
+            efficient order placement and management.
           </p>
         </div>
         
-        <div className="py-4 mb-6 border-t border-red-900/30 animate-fade-in-up delay-200">
-          <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Key Components</h2>
+        <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-200">
+          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <Timer className="h-5 w-5 mr-3 text-red-400" />
+                Timing Optimization
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full">
+                  <p className="text-gray-300 leading-relaxed">
+                    Our execution system uses microsecond precision to time order submission based on market microstructure analysis. 
+                    By identifying optimal execution windows, we minimize adverse price impact and reduce execution costs.
+                  </p>
+                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
+                    <li>Liquidity cycle analysis</li>
+                    <li>Order flow prediction</li>
+                    <li>Execution window optimization</li>
+                    <li>Latency compensation algorithms</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <Zap className="h-5 w-5 mr-3 text-red-400" />
+                Order Execution Strategies
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full">
+                  <p className="text-gray-300 leading-relaxed">
+                    DF717 employs a suite of sophisticated order execution algorithms that dynamically adapt to market conditions. 
+                    These strategies range from passive limit order placement to aggressive market orders, selected based on 
+                    signal strength and market context.
+                  </p>
+                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
+                    <li>Smart order routing</li>
+                    <li>Dynamic order type selection</li>
+                    <li>Order splitting and iceberg techniques</li>
+                    <li>Execution quality monitoring</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <Shield className="h-5 w-5 mr-3 text-red-400" />
+                Risk-Aware Position Management
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full">
+                  <p className="text-gray-300 leading-relaxed">
+                    Our position management system continuously monitors market conditions and adjusts positions to maintain 
+                    optimal risk exposure. This includes dynamic stop-loss adjustment, partial profit taking, and position 
+                    sizing based on volatility and signal strength.
+                  </p>
+                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
+                    <li>Adaptive position sizing</li>
+                    <li>Dynamic stop-loss management</li>
+                    <li>Partial profit taking strategies</li>
+                    <li>Portfolio-level risk constraints</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
         
-        <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-300">
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
-              <h3 className="text-xl font-bold text-white flex items-center">
-                <CircleDollarSign className="h-5 w-5 mr-3 text-red-400" />
-                Symbol-specific Optimization
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="w-full md:w-2/3">
-                  <p className="text-gray-300 leading-relaxed">
-                    Strategies are optimized per asset (e.g., XAUUSD, US30, WTI), accounting for unique 
-                    volatility, volume, and microstructure patterns.
-                  </p>
-                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-                    <li>Asset-specific parameter tuning</li>
-                    <li>Volatility-adjusted position sizing</li>
-                    <li>Market structure pattern recognition</li>
-                    <li>Instrument-specific execution rules</li>
-                  </ul>
-                </div>
-                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <CircleDollarSign className="h-32 w-32 text-red-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
-              <h3 className="text-xl font-bold text-white flex items-center">
-                <Clock className="h-5 w-5 mr-3 text-red-400" />
-                Session-aware Scheduling
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <div className="flex flex-col md:flex-row-reverse gap-8">
-                <div className="w-full md:w-2/3">
-                  <p className="text-gray-300 leading-relaxed">
-                    Adjusts strategy aggressiveness and signal thresholds depending on market session 
-                    (London, New York, Asia-Pacific).
-                  </p>
-                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-                    <li>Time-based parameter adjustment</li>
-                    <li>Liquidity-aware execution timing</li>
-                    <li>Session volatility profiling</li>
-                    <li>Cross-session transition handling</li>
-                  </ul>
-                </div>
-                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <Clock className="h-32 w-32 text-red-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
-              <h3 className="text-xl font-bold text-white flex items-center">
-                <LineChart className="h-5 w-5 mr-3 text-red-400" />
-                Slippage & Spread Analysis Module
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="w-full md:w-2/3">
-                  <p className="text-gray-300 leading-relaxed">
-                    Quantifies broker-specific execution characteristics and adapts trade logic accordingly.
-                  </p>
-                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-                    <li>Real-time spread monitoring</li>
-                    <li>Execution quality assessment</li>
-                    <li>Broker performance benchmarking</li>
-                    <li>Adaptive order type selection</li>
-                  </ul>
-                </div>
-                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <LineChart className="h-32 w-32 text-red-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="mt-12 p-4 border-t border-gray-800 animate-fade-in-up delay-300">
+          <p className="text-amber-300 font-medium flex items-center">
+            <span className="mr-2">⚠️</span>
+            The execution logic and algorithms described are proprietary to DF717 and continuously refined to maintain optimal performance.
+          </p>
         </div>
       </div>
     </DF717Layout>
