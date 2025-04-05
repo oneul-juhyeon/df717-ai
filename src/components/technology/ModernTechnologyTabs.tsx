@@ -31,12 +31,12 @@ const ModernTechnologyTabs: React.FC = () => {
       <div 
         className="sticky top-0 z-20 w-full bg-[#0e0e0e]/80 backdrop-blur-md py-4 border-b border-white/5 mb-12"
       >
-        <div className="flex justify-center space-x-8 max-w-4xl mx-auto">
+        <div className="flex justify-center space-x-2 md:space-x-8 max-w-4xl mx-auto">
           {tabSections.map((tab) => (
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
-              className={`relative px-4 py-2 text-lg font-medium transition-all duration-300 ${
+              className={`relative px-2 md:px-4 py-2 text-sm md:text-lg font-medium transition-all duration-300 ${
                 activeTab === tab.id 
                 ? "text-red-500 font-bold" 
                 : "text-gray-400 hover:text-white"
