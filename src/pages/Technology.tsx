@@ -22,7 +22,7 @@ const Technology: React.FC = () => {
 
     // Initialize animation observer
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           // Delay animation based on element's position in the DOM for staggered effect
           const delay = 150 * Array.from(document.querySelectorAll('.scroll-animate')).indexOf(entry.target);
