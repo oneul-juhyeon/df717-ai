@@ -35,6 +35,11 @@ const AxiTrustedPartner: React.FC = () => {
       
       <div className="relative bg-white/10">
         <div className="absolute inset-0 bg-gradient-to-bl from-transparent to-red-600/40"></div>
+        <img 
+          src="/lovable-uploads/c43ab5c9-b974-4e74-9969-26f6d6e49f47.png" 
+          alt="Trusted Partners" 
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
   );
