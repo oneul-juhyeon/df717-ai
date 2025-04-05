@@ -66,9 +66,11 @@ const ModernTechnologyTabs: React.FC = () => {
                 : "opacity-0 absolute -z-10 translate-y-4"
             }`}
           >
-            <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
-              {section.component}
-            </div>
+            {activeTab === section.id && (
+              <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
+                {section.component}
+              </div>
+            )}
           </div>
         ))}
       </div>
