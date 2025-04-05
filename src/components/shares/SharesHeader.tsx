@@ -103,16 +103,17 @@ const SharesHeader: React.FC<SharesHeaderProps> = ({ scrollToTop }) => {
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => {
                         const isAxiItem = 'id' in subItem;
+                        const submenuId = subItem.id || null;
                         return (
                           <Link 
                             key={subItem.name} 
                             to={subItem.path}
                             className={`text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer ${
-                              isAxiItem && activeSection === subItem.id ? 'text-red-500 font-medium' : ''
+                              isAxiItem && submenuId && activeSection === submenuId ? 'text-red-500 font-medium' : ''
                             }`}
                             onClick={() => {
-                              if (isAxiItem && subItem.id) {
-                                setActiveSection(subItem.id);
+                              if (isAxiItem && submenuId) {
+                                setActiveSection(submenuId);
                               }
                               scrollToTop();
                             }}
@@ -136,15 +137,18 @@ const SharesHeader: React.FC<SharesHeaderProps> = ({ scrollToTop }) => {
                 key={item.name}
                 name={item.name}
                 path={item.path}
-                items={item.submenu.map(subItem => ({
-                  ...subItem,
-                  scrollToTop: () => {
-                    if ('id' in subItem && subItem.id) {
-                      setActiveSection(subItem.id);
+                items={item.submenu.map(subItem => {
+                  const submenuId = subItem.id || undefined;
+                  return {
+                    ...subItem,
+                    scrollToTop: () => {
+                      if (submenuId) {
+                        setActiveSection(submenuId);
+                      }
+                      scrollToTop();
                     }
-                    scrollToTop();
-                  }
-                }))}
+                  };
+                })}
                 isActive={location.pathname.includes(item.path)}
                 textColor="text-white"
                 hoverColor="hover:text-red-500"
