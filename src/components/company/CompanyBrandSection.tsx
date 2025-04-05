@@ -15,7 +15,7 @@ const CompanyBrandSection: React.FC = () => {
           </h2>
           
           <div className="space-y-12 mt-6">
-            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm">
+            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm opacity-0 scroll-animate">
               <h3 className="text-2xl font-bold mb-4 text-white flex items-center">
                 <LightbulbIcon className="h-5 w-5 mr-3 text-red-400" />
                 Brand Definition
@@ -30,7 +30,7 @@ const CompanyBrandSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm">
+            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm opacity-0 scroll-animate">
               <h3 className="text-2xl font-bold mb-4 text-white flex items-center">
                 <LightbulbIcon className="h-5 w-5 mr-3 text-red-400" />
                 Key Brand Statement
@@ -47,11 +47,13 @@ const CompanyBrandSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 opacity-0 scroll-animate">
               <h3 className="text-2xl font-bold mb-6 text-white">Core Values</h3>
             </div>
             
-            <CompanyValueCards />
+            <div className="opacity-0 scroll-animate">
+              <CompanyValueCards />
+            </div>
           </div>
         </div>
       </div>
