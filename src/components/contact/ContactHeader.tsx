@@ -34,6 +34,15 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
     { name: "Award-Winning Service", path: "/axi-award" },
   ];
 
+  const df717Submenu = [
+    { name: "What is DF717?", path: "/df717" },
+    { name: "Reliability & Stability", path: "/df717/stability" },
+    { name: "Financial Modeling", path: "/df717/modeling" },
+    { name: "AI Strategy", path: "/df717/ai-strategy" },
+    { name: "Execution Logic", path: "/df717/execution" },
+    { name: "Examples", path: "/df717/examples" },
+  ];
+
   const navigationItems = [
     { name: "Home", path: "/home-intro", hasSubmenu: false },
     { name: "Company", path: "/company", hasSubmenu: false },
@@ -44,7 +53,12 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF717", path: "/df717", hasSubmenu: false },
+    { 
+      name: "DF717", 
+      path: "/df717",
+      hasSubmenu: true,
+      submenu: df717Submenu,
+    },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
@@ -78,7 +92,7 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
                     {item.name}
                   </Link>
                   
-                  {item.hasSubmenu && (
+                  {'hasSubmenu' in item && item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => (
                         <Link 
@@ -100,7 +114,7 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
       ) : (
         <div className="flex items-center gap-1">
           {navigationItems.map((item) => (
-            item.hasSubmenu ? (
+            'hasSubmenu' in item && item.hasSubmenu ? (
               <NavDropdown 
                 key={item.name}
                 name={item.name}
@@ -110,6 +124,8 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
                   scrollToTop
                 }))}
                 isActive={location.pathname === item.path}
+                textColor="text-white"
+                hoverColor="hover:text-red-500"
               />
             ) : (
               <Link 

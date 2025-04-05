@@ -1,4 +1,3 @@
-
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
@@ -34,24 +33,38 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
+  const df717Submenu = [
+    { name: "What is DF717?", path: "/df717" },
+    { name: "Reliability & Stability", path: "/df717/stability" },
+    { name: "Financial Modeling", path: "/df717/modeling" },
+    { name: "AI Strategy", path: "/df717/ai-strategy" },
+    { name: "Execution Logic", path: "/df717/execution" },
+    { name: "Examples", path: "/df717/examples" },
+  ];
+
   const navigationItems = [
-    { name: "Home", path: "/home-intro" },
-    { name: "Company", path: "/company" },
-    { name: "Technology", path: "/technology" },
+    { name: "Home", path: "/home-intro", hasSubmenu: false },
+    { name: "Company", path: "/company", hasSubmenu: false },
+    { name: "Technology", path: "/technology", hasSubmenu: false },
     { 
       name: "Financial Products", 
       path: "/financial-products",
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF717", path: "/df717" },
+    { 
+      name: "DF717", 
+      path: "/df717",
+      hasSubmenu: true,
+      submenu: df717Submenu,
+    },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
       hasSubmenu: true,
       submenu: axiCfdSubmenu,
     },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/contact", hasSubmenu: false },
   ];
 
   return (
@@ -111,6 +124,8 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
                   scrollToTop
                 }))}
                 isActive={location.pathname === item.path}
+                textColor="text-white"
+                hoverColor="hover:text-gray-300"
               />
             ) : (
               <Link 
