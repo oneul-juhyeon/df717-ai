@@ -3,8 +3,7 @@ import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ArrowUpRight, TrendingUp, BarChart4, LineChart } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { BrainCircuit, Sparkles, Zap } from "lucide-react";
 
 const Examples: React.FC = () => {
   return (
@@ -12,78 +11,96 @@ const Examples: React.FC = () => {
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="Strategy Examples"
-          subtitle="Case studies and examples of DF717's strategies in action."
+          subtitle="Case studies and examples of DF717's strategies in action"
         />
         
         <div className="mb-14 animate-fade-in-up delay-100">
           <p className="text-gray-300 leading-relaxed">
-            These examples demonstrate how DF717 applies its AI-driven strategies across different market scenarios and asset classes.
-            Each case represents a real application of our technology, with results that showcase the effectiveness of our approach.
+            DF717 is composed of several independently operating strategy modules, each with its own decision 
+            logic and dynamic risk parameters. Strategy activation is determined based on market regime recognition. 
+            All strategies are designed using non-disclosed proprietary algorithms.
           </p>
         </div>
         
-        <div className="py-4 mb-6 border-t border-gray-800 animate-fade-in-up delay-200">
-          <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Case Studies</h2>
+        <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-200">
+          {/* Strategy A */}
+          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
+            <div className="bg-[#12122e] py-6 px-8 border-b border-red-900/30">
+              <h2 className="text-2xl font-bold text-white flex items-center">
+                <Zap className="h-6 w-6 mr-3 text-red-400" />
+                Strategy A
+              </h2>
+            </div>
+            <div className="p-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full md:w-2/3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Quantifies price stationarity versus non-stationarity to detect micro-inefficiencies.
+                    Analyzes volatility, volume clusters, and tick structures to identify micro-pattern transitions.
+                    Combines time-series statistical filters with dynamic exposure control to adjust position sizing in real time.
+                  </p>
+                </div>
+                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
+                  <Zap className="h-32 w-32 text-red-400" />
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {/* Strategy B */}
+          <section className="bg-[#101030] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
+            <div className="bg-[#14143a] py-6 px-8 border-b border-red-900/30">
+              <h2 className="text-2xl font-bold text-white flex items-center">
+                <Sparkles className="h-6 w-6 mr-3 text-red-400" />
+                Strategy B
+              </h2>
+            </div>
+            <div className="p-8">
+              <div className="flex flex-col md:flex-row-reverse gap-8">
+                <div className="w-full md:w-2/3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Captures momentum surges by detecting composite anomalies in price action, order flow, and velocity profiles.
+                    Features a high-risk/high-reward algorithm triggered under volatile regimes.
+                    Implements probabilistic sizing techniques at entry based on distributional analytics to minimize asset-level risk.
+                  </p>
+                </div>
+                <div className="w-full md:w-1/3 bg-[#1a1a4b] rounded-lg p-6 flex items-center justify-center">
+                  <Sparkles className="h-32 w-32 text-red-400" />
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          {/* Strategy C */}
+          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
+            <div className="bg-[#12122e] py-6 px-8 border-b border-red-900/30">
+              <h2 className="text-2xl font-bold text-white flex items-center">
+                <BrainCircuit className="h-6 w-6 mr-3 text-red-400" />
+                Strategy C
+              </h2>
+            </div>
+            <div className="p-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full md:w-2/3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Employs reinforcement learning algorithms to adaptively learn and respond to nonlinear structural changes in the market.
+                    Balances mathematical significance with opportunity readiness through real-time risk–reward simulation.
+                    Uses high-dimensional feature extraction and deep learning signal filtration to isolate high-precision entry signals beyond the reach of conventional technical indicators.
+                  </p>
+                </div>
+                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
+                  <BrainCircuit className="h-32 w-32 text-red-400" />
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         
-        <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-300">
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
-              <h3 className="text-xl font-bold text-white flex items-center">
-                <TrendingUp className="h-5 w-5 mr-3 text-red-400" />
-                Equity Market Example
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="w-full md:w-2/3">
-                  <p className="text-gray-300 leading-relaxed">
-                    During the 2022 market correction, DF717 identified defensive sectors with stable cash flows and 
-                    strong balance sheets. The AI engine allocated capital to these sectors while reducing exposure to 
-                    high-growth stocks vulnerable to rising interest rates.
-                  </p>
-                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-                    <li>Early detection of market rotation signals</li>
-                    <li>Dynamic adjustment of sector weights</li>
-                    <li>Volatility management through position sizing</li>
-                    <li>Outperformance of benchmark indices</li>
-                  </ul>
-                </div>
-                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <LineChart className="h-32 w-32 text-red-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
-              <h3 className="text-xl font-bold text-white flex items-center">
-                <ArrowUpRight className="h-5 w-5 mr-3 text-red-400" />
-                Fixed Income Strategy
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="w-full md:w-2/3">
-                  <p className="text-gray-300 leading-relaxed">
-                    In anticipation of changing central bank policies, DF717 analyzed yield curve dynamics and 
-                    macroeconomic indicators to adjust duration exposure in bond portfolios. This resulted in 
-                    effective capital preservation during a challenging bond market.
-                  </p>
-                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-                    <li>Predictive analysis of interest rate movements</li>
-                    <li>Duration management based on yield curve forecasts</li>
-                    <li>Credit risk assessment using proprietary models</li>
-                    <li>Strategic positioning ahead of central bank announcements</li>
-                  </ul>
-                </div>
-                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <BarChart4 className="h-32 w-32 text-red-400" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="mt-12 p-4 border-t border-gray-800 animate-fade-in-up delay-400">
+          <p className="text-amber-300 font-medium flex items-center">
+            <span className="mr-2">⚠️</span>
+            All formulae, trigger logics, and internal signal structures within DF717 are strictly proprietary and protected under intellectual property provisions.
+          </p>
         </div>
       </div>
     </DF717Layout>
