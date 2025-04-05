@@ -1,18 +1,12 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger
-} from "@/components/ui/navigation-menu";
+import { NavDropdown } from "@/components/ui/dropdown-nav";
 
 interface OilHeaderProps {
   scrollToTop: () => void;
@@ -121,63 +115,39 @@ const OilHeader: React.FC<OilHeaderProps> = ({ scrollToTop }) => {
           </SheetContent>
         </Sheet>
       ) : (
-        <NavigationMenu className="navigation-menu-container">
-          <NavigationMenuList className="gap-2 flex-wrap justify-end">
-            {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.name} className="relative">
-                {item.hasSubmenu ? (
-                  <div className="relative">
-                    <NavigationMenuTrigger
-                      className={`nav-menu-trigger text-white px-4 py-2 transition whitespace-nowrap ${
-                        location.pathname.includes(item.path) ? 'text-red-500' : ''
-                      }`}
-                    >
-                      {item.name}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent className="navigation-dropdown">
-                      <ul className="horizontal-dropdown py-2 px-4">
-                        {item.submenu?.map((subItem, index) => {
-                          const isAxiItem = 'id' in subItem;
-                          return (
-                            <li key={subItem.name} className="list-none">
-                              <Link
-                                to={subItem.path}
-                                className={`navigation-dropdown-item ${
-                                  location.pathname === subItem.path ? 'text-red-500 bg-red-50/10' : ''
-                                }`}
-                                onClick={() => {
-                                  if (isAxiItem && subItem.id) {
-                                    setActiveSection(subItem.id);
-                                  }
-                                  scrollToTop();
-                                }}
-                              >
-                                <ArrowRight className="h-4 w-4 transition-transform duration-200" />
-                                {subItem.name}
-                              </Link>
-                              {index < item.submenu.length - 1 && (
-                                <span className="dropdown-divider"></span>
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </NavigationMenuContent>
-                  </div>
-                ) : (
-                  <Link 
-                    to={item.path}
-                    className={`text-white hover:text-red-500 px-4 py-2 transition whitespace-nowrap ${
-                      location.pathname === item.path ? 'text-red-500' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="flex items-center gap-1">
+          {navigationItems.map((item) => (
+            'hasSubmenu' in item && item.hasSubmenu ? (
+              <NavDropdown 
+                key={item.name}
+                name={item.name}
+                path={item.path}
+                items={item.submenu.map(subItem => ({
+                  ...subItem,
+                  scrollToTop: () => {
+                    if ('id' in subItem && subItem.id) {
+                      setActiveSection(subItem.id);
+                    }
+                    scrollToTop();
+                  }
+                }))}
+                isActive={location.pathname.includes(item.path)}
+                textColor="text-white"
+                hoverColor="hover:text-red-500"
+              />
+            ) : (
+              <Link 
+                key={item.name}
+                to={item.path}
+                className={`text-white hover:text-red-500 px-4 py-2 transition whitespace-nowrap ${
+                  location.pathname === item.path ? 'text-red-500' : ''
+                }`}
+              >
+                {item.name}
+              </Link>
+            )
+          ))}
+        </div>
       )}
     </header>
   );

@@ -1,14 +1,19 @@
-
-// Only updating the header part of the Robot page to include the new Financial Products menu
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/landing/Logo";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent } from "@/components/ui/navigation-menu";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
+import { Menu, ArrowRight } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavDropdown } from "@/components/ui/dropdown-nav";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cpu, Bolt, Sparkles, Server, BarChart4, Brain, Monitor, ArrowRight } from "lucide-react";
+import { Cpu, Bolt, Sparkles, Server, BarChart4, Brain, Monitor } from "lucide-react";
 
 const Robot: React.FC = () => {
+  const location = useLocation();
+  const isMobile = useIsMobile();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -26,6 +31,34 @@ const Robot: React.FC = () => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
+  const axiCfdSubmenu = [
+    { name: "CFD", path: "/axi-cfd" },
+    { name: "Our Edge", path: "/axi-edge" },
+    { name: "Trade With Trust", path: "/axi-trust" },
+    { name: "Best Pricing & Execution", path: "/axi-pricing" },
+    { name: "Award-Winning Service", path: "/axi-award" },
+  ];
+
+  const navigationItems = [
+    { name: "Home", path: "/home-intro", hasSubmenu: false },
+    { name: "Company", path: "/company", hasSubmenu: false },
+    { name: "Technology", path: "/technology", hasSubmenu: false },
+    { 
+      name: "Financial Products", 
+      path: "/financial-products",
+      hasSubmenu: true,
+      submenu: financialProductsSubmenu,
+    },
+    { name: "DF Robot", path: "/robot", hasSubmenu: false },
+    { 
+      name: "AXI CFD", 
+      path: "/axi-cfd",
+      hasSubmenu: true,
+      submenu: axiCfdSubmenu,
+    },
+    { name: "Contact", path: "/contact", hasSubmenu: false },
+  ];
+
   return (
     <main className="w-full min-h-screen bg-[#0a0a1e] flex flex-col">
       <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
@@ -33,71 +66,75 @@ const Robot: React.FC = () => {
           <Link to="/">
             <Logo />
           </Link>
-          <NavigationMenu>
-            <NavigationMenuList className="gap-2">
-              <NavigationMenuItem>
-                <Link to="/" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Home
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/company" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Company
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/technology" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Technology
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <div className="relative">
-                  <NavigationMenuTrigger
-                    className="text-white hover:text-gray-300 px-4 py-2 transition"
-                  >
-                    Financial Products
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="navigation-dropdown">
-                    <ul className="horizontal-dropdown py-2 px-4">
-                      {financialProductsSubmenu.map((subItem, index) => (
-                        <li key={subItem.name} className="list-none">
-                          <Link
-                            to={subItem.path}
-                            className="navigation-dropdown-item"
-                            onClick={scrollToTop}
-                          >
-                            <ArrowRight className="h-4 w-4 transition-transform duration-200" />
-                            {subItem.name}
-                          </Link>
-                          {index < financialProductsSubmenu.length - 1 && (
-                            <span className="dropdown-divider"></span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
+          
+          {isMobile ? (
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" className="text-white p-2">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-[#232323] border-gray-700 text-white z-50">
+                <div className="flex flex-col mt-8 space-y-4">
+                  {navigationItems.map((item) => (
+                    <div key={item.name}>
+                      <Link 
+                        to={item.path} 
+                        className="text-white hover:text-gray-300 py-2 text-lg transition"
+                      >
+                        {item.name}
+                      </Link>
+                      
+                      {item.hasSubmenu && (
+                        <div className="ml-4 mt-2 space-y-2">
+                          {item.submenu?.map((subItem) => (
+                            <Link 
+                              key={subItem.name} 
+                              to={subItem.path}
+                              className="text-gray-300 hover:text-white py-1 text-md transition cursor-pointer"
+                              onClick={scrollToTop}
+                            >
+                              <span className="flex items-center">
+                                <ArrowRight className="h-4 w-4 mr-2" />
+                                {subItem.name}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <a href="#" onClick={e => {
-                  e.preventDefault();
-                  scrollToTop();
-                }} className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  DF Robot
-                </a>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/axi-cfd" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  AXI CFD
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link to="/contact" className="text-white hover:text-gray-300 px-4 py-2 transition">
-                  Contact
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+              </SheetContent>
+            </Sheet>
+          ) : (
+            <div className="flex items-center gap-1">
+              {navigationItems.map((item) => (
+                item.hasSubmenu ? (
+                  <NavDropdown 
+                    key={item.name}
+                    name={item.name}
+                    path={item.path}
+                    items={item.submenu.map(subItem => ({
+                      ...subItem,
+                      scrollToTop
+                    }))}
+                    isActive={location.pathname === item.path}
+                  />
+                ) : (
+                  <Link 
+                    key={item.name}
+                    to={item.path}
+                    className={`text-white hover:text-gray-300 px-4 py-2 transition ${
+                      location.pathname === item.path ? 'font-medium' : ''
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              ))}
+            </div>
+          )}
         </header>
         
         <section className="mt-20 mb-20">
@@ -131,7 +168,7 @@ const Robot: React.FC = () => {
                             <h3 className="text-xl font-bold text-white">AI 기반 의사결정</h3>
                           </CardHeader>
                           <CardContent>
-                            <p className="text-gray-300">머신러닝과 딥러닝 기술을 통해 시장 패턴을 분석하고 최적의 거래 결정을 내립니다. 과거 데이터와 실시간 시장 정보를 종합적으로 분석하여 정확한 예측을 제공합니다.</p>
+                            <p className="text-gray-300">머신러닝과 딥러닝 기술을 통해 시장 패턴을 분석하고 최적의 거래 결정��� 내립니다. 과거 데이터와 실시간 시장 정보를 종합적으로 분석하여 정확한 예측을 제공합니다.</p>
                           </CardContent>
                         </Card>
                         
