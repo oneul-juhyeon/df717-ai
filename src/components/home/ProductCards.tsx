@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -15,7 +14,7 @@ const ProductCards: React.FC = () => {
   
   const cards: ProductCard[] = [
     {
-      title: "DF Robot",
+      title: "DF717",
       description: "Fully-automated trading system powered by advanced AI algorithms.",
       link: "/robot"
     },

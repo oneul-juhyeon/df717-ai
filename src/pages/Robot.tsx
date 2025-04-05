@@ -148,12 +148,11 @@ const Robot: React.FC = () => {
                     <TabsTrigger value="specs" className="text-lg font-medium">SPECIFICATIONS</TabsTrigger>
                   </TabsList>
                   
-                  {/* OVERVIEW Section */}
                   <TabsContent value="overview" className="p-6 bg-[#191942] rounded-md">
                     <div className="prose prose-invert max-w-4xl mx-auto">
                       <h2 className="text-4xl font-bold mb-6 text-white flex items-center">
                         <Monitor className="mr-4 h-10 w-10 text-indigo-400" />
-                        TRADING ROBOT
+                        DF717
                       </h2>
                       <p className="text-xl text-gray-300 mb-12">
                         DF717의 트레이딩 로봇은 최첨단 AI 기술을 활용하여 금융 시장을 분석하고 최적의 거래 결정을 내립니다. 감정에 좌우되지 않는 객관적인 분석과 24시간 시장 모니터링으로 투자자에게 안정적인 수익을 제공합니다.
@@ -211,12 +210,11 @@ const Robot: React.FC = () => {
                     </div>
                   </TabsContent>
                   
-                  {/* FEATURES Section */}
                   <TabsContent value="features" className="p-6 bg-[#191942] rounded-md">
                     <div className="prose prose-invert max-w-4xl mx-auto">
                       <h2 className="text-4xl font-bold mb-6 text-white">FEATURES</h2>
                       <p className="text-xl text-gray-300 mb-8">
-                        DF717 트레이딩 로봇의 핵심 기능과 특징을 소개합니다.
+                        DF717의 핵심 기능과 특징을 소개합니다.
                       </p>
                       
                       <div className="mt-12 space-y-12">
@@ -263,12 +261,11 @@ const Robot: React.FC = () => {
                     </div>
                   </TabsContent>
                   
-                  {/* SPECIFICATIONS Section */}
                   <TabsContent value="specs" className="p-6 bg-[#191942] rounded-md">
                     <div className="prose prose-invert max-w-4xl mx-auto">
                       <h2 className="text-4xl font-bold mb-6 text-white">SPECIFICATIONS</h2>
                       <p className="text-xl text-gray-300 mb-8">
-                        DF717 트레이딩 로봇의 기술 사양 및 성능 지표입니다.
+                        DF717의 기술 사양 및 성능 지표입니다.
                       </p>
                       
                       <div className="bg-[#1d1d4f] border border-indigo-800 p-8 rounded-lg mb-12">
