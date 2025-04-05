@@ -34,6 +34,17 @@ video {
     width: 100% !important;
     object-fit: cover !important;
     z-index: 0 !important;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 

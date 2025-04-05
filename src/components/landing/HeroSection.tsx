@@ -21,9 +21,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           <Button asChild className="bg-white text-black hover:bg-gray-200 px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg rounded-full">
-            <Link to="/home-intro">
-              Introduction of company and AI technology
-              <ChevronRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5" />
+            <Link to="/home-intro" className="flex items-center justify-center text-center sm:text-left">
+              <span className="line-clamp-2 sm:line-clamp-1">Introduction of company and AI technology</span>
+              <ChevronRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0" />
             </Link>
           </Button>
           
