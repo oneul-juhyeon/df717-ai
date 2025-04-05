@@ -5,11 +5,11 @@ import { Cpu, Database, Globe, Lock, Shield } from "lucide-react";
 
 const CoreCompetence: React.FC = () => {
   return <div className="prose prose-invert max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-6 text-white">CORE COMPETENCE</h2>
-      <p className="text-xl text-gray-300 mb-12">DF717 secures a competitive edge by leveraging its unique AI robot and the proprietary HANNAH engine to lead financial innovation.</p>
+      <h2 className="text-4xl font-bold mb-6 text-white scroll-animate opacity-0">CORE COMPETENCE</h2>
+      <p className="text-xl text-gray-300 mb-12 scroll-animate opacity-0">DF717 secures a competitive edge by leveraging its unique AI robot and the proprietary HANNAH engine to lead financial innovation.</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-        <Card className="bg-[#2d2d2d] border-gray-700">
+        <Card className="bg-[#2d2d2d] border-gray-700 scroll-animate opacity-0">
           <CardHeader className="flex flex-row items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center">
               <Cpu className="h-6 w-6 text-blue-400" />
@@ -22,7 +22,7 @@ const CoreCompetence: React.FC = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-[#2d2d2d] border-gray-700">
+        <Card className="bg-[#2d2d2d] border-gray-700 scroll-animate opacity-0">
           <CardHeader className="flex flex-row items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-indigo-900 flex items-center justify-center">
               <Globe className="h-6 w-6 text-indigo-400" />
@@ -35,7 +35,7 @@ const CoreCompetence: React.FC = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-[#2d2d2d] border-gray-700">
+        <Card className="bg-[#2d2d2d] border-gray-700 scroll-animate opacity-0">
           <CardHeader className="flex flex-row items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-purple-900 flex items-center justify-center">
               <Shield className="h-6 w-6 text-purple-400" />
@@ -48,7 +48,7 @@ const CoreCompetence: React.FC = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-[#2d2d2d] border-gray-700">
+        <Card className="bg-[#2d2d2d] border-gray-700 scroll-animate opacity-0">
           <CardHeader className="flex flex-row items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-green-900 flex items-center justify-center">
               <Lock className="h-6 w-6 text-green-400" />
