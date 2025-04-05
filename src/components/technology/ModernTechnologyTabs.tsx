@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CoreCompetence from "./CoreCompetence";
 import PrefaceComponent from "./Preface";
 import IsaacComponent from "./Isaac";
