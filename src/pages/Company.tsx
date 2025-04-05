@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
 import CompanyBrandSection from "@/components/company/CompanyBrandSection";
-import CompanyValueCards from "@/components/company/CompanyValueCards";
 
 const Company: React.FC = () => {
   const scrollToTop = () => {
@@ -55,8 +54,6 @@ const Company: React.FC = () => {
           <CompanyHero />
           
           <CompanyBrandSection />
-          
-          <CompanyValueCards />
         </section>
       </div>
     </main>

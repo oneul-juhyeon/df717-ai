@@ -2,6 +2,7 @@
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Heart, LightbulbIcon } from "lucide-react";
+import CompanyValueCards from "./CompanyValueCards";
 
 const CompanyBrandSection: React.FC = () => {
   return (
@@ -46,9 +47,11 @@ const CompanyBrandSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="text-center">
+            <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-6 text-white">Core Values</h3>
             </div>
+            
+            <CompanyValueCards />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Lightbulb, Shield, Code } from "lucide-react";
 
 const CompanyValueCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6 opacity-0 scroll-animate">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
       <Card className="group relative overflow-hidden rounded-xl bg-[#111111] border-blue-600/20 text-white shadow-lg hover:shadow-blue-900/20 transition-all duration-500 hover:translate-y-[-5px]">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent opacity-70"></div>
         <div className="absolute -inset-1 bg-gradient-to-r from-transparent via-blue-600/10 to-transparent blur-sm group-hover:opacity-100 opacity-0 transition duration-500"></div>
