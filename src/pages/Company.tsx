@@ -16,12 +16,17 @@ const Company: React.FC = () => {
   useEffect(() => {
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.scroll-animate');
+      
       elements.forEach((element, index) => {
         const elementPosition = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         
-        // Make the condition more lenient to ensure elements appear
-        if (elementPosition < windowHeight * 0.9) {
+        // Make elements visible when they're almost in view
+        if (elementPosition < windowHeight * 0.95) {
+          // Force a very short reflow to ensure CSS transitions work properly
+          element.getBoundingClientRect();
+          
+          // Add animation class with staggered delay
           setTimeout(() => {
             element.classList.add('animate-fade-in-up');
             element.classList.remove('opacity-0');
@@ -30,9 +35,17 @@ const Company: React.FC = () => {
       });
     };
 
-    // Run once on mount with a delay to ensure DOM is ready
-    setTimeout(animateOnScroll, 300);
-
+    // Initial load with a delay to ensure DOM is fully ready
+    setTimeout(() => {
+      // Add opacity-0 to all scroll-animate elements at start
+      document.querySelectorAll('.scroll-animate').forEach(element => {
+        element.classList.add('opacity-0');
+      });
+      
+      // Trigger first animation
+      animateOnScroll();
+    }, 300);
+    
     // Add scroll event listener
     window.addEventListener('scroll', animateOnScroll);
     
