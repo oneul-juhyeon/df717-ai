@@ -1,10 +1,7 @@
 
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Lightbulb, Heart } from "lucide-react";
 import CompanyHeader from "@/components/company/CompanyHeader";
-import WhyDFSection from "@/components/company/WhyDFSection";
 import ValueSection from "@/components/company/ValueSection";
 
 const Company: React.FC = () => {
@@ -26,26 +23,9 @@ const Company: React.FC = () => {
               <div className="max-w-5xl mx-auto">
                 <h1 className="text-5xl mb-10 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">About DF717 & Company</h1>
                 
-                <Tabs defaultValue="why-df" className="w-full">
-                  <TabsList className="w-full mb-8 bg-[#1a1a1a] border-b border-gray-700 flex flex-wrap">
-                    <TabsTrigger value="why-df" className="text-lg font-medium">
-                      <Lightbulb className="mr-2 h-4 w-4" />
-                      Why DF?
-                    </TabsTrigger>
-                    <TabsTrigger value="value" className="text-lg font-medium">
-                      <Heart className="mr-2 h-4 w-4" />
-                      Value
-                    </TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="why-df" className="p-6 bg-[#262626] rounded-md">
-                    <WhyDFSection />
-                  </TabsContent>
-                  
-                  <TabsContent value="value" className="p-6 bg-[#262626] rounded-md">
-                    <ValueSection />
-                  </TabsContent>
-                </Tabs>
+                <div className="p-6 bg-[#262626] rounded-md">
+                  <ValueSection />
+                </div>
               </div>
             </CardContent>
           </Card>
