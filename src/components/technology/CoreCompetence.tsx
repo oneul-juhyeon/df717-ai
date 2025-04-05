@@ -1,15 +1,10 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Cpu, Database, Globe, Lock, Shield } from "lucide-react";
-
 const CoreCompetence: React.FC = () => {
-  return (
-    <div className="prose prose-invert max-w-4xl mx-auto">
+  return <div className="prose prose-invert max-w-4xl mx-auto">
       <h2 className="text-4xl font-bold mb-6 text-white">CORE COMPETENCE</h2>
-      <p className="text-xl text-gray-300 mb-12">
-        DF는 차별화된 핵심 경쟁력을 만들어갑니다. 자체 개발한 PREFACE 플랫폼과 아이작 엔진을 통해 금융의 혁신을 이끌어 나갑니다.
-      </p>
+      <p className="text-xl text-gray-300 mb-12">DF717은 차별화된 핵심 경쟁력을 만들어갑니다. 자체 개발한 DF717 로봇과 HANNAH 엔진을 통해 금융의 혁신을 이끌어 나갑니다.</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         <Card className="bg-[#2d2d2d] border-gray-700">
@@ -21,7 +16,7 @@ const CoreCompetence: React.FC = () => {
           </CardHeader>
           <CardContent>
             <h4 className="font-bold mb-4 text-white">AI 간편투자 엔진 자체 개발</h4>
-            <p className="text-gray-300">자체 개발한 AI엔진 아이작과 플랫폼 PREFACE 를 보유하고 있습니다. 최근 3년간 실거래 운용을 통해 플랫폼 안정성을 검증하였습니다.</p>
+            <p className="text-gray-300">자체 개발한 AI엔진 HANNAH와 DF717로봇을 보유하고 있습니다. 최근 10개년 백테스팅 및 실거래 운용을 통해 시스템 안정성을 검증하고 있습니다.</p>
           </CardContent>
         </Card>
         
@@ -33,8 +28,8 @@ const CoreCompetence: React.FC = () => {
             <h3 className="text-xl font-bold text-white">spec02</h3>
           </CardHeader>
           <CardContent>
-            <h4 className="font-bold mb-4 text-white">우수한 연구 인력</h4>
-            <p className="text-gray-300">국내외 유수대학, 올림피아드 수상자 등으로 구성된 우수한 연구 인력은, 4차례 이상의 검증 과정을 통해 채용됩니다.</p>
+            <h4 className="font-bold mb-4 text-white">국내외 우수한 연구 인력</h4>
+            <p className="text-gray-300">영성, 인성, 전문성 등 다양한 영역에서 까다로운 HR기준을 통해 검증된 인재만이 채용됩니다.</p>
           </CardContent>
         </Card>
         
@@ -64,8 +59,6 @@ const CoreCompetence: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CoreCompetence;
