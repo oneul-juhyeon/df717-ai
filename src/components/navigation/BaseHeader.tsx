@@ -21,15 +21,19 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
 
   return (
     <header className={className}>
-      <Link to="/">
-        <Logo />
-      </Link>
+      <div className="flex-none">
+        <Link to="/">
+          <Logo />
+        </Link>
+      </div>
       
-      {isMobile ? (
-        <MobileMenu navigationItems={navigationItems} scrollToTop={scrollToTop} />
-      ) : (
-        <DesktopMenu navigationItems={navigationItems} scrollToTop={scrollToTop} />
-      )}
+      <div className="flex-1 flex justify-end">
+        {isMobile ? (
+          <MobileMenu navigationItems={navigationItems} scrollToTop={scrollToTop} />
+        ) : (
+          <DesktopMenu navigationItems={navigationItems} scrollToTop={scrollToTop} />
+        )}
+      </div>
     </header>
   );
 };
