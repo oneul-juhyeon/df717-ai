@@ -5,8 +5,9 @@ const AxiEdgeHero: React.FC = () => {
   return (
     <div className="mt-10 mb-16 w-full">
       <div className="w-full relative overflow-hidden rounded-2xl">
-        <div className="bg-gradient-to-r from-red-600 to-red-500 w-full py-20 px-12 max-sm:py-12 max-sm:px-6">
-          <div className="text-center">
+        <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 w-full py-20 px-12 max-sm:py-12 max-sm:px-6 relative">
+          <div className="absolute inset-0 bg-[url('/lovable-uploads/afc8cb24-dc30-445b-92f1-a0b5a49eefce.png')] bg-cover bg-center mix-blend-overlay opacity-70"></div>
+          <div className="text-center relative z-10">
             <h1 className="text-5xl font-bold text-white mb-4 max-sm:text-3xl">Our Edge</h1>
             <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg">
               We give you all the tools and support to unlock your advantage.
