@@ -1,4 +1,3 @@
-
 #root {
   width: 100%;
   margin: 0 auto;
@@ -12,6 +11,30 @@ body, html {
   height: 100%;
   overflow-x: hidden;
   background-color: #161616;
+}
+
+/* Video background styles */
+video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Mobile video fixes */
+@media (max-width: 767px) {
+  video {
+    position: absolute !important;
+    display: block !important;
+    transform: none !important;
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+  }
 }
 
 .logo {
