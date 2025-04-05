@@ -15,7 +15,7 @@ const Modeling: React.FC = () => {
           subtitle="DF717 integrates probabilistic decision-making mechanisms backed by modern financial engineering theory."
         />
         
-        <div className="py-4 mb-6 border-t border-gray-800 animate-fade-in-up delay-200">
+        <div className="py-4 mb-6 border-t border-red-900/30 animate-fade-in-up delay-200">
           <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Key Capabilities</h2>
         </div>
         
