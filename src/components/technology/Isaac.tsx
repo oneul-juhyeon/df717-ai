@@ -1,19 +1,16 @@
-
 import React from "react";
 import { BarChart } from "lucide-react";
-
 const IsaacComponent: React.FC = () => {
-  return (
-    <div className="prose prose-invert max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-6 text-white">ISAAC</h2>
-      <p className="text-xl text-gray-300 mb-8">
-        아이작(ISAAC)은 디셈버앤컴퍼니의 AI 간편투자 엔진입니다. 고유의 연구 방법론을 적용한 AI와 머신러닝 기술 집약체입니다.
-      </p>
+  return <div className="prose prose-invert max-w-4xl mx-auto">
+      <h2 className="text-4xl font-bold mb-6 text-white">HANNAH</h2>
+      <p className="text-xl text-gray-300 mb-8">HANNAH는 DF717의 AI 간편투자 엔진입니다. 고유의 연구 방법론을 적용한 AI와 머신러닝 기술 집약체입니다.</p>
       
       <div className="mb-12">
-        <h3 className="text-2xl font-bold mb-4 text-white">content-isaac</h3>
-        <h4 className="text-xl font-semibold mb-6 text-blue-400">Intelligent Strategic<br/>Asset Allocation Core</h4>
-        <p className="text-gray-300">Isaac Newton은 일상생활에서 우주를 움직이는 중요한 물리 법칙을 발견 했습니다. 금융시장에서도 IT 기술을 바탕으로 우리 곁의 수많은 데이터를 해석한다면 시장 전체의 움직임을 이해하고 보다 나은 투자 성과를 만들어 낼 수 있다는 철학을 담았습니다.</p>
+        <h3 className="text-2xl font-bold mb-4 text-white">content-HANNAH</h3>
+        <h4 className="text-xl font-semibold mb-6 text-blue-400">Intelligent Strategic<br />Asset Allocation Core</h4>
+        <p className="text-gray-300">한나는 긴 기다림과 간절한 기도를 통해 결국 응답을 받은 인물입니다.
+투자는 불확실성의 어려움 등으로 많은 인내를 요구하지만, 올바른 전략과 신뢰할 수 있는 분석이 있다면 결국 좋은 결과를 얻을 수 있습니다.
+HANNAH 엔진은, 인내할 수 있는 믿음의 사람들에게 응답할 것입니다.</p>
       </div>
       
       <div className="mb-12">
@@ -46,7 +43,7 @@ const IsaacComponent: React.FC = () => {
               </div>
               일별 MP 산출
             </h4>
-            <p className="text-gray-300 pl-11">아이작은 변화하는 시장 상황에 대응하기 위해, 매일 MP를 산출합니다. 아이작의 실시간 MP를 기반으로, 신규 고객과 기존 고객 모두 자신의 투자성향에 맞는 포트폴리오를 제공 받습니다.</p>
+            <p className="text-gray-300 pl-11">한나는 변화하는 시장 상황에 대응하기 위해, 매일 MP를 산출합니다. 한나의 실시간 MP를 기반으로, 신규 파트너와 기존 파트너 모두 자신의 투자 성향에 맞는 포트폴리오를 제공 받습니다.</p>
           </div>
         </div>
         <div className="text-sm text-blue-400 mt-2">spec01</div>
@@ -62,7 +59,7 @@ const IsaacComponent: React.FC = () => {
               </div>
               자동 매매 모듈
             </h4>
-            <p className="text-gray-300 pl-11">PREFACE와 아이작은 결정된 종목 및 비중에 대해 계좌별로 실시간 자동 매매합니다. 고객 간 주문 순서를 차별 없이 관리할 뿐 아니라, AI 기반으로 매매 타이밍을 학습하고 실행합니다.</p>
+            <p className="text-gray-300 pl-11">DF717과 한나는 결정된 종목 및 비중에 대해 계좌별로 실시간 자동 매매합니다. 고객 간 주문 순서를 차별 없이 관리할 뿐 아니라, AI 기반으로 매매 타이밍을 학습하고 실행합니다.</p>
           </div>
           
           <div>
@@ -108,13 +105,11 @@ const IsaacComponent: React.FC = () => {
               </div>
               자산 배분 엔진 고도화
             </h4>
-            <p className="text-gray-300 pl-11">아이작 엔진과 PREFACE 플랫폼은 끊임없이 고도화되고 있습니다. 유수 인력을 통한 기술 개발 및 리서치를 통해, 더 좋은 자산 배분 운용을 위한 노력이 계속되고 있습니다.</p>
+            <p className="text-gray-300 pl-11">한나 엔진과 DF717 로봇은 끊임없이 고도화되고 있습니다. 유수 인력을 통한 기술 개발 및 리서치를 통해, 더 좋은 자산 배분 운용을 위한 노력이 계속되고 있습니다.</p>
           </div>
         </div>
         <div className="text-sm text-purple-400 mt-2">spec03</div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default IsaacComponent;
