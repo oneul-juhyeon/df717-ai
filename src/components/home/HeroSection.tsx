@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="w-full h-screen bg-black relative">
+    <section className="w-full h-screen bg-black relative pt-24">
       <motion.img 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
