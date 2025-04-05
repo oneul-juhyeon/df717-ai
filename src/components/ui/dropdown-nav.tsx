@@ -8,6 +8,7 @@ interface NavDropdownItemProps {
   name: string;
   path: string;
   scrollToTop?: () => void;
+  id?: string;
 }
 
 interface NavDropdownProps {
