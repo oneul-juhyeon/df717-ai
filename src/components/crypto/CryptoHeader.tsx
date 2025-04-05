@@ -41,6 +41,15 @@ const CryptoHeader: React.FC<CryptoHeaderProps> = ({ scrollToTop }) => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
+  const df717Submenu: SubmenuItem[] = [
+    { name: "What is DF717?", path: "/df717" },
+    { name: "Reliability & Stability", path: "/df717/stability" },
+    { name: "Financial Modeling", path: "/df717/modeling" },
+    { name: "AI Strategy", path: "/df717/ai-strategy" },
+    { name: "Execution Logic", path: "/df717/execution" },
+    { name: "Examples", path: "/df717/examples" },
+  ];
+
   const navigationItems = [
     { name: "Home", path: "/home-intro" },
     { name: "Company", path: "/company" },
@@ -51,7 +60,12 @@ const CryptoHeader: React.FC<CryptoHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF Robot", path: "/robot" },
+    { 
+      name: "DF717", 
+      path: "/df717",
+      hasSubmenu: true,
+      submenu: df717Submenu,
+    },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
@@ -60,6 +74,20 @@ const CryptoHeader: React.FC<CryptoHeaderProps> = ({ scrollToTop }) => {
     },
     { name: "Contact", path: "/contact" },
   ];
+
+  // Helper function to check if a menu item should be active
+  const isMenuActive = (item: typeof navigationItems[0]) => {
+    if (item.path === '/financial-products') {
+      return location.pathname.startsWith('/financial-products/');
+    }
+    if (item.path === '/df717') {
+      return location.pathname.startsWith('/df717/');
+    }
+    if (item.path === '/axi-cfd') {
+      return location.pathname.startsWith('/axi-');
+    }
+    return location.pathname === item.path;
+  };
 
   return (
     <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full">
@@ -80,7 +108,9 @@ const CryptoHeader: React.FC<CryptoHeaderProps> = ({ scrollToTop }) => {
                 <div key={item.name}>
                   <Link 
                     to={item.path} 
-                    className="text-black hover:text-red-500 py-2 text-lg transition"
+                    className={`text-black hover:text-red-500 py-2 text-lg transition ${
+                      isMenuActive(item) ? 'text-red-500 font-medium' : ''
+                    }`}
                   >
                     {item.name}
                   </Link>
@@ -131,8 +161,10 @@ const CryptoHeader: React.FC<CryptoHeaderProps> = ({ scrollToTop }) => {
                     scrollToTop();
                   }
                 }))}
-                isActive={location.pathname.includes(item.path)}
+                isActive={isMenuActive(item)}
+                textColor="text-white"
                 hoverColor="hover:text-red-500"
+                activeColor="text-red-500"
               />
             ) : (
               <Link 

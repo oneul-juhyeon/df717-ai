@@ -28,7 +28,7 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
   isActive = false,
   textColor = 'text-white',
   hoverColor = 'hover:text-gray-300',
-  activeColor = 'text-indigo-400'
+  activeColor = 'text-red-500'
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
@@ -74,6 +75,20 @@ const ForexHeader: React.FC<ForexHeaderProps> = ({ scrollToTop }) => {
     { name: "Contact", path: "/contact", hasSubmenu: false },
   ];
 
+  // Helper function to check if a menu item should be active
+  const isMenuActive = (item: typeof navigationItems[0]) => {
+    if (item.path === '/financial-products') {
+      return location.pathname.startsWith('/financial-products/');
+    }
+    if (item.path === '/df717') {
+      return location.pathname.startsWith('/df717/');
+    }
+    if (item.path === '/axi-cfd') {
+      return location.pathname.startsWith('/axi-');
+    }
+    return location.pathname === item.path;
+  };
+
   return (
     <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full">
       <Link to="/">
@@ -93,7 +108,9 @@ const ForexHeader: React.FC<ForexHeaderProps> = ({ scrollToTop }) => {
                 <div key={item.name}>
                   <Link 
                     to={item.path} 
-                    className="text-black hover:text-red-500 py-2 text-lg transition"
+                    className={`text-black hover:text-red-500 py-2 text-lg transition ${
+                      isMenuActive(item) ? 'text-red-500 font-medium' : ''
+                    }`}
                   >
                     {item.name}
                   </Link>
@@ -144,9 +161,10 @@ const ForexHeader: React.FC<ForexHeaderProps> = ({ scrollToTop }) => {
                     scrollToTop();
                   }
                 }))}
-                isActive={location.pathname.includes(item.path)}
+                isActive={isMenuActive(item)}
                 textColor="text-white"
                 hoverColor="hover:text-red-500"
+                activeColor="text-red-500"
               />
             ) : (
               <Link 
