@@ -3,7 +3,7 @@ import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Shield, Cpu, Zap, Database } from "lucide-react";
+import { Shield, Cpu, Zap } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Stability: React.FC = () => {
@@ -100,32 +100,6 @@ const Stability: React.FC = () => {
                     <li>Dynamic risk parameter adjustment</li>
                     <li>Correlation-based portfolio rebalancing</li>
                     <li>Intelligent stop-loss management</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
-              <h3 className="text-xl font-bold text-white flex items-center">
-                <Database className="h-5 w-5 mr-3 text-red-400" />
-                Redundant Infrastructure
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-8">
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="w-full">
-                  <p className="text-gray-300 leading-relaxed">
-                    DF717 operates on a distributed, fault-tolerant architecture with multiple redundancy layers.
-                    This ensures continuous operation even during unexpected system or market events, providing
-                    uninterrupted trading capability.
-                  </p>
-                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-                    <li>Geographic data center distribution</li>
-                    <li>Real-time data synchronization</li>
-                    <li>Automatic failover systems</li>
-                    <li>24/7 system health monitoring</li>
                   </ul>
                 </div>
               </div>
