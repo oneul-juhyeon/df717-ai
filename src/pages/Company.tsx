@@ -1,8 +1,10 @@
 
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useEffect } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
-import ValueSection from "@/components/company/ValueSection";
+import { Separator } from "@/components/ui/separator";
+import CompanyHero from "@/components/company/CompanyHero";
+import CompanyBrandSection from "@/components/company/CompanyBrandSection";
+import CompanyValueCards from "@/components/company/CompanyValueCards";
 
 const Company: React.FC = () => {
   const scrollToTop = () => {
@@ -12,23 +14,39 @@ const Company: React.FC = () => {
     });
   };
   
+  // Add scroll animation effects
+  useEffect(() => {
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.scroll-animate');
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementPosition < windowHeight * 0.85) {
+          element.classList.add('animate-fade-in-up');
+          element.classList.remove('opacity-0');
+        }
+      });
+    };
+
+    // Run once on mount
+    setTimeout(animateOnScroll, 100);
+
+    // Add scroll event listener
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Clean up
+    return () => window.removeEventListener('scroll', animateOnScroll);
+  }, []);
+  
   return (
-    <main className="w-full min-h-screen bg-[#161616] flex flex-col">
-      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
+    <main className="w-full min-h-screen bg-[#0a0a1e] flex flex-col">
+      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px]">
         <CompanyHeader scrollToTop={scrollToTop} />
         
-        <section className="mt-20 mb-20 w-full">
-          <Card className="bg-[#232323] border-gray-700 text-white shadow-md w-full">
-            <CardContent className="p-12 max-sm:p-6">
-              <div className="max-w-5xl mx-auto">
-                <h1 className="text-5xl mb-10 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl">About DF717 & Company</h1>
-                
-                <div className="p-6 bg-[#262626] rounded-md">
-                  <ValueSection />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <section className="mt-12 mb-20 w-full max-w-5xl mx-auto">
+          <CompanyHero />
+          <CompanyBrandSection />
+          <CompanyValueCards />
         </section>
       </div>
     </main>
