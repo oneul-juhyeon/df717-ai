@@ -2,20 +2,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/landing/Logo";
-import { 
-  NavigationMenu, 
-  NavigationMenuList, 
-  NavigationMenuItem, 
-  NavigationMenuTrigger,
-  NavigationMenuContent
-} from "@/components/ui/navigation-menu";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
+import { Menu, ArrowRight } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavDropdown } from "@/components/ui/dropdown-nav";
 
 interface TechnologyHeaderProps {
   scrollToTop: () => void;
 }
 
 const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
+  const isMobile = useIsMobile();
+
   const financialProductsSubmenu = [
     { name: "Forex", path: "/financial-products/forex" },
     { name: "Shares", path: "/financial-products/shares" },
@@ -27,102 +26,102 @@ const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
   ];
 
   const axiCfdSubmenu = [
-    { name: "CFD", id: "cfd-section", path: "/axi-cfd" },
-    { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
-    { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
-    { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
-    { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
+    { name: "AXI CFD", path: "/axi-cfd" },
+    { name: "Edge", path: "/axi-edge" },
+    { name: "Trade With Trust", path: "/axi-trust" },
+    { name: "Best Pricing & Execution", path: "/axi-pricing" },
+    { name: "Award-Winning Service", path: "/axi-award" },
+  ];
+
+  const navigationItems = [
+    { name: "Home", path: "/home-intro", hasSubmenu: false },
+    { name: "Company", path: "/company", hasSubmenu: false },
+    { name: "Technology", path: "/technology", hasSubmenu: false },
+    { 
+      name: "Financial Products", 
+      path: "/financial-products",
+      hasSubmenu: true,
+      submenu: financialProductsSubmenu,
+    },
+    { name: "DF Robot", path: "/robot", hasSubmenu: false },
+    { 
+      name: "AXI CFD", 
+      path: "/axi-cfd",
+      hasSubmenu: true,
+      submenu: axiCfdSubmenu,
+    },
+    { name: "Contact", path: "/contact", hasSubmenu: false },
   ];
 
   return (
-    <header className="flex justify-between items-center pt-14 max-sm:pt-5 gap-6">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 gap-6 z-50 relative">
       <Link to="/">
         <Logo />
       </Link>
-      <NavigationMenu>
-        <NavigationMenuList className="gap-1">
-          <NavigationMenuItem>
-            <Link to="/home-intro" className="text-white hover:text-gray-300 px-4 py-2 transition">
-              Home
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link to="/company" className="text-white hover:text-gray-300 px-4 py-2 transition">
-              Company
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <a href="#" onClick={e => {
-              e.preventDefault();
-              scrollToTop();
-            }} className="text-white hover:text-gray-300 px-4 py-2 transition">
-              Technology
-            </a>
-          </NavigationMenuItem>
-          <NavigationMenuItem className="relative">
-            <NavigationMenuTrigger
-              className="text-white hover:text-gray-300 px-4 py-2 transition"
-            >
-              Financial Products
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full left-0 min-w-[200px] bg-white text-black shadow-lg rounded-md overflow-hidden z-50">
-              <ul className="py-2">
-                {financialProductsSubmenu.map((subItem, index) => (
-                  <li key={subItem.name} className="px-2">
-                    <Link
-                      to={subItem.path}
-                      className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 hover:text-red-500 rounded-md transition-colors"
-                      onClick={scrollToTop}
-                    >
-                      <ArrowRight className="h-4 w-4 text-gray-500" />
-                      <span>{subItem.name}</span>
-                    </Link>
-                    {index < financialProductsSubmenu.length - 1 && (
-                      <div className="mx-4 my-1 border-t border-gray-100"></div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link to="/robot" className="text-white hover:text-gray-300 px-4 py-2 transition">
-              DF Robot
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem className="relative">
-            <NavigationMenuTrigger
-              className="text-white hover:text-gray-300 px-4 py-2 transition"
-            >
-              AXI CFD
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full left-0 min-w-[200px] bg-white text-black shadow-lg rounded-md overflow-hidden z-50">
-              <ul className="py-2">
-                {axiCfdSubmenu.map((subItem, index) => (
-                  <li key={subItem.name} className="px-2">
-                    <Link
-                      to={subItem.path}
-                      className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 hover:text-red-500 rounded-md transition-colors"
-                      onClick={scrollToTop}
-                    >
-                      <ArrowRight className="h-4 w-4 text-gray-500" />
-                      <span>{subItem.name}</span>
-                    </Link>
-                    {index < axiCfdSubmenu.length - 1 && (
-                      <div className="mx-4 my-1 border-t border-gray-100"></div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link to="/contact" className="text-white hover:text-gray-300 px-4 py-2 transition">
-              Contact
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      
+      {isMobile ? (
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" className="text-white p-2">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-white text-black z-50">
+            <div className="flex flex-col mt-8 space-y-4">
+              {navigationItems.map((item) => (
+                <div key={item.name}>
+                  <Link 
+                    to={item.path} 
+                    className="text-black hover:text-red-500 py-2 text-lg transition"
+                  >
+                    {item.name}
+                  </Link>
+                  
+                  {item.hasSubmenu && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      {item.submenu?.map((subItem) => (
+                        <Link 
+                          key={subItem.name} 
+                          to={subItem.path}
+                          className="flex items-center gap-2 text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer"
+                          onClick={scrollToTop}
+                        >
+                          <ArrowRight className="h-4 w-4" />
+                          <span>{subItem.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </SheetContent>
+        </Sheet>
+      ) : (
+        <div className="flex items-center gap-1">
+          {navigationItems.map((item) => (
+            item.hasSubmenu ? (
+              <NavDropdown 
+                key={item.name}
+                name={item.name}
+                path={item.path}
+                items={item.submenu.map(subItem => ({
+                  ...subItem,
+                  scrollToTop
+                }))}
+              />
+            ) : (
+              <Link 
+                key={item.name}
+                to={item.path}
+                className="text-white hover:text-gray-300 px-4 py-2 transition"
+              >
+                {item.name}
+              </Link>
+            )
+          ))}
+        </div>
+      )}
     </header>
   );
 };
