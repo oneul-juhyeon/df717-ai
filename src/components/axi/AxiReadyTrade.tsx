@@ -1,11 +1,8 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 const AxiReadyTrade: React.FC = () => {
-  return (
-    <div className="w-full bg-red-500 py-16">
+  return <div className="w-full bg-red-500 py-16">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-white mb-4">Ready to trade your edge?</h2>
         <p className="text-xl text-white mb-8">
@@ -13,13 +10,13 @@ const AxiReadyTrade: React.FC = () => {
         </p>
         
         <div className="flex gap-4 justify-center">
+          
+          
           <Link to="/contact">
             <Button className="bg-yellow-500 hover:bg-yellow-600 text-black text-lg font-semibold px-8 py-6 h-auto rounded-md">Contact</Button>
           </Link>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default AxiReadyTrade;
