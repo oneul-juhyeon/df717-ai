@@ -22,10 +22,10 @@ const Examples: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 gap-8 mt-12">
-          <Card className="bg-[#141432] border-indigo-900 text-white overflow-hidden">
-            <CardHeader className="bg-[#1a1a45] border-b border-indigo-900">
+          <Card className="bg-[#141432] border-red-900 text-white overflow-hidden">
+            <CardHeader className="bg-[#1a1a45] border-b border-red-900">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <TrendingUp className="h-5 w-5 mr-3 text-indigo-400" />
+                <TrendingUp className="h-5 w-5 mr-3 text-red-400" />
                 Equity Market Example
               </h3>
             </CardHeader>
@@ -45,14 +45,14 @@ const Examples: React.FC = () => {
                   </ul>
                 </div>
                 <div className="w-full md:w-1/3 bg-[#1d1d4f] rounded-lg p-4 flex items-center justify-center">
-                  <LineChart className="h-32 w-32 text-indigo-400" />
+                  <LineChart className="h-32 w-32 text-red-400" />
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-[#141432] border-indigo-900 text-white overflow-hidden">
-            <CardHeader className="bg-[#1a1a45] border-b border-indigo-900">
+          <Card className="bg-[#141432] border-red-900 text-white overflow-hidden">
+            <CardHeader className="bg-[#1a1a45] border-b border-red-900">
               <h3 className="text-xl font-bold text-white flex items-center">
                 <ArrowUpRight className="h-5 w-5 mr-3 text-blue-400" />
                 Fixed Income Strategy

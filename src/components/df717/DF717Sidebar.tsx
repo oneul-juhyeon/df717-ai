@@ -25,7 +25,7 @@ const DF717Sidebar: React.FC = () => {
                 to={item.path}
                 className={`block py-2 px-4 rounded-lg transition-colors ${
                   location.pathname === item.path
-                    ? "bg-indigo-900/40 text-indigo-400 font-medium"
+                    ? "bg-red-900/40 text-red-400 font-medium"
                     : "text-gray-400 hover:bg-gray-800 hover:text-white"
                 }`}
               >

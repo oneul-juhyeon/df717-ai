@@ -22,7 +22,7 @@ const Execution: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
-          <Card className="bg-[#141432] border-indigo-900 text-white">
+          <Card className="bg-[#141432] border-red-900 text-white">
             <CardContent className="pt-6">
               <div className="flex items-start mb-4">
                 <div className="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center mr-4">
@@ -39,11 +39,11 @@ const Execution: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#141432] border-indigo-900 text-white">
+          <Card className="bg-[#141432] border-red-900 text-white">
             <CardContent className="pt-6">
               <div className="flex items-start mb-4">
-                <div className="w-12 h-12 rounded-full bg-indigo-900 flex items-center justify-center mr-4">
-                  <Clock className="h-6 w-6 text-indigo-400" />
+                <div className="w-12 h-12 rounded-full bg-red-900 flex items-center justify-center mr-4">
+                  <Clock className="h-6 w-6 text-red-400" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Optimal Timing Algorithms</h3>
@@ -56,11 +56,11 @@ const Execution: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#141432] border-indigo-900 text-white">
+          <Card className="bg-[#141432] border-red-900 text-white">
             <CardContent className="pt-6">
               <div className="flex items-start mb-4">
-                <div className="w-12 h-12 rounded-full bg-purple-900 flex items-center justify-center mr-4">
-                  <Gauge className="h-6 w-6 text-purple-400" />
+                <div className="w-12 h-12 rounded-full bg-red-900 flex items-center justify-center mr-4">
+                  <Gauge className="h-6 w-6 text-red-400" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Smart Order Routing</h3>
@@ -73,7 +73,7 @@ const Execution: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#141432] border-indigo-900 text-white">
+          <Card className="bg-[#141432] border-red-900 text-white">
             <CardContent className="pt-6">
               <div className="flex items-start mb-4">
                 <div className="w-12 h-12 rounded-full bg-green-900 flex items-center justify-center mr-4">

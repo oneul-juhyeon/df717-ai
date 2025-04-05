@@ -87,10 +87,10 @@ const DF717Header: React.FC<DF717HeaderProps> = ({ scrollToTop }) => {
                 <div key={item.name}>
                   <Link 
                     to={item.path} 
-                    className={`text-white hover:text-indigo-400 py-2 text-lg transition ${
+                    className={`text-white hover:text-red-500 py-2 text-lg transition ${
                       (location.pathname === item.path || 
                       (item.path !== '/' && location.pathname.startsWith(item.path))) ? 
-                      'text-indigo-400 font-semibold' : ''
+                      'text-red-500 font-semibold' : ''
                     }`}
                   >
                     {item.name}
@@ -102,8 +102,8 @@ const DF717Header: React.FC<DF717HeaderProps> = ({ scrollToTop }) => {
                         <Link 
                           key={subItem.name} 
                           to={subItem.path}
-                          className={`text-gray-300 hover:text-indigo-400 py-1 text-md transition ${
-                            location.pathname === subItem.path ? 'text-indigo-400 font-medium' : ''
+                          className={`text-gray-300 hover:text-red-400 py-1 text-md transition ${
+                            location.pathname === subItem.path ? 'text-red-400 font-medium' : ''
                           }`}
                           onClick={scrollToTop}
                         >
@@ -131,15 +131,15 @@ const DF717Header: React.FC<DF717HeaderProps> = ({ scrollToTop }) => {
                 }))}
                 isActive={location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path))}
                 textColor="text-white"
-                hoverColor="hover:text-indigo-400"
-                activeColor="text-indigo-400"
+                hoverColor="hover:text-red-400"
+                activeColor="text-red-400"
               />
             ) : (
               <Link 
                 key={item.name}
                 to={item.path}
-                className={`text-white hover:text-indigo-400 px-4 py-2 transition whitespace-nowrap ${
-                  location.pathname === item.path ? 'text-indigo-400 font-medium' : ''
+                className={`text-white hover:text-red-400 px-4 py-2 transition whitespace-nowrap ${
+                  location.pathname === item.path ? 'text-red-400 font-medium' : ''
                 }`}
               >
                 {item.name}
