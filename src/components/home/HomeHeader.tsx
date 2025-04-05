@@ -7,13 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Menu, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavDropdown } from "@/components/ui/dropdown-nav";
+import BaseHeader from "@/components/navigation/BaseHeader";
+import { HeaderProps, NavigationItem } from "@/components/navigation/types";
 
-interface HomeHeaderProps {
-  scrollToTop: () => void;
-}
+interface HomeHeaderProps extends HeaderProps {}
 
 const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
-  const isMobile = useIsMobile();
   const location = useLocation();
 
   const axiCfdSubmenu = [
@@ -43,7 +42,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
     { name: "Examples", path: "/df717/examples" },
   ];
 
-  const navigationItems = [
+  const navigationItems: NavigationItem[] = [
     { name: "Home", path: "/home-intro", hasSubmenu: false },
     { name: "Company", path: "/company", hasSubmenu: false },
     { name: "Technology", path: "/technology", hasSubmenu: false },
@@ -69,83 +68,10 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
   ];
 
   return (
-    <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6">
-      <Link to="/">
-        <Logo />
-      </Link>
-      
-      {isMobile ? (
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" className="text-white p-2">
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="bg-[#232323] border-gray-700 text-white z-50">
-            <div className="flex flex-col mt-8 space-y-4">
-              {navigationItems.map((item) => (
-                <div key={item.name}>
-                  <Link 
-                    to={item.path} 
-                    className="text-white hover:text-gray-300 py-2 text-lg transition"
-                  >
-                    {item.name}
-                  </Link>
-                  
-                  {'hasSubmenu' in item && item.hasSubmenu && (
-                    <div className="ml-4 mt-2 space-y-2">
-                      {item.submenu?.map((subItem) => (
-                        <Link 
-                          key={subItem.name} 
-                          to={subItem.path}
-                          className="text-gray-300 hover:text-white py-1 text-md transition cursor-pointer"
-                          onClick={scrollToTop}
-                        >
-                          <span className="flex items-center">
-                            <ArrowRight className="h-4 w-4 mr-2" />
-                            {subItem.name}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </SheetContent>
-        </Sheet>
-      ) : (
-        <div className="flex items-center gap-1">
-          {navigationItems.map((item) => (
-            'hasSubmenu' in item && item.hasSubmenu ? (
-              <NavDropdown 
-                key={item.name}
-                name={item.name}
-                path={item.path}
-                items={item.submenu.map(subItem => ({
-                  ...subItem,
-                  scrollToTop
-                }))}
-                isActive={location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path))}
-                textColor="text-white"
-                hoverColor="hover:text-gray-300"
-                activeColor="text-red-400"
-              />
-            ) : (
-              <Link 
-                key={item.name}
-                to={item.path}
-                className={`text-white hover:text-gray-300 px-4 py-2 transition ${
-                  location.pathname === item.path ? 'text-red-400 font-medium' : ''
-                }`}
-              >
-                {item.name}
-              </Link>
-            )
-          ))}
-        </div>
-      )}
-    </header>
+    <BaseHeader 
+      navigationItems={navigationItems} 
+      scrollToTop={scrollToTop} 
+    />
   );
 };
 
