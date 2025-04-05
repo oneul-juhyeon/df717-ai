@@ -13,7 +13,7 @@ const ValueSection: React.FC = () => {
       
       <div className="mb-10">
         <h3 className="text-2xl font-bold mb-4 text-white">가치</h3>
-        <p className="text-lg text-white">디셈버앤컴퍼니는 더욱 뛰어난 기술을 연구합니다.<br />
+        <p className="text-lg text-white">DF717 더욱 뛰어난 기술을 연구합니다.<br />
         정교한 기술과 데이터를 바탕으로 보다 나은 삶을 설계합니다.</p>
       </div>
       
