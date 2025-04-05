@@ -44,7 +44,7 @@ const ContactHeader: React.FC<ContactHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF Robot", path: "/robot", hasSubmenu: false },
+    { name: "DF717", path: "/robot", hasSubmenu: false },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
