@@ -1,10 +1,12 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
 import CompanyBrandSection from "@/components/company/CompanyBrandSection";
 
 const Company: React.FC = () => {
+  const animatedElementsRef = useRef<HTMLElement[]>([]);
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -12,52 +14,46 @@ const Company: React.FC = () => {
     });
   };
   
-  // Add scroll animation effects with staggered timing
   useEffect(() => {
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.scroll-animate');
-      
-      elements.forEach((element, index) => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        // Make elements visible when they're almost in view
-        if (elementPosition < windowHeight * 0.95) {
-          // Force a very short reflow to ensure CSS transitions work properly
-          element.getBoundingClientRect();
+    // Reset animation on mount - important for when navigating back to this page
+    document.querySelectorAll('.scroll-animate').forEach((element: any) => {
+      element.classList.add('opacity-0');
+      element.classList.remove('animate-fade-in-up');
+    });
+
+    // Initialize animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Delay animation based on element's position in the DOM for staggered effect
+          const delay = 150 * Array.from(document.querySelectorAll('.scroll-animate')).indexOf(entry.target);
           
-          // Add animation class with staggered delay
           setTimeout(() => {
-            element.classList.add('animate-fade-in-up');
-            element.classList.remove('opacity-0');
-          }, index * 150); // Staggered animation with 150ms delay between elements
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+          }, delay);
+          
+          // Stop observing after animation is triggered
+          observer.unobserve(entry.target);
         }
       });
-    };
+    }, {
+      root: null, // viewport
+      rootMargin: '-10% 0px', // trigger when element is 10% in view
+      threshold: 0.1 // trigger when at least 10% of element is visible
+    });
 
-    // Initial load with a delay to ensure DOM is fully ready
-    setTimeout(() => {
-      // Add opacity-0 to all scroll-animate elements at start
-      document.querySelectorAll('.scroll-animate').forEach(element => {
-        element.classList.add('opacity-0');
-      });
-      
-      // Trigger first animation
-      animateOnScroll();
-    }, 300);
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Set up a periodic check to ensure animations trigger
-    const intervalCheck = setInterval(animateOnScroll, 1000);
+    // Start observing all scroll-animate elements
+    document.querySelectorAll('.scroll-animate').forEach((element: any) => {
+      observer.observe(element);
+      animatedElementsRef.current.push(element);
+    });
 
-    // Clean up
+    // Clean up observer when component unmounts
     return () => {
-      window.removeEventListener('scroll', animateOnScroll);
-      clearInterval(intervalCheck);
+      observer.disconnect();
     };
-  }, []);
+  }, []); // Empty dependency array ensures this runs once on mount
   
   return (
     <main className="w-full min-h-screen bg-[#0e0e0e] flex flex-col">

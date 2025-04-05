@@ -6,7 +6,7 @@ import CompanyValueCards from "./CompanyValueCards";
 
 const CompanyBrandSection: React.FC = () => {
   return (
-    <div className="w-full mb-16 scroll-animate">
+    <div className="w-full mb-16 scroll-animate opacity-0">
       <div className="relative rounded-xl bg-gradient-to-b from-[#111111] to-[#0e0e0e] p-0.5 border border-white/5 shadow-lg">
         <div className="relative z-10 p-6">
           <h2 className="text-3xl font-bold mb-8 flex items-center justify-center text-white">
@@ -15,7 +15,7 @@ const CompanyBrandSection: React.FC = () => {
           </h2>
           
           <div className="space-y-12 mt-6">
-            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm scroll-animate">
+            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm scroll-animate opacity-0">
               <h3 className="text-2xl font-bold mb-4 text-white flex items-center">
                 <LightbulbIcon className="h-5 w-5 mr-3 text-red-400" />
                 Brand Definition
@@ -30,7 +30,7 @@ const CompanyBrandSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm scroll-animate">
+            <div className="bg-[#111111] p-8 rounded-lg border border-white/5 shadow-lg hover:shadow-red-900/10 transition-all duration-300 backdrop-blur-sm scroll-animate opacity-0">
               <h3 className="text-2xl font-bold mb-4 text-white flex items-center">
                 <LightbulbIcon className="h-5 w-5 mr-3 text-red-400" />
                 Key Brand Statement
@@ -47,11 +47,11 @@ const CompanyBrandSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="text-center mb-8 scroll-animate">
+            <div className="text-center mb-8 scroll-animate opacity-0">
               <h3 className="text-2xl font-bold mb-6 text-white">Core Values</h3>
             </div>
             
-            <div className="scroll-animate">
+            <div className="scroll-animate opacity-0">
               <CompanyValueCards />
             </div>
           </div>
