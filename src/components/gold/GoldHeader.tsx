@@ -41,7 +41,7 @@ const GoldHeader: React.FC<GoldHeaderProps> = ({ scrollToTop }) => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
-  const df717Submenu = [
+  const df717Submenu: SubmenuItem[] = [
     { name: "What is DF717?", path: "/df717" },
     { name: "Reliability & Stability", path: "/df717/stability" },
     { name: "Financial Modeling", path: "/df717/modeling" },
@@ -102,8 +102,10 @@ const GoldHeader: React.FC<GoldHeaderProps> = ({ scrollToTop }) => {
                   {'hasSubmenu' in item && item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => {
-                        const isAxiItem = 'id' in subItem;
-                        const submenuId = subItem.id || null;
+                        // Check if this is from axiCfdSubmenu, which has id
+                        const isAxiItem = axiCfdSubmenu.some(axiItem => axiItem.path === subItem.path);
+                        // Safely get the id if it exists
+                        const submenuId = 'id' in subItem ? subItem.id : null;
                         return (
                           <Link 
                             key={subItem.name} 
@@ -138,7 +140,8 @@ const GoldHeader: React.FC<GoldHeaderProps> = ({ scrollToTop }) => {
                 name={item.name}
                 path={item.path}
                 items={item.submenu.map(subItem => {
-                  const submenuId = subItem.id || undefined;
+                  // Safely get the id if it exists
+                  const submenuId = 'id' in subItem ? subItem.id : undefined;
                   return {
                     ...subItem,
                     scrollToTop: () => {
