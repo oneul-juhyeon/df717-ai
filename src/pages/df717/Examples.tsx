@@ -48,8 +48,8 @@ const Examples: React.FC = () => {
           </section>
           
           {/* Strategy B */}
-          <section className="bg-[#101030] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
-            <div className="bg-[#14143a] py-6 px-8 border-b border-red-900/30">
+          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
+            <div className="bg-[#12122e] py-6 px-8 border-b border-red-900/30">
               <h2 className="text-2xl font-bold text-white flex items-center">
                 <Sparkles className="h-6 w-6 mr-3 text-red-400" />
                 Strategy B
@@ -64,7 +64,7 @@ const Examples: React.FC = () => {
                     Implements probabilistic sizing techniques at entry based on distributional analytics to minimize asset-level risk.
                   </p>
                 </div>
-                <div className="w-full md:w-1/3 bg-[#1a1a4b] rounded-lg p-6 flex items-center justify-center">
+                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
                   <Sparkles className="h-32 w-32 text-red-400" />
                 </div>
               </div>
