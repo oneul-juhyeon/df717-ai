@@ -24,8 +24,10 @@ const AxiAward: React.FC = () => {
         </section>
       </div>
       
-      {/* Ready to trade section */}
-      <AxiReadyTrade />
+      {/* Ready to trade section with animation */}
+      <div className="scroll-animate opacity-0">
+        <AxiReadyTrade />
+      </div>
     </main>
   );
 };
