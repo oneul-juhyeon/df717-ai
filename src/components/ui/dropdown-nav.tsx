@@ -17,6 +17,7 @@ interface NavDropdownProps {
   isActive?: boolean;
   textColor?: string;
   hoverColor?: string;
+  activeColor?: string; // Added the missing activeColor prop
 }
 
 export const NavDropdown: React.FC<NavDropdownProps> = ({
@@ -25,7 +26,8 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
   items,
   isActive = false,
   textColor = 'text-white',
-  hoverColor = 'hover:text-gray-300'
+  hoverColor = 'hover:text-gray-300',
+  activeColor = 'text-indigo-400' // Added default value for activeColor
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,7 +43,8 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
           textColor, 
           hoverColor, 
           "px-4 py-2 transition whitespace-nowrap inline-flex items-center",
-          isActive ? 'font-medium' : ''
+          isActive ? 'font-medium' : '',
+          isActive ? activeColor : '' // Use the activeColor prop for active items
         )}
       >
         {name}
