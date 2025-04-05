@@ -8,7 +8,7 @@ const CompanyHero: React.FC = () => {
         About DF717 & Company
       </h1>
       
-      <div className="p-6 bg-[#121230] rounded-lg border border-red-900/30 shadow-lg">
+      <div className="p-6 bg-[#0a0a1e] rounded-lg border border-red-800/40 shadow-lg">
         <p className="text-lg text-white leading-relaxed">
           DF717 designs a better life through technology.<br />
           With sophisticated technologies and reliable data, we lead innovation in the future financial markets.
