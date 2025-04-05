@@ -6,8 +6,8 @@ import { Lightbulb, Shield, Code } from "lucide-react";
 const CompanyValueCards: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6 opacity-0 scroll-animate">
-      <Card className="bg-[#121230] border-blue-900/50 text-white hover:border-blue-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-        <CardHeader className="bg-[#161645] border-b border-blue-900/30">
+      <Card className="bg-[#0a0a1e] border-blue-900/50 text-white hover:border-blue-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+        <CardHeader className="bg-[#0f0f2a] border-b border-blue-900/30">
           <CardTitle className="text-xl text-white flex items-center">
             <Lightbulb className="h-5 w-5 mr-3 text-blue-400" />
             <span className="text-blue-400 font-bold">Innovative Perspective</span>
@@ -20,8 +20,8 @@ const CompanyValueCards: React.FC = () => {
         </CardContent>
       </Card>
       
-      <Card className="bg-[#121230] border-green-900/50 text-white hover:border-green-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-        <CardHeader className="bg-[#163028] border-b border-green-900/30">
+      <Card className="bg-[#0a0a1e] border-green-900/50 text-white hover:border-green-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+        <CardHeader className="bg-[#0f1f1a] border-b border-green-900/30">
           <CardTitle className="text-xl text-white flex items-center">
             <Code className="h-5 w-5 mr-3 text-green-400" />
             <span className="text-green-400 font-bold">Outstanding Technology</span>
@@ -34,8 +34,8 @@ const CompanyValueCards: React.FC = () => {
         </CardContent>
       </Card>
       
-      <Card className="bg-[#121230] border-yellow-900/50 text-white hover:border-yellow-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-        <CardHeader className="bg-[#2a2a10] border-b border-yellow-900/30">
+      <Card className="bg-[#0a0a1e] border-yellow-900/50 text-white hover:border-yellow-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+        <CardHeader className="bg-[#1a1a0f] border-b border-yellow-900/30">
           <CardTitle className="text-xl text-white flex items-center">
             <Shield className="h-5 w-5 mr-3 text-yellow-400" />
             <span className="text-yellow-400 font-bold">Trustworthy Attitude</span>
