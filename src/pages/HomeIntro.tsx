@@ -14,13 +14,12 @@ const HomeIntro: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
-      <div className="w-full mx-auto px-[154px] pt-8 pb-12 max-md:px-10 max-sm:px-5">
+      <div className="w-full mx-auto px-[154px] absolute top-0 left-0 right-0 z-10 pt-8 max-md:px-10 max-sm:px-5">
         <HomeHeader scrollToTop={scrollToTop} />
       </div>
       
       <HeroSection />
       <TextSection />
-      {/* ContentSection 컴포넌트가 제거되었습니다 */}
     </main>
   );
 };
