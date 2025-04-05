@@ -25,6 +25,9 @@ const ModernTechnologyTabs: React.FC = () => {
     setActiveTab(tabId);
   };
 
+  // Find the active tab's component
+  const activeComponent = tabSections.find(tab => tab.id === activeTab)?.component;
+
   return (
     <div className="w-full">
       {/* Sticky tabs navigation */}
@@ -55,22 +58,11 @@ const ModernTechnologyTabs: React.FC = () => {
         </div>
       </div>
 
-      {/* Content area */}
+      {/* Content area - simplified to ensure proper rendering */}
       <div className="mt-8">
-        {tabSections.map((tab) => (
-          <div
-            key={tab.id}
-            className={`transition-all duration-500 ${
-              activeTab === tab.id 
-                ? "opacity-100 translate-y-0" 
-                : "hidden opacity-0"
-            }`}
-          >
-            <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
-              {tab.component}
-            </div>
-          </div>
-        ))}
+        <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
+          {activeComponent}
+        </div>
       </div>
     </div>
   );

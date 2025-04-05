@@ -1,14 +1,13 @@
 
 import React from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 const PrefaceComponent = () => {
   return (
     <div className="max-w-4xl mx-auto text-white">
-      <h2 className="text-4xl font-bold mb-6 scroll-animate opacity-0">DF717</h2>
+      <h2 className="text-4xl font-bold mb-6">DF717</h2>
       
       <div className="space-y-8">
-        <div className="scroll-animate opacity-0">
+        <div>
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
             What is DF717?
@@ -18,7 +17,7 @@ const PrefaceComponent = () => {
           </p>
         </div>
 
-        <div className="scroll-animate opacity-0">
+        <div>
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
             How DF717 Works
@@ -28,7 +27,7 @@ const PrefaceComponent = () => {
           </p>
         </div>
 
-        <div className="scroll-animate opacity-0">
+        <div>
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
             Key Features

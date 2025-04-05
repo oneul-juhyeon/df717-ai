@@ -4,10 +4,10 @@ import React from "react";
 const IsaacComponent = () => {
   return (
     <div className="max-w-4xl mx-auto text-white">
-      <h2 className="text-4xl font-bold mb-6 scroll-animate opacity-0">HANNAH</h2>
+      <h2 className="text-4xl font-bold mb-6">HANNAH</h2>
       
       <div className="space-y-8">
-        <div className="scroll-animate opacity-0">
+        <div>
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
             The HANNAH Engine
@@ -17,7 +17,7 @@ const IsaacComponent = () => {
           </p>
         </div>
 
-        <div className="scroll-animate opacity-0">
+        <div>
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
             Technical Framework
@@ -27,7 +27,7 @@ const IsaacComponent = () => {
           </p>
         </div>
 
-        <div className="bg-[#1a1a1a] border border-white/5 rounded-lg p-6 my-8 scroll-animate opacity-0">
+        <div className="bg-[#1a1a1a] border border-white/5 rounded-lg p-6 my-8">
           <h4 className="text-xl font-bold mb-3 text-white">Core Components:</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-[#232323] p-4 rounded border border-white/10">
@@ -49,7 +49,7 @@ const IsaacComponent = () => {
           </div>
         </div>
 
-        <div className="scroll-animate opacity-0">
+        <div>
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
             Continuous Improvement
