@@ -2,8 +2,8 @@
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
-import { Card, CardContent } from "@/components/ui/card";
-import { LineChart, BarChart, PieChart, TrendingUp } from "lucide-react";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { AreaChart, BarChart3, LineChart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const Modeling: React.FC = () => {
@@ -11,81 +11,91 @@ const Modeling: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="Financial Modeling"
-          subtitle="Advanced financial modeling techniques used by DF717 to analyze and predict market behavior."
+          title="Financial Engineering-Based Modeling Capabilities"
+          subtitle="DF717 integrates probabilistic decision-making mechanisms backed by modern financial engineering theory."
         />
         
-        <div className="mb-14 animate-fade-in-up delay-100">
-          <p className="text-gray-300 leading-relaxed">
-            DF717 employs sophisticated financial modeling techniques to understand market dynamics, identify trends, and make informed investment decisions.
-            Our models combine traditional financial theory with cutting-edge machine learning approaches.
-          </p>
-        </div>
-        
         <div className="py-4 mb-6 border-t border-gray-800 animate-fade-in-up delay-200">
-          <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Modeling Approaches</h2>
+          <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Key Capabilities</h2>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8 animate-fade-in-up delay-300">
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800 transition-all duration-300 shadow-lg">
-            <CardContent className="pt-6">
-              <div className="flex items-start mb-4">
-                <div className="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mr-4">
-                  <LineChart className="h-6 w-6 text-red-400" />
+        <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-300">
+          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <AreaChart className="h-5 w-5 mr-3 text-red-400" />
+                Monte Carlo Simulation
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="flex flex-col md:flex-row-reverse gap-8">
+                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
+                  <AreaChart className="h-32 w-32 text-red-400" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Time Series Analysis</h3>
-                  <p className="text-gray-300 mt-2 leading-relaxed">
-                    Advanced time series models detect patterns, cycles, and anomalies in market data to predict future price movements.
+                <div className="w-full md:w-2/3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Simulates return dispersion, expected yield distributions, and potential drawdown clusters for forward-testing.
                   </p>
+                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
+                    <li>Multi-path simulation for robust scenario analysis</li>
+                    <li>Extreme event modeling with tail risk assessment</li>
+                    <li>Statistical confidence measurement across timeframes</li>
+                    <li>Correlation-based shock propagation testing</li>
+                  </ul>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800 transition-all duration-300 shadow-lg">
-            <CardContent className="pt-6">
-              <div className="flex items-start mb-4">
-                <div className="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mr-4">
-                  <BarChart className="h-6 w-6 text-red-400" />
+          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <BarChart3 className="h-5 w-5 mr-3 text-red-400" />
+                Markowitz Portfolio Optimization
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="flex flex-col md:flex-row gap-8">
+                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
+                  <BarChart3 className="h-32 w-32 text-red-400" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Factor Analysis</h3>
-                  <p className="text-gray-300 mt-2 leading-relaxed">
-                    Multi-factor models identify key drivers of asset returns, allowing for better prediction and risk management.
+                <div className="w-full md:w-2/3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Adjusts capital allocation across CFD instruments based on risk/return profiles and asset correlations.
                   </p>
+                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
+                    <li>Efficient frontier calculation for optimal allocations</li>
+                    <li>Dynamic weight rebalancing based on volatility shifts</li>
+                    <li>Covariance matrix analysis for diversification assessment</li>
+                    <li>Risk-adjusted return targeting with portfolio constraints</li>
+                  </ul>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800 transition-all duration-300 shadow-lg">
-            <CardContent className="pt-6">
-              <div className="flex items-start mb-4">
-                <div className="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mr-4">
-                  <PieChart className="h-6 w-6 text-red-400" />
+          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+              <h3 className="text-xl font-bold text-white flex items-center">
+                <LineChart className="h-5 w-5 mr-3 text-red-400" />
+                Sharpe, Sortino, and Calmar Ratios
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-8">
+              <div className="flex flex-col md:flex-row-reverse gap-8">
+                <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
+                  <LineChart className="h-32 w-32 text-red-400" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Portfolio Optimization</h3>
-                  <p className="text-gray-300 mt-2 leading-relaxed">
-                    Modern portfolio theory combined with advanced optimization techniques to achieve optimal risk-adjusted returns.
+                <div className="w-full md:w-2/3">
+                  <p className="text-gray-300 leading-relaxed">
+                    Monitors system performance quantitatively, triggering strategic transitions when deviations exceed defined thresholds.
                   </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800 transition-all duration-300 shadow-lg">
-            <CardContent className="pt-6">
-              <div className="flex items-start mb-4">
-                <div className="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mr-4">
-                  <TrendingUp className="h-6 w-6 text-red-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Dynamic Scenario Analysis</h3>
-                  <p className="text-gray-300 mt-2 leading-relaxed">
-                    Simulation of multiple market scenarios to test investment strategies and prepare for various market conditions.
-                  </p>
+                  <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
+                    <li>Continuous performance measurement against benchmarks</li>
+                    <li>Downside risk quantification for capital preservation</li>
+                    <li>Maximum drawdown evaluation with recovery forecasting</li>
+                    <li>Automated strategy adjustment based on ratio thresholds</li>
+                  </ul>
                 </div>
               </div>
             </CardContent>
