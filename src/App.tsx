@@ -49,7 +49,8 @@ function App() {
             <Route path="/financial-products/gold" element={<Gold />} />
             <Route path="/financial-products/oil" element={<Oil />} />
             <Route path="/financial-products/crypto" element={<Crypto />} />
-            <Route path="/robot" element={<Robot />} />
+            <Route path="/df717" element={<Robot />} />
+            <Route path="/robot" element={<Navigate to="/df717" replace />} />
             <Route path="/axi-cfd" element={<AxiCFD />} />
             <Route path="/axi-edge" element={<AxiEdge />} />
             <Route path="/axi-trust" element={<AxiTrust />} />

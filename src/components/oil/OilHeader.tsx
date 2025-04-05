@@ -51,7 +51,7 @@ const OilHeader: React.FC<OilHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF717", path: "/robot" },
+    { name: "DF717", path: "/df717" },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",

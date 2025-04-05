@@ -44,7 +44,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF717", path: "/robot", hasSubmenu: false },
+    { name: "DF717", path: "/df717", hasSubmenu: false },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
