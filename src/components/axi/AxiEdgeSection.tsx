@@ -1,11 +1,35 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 
 const AxiEdgeSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+  
   return (
-    <div className="grid grid-cols-2 gap-12 max-lg:grid-cols-1">
+    <div ref={sectionRef} className="grid grid-cols-2 gap-12 max-lg:grid-cols-1 transition-all duration-1000 transform opacity-0 translate-y-10">
       <div className="flex flex-col justify-center">
         <h2 className="text-4xl font-bold text-white mb-6 max-sm:text-3xl">Trade your edge</h2>
         <p className="text-gray-300 text-lg mb-6">

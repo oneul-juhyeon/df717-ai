@@ -3,6 +3,7 @@ import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
 import AxiAwardWinningService from "@/components/axi/AxiAwardWinningService";
 import AxiReadyTrade from "@/components/axi/AxiReadyTrade";
+import AxiAwardHero from "@/components/axi/AxiAwardHero";
 
 const AxiAward: React.FC = () => {
   const scrollToTop = () => {
@@ -18,19 +19,7 @@ const AxiAward: React.FC = () => {
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
         <section className="mt-10 mb-16 w-full">
-          <div className="w-full relative overflow-hidden rounded-2xl mb-10">
-            <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 w-full py-20 px-12 max-sm:py-12 max-sm:px-6 relative">
-              <div className="text-center relative z-10">
-                <h1 className="text-5xl font-bold text-white mb-4 max-sm:text-3xl">Award-Winning Service</h1>
-                <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg mb-2">
-                  Trade with confidence.
-                </p>
-                <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg">
-                  With our award-winning service.
-                </p>
-              </div>
-            </div>
-          </div>
+          <AxiAwardHero />
           <AxiAwardWinningService />
         </section>
       </div>
