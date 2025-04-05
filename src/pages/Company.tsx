@@ -19,7 +19,9 @@ const Company: React.FC = () => {
       elements.forEach((element, index) => {
         const elementPosition = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        if (elementPosition < windowHeight * 0.85) {
+        
+        // Make the condition more lenient to ensure elements appear
+        if (elementPosition < windowHeight * 0.9) {
           setTimeout(() => {
             element.classList.add('animate-fade-in-up');
             element.classList.remove('opacity-0');
@@ -28,14 +30,20 @@ const Company: React.FC = () => {
       });
     };
 
-    // Run once on mount
-    setTimeout(animateOnScroll, 100);
+    // Run once on mount with a delay to ensure DOM is ready
+    setTimeout(animateOnScroll, 300);
 
     // Add scroll event listener
     window.addEventListener('scroll', animateOnScroll);
+    
+    // Set up a periodic check to ensure animations trigger
+    const intervalCheck = setInterval(animateOnScroll, 1000);
 
     // Clean up
-    return () => window.removeEventListener('scroll', animateOnScroll);
+    return () => {
+      window.removeEventListener('scroll', animateOnScroll);
+      clearInterval(intervalCheck);
+    };
   }, []);
   
   return (
