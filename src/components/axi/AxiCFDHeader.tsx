@@ -85,7 +85,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
       {isMobile ? (
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" className="text-black p-2">
+            <Button variant="ghost" className="text-white p-2">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
@@ -148,14 +148,14 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                   }
                 }))}
                 isActive={location.pathname.includes('axi-')}
-                textColor="text-black"
+                textColor="text-white"
                 hoverColor="hover:text-red-500"
               />
             ) : (
               <Link 
                 key={item.name}
                 to={item.path}
-                className={`text-black hover:text-red-500 px-4 py-2 transition whitespace-nowrap ${
+                className={`text-white hover:text-red-500 px-4 py-2 transition whitespace-nowrap ${
                   location.pathname === item.path ? 'text-red-500' : ''
                 }`}
               >
