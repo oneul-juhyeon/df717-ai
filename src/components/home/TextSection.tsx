@@ -16,8 +16,8 @@ const TextSection: React.FC = () => {
         transition={{ duration: 0.7 }}
       >
         <p className="font-sans text-xl md:text-2xl text-[#EEEEEE] mb-12 leading-relaxed">
-          Since thousands of years ago, the Bible has foreshadowed the era of famine at the end.<br/>
-          Living in the last era, we are already experiencing global economic hardship.
+          For thousands of years, the Bible has foretold a time of famine in the last days.<br/>
+          Today, as we live in the end times, we are already witnessing global economic hardship.
         </p>
         
         <p className="font-sans text-2xl md:text-3xl font-bold text-[#EEEEEE] leading-relaxed">
