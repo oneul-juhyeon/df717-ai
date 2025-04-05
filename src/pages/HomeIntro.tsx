@@ -18,8 +18,10 @@ const HomeIntro: React.FC = () => {
         <HomeHeader scrollToTop={scrollToTop} />
       </div>
       
-      <HeroSection />
-      <TextSection />
+      <div className="flex flex-col">
+        <HeroSection />
+        <TextSection />
+      </div>
     </main>
   );
 };
