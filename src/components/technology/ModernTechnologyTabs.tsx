@@ -1,79 +1,34 @@
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import CoreCompetence from "./CoreCompetence";
 import PrefaceComponent from "./Preface";
 import IsaacComponent from "./Isaac";
 
-type TabSection = {
+type Tab = {
   id: string;
   title: string;
   component: React.ReactNode;
-  ref: React.RefObject<HTMLDivElement>;
 };
 
 const ModernTechnologyTabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("core");
-  const tabsContainerRef = useRef<HTMLDivElement>(null);
-
-  // Create refs for each section
-  const coreRef = useRef<HTMLDivElement>(null);
-  const df717Ref = useRef<HTMLDivElement>(null);
-  const hannahRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<string>("core");
 
   // Define tab sections
-  const tabSections: TabSection[] = [
-    { id: "core", title: "CORE COMPETENCE", component: <CoreCompetence />, ref: coreRef },
-    { id: "df717", title: "DF717", component: <PrefaceComponent />, ref: df717Ref },
-    { id: "hannah", title: "HANNAH", component: <IsaacComponent />, ref: hannahRef }
+  const tabSections: Tab[] = [
+    { id: "core", title: "CORE COMPETENCE", component: <CoreCompetence /> },
+    { id: "df717", title: "DF717", component: <PrefaceComponent /> },
+    { id: "hannah", title: "HANNAH", component: <IsaacComponent /> }
   ];
 
-  // Handle tab clicks with smooth scroll
+  // Handle tab clicks with direct content switching
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
-    
-    const targetSection = tabSections.find(section => section.id === tabId);
-    if (targetSection && targetSection.ref.current) {
-      const yOffset = -100; // Offset to account for sticky header
-      const y = targetSection.ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
   };
-
-  // Listen for scroll to update active tab
-  useEffect(() => {
-    const handleScroll = () => {
-      // Find which section is currently most visible
-      let mostVisibleSection = tabSections[0].id;
-      let maxVisibility = 0;
-
-      tabSections.forEach(section => {
-        if (section.ref.current) {
-          const rect = section.ref.current.getBoundingClientRect();
-          const visibility = Math.min(1, Math.max(0, 
-            (rect.bottom >= 0 && rect.top <= window.innerHeight) ? 
-            (Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)) / rect.height : 0
-          ));
-          
-          if (visibility > maxVisibility) {
-            maxVisibility = visibility;
-            mostVisibleSection = section.id;
-          }
-        }
-      });
-
-      setActiveTab(mostVisibleSection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="w-full">
       {/* Sticky tabs navigation */}
       <div 
-        ref={tabsContainerRef} 
         className="sticky top-0 z-20 w-full bg-[#0e0e0e]/80 backdrop-blur-md py-4 border-b border-white/5 mb-12"
       >
         <div className="flex justify-center space-x-8 max-w-4xl mx-auto">
@@ -100,14 +55,16 @@ const ModernTechnologyTabs: React.FC = () => {
         </div>
       </div>
 
-      {/* Content sections */}
-      <div className="space-y-32">
+      {/* Content with animations */}
+      <div className="mt-8">
         {tabSections.map((section) => (
           <div
             key={section.id}
-            id={section.id}
-            ref={section.ref}
-            className="scroll-animate opacity-0"
+            className={`transition-all duration-500 ${
+              activeTab === section.id 
+                ? "opacity-100 translate-y-0" 
+                : "opacity-0 absolute -z-10 translate-y-4"
+            }`}
           >
             <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
               {section.component}
