@@ -15,17 +15,17 @@ const DF717Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="hidden lg:block w-64 shrink-0 border-r border-gray-800 pr-4">
-      <div className="sticky top-24">
-        <h3 className="text-lg font-semibold text-white mb-4 pl-4">DF717</h3>
-        <ul className="space-y-1">
+    <aside className="hidden lg:block w-64 shrink-0 border-r border-gray-800 pr-6">
+      <div className="sticky top-24 animate-fade-in-left">
+        <h3 className="text-lg font-semibold text-white mb-6 pl-4">DF717</h3>
+        <ul className="space-y-2">
           {sidebarItems.map((item) => (
             <li key={item.name}>
               <Link
                 to={item.path}
-                className={`block py-2 px-4 rounded-lg transition-colors ${
+                className={`block py-2.5 px-4 rounded-lg transition-colors duration-300 ${
                   location.pathname === item.path
-                    ? "bg-red-900/40 text-red-400 font-medium"
+                    ? "bg-red-900/40 text-red-400 font-medium border-l-2 border-red-700"
                     : "text-gray-400 hover:bg-gray-800 hover:text-white"
                 }`}
               >
