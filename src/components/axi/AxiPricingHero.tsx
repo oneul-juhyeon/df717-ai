@@ -30,7 +30,6 @@ const AxiPricingHero: React.FC = () => {
     <div ref={sectionRef} className="mt-10 mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
       <div className="w-full relative overflow-hidden rounded-2xl">
         <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 w-full py-20 px-12 max-sm:py-12 max-sm:px-6 relative">
-          <div className="absolute inset-0 bg-[url('/lovable-uploads/afc8cb24-dc30-445b-92f1-a0b5a49eefce.png')] bg-cover bg-center mix-blend-overlay opacity-70"></div>
           <div className="text-center relative z-10">
             <h1 className="text-5xl font-bold text-white mb-4 max-sm:text-3xl">Best Pricing and Trade Execution</h1>
             <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg mb-2">
