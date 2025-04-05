@@ -55,22 +55,20 @@ const ModernTechnologyTabs: React.FC = () => {
         </div>
       </div>
 
-      {/* Content with animations */}
+      {/* Content area */}
       <div className="mt-8">
-        {tabSections.map((section) => (
+        {tabSections.map((tab) => (
           <div
-            key={section.id}
+            key={tab.id}
             className={`transition-all duration-500 ${
-              activeTab === section.id 
+              activeTab === tab.id 
                 ? "opacity-100 translate-y-0" 
-                : "opacity-0 absolute -z-10 translate-y-4"
+                : "hidden opacity-0"
             }`}
           >
-            {activeTab === section.id && (
-              <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
-                {section.component}
-              </div>
-            )}
+            <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
+              {tab.component}
+            </div>
           </div>
         ))}
       </div>
