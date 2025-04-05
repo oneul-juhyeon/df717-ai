@@ -34,7 +34,7 @@ const CompanyBrandSection: React.FC = () => {
                 <LightbulbIcon className="h-5 w-5 mr-3 text-red-400" />
                 Key Brand Statement
               </h3>
-              <p className="text-xl font-bold italic text-white text-center">
+              <p className="text-2xl font-bold italic text-white text-center">
                 Without Love, We are nothing.
               </p>
             </div>
