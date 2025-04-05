@@ -49,7 +49,7 @@ const Robot: React.FC = () => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF Robot", path: "/robot", hasSubmenu: false },
+    { name: "DF717", path: "/robot", hasSubmenu: false },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
@@ -167,7 +167,7 @@ const Robot: React.FC = () => {
                             <h3 className="text-xl font-bold text-white">AI 기반 의사결정</h3>
                           </CardHeader>
                           <CardContent>
-                            <p className="text-gray-300">머신러닝과 딥러닝 기술을 통해 시장 패턴을 분석하고 최적의 거래 결정��� 내립니다. 과거 데이터와 실시간 시장 정보를 종합적으로 분석하여 정확한 예측을 제공합니다.</p>
+                            <p className="text-gray-300">머신러닝과 딥러닝 기술을 통해 시장 패턴을 분석하고 최적의 거래 결정을 내립니다. 과거 데이터와 실시간 시장 정보를 종합적으로 분석하여 정확한 예측을 제공합니다.</p>
                           </CardContent>
                         </Card>
                         

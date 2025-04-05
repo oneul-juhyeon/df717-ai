@@ -66,7 +66,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF Robot", path: "/robot" },
+    { name: "DF717", path: "/robot" },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
