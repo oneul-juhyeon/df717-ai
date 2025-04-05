@@ -34,6 +34,15 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
+  const df717Submenu = [
+    { name: "What is DF717?", path: "/df717" },
+    { name: "Reliability & Stability", path: "/df717/stability" },
+    { name: "Financial Modeling", path: "/df717/modeling" },
+    { name: "AI Strategy", path: "/df717/ai-strategy" },
+    { name: "Execution Logic", path: "/df717/execution" },
+    { name: "Examples", path: "/df717/examples" },
+  ];
+
   const navigationItems = [
     { name: "Home", path: "/home-intro", hasSubmenu: false },
     { name: "Company", path: "/company", hasSubmenu: false },
@@ -44,7 +53,12 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF717", path: "/df717", hasSubmenu: false },
+    { 
+      name: "DF717", 
+      path: "/df717",
+      hasSubmenu: true,
+      submenu: df717Submenu,
+    },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
@@ -55,7 +69,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6 px-[154px] max-md:px-10 max-sm:px-5">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6">
       <Link to="/">
         <Logo />
       </Link>
@@ -78,7 +92,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
                     {item.name}
                   </Link>
                   
-                  {item.hasSubmenu && (
+                  {'hasSubmenu' in item && item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => (
                         <Link 
@@ -103,7 +117,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
       ) : (
         <div className="flex items-center gap-1">
           {navigationItems.map((item) => (
-            item.hasSubmenu ? (
+            'hasSubmenu' in item && item.hasSubmenu ? (
               <NavDropdown 
                 key={item.name}
                 name={item.name}
@@ -112,14 +126,17 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
                   ...subItem,
                   scrollToTop
                 }))}
-                isActive={location.pathname === item.path}
+                isActive={location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path))}
+                textColor="text-white"
+                hoverColor="hover:text-gray-300"
+                activeColor="text-red-400"
               />
             ) : (
               <Link 
                 key={item.name}
                 to={item.path}
                 className={`text-white hover:text-gray-300 px-4 py-2 transition ${
-                  location.pathname === item.path ? 'font-medium' : ''
+                  location.pathname === item.path ? 'text-red-400 font-medium' : ''
                 }`}
               >
                 {item.name}

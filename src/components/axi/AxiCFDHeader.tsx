@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { NavDropdown } from "@/components/ui/dropdown-nav";
@@ -12,11 +12,10 @@ interface AxiCFDHeaderProps {
   scrollToTop: () => void;
 }
 
-// Add this interface to properly type the submenu items
 interface SubmenuItem {
   name: string;
   path: string;
-  id?: string; // Make id optional since not all submenu items have it
+  id?: string;
 }
 
 const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
@@ -56,6 +55,15 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
     { name: "Crypto", path: "/financial-products/crypto" },
   ];
 
+  const df717Submenu: SubmenuItem[] = [
+    { name: "What is DF717?", path: "/df717" },
+    { name: "Reliability & Stability", path: "/df717/stability" },
+    { name: "Financial Modeling", path: "/df717/modeling" },
+    { name: "AI Strategy", path: "/df717/ai-strategy" },
+    { name: "Execution Logic", path: "/df717/execution" },
+    { name: "Examples", path: "/df717/examples" },
+  ];
+
   const navigationItems = [
     { name: "Home", path: "/home-intro" },
     { name: "Company", path: "/company" },
@@ -66,7 +74,12 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
       hasSubmenu: true,
       submenu: financialProductsSubmenu,
     },
-    { name: "DF717", path: "/df717" },
+    { 
+      name: "DF717", 
+      path: "/df717",
+      hasSubmenu: true,
+      submenu: df717Submenu,
+    },
     { 
       name: "AXI CFD", 
       path: "/axi-cfd",
@@ -100,7 +113,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                     {item.name}
                   </Link>
                   
-                  {item.hasSubmenu && (
+                  {'hasSubmenu' in item && item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => {
                         // Check if this is an AxiCFD submenu item (which has id property)
@@ -150,6 +163,7 @@ const AxiCFDHeader: React.FC<AxiCFDHeaderProps> = ({ scrollToTop }) => {
                 isActive={location.pathname.includes('axi-')}
                 textColor="text-white"
                 hoverColor="hover:text-red-500"
+                activeColor="text-red-500"
               />
             ) : (
               <Link 

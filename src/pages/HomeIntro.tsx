@@ -14,7 +14,7 @@ const HomeIntro: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-[#161616] flex flex-col">
-      <div className="w-full mx-auto px-[154px] fixed top-0 left-0 right-0 z-50 pt-8 max-md:px-10 max-sm:px-5">
+      <div className="max-w-none mx-auto px-[154px] max-md:px-10 max-sm:px-5">
         <HomeHeader scrollToTop={scrollToTop} />
       </div>
       
