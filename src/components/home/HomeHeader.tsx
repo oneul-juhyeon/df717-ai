@@ -1,11 +1,10 @@
-
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight } from "lucide-react";
+import { Menu, ArrowRight, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 interface HomeHeaderProps {
