@@ -1,13 +1,12 @@
 
-import React, { useState } from "react";
+import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent } from "@/components/ui/navigation-menu";
-import { ArrowRight } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavDropdown } from "@/components/ui/dropdown-nav";
 
 interface CompanyHeaderProps {
   scrollToTop: () => void;
@@ -18,11 +17,11 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
   const isMobile = useIsMobile();
 
   const axiCfdSubmenu = [
-    { name: "CFD", id: "cfd-section", path: "/axi-cfd" },
-    { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
-    { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
-    { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
-    { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
+    { name: "CFD", path: "/axi-cfd" },
+    { name: "Our Edge", path: "/axi-edge" },
+    { name: "Trade With Trust", path: "/axi-trust" },
+    { name: "Best Pricing & Execution", path: "/axi-pricing" },
+    { name: "Award-Winning Service", path: "/axi-award" },
   ];
 
   const financialProductsSubmenu = [
@@ -79,15 +78,16 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
                     {item.name}
                   </Link>
                   
-                  {item.hasSubmenu && (
+                  {'hasSubmenu' in item && item.hasSubmenu && (
                     <div className="ml-4 mt-2 space-y-2">
                       {item.submenu?.map((subItem) => (
                         <Link 
                           key={subItem.name} 
                           to={subItem.path}
-                          className={`text-gray-300 hover:text-white py-1 text-md transition cursor-pointer`}
+                          className="text-gray-300 hover:text-white py-1 text-md transition cursor-pointer flex items-center gap-2"
                           onClick={scrollToTop}
                         >
+                          <ArrowRight className="h-4 w-4" />
                           {subItem.name}
                         </Link>
                       ))}
@@ -99,51 +99,32 @@ const CompanyHeader: React.FC<CompanyHeaderProps> = ({ scrollToTop }) => {
           </SheetContent>
         </Sheet>
       ) : (
-        <NavigationMenu>
-          <NavigationMenuList className="gap-1">
-            {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.name}>
-                {item.hasSubmenu ? (
-                  <div className="relative">
-                    <NavigationMenuTrigger
-                      className="text-white hover:text-gray-300 px-4 py-2 transition"
-                    >
-                      {item.name}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent className="navigation-dropdown">
-                      <ul className="horizontal-dropdown py-2 px-4">
-                        {item.submenu?.map((subItem, index) => (
-                          <li key={subItem.name} className="list-none">
-                            <Link
-                              to={subItem.path}
-                              className="navigation-dropdown-item"
-                              onClick={scrollToTop}
-                            >
-                              <ArrowRight className="h-4 w-4 transition-transform duration-200" />
-                              {subItem.name}
-                            </Link>
-                            {index < item.submenu.length - 1 && (
-                              <span className="dropdown-divider"></span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </div>
-                ) : (
-                  <Link 
-                    to={item.path} 
-                    className={`text-white hover:text-gray-300 px-4 py-2 transition ${
-                      location.pathname === item.path ? 'font-medium' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="flex items-center gap-1">
+          {navigationItems.map((item) => (
+            'hasSubmenu' in item && item.hasSubmenu ? (
+              <NavDropdown 
+                key={item.name}
+                name={item.name}
+                path={item.path}
+                items={item.submenu.map(subItem => ({
+                  ...subItem,
+                  scrollToTop
+                }))}
+                isActive={location.pathname === item.path}
+              />
+            ) : (
+              <Link 
+                key={item.name}
+                to={item.path} 
+                className={`text-white hover:text-gray-300 px-4 py-2 transition ${
+                  location.pathname === item.path ? 'font-medium' : ''
+                }`}
+              >
+                {item.name}
+              </Link>
+            )
+          ))}
+        </div>
       )}
     </header>
   );

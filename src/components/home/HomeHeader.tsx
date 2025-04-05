@@ -1,11 +1,12 @@
+
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import { Link, useLocation } from "react-router-dom";
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavDropdown } from "@/components/ui/dropdown-nav";
 
 interface HomeHeaderProps {
   scrollToTop: () => void;
@@ -100,53 +101,32 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ scrollToTop }) => {
           </SheetContent>
         </Sheet>
       ) : (
-        <NavigationMenu className="navigation-menu-container">
-          <NavigationMenuList className="gap-1 flex-wrap justify-end">
-            {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.name} className="relative">
-                {item.hasSubmenu ? (
-                  <div className="relative">
-                    <Link 
-                      to={item.path}
-                      className="text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap inline-flex items-center"
-                    >
-                      {item.name}
-                      <ChevronDown className="ml-1 h-3 w-3" />
-                    </Link>
-                    <div className="absolute top-full left-0 min-w-[220px] bg-white text-black shadow-lg rounded-md overflow-hidden z-50 hidden group-hover:block hover:block">
-                      <ul className="py-2 px-2">
-                        {item.submenu?.map((subItem, index) => (
-                          <li key={subItem.name} className="list-none">
-                            <Link
-                              to={subItem.path}
-                              className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 hover:text-red-500 rounded-md transition-colors"
-                              onClick={scrollToTop}
-                            >
-                              <ArrowRight className="h-4 w-4 text-gray-500" />
-                              <span>{subItem.name}</span>
-                            </Link>
-                            {index < item.submenu.length - 1 && (
-                              <div className="mx-4 my-1 border-t border-gray-100"></div>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ) : (
-                  <Link 
-                    to={item.path}
-                    className={`text-white hover:text-gray-300 px-4 py-2 transition whitespace-nowrap ${
-                      location.pathname === item.path ? 'font-medium' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="flex items-center gap-1">
+          {navigationItems.map((item) => (
+            item.hasSubmenu ? (
+              <NavDropdown 
+                key={item.name}
+                name={item.name}
+                path={item.path}
+                items={item.submenu.map(subItem => ({
+                  ...subItem,
+                  scrollToTop
+                }))}
+                isActive={location.pathname === item.path}
+              />
+            ) : (
+              <Link 
+                key={item.name}
+                to={item.path}
+                className={`text-white hover:text-gray-300 px-4 py-2 transition ${
+                  location.pathname === item.path ? 'font-medium' : ''
+                }`}
+              >
+                {item.name}
+              </Link>
+            )
+          ))}
+        </div>
       )}
     </header>
   );

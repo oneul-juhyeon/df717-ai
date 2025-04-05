@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/landing/Logo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ interface TechnologyHeaderProps {
 
 const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   const financialProductsSubmenu = [
     { name: "Forex", path: "/financial-products/forex" },
@@ -109,6 +110,7 @@ const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
                   ...subItem,
                   scrollToTop
                 }))}
+                isActive={location.pathname === item.path}
               />
             ) : (
               <Link 

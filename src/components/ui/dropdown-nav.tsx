@@ -51,7 +51,7 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
       {/* Dropdown Menu */}
       <div 
         className={cn(
-          "absolute top-full left-0 w-[220px] bg-white text-black shadow-lg rounded-md overflow-hidden z-50 transition-all",
+          "absolute top-full left-0 w-[220px] bg-black/80 backdrop-blur-sm text-white shadow-lg rounded-md overflow-hidden z-50 transition-all",
           isOpen ? "opacity-100 visible" : "opacity-0 invisible",
           "group-hover:opacity-100 group-hover:visible"
         )}
@@ -61,14 +61,14 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
             <li key={item.name} className="list-none">
               <Link
                 to={item.path}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 hover:text-red-500 rounded-md transition-colors"
+                className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 hover:text-red-400 rounded-md transition-colors"
                 onClick={item.scrollToTop}
               >
-                <ArrowRight className="h-4 w-4 text-gray-500" />
+                <ArrowRight className="h-4 w-4 text-gray-400" />
                 <span>{item.name}</span>
               </Link>
               {index < items.length - 1 && (
-                <div className="mx-4 my-1 border-t border-gray-100"></div>
+                <div className="mx-4 my-1 border-t border-gray-700"></div>
               )}
             </li>
           ))}
