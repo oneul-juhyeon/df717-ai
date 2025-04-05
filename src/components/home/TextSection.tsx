@@ -6,7 +6,7 @@ const TextSection: React.FC = () => {
   const textSectionRef = useRef(null);
 
   return (
-    <section className="w-full bg-[#111111] py-24 px-4">
+    <section className="w-full bg-[#111111] py-24 px-6 sm:px-8 md:px-12 max-sm:py-16">
       <motion.div 
         ref={textSectionRef}
         className="max-w-4xl mx-auto text-center"
@@ -26,12 +26,12 @@ const TextSection: React.FC = () => {
           duration: 0.7
         }}
       >
-        <p className="font-sans text-xl md:text-2xl text-[#EEEEEE] mb-12 leading-relaxed">
-          For thousands of years, the Bible has foretold a time of famine in the last days.<br />
+        <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-[#EEEEEE] mb-8 md:mb-12 leading-relaxed">
+          For thousands of years, the Bible has foretold a time of famine in the last days.<br className="hidden sm:block" />
           Today, as we live in the end times, we are already witnessing global economic hardship.
         </p>
         
-        <p className="font-sans text-2xl md:text-3xl font-bold text-[#EEEEEE] leading-relaxed">DF717 is a modern-day ark of salvation, using AI-powered financial innovation to help prepare for the famine to come.</p>
+        <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed">DF717 is a modern-day ark of salvation, using AI-powered financial innovation to help prepare for the famine to come.</p>
       </motion.div>
     </section>
   );

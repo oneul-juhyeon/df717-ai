@@ -12,7 +12,7 @@ const Index: React.FC = () => {
         autoPlay
         loop
         muted
-        className="absolute w-full h-full object-cover z-0"
+        className="absolute w-full h-full sm:object-cover max-sm:object-contain z-0"
       >
         <source src="/main.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -21,14 +21,14 @@ const Index: React.FC = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
       
-      <div className="relative z-20 max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
-        <header className="pt-14 max-sm:pt-5">
+      <div className="relative z-20 max-w-none mx-auto px-5 sm:px-10 md:px-[154px]">
+        <header className="pt-5 sm:pt-8 md:pt-14">
           <Link to="/">
             <Logo />
           </Link>
         </header>
 
-        <section className="mt-14">
+        <section className="mt-6 sm:mt-10 md:mt-14">
           <HeroSection className="w-full" />
         </section>
       </div>
