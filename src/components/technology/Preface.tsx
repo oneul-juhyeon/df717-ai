@@ -1,62 +1,88 @@
 
 import React from "react";
+import { motion } from "framer-motion";
 
 const PrefaceComponent = () => {
   return (
     <div className="max-w-4xl mx-auto text-white">
       <h2 className="text-4xl font-bold mb-6">DF717</h2>
       
-      <div className="space-y-8">
-        <div>
+      <motion.div 
+        className="space-y-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
             <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-            What is DF717?
+            DF717
           </h3>
           <p className="text-gray-300 leading-relaxed">
-            DF717 is our proprietary AI-based financial investment robot that uses historical data and advanced pattern recognition technologies to identify market opportunities. DF717 consistently maintains data integrity and methodology, providing reliable results across various market cycles without curve-fitting or bias.
+            DF717 is a robot designed to provide simplified AI investment services.
           </p>
-        </div>
+        </motion.div>
 
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-            <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-            How DF717 Works
-          </h3>
-          <p className="text-gray-300 leading-relaxed">
-            DF717 utilizes sophisticated machine learning algorithms and pattern recognition to analyze financial market data. The system identifies market trends and opportunities by processing vast amounts of historical and real-time data. DF717 continuously learns and adapts its investment strategies based on new market conditions and data inputs.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-[#1a1a1a] border border-white/5 rounded-lg p-6 my-8"
+        >
+          <h4 className="text-xl font-bold mb-3 text-white">content-DF717</h4>
+          <p className="text-gray-300 mb-3">
+            <span className="text-red-400 font-bold">DF717 = Destiny Finance 717</span>
+            <br />
+            <span className="text-lg">All investment uncertainty disturbs our inner peace and undermines true financial shalom. DF717 is a robot that helps investors manage uncertainty with precision and gain peace of mind.</span>
           </p>
-        </div>
+        </motion.div>
 
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
-            <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-            Key Features
-          </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <motion.div 
+            className="bg-[#232323] p-4 rounded border border-white/10"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <h5 className="font-bold text-red-400">DF717-Account</h5>
+            <p className="text-sm text-gray-400">Each customer and account can operate a unique portfolio. The system is stable enough to manage tens of thousands of accounts simultaneously.</p>
+          </motion.div>
           
-          <ul className="space-y-4 text-gray-300">
-            <li className="flex items-start">
-              <span className="text-red-500 mr-2">•</span>
-              <span>Adaptive learning algorithms that evolve with market conditions</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-500 mr-2">•</span>
-              <span>Real-time data processing and analysis</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-500 mr-2">•</span>
-              <span>Risk management protocols to protect investments</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-500 mr-2">•</span>
-              <span>Pattern recognition across multiple timeframes</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-red-500 mr-2">•</span>
-              <span>Proven track record through extensive backtesting</span>
-            </li>
-          </ul>
+          <motion.div 
+            className="bg-[#232323] p-4 rounded border border-white/10"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <h5 className="font-bold text-red-400">DF717-Container</h5>
+            <p className="text-sm text-gray-400">This is the platform where investment logic operates and necessary data is processed. It enables flexible AI-powered investment logic execution.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="bg-[#232323] p-4 rounded border border-white/10"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <h5 className="font-bold text-red-400">DF717-Database</h5>
+            <p className="text-sm text-gray-400">Processing and cleansing data is essential for strategy operation and simulation. DF717 ensures fast and accurate data handling.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="bg-[#232323] p-4 rounded border border-white/10"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <h5 className="font-bold text-red-400">DF717-Web</h5>
+            <p className="text-sm text-gray-400">Provides real-time operation monitoring, account status, and transaction updates. Partners can check and give instructions through web or mobile.</p>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

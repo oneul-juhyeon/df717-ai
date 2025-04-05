@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CoreCompetence from "./CoreCompetence";
 import PrefaceComponent from "./Preface";
 import IsaacComponent from "./Isaac";
@@ -24,9 +24,6 @@ const ModernTechnologyTabs: React.FC = () => {
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
   };
-
-  // Find the active tab's component
-  const activeComponent = tabSections.find(tab => tab.id === activeTab)?.component;
 
   return (
     <div className="w-full">
@@ -58,10 +55,17 @@ const ModernTechnologyTabs: React.FC = () => {
         </div>
       </div>
 
-      {/* Content area - simplified to ensure proper rendering */}
+      {/* Content area */}
       <div className="mt-8">
         <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
-          {activeComponent}
+          {tabSections.map((tab) => (
+            <div 
+              key={tab.id}
+              className={activeTab === tab.id ? "block" : "hidden"}
+            >
+              {tab.component}
+            </div>
+          ))}
         </div>
       </div>
     </div>
