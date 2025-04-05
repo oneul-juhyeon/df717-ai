@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavigationItem } from "./types";
 import { isMenuActive } from "./navigationItems";
@@ -23,14 +23,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
           <Menu className="h-6 w-6" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="bg-white border-gray-200 text-black">
+      <SheetContent side="right" className="bg-[#232323] border-gray-700 text-white">
         <div className="flex flex-col mt-8 space-y-4">
           {navigationItems.map((item) => (
-            <div key={item.name}>
+            <div key={item.name} className="mb-2">
               <Link 
                 to={item.path} 
-                className={`text-black hover:text-red-500 py-2 text-lg transition ${
-                  isMenuActive(item, location.pathname) ? 'text-red-500 font-medium' : ''
+                className={`text-white hover:text-red-400 py-2 text-lg font-medium transition ${
+                  isMenuActive(item, location.pathname) ? 'text-red-400' : ''
                 }`}
               >
                 {item.name}
@@ -41,12 +41,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                   {item.submenu.map((subItem) => {
                     // Check if this is an AxiCFD submenu item (which has id property)
                     const hasId = 'id' in subItem && subItem.id;
+                    const isActive = location.pathname === subItem.path;
+                    
                     return (
                       <Link 
                         key={subItem.name} 
                         to={subItem.path}
-                        className={`text-gray-700 hover:text-red-500 py-1 text-md transition cursor-pointer ${
-                          hasId && activeSection === subItem.id ? 'text-red-500 font-medium' : ''
+                        className={`flex items-center gap-2 text-gray-300 hover:text-red-400 py-1 text-md transition cursor-pointer ${
+                          isActive ? 'text-red-400 font-medium' : ''
                         }`}
                         onClick={() => {
                           if (hasId && subItem.id) {
@@ -55,7 +57,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                           scrollToTop();
                         }}
                       >
-                        {subItem.name}
+                        <ArrowRight className="h-5 w-5 text-gray-400" />
+                        <span>{subItem.name}</span>
                       </Link>
                     );
                   })}

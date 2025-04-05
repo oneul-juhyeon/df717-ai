@@ -54,14 +54,32 @@ export const getNavigationItems = (): NavigationItem[] => [
 ];
 
 export const isMenuActive = (item: NavigationItem, pathname: string): boolean => {
-  if (item.path === '/financial-products') {
-    return pathname.startsWith('/financial-products/');
+  if (item.path === pathname) {
+    return true;
   }
-  if (item.path === '/df717') {
-    return pathname.startsWith('/df717/');
+  
+  if (item.path === '/home-intro' && pathname === '/') {
+    return true;
   }
-  if (item.path === '/axi-cfd') {
-    return pathname.startsWith('/axi-');
+  
+  if (item.path === '/financial-products' && pathname.startsWith('/financial-products/')) {
+    return true;
   }
-  return pathname === item.path;
+  
+  if (item.path === '/df717' && pathname.startsWith('/df717/')) {
+    return true;
+  }
+  
+  if (item.path === '/axi-cfd' && (
+    pathname.startsWith('/axi-') || 
+    pathname === '/axi-cfd' || 
+    pathname === '/axi-edge' || 
+    pathname === '/axi-trust' || 
+    pathname === '/axi-pricing' || 
+    pathname === '/axi-award'
+  )) {
+    return true;
+  }
+  
+  return false;
 };
