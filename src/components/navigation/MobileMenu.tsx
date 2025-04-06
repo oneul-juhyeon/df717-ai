@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight } from "lucide-react";
+import { Menu, ArrowRight, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavigationItem } from "./types";
 import { isMenuActive } from "./navigationItems";
@@ -23,8 +23,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
           <Menu className="h-6 w-6" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="bg-[#232323] border-gray-700 text-white">
-        <div className="flex flex-col mt-8 space-y-4">
+      <SheetContent 
+        side="right" 
+        className="bg-[#232323] border-gray-700 text-white h-full overflow-hidden flex flex-col"
+      >
+        <div className="flex flex-col h-full max-h-[100vh] overflow-y-auto py-8 pr-2">
           {navigationItems.map((item) => (
             <div key={item.name} className="mb-2">
               <Link 
@@ -66,6 +69,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
               )}
             </div>
           ))}
+          
+          <div className="mt-4 flex justify-center text-gray-400 animate-bounce">
+            <ChevronDown className="h-6 w-6" />
+          </div>
         </div>
       </SheetContent>
     </Sheet>
