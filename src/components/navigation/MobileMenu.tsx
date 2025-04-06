@@ -16,9 +16,10 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop }) => {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button variant="ghost" className="text-white p-2">
           <Menu className="h-6 w-6" />
@@ -26,9 +27,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
       </SheetTrigger>
       <SheetContent 
         side="right" 
-        className="bg-[#232323] border-gray-700 text-white h-full overflow-hidden flex flex-col"
+        className={`bg-[#232323] border-gray-700 text-white h-full overflow-hidden flex flex-col ${
+          isOpen ? 'show-scrollbar' : 'hide-scrollbar'
+        }`}
       >
-        <ScrollArea className="flex-1 px-1">
+        <ScrollArea className="flex-1 px-1 mobile-menu-scroll">
           <div className="flex flex-col py-8 pr-2">
             {navigationItems.map((item) => (
               <div key={item.name} className="mb-2">
@@ -60,6 +63,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                               setActiveSection(subItem.id);
                             }
                             scrollToTop();
+                            setIsOpen(false);
                           }}
                         >
                           <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
