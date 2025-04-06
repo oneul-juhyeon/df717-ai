@@ -17,22 +17,25 @@ const RevCounterSection: React.FC = () => {
       className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black"
     >
       <motion.div 
-        className="flex flex-row items-center justify-center gap-6 px-4 sm:gap-10 md:gap-16 lg:gap-20"
+        className="grid grid-cols-3 w-full max-w-4xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: isCounterInView ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Bible book abbreviation cycling animation */}
-        <CharacterReveal text="REV" />
+        {/* Bible book abbreviation cycling animation - fixed position */}
+        <div className="flex justify-center items-center">
+          <CharacterReveal text="REV" />
+        </div>
         
         {/* Number 7 with count-up animation - 1.5 seconds duration */}
-        <AnimatedCounter target={7} duration={1500} />
-        
-        {/* Separator */}
-        <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
+        <div className="flex justify-center items-center">
+          <AnimatedCounter target={7} duration={1500} startFrom={1} endAt={9} />
+        </div>
         
         {/* Number 17 with count-up animation - 1.8 seconds duration */}
-        <AnimatedCounter target={17} duration={1800} />
+        <div className="flex justify-center items-center">
+          <AnimatedCounter target={17} duration={1800} randomize={true} minValue={1} maxValue={30} />
+        </div>
       </motion.div>
     </section>
   );
