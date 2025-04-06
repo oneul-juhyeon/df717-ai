@@ -4,23 +4,23 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
 const BibleVerseSection: React.FC = () => {
-  const [typingComplete, setTypingComplete] = useState(false);
+  const [quoteVisible, setQuoteVisible] = useState(false);
   const [authorVisible, setAuthorVisible] = useState(false);
   const [earthImageVisible, setEarthImageVisible] = useState(false);
 
-  // Typing animation for the Bible verse
+  // Animation sequence for the Bible verse and author
   useEffect(() => {
     const timer1 = setTimeout(() => {
-      setTypingComplete(true);
-    }, 2000); // Bible verse typing completes after 2s
+      setQuoteVisible(true);
+    }, 700); // Quote appears after 0.7s
 
     const timer2 = setTimeout(() => {
       setAuthorVisible(true);
-    }, 2100); // Author appears 0.1s after verse
+    }, 900); // Author appears 0.2s after quote (0.7s + 0.2s = 0.9s)
 
     const timer3 = setTimeout(() => {
       setEarthImageVisible(true);
-    }, 2200); // Earth image appears 0.1s after author
+    }, 1000); // Earth image appears 0.1s after author
 
     return () => {
       clearTimeout(timer1);
@@ -32,26 +32,26 @@ const BibleVerseSection: React.FC = () => {
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden">
       <div className="z-10 max-w-3xl mx-auto">
-        <motion.p 
-          className="font-din text-sm md:text-base lg:text-xl text-white leading-relaxed mb-6 tracking-wider"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: typingComplete ? 1 : 0 }}
-          transition={{ duration: 1 }}
-        >
-          For nation shall rise against nation,<br />
-          and kingdom against kingdom.<br />
-          There shall be famines, and pestilences,<br />
-          and earthquakes in various places.
-        </motion.p>
-        
-        <motion.p 
-          className="font-din text-xs md:text-sm text-gray-400 tracking-wider"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: authorVisible ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          – Matthew 24:7
-        </motion.p>
+        <div className="relative">
+          <motion.p 
+            className="font-din text-sm md:text-base lg:text-xl text-white leading-relaxed mb-2 tracking-wider"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: quoteVisible ? 1 : 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            "For nation shall rise against nation,<br />
+            and kingdom against kingdom.<br />
+            There shall be famines, and pestilences,<br />
+            and earthquakes in various places.
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: authorVisible ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              &nbsp;– Matthew 24:7"
+            </motion.span>
+          </motion.p>
+        </div>
       </div>
 
       {/* Earth Image with Gradient Overlay */}
