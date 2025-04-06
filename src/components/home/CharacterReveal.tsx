@@ -1,15 +1,17 @@
 
 import React, { useState, useEffect } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Bible book abbreviation cycling component with smooth transitions
-const CharacterReveal = ({ text }: { text: string }) => {
+const CharacterReveal = ({ text, isInView }: { text: string; isInView: boolean }) => {
   const [displayedText, setDisplayedText] = useState("");
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: true });
   
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView) {
+      setDisplayedText(""); // Reset the text when out of view
+      return;
+    }
     
     // Bible book abbreviations to cycle through
     const bibleBooks = [
@@ -31,14 +33,14 @@ const CharacterReveal = ({ text }: { text: string }) => {
     }, 100); // Change every 0.1 seconds
     
     return () => clearInterval(interval);
-  }, [isInView]);
+  }, [isInView]); // Depend on isInView to restart animation
 
   return (
     <motion.div 
       ref={containerRef}
       className="flex items-center justify-center w-full"
       initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      animate={{ opacity: isInView ? 1 : 0 }}
       transition={{ duration: 0.3 }}
     >
       <AnimatePresence mode="wait">

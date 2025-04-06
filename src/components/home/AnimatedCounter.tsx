@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 // Animated counter component with count-up animation
 const AnimatedCounter = ({ 
@@ -11,7 +11,8 @@ const AnimatedCounter = ({
   endAt = undefined,
   randomize = false,
   minValue = 0,
-  maxValue = 100
+  maxValue = 100,
+  isInView = false
 }: { 
   target: number; 
   title?: string;
@@ -21,10 +22,10 @@ const AnimatedCounter = ({
   randomize?: boolean;
   minValue?: number;
   maxValue?: number;
+  isInView?: boolean;
 }) => {
   const [count, setCount] = useState(startFrom);
   const counterRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(counterRef, { once: true, margin: "-100px" });
   
   useEffect(() => {
     let startTimestamp: number;
@@ -32,6 +33,9 @@ const AnimatedCounter = ({
     let lastCount = startFrom;
     
     if (isInView) {
+      // Reset counter when coming back into view
+      setCount(startFrom);
+      
       const step = (timestamp: number) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
@@ -104,7 +108,7 @@ const AnimatedCounter = ({
           className="text-lg md:text-xl lg:text-2xl text-white opacity-80 mt-2 font-din tracking-wider"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
           {title}

@@ -7,7 +7,7 @@ import AnimatedCounter from "./AnimatedCounter";
 const RevCounterSection: React.FC = () => {
   const counterSectionRef = useRef<HTMLDivElement>(null);
   const isCounterInView = useInView(counterSectionRef, { 
-    once: true,
+    once: false, // Changed from true to false to replay animations
     margin: "-100px" // Trigger slightly before the section is fully in view
   });
   
@@ -24,17 +24,17 @@ const RevCounterSection: React.FC = () => {
       >
         {/* Bible book abbreviation cycling animation - fixed position */}
         <div className="flex justify-center items-center">
-          <CharacterReveal text="REV" />
+          <CharacterReveal text="REV" isInView={isCounterInView} />
         </div>
         
         {/* Number 7 with count-up animation - 1.5 seconds duration */}
         <div className="flex justify-center items-center">
-          <AnimatedCounter target={7} duration={1500} startFrom={1} endAt={9} />
+          <AnimatedCounter target={7} duration={1500} startFrom={1} endAt={9} isInView={isCounterInView} />
         </div>
         
         {/* Number 17 with count-up animation - 1.8 seconds duration */}
         <div className="flex justify-center items-center">
-          <AnimatedCounter target={17} duration={1800} randomize={true} minValue={1} maxValue={30} />
+          <AnimatedCounter target={17} duration={1800} randomize={true} minValue={1} maxValue={30} isInView={isCounterInView} />
         </div>
       </motion.div>
     </section>

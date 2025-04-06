@@ -1,17 +1,28 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const BibleVerseSection: React.FC = () => {
   const [quoteVisible, setQuoteVisible] = useState(false);
   const [authorVisible, setAuthorVisible] = useState(false);
   const [earthImageVisible, setEarthImageVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
+  const quoteRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  
+  // Use useInView for watching when section scrolls in or out
+  const isInView = useInView(quoteRef, { once: false });
   const controls = useAnimation();
 
   // Animation sequence
   useEffect(() => {
+    if (!isInView) {
+      // Reset states when out of view
+      setAuthorVisible(false);
+      setArrowVisible(false);
+      return;
+    }
+    
     // Step 1: Start with black background, then fade in quote
     const timer1 = setTimeout(() => {
       setQuoteVisible(true);
@@ -22,10 +33,12 @@ const BibleVerseSection: React.FC = () => {
       setAuthorVisible(true);
     }, 1900); // Attribution appears after quote (1s + 0.8s quote fade + 0.1s delay)
 
-    // Step 3: Show Earth image 0.2s after attribution
-    const timer3 = setTimeout(() => {
-      setEarthImageVisible(true);
-    }, 2100); // Earth image appears 0.2s after attribution (1900ms + 200ms)
+    // Step 3: Show Earth image 0.2s after attribution (Image should stay visible)
+    if (!earthImageVisible) {
+      const timer3 = setTimeout(() => {
+        setEarthImageVisible(true);
+      }, 2100); // Earth image appears 0.2s after attribution (1900ms + 200ms)
+    }
 
     // Step 4-5: Scroll down and show arrow
     const timer4 = setTimeout(() => {
@@ -38,15 +51,14 @@ const BibleVerseSection: React.FC = () => {
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
-      clearTimeout(timer3);
       clearTimeout(timer4);
     };
-  }, []);
+  }, [isInView]);
 
   return (
     <section ref={sectionRef} className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden">
       <div className="z-10 max-w-3xl mx-auto">
-        <div className="relative">
+        <div ref={quoteRef} className="relative">
           {quoteVisible && (
             <div className="font-din text-sm md:text-base lg:text-xl text-white leading-relaxed mb-2 tracking-wider">
               <motion.div
