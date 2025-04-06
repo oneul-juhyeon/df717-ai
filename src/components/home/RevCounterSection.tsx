@@ -1,8 +1,6 @@
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import CharacterReveal from "./CharacterReveal";
-import AnimatedCounter from "./AnimatedCounter";
 
 const RevCounterSection: React.FC = () => {
   const counterSectionRef = useRef<HTMLDivElement>(null);
@@ -13,6 +11,40 @@ const RevCounterSection: React.FC = () => {
   
   // Animation duration for the scale + fade-in effect
   const animationDuration = 1.0; // 1 second for the animation
+  
+  // State for the current Bible book abbreviation
+  const [currentBook, setCurrentBook] = useState("REV");
+  
+  // Bible abbreviation animation
+  useEffect(() => {
+    if (!isCounterInView) {
+      setCurrentBook("REV"); // Reset to REV when out of view
+      return;
+    }
+    
+    const bibleBooks = ["GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "RUT", "ISA", "REV"];
+    let currentIndex = 0;
+    
+    // Show first book immediately
+    setCurrentBook(bibleBooks[currentIndex]);
+    
+    // Calculate interval to ensure animation completes in ~2 seconds
+    // 9 books with ~0.2s per book = ~1.8s total + a bit of buffer
+    const interval = 200; // 0.2 seconds
+    
+    const timer = setInterval(() => {
+      currentIndex++;
+      
+      if (currentIndex < bibleBooks.length) {
+        setCurrentBook(bibleBooks[currentIndex]);
+      } else {
+        // Stop when we reach the end (REV)
+        clearInterval(timer);
+      }
+    }, interval);
+    
+    return () => clearInterval(timer);
+  }, [isCounterInView]);
   
   return (
     <section 
@@ -25,7 +57,7 @@ const RevCounterSection: React.FC = () => {
         animate={{ opacity: isCounterInView ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Bible book abbreviation with fade-in + scale animation */}
+        {/* Bible book abbreviation with cycling animation + scale effect */}
         <div className="flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, scale: 1.05 }}
@@ -35,8 +67,14 @@ const RevCounterSection: React.FC = () => {
             }}
             transition={{ duration: animationDuration, ease: "easeOut" }}
             className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+            style={{
+              minWidth: "3ch", // Fixed width for 3 characters
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            REV
+            {currentBook}
           </motion.div>
         </div>
         
