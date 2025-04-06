@@ -2,8 +2,16 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Bible book abbreviation cycling component with smooth transitions
-const CharacterReveal = ({ text, isInView }: { text: string; isInView: boolean }) => {
+// Bible book abbreviation cycling component with slow, cinematic transitions
+const CharacterReveal = ({ 
+  text, 
+  isInView,
+  delay = 0 
+}: { 
+  text: string; 
+  isInView: boolean;
+  delay?: number;
+}) => {
   const [displayedText, setDisplayedText] = useState("");
   const containerRef = React.useRef<HTMLDivElement>(null);
   
@@ -13,27 +21,33 @@ const CharacterReveal = ({ text, isInView }: { text: string; isInView: boolean }
       return;
     }
     
-    // Bible book abbreviations to cycle through
+    // Reduced set of Bible book abbreviations (key steps only)
     const bibleBooks = [
-      "GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JUD", "RUT", 
-      "EZR", "NEH", "EST", "JOB", "PSA", "PRO", "ECC", "ISA", "REV"
+      "GEN", "EXO", "PSA", "ISA", "MAT", "JOH", "REV"
     ];
     
     let currentIndex = 0;
+    let mainTimer: NodeJS.Timeout;
     
-    // Start cycling through abbreviations
-    const interval = setInterval(() => {
-      setDisplayedText(bibleBooks[currentIndex]);
-      currentIndex++;
-      
-      // Stop when we reach "REV" (the last item)
-      if (currentIndex >= bibleBooks.length) {
-        clearInterval(interval);
-      }
-    }, 100); // Change every 0.1 seconds
+    // Delay the start of the animation sequence
+    const initialDelay = setTimeout(() => {
+      // Start cycling through abbreviations at a slower pace
+      mainTimer = setInterval(() => {
+        setDisplayedText(bibleBooks[currentIndex]);
+        currentIndex++;
+        
+        // Stop when we reach "REV" (the last item)
+        if (currentIndex >= bibleBooks.length) {
+          clearInterval(mainTimer);
+        }
+      }, 400); // Slower pace - 0.4 seconds between changes
+    }, delay);
     
-    return () => clearInterval(interval);
-  }, [isInView]); // Depend on isInView to restart animation
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(mainTimer);
+    };
+  }, [isInView, delay]); // Depend on isInView to restart animation
 
   return (
     <motion.div 
@@ -41,16 +55,16 @@ const CharacterReveal = ({ text, isInView }: { text: string; isInView: boolean }
       className="flex items-center justify-center w-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.8 }}
     >
       <AnimatePresence mode="wait">
         {displayedText && (
           <motion.div
             key={displayedText}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -5 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block font-mono fixed-width-text"
             style={{ 
               fontFamily: "monospace", // Ensuring fixed width for all characters
