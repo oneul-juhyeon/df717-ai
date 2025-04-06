@@ -1,113 +1,13 @@
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowDown, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import HomeHeader from "@/components/home/HomeHeader";
-
-// Character by character animation component
-const CharacterReveal = ({ text }: { text: string }) => {
-  return (
-    <motion.div className="flex items-center justify-center">
-      {Array.from(text).map((char, index) => (
-        <motion.span
-          key={index}
-          className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block"
-          initial={{ opacity: 0 }}
-          whileInView={{
-            opacity: 1,
-            transition: {
-              duration: 0.5,
-              delay: 0.05 * index,
-            }
-          }}
-          viewport={{ once: true }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            type: "spring",
-            stiffness: 100,
-          }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-};
-
-// Animated counter component with count-up animation
-const AnimatedCounter = ({ target, title }: { target: number; title?: string }) => {
-  const [count, setCount] = useState(0);
-  const counterRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(counterRef, { once: true, margin: "-100px" });
-  
-  useEffect(() => {
-    let startTimestamp: number;
-    let animationFrameId: number;
-    const duration = 1500; // Animation duration in ms
-    
-    if (isInView) {
-      const step = (timestamp: number) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        setCount(Math.floor(progress * target));
-        
-        if (progress < 1) {
-          animationFrameId = requestAnimationFrame(step);
-        }
-      };
-      
-      animationFrameId = requestAnimationFrame(step);
-    }
-    
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-  }, [isInView, target]);
-
-  return (
-    <div className="flex flex-col items-center justify-center" ref={counterRef}>
-      <motion.div
-        className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-      >
-        {count}
-      </motion.div>
-      {title && (
-        <motion.div
-          className="text-lg md:text-xl lg:text-2xl text-white opacity-80 mt-2 font-din tracking-wider"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.8 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-        >
-          {title}
-        </motion.div>
-      )}
-    </div>
-  );
-};
+import BibleVerseSection from "@/components/home/BibleVerseSection";
+import RevCounterSection from "@/components/home/RevCounterSection";
+import FinalSection from "@/components/home/FinalSection";
 
 const HomeIntro: React.FC = () => {
-  const [typingComplete, setTypingComplete] = useState(false);
-  const [authorVisible, setAuthorVisible] = useState(false);
-  const [earthImageVisible, setEarthImageVisible] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const earthSectionRef = useRef<HTMLDivElement>(null);
-  const counterSectionRef = useRef<HTMLDivElement>(null);
-  const finalSectionRef = useRef<HTMLDivElement>(null);
-  const isEarthInView = useInView(earthSectionRef);
-  const isCounterInView = useInView(counterSectionRef);
-  const isFinalInView = useInView(finalSectionRef);
-
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
@@ -117,27 +17,6 @@ const HomeIntro: React.FC = () => {
       behavior: 'smooth'
     });
   };
-
-  // Typing animation for the Bible verse
-  useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setTypingComplete(true);
-    }, 2000); // Bible verse typing completes after 2s
-
-    const timer2 = setTimeout(() => {
-      setAuthorVisible(true);
-    }, 2100); // Author appears 0.1s after verse
-
-    const timer3 = setTimeout(() => {
-      setEarthImageVisible(true);
-    }, 2200); // Earth image appears 0.1s after author
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-    };
-  }, []);
 
   // Detect scroll
   useEffect(() => {
@@ -159,152 +38,13 @@ const HomeIntro: React.FC = () => {
       </div>
 
       {/* First Section - Bible Verse with Earth Image */}
-      <section 
-        ref={earthSectionRef}
-        className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden"
-      >
-        <div className="z-10 max-w-3xl mx-auto">
-          <motion.p 
-            className="font-din text-xl md:text-2xl lg:text-3xl text-white leading-relaxed mb-6 tracking-wider"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: typingComplete ? 1 : 0 }}
-            transition={{ duration: 1 }}
-          >
-            For nation shall rise against nation,<br />
-            and kingdom against kingdom.<br />
-            There shall be famines, and pestilences,<br />
-            and earthquakes in various places.
-          </motion.p>
-          
-          <motion.p 
-            className="font-din text-lg md:text-xl text-gray-400 tracking-wider"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: authorVisible ? 1 : 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            – Matthew 24:7
-          </motion.p>
-        </div>
-
-        {/* Earth Image */}
-        <motion.div 
-          className="absolute inset-0 z-0 w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: earthImageVisible ? 1 : 0 }}
-          transition={{ duration: 1 }}
-        >
-          <img 
-            src="/lovable-uploads/home-intro1.webp" 
-            alt="Earth from space" 
-            className="object-cover w-full h-full"
-            style={{ objectFit: "cover" }}
-          />
-        </motion.div>
-
-        {/* Down Arrow */}
-        <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ 
-            opacity: earthImageVisible ? [0, 1, 0.5, 1] : 0, 
-            y: earthImageVisible ? [0, 10, 5, 10] : 0
-          }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity, 
-            repeatType: "reverse" 
-          }}
-        >
-          <ArrowDown className="h-10 w-10 text-white" />
-        </motion.div>
-      </section>
+      <BibleVerseSection />
 
       {/* Counter Section */}
-      <section 
-        ref={counterSectionRef}
-        className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black"
-      >
-        <motion.div 
-          className="flex flex-row items-center justify-center gap-6 px-4 sm:gap-10 md:gap-16 lg:gap-24"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isCounterInView ? 1 : 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {/* REV text with character-by-character animation */}
-          <CharacterReveal text="REV" />
-          
-          {/* Separator */}
-          <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
-          
-          {/* Number 7 with count-up animation */}
-          <AnimatedCounter target={7} />
-          
-          {/* Separator */}
-          <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
-          
-          {/* Number 17 with count-up animation */}
-          <AnimatedCounter target={17} />
-        </motion.div>
-      </section>
+      <RevCounterSection />
 
       {/* Final Section */}
-      <section 
-        ref={finalSectionRef}
-        className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden"
-      >
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0 w-full h-full">
-          <img 
-            src="/lovable-uploads/home-intro2.webp" 
-            alt="Yellow planet curve" 
-            className="object-cover w-full h-full"
-          />
-        </div>
-
-        <div className="z-10 max-w-3xl mx-auto mt-auto pt-[40vh] flex flex-col items-center">
-          <motion.p 
-            className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            For thousands of years, the Bible has foretold a time of famine in the last days.
-            <br /><br />
-            Today, as we live in the end times, we are already witnessing global economic hardship.
-          </motion.p>
-          
-          <motion.p 
-            className="font-din text-xl md:text-2xl lg:text-3xl font-bold text-white leading-relaxed mb-10 tracking-wider"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            DF717 is a modern-day ark of salvation,
-            <br />
-            using AI-powered financial innovation
-            <br />
-            to help prepare for the famine to come.
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mb-16"
-          >
-            <Link 
-              to="/company" 
-              className="inline-flex items-center border border-white/70 text-white hover:bg-white/10 transition-colors px-8 py-3 tracking-wider font-din text-lg"
-            >
-              LEARN MORE ABOUT DF717
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <FinalSection />
     </main>
   );
 };
