@@ -44,7 +44,7 @@ const AnimatedCounter = ({
   return (
     <div className="flex flex-col items-center justify-center" ref={counterRef}>
       <motion.div
-        className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+        className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white font-mono"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

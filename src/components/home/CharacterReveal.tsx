@@ -44,11 +44,11 @@ const CharacterReveal = ({ text }: { text: string }) => {
       {displayedText && (
         <motion.div
           key={displayedText}
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ duration: 0.05 }}
-          className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block"
+          exit={{ opacity: 0, y: 8 }}
+          transition={{ duration: 0.08 }}
+          className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block font-mono"
         >
           {displayedText}
         </motion.div>
