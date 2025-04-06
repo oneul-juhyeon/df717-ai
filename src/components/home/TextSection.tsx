@@ -6,41 +6,62 @@ const TextSection: React.FC = () => {
   const textSectionRef = useRef(null);
 
   return (
-    <section className="w-full bg-[#111111] py-16 md:py-24 px-6 sm:px-8 md:px-12 max-sm:mt-0">
-      <motion.div 
-        ref={textSectionRef}
-        className="max-w-4xl mx-auto text-center"
-        initial={{
-          opacity: 0,
-          y: 20
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0
-        }}
-        viewport={{
-          once: true,
-          margin: "-100px"
-        }}
-        transition={{
-          duration: 0.7
-        }}
-      >
-        <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-[#EEEEEE] mb-6 md:mb-8 lg:mb-12 leading-relaxed">
-          For thousands of years, the Bible has foretold a time of famine in the last days.
-          <br className="hidden sm:block" />
-          <br className="hidden sm:block" />
-          Today, as we live in the end times, we are already witnessing global economic hardship.
-        </p>
+    <section className="w-full bg-[#111111] py-20 md:py-32 px-6 sm:px-8 md:px-12 max-sm:mt-0">
+      <div className="max-w-4xl mx-auto flex flex-col space-y-24 md:space-y-32">
+        <motion.div 
+          className="text-center"
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }}
+          viewport={{
+            once: true,
+            margin: "-100px"
+          }}
+          transition={{
+            duration: 0.7
+          }}
+        >
+          <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-[#EEEEEE] leading-relaxed">
+            For thousands of years, the Bible has foretold a time of famine in the last days.
+            <br className="hidden sm:block" />
+            <br className="hidden sm:block" />
+            Today, as we live in the end times, we are already witnessing global economic hardship.
+          </p>
+        </motion.div>
         
-        <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed">
-          DF717 is a modern-day ark of salvation,
-          <br />
-          using AI-powered financial innovation
-          <br />
-          to help prepare for the famine to come.
-        </p>
-      </motion.div>
+        <motion.div 
+          className="text-center"
+          initial={{
+            opacity: 0,
+            y: 20
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }}
+          viewport={{
+            once: true,
+            margin: "-100px"
+          }}
+          transition={{
+            duration: 0.7,
+            delay: 0.2
+          }}
+        >
+          <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed">
+            DF717 is a modern-day ark of salvation,
+            <br />
+            using AI-powered financial innovation
+            <br />
+            to help prepare for the famine to come.
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 };

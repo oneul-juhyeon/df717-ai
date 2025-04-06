@@ -20,6 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				'sans': ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
 				'gotham': ['Gotham', 'sans-serif'],
 			},
 			colors: {
