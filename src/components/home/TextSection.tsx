@@ -27,11 +27,19 @@ const TextSection: React.FC = () => {
         }}
       >
         <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-[#EEEEEE] mb-6 md:mb-8 lg:mb-12 leading-relaxed">
-          For thousands of years, the Bible has foretold a time of famine in the last days.<br className="hidden sm:block" />
+          For thousands of years, the Bible has foretold a time of famine in the last days.
+          <br className="hidden sm:block" />
+          <br className="hidden sm:block" />
           Today, as we live in the end times, we are already witnessing global economic hardship.
         </p>
         
-        <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed">DF717 is a modern-day ark of salvation, using AI-powered financial innovation to help prepare for the famine to come.</p>
+        <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed">
+          DF717 is a modern-day ark of salvation, 
+          <br className="hidden sm:block" />
+          using AI-powered financial innovation 
+          <br className="hidden sm:block" />
+          to help prepare for the famine to come.
+        </p>
       </motion.div>
     </section>
   );
