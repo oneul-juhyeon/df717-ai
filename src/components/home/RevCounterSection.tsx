@@ -1,12 +1,15 @@
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import CharacterReveal from "./CharacterReveal";
 import AnimatedCounter from "./AnimatedCounter";
 
 const RevCounterSection: React.FC = () => {
-  const counterSectionRef = React.useRef<HTMLDivElement>(null);
-  const isCounterInView = useInView(counterSectionRef);
+  const counterSectionRef = useRef<HTMLDivElement>(null);
+  const isCounterInView = useInView(counterSectionRef, { 
+    once: true,
+    margin: "-100px" // Trigger slightly before the section is fully in view
+  });
   
   return (
     <section 
@@ -17,9 +20,9 @@ const RevCounterSection: React.FC = () => {
         className="flex flex-row items-center justify-center gap-6 px-4 sm:gap-10 md:gap-16 lg:gap-24"
         initial={{ opacity: 0 }}
         animate={{ opacity: isCounterInView ? 1 : 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        transition={{ duration: 0.5 }}
       >
-        {/* REV text with character-by-character animation */}
+        {/* REV text with character-by-character scramble animation */}
         <CharacterReveal text="REV" />
         
         {/* Separator */}
