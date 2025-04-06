@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,7 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+				'sans': ['DIN Condensed', 'Arial Narrow', 'Franklin Gothic Medium', 'sans-serif'],
 				'gotham': ['Gotham', 'sans-serif'],
 				'din': ['DIN Condensed', 'Arial Narrow', 'Franklin Gothic Medium', 'sans-serif'],
 			},

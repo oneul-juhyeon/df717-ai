@@ -106,7 +106,7 @@ const RevCounterSection: React.FC = () => {
               scale: isCounterInView ? 1 : 1.05 
             }}
             transition={{ duration: animationDuration, ease: "easeOut" }}
-            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+            className="text-7xl md:text-8xl lg:text-9xl tracking-wider text-white"
             style={{
               minWidth: "3ch", // Fixed width for 3 characters
               textAlign: "center",
@@ -127,7 +127,7 @@ const RevCounterSection: React.FC = () => {
               scale: isCounterInView ? 1 : 1.05 
             }}
             transition={{ duration: animationDuration, ease: "easeOut" }}
-            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+            className="text-7xl md:text-8xl lg:text-9xl tracking-wider text-white"
             style={{
               minWidth: "2ch", // Fixed width for up to 2 digits
               textAlign: "center",
@@ -148,7 +148,7 @@ const RevCounterSection: React.FC = () => {
               scale: isCounterInView ? 1 : 1.05 
             }}
             transition={{ duration: animationDuration, ease: "easeOut" }}
-            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+            className="text-7xl md:text-8xl lg:text-9xl tracking-wider text-white"
             style={{
               minWidth: "2ch", // Fixed width for up to 2 digits
               textAlign: "center",
