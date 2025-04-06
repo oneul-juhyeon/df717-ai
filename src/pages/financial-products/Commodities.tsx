@@ -7,7 +7,6 @@ import FinancialProductLayout from "@/components/financial-products/FinancialPro
 const Commodities: React.FC = () => {
   return (
     <FinancialProductLayout 
-      title="Commodities Trading"
       renderHeader={(scrollToTop) => <CommoditiesHeader scrollToTop={scrollToTop} />}
     >
       <CommoditiesArticleContent />

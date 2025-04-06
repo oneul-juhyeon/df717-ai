@@ -7,7 +7,6 @@ import FinancialProductLayout from "@/components/financial-products/FinancialPro
 const Indices: React.FC = () => {
   return (
     <FinancialProductLayout 
-      title="Indices Trading"
       renderHeader={(scrollToTop) => <IndicesHeader scrollToTop={scrollToTop} />}
     >
       <IndicesArticleContent />

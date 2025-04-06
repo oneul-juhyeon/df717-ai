@@ -7,7 +7,6 @@ import FinancialProductLayout from "@/components/financial-products/FinancialPro
 const Crypto: React.FC = () => {
   return (
     <FinancialProductLayout 
-      title="Cryptocurrency Trading"
       renderHeader={(scrollToTop) => <CryptoHeader scrollToTop={scrollToTop} />}
     >
       <CryptoArticleContent />

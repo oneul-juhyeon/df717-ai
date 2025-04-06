@@ -1,6 +1,5 @@
 
 import React from "react";
-import IndicesArticleHeader from "./IndicesArticleHeader";
 import IndicesWhatAre from "./sections/IndicesWhatAre";
 import IndicesMarket from "./sections/IndicesMarket";
 import IndicesTrading from "./sections/IndicesTrading";
@@ -13,10 +12,9 @@ import IndicesFAQ from "./sections/IndicesFAQ";
 
 const IndicesArticleContent: React.FC = () => {
   return (
-    <article className="container mx-auto px-4 py-12">
+    <article className="text-white py-12">
       <div className="max-w-3xl mx-auto text-left">
-        <IndicesArticleHeader />
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed">
+        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed">
           <IndicesWhatAre />
           <IndicesMarket />
           <IndicesTrading />
