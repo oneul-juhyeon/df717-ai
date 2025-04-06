@@ -1,28 +1,42 @@
 
 import React from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 import IndicesWhatAre from "./sections/IndicesWhatAre";
 import IndicesMarket from "./sections/IndicesMarket";
-import IndicesTrading from "./sections/IndicesTrading";
 import IndicesHowItWorks from "./sections/IndicesHowItWorks";
 import IndicesWhy from "./sections/IndicesWhy";
-import IndicesHowToTrade from "./sections/IndicesHowToTrade";
 import IndicesAdvantages from "./sections/IndicesAdvantages";
 import IndicesDisadvantages from "./sections/IndicesDisadvantages";
+import IndicesTrading from "./sections/IndicesTrading";
+import IndicesHowToTrade from "./sections/IndicesHowToTrade";
 import IndicesFAQ from "./sections/IndicesFAQ";
 
 const IndicesArticleContent: React.FC = () => {
   return (
-    <article className="text-white py-12">
+    <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed">
+        <FinancialProductArticleHeader title="What are Indices and how to trade Indices?" />
+        
+        <div className="prose max-w-none 
+          prose-headings:font-bold 
+          prose-headings:text-white 
+          prose-p:text-gray-300 
+          prose-p:leading-relaxed 
+          prose-li:text-gray-300 
+          prose-strong:text-white
+          prose-table:text-gray-300
+          prose-th:text-white
+          prose-td:text-gray-300
+          prose-a:text-blue-400
+          prose-a:hover:text-blue-300">
           <IndicesWhatAre />
           <IndicesMarket />
-          <IndicesTrading />
           <IndicesHowItWorks />
           <IndicesWhy />
-          <IndicesHowToTrade />
           <IndicesAdvantages />
           <IndicesDisadvantages />
+          <IndicesTrading />
+          <IndicesHowToTrade />
           <IndicesFAQ />
         </div>
       </div>

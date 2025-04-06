@@ -1,32 +1,44 @@
 
 import React from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 import CryptoWhatIs from "./sections/CryptoWhatIs";
 import CryptoMarket from "./sections/CryptoMarket";
-import CryptoTrading from "./sections/CryptoTrading";
 import CryptoTradingWorks from "./sections/CryptoTradingWorks";
 import CryptoWhyTrade from "./sections/CryptoWhyTrade";
-import CryptoHowToTrade from "./sections/CryptoHowToTrade";
 import CryptoAdvantages from "./sections/CryptoAdvantages";
 import CryptoDisadvantages from "./sections/CryptoDisadvantages";
 import CryptoDifferences from "./sections/CryptoDifferences";
+import CryptoTrading from "./sections/CryptoTrading";
+import CryptoHowToTrade from "./sections/CryptoHowToTrade";
 import CryptoFAQ from "./sections/CryptoFAQ";
-import { Separator } from "@/components/ui/separator";
 
 const CryptoArticleContent: React.FC = () => {
   return (
-    <article className="text-white py-12">
+    <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed">
+        <FinancialProductArticleHeader title="What is Crypto trading and how to trade Cryptocurrencies?" />
+        
+        <div className="prose max-w-none 
+          prose-headings:font-bold 
+          prose-headings:text-white 
+          prose-p:text-gray-300 
+          prose-p:leading-relaxed 
+          prose-li:text-gray-300 
+          prose-strong:text-white
+          prose-table:text-gray-300
+          prose-th:text-white
+          prose-td:text-gray-300
+          prose-a:text-blue-400
+          prose-a:hover:text-blue-300">
           <CryptoWhatIs />
           <CryptoMarket />
-          <CryptoTrading />
           <CryptoTradingWorks />
           <CryptoWhyTrade />
-          <CryptoHowToTrade />
           <CryptoAdvantages />
           <CryptoDisadvantages />
           <CryptoDifferences />
-          <Separator className="my-10" />
+          <CryptoTrading />
+          <CryptoHowToTrade />
           <CryptoFAQ />
         </div>
       </div>

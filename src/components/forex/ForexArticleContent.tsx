@@ -1,50 +1,62 @@
 
 import React from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 import ForexWhatIs from "./sections/ForexWhatIs";
 import ForexMarket from "./sections/ForexMarket";
-import ForexTypes from "./sections/ForexTypes";
-import ForexPriceMovements from "./sections/ForexPriceMovements";
-import ForexMarketHours from "./sections/ForexMarketHours";
-import ForexRegulation from "./sections/ForexRegulation";
-import ForexCurrencyPairs from "./sections/ForexCurrencyPairs";
-import ForexTrading from "./sections/ForexTrading";
 import ForexHowItWorks from "./sections/ForexHowItWorks";
-import ForexDifference from "./sections/ForexDifference";
-import ForexWhyTrade from "./sections/ForexWhyTrade";
-import ForexHowToTrade from "./sections/ForexHowToTrade";
-import ForexAnalysis from "./sections/ForexAnalysis";
-import ForexCharts from "./sections/ForexCharts";
 import ForexAdvantages from "./sections/ForexAdvantages";
 import ForexDisadvantages from "./sections/ForexDisadvantages";
+import ForexWhyTrade from "./sections/ForexWhyTrade";
+import ForexHowToTrade from "./sections/ForexHowToTrade";
+import ForexCurrencyPairs from "./sections/ForexCurrencyPairs";
+import ForexMarketHours from "./sections/ForexMarketHours";
+import ForexTrading from "./sections/ForexTrading";
+import ForexPriceMovements from "./sections/ForexPriceMovements";
+import ForexTypes from "./sections/ForexTypes";
+import ForexDifference from "./sections/ForexDifference";
 import ForexStrategy from "./sections/ForexStrategy";
 import ForexRiskManagement from "./sections/ForexRiskManagement";
+import ForexCharts from "./sections/ForexCharts";
+import ForexAnalysis from "./sections/ForexAnalysis";
+import ForexRegulation from "./sections/ForexRegulation";
 import ForexFAQ from "./sections/ForexFAQ";
-import { Separator } from "@/components/ui/separator";
 
 const ForexArticleContent: React.FC = () => {
   return (
-    <article className="text-white py-12">
+    <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed">
+        <FinancialProductArticleHeader title="What is Forex trading and how to trade Forex?" />
+        
+        <div className="prose max-w-none 
+          prose-headings:font-bold 
+          prose-headings:text-white 
+          prose-p:text-gray-300 
+          prose-p:leading-relaxed 
+          prose-li:text-gray-300 
+          prose-strong:text-white
+          prose-table:text-gray-300
+          prose-th:text-white
+          prose-td:text-gray-300
+          prose-a:text-blue-400
+          prose-a:hover:text-blue-300">
           <ForexWhatIs />
           <ForexMarket />
-          <ForexTypes />
-          <ForexPriceMovements />
-          <ForexMarketHours />
-          <ForexRegulation />
-          <ForexCurrencyPairs />
-          <ForexTrading />
           <ForexHowItWorks />
-          <ForexDifference />
-          <ForexWhyTrade />
-          <ForexHowToTrade />
-          <ForexAnalysis />
-          <ForexCharts />
           <ForexAdvantages />
           <ForexDisadvantages />
+          <ForexWhyTrade />
+          <ForexHowToTrade />
+          <ForexCurrencyPairs />
+          <ForexMarketHours />
+          <ForexTrading />
+          <ForexPriceMovements />
+          <ForexTypes />
+          <ForexDifference />
           <ForexStrategy />
           <ForexRiskManagement />
-          <Separator className="my-10" />
+          <ForexCharts />
+          <ForexAnalysis />
+          <ForexRegulation />
           <ForexFAQ />
         </div>
       </div>

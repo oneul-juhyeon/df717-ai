@@ -1,30 +1,42 @@
 
 import React from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 import CommoditiesWhatAre from "./sections/CommoditiesWhatAre";
 import CommoditiesMarket from "./sections/CommoditiesMarket";
-import CommoditiesTrading from "./sections/CommoditiesTrading";
 import CommoditiesHowItWorks from "./sections/CommoditiesHowItWorks";
 import CommoditiesWhy from "./sections/CommoditiesWhy";
-import CommoditiesHowToTrade from "./sections/CommoditiesHowToTrade";
 import CommoditiesAdvantages from "./sections/CommoditiesAdvantages";
 import CommoditiesDisadvantages from "./sections/CommoditiesDisadvantages";
+import CommoditiesTrading from "./sections/CommoditiesTrading";
+import CommoditiesHowToTrade from "./sections/CommoditiesHowToTrade";
 import CommoditiesFAQ from "./sections/CommoditiesFAQ";
-import { Separator } from "@/components/ui/separator";
 
 const CommoditiesArticleContent: React.FC = () => {
   return (
-    <article className="text-white py-12">
+    <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed">
+        <FinancialProductArticleHeader title="What are Commodities and how to trade Commodities?" />
+        
+        <div className="prose max-w-none 
+          prose-headings:font-bold 
+          prose-headings:text-white 
+          prose-p:text-gray-300 
+          prose-p:leading-relaxed 
+          prose-li:text-gray-300 
+          prose-strong:text-white
+          prose-table:text-gray-300
+          prose-th:text-white
+          prose-td:text-gray-300
+          prose-a:text-blue-400
+          prose-a:hover:text-blue-300">
           <CommoditiesWhatAre />
           <CommoditiesMarket />
-          <CommoditiesTrading />
           <CommoditiesHowItWorks />
           <CommoditiesWhy />
-          <CommoditiesHowToTrade />
           <CommoditiesAdvantages />
           <CommoditiesDisadvantages />
-          <Separator className="my-10" />
+          <CommoditiesTrading />
+          <CommoditiesHowToTrade />
           <CommoditiesFAQ />
         </div>
       </div>

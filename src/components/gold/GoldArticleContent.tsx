@@ -1,32 +1,44 @@
 
 import React from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 import GoldWhatIs from "./sections/GoldWhatIs";
 import GoldMarket from "./sections/GoldMarket";
-import GoldPriceFactors from "./sections/GoldPriceFactors";
-import GoldTrading from "./sections/GoldTrading";
 import GoldHowItWorks from "./sections/GoldHowItWorks";
 import GoldWhy from "./sections/GoldWhy";
-import GoldHowToTrade from "./sections/GoldHowToTrade";
 import GoldAdvantages from "./sections/GoldAdvantages";
 import GoldDisadvantages from "./sections/GoldDisadvantages";
+import GoldPriceFactors from "./sections/GoldPriceFactors";
+import GoldTrading from "./sections/GoldTrading";
+import GoldHowToTrade from "./sections/GoldHowToTrade";
 import GoldFAQ from "./sections/GoldFAQ";
-import { Separator } from "@/components/ui/separator";
 
 const GoldArticleContent: React.FC = () => {
   return (
-    <article className="text-white py-12">
+    <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed">
+        <FinancialProductArticleHeader title="What is Gold trading and how to trade Gold?" />
+        
+        <div className="prose max-w-none 
+          prose-headings:font-bold 
+          prose-headings:text-white 
+          prose-p:text-gray-300 
+          prose-p:leading-relaxed 
+          prose-li:text-gray-300 
+          prose-strong:text-white
+          prose-table:text-gray-300
+          prose-th:text-white
+          prose-td:text-gray-300
+          prose-a:text-blue-400
+          prose-a:hover:text-blue-300">
           <GoldWhatIs />
           <GoldMarket />
-          <GoldPriceFactors />
-          <GoldTrading />
           <GoldHowItWorks />
           <GoldWhy />
-          <GoldHowToTrade />
           <GoldAdvantages />
           <GoldDisadvantages />
-          <Separator className="my-10" />
+          <GoldPriceFactors />
+          <GoldTrading />
+          <GoldHowToTrade />
           <GoldFAQ />
         </div>
       </div>

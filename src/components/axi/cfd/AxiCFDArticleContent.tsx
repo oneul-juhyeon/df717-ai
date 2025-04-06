@@ -1,6 +1,6 @@
 
 import React from "react";
-import AxiCFDArticleHeader from "./AxiCFDArticleHeader";
+import FinancialProductArticleHeader from "@/components/financial-products/FinancialProductArticleHeader";
 import AxiCFDIntro from "./AxiCFDIntro";
 import AxiCFDMarketTypes from "./AxiCFDMarketTypes";
 import AxiCFDTrading from "./AxiCFDTrading";
@@ -13,9 +13,10 @@ import AxiCFDFAQ from "./AxiCFDFAQ";
 
 const AxiCFDArticleContent: React.FC = () => {
   return (
-    <article className="container mx-auto px-4 py-12">
+    <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <AxiCFDArticleHeader />
+        <FinancialProductArticleHeader title="What is CFD trading and how to trade CFDs?" />
+        
         <div className="prose max-w-none 
           prose-headings:font-bold 
           prose-headings:text-white 
