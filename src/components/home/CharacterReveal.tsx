@@ -25,16 +25,16 @@ const CharacterReveal = ({
       return;
     }
     
-    // Specific Bible book abbreviations for slot machine style - 10 entries as requested
+    // Reduced set of Bible book abbreviations for faster animation
     const bibleBooks = [
-      "GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "RUT", "JOB", "ISA", "REV"
+      "GEN", "EXO", "LEV", "NUM", "DEU", "ISA", "REV"
     ];
     
     let currentIndex = 0;
     let mainTimer: NodeJS.Timeout;
     
     // Calculate interval to ensure all steps complete within the duration
-    const stepInterval = Math.floor(duration / (bibleBooks.length - 1));
+    const stepInterval = Math.floor(duration / (bibleBooks.length));
     
     // Delay the start of the animation sequence
     const initialDelay = setTimeout(() => {
@@ -79,7 +79,7 @@ const CharacterReveal = ({
               duration: slotMachineStyle ? 0.2 : 0.4, 
               ease: "easeInOut" 
             }}
-            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block font-mono fixed-width-text"
+            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block font-mono fixed-width-text space-heading"
             style={{ 
               fontFamily: "'DIN Condensed', monospace", // Ensuring fixed width and DDIN font
               minWidth: "3ch", // Fixed width for 3 characters

@@ -49,6 +49,7 @@ const AnimatedCounter = ({
         if (slotMachineStyle) {
           const finalEndAt = endAt !== undefined ? endAt : target;
           const totalSteps = finalEndAt - startFrom;
+          // Ensure we complete within duration by adjusting step interval
           const stepInterval = duration / totalSteps;
           let currentStep = 0;
           
@@ -127,7 +128,7 @@ const AnimatedCounter = ({
   return (
     <div className="flex flex-col items-center justify-center" ref={counterRef}>
       <motion.div
-        className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white font-mono overflow-hidden"
+        className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white font-mono overflow-hidden space-heading"
         initial={{ opacity: 0, y: 0 }}
         animate={count !== null ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}

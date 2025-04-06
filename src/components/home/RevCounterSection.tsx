@@ -11,8 +11,8 @@ const RevCounterSection: React.FC = () => {
     margin: "-100px" // Trigger slightly before the section is fully in view
   });
   
-  // Set the same animation duration for all elements
-  const animationDuration = 2500; // 2.5 seconds for all animations to ensure synchronization
+  // Reduce animation duration to 2 seconds or less
+  const animationDuration = 2000; // 2 seconds maximum for all animations
   
   return (
     <section 
