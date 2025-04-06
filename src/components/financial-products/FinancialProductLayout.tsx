@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import FinancialProductsSidebar from "./FinancialProductsSidebar";
+import { useLocation } from "react-router-dom";
 
 interface FinancialProductLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,8 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
   children,
   renderHeader
 }) => {
+  const location = useLocation();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -21,7 +24,7 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [location.pathname]);
 
   return (
     <main className="w-full min-h-screen bg-[#0a0a1e] flex flex-col">

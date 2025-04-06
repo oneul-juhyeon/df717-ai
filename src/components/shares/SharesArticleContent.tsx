@@ -18,16 +18,16 @@ const SharesArticleContent: React.FC = () => {
       <div className="max-w-3xl mx-auto text-left">
         <FinancialProductArticleHeader title="What are Shares and how to trade Shares?" />
         
-        <div className="prose max-w-none 
+        <div className="prose max-w-none text-white
           prose-headings:font-bold 
           prose-headings:text-white 
-          prose-p:text-gray-300 
+          prose-p:text-neutral-200 
           prose-p:leading-relaxed 
-          prose-li:text-gray-300 
+          prose-li:text-neutral-200 
           prose-strong:text-white
-          prose-table:text-gray-300
+          prose-table:text-neutral-200
           prose-th:text-white
-          prose-td:text-gray-300
+          prose-td:text-neutral-200
           prose-a:text-blue-400
           prose-a:hover:text-blue-300">
           <SharesWhatAre />
