@@ -12,13 +12,17 @@ const RevCounterSection: React.FC = () => {
   // Animation duration for the scale + fade-in effect
   const animationDuration = 1.0; // 1 second for the animation
   
-  // State for the current Bible book abbreviation
+  // State for the current Bible book abbreviation and number counters
   const [currentBook, setCurrentBook] = useState("REV");
+  const [count7, setCount7] = useState(0);
+  const [count17, setCount17] = useState(0);
   
-  // Bible abbreviation animation
+  // Bible abbreviation and number counter animations
   useEffect(() => {
     if (!isCounterInView) {
       setCurrentBook("REV"); // Reset to REV when out of view
+      setCount7(0);
+      setCount17(0);
       return;
     }
     
@@ -32,18 +36,54 @@ const RevCounterSection: React.FC = () => {
     // 9 books with ~0.2s per book = ~1.8s total + a bit of buffer
     const interval = 200; // 0.2 seconds
     
-    const timer = setInterval(() => {
+    // Start counter animations
+    // For number 7, count from 0 to 7
+    let count7Value = 0;
+    const count7Steps = 7;
+    const count7Interval = 1800 / count7Steps; // Complete in ~1.8s
+    
+    // For number 17, count from 0 to 17
+    let count17Value = 0;
+    const count17Steps = 17;
+    const count17Interval = 1800 / count17Steps; // Complete in ~1.8s
+    
+    // Bible book cycling
+    const bookTimer = setInterval(() => {
       currentIndex++;
       
       if (currentIndex < bibleBooks.length) {
         setCurrentBook(bibleBooks[currentIndex]);
       } else {
         // Stop when we reach the end (REV)
-        clearInterval(timer);
+        clearInterval(bookTimer);
       }
     }, interval);
     
-    return () => clearInterval(timer);
+    // Number 7 counter
+    const timer7 = setInterval(() => {
+      count7Value++;
+      setCount7(count7Value);
+      
+      if (count7Value >= 7) {
+        clearInterval(timer7);
+      }
+    }, count7Interval);
+    
+    // Number 17 counter
+    const timer17 = setInterval(() => {
+      count17Value++;
+      setCount17(count17Value);
+      
+      if (count17Value >= 17) {
+        clearInterval(timer17);
+      }
+    }, count17Interval);
+    
+    return () => {
+      clearInterval(bookTimer);
+      clearInterval(timer7);
+      clearInterval(timer17);
+    };
   }, [isCounterInView]);
   
   return (
@@ -78,7 +118,7 @@ const RevCounterSection: React.FC = () => {
           </motion.div>
         </div>
         
-        {/* Number 7 with fade-in + scale animation */}
+        {/* Number 7 with counting animation + fade-in + scale */}
         <div className="flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, scale: 1.05 }}
@@ -88,12 +128,18 @@ const RevCounterSection: React.FC = () => {
             }}
             transition={{ duration: animationDuration, ease: "easeOut" }}
             className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+            style={{
+              minWidth: "2ch", // Fixed width for up to 2 digits
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            7
+            {count7}
           </motion.div>
         </div>
         
-        {/* Number 17 with fade-in + scale animation */}
+        {/* Number 17 with counting animation + fade-in + scale */}
         <div className="flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, scale: 1.05 }}
@@ -103,8 +149,14 @@ const RevCounterSection: React.FC = () => {
             }}
             transition={{ duration: animationDuration, ease: "easeOut" }}
             className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+            style={{
+              minWidth: "2ch", // Fixed width for up to 2 digits
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            17
+            {count17}
           </motion.div>
         </div>
       </motion.div>
