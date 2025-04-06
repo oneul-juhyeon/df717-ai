@@ -27,11 +27,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
       </SheetTrigger>
       <SheetContent 
         side="right" 
-        className={`bg-[#232323] border-gray-700 text-white h-full overflow-hidden flex flex-col ${
-          isOpen ? 'show-scrollbar' : 'hide-scrollbar'
-        }`}
+        className="bg-[#232323] border-gray-700 text-white h-full overflow-hidden flex flex-col"
       >
-        <ScrollArea className="flex-1 px-1 mobile-menu-scroll">
+        <ScrollArea className="flex-1 px-1 menu-scrollable">
           <div className="flex flex-col py-8 pr-2">
             {navigationItems.map((item) => (
               <div key={item.name} className="mb-2">

@@ -1,4 +1,3 @@
-
 #root {
   width: 100%;
   margin: 0 auto;
@@ -49,45 +48,36 @@ video {
   }
 }
 
+/* Hide scrollbars for all pages on mobile */
+@media (max-width: 767px) {
+  body, html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  body::-webkit-scrollbar, html::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Mobile menu scrollbar handling */
-.hide-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.show-scrollbar {
+.menu-scrollable {
+  overflow-y: auto;
   scrollbar-width: thin;
-  -ms-overflow-style: auto;
+  scrollbar-color: #888 transparent;
 }
 
-.show-scrollbar::-webkit-scrollbar {
+.menu-scrollable::-webkit-scrollbar {
   width: 4px;
 }
 
-.show-scrollbar::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
+.menu-scrollable::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.show-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-.mobile-menu-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-
-.mobile-menu-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.mobile-menu-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+.menu-scrollable::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 2px;
 }
 
 .logo {
