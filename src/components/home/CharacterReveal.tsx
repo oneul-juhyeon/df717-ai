@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Bible book abbreviation cycling component with slow, cinematic transitions
+// Bible book abbreviation cycling component with simultaneous animation
 const CharacterReveal = ({ 
   text, 
   isInView,
-  delay = 0 
+  delay = 0,
+  duration = 2000 
 }: { 
   text: string; 
   isInView: boolean;
   delay?: number;
+  duration?: number;
 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -21,17 +23,24 @@ const CharacterReveal = ({
       return;
     }
     
-    // Reduced set of Bible book abbreviations (key steps only)
+    // Specific Bible book abbreviations as requested (7 total steps)
     const bibleBooks = [
-      "GEN", "EXO", "PSA", "ISA", "MAT", "JOH", "REV"
+      "GEN", "EXO", "LEV", "NUM", "DEU", "ISA", "REV"
     ];
     
     let currentIndex = 0;
     let mainTimer: NodeJS.Timeout;
     
+    // Calculate interval to ensure all steps complete within the duration
+    const stepInterval = Math.floor(duration / (bibleBooks.length - 1));
+    
     // Delay the start of the animation sequence
     const initialDelay = setTimeout(() => {
-      // Start cycling through abbreviations at a slower pace
+      // Display the first abbreviation immediately
+      setDisplayedText(bibleBooks[currentIndex]);
+      currentIndex++;
+      
+      // Start cycling through abbreviations
       mainTimer = setInterval(() => {
         setDisplayedText(bibleBooks[currentIndex]);
         currentIndex++;
@@ -40,14 +49,14 @@ const CharacterReveal = ({
         if (currentIndex >= bibleBooks.length) {
           clearInterval(mainTimer);
         }
-      }, 400); // Slower pace - 0.4 seconds between changes
+      }, stepInterval);
     }, delay);
     
     return () => {
       clearTimeout(initialDelay);
       clearInterval(mainTimer);
     };
-  }, [isInView, delay]); // Depend on isInView to restart animation
+  }, [isInView, delay, duration]); // Depend on isInView, delay, and duration
 
   return (
     <motion.div 

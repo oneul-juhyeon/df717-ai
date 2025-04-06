@@ -2,18 +2,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-// Animated counter component with cinematic count-up animation
+// Animated counter component with synchronized animation timing
 const AnimatedCounter = ({ 
   target, 
   title,
-  duration = 2000, // Longer default duration in ms
+  duration = 2000, 
   startFrom = 0,
   endAt = undefined,
   randomize = false,
   minValue = 0,
   maxValue = 100,
   isInView = false,
-  delay = 0 // Delay before starting animation
+  delay = 0 
 }: { 
   target: number; 
   title?: string;
@@ -50,13 +50,20 @@ const AnimatedCounter = ({
           let newCount;
           
           if (randomize) {
-            // Random count between minValue and maxValue until reaching the end
-            if (progress < 0.85) {
-              newCount = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+            // Use consistent timing for random values to ensure finishing at the same time
+            if (progress < 1) {
+              // Gradually approach the target as we get closer to the end
+              const directProgress = Math.min(progress * 1.2, 1); // Slightly accelerate to ensure we reach target
+              
+              if (directProgress < 0.9) {
+                newCount = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+              } else {
+                // In the final 10% of time, ensure we're moving toward the target
+                const remainingProgress = (directProgress - 0.9) / 0.1; 
+                newCount = Math.floor(lastCount + (target - lastCount) * remainingProgress);
+              }
             } else {
-              // Gradually approach the target in the final 15% of time
-              const remainingProgress = (progress - 0.85) / 0.15;
-              newCount = Math.floor(lastCount + (target - lastCount) * remainingProgress);
+              newCount = target; // Ensure we end exactly at target
             }
           } else {
             // Regular counter logic
@@ -64,19 +71,10 @@ const AnimatedCounter = ({
             const range = maxEndValue - startFrom;
             newCount = Math.floor(startFrom + (progress * range));
             
-            // If we've reached the target but not the end of animation,
-            // oscillate around the target
-            if (progress < 1 && newCount === target && endAt !== undefined) {
-              const oscillationPhase = (timestamp % 200) / 200; // 0.2s cycle
-              if (oscillationPhase > 0.5) {
-                newCount = target + 1 > endAt ? target - 1 : target + 1;
-              }
+            // Ensure counter lands exactly on the target value at the end
+            if (progress === 1) {
+              newCount = target;
             }
-          }
-          
-          // Ensure we end on the exact target value
-          if (progress === 1) {
-            newCount = target;
           }
           
           if (newCount !== lastCount) {
@@ -111,6 +109,12 @@ const AnimatedCounter = ({
         animate={count !== null ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 10 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         key={count} // This ensures a new animation for each count change
+        style={{
+          fontFamily: "monospace", // Ensuring fixed width for all characters
+          minWidth: count !== null && count >= 10 ? "2ch" : "1ch", // Fixed width based on digit count
+          display: "flex",
+          justifyContent: "center"
+        }}
       >
         {count !== null ? count : ""}
       </motion.div>
