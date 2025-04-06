@@ -12,20 +12,20 @@ const BibleVerseSection: React.FC = () => {
 
   // Animation sequence
   useEffect(() => {
-    // Step 1-2: Start with black background, then fade in quote
+    // Step 1: Start with black background, then fade in quote
     const timer1 = setTimeout(() => {
       setQuoteVisible(true);
     }, 1000); // Start showing quote after 1s
 
-    // Step 2: Show author attribution together with last line
+    // Step 2: Show author attribution 0.2s after quote is fully visible
     const timer2 = setTimeout(() => {
       setAuthorVisible(true);
-    }, 3000); // Author appears after quote is fully visible
+    }, 2000); // Attribution appears 0.2s after quote (1s + 0.8s quote fade + 0.2s delay)
 
-    // Step 3: Show Earth image 0.1s after quote is complete
+    // Step 3: Show Earth image 0.1s after attribution
     const timer3 = setTimeout(() => {
       setEarthImageVisible(true);
-    }, 3100); // Earth image appears 0.1s after author
+    }, 2100); // Earth image appears 0.1s after attribution
 
     // Step 4-5: Scroll down and show arrow
     const timer4 = setTimeout(() => {
@@ -33,7 +33,7 @@ const BibleVerseSection: React.FC = () => {
         sectionRef.current.scrollIntoView({ behavior: 'smooth' });
       }
       setArrowVisible(true);
-    }, 4000); // Scroll down and show arrow after image is visible
+    }, 3000); // Scroll down and show arrow after image is visible
 
     return () => {
       clearTimeout(timer1);
@@ -43,39 +43,6 @@ const BibleVerseSection: React.FC = () => {
     };
   }, []);
 
-  // Animation variants for typing effect
-  const line1Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
-  const line2Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut", delay: 0.5 }
-    }
-  };
-
-  const line3Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut", delay: 1.0 }
-    }
-  };
-
-  const line4Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut", delay: 1.5 }
-    }
-  };
-
   return (
     <section ref={sectionRef} className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden">
       <div className="z-10 max-w-3xl mx-auto">
@@ -83,43 +50,24 @@ const BibleVerseSection: React.FC = () => {
           {quoteVisible && (
             <div className="font-din text-sm md:text-base lg:text-xl text-white leading-relaxed mb-2 tracking-wider">
               <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={line1Variants}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="inline"
               >
                 "For nation shall rise against nation,
-              </motion.div>
-              
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={line2Variants}
-              >
                 and kingdom against kingdom.
-              </motion.div>
-              
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={line3Variants}
-              >
                 There shall be famines, and pestilences,
+                and earthquakes in various places."
               </motion.div>
-              
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={line4Variants}
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: authorVisible ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline"
               >
-                and earthquakes in various places.
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: authorVisible ? 1 : 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  &nbsp;– Matthew 24:7"
-                </motion.span>
-              </motion.div>
+                &nbsp;– Matthew 24:7
+              </motion.span>
             </div>
           )}
         </div>
@@ -149,7 +97,7 @@ const BibleVerseSection: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Down Arrow - Updated to use the Unicode character "ᐯ" */}
+      {/* Down Arrow - Unicode character "ᐯ" */}
       <motion.div 
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: -10 }}
