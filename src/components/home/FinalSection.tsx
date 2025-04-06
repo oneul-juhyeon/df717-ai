@@ -1,18 +1,28 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const FinalSection: React.FC = () => {
   const finalSectionRef = useRef<HTMLDivElement>(null);
   const isFinalInView = useInView(finalSectionRef);
+  const navigate = useNavigate();
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const handleNavigateToDF717 = (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollToTop();
+    // Use setTimeout to ensure the scroll happens before navigation
+    setTimeout(() => {
+      navigate('/df717');
+    }, 100);
   };
 
   return (
@@ -69,14 +79,14 @@ const FinalSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <Link 
-            to="/df717" 
+          <a 
+            href="/df717" 
             className="inline-flex items-center border border-white/70 text-white hover:bg-white/10 transition-colors px-8 py-3 tracking-wider font-din text-lg"
-            onClick={scrollToTop}
+            onClick={handleNavigateToDF717}
           >
             LEARN MORE ABOUT DF717
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>
