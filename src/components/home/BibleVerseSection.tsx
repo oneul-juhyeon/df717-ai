@@ -17,15 +17,15 @@ const BibleVerseSection: React.FC = () => {
       setQuoteVisible(true);
     }, 1000); // Start showing quote after 1s
 
-    // Step 2: Show author attribution 0.1s after quote is fully visible
+    // Step 2: Show author attribution after quote is fully visible + 0.1s delay
     const timer2 = setTimeout(() => {
       setAuthorVisible(true);
-    }, 1900); // Attribution appears 0.1s after quote (1s + 0.8s quote fade + 0.1s delay)
+    }, 1900); // Attribution appears after quote (1s + 0.8s quote fade + 0.1s delay)
 
-    // Step 3: Show Earth image 0.1s after attribution
+    // Step 3: Show Earth image 0.2s after attribution
     const timer3 = setTimeout(() => {
       setEarthImageVisible(true);
-    }, 2000); // Earth image appears 0.1s after attribution
+    }, 2100); // Earth image appears 0.2s after attribution (1900ms + 200ms)
 
     // Step 4-5: Scroll down and show arrow
     const timer4 = setTimeout(() => {
@@ -33,7 +33,7 @@ const BibleVerseSection: React.FC = () => {
         sectionRef.current.scrollIntoView({ behavior: 'smooth' });
       }
       setArrowVisible(true);
-    }, 3000); // Scroll down and show arrow after image is visible
+    }, 3100); // Scroll down and show arrow after image is visible (give extra time for image to fade in)
 
     return () => {
       clearTimeout(timer1);
