@@ -23,49 +23,49 @@ const AxiCFDDifferences: React.FC = () => {
       </p>
       
       <div className="overflow-x-auto mb-8">
-        <table className="min-w-full bg-white border border-gray-200 text-left">
+        <table className="min-w-full bg-[#0a0a1e]/30 border border-gray-700 text-left">
           <thead>
             <tr>
-              <th className="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-              <th className="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CFD trading</th>
-              <th className="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Traditional trading</th>
+              <th className="px-6 py-3 border-b-2 border-gray-700 bg-[#0a0a1e]/50 text-left text-xs font-medium text-gray-200 uppercase tracking-wider"></th>
+              <th className="px-6 py-3 border-b-2 border-gray-700 bg-[#0a0a1e]/50 text-left text-xs font-medium text-gray-200 uppercase tracking-wider">CFD trading</th>
+              <th className="px-6 py-3 border-b-2 border-gray-700 bg-[#0a0a1e]/50 text-left text-xs font-medium text-gray-200 uppercase tracking-wider">Traditional trading</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Capital requirement</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Use leverage</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Pay the full upfront price</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Capital requirement</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Use leverage</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Pay the full upfront price</td>
             </tr>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Market access</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Multiple markets</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Equities and ETFs</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Asset ownership</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">You do not own the underlying asset</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Ownership of the underlying asset</td>
-            </tr>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Profit potential</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Go short and benefit from falling prices</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">No option to benefit from falling prices</td>
+            <tr className="bg-[#0a0a1e]/20">
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Market access</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Multiple markets</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Equities and ETFs</td>
             </tr>
             <tr>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Shareholder rights</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">No shareholder privileges</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Shareholder privileges and voting rights</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Asset ownership</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">You do not own the underlying asset</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Ownership of the underlying asset</td>
             </tr>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Tax</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">No stamp duty, but profits are liable for capital gains tax</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">You pay stamp duty and capital gains tax on your profits</td>
+            <tr className="bg-[#0a0a1e]/20">
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Profit potential</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Go short and benefit from falling prices</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">No option to benefit from falling prices</td>
             </tr>
             <tr>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Hedging</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Option to hedge your trades</td>
-              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-200">Hedging requires the use of derivatives (options, futures, and inverse ETFs)</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Shareholder rights</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">No shareholder privileges</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Shareholder privileges and voting rights</td>
+            </tr>
+            <tr className="bg-[#0a0a1e]/20">
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Tax</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">No stamp duty, but profits are liable for capital gains tax</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">You pay stamp duty and capital gains tax on your profits</td>
+            </tr>
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Hedging</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Option to hedge your trades</td>
+              <td className="px-6 py-4 whitespace-nowrap border-b border-gray-700 text-gray-300">Hedging requires the use of derivatives (options, futures, and inverse ETFs)</td>
             </tr>
           </tbody>
         </table>
