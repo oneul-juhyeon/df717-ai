@@ -16,7 +16,7 @@ const AxiCFDArticleContent: React.FC = () => {
     <article className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto text-left">
         <AxiCFDArticleHeader />
-        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed">
+        <div className="prose max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-gray-300 prose-p:leading-relaxed prose-li:text-gray-300 prose-strong:text-white">
           <AxiCFDIntro />
           <AxiCFDMarketTypes />
           <AxiCFDTrading />
