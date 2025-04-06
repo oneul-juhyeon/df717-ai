@@ -54,19 +54,28 @@ const BibleVerseSection: React.FC = () => {
         </motion.p>
       </div>
 
-      {/* Earth Image */}
+      {/* Earth Image with Gradient Overlay */}
       <motion.div 
         className="absolute inset-0 z-0 w-full h-full"
         initial={{ opacity: 0 }}
         animate={{ opacity: earthImageVisible ? 1 : 0 }}
         transition={{ duration: 1 }}
       >
-        <img 
-          src="/lovable-uploads/home-intro1.webp" 
-          alt="Earth from space" 
-          className="object-cover w-full h-full"
-          style={{ objectFit: "cover" }}
-        />
+        <div className="relative w-full h-full">
+          <img 
+            src="/lovable-uploads/home-intro1.webp" 
+            alt="Earth from space" 
+            className="object-cover w-full h-full"
+            style={{ objectFit: "cover" }}
+          />
+          {/* Gradient Overlay - Bottom fade to black */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"
+            style={{ 
+              background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0) 70%)'
+            }}
+          ></div>
+        </div>
       </motion.div>
 
       {/* Down Arrow */}
