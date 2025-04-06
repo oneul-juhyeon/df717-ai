@@ -33,7 +33,7 @@ const BibleVerseSection: React.FC = () => {
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden">
       <div className="z-10 max-w-3xl mx-auto">
         <motion.p 
-          className="font-din text-xl md:text-2xl lg:text-3xl text-white leading-relaxed mb-6 tracking-wider"
+          className="font-din text-sm md:text-base lg:text-xl text-white leading-relaxed mb-6 tracking-wider"
           initial={{ opacity: 0 }}
           animate={{ opacity: typingComplete ? 1 : 0 }}
           transition={{ duration: 1 }}
@@ -45,7 +45,7 @@ const BibleVerseSection: React.FC = () => {
         </motion.p>
         
         <motion.p 
-          className="font-din text-lg md:text-xl text-gray-400 tracking-wider"
+          className="font-din text-xs md:text-sm text-gray-400 tracking-wider"
           initial={{ opacity: 0 }}
           animate={{ opacity: authorVisible ? 1 : 0 }}
           transition={{ duration: 0.5 }}
