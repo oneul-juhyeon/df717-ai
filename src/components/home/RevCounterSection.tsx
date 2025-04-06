@@ -92,7 +92,7 @@ const RevCounterSection: React.FC = () => {
       className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black"
     >
       <motion.div 
-        className="grid grid-cols-3 w-full max-w-4xl mx-auto"
+        className="grid grid-cols-3 w-full max-w-4xl px-5 mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: isCounterInView ? 1 : 0 }}
         transition={{ duration: 0.8 }}
