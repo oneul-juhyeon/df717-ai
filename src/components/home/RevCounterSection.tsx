@@ -11,8 +11,8 @@ const RevCounterSection: React.FC = () => {
     margin: "-100px" // Trigger slightly before the section is fully in view
   });
   
-  // Reduce animation duration to 2 seconds or less
-  const animationDuration = 2000; // 2 seconds maximum for all animations
+  // Animation duration for the scale + fade-in effect
+  const animationDuration = 1.0; // 1 second for the animation
   
   return (
     <section 
@@ -25,41 +25,49 @@ const RevCounterSection: React.FC = () => {
         animate={{ opacity: isCounterInView ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Bible book abbreviation with slot machine animation */}
+        {/* Bible book abbreviation with fade-in + scale animation */}
         <div className="flex justify-center items-center">
-          <CharacterReveal 
-            text="REV" 
-            isInView={isCounterInView} 
-            delay={0}
-            duration={animationDuration}
-            slotMachineStyle={true}
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ 
+              opacity: isCounterInView ? 1 : 0, 
+              scale: isCounterInView ? 1 : 1.05 
+            }}
+            transition={{ duration: animationDuration, ease: "easeOut" }}
+            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+          >
+            REV
+          </motion.div>
         </div>
         
-        {/* Number 7 with slot machine animation */}
+        {/* Number 7 with fade-in + scale animation */}
         <div className="flex justify-center items-center">
-          <AnimatedCounter 
-            target={7} 
-            duration={animationDuration} 
-            startFrom={1} 
-            endAt={7} 
-            isInView={isCounterInView} 
-            delay={0}
-            slotMachineStyle={true}
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ 
+              opacity: isCounterInView ? 1 : 0, 
+              scale: isCounterInView ? 1 : 1.05 
+            }}
+            transition={{ duration: animationDuration, ease: "easeOut" }}
+            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+          >
+            7
+          </motion.div>
         </div>
         
-        {/* Number 17 with slot machine animation */}
+        {/* Number 17 with fade-in + scale animation */}
         <div className="flex justify-center items-center">
-          <AnimatedCounter 
-            target={17} 
-            duration={animationDuration} 
-            startFrom={1} 
-            endAt={17} 
-            isInView={isCounterInView} 
-            delay={0}
-            slotMachineStyle={true}
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ 
+              opacity: isCounterInView ? 1 : 0, 
+              scale: isCounterInView ? 1 : 1.05 
+            }}
+            transition={{ duration: animationDuration, ease: "easeOut" }}
+            className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
+          >
+            17
+          </motion.div>
         </div>
       </motion.div>
     </section>
