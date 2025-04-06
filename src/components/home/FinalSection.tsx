@@ -11,7 +11,7 @@ const FinalSection: React.FC = () => {
   return (
     <section 
       ref={finalSectionRef}
-      className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-end text-left px-6 py-16 overflow-hidden"
     >
       {/* Background Image with Gradient Overlays */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -29,7 +29,7 @@ const FinalSection: React.FC = () => {
         ></div>
       </div>
 
-      <div className="z-10 max-w-3xl mx-auto mt-auto pt-[40vh] flex flex-col items-center">
+      <div className="z-10 max-w-3xl mx-auto md:mx-0 md:ml-[10%] lg:ml-[15%] mb-16 md:mb-24">
         <motion.p 
           className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,6 @@ const FinalSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="mb-16"
         >
           <Link 
             to="/company" 
