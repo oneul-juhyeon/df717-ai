@@ -3,7 +3,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 // Animated counter component with count-up animation
-const AnimatedCounter = ({ target, title }: { target: number; title?: string }) => {
+const AnimatedCounter = ({ 
+  target, 
+  title,
+  duration = 1500 // Default duration in ms
+}: { 
+  target: number; 
+  title?: string;
+  duration?: number;
+}) => {
   const [count, setCount] = useState(0);
   const counterRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(counterRef, { once: true, margin: "-100px" });
@@ -11,7 +19,6 @@ const AnimatedCounter = ({ target, title }: { target: number; title?: string }) 
   useEffect(() => {
     let startTimestamp: number;
     let animationFrameId: number;
-    const duration = 1500; // Animation duration in ms
     
     if (isInView) {
       const step = (timestamp: number) => {
@@ -32,7 +39,7 @@ const AnimatedCounter = ({ target, title }: { target: number; title?: string }) 
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [isInView, target]);
+  }, [isInView, target, duration]);
 
   return (
     <div className="flex flex-col items-center justify-center" ref={counterRef}>

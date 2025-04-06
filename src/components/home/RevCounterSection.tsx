@@ -22,20 +22,20 @@ const RevCounterSection: React.FC = () => {
         animate={{ opacity: isCounterInView ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* REV text with character-by-character scramble animation */}
+        {/* Bible book abbreviation cycling animation */}
         <CharacterReveal text="REV" />
         
         {/* Separator */}
         <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
         
-        {/* Number 7 with count-up animation */}
-        <AnimatedCounter target={7} />
+        {/* Number 7 with count-up animation - 1.5 seconds duration */}
+        <AnimatedCounter target={7} duration={1500} />
         
         {/* Separator */}
         <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
         
-        {/* Number 17 with count-up animation */}
-        <AnimatedCounter target={17} />
+        {/* Number 17 with count-up animation - 1.8 seconds duration */}
+        <AnimatedCounter target={17} duration={1800} />
       </motion.div>
     </section>
   );
