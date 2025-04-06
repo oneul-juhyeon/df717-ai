@@ -13,13 +13,20 @@ const FinalSection: React.FC = () => {
       ref={finalSectionRef}
       className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image with Gradient Overlays */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <img 
           src="/lovable-uploads/home-intro2.webp" 
           alt="Yellow planet curve" 
           className="object-cover w-full h-full"
         />
+        {/* Top-to-bottom black gradient overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{ 
+            background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 30%)'
+          }}
+        ></div>
       </div>
 
       <div className="z-10 max-w-3xl mx-auto mt-auto pt-[40vh] flex flex-col items-center">
