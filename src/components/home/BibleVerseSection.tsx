@@ -17,15 +17,15 @@ const BibleVerseSection: React.FC = () => {
       setQuoteVisible(true);
     }, 1000); // Start showing quote after 1s
 
-    // Step 2: Show author attribution 0.2s after quote is fully visible
+    // Step 2: Show author attribution 0.1s after quote is fully visible
     const timer2 = setTimeout(() => {
       setAuthorVisible(true);
-    }, 2000); // Attribution appears 0.2s after quote (1s + 0.8s quote fade + 0.2s delay)
+    }, 1900); // Attribution appears 0.1s after quote (1s + 0.8s quote fade + 0.1s delay)
 
     // Step 3: Show Earth image 0.1s after attribution
     const timer3 = setTimeout(() => {
       setEarthImageVisible(true);
-    }, 2100); // Earth image appears 0.1s after attribution
+    }, 2000); // Earth image appears 0.1s after attribution
 
     // Step 4-5: Scroll down and show arrow
     const timer4 = setTimeout(() => {
