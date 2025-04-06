@@ -8,6 +8,13 @@ const FinalSection: React.FC = () => {
   const finalSectionRef = useRef<HTMLDivElement>(null);
   const isFinalInView = useInView(finalSectionRef);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <section 
       ref={finalSectionRef}
@@ -63,8 +70,9 @@ const FinalSection: React.FC = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
         >
           <Link 
-            to="/company" 
+            to="/df717" 
             className="inline-flex items-center border border-white/70 text-white hover:bg-white/10 transition-colors px-8 py-3 tracking-wider font-din text-lg"
+            onClick={scrollToTop}
           >
             LEARN MORE ABOUT DF717
             <ArrowRight className="ml-2 h-4 w-4" />
