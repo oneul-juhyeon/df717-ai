@@ -1,6 +1,5 @@
 
 import React from "react";
-import CryptoArticleHeader from "./CryptoArticleHeader";
 import CryptoWhatIs from "./sections/CryptoWhatIs";
 import CryptoMarket from "./sections/CryptoMarket";
 import CryptoTrading from "./sections/CryptoTrading";
@@ -17,7 +16,6 @@ const CryptoArticleContent: React.FC = () => {
   return (
     <article className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto text-left">
-        <CryptoArticleHeader />
         <div className="prose max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed">
           <CryptoWhatIs />
           <CryptoMarket />

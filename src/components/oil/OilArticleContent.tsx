@@ -1,6 +1,5 @@
 
 import React from "react";
-import OilArticleHeader from "./OilArticleHeader";
 import OilWhatIs from "./sections/OilWhatIs";
 import OilMarket from "./sections/OilMarket";
 import OilTrading from "./sections/OilTrading";
@@ -17,7 +16,6 @@ const OilArticleContent: React.FC = () => {
   return (
     <article className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto text-left">
-        <OilArticleHeader />
         <div className="prose max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed">
           <OilWhatIs />
           <OilMarket />
