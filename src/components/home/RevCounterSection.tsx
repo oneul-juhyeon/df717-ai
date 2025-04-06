@@ -12,7 +12,7 @@ const RevCounterSection: React.FC = () => {
   });
   
   // Set the same animation duration for all elements
-  const animationDuration = 2000; // 2 seconds for all animations
+  const animationDuration = 2500; // 2.5 seconds for all animations to ensure synchronization
   
   return (
     <section 
@@ -25,38 +25,40 @@ const RevCounterSection: React.FC = () => {
         animate={{ opacity: isCounterInView ? 1 : 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Bible book abbreviation with simultaneous animation */}
+        {/* Bible book abbreviation with slot machine animation */}
         <div className="flex justify-center items-center">
           <CharacterReveal 
             text="REV" 
             isInView={isCounterInView} 
             delay={0}
             duration={animationDuration}
+            slotMachineStyle={true}
           />
         </div>
         
-        {/* Number 7 with simultaneous animation */}
+        {/* Number 7 with slot machine animation */}
         <div className="flex justify-center items-center">
           <AnimatedCounter 
             target={7} 
             duration={animationDuration} 
             startFrom={1} 
-            endAt={9} 
+            endAt={7} 
             isInView={isCounterInView} 
-            delay={0} 
+            delay={0}
+            slotMachineStyle={true}
           />
         </div>
         
-        {/* Number 17 with simultaneous animation */}
+        {/* Number 17 with slot machine animation */}
         <div className="flex justify-center items-center">
           <AnimatedCounter 
             target={17} 
             duration={animationDuration} 
-            randomize={true} 
-            minValue={1} 
-            maxValue={30} 
+            startFrom={1} 
+            endAt={17} 
             isInView={isCounterInView} 
-            delay={0} 
+            delay={0}
+            slotMachineStyle={true}
           />
         </div>
       </motion.div>
