@@ -16,7 +16,6 @@ const Index: React.FC = () => {
           playsInline
           disablePictureInPicture
           preload="auto"
-          poster="/lovable-uploads/matthew_hd.webp"
           className="w-full h-full object-cover"
           style={{ objectPosition: "center" }}
         >
