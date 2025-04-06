@@ -26,7 +26,7 @@ const TextSection: React.FC = () => {
             duration: 0.7
           }}
         >
-          <p className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl text-[#EEEEEE] leading-relaxed">
+          <p className="font-din text-base sm:text-lg md:text-xl lg:text-2xl text-[#EEEEEE] leading-relaxed tracking-wide">
             For thousands of years, the Bible has foretold a time of famine in the last days.
             <br className="hidden sm:block" />
             <br className="hidden sm:block" />
@@ -53,7 +53,7 @@ const TextSection: React.FC = () => {
             delay: 0.2
           }}
         >
-          <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed">
+          <p className="font-din text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#EEEEEE] leading-relaxed tracking-wide">
             DF717 is a modern-day ark of salvation,
             <br />
             using AI-powered financial innovation

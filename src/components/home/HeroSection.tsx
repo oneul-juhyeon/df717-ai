@@ -11,14 +11,14 @@ const HeroSection: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <p className="font-sans text-xl md:text-2xl lg:text-3xl text-[#EEEEEE] leading-relaxed mb-6">
+        <p className="font-din text-xl md:text-2xl lg:text-3xl text-[#EEEEEE] leading-relaxed mb-6 tracking-wide">
           For nation shall rise against nation,<br />
           and kingdom against kingdom.<br />
           There shall be famines, and pestilences,<br />
           and earthquakes in various places.
         </p>
         
-        <p className="font-sans text-lg md:text-xl text-[#AAAAAA] italic">
+        <p className="font-din text-lg md:text-xl text-[#AAAAAA] italic tracking-wide">
           – Matthew 24:7
         </p>
       </motion.div>
