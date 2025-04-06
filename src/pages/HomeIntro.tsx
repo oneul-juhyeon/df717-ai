@@ -5,10 +5,73 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import HomeHeader from "@/components/home/HomeHeader";
 
-// Counter component for the animated counter
-const Counter = ({ value, title }: { value: string; title?: string }) => {
+// Character by character animation component
+const CharacterReveal = ({ text }: { text: string }) => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <motion.div className="flex items-center justify-center">
+      {Array.from(text).map((char, index) => (
+        <motion.span
+          key={index}
+          className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white inline-block"
+          initial={{ opacity: 0 }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 0.5,
+              delay: 0.05 * index,
+            }
+          }}
+          viewport={{ once: true }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            duration: 0.3,
+            type: "spring",
+            stiffness: 100,
+          }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+};
+
+// Animated counter component with count-up animation
+const AnimatedCounter = ({ target, title }: { target: number; title?: string }) => {
+  const [count, setCount] = useState(0);
+  const counterRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(counterRef, { once: true, margin: "-100px" });
+  
+  useEffect(() => {
+    let startTimestamp: number;
+    let animationFrameId: number;
+    const duration = 1500; // Animation duration in ms
+    
+    if (isInView) {
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        setCount(Math.floor(progress * target));
+        
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(step);
+        }
+      };
+      
+      animationFrameId = requestAnimationFrame(step);
+    }
+    
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [isInView, target]);
+
+  return (
+    <div className="flex flex-col items-center justify-center" ref={counterRef}>
       <motion.div
         className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white"
         initial={{ opacity: 0, y: 20 }}
@@ -16,7 +79,7 @@ const Counter = ({ value, title }: { value: string; title?: string }) => {
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.2 }}
       >
-        {value}
+        {count}
       </motion.div>
       {title && (
         <motion.div
@@ -162,15 +225,25 @@ const HomeIntro: React.FC = () => {
         className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black"
       >
         <motion.div 
-          className="flex items-center justify-center gap-10 md:gap-16 lg:gap-24"
+          className="flex flex-row items-center justify-center gap-6 px-4 sm:gap-10 md:gap-16 lg:gap-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: isCounterInView ? 1 : 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Counter value="REV" />
-          <Counter value="7" />
-          <div className="text-7xl md:text-8xl lg:text-9xl font-din tracking-wider text-white">:</div>
-          <Counter value="17" />
+          {/* REV text with character-by-character animation */}
+          <CharacterReveal text="REV" />
+          
+          {/* Separator */}
+          <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
+          
+          {/* Number 7 with count-up animation */}
+          <AnimatedCounter target={7} />
+          
+          {/* Separator */}
+          <div className="text-5xl md:text-7xl lg:text-8xl font-din tracking-wider text-white">:</div>
+          
+          {/* Number 17 with count-up animation */}
+          <AnimatedCounter target={17} />
         </motion.div>
       </section>
 
