@@ -194,7 +194,7 @@ const HomeIntro: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <img 
-            src="https://sxcontent9668.azureedge.us/cms-assets/assets/MISSION_EARTH_high_quality_3cf2cabe8e.jpg" 
+            src="/lovable-uploads/home-intro1.webp" 
             alt="Earth from space" 
             className="object-cover w-full h-full"
             style={{ objectFit: "cover" }}
@@ -255,8 +255,8 @@ const HomeIntro: React.FC = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <img 
-            src="/lovable-uploads/home-intro2.png" 
-            alt="Space background" 
+            src="/lovable-uploads/home-intro2.webp" 
+            alt="Yellow planet curve" 
             className="object-cover w-full h-full"
           />
         </div>
