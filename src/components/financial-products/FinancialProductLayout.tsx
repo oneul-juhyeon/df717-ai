@@ -23,6 +23,7 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
   };
 
   useEffect(() => {
+    // Ensure scroll position is reset when navigating between pages
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
