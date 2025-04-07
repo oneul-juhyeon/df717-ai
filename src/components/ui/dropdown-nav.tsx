@@ -27,8 +27,8 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
   items,
   isActive = false,
   textColor = 'text-white',
-  hoverColor = 'hover:text-gray-300',
-  activeColor = 'text-red-500'
+  hoverColor = '',
+  activeColor = ''
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,10 +42,12 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
         to={path}
         className={cn(
           textColor, 
-          hoverColor, 
-          "px-4 py-2 transition whitespace-nowrap inline-flex items-center",
-          isActive ? 'font-medium' : '',
-          isActive ? activeColor : ''
+          "px-4 py-2 transition whitespace-nowrap inline-flex items-center relative",
+          "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white",
+          isActive 
+            ? 'after:scale-x-100' 
+            : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left',
+          "after:transition-transform after:duration-300"
         )}
       >
         {name}
@@ -65,7 +67,7 @@ export const NavDropdown: React.FC<NavDropdownProps> = ({
             <li key={item.name} className="list-none">
               <Link
                 to={item.path}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 hover:text-red-400 rounded-md transition-colors whitespace-nowrap w-full"
+                className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 rounded-md transition-colors whitespace-nowrap w-full"
                 onClick={item.scrollToTop}
               >
                 <ArrowRight className="h-4 w-4 text-gray-400 flex-shrink-0" />
