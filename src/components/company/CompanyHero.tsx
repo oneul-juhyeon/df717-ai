@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface CompanyHeroProps {
   scrollToValues: () => void;
