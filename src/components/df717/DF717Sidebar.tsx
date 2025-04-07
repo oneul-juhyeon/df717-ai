@@ -27,7 +27,7 @@ const DF717Sidebar: React.FC = () => {
   };
 
   return (
-    <aside className="hidden lg:block w-64 shrink-0 border-r border-red-900/30 pr-6">
+    <aside className="hidden lg:block w-64 shrink-0 border-r border-white/30 pr-6">
       <div className="sticky top-24 animate-fade-in-left">
         <h3 className="text-lg font-semibold text-white mb-6 pl-4">DF717</h3>
         <ul className="space-y-2">
@@ -41,7 +41,7 @@ const DF717Sidebar: React.FC = () => {
                 }}
                 className={`block py-2.5 px-4 rounded-lg transition-colors duration-300 ${
                   location.pathname === item.path
-                    ? "bg-red-900/40 text-red-400 font-medium border-l-2 border-red-700"
+                    ? "bg-white/40 text-white font-medium border-l-2 border-white"
                     : "text-gray-400 hover:bg-gray-800 hover:text-white"
                 }`}
               >

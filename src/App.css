@@ -452,18 +452,18 @@ video {
 }
 
 .financial-product-sidebar {
-  border-right: 1px solid rgba(255, 0, 0, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .financial-product-label {
-  color: #e64c4c;
+  color: #ffffff;
   font-weight: 600;
   transition: all 0.2s ease;
 }
 
 .financial-product-label:hover {
   color: #ffffff;
-  background-color: rgba(230, 76, 76, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .financial-product-content {
@@ -476,7 +476,7 @@ video {
   font-family: 'DIN Condensed', 'Franklin Gothic Medium', sans-serif;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border-left: 3px solid #e64c4c;
+  border-left: 3px solid #ffffff;
   padding-left: 12px;
 }
 
