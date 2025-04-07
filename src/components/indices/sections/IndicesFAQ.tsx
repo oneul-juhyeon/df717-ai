@@ -10,18 +10,15 @@ import {
 const IndicesFAQ: React.FC = () => {
   return (
     <>
-      <h2 className="text-3xl mt-12 mb-4">FAQ</h2>
+      <h2 className="text-3xl mt-8 mb-6 font-bold">FAQ</h2>
       
-      <div className="my-8">
+      <div className="space-y-4">
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">How are index prices calculated?</h3>
-              </div>
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              How are index prices calculated?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 Calculating stock market indices prices has become easier nowadays by using methods like market capitalisation, which measures a company's stock value in terms of total dollar market value, and the price weighting formula.
               </p>
@@ -31,14 +28,11 @@ const IndicesFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-2" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What's the difference between index trading and stock trading?</h3>
-              </div>
+          <AccordionItem value="item-2">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What's the difference between index trading and stock trading?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 Stock trading is the trading of shares of specific companies at individual prices. Once you buy a stock, it is transferred to you from the seller, and you assume ownership.
               </p>
@@ -48,28 +42,22 @@ const IndicesFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-3" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Is index trading profitable?</h3>
-              </div>
+          <AccordionItem value="item-3">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Is index trading profitable?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 There are numerous aspects to consider when deciding whether index trading could be profitable for you, but it is possible to be successful. Trading profits naturally vary depending on the choices made by the trader and the state of the market. When markets are volatile, price moves are bigger, and thus, the potential for profit or loss is higher.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-4" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What are the best indices to trade?</h3>
-              </div>
+          <AccordionItem value="item-4">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What are the best indices to trade?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 Though long-term investors, like pension funds, track them closely, short-term CFD traders tend to speculate on indices. If you are keen to kickstart your journey trading indices, these are some of the more popular indices to consider:
               </p>
@@ -82,28 +70,22 @@ const IndicesFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-5" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What is the maximum leverage I can have when trading index CFDs?</h3>
-              </div>
+          <AccordionItem value="item-5">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What is the maximum leverage I can have when trading index CFDs?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Traders use leverage when they have a small amount of capital but want exposure to a trade of larger value. Leveraged trading involves borrowing a sum of money, usually from a broker, that effectively finances the trader and lets them buy and sell trading instruments. The maximum leverage available when trading indices for standard trading accounts is determined by your region.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-6" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What are the best index trading strategies?</h3>
-              </div>
+          <AccordionItem value="item-6">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What are the best index trading strategies?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 There is no optimal trading strategy for trading indices, so start with the strategy that best fits your trading style and goals. Study the most popular index trading strategies, like position trading and breakout strategy, to discover the one that works best for you.
               </p>
@@ -113,28 +95,22 @@ const IndicesFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-7" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Can I sell futures before expiry?</h3>
-              </div>
+          <AccordionItem value="item-7">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Can I sell futures before expiry?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Yes, you can sell futures before they expire. You are not required to hold a futures contract until it expires, and most traders close out their contracts prior to the expiration date. You can do so by either purchasing an opposing contract that nullifies the agreement or by selling your contract.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-8" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What are the margins and tick values on indices?</h3>
-              </div>
+          <AccordionItem value="item-8">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What are the margins and tick values on indices?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-neutral-200">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 The margin requirements for equity indices at Axi start from as low as 0.5%. Tick sizes are variable, as outlined in the Product Schedule.
               </p>

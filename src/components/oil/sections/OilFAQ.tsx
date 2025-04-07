@@ -10,18 +10,15 @@ import {
 const OilFAQ: React.FC = () => {
   return (
     <>
-      <h2 className="text-3xl mt-12 mb-4">FAQ</h2>
+      <h2 className="text-3xl mt-8 mb-6 font-bold">FAQ</h2>
       
-      <div className="my-8">
+      <div className="space-y-4">
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Why is crude oil valuable?</h3>
-              </div>
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Why is crude oil valuable?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Crude oil, also known as "black gold", is a raw material that is highly valued due to its wide use in the production of everyday products 
                 such as plastic, gasoline, rubber, synthetics, and more. Over generations, an increase in global population and quality of life has caused 
@@ -30,14 +27,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-2" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What is OPEC?</h3>
-              </div>
+          <AccordionItem value="item-2">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What is OPEC?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 OPEC stands for the Organisation of Petroleum Exporting Countries. There are currently 13 member countries within the group. According to the 
                 OPEC statute, the purpose of the group is to coordinate and unify the petroleum policies of its member countries to ensure the stabilisation 
@@ -47,14 +41,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-3" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">How is the oil market regulated?</h3>
-              </div>
+          <AccordionItem value="item-3">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              How is the oil market regulated?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 The physical oil market is largely unregulated, as there are only a few corporations controlling the mining and refining processes before 
                 exporting the product across the world. This oligopoly makes it harder for regulators to carry out regulatory checks in a transparent manner.
@@ -68,14 +59,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-4" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Which countries produce the most oil in the world?</h3>
-              </div>
+          <AccordionItem value="item-4">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Which countries produce the most oil in the world?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 According to data collected by the Energy Information Administration (EIA), total global oil production averages more than 100.61 million 
                 barrels per day. The top five oil-producing nations, responsible for nearly half of the world's production of crude oil, are the USA, Saudi Arabia, 
@@ -84,14 +72,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-5" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Can I make money trading oil?</h3>
-              </div>
+          <AccordionItem value="item-5">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Can I make money trading oil?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Crude oil is the world's most traded commodity. From its high liquidity and volatility arise opportunities to trade the fluctuations for profit. 
                 The degree to which trading crude oil can be beneficial for you depends on a variety of factors, including your level of trading expertise, your 
@@ -103,14 +88,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-6" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What are the risks involved with oil trading?</h3>
-              </div>
+          <AccordionItem value="item-6">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What are the risks involved with oil trading?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 There are two main types of risk associated with oil trading.
               </p>
@@ -127,14 +109,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-7" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What are the most popular oil trading products?</h3>
-              </div>
+          <AccordionItem value="item-7">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What are the most popular oil trading products?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 The top oil trading products include crude oil futures, crude oil spot markets, oil exchange-traded funds (ETFs), and oil CFDs. For a full list 
                 of oil trading products, please refer to our Product Schedule.
@@ -142,14 +121,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-8" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What are the oil trading market hours?</h3>
-              </div>
+          <AccordionItem value="item-8">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What are the oil trading market hours?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 The oil trading market is split up into two trading sessions: Brent crude oil and West Texas oil.
               </p>
@@ -160,14 +136,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-9" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">How much money do you need to start trading oil?</h3>
-              </div>
+          <AccordionItem value="item-9">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              How much money do you need to start trading oil?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 The amount of money needed to start trading oil will depend on your goals, the oil products you want to trade, and whether you want to trade 
                 using leverage.
@@ -185,14 +158,11 @@ const OilFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-10" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What spreads and margin does Axi offer on oil trading?</h3>
-              </div>
+          <AccordionItem value="item-10">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What spreads and margin does Axi offer on oil trading?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Axi offers extremely competitive variable spreads on oil, with spreads changing throughout the day. To experience how spreads work in real time, 
                 open a free demo account where you can practise your trading using virtual funds. The initial margin rate starts at 2% for oil cash CFDs and 
