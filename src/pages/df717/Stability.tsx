@@ -23,15 +23,15 @@ const Stability: React.FC = () => {
           </p>
         </div>
         
-        <div className="py-4 mb-6 border-t border-red-900/30 animate-fade-in-up delay-200">
+        <div className="py-4 mb-6 border-t border-white/30 animate-fade-in-up delay-200">
           <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Key Components</h2>
         </div>
         
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-300">
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Cpu className="h-5 w-5 mr-3 text-red-400" />
+                <Cpu className="h-5 w-5 mr-3 text-white" />
                 Multi-layer Signal Engine
               </h3>
             </CardHeader>
@@ -54,10 +54,10 @@ const Stability: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Zap className="h-5 w-5 mr-3 text-red-400" />
+                <Zap className="h-5 w-5 mr-3 text-white" />
                 Latency-optimized Trade Executor
               </h3>
             </CardHeader>
@@ -80,10 +80,10 @@ const Stability: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Shield className="h-5 w-5 mr-3 text-red-400" />
+                <Shield className="h-5 w-5 mr-3 text-white" />
                 Self-healing Risk Logic
               </h3>
             </CardHeader>

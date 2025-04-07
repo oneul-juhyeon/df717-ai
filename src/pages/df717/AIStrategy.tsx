@@ -23,10 +23,10 @@ const AIStrategy: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-200">
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Brain className="h-5 w-5 mr-3 text-red-400" />
+                <Brain className="h-5 w-5 mr-3 text-white" />
                 Deep Learning Architecture
               </h3>
             </CardHeader>
@@ -49,10 +49,10 @@ const AIStrategy: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Cpu className="h-5 w-5 mr-3 text-red-400" />
+                <Cpu className="h-5 w-5 mr-3 text-white" />
                 Reinforcement Learning
               </h3>
             </CardHeader>
@@ -75,10 +75,10 @@ const AIStrategy: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Network className="h-5 w-5 mr-3 text-red-400" />
+                <Network className="h-5 w-5 mr-3 text-white" />
                 Ensemble Decision Framework
               </h3>
             </CardHeader>

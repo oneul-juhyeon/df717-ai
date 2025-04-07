@@ -24,10 +24,10 @@ const Examples: React.FC = () => {
         
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-200">
           {/* Strategy A */}
-          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
-            <div className="bg-[#12122e] py-6 px-8 border-b border-red-900/30">
+          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-white/50 shadow-lg hover:border-white/70 transition-all duration-300">
+            <div className="bg-[#12122e] py-6 px-8 border-b border-white/30">
               <h2 className="text-2xl font-bold text-white flex items-center">
-                <Zap className="h-6 w-6 mr-3 text-red-400" />
+                <Zap className="h-6 w-6 mr-3 text-white" />
                 Strategy A
               </h2>
             </div>
@@ -41,17 +41,17 @@ const Examples: React.FC = () => {
                   </p>
                 </div>
                 <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <Zap className="h-32 w-32 text-red-400" />
+                  <Zap className="h-32 w-32 text-white" />
                 </div>
               </div>
             </div>
           </section>
           
           {/* Strategy B */}
-          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
-            <div className="bg-[#12122e] py-6 px-8 border-b border-red-900/30">
+          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-white/50 shadow-lg hover:border-white/70 transition-all duration-300">
+            <div className="bg-[#12122e] py-6 px-8 border-b border-white/30">
               <h2 className="text-2xl font-bold text-white flex items-center">
-                <Sparkles className="h-6 w-6 mr-3 text-red-400" />
+                <Sparkles className="h-6 w-6 mr-3 text-white" />
                 Strategy B
               </h2>
             </div>
@@ -65,17 +65,17 @@ const Examples: React.FC = () => {
                   </p>
                 </div>
                 <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <Sparkles className="h-32 w-32 text-red-400" />
+                  <Sparkles className="h-32 w-32 text-white" />
                 </div>
               </div>
             </div>
           </section>
           
           {/* Strategy C */}
-          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-red-900/50 shadow-lg hover:border-red-800/70 transition-all duration-300">
-            <div className="bg-[#12122e] py-6 px-8 border-b border-red-900/30">
+          <section className="bg-[#0c0c20] rounded-lg overflow-hidden border border-white/50 shadow-lg hover:border-white/70 transition-all duration-300">
+            <div className="bg-[#12122e] py-6 px-8 border-b border-white/30">
               <h2 className="text-2xl font-bold text-white flex items-center">
-                <BrainCircuit className="h-6 w-6 mr-3 text-red-400" />
+                <BrainCircuit className="h-6 w-6 mr-3 text-white" />
                 Strategy C
               </h2>
             </div>
@@ -89,7 +89,7 @@ const Examples: React.FC = () => {
                   </p>
                 </div>
                 <div className="w-full md:w-1/3 bg-[#161645] rounded-lg p-6 flex items-center justify-center">
-                  <BrainCircuit className="h-32 w-32 text-red-400" />
+                  <BrainCircuit className="h-32 w-32 text-white" />
                 </div>
               </div>
             </div>

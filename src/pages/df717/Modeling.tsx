@@ -23,10 +23,10 @@ const Modeling: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-200">
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <LineChart className="h-5 w-5 mr-3 text-red-400" />
+                <LineChart className="h-5 w-5 mr-3 text-white" />
                 Time-Series Decomposition
               </h3>
             </CardHeader>
@@ -49,10 +49,10 @@ const Modeling: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Network className="h-5 w-5 mr-3 text-red-400" />
+                <Network className="h-5 w-5 mr-3 text-white" />
                 Multi-factor Analysis
               </h3>
             </CardHeader>
@@ -75,10 +75,10 @@ const Modeling: React.FC = () => {
             </CardContent>
           </Card>
           
-          <Card className="bg-[#0c0c20] border-red-900/50 text-white hover:border-red-800/70 transition-all duration-300 shadow-lg overflow-hidden">
-            <CardHeader className="bg-[#12122e] border-b border-red-900/30">
+          <Card className="bg-[#0c0c20] border-white/50 text-white hover:border-white/70 transition-all duration-300 shadow-lg overflow-hidden">
+            <CardHeader className="bg-[#12122e] border-b border-white/30">
               <h3 className="text-xl font-bold text-white flex items-center">
-                <Database className="h-5 w-5 mr-3 text-red-400" />
+                <Database className="h-5 w-5 mr-3 text-white" />
                 Market Microstructure Analysis
               </h3>
             </CardHeader>
