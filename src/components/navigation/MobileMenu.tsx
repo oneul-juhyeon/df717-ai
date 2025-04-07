@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, ArrowRight, ChevronRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NavigationItem } from "./types";
@@ -38,7 +38,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     <div className="flex items-center">
                       <CollapsibleTrigger asChild>
                         <button
-                          className="flex items-center justify-between w-full text-white hover:text-red-400 py-2 text-lg font-medium transition"
+                          className="flex items-center justify-between w-full text-white hover:text-red-400 py-2 text-lg font-medium transition px-0"
                         >
                           <span>{item.name}</span>
                           <ChevronRight className="h-5 w-5 transition-transform duration-200 [&[data-state=open]]:rotate-90" />
@@ -77,7 +77,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                 ) : (
                   <Link 
                     to={item.path} 
-                    className={`text-white hover:text-red-400 py-2 text-lg font-medium transition ${
+                    className={`flex items-center justify-between text-white hover:text-red-400 py-2 text-lg font-medium transition ${
                       isMenuActive(item, location.pathname) ? 'text-red-400' : ''
                     }`}
                     onClick={() => {
@@ -85,7 +85,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                       setIsOpen(false);
                     }}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    {/* Empty spacer div to maintain consistent alignment with submenu items */}
+                    <div className="w-5"></div>
                   </Link>
                 )}
               </div>
