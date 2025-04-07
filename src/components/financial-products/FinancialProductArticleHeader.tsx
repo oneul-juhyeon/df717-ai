@@ -13,7 +13,7 @@ const FinancialProductArticleHeader: React.FC<FinancialProductArticleHeaderProps
       {subtitle && (
         <p className="text-xl text-gray-300 text-left max-w-3xl leading-relaxed">{subtitle}</p>
       )}
-      <div className="h-1 w-20 bg-red-800 mt-6"></div>
+      <div className="h-1 w-20 bg-white mt-6"></div>
     </div>
   );
 };

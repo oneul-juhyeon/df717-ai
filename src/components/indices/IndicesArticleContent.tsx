@@ -28,7 +28,9 @@ const IndicesArticleContent: React.FC = () => {
           prose-th:text-white
           prose-td:text-neutral-200
           prose-a:text-blue-400
-          prose-a:hover:text-blue-300">
+          prose-a:hover:text-blue-300
+          prose-blockquote:border-white
+          prose-hr:border-white">
           <IndicesWhatAre />
           <IndicesMarket />
           <IndicesHowItWorks />

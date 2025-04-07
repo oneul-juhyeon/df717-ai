@@ -28,7 +28,9 @@ const CommoditiesArticleContent: React.FC = () => {
           prose-th:text-white
           prose-td:text-gray-300
           prose-a:text-blue-400
-          prose-a:hover:text-blue-300">
+          prose-a:hover:text-blue-300
+          prose-blockquote:border-white
+          prose-hr:border-white">
           <CommoditiesWhatAre />
           <CommoditiesMarket />
           <CommoditiesHowItWorks />
