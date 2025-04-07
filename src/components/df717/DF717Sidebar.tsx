@@ -1,9 +1,10 @@
 
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DF717Sidebar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   
   const sidebarItems = [
     { name: "What is DF717?", path: "/df717" },
@@ -14,6 +15,17 @@ const DF717Sidebar: React.FC = () => {
     { name: "Examples", path: "/df717/examples" },
   ];
 
+  const handleNavigation = (path: string) => {
+    // Navigate to the new page
+    navigate(path);
+    // Ensure page scrolls to top - use immediate scroll without smooth behavior for reliability
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+  };
+
   return (
     <aside className="hidden lg:block w-64 shrink-0 border-r border-red-900/30 pr-6">
       <div className="sticky top-24 animate-fade-in-left">
@@ -21,8 +33,12 @@ const DF717Sidebar: React.FC = () => {
         <ul className="space-y-2">
           {sidebarItems.map((item) => (
             <li key={item.name}>
-              <Link
-                to={item.path}
+              <a
+                href={item.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigation(item.path);
+                }}
                 className={`block py-2.5 px-4 rounded-lg transition-colors duration-300 ${
                   location.pathname === item.path
                     ? "bg-red-900/40 text-red-400 font-medium border-l-2 border-red-700"
@@ -30,7 +46,7 @@ const DF717Sidebar: React.FC = () => {
                 }`}
               >
                 {item.name}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>

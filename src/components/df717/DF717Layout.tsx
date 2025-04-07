@@ -1,7 +1,8 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import DF717Header from "./DF717Header";
 import DF717Sidebar from "./DF717Sidebar";
+import { useLocation } from "react-router-dom";
 
 interface DF717LayoutProps {
   children: React.ReactNode;
@@ -12,16 +13,42 @@ const DF717Layout: React.FC<DF717LayoutProps> = ({
   children,
   showSidebar = true
 }) => {
+  const location = useLocation();
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'auto'
     });
   };
 
-  useEffect(() => {
+  // UseLayoutEffect runs before browser paint, ensuring scroll reset happens before user sees the page
+  useLayoutEffect(() => {
+    // Immediate scroll reset using both methods for maximum compatibility
     window.scrollTo(0, 0);
-  }, []);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0; // For Safari
+  }, [location.pathname]);
+  
+  // Additional useEffect as a fallback to ensure scroll reset
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+    
+    // Add event listener to capture any scroll attempts immediately after navigation
+    const preventInitialScroll = (e: Event) => {
+      window.scrollTo(0, 0);
+    };
+    
+    window.addEventListener('scroll', preventInitialScroll, { once: true });
+    
+    return () => {
+      window.removeEventListener('scroll', preventInitialScroll);
+    };
+  }, [location.pathname]);
 
   return (
     <main className="w-full min-h-screen bg-[#0a0a1e] flex flex-col">
