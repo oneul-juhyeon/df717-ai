@@ -39,12 +39,12 @@ const CompanyHero: React.FC<CompanyHeroProps> = ({ scrollToValues }) => {
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden bg-black">
       <div className="z-10 max-w-3xl mx-auto">
         <div className="relative">
-          {/* Title Animation */}
+          {/* Title Animation - Updated font family */}
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: titleVisible ? 1 : 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl mb-8 text-white font-gotham font-bold max-md:text-4xl max-sm:text-3xl"
+            className="text-5xl mb-8 text-white font-sans font-bold max-md:text-4xl max-sm:text-3xl"
           >
             About DF717 & Company
           </motion.h1>
