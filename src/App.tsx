@@ -37,45 +37,43 @@ function App() {
   const queryClient = React.useMemo(() => new QueryClient(), []);
 
   return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
         <BrowserRouter>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/home-intro" element={<HomeIntro />} />
-              <Route path="/company" element={<Company />} />
-              <Route path="/technology" element={<Technology />} />
-              <Route path="/financial-products" element={<FinancialProducts />} />
-              <Route path="/financial-products/forex" element={<Forex />} />
-              <Route path="/financial-products/shares" element={<Shares />} />
-              <Route path="/financial-products/indices" element={<Indices />} />
-              <Route path="/financial-products/commodities" element={<Commodities />} />
-              <Route path="/financial-products/gold" element={<Gold />} />
-              <Route path="/financial-products/oil" element={<Oil />} />
-              <Route path="/financial-products/crypto" element={<Crypto />} />
-              <Route path="/df717" element={<DF717Main />} />
-              <Route path="/df717/stability" element={<Stability />} />
-              <Route path="/df717/modeling" element={<Modeling />} />
-              <Route path="/df717/ai-strategy" element={<AIStrategy />} />
-              <Route path="/df717/execution" element={<Execution />} />
-              <Route path="/df717/examples" element={<Examples />} />
-              <Route path="/robot" element={<Navigate to="/df717" replace />} />
-              <Route path="/axi-cfd" element={<AxiCFD />} />
-              <Route path="/axi-edge" element={<AxiEdge />} />
-              <Route path="/axi-trust" element={<AxiTrust />} />
-              <Route path="/axi-pricing" element={<AxiPricing />} />
-              <Route path="/axi-award" element={<AxiAward />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </TooltipProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/home-intro" element={<HomeIntro />} />
+            <Route path="/company" element={<Company />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/financial-products" element={<FinancialProducts />} />
+            <Route path="/financial-products/forex" element={<Forex />} />
+            <Route path="/financial-products/shares" element={<Shares />} />
+            <Route path="/financial-products/indices" element={<Indices />} />
+            <Route path="/financial-products/commodities" element={<Commodities />} />
+            <Route path="/financial-products/gold" element={<Gold />} />
+            <Route path="/financial-products/oil" element={<Oil />} />
+            <Route path="/financial-products/crypto" element={<Crypto />} />
+            <Route path="/df717" element={<DF717Main />} />
+            <Route path="/df717/stability" element={<Stability />} />
+            <Route path="/df717/modeling" element={<Modeling />} />
+            <Route path="/df717/ai-strategy" element={<AIStrategy />} />
+            <Route path="/df717/execution" element={<Execution />} />
+            <Route path="/df717/examples" element={<Examples />} />
+            <Route path="/robot" element={<Navigate to="/df717" replace />} />
+            <Route path="/axi-cfd" element={<AxiCFD />} />
+            <Route path="/axi-edge" element={<AxiEdge />} />
+            <Route path="/axi-trust" element={<AxiTrust />} />
+            <Route path="/axi-pricing" element={<AxiPricing />} />
+            <Route path="/axi-award" element={<AxiAward />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
-      </QueryClientProvider>
-    </React.StrictMode>
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 }
 

@@ -1,7 +1,7 @@
 
 import React from "react";
 import TechnologyHeader from "@/components/technology/TechnologyHeader";
-import TechnologyTabs from "@/components/technology/TechnologyTabs";
+import ModernTechnologyTabs from "@/components/technology/ModernTechnologyTabs";
 
 const Technology: React.FC = () => {
   const scrollToTop = () => {
@@ -24,7 +24,7 @@ const Technology: React.FC = () => {
           <div className="absolute -top-20 -left-20 w-64 h-64 bg-red-900/5 rounded-full blur-3xl"></div>
           <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-900/5 rounded-full blur-3xl"></div>
           
-          <TechnologyTabs />
+          <ModernTechnologyTabs />
         </section>
       </div>
     </main>

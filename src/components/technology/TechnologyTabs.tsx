@@ -13,19 +13,19 @@ const TechnologyTabs: React.FC = () => {
           <TabsList className="w-full mb-8 bg-[#1a1a1a] border-b border-gray-700">
             <TabsTrigger 
               value="core" 
-              className="text-lg font-medium text-[#CCCCCC] data-[state=active]:text-white data-[state=active]:border-white"
+              className="text-lg font-medium text-[#CCCCCC] data-[state=active]:text-white"
             >
               CORE COMPETENCE
             </TabsTrigger>
             <TabsTrigger 
               value="preface" 
-              className="text-lg font-medium text-[#CCCCCC] data-[state=active]:text-white data-[state=active]:border-white"
+              className="text-lg font-medium text-[#CCCCCC] data-[state=active]:text-white"
             >
               DF717
             </TabsTrigger>
             <TabsTrigger 
               value="isaac" 
-              className="text-lg font-medium text-[#CCCCCC] data-[state=active]:text-white data-[state=active]:border-white"
+              className="text-lg font-medium text-[#CCCCCC] data-[state=active]:text-white"
             >
               HANNAH
             </TabsTrigger>
