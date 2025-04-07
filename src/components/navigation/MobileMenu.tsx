@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -16,24 +16,22 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  // Enhanced scroll to top function that ensures complete reset
-  const handleScrollToTop = () => {
+  // Enhanced navigation function that ensures complete navigation
+  const handleNavigation = (path: string) => {
     // First close the menu
     setIsOpen(false);
     
-    // Then use immediate scroll to top without smooth behavior for reliability
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto'
-    });
-    
-    // Also call the provided scrollToTop function
+    // Short delay to allow menu closing animation
     setTimeout(() => {
+      // Navigate to the page
+      navigate(path);
+      
+      // Call the scrollToTop function
       scrollToTop();
-    }, 10);
+    }, 100);
   };
 
   return (
@@ -65,45 +63,30 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     </div>
                     
                     <CollapsibleContent className="ml-4 mt-2 space-y-2">
-                      {item.submenu.map((subItem) => {
-                        const hasId = 'id' in subItem && subItem.id;
-                        const isActive = location.pathname === subItem.path;
-                        
-                        return (
-                          <a 
-                            key={subItem.name} 
-                            href={subItem.path}
-                            className={`flex items-center gap-2 text-gray-300 hover:text-red-400 py-1 text-md transition cursor-pointer whitespace-nowrap ${
-                              isActive ? 'text-red-400 font-medium' : ''
-                            }`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              if (hasId && subItem.id) {
-                              }
-                              handleScrollToTop();
-                            }}
-                          >
-                            <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                            <span>{subItem.name}</span>
-                          </a>
-                        );
-                      })}
+                      {item.submenu.map((subItem) => (
+                        <button 
+                          key={subItem.name}
+                          className={`flex items-center gap-2 text-gray-300 hover:text-red-400 py-1 text-md transition cursor-pointer whitespace-nowrap ${
+                            location.pathname === subItem.path ? 'text-red-400 font-medium' : ''
+                          }`}
+                          onClick={() => handleNavigation(subItem.path)}
+                        >
+                          <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
+                          <span>{subItem.name}</span>
+                        </button>
+                      ))}
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  <a 
-                    href={item.path} 
+                  <button 
                     className={`flex items-center justify-between text-white hover:text-red-400 py-2 text-lg font-medium transition ${
                       isMenuActive(item, location.pathname) ? 'text-red-400' : ''
                     }`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleScrollToTop();
-                    }}
+                    onClick={() => handleNavigation(item.path)}
                   >
                     <span>{item.name}</span>
                     <div className="w-5"></div>
-                  </a>
+                  </button>
                 )}
               </div>
             ))}
