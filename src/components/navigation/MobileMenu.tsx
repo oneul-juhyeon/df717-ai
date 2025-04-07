@@ -54,10 +54,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     <div className="flex items-center">
                       <CollapsibleTrigger asChild>
                         <button
-                          className={`flex items-center justify-between w-full text-white py-2 text-lg font-medium transition px-0 relative
-                            ${isMenuActive(item, location.pathname) ? 'after:scale-x-100' : 'after:scale-x-0'}
-                            after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white
-                            after:transition-transform after:duration-300
+                          className={`mobile-nav-item flex items-center justify-between w-full text-white py-2 text-lg font-medium transition px-0 relative
+                            ${isMenuActive(item, location.pathname) ? 'active' : ''}
                           `}
                         >
                           <span>{item.name}</span>
@@ -83,10 +81,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                   </Collapsible>
                 ) : (
                   <button 
-                    className={`flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
-                      ${isMenuActive(item, location.pathname) ? 'after:scale-x-100' : 'after:scale-x-0'}
-                      after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white
-                      after:transition-transform after:duration-300
+                    className={`mobile-nav-item flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
+                      ${isMenuActive(item, location.pathname) ? 'active' : ''}
                     `}
                     onClick={() => handleNavigation(item.path)}
                   >
