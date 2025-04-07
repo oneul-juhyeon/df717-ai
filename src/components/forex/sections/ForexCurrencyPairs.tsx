@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Table, TableHeader, TableHead, TableRow, TableBody, TableCell } from "@/components/ui/table";
 
 const ForexCurrencyPairs: React.FC = () => {
   return (
@@ -34,52 +35,52 @@ const ForexCurrencyPairs: React.FC = () => {
       <h3 className="text-2xl mt-6 mb-4">Forex currency pairs comparison: Majors vs. Minors vs. Exotics</h3>
       
       <div className="overflow-x-auto mb-6">
-        <table className="min-w-full border-collapse">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border border-gray-300 px-4 py-2">Major currency pairs</th>
-              <th className="border border-gray-300 px-4 py-2">Minor currency pairs</th>
-              <th className="border border-gray-300 px-4 py-2">Exotic currency pairs</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">EUR/USD</td>
-              <td className="border border-gray-300 px-4 py-2">EUR/GBP</td>
-              <td className="border border-gray-300 px-4 py-2">EUR/TRY</td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">USD/JPY</td>
-              <td className="border border-gray-300 px-4 py-2">EUR/JPY</td>
-              <td className="border border-gray-300 px-4 py-2">USD/HKD</td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">GBP/USD</td>
-              <td className="border border-gray-300 px-4 py-2">GBP/JPY</td>
-              <td className="border border-gray-300 px-4 py-2">USD/ZAR</td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">USD/CHF</td>
-              <td className="border border-gray-300 px-4 py-2">GBP/CAD</td>
-              <td className="border border-gray-300 px-4 py-2">JPY/NOK</td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">USD/CAD</td>
-              <td className="border border-gray-300 px-4 py-2">CHF/JPY</td>
-              <td className="border border-gray-300 px-4 py-2">NZD/SGD</td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">AUD/USD</td>
-              <td className="border border-gray-300 px-4 py-2">EUR/AUD</td>
-              <td className="border border-gray-300 px-4 py-2">GBP/ZAR</td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2">NZD/USD</td>
-              <td className="border border-gray-300 px-4 py-2">NZD/JPY</td>
-              <td className="border border-gray-300 px-4 py-2">AUD/MXN</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table className="min-w-full border-collapse">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="border border-gray-300 px-4 py-2 bg-[#444444] text-white">Major currency pairs</TableHead>
+              <TableHead className="border border-gray-300 px-4 py-2 bg-[#444444] text-white">Minor currency pairs</TableHead>
+              <TableHead className="border border-gray-300 px-4 py-2 bg-[#444444] text-white">Exotic currency pairs</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">EUR/USD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">EUR/GBP</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">EUR/TRY</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">USD/JPY</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">EUR/JPY</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">USD/HKD</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">GBP/USD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">GBP/JPY</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">USD/ZAR</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">USD/CHF</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">GBP/CAD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">JPY/NOK</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">USD/CAD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">CHF/JPY</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">NZD/SGD</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">AUD/USD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">EUR/AUD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">GBP/ZAR</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell className="border border-gray-300 px-4 py-2">NZD/USD</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">NZD/JPY</TableCell>
+              <TableCell className="border border-gray-300 px-4 py-2">AUD/MXN</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
     </>
   );
