@@ -14,14 +14,14 @@ const SharesMarket: React.FC = () => {
       <p className="mb-4 text-left">
         Leading exchanges in terms of proceeds worldwide include*:
       </p>
-      <ul className="list-disc ml-6 mb-4 text-left text-gray-700">
+      <ul className="list-disc ml-6 mb-4 text-left text-white">
         <li>Nasdaq</li>
         <li>New York Stock Exchange</li>
         <li>Shanghai Stock Exchange</li>
         <li>Hong Kong Exchange</li>
         <li>London Stock Exchange</li>
       </ul>
-      <p className="mb-4 text-gray-500 text-sm italic text-left">
+      <p className="mb-4 text-white text-sm italic text-left">
         *Source: Statista.com
       </p>
 

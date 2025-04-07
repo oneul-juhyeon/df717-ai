@@ -41,7 +41,7 @@ const SharesAdvantages: React.FC = () => {
       <p className="mb-4 text-left">
         FAANG is an acronym for the five largest companies in the technology sector of the US Stock Market. They are:
       </p>
-      <ul className="list-disc ml-6 mb-4 text-left text-gray-700">
+      <ul className="list-disc ml-6 mb-4 text-left text-white">
         <li>F - Facebook (FB)</li>
         <li>A - Apple (AAPL)</li>
         <li>A - Amazon (AMZN)</li>

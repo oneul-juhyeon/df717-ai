@@ -29,7 +29,7 @@ const SharesWhy: React.FC = () => {
       <p className="mb-4 text-left">
         To answer that question, you will have to analyse the stock price movements and see which ones present the best trading opportunities. To do this, there are two well-known methods of analysis available:
       </p>
-      <ul className="list-disc ml-6 mb-4 text-left text-gray-700">
+      <ul className="list-disc ml-6 mb-4 text-left text-white">
         <li>Fundamental analysis</li>
         <li>Technical analysis</li>
       </ul>

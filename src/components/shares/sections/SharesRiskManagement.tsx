@@ -41,7 +41,7 @@ const SharesRiskManagement: React.FC = () => {
       <p className="mb-4 text-left">
         Use trading calculators to help set your trades.
       </p>
-      <ul className="list-disc ml-6 mb-8 text-left text-gray-700">
+      <ul className="list-disc ml-6 mb-8 text-left text-white">
         <li>Margin calculator: See how much margin is needed to open a position.</li>
         <li>Profit/loss calculator: Helps estimate profits and losses and set stop-loss and take-profit levels.</li>
         <li>Pip calculator: Estimates potential profits or losses based on pip movements.</li>
