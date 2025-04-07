@@ -26,26 +26,27 @@ const RevCounterSection: React.FC = () => {
       return;
     }
     
-    const bibleBooks = ["GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "RUT", "ISA", "REV"];
+    // Expanded list of 17 Bible abbreviations
+    const bibleBooks = ["GEN", "EXO", "LEV", "JOS", "RUT", "JOB", "PSA", "ISA", "JER", "EZE", "DAN", "HOS", "JOE", "AMO", "MAT", "ROM", "REV"];
     let currentIndex = 0;
     
     // Show first book immediately
     setCurrentBook(bibleBooks[currentIndex]);
     
-    // Calculate interval to ensure animation completes in ~2 seconds
-    // 9 books with ~0.2s per book = ~1.8s total + a bit of buffer
-    const interval = 200; // 0.2 seconds
+    // Calculate interval to ensure animation completes in ~1.7 seconds
+    // 17 books with ~0.1s per book = ~1.7s total
+    const interval = 100; // 0.1 seconds
     
     // Start counter animations
     // For number 7, count from 0 to 7
     let count7Value = 0;
     const count7Steps = 7;
-    const count7Interval = 1800 / count7Steps; // Complete in ~1.8s
+    const count7Interval = 1700 / count7Steps; // Complete in ~1.7s
     
     // For number 17, count from 0 to 17
     let count17Value = 0;
     const count17Steps = 17;
-    const count17Interval = 1800 / count17Steps; // Complete in ~1.8s
+    const count17Interval = 1700 / count17Steps; // Complete in ~1.7s
     
     // Bible book cycling
     const bookTimer = setInterval(() => {
