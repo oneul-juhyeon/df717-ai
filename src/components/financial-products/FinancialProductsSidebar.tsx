@@ -10,8 +10,12 @@ const FinancialProductsSidebar: React.FC = () => {
   const handleNavigation = (path: string) => {
     // Navigate to the new page
     navigate(path);
-    // Ensure page scrolls to top
-    window.scrollTo(0, 0);
+    // Ensure page scrolls to top - use immediate scroll without smooth behavior for reliability
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
   };
   
   return (
@@ -21,8 +25,8 @@ const FinancialProductsSidebar: React.FC = () => {
         <ul className="space-y-2">
           {financialProductsSubmenu.map((item) => (
             <li key={item.name}>
-              <Link
-                to={item.path}
+              <a
+                href={item.path}
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavigation(item.path);
@@ -34,7 +38,7 @@ const FinancialProductsSidebar: React.FC = () => {
                 }`}
               >
                 {item.name}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>

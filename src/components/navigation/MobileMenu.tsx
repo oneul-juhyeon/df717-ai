@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,24 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop }) => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Enhanced scroll to top function that ensures complete reset
+  const handleScrollToTop = () => {
+    // First close the menu
+    setIsOpen(false);
+    
+    // Then use immediate scroll to top without smooth behavior for reliability
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+    
+    // Also call the provided scrollToTop function
+    setTimeout(() => {
+      scrollToTop();
+    }, 10);
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -51,40 +70,40 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                         const isActive = location.pathname === subItem.path;
                         
                         return (
-                          <Link 
+                          <a 
                             key={subItem.name} 
-                            to={subItem.path}
+                            href={subItem.path}
                             className={`flex items-center gap-2 text-gray-300 hover:text-red-400 py-1 text-md transition cursor-pointer whitespace-nowrap ${
                               isActive ? 'text-red-400 font-medium' : ''
                             }`}
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.preventDefault();
                               if (hasId && subItem.id) {
                               }
-                              scrollToTop();
-                              setIsOpen(false);
+                              handleScrollToTop();
                             }}
                           >
                             <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
                             <span>{subItem.name}</span>
-                          </Link>
+                          </a>
                         );
                       })}
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  <Link 
-                    to={item.path} 
+                  <a 
+                    href={item.path} 
                     className={`flex items-center justify-between text-white hover:text-red-400 py-2 text-lg font-medium transition ${
                       isMenuActive(item, location.pathname) ? 'text-red-400' : ''
                     }`}
-                    onClick={() => {
-                      scrollToTop();
-                      setIsOpen(false);
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScrollToTop();
                     }}
                   >
                     <span>{item.name}</span>
                     <div className="w-5"></div>
-                  </Link>
+                  </a>
                 )}
               </div>
             ))}
