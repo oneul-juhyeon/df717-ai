@@ -37,47 +37,47 @@ const ForexCurrencyPairs: React.FC = () => {
       <div className="overflow-x-auto mb-6">
         <Table className="min-w-full border-collapse">
           <TableHeader>
-            <TableRow>
-              <TableHead className="border border-gray-300 px-4 py-2 bg-[#444444] text-white">Major currency pairs</TableHead>
-              <TableHead className="border border-gray-300 px-4 py-2 bg-[#444444] text-white">Minor currency pairs</TableHead>
-              <TableHead className="border border-gray-300 px-4 py-2 bg-[#444444] text-white">Exotic currency pairs</TableHead>
+            <TableRow className="border-b border-gray-700">
+              <TableHead className="text-white bg-[#1e2a3a]">Major currency pairs</TableHead>
+              <TableHead className="text-white bg-[#1e2a3a]">Minor currency pairs</TableHead>
+              <TableHead className="text-white bg-[#1e2a3a]">Exotic currency pairs</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">EUR/USD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">EUR/GBP</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">EUR/TRY</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/USD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/GBP</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/TRY</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">USD/JPY</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">EUR/JPY</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">USD/HKD</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/JPY</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/JPY</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/HKD</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">GBP/USD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">GBP/JPY</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">USD/ZAR</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/USD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/JPY</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/ZAR</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">USD/CHF</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">GBP/CAD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">JPY/NOK</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/CHF</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/CAD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">JPY/NOK</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">USD/CAD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">CHF/JPY</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">NZD/SGD</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/CAD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">CHF/JPY</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">NZD/SGD</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">AUD/USD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">EUR/AUD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">GBP/ZAR</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">AUD/USD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/AUD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/ZAR</TableCell>
             </TableRow>
-            <TableRow>
-              <TableCell className="border border-gray-300 px-4 py-2">NZD/USD</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">NZD/JPY</TableCell>
-              <TableCell className="border border-gray-300 px-4 py-2">AUD/MXN</TableCell>
+            <TableRow className="border-b border-gray-700">
+              <TableCell className="text-neutral-200 bg-[#0d1117]">NZD/USD</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">NZD/JPY</TableCell>
+              <TableCell className="text-neutral-200 bg-[#0d1117]">AUD/MXN</TableCell>
             </TableRow>
           </TableBody>
         </Table>
