@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight, ChevronRight } from "lucide-react";
+import { Menu, ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NavigationItem } from "./types";
@@ -48,7 +47,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     
                     <CollapsibleContent className="ml-4 mt-2 space-y-2">
                       {item.submenu.map((subItem) => {
-                        // Check if this is an AxiCFD submenu item (which has id property)
                         const hasId = 'id' in subItem && subItem.id;
                         const isActive = location.pathname === subItem.path;
                         
@@ -61,7 +59,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                             }`}
                             onClick={() => {
                               if (hasId && subItem.id) {
-                                // Handle section scrolling if needed
                               }
                               scrollToTop();
                               setIsOpen(false);
@@ -86,7 +83,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     }}
                   >
                     <span>{item.name}</span>
-                    {/* Empty spacer div to maintain consistent alignment with submenu items */}
                     <div className="w-5"></div>
                   </Link>
                 )}
