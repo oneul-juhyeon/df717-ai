@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 
 const SharesDisadvantages: React.FC = () => {
   return (
@@ -21,40 +22,40 @@ const SharesDisadvantages: React.FC = () => {
       </p>
 
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse mb-8">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-3 border border-gray-300">Stock CFDs</th>
-              <th className="p-3 border border-gray-300">Traditional stock trading</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="p-3 border border-gray-300">Use leverage</td>
-              <td className="p-3 border border-gray-300">Pay full price</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Multiple markets</td>
-              <td className="p-3 border border-gray-300">Equities and ETFs</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">You don't own the underlying asset</td>
-              <td className="p-3 border border-gray-300">Ownership of the underlying asset</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Go short and benefit from falling prices</td>
-              <td className="p-3 border border-gray-300">No option to benefit from falling prices</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">No shareholder privileges</td>
-              <td className="p-3 border border-gray-300">Shareholder privileges and potential voting rights</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Option to hedge your trades</td>
-              <td className="p-3 border border-gray-300">Hedging requires the use of derivatives (options, futures, and inverse ETFs)</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table className="min-w-full border-collapse mb-8">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Stock CFDs</TableHead>
+              <TableHead>Traditional stock trading</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Use leverage</TableCell>
+              <TableCell>Pay full price</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Multiple markets</TableCell>
+              <TableCell>Equities and ETFs</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>You don't own the underlying asset</TableCell>
+              <TableCell>Ownership of the underlying asset</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Go short and benefit from falling prices</TableCell>
+              <TableCell>No option to benefit from falling prices</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>No shareholder privileges</TableCell>
+              <TableCell>Shareholder privileges and potential voting rights</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Option to hedge your trades</TableCell>
+              <TableCell>Hedging requires the use of derivatives (options, futures, and inverse ETFs)</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
     </>
   );

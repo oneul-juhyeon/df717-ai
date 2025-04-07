@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 
 const SharesAdvantages: React.FC = () => {
   return (
@@ -52,67 +53,67 @@ const SharesAdvantages: React.FC = () => {
       </p>
       
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse mb-8">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-3 border border-gray-300">US Stocks</th>
-              <th className="p-3 border border-gray-300">UK Stocks</th>
-              <th className="p-3 border border-gray-300">EU Stocks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="p-3 border border-gray-300">Alibaba</td>
-              <td className="p-3 border border-gray-300">Aviva</td>
-              <td className="p-3 border border-gray-300">Adidas</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Alphabet</td>
-              <td className="p-3 border border-gray-300">BP</td>
-              <td className="p-3 border border-gray-300">Airbus</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Amazon</td>
-              <td className="p-3 border border-gray-300">easyJet</td>
-              <td className="p-3 border border-gray-300">BASF</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Apple</td>
-              <td className="p-3 border border-gray-300">HSBC</td>
-              <td className="p-3 border border-gray-300">BNP Paribas</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Facebook</td>
-              <td className="p-3 border border-gray-300">GSK</td>
-              <td className="p-3 border border-gray-300">Daimler</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Microsoft</td>
-              <td className="p-3 border border-gray-300">Lloyds</td>
-              <td className="p-3 border border-gray-300">Deutsche Bank</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Netflix</td>
-              <td className="p-3 border border-gray-300">Rio Tinto</td>
-              <td className="p-3 border border-gray-300">Kering</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Pfizer</td>
-              <td className="p-3 border border-gray-300">Rolls-Royce Holdings</td>
-              <td className="p-3 border border-gray-300">LVMH</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Tesla</td>
-              <td className="p-3 border border-gray-300">Tesco</td>
-              <td className="p-3 border border-gray-300">Sanofi</td>
-            </tr>
-            <tr>
-              <td className="p-3 border border-gray-300">Walt Disney Co.</td>
-              <td className="p-3 border border-gray-300">Vodafone</td>
-              <td className="p-3 border border-gray-300">Siemens</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table className="min-w-full border-collapse mb-8">
+          <TableHeader>
+            <TableRow>
+              <TableHead>US Stocks</TableHead>
+              <TableHead>UK Stocks</TableHead>
+              <TableHead>EU Stocks</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>Alibaba</TableCell>
+              <TableCell>Aviva</TableCell>
+              <TableCell>Adidas</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Alphabet</TableCell>
+              <TableCell>BP</TableCell>
+              <TableCell>Airbus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Amazon</TableCell>
+              <TableCell>easyJet</TableCell>
+              <TableCell>BASF</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Apple</TableCell>
+              <TableCell>HSBC</TableCell>
+              <TableCell>BNP Paribas</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Facebook</TableCell>
+              <TableCell>GSK</TableCell>
+              <TableCell>Daimler</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Microsoft</TableCell>
+              <TableCell>Lloyds</TableCell>
+              <TableCell>Deutsche Bank</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Netflix</TableCell>
+              <TableCell>Rio Tinto</TableCell>
+              <TableCell>Kering</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Pfizer</TableCell>
+              <TableCell>Rolls-Royce Holdings</TableCell>
+              <TableCell>LVMH</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Tesla</TableCell>
+              <TableCell>Tesco</TableCell>
+              <TableCell>Sanofi</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Walt Disney Co.</TableCell>
+              <TableCell>Vodafone</TableCell>
+              <TableCell>Siemens</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </div>
     </>
   );
