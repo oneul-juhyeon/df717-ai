@@ -97,7 +97,6 @@ export function NewContactForm() {
                 </FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="Your job title" 
                     {...field} 
                     className="h-[45px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px]" 
                   />
@@ -119,7 +118,6 @@ export function NewContactForm() {
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder="Your first name" 
                       {...field} 
                       className="h-[45px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px]" 
                     />
@@ -139,7 +137,6 @@ export function NewContactForm() {
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder="Your last name" 
                       {...field} 
                       className="h-[45px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px]" 
                     />
@@ -162,7 +159,6 @@ export function NewContactForm() {
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder="Your email address" 
                       {...field} 
                       className="h-[45px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px]" 
                     />
@@ -182,7 +178,6 @@ export function NewContactForm() {
                   </FormLabel>
                   <FormControl>
                     <Input 
-                      placeholder="Your phone number" 
                       {...field} 
                       className="h-[45px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px]" 
                     />
@@ -204,7 +199,6 @@ export function NewContactForm() {
                 </FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="Name of the person who referred you" 
                     {...field} 
                     className="h-[45px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px]" 
                   />
@@ -225,7 +219,6 @@ export function NewContactForm() {
                 </FormLabel>
                 <FormControl>
                   <Textarea 
-                    placeholder="Please describe your inquiry in detail" 
                     {...field} 
                     className="h-[150px] min-h-[150px] bg-[#1A1A1A] text-white border-0 rounded-none px-[10px] py-[10px]" 
                   />
@@ -236,7 +229,7 @@ export function NewContactForm() {
           />
 
           {/* Submit Button */}
-          <div>
+          <div className="text-left">
             <Button 
               type="submit" 
               disabled={isSubmitting} 
