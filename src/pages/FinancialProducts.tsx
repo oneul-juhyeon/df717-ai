@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Coins, TrendingUp, BarChart4, Layers, CircleDollarSign, Fuel, Bitcoin } from "lucide-react";
-import CompanyHeader from "@/components/company/CompanyHeader";
+import HomeHeader from "@/components/home/HomeHeader";
 import Footer from "@/components/common/Footer";
 
 const FinancialProducts: React.FC = () => {
@@ -65,36 +65,36 @@ const FinancialProducts: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5 flex-grow">
-        <CompanyHeader scrollToTop={scrollToTop} />
-        
-        <section className="mt-20 mb-20">
-          <div className="max-w-6xl mx-auto">
-            <h1 className="text-5xl font-bold text-white mb-6">Financial Products</h1>
-            <p className="text-xl text-gray-300 mb-12">
-              Explore our comprehensive range of financial products designed to meet your trading needs.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <Link to={product.path} key={product.title} className="no-underline">
-                  <Card className="bg-[#141432] border-indigo-900 text-white shadow-xl overflow-hidden hover:bg-[#1d1d4f] transition-all duration-300">
-                    <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                      <div className="w-12 h-12 rounded-full bg-[#191942] flex items-center justify-center">
-                        {product.icon}
-                      </div>
-                      <CardTitle className="text-xl text-white">{product.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-300">{product.description}</p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+      <div className="w-full mx-0 px-5 sm:px-10 md:px-[154px] z-10">
+        <HomeHeader scrollToTop={scrollToTop} />
       </div>
+      
+      <section className="mt-20 mb-20 max-w-[1200px] mx-auto px-5 sm:px-10 md:px-[30px] flex-grow">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl font-bold text-white mb-6">Financial Products</h1>
+          <p className="text-xl text-gray-300 mb-12">
+            Explore our comprehensive range of financial products designed to meet your trading needs.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product) => (
+              <Link to={product.path} key={product.title} className="no-underline">
+                <Card className="bg-[#141432] border-indigo-900 text-white shadow-xl overflow-hidden hover:bg-[#1d1d4f] transition-all duration-300">
+                  <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                    <div className="w-12 h-12 rounded-full bg-[#191942] flex items-center justify-center">
+                      {product.icon}
+                    </div>
+                    <CardTitle className="text-xl text-white">{product.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-300">{product.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
       
       <Footer />
     </main>
