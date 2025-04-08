@@ -1,8 +1,7 @@
 
 import React from "react";
-import { ContactForm } from "@/components/contact/ContactForm";
-import { ContactFooter } from "@/components/contact/ContactFooter";
 import ContactHeader from "@/components/contact/ContactHeader";
+import { NewContactForm } from "@/components/contact/NewContactForm";
 import Footer from "@/components/common/Footer";
 
 const Contact = () => {
@@ -14,24 +13,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden flex flex-col">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5 flex-grow">
+    <div className="min-h-screen bg-black text-white flex flex-col">
+      <div className="flex-grow">
         <ContactHeader scrollToTop={scrollToTop} />
-        
-        <div className="mt-16 mb-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 font-din">Contact Us</h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto font-din">
-            Have questions or need assistance? Fill out the form below and we'll get back to you as soon as possible.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto mb-24">
-          <ContactForm />
-        </div>
-
-        <ContactFooter />
+        <NewContactForm />
       </div>
-      
       <Footer />
     </div>
   );
