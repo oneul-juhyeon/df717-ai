@@ -36,12 +36,6 @@ export function ContactFooter() {
             <p className="text-gray-300">San Francisco, CA 94103</p>
           </div>
         </div>
-        
-        <div className="fixed bottom-0 left-0 w-full bg-[#D11C36] py-3 px-4 text-center z-10">
-          <p className="font-semibold flex items-center justify-center">
-            <Phone className="h-4 w-4 mr-2 text-[#b30d28]" /> Customer Service: +1 (800) 123-4567
-          </p>
-        </div>
       </div>
     </div>
   );
