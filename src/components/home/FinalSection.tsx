@@ -81,11 +81,13 @@ const FinalSection: React.FC = () => {
         >
           <a 
             href="/df717" 
-            className="inline-flex items-center border border-white/70 text-white hover:bg-white/10 transition-colors px-8 py-3 tracking-wider font-din text-lg"
+            className="inline-flex items-center justify-center border border-white/70 text-white hover:bg-white/10 transition-colors px-8 py-3 tracking-wider font-din text-lg"
             onClick={handleNavigateToDF717}
           >
-            LEARN MORE ABOUT DF717
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <span className="flex items-center">
+              LEARN MORE ABOUT DF717
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </span>
           </a>
         </motion.div>
       </div>
