@@ -4,6 +4,7 @@ import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
 import AxiAwardWinningService from "@/components/axi/AxiAwardWinningService";
 import AxiReadyTrade from "@/components/axi/AxiReadyTrade";
 import AxiAwardHero from "@/components/axi/AxiAwardHero";
+import Footer from "@/components/common/Footer";
 
 const AxiAward: React.FC = () => {
   const scrollToTop = () => {
@@ -15,7 +16,7 @@ const AxiAward: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col text-white">
-      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px]">
+      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
         <section className="mt-10 mb-16 w-full">
@@ -26,6 +27,8 @@ const AxiAward: React.FC = () => {
       
       {/* Ready to trade section */}
       <AxiReadyTrade />
+      
+      <Footer />
     </main>
   );
 };

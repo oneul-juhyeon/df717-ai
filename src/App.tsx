@@ -31,6 +31,8 @@ import Modeling from "./pages/df717/Modeling";
 import AIStrategy from "./pages/df717/AIStrategy";
 import Execution from "./pages/df717/Execution";
 import Examples from "./pages/df717/Examples";
+import Suppliers from "./pages/Suppliers";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   // Create a query client
@@ -68,6 +70,8 @@ function App() {
             <Route path="/axi-pricing" element={<AxiPricing />} />
             <Route path="/axi-award" element={<AxiAward />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/suppliers" element={<Suppliers />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

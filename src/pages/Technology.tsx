@@ -2,6 +2,7 @@
 import React from "react";
 import TechnologyHeader from "@/components/technology/TechnologyHeader";
 import ModernTechnologyTabs from "@/components/technology/ModernTechnologyTabs";
+import Footer from "@/components/common/Footer";
 
 const Technology: React.FC = () => {
   const scrollToTop = () => {
@@ -17,7 +18,7 @@ const Technology: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black pointer-events-none"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-80 pointer-events-none"></div>
       
-      <div className="relative z-10 w-full px-4 md:px-10 lg:px-[154px]">
+      <div className="relative z-10 w-full px-4 md:px-10 lg:px-[154px] flex-grow">
         <TechnologyHeader scrollToTop={scrollToTop} />
         
         <section className="mt-12 mb-20 w-full max-w-5xl mx-auto relative">
@@ -27,6 +28,8 @@ const Technology: React.FC = () => {
           <ModernTechnologyTabs />
         </section>
       </div>
+      
+      <Footer />
     </main>
   );
 };

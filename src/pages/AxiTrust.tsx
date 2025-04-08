@@ -14,6 +14,7 @@ import AxiTrustEducation from "@/components/axi/AxiTrustEducation";
 import AxiTrustTools from "@/components/axi/AxiTrustTools";
 import AxiTrustProtection from "@/components/axi/AxiTrustProtection";
 import AxiTrustRisk from "@/components/axi/AxiTrustRisk";
+import Footer from "@/components/common/Footer";
 
 const AxiTrust: React.FC = () => {
   const scrollToTop = () => {
@@ -25,7 +26,7 @@ const AxiTrust: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
+      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5 flex-grow">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
         <AxiTrustHero />
@@ -78,6 +79,8 @@ const AxiTrust: React.FC = () => {
           <AxiCallToAction />
         </section>
       </div>
+      
+      <Footer />
     </main>
   );
 };

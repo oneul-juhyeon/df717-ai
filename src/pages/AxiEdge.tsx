@@ -8,6 +8,7 @@ import AxiGivingMore from "@/components/axi/AxiGivingMore";
 import AxiTrustedPartner from "@/components/axi/AxiTrustedPartner";
 import AxiBottomFeatures from "@/components/axi/AxiBottomFeatures";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/common/Footer";
 
 const AxiEdge: React.FC = () => {
   const scrollToTop = () => {
@@ -19,7 +20,7 @@ const AxiEdge: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black text-white flex flex-col">
-      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px]">
+      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
         <AxiEdgeHero />
@@ -59,6 +60,8 @@ const AxiEdge: React.FC = () => {
           </Link>
         </div>
       </section>
+      
+      <Footer />
     </main>
   );
 };

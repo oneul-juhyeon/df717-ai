@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect } from "react";
 import DF717Header from "./DF717Header";
 import DF717Sidebar from "./DF717Sidebar";
 import { useLocation } from "react-router-dom";
+import Footer from "../common/Footer";
 
 interface DF717LayoutProps {
   children: React.ReactNode;
@@ -52,7 +53,7 @@ const DF717Layout: React.FC<DF717LayoutProps> = ({
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
+      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5 flex-grow">
         <DF717Header scrollToTop={scrollToTop} />
         
         <div className="mt-16 mb-20 flex">
@@ -63,6 +64,8 @@ const DF717Layout: React.FC<DF717LayoutProps> = ({
           </div>
         </div>
       </div>
+      
+      <Footer />
     </main>
   );
 };

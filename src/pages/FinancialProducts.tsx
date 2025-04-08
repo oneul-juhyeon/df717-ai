@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Coins, TrendingUp, BarChart4, Layers, CircleDollarSign, Fuel, Bitcoin } from "lucide-react";
 import CompanyHeader from "@/components/company/CompanyHeader";
+import Footer from "@/components/common/Footer";
 
 const FinancialProducts: React.FC = () => {
   const scrollToTop = () => {
@@ -64,7 +65,7 @@ const FinancialProducts: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
+      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5 flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
         <section className="mt-20 mb-20">
@@ -94,6 +95,8 @@ const FinancialProducts: React.FC = () => {
           </div>
         </section>
       </div>
+      
+      <Footer />
     </main>
   );
 };

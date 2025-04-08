@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
 import CompanyBrandSection from "@/components/company/CompanyBrandSection";
+import Footer from "@/components/common/Footer";
 
 const Company: React.FC = () => {
   const animatedElementsRef = useRef<HTMLElement[]>([]);
@@ -68,7 +69,7 @@ const Company: React.FC = () => {
     <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="absolute inset-0 bg-black pointer-events-none"></div>
       
-      <div className="relative z-10 w-full mx-auto px-4 md:px-10 lg:px-[154px]">
+      <div className="relative z-10 w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
         <CompanyHero scrollToValues={scrollToValues} />
@@ -77,6 +78,8 @@ const Company: React.FC = () => {
           <CompanyBrandSection />
         </section>
       </div>
+      
+      <Footer />
     </main>
   );
 };

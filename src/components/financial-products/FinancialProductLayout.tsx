@@ -3,6 +3,7 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import FinancialProductsSidebar from "./FinancialProductsSidebar";
 import { useLocation } from "react-router-dom";
+import Footer from "../common/Footer";
 
 interface FinancialProductLayoutProps {
   children: React.ReactNode;
@@ -52,7 +53,7 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
+      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5 flex-grow">
         {renderHeader(scrollToTop)}
         
         <div className="mt-8">          
@@ -69,6 +70,8 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
           </div>
         </div>
       </div>
+      
+      <Footer />
     </main>
   );
 };

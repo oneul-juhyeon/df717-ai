@@ -12,6 +12,7 @@ import AxiTopTierLiquidity from "@/components/axi/AxiTopTierLiquidity";
 import AxiTradingProducts from "@/components/axi/AxiTradingProducts";
 import AxiSuperiorSetup from "@/components/axi/AxiSuperiorSetup";
 import AxiFlexibleLeverage from "@/components/axi/AxiFlexibleLeverage";
+import Footer from "@/components/common/Footer";
 
 const AxiPricing: React.FC = () => {
   const scrollToTop = () => {
@@ -23,7 +24,7 @@ const AxiPricing: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
+      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5 flex-grow">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
         <AxiPricingHero />
@@ -68,6 +69,8 @@ const AxiPricing: React.FC = () => {
           <AxiCallToAction />
         </section>
       </div>
+      
+      <Footer />
     </main>
   );
 };

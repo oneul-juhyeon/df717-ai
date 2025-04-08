@@ -3,6 +3,7 @@ import React from "react";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactFooter } from "@/components/contact/ContactFooter";
 import ContactHeader from "@/components/contact/ContactHeader";
+import Footer from "@/components/common/Footer";
 
 const Contact = () => {
   const scrollToTop = () => {
@@ -13,8 +14,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
+    <div className="min-h-screen bg-black text-white overflow-hidden flex flex-col">
+      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5 flex-grow">
         <ContactHeader scrollToTop={scrollToTop} />
         
         <div className="mt-16 mb-8 text-center">
@@ -30,6 +31,8 @@ const Contact = () => {
 
         <ContactFooter />
       </div>
+      
+      <Footer />
     </div>
   );
 };
