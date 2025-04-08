@@ -14,7 +14,7 @@ const AxiAward: React.FC = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#161616] flex flex-col text-white">
+    <main className="w-full min-h-screen bg-black flex flex-col text-white">
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px]">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         

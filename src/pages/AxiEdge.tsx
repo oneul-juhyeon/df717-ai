@@ -18,7 +18,7 @@ const AxiEdge: React.FC = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#161616] text-white flex flex-col">
+    <main className="w-full min-h-screen bg-black text-white flex flex-col">
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px]">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         
@@ -29,7 +29,7 @@ const AxiEdge: React.FC = () => {
         </section>
       </div>
       
-      <section className="w-full bg-[#161616] py-20">
+      <section className="w-full bg-black py-20">
         <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-[154px]">
           <AxiGivingMore />
         </div>

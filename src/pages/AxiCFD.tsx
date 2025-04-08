@@ -13,7 +13,7 @@ const AxiCFD: React.FC = () => {
   };
 
   return (
-    <main className="w-full min-h-screen bg-[#0a0a1e] flex flex-col">
+    <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5">
         <AxiCFDHeader scrollToTop={scrollToTop} />
         

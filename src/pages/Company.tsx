@@ -65,7 +65,7 @@ const Company: React.FC = () => {
   }, []); // Empty dependency array ensures this runs once on mount
   
   return (
-    <main className="w-full min-h-screen bg-[#0e0e0e] flex flex-col">
+    <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="absolute inset-0 bg-black pointer-events-none"></div>
       
       <div className="relative z-10 w-full mx-auto px-4 md:px-10 lg:px-[154px]">

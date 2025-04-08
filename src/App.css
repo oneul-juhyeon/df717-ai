@@ -1,4 +1,3 @@
-
 #root {
   width: 100%;
   margin: 0 auto;
@@ -11,7 +10,7 @@ body, html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background-color: #161616;
+  background-color: #000000;
 }
 
 /* Video background styles */
@@ -449,7 +448,7 @@ video {
 
 /* Financial product pages styling */
 .financial-product-layout {
-  background-color: #0a0a1e;
+  background-color: #000000;
 }
 
 .financial-product-sidebar {
@@ -481,7 +480,6 @@ video {
   padding-left: 12px;
 }
 
-/* Animation for financial product content */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -497,7 +495,6 @@ video {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Blockquote styling for all article content */
 blockquote {
   border-left: 4px solid #ffffff !important;
   padding-left: 1rem;
@@ -505,13 +502,11 @@ blockquote {
   margin-left: 0;
 }
 
-/* Horizontal rule styling */
 hr {
   border-color: #ffffff !important;
   opacity: 0.7;
 }
 
-/* Table styling */
 table {
   border-color: #ffffff !important;
 }
@@ -520,7 +515,6 @@ th, td {
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* Ensure any remaining red borders are changed to white */
 *[class*="border-red"],
 *[class*="border-rose"],
 *[class*="border-pink"],
@@ -535,14 +529,12 @@ th, td {
   background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Ensure quote blocks have white border */
 blockquote,
 .blockquote,
 [class*="quote"] {
   border-left-color: #ffffff !important;
 }
 
-/* Ensure all dividers are white */
 .divider,
 hr,
 [class*="divider"],
