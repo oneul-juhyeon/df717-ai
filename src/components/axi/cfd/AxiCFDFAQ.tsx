@@ -10,74 +10,59 @@ import {
 const AxiCFDFAQ: React.FC = () => {
   return (
     <>
-      <h2 className="text-3xl mt-12 mb-4">FAQ</h2>
+      <h2 className="text-3xl mt-8 mb-6 font-bold">FAQ</h2>
       
-      <div className="my-8">
+      <div className="space-y-4">
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Is CFD trading allowed in my country?</h3>
-              </div>
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Is CFD trading allowed in my country?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Certain countries do not allow CFD trading. If your country of residence is not displayed on the online application form when opening a trading account, you cannot do so.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-2" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Is trading CFDs safe?</h3>
-              </div>
+          <AccordionItem value="item-2">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Is trading CFDs safe?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 As with any financial instrument or investment, trading CFDs comes with a risk. The use of leverage can make CFDs riskier than non-leveraged products, such as physical shares. Before you start trading with a live account, you should familiarise yourself with those products, practise in a risk-free environment, and learn more about risk management.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-3" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What is the minimum volume I can trade for a CFD product?</h3>
-              </div>
+          <AccordionItem value="item-3">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What is the minimum volume I can trade for a CFD product?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 The minimum trade size for Standard and Pro accounts with Axi is 0.01 lots. However, this number may change depending on the instrument you are trading.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-4" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What is the difference between CFDs and options?</h3>
-              </div>
+          <AccordionItem value="item-4">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What is the difference between CFDs and options?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Options and CFDs share some common characteristics. They can both provide high leverage, and flexibility can be used for both hedging and speculation. However, there are some major differences between the two. When you buy a CFD, you agree to exchange the difference in price from when you opened a trade to when you closed it. Options give a trader the right (but not the obligation) to buy or sell an asset at a certain price in the future. Options offer more flexibility, and traders can create complex strategies using these instruments.
               </p>
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-5" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What is the difference between CFD trading and futures?</h3>
-              </div>
+          <AccordionItem value="item-5">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What is the difference between CFD trading and futures?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 A CFD depicts the price movement of an asset, which gives the investor a clear picture of the value changes that occur while holding a position open.
               </p>
@@ -93,14 +78,11 @@ const AxiCFDFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-6" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What is the contract length of CFDs?</h3>
-              </div>
+          <AccordionItem value="item-6">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What is the contract length of CFDs?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 The point at which a CFD contract matures is called the CFD contract rollover date. A futures contract's expiration date serves as the last day you can trade that particular contract.
               </p>
@@ -113,14 +95,11 @@ const AxiCFDFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-7" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">Are CFDs better than stocks?</h3>
-              </div>
+          <AccordionItem value="item-7">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              Are CFDs better than stocks?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left mb-2">
                 The decision to trade CFDs versus invest in stocks is up to the individual and their financial means and goals.
               </p>
@@ -133,14 +112,11 @@ const AxiCFDFAQ: React.FC = () => {
             </AccordionContent>
           </AccordionItem>
           
-          <AccordionItem value="item-8" className="border-b border-gray-200">
-            <AccordionTrigger className="py-6 flex">
-              <div className="flex items-center">
-                <div className="w-1 h-16 bg-red-500 mr-4"></div>
-                <h3 className="text-xl font-bold">What markets can I trade with Axi?</h3>
-              </div>
+          <AccordionItem value="item-8">
+            <AccordionTrigger className="text-xl font-semibold text-left">
+              What markets can I trade with Axi?
             </AccordionTrigger>
-            <AccordionContent className="pl-5 pb-6 text-gray-700">
+            <AccordionContent className="text-gray-700">
               <p className="text-left">
                 Axi provides access to a wide range of markets for CFD trading. Please refer to our Product Schedule for a full list of CFD trading instruments.
               </p>
