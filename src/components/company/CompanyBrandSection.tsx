@@ -21,7 +21,7 @@ const CompanyBrandSection: React.FC = () => {
             </div>
             
             <div className="relative">
-              <Separator className="bg-[#333333] h-px my-12" />
+              <Separator className="bg-[#333333] h-px my-24" />
             </div>
             
             <div className="scroll-animate opacity-0">
@@ -29,15 +29,15 @@ const CompanyBrandSection: React.FC = () => {
                 Key Brand Statement
               </h3>
               <p className="text-3xl font-bold italic text-white">
-                Without Love, We are nothing.
+                Without Love, We are nothing.<br />
               </p>
             </div>
             
             <div className="relative">
-              <Separator className="bg-[#333333] h-px my-12" />
+              <Separator className="bg-[#333333] h-px my-24" />
             </div>
             
-            <div className="text-left mb-12 scroll-animate opacity-0">
+            <div className="text-center mb-12 scroll-animate opacity-0">
               <h3 className="text-3xl font-bold mb-8 text-white">Core Values</h3>
             </div>
             
