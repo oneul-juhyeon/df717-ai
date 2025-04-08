@@ -27,9 +27,9 @@ const PrivacyPolicy: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-16 uppercase font-din">PRIVACY POLICY</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-16 uppercase font-din">PRIVACY POLICY</h1>
           
-          <div className="space-y-8 text-lg">
+          <div className="space-y-8 text-lg font-din">
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -54,11 +54,11 @@ const PrivacyPolicy: React.FC = () => {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="pt-8"
             >
-              <h2 className="text-xl font-bold mb-4">Information We Collect</h2>
-              <p className="mb-4">We may collect information that you provide directly to us, information we obtain automatically when you visit our website, and information from other sources.</p>
+              <h2 className="text-xl font-bold mb-4 font-din">Information We Collect</h2>
+              <p className="mb-4 font-din">We may collect information that you provide directly to us, information we obtain automatically when you visit our website, and information from other sources.</p>
               
-              <h2 className="text-xl font-bold mb-4 mt-8">How We Use Your Information</h2>
-              <p>We use the information we collect to provide, maintain, and improve our services, to develop new products and services, and to protect DF717 and our users.</p>
+              <h2 className="text-xl font-bold mb-4 mt-8 font-din">How We Use Your Information</h2>
+              <p className="font-din">We use the information we collect to provide, maintain, and improve our services, to develop new products and services, and to protect DF717 and our users.</p>
             </motion.div>
           </div>
         </motion.section>

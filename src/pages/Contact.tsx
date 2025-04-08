@@ -19,8 +19,8 @@ const Contact = () => {
         <ContactHeader scrollToTop={scrollToTop} />
         
         <div className="mt-16 mb-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 font-din">Contact Us</h1>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto font-din">
             Have questions or need assistance? Fill out the form below and we'll get back to you as soon as possible.
           </p>
         </div>

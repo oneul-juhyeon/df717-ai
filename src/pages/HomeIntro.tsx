@@ -5,6 +5,7 @@ import HomeHeader from "@/components/home/HomeHeader";
 import BibleVerseSection from "@/components/home/BibleVerseSection";
 import RevCounterSection from "@/components/home/RevCounterSection";
 import FinalSection from "@/components/home/FinalSection";
+import Footer from "@/components/common/Footer";
 
 const HomeIntro: React.FC = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -45,6 +46,9 @@ const HomeIntro: React.FC = () => {
 
       {/* Final Section */}
       <FinalSection />
+      
+      {/* Footer */}
+      <Footer />
     </main>
   );
 };

@@ -28,9 +28,9 @@ const Suppliers: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-16 uppercase font-din">BECOMING A SUPPLIER</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-16 uppercase font-din">BECOMING A SUPPLIER</h1>
           
-          <div className="space-y-8 text-lg">
+          <div className="space-y-8 text-lg font-din">
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const Suppliers: React.FC = () => {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="pt-8"
             >
-              <h2 className="text-xl font-semibold mb-6">Interested in doing business with us?</h2>
+              <h2 className="text-xl font-semibold mb-6 font-din">Interested in doing business with us?</h2>
               
               <Link to="/contact">
                 <button className="bg-transparent border-2 border-white hover:bg-white hover:text-black transition-colors duration-300 px-8 py-3 font-din uppercase tracking-wider text-sm">
