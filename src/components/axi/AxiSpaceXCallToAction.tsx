@@ -84,7 +84,8 @@ const AxiSpaceXCallToAction: React.FC = () => {
         </Link>
       </div>
 
-      <style jsx>{`
+      <style>
+        {`
         @keyframes growLine {
           from {
             height: 0;
@@ -97,7 +98,8 @@ const AxiSpaceXCallToAction: React.FC = () => {
         .animate-line {
           animation: growLine 0.6s ease-out forwards;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   );
 };
