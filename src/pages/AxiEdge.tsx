@@ -7,7 +7,7 @@ import AxiEdgeContent from "@/components/axi/AxiEdgeContent";
 import AxiGivingMore from "@/components/axi/AxiGivingMore";
 import AxiTrustedPartner from "@/components/axi/AxiTrustedPartner";
 import AxiBottomFeatures from "@/components/axi/AxiBottomFeatures";
-import { Button } from "@/components/ui/button";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import Footer from "@/components/common/Footer";
 
 const AxiEdge: React.FC = () => {
@@ -48,18 +48,7 @@ const AxiEdge: React.FC = () => {
         </div>
       </section>
       
-      {/* Final Call to Action with Contact Button */}
-      <section className="w-full bg-red-600 text-white">
-        <div className="container mx-auto px-4 md:px-10 lg:px-[154px] py-16 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to trade your edge?</h2>
-          <p className="text-xl mb-8">Start trading with a global, award-winning broker.</p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-white hover:bg-gray-100 text-black font-bold px-8 py-6 text-lg">
-              CONTACT
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <AxiSpaceXCallToAction />
       
       <Footer />
     </main>

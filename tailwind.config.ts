@@ -110,13 +110,22 @@ export default {
 						opacity: '1',
 						transform: 'translateX(0)'
 					}
+				},
+				'vertical-grow': {
+					'0%': {
+						height: '0'
+					},
+					'100%': {
+						height: '20vh'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
-				'fade-in-left': 'fade-in-left 0.5s ease-out forwards'
+				'fade-in-left': 'fade-in-left 0.5s ease-out forwards',
+				'vertical-grow': 'vertical-grow 0.6s ease-out forwards'
 			}
 		}
 	},

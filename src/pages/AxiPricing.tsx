@@ -1,7 +1,7 @@
 
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
-import AxiCallToAction from "@/components/axi/AxiCallToAction";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiPricingHero from "@/components/axi/AxiPricingHero";
 import AxiCuttingEdgeTechnology from "@/components/axi/AxiCuttingEdgeTechnology";
 import AxiExecutionMetrics from "@/components/axi/AxiExecutionMetrics";
@@ -64,11 +64,9 @@ const AxiPricing: React.FC = () => {
         <section>
           <AxiFlexibleLeverage />
         </section>
-        
-        <section className="mb-20 w-full">
-          <AxiCallToAction />
-        </section>
       </div>
+      
+      <AxiSpaceXCallToAction />
       
       <Footer />
     </main>

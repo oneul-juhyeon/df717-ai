@@ -1,7 +1,7 @@
 
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
-import AxiCallToAction from "@/components/axi/AxiCallToAction";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiTrustHero from "@/components/axi/AxiTrustHero";
 import AxiTrustCreated from "@/components/axi/AxiTrustCreated";
 import AxiTrustAwards from "@/components/axi/AxiTrustAwards";
@@ -74,11 +74,9 @@ const AxiTrust: React.FC = () => {
         <section className="mt-20 mb-20">
           <AxiTrustRisk />
         </section>
-        
-        <section className="mb-20 w-full">
-          <AxiCallToAction />
-        </section>
       </div>
+      
+      <AxiSpaceXCallToAction />
       
       <Footer />
     </main>

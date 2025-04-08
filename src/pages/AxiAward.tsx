@@ -2,7 +2,7 @@
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
 import AxiAwardWinningService from "@/components/axi/AxiAwardWinningService";
-import AxiReadyTrade from "@/components/axi/AxiReadyTrade";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiAwardHero from "@/components/axi/AxiAwardHero";
 import Footer from "@/components/common/Footer";
 
@@ -25,8 +25,7 @@ const AxiAward: React.FC = () => {
         </section>
       </div>
       
-      {/* Ready to trade section */}
-      <AxiReadyTrade />
+      <AxiSpaceXCallToAction />
       
       <Footer />
     </main>

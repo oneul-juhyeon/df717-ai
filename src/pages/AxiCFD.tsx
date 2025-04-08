@@ -1,7 +1,7 @@
 
 import React from "react";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
-import AxiCallToAction from "@/components/axi/AxiCallToAction";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiCFDArticleContent from "@/components/axi/cfd/AxiCFDArticleContent";
 import Footer from "@/components/common/Footer";
 
@@ -21,11 +21,9 @@ const AxiCFD: React.FC = () => {
         <div className="mt-8">
           <AxiCFDArticleContent />
         </div>
-        
-        <section className="my-20 w-full">
-          <AxiCallToAction />
-        </section>
       </div>
+      
+      <AxiSpaceXCallToAction />
       
       <Footer />
     </main>
