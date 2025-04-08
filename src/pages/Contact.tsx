@@ -13,7 +13,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen bg-black text-white flex flex-col text-left">
       <div className="flex-grow">
         <ContactHeader scrollToTop={scrollToTop} />
         <NewContactForm />

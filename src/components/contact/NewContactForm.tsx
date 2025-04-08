@@ -79,20 +79,20 @@ export function NewContactForm() {
   }
 
   return (
-    <div className="w-full max-w-[1200px] mx-auto px-[30px] py-[30px] bg-black">
-      <h1 className="text-white text-[20px] font-bold uppercase">CONTACT INFORMATION</h1>
+    <div className="w-full max-w-[1200px] mx-auto px-[30px] py-[30px] bg-black text-left">
+      <h1 className="text-white text-[20px] font-bold uppercase text-left">CONTACT INFORMATION</h1>
       <Separator className="w-full h-[1px] bg-white mt-2 mb-6" />
-      <p className="text-white text-[16px] mb-6">What is your contact information?</p>
+      <p className="text-white text-[16px] mb-6 text-left">What is your contact information?</p>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[20px]">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[20px] text-left">
           {/* Job Title */}
           <FormField
             control={form.control}
             name="jobTitle"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-white text-[14px]">
+              <FormItem className="text-left">
+                <FormLabel className="text-white text-[14px] text-left">
                   Job Title <span className="text-[#D11C36]">*</span>
                 </FormLabel>
                 <FormControl>
@@ -107,13 +107,13 @@ export function NewContactForm() {
           />
 
           {/* First Name and Last Name (side by side) */}
-          <div className="flex flex-col md:flex-row gap-0 md:gap-[4%] space-y-[20px] md:space-y-0">
+          <div className="flex flex-col md:flex-row gap-0 md:gap-[4%] space-y-[20px] md:space-y-0 text-left">
             <FormField
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem className="flex-1 w-full md:w-[48%]">
-                  <FormLabel className="text-white text-[14px]">
+                <FormItem className="flex-1 w-full md:w-[48%] text-left">
+                  <FormLabel className="text-white text-[14px] text-left">
                     First Name <span className="text-[#D11C36]">*</span>
                   </FormLabel>
                   <FormControl>
@@ -131,8 +131,8 @@ export function NewContactForm() {
               control={form.control}
               name="lastName"
               render={({ field }) => (
-                <FormItem className="flex-1 w-full md:w-[48%]">
-                  <FormLabel className="text-white text-[14px]">
+                <FormItem className="flex-1 w-full md:w-[48%] text-left">
+                  <FormLabel className="text-white text-[14px] text-left">
                     Last Name <span className="text-[#D11C36]">*</span>
                   </FormLabel>
                   <FormControl>
@@ -148,13 +148,13 @@ export function NewContactForm() {
           </div>
 
           {/* Email and Phone Number (side by side) */}
-          <div className="flex flex-col md:flex-row gap-0 md:gap-[4%] space-y-[20px] md:space-y-0">
+          <div className="flex flex-col md:flex-row gap-0 md:gap-[4%] space-y-[20px] md:space-y-0 text-left">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="flex-1 w-full md:w-[48%]">
-                  <FormLabel className="text-white text-[14px]">
+                <FormItem className="flex-1 w-full md:w-[48%] text-left">
+                  <FormLabel className="text-white text-[14px] text-left">
                     E-mail <span className="text-[#D11C36]">*</span>
                   </FormLabel>
                   <FormControl>
@@ -172,8 +172,8 @@ export function NewContactForm() {
               control={form.control}
               name="phoneNumber"
               render={({ field }) => (
-                <FormItem className="flex-1 w-full md:w-[48%]">
-                  <FormLabel className="text-white text-[14px]">
+                <FormItem className="flex-1 w-full md:w-[48%] text-left">
+                  <FormLabel className="text-white text-[14px] text-left">
                     Phone Number <span className="text-[#D11C36]">*</span>
                   </FormLabel>
                   <FormControl>
@@ -193,8 +193,8 @@ export function NewContactForm() {
             control={form.control}
             name="introducerName"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-white text-[14px]">
+              <FormItem className="text-left">
+                <FormLabel className="text-white text-[14px] text-left">
                   Introducer's Name (if any)
                 </FormLabel>
                 <FormControl>
@@ -213,8 +213,8 @@ export function NewContactForm() {
             control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-white text-[14px]">
+              <FormItem className="text-left">
+                <FormLabel className="text-white text-[14px] text-left">
                   Message <span className="text-[#D11C36]">*</span>
                 </FormLabel>
                 <FormControl>
@@ -233,7 +233,7 @@ export function NewContactForm() {
             <Button 
               type="submit" 
               disabled={isSubmitting} 
-              className="bg-[#AAAAAA] text-white hover:bg-[#999999] rounded-none px-[10px] py-[5px] h-auto"
+              className="bg-[#AAAAAA] text-white hover:bg-[#999999] rounded-none px-[10px] py-[5px] h-auto text-left"
             >
               {isSubmitting ? "Submitting..." : "SUBMIT"}
             </Button>
