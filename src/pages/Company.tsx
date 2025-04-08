@@ -69,12 +69,12 @@ const Company: React.FC = () => {
     <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="absolute inset-0 bg-black pointer-events-none"></div>
       
-      <div className="relative z-10 w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
+      <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
         <CompanyHero scrollToValues={scrollToValues} />
         
-        <section ref={valuesSectionRef} className="mt-12 mb-20 w-full max-w-5xl mx-auto relative">          
+        <section ref={valuesSectionRef} className="mt-24 mb-32 w-full max-w-5xl mx-auto relative">          
           <CompanyBrandSection />
         </section>
       </div>
