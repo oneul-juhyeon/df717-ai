@@ -3,10 +3,10 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const axiNavigationItems = [
+  { name: "CFD", path: "/axi-cfd" },
   { name: "Our Edge", path: "/axi-edge" },
-  { name: "Trust & Security", path: "/axi-trust" },
-  { name: "Pricing", path: "/axi-pricing" },
-  { name: "CFD Trading", path: "/axi-cfd" },
+  { name: "Trade With Trust", path: "/axi-trust" },
+  { name: "Best Pricing & Execution", path: "/axi-pricing" },
   { name: "Award-Winning Service", path: "/axi-award" }
 ];
 
