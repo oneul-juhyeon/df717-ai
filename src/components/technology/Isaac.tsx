@@ -9,10 +9,10 @@ const IsaacComponent = () => {
   const sectionRef3 = useRef(null);
   const sectionRef4 = useRef(null);
   
-  const inView1 = useInView(sectionRef1, { once: true, threshold: 0.1 });
-  const inView2 = useInView(sectionRef2, { once: true, threshold: 0.1 });
-  const inView3 = useInView(sectionRef3, { once: true, threshold: 0.1 });
-  const inView4 = useInView(sectionRef4, { once: true, threshold: 0.1 });
+  const inView1 = useInView(sectionRef1, { once: true, amount: 0.1 });
+  const inView2 = useInView(sectionRef2, { once: true, amount: 0.1 });
+  const inView3 = useInView(sectionRef3, { once: true, amount: 0.1 });
+  const inView4 = useInView(sectionRef4, { once: true, amount: 0.1 });
   
   const controls1 = useAnimation();
   const controls2 = useAnimation();
