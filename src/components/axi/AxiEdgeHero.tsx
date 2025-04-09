@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 
 const AxiEdgeHero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -28,15 +29,11 @@ const AxiEdgeHero: React.FC = () => {
   
   return (
     <div ref={heroRef} className="mt-10 mb-16 w-full transition-all duration-1000 transform opacity-0 translate-y-10">
-      <div className="w-full relative overflow-hidden rounded-2xl">
-        <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 w-full py-20 px-12 max-sm:py-12 max-sm:px-6 relative">
-          <div className="text-center relative z-10">
-            <h1 className="text-5xl font-bold text-white mb-4 max-sm:text-3xl">Our Edge</h1>
-            <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg">
-              We give you all the tools and support to unlock your advantage.
-            </p>
-          </div>
-        </div>
+      <div className="w-full relative">
+        <FinancialProductArticleHeader 
+          title="Our Edge"
+          subtitle="We give you all the tools and support to unlock your advantage."
+        />
       </div>
     </div>
   );

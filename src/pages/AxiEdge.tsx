@@ -1,12 +1,10 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
 import AxiCFDHeader from "@/components/axi/AxiCFDHeader";
 import AxiEdgeHero from "@/components/axi/AxiEdgeHero";
 import AxiEdgeContent from "@/components/axi/AxiEdgeContent";
 import AxiGivingMore from "@/components/axi/AxiGivingMore";
 import AxiTrustedPartner from "@/components/axi/AxiTrustedPartner";
-import AxiBottomFeatures from "@/components/axi/AxiBottomFeatures";
 import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import Footer from "@/components/common/Footer";
 
@@ -36,15 +34,9 @@ const AxiEdge: React.FC = () => {
         </div>
       </section>
       
-      <section className="w-full bg-red-600 py-20">
+      <section className="w-full bg-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-[154px]">
           <AxiTrustedPartner />
-        </div>
-      </section>
-      
-      <section className="w-full bg-[#161616] py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-[154px]">
-          <AxiBottomFeatures />
         </div>
       </section>
       

@@ -41,11 +41,11 @@ const AxiEdgeSection: React.FC = () => {
       </div>
       
       <div className="relative rounded-xl overflow-hidden bg-black aspect-video flex items-center justify-center">
-        <div className="absolute inset-0 bg-red-600/20 z-0"></div>
+        <div className="absolute inset-0 bg-gray-800/20 z-0"></div>
         <div className="w-40 h-40 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center z-10">
           <h3 className="text-5xl font-bold text-white">Edge</h3>
           <Button size="icon" variant="ghost" className="absolute rounded-full bg-white/20 w-20 h-20 flex items-center justify-center">
-            <Play className="h-10 w-10 text-white" />
+            <Play className="h-10 w-10 text-[#5b5b5d]" />
           </Button>
         </div>
       </div>
