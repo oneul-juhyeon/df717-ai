@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Lightbulb, Robot, Handshake } from "lucide-react";
+import { Lightbulb, Bot, Handshake } from "lucide-react";
 
 const CompanyValueCards: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const CompanyValueCards: React.FC = () => {
       <div className="space-y-6">
         <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
         <div className="flex items-center justify-center mb-6">
-          <Robot className="text-white" size={48} strokeWidth={1.5} />
+          <Bot className="text-white" size={48} strokeWidth={1.5} />
         </div>
         <h4 className="text-2xl font-bold text-white">
           Outstanding Technology
