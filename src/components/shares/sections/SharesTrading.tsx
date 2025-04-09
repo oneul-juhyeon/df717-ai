@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 
 const SharesTrading: React.FC = () => {
   return (
@@ -15,28 +14,31 @@ const SharesTrading: React.FC = () => {
       
       <div className="mb-8">
         <h3 className="text-2xl mb-4">Common Stock Types</h3>
-        <Table className="min-w-full border-collapse">
-          <TableHeader>
-            <TableRow className="border-b border-gray-700">
-              <TableHead className="text-white bg-[#1e2a3a]">Type</TableHead>
-              <TableHead className="text-white bg-[#1e2a3a]">Description</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Growth Stocks</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Companies expected to grow at an above-average rate</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Value Stocks</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Stocks that appear to trade for less than their intrinsic value</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Blue-Chip Stocks</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Shares of large, well-established companies with stable earnings</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <div className="w-full overflow-x-auto">
+          <div className="w-full">
+            {/* Table Header */}
+            <div className="flex border-b border-[#5b5b5d] py-4">
+              <div className="w-1/2 text-left text-white text-[14px] font-bold px-2">Type</div>
+              <div className="w-1/2 text-left text-white text-[14px] font-bold px-2">Description</div>
+            </div>
+            
+            {/* Table Rows */}
+            <div className="flex border-b border-[#5b5b5d] py-[15px]">
+              <div className="w-1/2 text-white text-[14px] px-2">Growth Stocks</div>
+              <div className="w-1/2 text-white text-[14px] px-2">Companies expected to grow at an above-average rate</div>
+            </div>
+            
+            <div className="flex border-b border-[#5b5b5d] py-[15px]">
+              <div className="w-1/2 text-white text-[14px] px-2">Value Stocks</div>
+              <div className="w-1/2 text-white text-[14px] px-2">Stocks that appear to trade for less than their intrinsic value</div>
+            </div>
+            
+            <div className="flex border-b border-[#5b5b5d] py-[15px]">
+              <div className="w-1/2 text-white text-[14px] px-2">Blue-Chip Stocks</div>
+              <div className="w-1/2 text-white text-[14px] px-2">Shares of large, well-established companies with stable earnings</div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

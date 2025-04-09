@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 
 const SharesDisadvantages: React.FC = () => {
   return (
@@ -22,40 +21,44 @@ const SharesDisadvantages: React.FC = () => {
       </p>
 
       <div className="overflow-x-auto">
-        <Table className="min-w-full border-collapse mb-8">
-          <TableHeader>
-            <TableRow>
-              <TableHead>Stock CFDs</TableHead>
-              <TableHead>Traditional stock trading</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>Use leverage</TableCell>
-              <TableCell>Pay full price</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Multiple markets</TableCell>
-              <TableCell>Equities and ETFs</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>You don't own the underlying asset</TableCell>
-              <TableCell>Ownership of the underlying asset</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Go short and benefit from falling prices</TableCell>
-              <TableCell>No option to benefit from falling prices</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>No shareholder privileges</TableCell>
-              <TableCell>Shareholder privileges and potential voting rights</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Option to hedge your trades</TableCell>
-              <TableCell>Hedging requires the use of derivatives (options, futures, and inverse ETFs)</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <div className="w-full">
+          {/* Table Header */}
+          <div className="flex border-b border-[#5b5b5d] py-4">
+            <div className="w-1/2 text-left text-white text-[14px] font-bold px-2">Stock CFDs</div>
+            <div className="w-1/2 text-left text-white text-[14px] font-bold px-2">Traditional stock trading</div>
+          </div>
+          
+          {/* Table Rows */}
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/2 text-white text-[14px] px-2">Use leverage</div>
+            <div className="w-1/2 text-white text-[14px] px-2">Pay full price</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/2 text-white text-[14px] px-2">Multiple markets</div>
+            <div className="w-1/2 text-white text-[14px] px-2">Equities and ETFs</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/2 text-white text-[14px] px-2">You don't own the underlying asset</div>
+            <div className="w-1/2 text-white text-[14px] px-2">Ownership of the underlying asset</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/2 text-white text-[14px] px-2">Go short and benefit from falling prices</div>
+            <div className="w-1/2 text-white text-[14px] px-2">No option to benefit from falling prices</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/2 text-white text-[14px] px-2">No shareholder privileges</div>
+            <div className="w-1/2 text-white text-[14px] px-2">Shareholder privileges and potential voting rights</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/2 text-white text-[14px] px-2">Option to hedge your trades</div>
+            <div className="w-1/2 text-white text-[14px] px-2">Hedging requires the use of derivatives (options, futures, and inverse ETFs)</div>
+          </div>
+        </div>
       </div>
     </>
   );

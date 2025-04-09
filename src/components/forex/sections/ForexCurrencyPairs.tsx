@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Table, TableHeader, TableHead, TableRow, TableBody, TableCell } from "@/components/ui/table";
 
 const ForexCurrencyPairs: React.FC = () => {
   return (
@@ -35,52 +34,57 @@ const ForexCurrencyPairs: React.FC = () => {
       <h3 className="text-2xl mt-6 mb-4">Forex currency pairs comparison: Majors vs. Minors vs. Exotics</h3>
       
       <div className="overflow-x-auto mb-6">
-        <Table className="min-w-full border-collapse">
-          <TableHeader>
-            <TableRow className="border-b border-gray-700">
-              <TableHead className="text-white bg-[#1e2a3a]">Major currency pairs</TableHead>
-              <TableHead className="text-white bg-[#1e2a3a]">Minor currency pairs</TableHead>
-              <TableHead className="text-white bg-[#1e2a3a]">Exotic currency pairs</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/USD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/GBP</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/TRY</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/JPY</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/JPY</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/HKD</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/USD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/JPY</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/ZAR</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/CHF</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/CAD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">JPY/NOK</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">USD/CAD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">CHF/JPY</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">NZD/SGD</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">AUD/USD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">EUR/AUD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">GBP/ZAR</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">NZD/USD</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">NZD/JPY</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">AUD/MXN</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <div className="w-full">
+          {/* Table Header */}
+          <div className="flex border-b border-[#5b5b5d] py-4">
+            <div className="w-1/3 text-left text-white text-[14px] font-bold px-2">Major currency pairs</div>
+            <div className="w-1/3 text-left text-white text-[14px] font-bold px-2">Minor currency pairs</div>
+            <div className="w-1/3 text-left text-white text-[14px] font-bold px-2">Exotic currency pairs</div>
+          </div>
+          
+          {/* Table Rows */}
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">EUR/USD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">EUR/GBP</div>
+            <div className="w-1/3 text-white text-[14px] px-2">EUR/TRY</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">USD/JPY</div>
+            <div className="w-1/3 text-white text-[14px] px-2">EUR/JPY</div>
+            <div className="w-1/3 text-white text-[14px] px-2">USD/HKD</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">GBP/USD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">GBP/JPY</div>
+            <div className="w-1/3 text-white text-[14px] px-2">USD/ZAR</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">USD/CHF</div>
+            <div className="w-1/3 text-white text-[14px] px-2">GBP/CAD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">JPY/NOK</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">USD/CAD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">CHF/JPY</div>
+            <div className="w-1/3 text-white text-[14px] px-2">NZD/SGD</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">AUD/USD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">EUR/AUD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">GBP/ZAR</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">NZD/USD</div>
+            <div className="w-1/3 text-white text-[14px] px-2">NZD/JPY</div>
+            <div className="w-1/3 text-white text-[14px] px-2">AUD/MXN</div>
+          </div>
+        </div>
       </div>
     </>
   );

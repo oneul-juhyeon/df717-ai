@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 
 const SharesAdvantages: React.FC = () => {
   return (
@@ -53,67 +52,75 @@ const SharesAdvantages: React.FC = () => {
       </p>
       
       <div className="overflow-x-auto">
-        <Table className="min-w-full border-collapse mb-8">
-          <TableHeader>
-            <TableRow>
-              <TableHead>US Stocks</TableHead>
-              <TableHead>UK Stocks</TableHead>
-              <TableHead>EU Stocks</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>Alibaba</TableCell>
-              <TableCell>Aviva</TableCell>
-              <TableCell>Adidas</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Alphabet</TableCell>
-              <TableCell>BP</TableCell>
-              <TableCell>Airbus</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Amazon</TableCell>
-              <TableCell>easyJet</TableCell>
-              <TableCell>BASF</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Apple</TableCell>
-              <TableCell>HSBC</TableCell>
-              <TableCell>BNP Paribas</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Facebook</TableCell>
-              <TableCell>GSK</TableCell>
-              <TableCell>Daimler</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Microsoft</TableCell>
-              <TableCell>Lloyds</TableCell>
-              <TableCell>Deutsche Bank</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Netflix</TableCell>
-              <TableCell>Rio Tinto</TableCell>
-              <TableCell>Kering</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Pfizer</TableCell>
-              <TableCell>Rolls-Royce Holdings</TableCell>
-              <TableCell>LVMH</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Tesla</TableCell>
-              <TableCell>Tesco</TableCell>
-              <TableCell>Sanofi</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Walt Disney Co.</TableCell>
-              <TableCell>Vodafone</TableCell>
-              <TableCell>Siemens</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <div className="w-full">
+          {/* Table Header */}
+          <div className="flex border-b border-[#5b5b5d] py-4">
+            <div className="w-1/3 text-left text-white text-[14px] font-bold px-2">US Stocks</div>
+            <div className="w-1/3 text-left text-white text-[14px] font-bold px-2">UK Stocks</div>
+            <div className="w-1/3 text-left text-white text-[14px] font-bold px-2">EU Stocks</div>
+          </div>
+          
+          {/* Table Rows */}
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Alibaba</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Aviva</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Adidas</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Alphabet</div>
+            <div className="w-1/3 text-white text-[14px] px-2">BP</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Airbus</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Amazon</div>
+            <div className="w-1/3 text-white text-[14px] px-2">easyJet</div>
+            <div className="w-1/3 text-white text-[14px] px-2">BASF</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Apple</div>
+            <div className="w-1/3 text-white text-[14px] px-2">HSBC</div>
+            <div className="w-1/3 text-white text-[14px] px-2">BNP Paribas</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Facebook</div>
+            <div className="w-1/3 text-white text-[14px] px-2">GSK</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Daimler</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Microsoft</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Lloyds</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Deutsche Bank</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Netflix</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Rio Tinto</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Kering</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Pfizer</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Rolls-Royce Holdings</div>
+            <div className="w-1/3 text-white text-[14px] px-2">LVMH</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Tesla</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Tesco</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Sanofi</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-1/3 text-white text-[14px] px-2">Walt Disney Co.</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Vodafone</div>
+            <div className="w-1/3 text-white text-[14px] px-2">Siemens</div>
+          </div>
+        </div>
       </div>
     </>
   );
