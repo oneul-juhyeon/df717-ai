@@ -28,7 +28,7 @@ const AxiPricingHero: React.FC = () => {
   }, []);
   
   return (
-    <div ref={sectionRef} className="mt-10 mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
+    <div ref={sectionRef} className="mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
       <div className="w-full relative">
         <FinancialProductArticleHeader 
           title="Best Pricing and Trade Execution"

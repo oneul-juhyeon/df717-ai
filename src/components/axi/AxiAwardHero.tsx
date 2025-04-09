@@ -28,7 +28,7 @@ const AxiAwardHero: React.FC = () => {
   }, []);
   
   return (
-    <div ref={heroRef} className="w-full mt-10 mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
+    <div ref={heroRef} className="w-full mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
       <div className="w-full relative">
         <FinancialProductArticleHeader 
           title="Award-Winning Service"

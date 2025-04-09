@@ -28,7 +28,7 @@ const AxiEdgeHero: React.FC = () => {
   }, []);
   
   return (
-    <div ref={heroRef} className="mt-10 mb-16 w-full transition-all duration-1000 transform opacity-0 translate-y-10">
+    <div ref={heroRef} className="mb-16 w-full transition-all duration-1000 transform opacity-0 translate-y-10">
       <div className="w-full relative">
         <FinancialProductArticleHeader 
           title="Our Edge"
