@@ -18,7 +18,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Is cryptocurrency trading right for me?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Cryptocurrencies are known for their volatility. The crypto markets trade 24/7 and can be vulnerable to sudden price movements that can arise due to unexpected regulatory announcements, technological advancements, or other market drivers. As such, a crypto CFD trader must be prepared to handle the stress that comes with risk and volatility. However, this volatility may also present trading opportunities to those prepared to take advantage of them. In general, trading crypto CFDs will be suitable for those who already have experience with traditional CFD trading and are comfortable with the use of technical indicators.
               </p>
@@ -29,7 +29,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Is trading cryptocurrencies risky?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Trading and investing, in general, involve an element of risk. Trading any product through CFDs with leverage has the potential to magnify both profits and losses, so this adds an additional element of risk. On top of that, cryptocurrencies are notorious for their high volatility. These elements combined might involve significant risk and might not be suitable for everyone. If you are just beginning to consider trading cryptocurrencies, you may want to begin with a risk-free environment, such as an Axi demo account, before committing real money.
               </p>
@@ -40,7 +40,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Can I own cryptocurrencies by trading them?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 If you trade cryptocurrencies directly, either via peer-to-peer marketplaces or by using cryptocurrency exchanges, then you own the underlying asset.
               </p>
@@ -57,7 +57,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the trading hours for cryptocurrencies?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 One of the unique aspects of cryptocurrencies is they can be traded 24 hours a day, 7 days a week. This is different from traditional stock markets, for example, which are only open during specific hours on weekdays.
               </p>
@@ -74,7 +74,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What factors affect the price of cryptocurrencies?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Cryptocurrency prices and valuations are affected by a range of fundamental, technological, and psychological factors. These include but are not limited to:
               </p>
@@ -92,7 +92,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How does cryptocurrency trading work?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Crypto CFDs work basically the same as other CFDs. You can go long if you think the price will rise, or short if you think the price will drop. You can also leverage your trades to amplify profits (but also losses).
               </p>
@@ -109,7 +109,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How do I store my cryptocurrencies?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 When you trade crypto CFDs with Axi, you don't actually own the underlying asset, so there's no need to worry about storage. We take care of all the technical aspects, allowing you to focus purely on trading.
               </p>
@@ -120,7 +120,7 @@ const CryptoFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How can I start trading cryptocurrencies?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Getting started with crypto CFD trading is straightforward with Axi:
               </p>

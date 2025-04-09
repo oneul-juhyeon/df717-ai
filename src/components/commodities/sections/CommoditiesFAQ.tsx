@@ -18,7 +18,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is commodities trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Trading commodities means buying and selling raw materials that are either mined, such as Gold and Silver, or Agriculturally grown, such as Coffee and Sugar. Commodity prices tend to move based on supply and demand, central banks actions, reserve holdings, and the US dollar.
               </p>
@@ -29,7 +29,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How can I trade commodities?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 With Axi, you can trade commodities as CFDs, which means you can go short (sell) if you think the price will fall or go long (buy) if you think the price will go up. The costs of trading commodities with Axi vary depending on the commodity you trade, and our interbank spreads start from as low as 30p.
               </p>
@@ -43,7 +43,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Which is the best commodity to trade?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 There is no one "best commodity to trade," as it primarily depends on your investment goals and personal preferences. Some people prefer trading gold when it comes to commodities because of its market stability, high liquidity and more predictable market movements, while others are more interested in other commodities, such as oil or silver.
               </p>
@@ -60,7 +60,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How do you trade commodities with CFDs?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Trading commodities with CFDs involves speculating on the future price of a commodity. The main principle is to "buy low, sell high" or the other way around.
               </p>
@@ -81,7 +81,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the most traded commodities?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The most actively traded commodities are oil and gold, as they are known for their high liquidity. All commodity markets, including less liquid ones, can still offer great trading opportunities when approached correctly.
               </p>
@@ -92,7 +92,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How much money do I need to trade commodities?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 To start a live trading account, you need a minimum deposit of $50. However, having around $500-$1,000 provides a better foundation, allowing you to withstand losses without exhausting your account. Ideally, only risk 1-2% of your account on any single trade.
               </p>
@@ -106,7 +106,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the risks of commodities trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left mb-2">
                 Commodity trading involves both rewards and risks.
               </p>
@@ -123,7 +123,7 @@ const CommoditiesFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the different ways of trading commodities?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Investors and traders primarily use the following methods for commodities trading:
               </p>

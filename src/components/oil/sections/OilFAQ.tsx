@@ -18,7 +18,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Why is crude oil valuable?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Crude oil, also known as "black gold", is a raw material that is highly valued due to its wide use in the production of everyday products 
                 such as plastic, gasoline, rubber, synthetics, and more. Over generations, an increase in global population and quality of life has caused 
@@ -31,7 +31,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is OPEC?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 OPEC stands for the Organisation of Petroleum Exporting Countries. There are currently 13 member countries within the group. According to the 
                 OPEC statute, the purpose of the group is to coordinate and unify the petroleum policies of its member countries to ensure the stabilisation 
@@ -45,7 +45,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How is the oil market regulated?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The physical oil market is largely unregulated, as there are only a few corporations controlling the mining and refining processes before 
                 exporting the product across the world. This oligopoly makes it harder for regulators to carry out regulatory checks in a transparent manner.

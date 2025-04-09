@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Accordion,
@@ -18,7 +17,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Is forex trading risky?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Like any form of investment, forex trading carries inherent risk. The volatility of currency markets can lead to significant price fluctuations, which can result in potential gains or losses. Traders can help mitigate risk by using well-defined trading strategies, appropriate risk management techniques, a disciplined approach, and a sound understanding of the financial markets and market conditions.
               </p>
@@ -29,7 +28,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the different types of forex brokers?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Retail traders access the forex market by using a broker, a business that facilitates a specialised trading service that includes access to liquidity, trading platforms, and support. In general, there are three main types of brokers:
               </p>
