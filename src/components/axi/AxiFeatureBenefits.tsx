@@ -1,13 +1,11 @@
 
 import React from "react";
-import { Button } from "@/components/ui/button";
 
 const AxiFeatureBenefits: React.FC = () => {
   const features = [
     {
       title: "Experience best pricing & execution",
       description: "We offer a rock-solid platform, lightning-fast execution, raw spreads and flexible leverage.",
-      buttonText: "TRADE WITH SPEED",
       iconBg: "bg-red-500",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,7 +16,6 @@ const AxiFeatureBenefits: React.FC = () => {
     {
       title: "Discover advanced trading tools",
       description: "We're continually investing in innovative products and programmes to give you the upper hand.",
-      buttonText: "TRADE SMARTER",
       iconBg: "bg-red-500",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -29,7 +26,6 @@ const AxiFeatureBenefits: React.FC = () => {
     {
       title: "Receive an award-winning service",
       description: "With 24/7 support in your local language, you can benefit from our award-winning service, wherever you are.",
-      buttonText: "TRADE WITH SUPPORT",
       iconBg: "bg-red-500",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,9 +55,6 @@ const AxiFeatureBenefits: React.FC = () => {
             <p className="text-gray-300 mb-6">
               {feature.description}
             </p>
-            <Button className="bg-red-500 hover:bg-red-600 text-white mt-auto">
-              {feature.buttonText}
-            </Button>
           </div>
         ))}
       </div>
