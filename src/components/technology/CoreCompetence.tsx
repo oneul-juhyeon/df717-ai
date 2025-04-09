@@ -11,25 +11,24 @@ const CoreCompetence: React.FC = () => {
         <div className="space-y-3">
           <h3 className="text-xl text-white font-bold">Proprietary AI Investment Engine</h3>
           <p className="text-gray-300">We have developed and operate our own AI engine, HANNAH, and the DF717 robot. Their stability has been proven through 10 years of backtesting and live trading.</p>
-          <div className="w-full h-[1px] bg-[#333333] mt-4"></div>
         </div>
         
         <div className="space-y-3">
+          <div className="w-full h-[1px] bg-[#333333] mb-4"></div>
           <h3 className="text-xl text-white font-bold">Top-Tier Research Talent</h3>
           <p className="text-gray-300">We hire only those who pass rigorous HR criteria in terms of integrity, personality, and expertise across various fields.</p>
-          <div className="w-full h-[1px] bg-[#333333] mt-4"></div>
         </div>
         
         <div className="space-y-3">
+          <div className="w-full h-[1px] bg-[#333333] mb-4"></div>
           <h3 className="text-xl text-white font-bold">Proprietary Research Methodology</h3>
           <p className="text-gray-300">We eliminate errors and future-reference issues during AI development, ensuring continuous validation of all data and research outcomes.</p>
-          <div className="w-full h-[1px] bg-[#333333] mt-4"></div>
         </div>
         
         <div className="space-y-3">
+          <div className="w-full h-[1px] bg-[#333333] mb-4"></div>
           <h3 className="text-xl text-white font-bold">Real-Time Monitoring & Security</h3>
           <p className="text-gray-300">Our real-time monitoring system detects and responds to anomalies during operation, preventing order errors and ensuring secure execution.</p>
-          <div className="w-full h-[1px] bg-[#333333] mt-4"></div>
         </div>
       </div>
     </div>
