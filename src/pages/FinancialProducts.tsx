@@ -22,14 +22,14 @@ const FinancialProducts: React.FC = () => {
         <HomeHeader scrollToTop={scrollToTop} />
       </div>
       
-      <section className="mt-20 mb-20 max-w-[1200px] mx-auto px-5 sm:px-10 md:px-[30px] flex-grow">
-        <div className="max-w-6xl mx-auto">
+      <section className="mt-20 mb-20 max-w-[1200px] mx-auto px-5 sm:px-10 md:px-[30px] flex-grow flex flex-col items-center">
+        <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl font-bold text-white mb-6">Financial Products</h1>
           <p className="text-xl text-gray-300 mb-12">
             Explore our comprehensive range of financial products designed to meet your trading needs.
           </p>
           
-          <div className="w-full max-w-4xl">
+          <div className="w-full">
             <ProductGrid />
           </div>
         </div>
