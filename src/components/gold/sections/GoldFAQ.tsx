@@ -18,7 +18,7 @@ const GoldFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is the highest price of gold in history?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Traders can use historical prices to try to predict future price movements and critical levels to consider. 
                 Looking at the big picture, gold has been on an upward trend since September 2018, reaching an all-time high 
