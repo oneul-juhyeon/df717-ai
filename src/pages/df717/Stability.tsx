@@ -20,10 +20,6 @@ const Stability: React.FC = () => {
           </p>
         </div>
         
-        <div className="py-4 mb-6 border-t border-white/30 animate-fade-in-up delay-200">
-          <h2 className="text-2xl font-bold text-white tracking-tight mb-8 mt-6">Key Components</h2>
-        </div>
-        
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-300">
           <div className="w-full">
             <h3 className="text-xl font-bold text-white mb-4">
