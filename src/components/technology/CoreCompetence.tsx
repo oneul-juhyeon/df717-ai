@@ -7,7 +7,7 @@ const CoreCompetence: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row md:justify-between mb-12">
-        <h2 className="text-4xl font-bold text-white mb-6 md:mb-0 md:w-1/2">CORE COMPETENCE</h2>
+        <h2 className="text-4xl font-bold text-white mb-6 md:mb-0 md:w-1/2 pl-0">CORE COMPETENCE</h2>
         <p className="text-xl text-gray-300 md:w-1/2">
           DF717 secures a competitive edge by leveraging its unique AI robot and the proprietary HANNAH engine to lead financial innovation.
         </p>
