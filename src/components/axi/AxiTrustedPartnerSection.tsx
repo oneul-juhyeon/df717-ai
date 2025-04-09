@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { CheckIcon, Award, ShieldCheck, Users, Handshake } from "lucide-react";
 
 const AxiTrustedPartnerSection: React.FC = () => {
@@ -31,10 +30,6 @@ const AxiTrustedPartnerSection: React.FC = () => {
               <span>Rated 'Excellent' by Trustpilot</span>
             </li>
           </ul>
-          
-          <Button className="bg-white text-red-500 hover:bg-gray-100">
-            TRADE WITH TRUST
-          </Button>
         </div>
         
         <div className="flex justify-center items-center">

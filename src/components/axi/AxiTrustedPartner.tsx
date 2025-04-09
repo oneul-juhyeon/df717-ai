@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Button } from "@/components/ui/button";
 import { Check, ShieldCheck } from "lucide-react";
 
 const AxiTrustedPartner: React.FC = () => {
@@ -27,10 +26,6 @@ const AxiTrustedPartner: React.FC = () => {
             </li>
           ))}
         </ul>
-        
-        <Button className="bg-white text-red-600 hover:bg-gray-100">
-          TRADE WITH TRUST
-        </Button>
       </div>
       
       <div className="relative bg-white/10 flex items-center justify-center">
