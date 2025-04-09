@@ -27,8 +27,8 @@ const AxiCFDDifferences: React.FC = () => {
           {/* Table Header */}
           <div className="flex border-b border-[#5b5b5d] py-4">
             <div className="w-[30%]"></div>
-            <div className="w-[35%] text-center text-white text-[14px] font-medium px-2">CFD trading</div>
-            <div className="w-[35%] text-center text-white text-[14px] font-medium px-2">Traditional trading</div>
+            <div className="w-[35%] text-left text-white text-[14px] font-bold px-2">CFD trading</div>
+            <div className="w-[35%] text-left text-white text-[14px] font-bold px-2">Traditional trading</div>
           </div>
           
           {/* Table Rows */}
