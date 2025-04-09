@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 
 const AxiPricingHero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -28,24 +29,11 @@ const AxiPricingHero: React.FC = () => {
   
   return (
     <div ref={sectionRef} className="mt-10 mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
-      <div className="w-full relative overflow-hidden rounded-2xl">
-        <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 w-full py-20 px-12 max-sm:py-12 max-sm:px-6 relative">
-          <div className="text-center relative z-10">
-            <h1 className="text-5xl font-bold text-white mb-4 max-sm:text-3xl">Best Pricing and Trade Execution</h1>
-            <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg mb-2">
-              Lower latency, faster execution and better pricing.
-            </p>
-            <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg">
-              Trade your edge.
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div className="mt-10 text-center">
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-          Lower latency, faster execution and better pricing. Trade your edge.
-        </p>
+      <div className="w-full relative">
+        <FinancialProductArticleHeader 
+          title="Best Pricing and Trade Execution"
+          subtitle="Lower latency, faster execution and better pricing. Trade your edge."
+        />
       </div>
       
       <div className="mt-10 flex justify-center">

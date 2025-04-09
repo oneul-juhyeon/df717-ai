@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
+import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
 
 const AxiAwardHero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -27,17 +28,12 @@ const AxiAwardHero: React.FC = () => {
   }, []);
   
   return (
-    <div ref={heroRef} className="w-full relative overflow-hidden rounded-2xl mb-10 transition-all duration-1000 transform opacity-0 translate-y-10">
-      <div className="bg-gradient-to-r from-red-600 via-orange-500 to-yellow-400 w-full py-20 px-12 max-sm:py-12 max-sm:px-6 relative">
-        <div className="text-center relative z-10">
-          <h1 className="text-5xl font-bold text-white mb-4 max-sm:text-3xl">Award-Winning Service</h1>
-          <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg mb-2">
-            Trade with confidence.
-          </p>
-          <p className="text-xl text-white max-w-3xl mx-auto max-sm:text-lg">
-            With our award-winning service.
-          </p>
-        </div>
+    <div ref={heroRef} className="w-full mt-10 mb-16 transition-all duration-1000 transform opacity-0 translate-y-10">
+      <div className="w-full relative">
+        <FinancialProductArticleHeader 
+          title="Award-Winning Service"
+          subtitle="Trade with confidence. With our award-winning service."
+        />
       </div>
     </div>
   );
