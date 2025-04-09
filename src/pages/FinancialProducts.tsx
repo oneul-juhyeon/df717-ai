@@ -29,7 +29,9 @@ const FinancialProducts: React.FC = () => {
             Explore our comprehensive range of financial products designed to meet your trading needs.
           </p>
           
-          <ProductGrid />
+          <div className="w-full max-w-4xl">
+            <ProductGrid />
+          </div>
         </div>
       </section>
       
