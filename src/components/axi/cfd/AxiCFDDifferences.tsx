@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Table, TableHeader, TableHead, TableRow, TableBody, TableCell } from "@/components/ui/table";
 
 const AxiCFDDifferences: React.FC = () => {
   return (
@@ -24,52 +23,57 @@ const AxiCFDDifferences: React.FC = () => {
       </p>
       
       <div className="overflow-x-auto mb-8">
-        <Table className="min-w-full border-collapse">
-          <TableHeader>
-            <TableRow className="border-b border-gray-700">
-              <TableHead className="text-white bg-[#1e2a3a]"></TableHead>
-              <TableHead className="text-white bg-[#1e2a3a]">CFD trading</TableHead>
-              <TableHead className="text-white bg-[#1e2a3a]">Traditional trading</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Capital requirement</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Use leverage</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Pay the full upfront price</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Market access</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Multiple markets</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Equities and ETFs</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Asset ownership</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">You do not own the underlying asset</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Ownership of the underlying asset</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Profit potential</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Go short and benefit from falling prices</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">No option to benefit from falling prices</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Shareholder rights</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">No shareholder privileges</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Shareholder privileges and voting rights</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Tax</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">No stamp duty, but profits are liable for capital gains tax</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">You pay stamp duty and capital gains tax on your profits</TableCell>
-            </TableRow>
-            <TableRow className="border-b border-gray-700">
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Hedging</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Option to hedge your trades</TableCell>
-              <TableCell className="text-neutral-200 bg-[#0d1117]">Hedging requires the use of derivatives (options, futures, and inverse ETFs)</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <div className="w-full">
+          {/* Table Header */}
+          <div className="flex border-b border-[#5b5b5d] py-4">
+            <div className="w-[30%]"></div>
+            <div className="w-[35%] text-center text-white text-[14px] font-medium px-2">CFD trading</div>
+            <div className="w-[35%] text-center text-white text-[14px] font-medium px-2">Traditional trading</div>
+          </div>
+          
+          {/* Table Rows */}
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Capital requirement</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Use leverage</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Pay the full upfront price</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Market access</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Multiple markets</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Equities and ETFs</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Asset ownership</div>
+            <div className="w-[35%] text-white text-[14px] px-2">You do not own the underlying asset</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Ownership of the underlying asset</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Profit potential</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Go short and benefit from falling prices</div>
+            <div className="w-[35%] text-white text-[14px] px-2">No option to benefit from falling prices</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Shareholder rights</div>
+            <div className="w-[35%] text-white text-[14px] px-2">No shareholder privileges</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Shareholder privileges and voting rights</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Tax</div>
+            <div className="w-[35%] text-white text-[14px] px-2">No stamp duty, but profits are liable for capital gains tax</div>
+            <div className="w-[35%] text-white text-[14px] px-2">You pay stamp duty and capital gains tax on your profits</div>
+          </div>
+          
+          <div className="flex border-b border-[#5b5b5d] py-[15px]">
+            <div className="w-[30%] text-white text-[14px] px-2">Hedging</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Option to hedge your trades</div>
+            <div className="w-[35%] text-white text-[14px] px-2">Hedging requires the use of derivatives (options, futures, and inverse ETFs)</div>
+          </div>
+        </div>
       </div>
     </>
   );
