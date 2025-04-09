@@ -30,7 +30,7 @@ const ModernTechnologyTabs: React.FC = () => {
       {/* Sticky tabs navigation with SpaceX style */}
       <div className="sticky top-0 z-20 w-full mb-12">
         {/* Thin gray divider line above menu items */}
-        <div className="w-full h-[0.5px] bg-[#5b5b5d]/50"></div>
+        <div className="w-full h-[1px] bg-[#333333]"></div>
         
         <div className="flex justify-center space-x-2 md:space-x-8 max-w-4xl mx-auto py-5">
           {tabSections.map((tab) => (
@@ -47,7 +47,7 @@ const ModernTechnologyTabs: React.FC = () => {
               
               {/* White underline and dot for active tab */}
               {activeTab === tab.id && (
-                <div className="absolute -bottom-2 left-0 w-full h-[0.5px] bg-white">
+                <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-white">
                   <div className="absolute -top-[2px] left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>
                 </div>
               )}
@@ -56,12 +56,12 @@ const ModernTechnologyTabs: React.FC = () => {
         </div>
         
         {/* Bottom divider line */}
-        <div className="w-full h-[0.5px] bg-[#5b5b5d]/50 mb-8"></div>
+        <div className="w-full h-[1px] bg-[#333333] mb-8"></div>
       </div>
 
       {/* Content area */}
       <div className="mt-8">
-        <div className="bg-[#111111] border border-white/5 rounded-xl p-8 shadow-lg">
+        <div className="max-w-4xl mx-auto">
           {tabSections.map((tab) => (
             <div 
               key={tab.id}

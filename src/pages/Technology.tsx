@@ -22,9 +22,6 @@ const Technology: React.FC = () => {
         <TechnologyHeader scrollToTop={scrollToTop} />
         
         <section className="mt-12 mb-20 w-full max-w-5xl mx-auto relative">
-          <div className="absolute -top-20 -left-20 w-64 h-64 bg-red-900/5 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-900/5 rounded-full blur-3xl"></div>
-          
           <ModernTechnologyTabs />
         </section>
       </div>
