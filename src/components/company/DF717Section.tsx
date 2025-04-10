@@ -31,12 +31,12 @@ const DF717Section: React.FC = () => {
           }} 
           animate={controls}
         >
-          <p className="text-gray-300 leading-relaxed mb-30 text-center">
+          <p className="text-gray-300 leading-relaxed mb-8 text-center">
             DF717 is a robot designed to provide simplified AI investment services.
           </p>
           
-          <div className="mb-30 text-white">
-            <p className="text-lg mb-30 text-center">Each customer and account can operate a unique portfolio. The system is stable enough to manage tens of thousands of accounts simultaneously.</p>
+          <div className="mb-8 text-white">
+            <p className="text-lg mb-8 text-center">Each customer and account can operate a unique portfolio. The system is stable enough to manage tens of thousands of accounts simultaneously.</p>
           </div>
         </motion.div>
 
