@@ -46,7 +46,7 @@ const CompanyBrandSection: React.FC = () => {
             </div>
             
             <div className="text-center mb-12 scroll-animate opacity-0">
-              <h3 className="text-2xl font-bold mb-8 text-white">Core Values</h3>
+              <h3 className="text-2xl font-bold mb-6 text-white">Core Values</h3>
             </div>
             
             <div className="scroll-animate opacity-0">
