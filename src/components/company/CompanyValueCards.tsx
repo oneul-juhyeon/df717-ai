@@ -6,7 +6,6 @@ const CompanyValueCards: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-6">
       <div className="space-y-6">
-        <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
         <div className="flex items-center justify-center mb-6">
           <Lightbulb className="text-white" size={48} strokeWidth={1.5} />
         </div>
@@ -19,7 +18,6 @@ const CompanyValueCards: React.FC = () => {
       </div>
       
       <div className="space-y-6">
-        <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
         <div className="flex items-center justify-center mb-6">
           <Bot className="text-white" size={48} strokeWidth={1.5} />
         </div>
@@ -32,7 +30,6 @@ const CompanyValueCards: React.FC = () => {
       </div>
       
       <div className="space-y-6">
-        <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
         <div className="flex items-center justify-center mb-6">
           <Handshake className="text-white" size={48} strokeWidth={1.5} />
         </div>
