@@ -5,23 +5,24 @@ import { Cog, Container, LineChart, BarChart } from "lucide-react";
 
 const DF717Section: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto text-white">
       <motion.div 
-        className="flex flex-col md:flex-row md:justify-between mb-12"
+        className="flex flex-col items-center mb-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <motion.h2 
-          className="text-4xl font-bold text-white mb-6 md:mb-0 md:w-1/2 pl-0"
+          className="text-4xl font-bold text-white mb-9 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           DF717
         </motion.h2>
+        
         <motion.p 
-          className="text-gray-300 md:w-1/2 text-base"
+          className="text-gray-300 text-base text-center max-w-3xl mx-auto mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
