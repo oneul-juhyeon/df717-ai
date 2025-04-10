@@ -46,16 +46,7 @@ const CompanyHero: React.FC<CompanyHeroProps> = ({
         }} className="text-5xl mb-8 text-white font-sans font-bold max-md:text-4xl max-sm:text-3xl">Company</motion.h1>
           
           {/* Content Animation */}
-          <motion.p initial={{
-          opacity: 0
-        }} animate={{
-          opacity: contentVisible ? 1 : 0
-        }} transition={{
-          duration: 0.8
-        }} className="text-lg text-white/90 leading-relaxed max-w-3xl mx-auto">
-            DF717 designs a better life through technology.<br />
-            With sophisticated technologies and reliable data, we lead innovation in the future financial markets.
-          </motion.p>
+          
         </div>
       </div>
 
