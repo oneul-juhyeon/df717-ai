@@ -2,26 +2,35 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Cog, Container, LineChart, BarChart } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const DF717Section: React.FC = () => {
+  const { sectionRef, controls } = useScrollAnimation();
+
   return (
     <div className="max-w-4xl mx-auto text-white">
       <h2 className="text-4xl font-bold mb-9 text-center">DF717</h2>
       
-      <motion.div className="space-y-12" initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} transition={{
-        duration: 0.5
-      }}>
-        <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} animate={{
-          opacity: 1,
-          y: 0
-        }}>
+      <motion.div 
+        className="space-y-12" 
+        initial={{
+          opacity: 0
+        }} 
+        animate={{
+          opacity: 1
+        }} 
+        transition={{
+          duration: 0.5
+        }}
+      >
+        <motion.div 
+          ref={sectionRef} 
+          initial={{
+            opacity: 0,
+            y: 20
+          }} 
+          animate={controls}
+        >
           <p className="text-gray-300 leading-relaxed mb-30 text-center">
             DF717 is a robot designed to provide simplified AI investment services.
           </p>
