@@ -27,12 +27,9 @@ const ModernTechnologyTabs: React.FC = () => {
 
   return (
     <div className="w-full">
-      {/* Sticky tabs navigation with SpaceX style */}
-      <div className="sticky top-0 z-20 w-full mb-12">
-        {/* Thin gray divider line above menu items */}
-        <div className="w-full h-[1px] bg-[#333333]"></div>
-        
-        <div className="flex justify-center space-x-2 md:space-x-8 max-w-4xl mx-auto py-5">
+      {/* Sticky tabs navigation with SpaceX style - removed divider lines */}
+      <div className="sticky top-0 z-20 w-full mb-12 bg-black/50 backdrop-blur-sm py-5">
+        <div className="flex justify-center space-x-2 md:space-x-8 max-w-4xl mx-auto">
           {tabSections.map((tab) => (
             <button
               key={tab.id}
@@ -45,7 +42,7 @@ const ModernTechnologyTabs: React.FC = () => {
             >
               {tab.title}
               
-              {/* White underline and dot for active tab */}
+              {/* White underline and dot for active tab - kept for visual indication */}
               {activeTab === tab.id && (
                 <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-white">
                   <div className="absolute -top-[2px] left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>
@@ -54,9 +51,6 @@ const ModernTechnologyTabs: React.FC = () => {
             </button>
           ))}
         </div>
-        
-        {/* Bottom divider line */}
-        <div className="w-full h-[1px] bg-[#333333] mb-8"></div>
       </div>
 
       {/* Content area */}
