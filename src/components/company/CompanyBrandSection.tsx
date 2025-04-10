@@ -5,7 +5,7 @@ import CompanyValueCards from "./CompanyValueCards";
 
 const CompanyBrandSection: React.FC = () => {
   return (
-    <div className="w-full mb-16 scroll-animate opacity-0">
+    <div className="w-full mb-8 scroll-animate opacity-0">
       <div className="relative p-0">
         <div className="relative z-10">
           <h3 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
