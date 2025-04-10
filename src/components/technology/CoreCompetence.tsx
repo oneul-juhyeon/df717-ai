@@ -1,6 +1,8 @@
+
 import React from "react";
 import { Brain, GraduationCap, Search, Lock } from "lucide-react";
 import { motion } from "framer-motion";
+
 const CoreCompetence: React.FC = () => {
   return <div className="max-w-4xl mx-auto">
       <div className="flex flex-col md:flex-row md:justify-between mb-12">
@@ -10,7 +12,10 @@ const CoreCompetence: React.FC = () => {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mt-24">
+      {/* Full-width divider line below the section description */}
+      <div className="w-full h-[1px] bg-[#333333] mb-24"></div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mt-12">
         <motion.div className="space-y-6" initial={{
         opacity: 0,
         y: 20
@@ -20,7 +25,6 @@ const CoreCompetence: React.FC = () => {
       }} transition={{
         duration: 0.5
       }}>
-          <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
           <div className="flex items-start">
             <div className="mr-4 mt-1">
               <Brain className="text-white" size={48} strokeWidth={1.5} />
@@ -42,7 +46,6 @@ const CoreCompetence: React.FC = () => {
         duration: 0.5,
         delay: 0.2
       }}>
-          <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
           <div className="flex items-start">
             <div className="mr-4 mt-1">
               <GraduationCap className="text-white" size={48} strokeWidth={1.5} />
@@ -64,7 +67,6 @@ const CoreCompetence: React.FC = () => {
         duration: 0.5,
         delay: 0.4
       }}>
-          <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
           <div className="flex items-start">
             <div className="mr-4 mt-1">
               <Search className="text-white" size={48} strokeWidth={1.5} />
@@ -86,7 +88,6 @@ const CoreCompetence: React.FC = () => {
         duration: 0.5,
         delay: 0.6
       }}>
-          <div className="w-full h-[1px] bg-[#333333] mb-9"></div>
           <div className="flex items-start">
             <div className="mr-4 mt-1">
               <Lock className="text-white" size={48} strokeWidth={1.5} />
@@ -100,4 +101,5 @@ const CoreCompetence: React.FC = () => {
       </div>
     </div>;
 };
+
 export default CoreCompetence;
