@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Cog, Container, LineChart, BarChart } from "lucide-react";
@@ -40,6 +39,7 @@ const DF717Section: React.FC = () => {
           </div>
         </motion.div>
 
+        {/* Keep the grid section with icons */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mt-12">
           <motion.div className="space-y-6" initial={{
             opacity: 0,
