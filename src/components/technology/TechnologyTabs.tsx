@@ -3,7 +3,7 @@ import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import CoreCompetence from "./CoreCompetence";
-import PrefaceComponent from "./Preface";
+import Df717Component from "./Df717";
 import HannahComponent from "./Hannah";
 
 const TechnologyTabs: React.FC = () => {
@@ -36,7 +36,7 @@ const TechnologyTabs: React.FC = () => {
           </TabsContent>
           
           <TabsContent value="preface" className="p-6 bg-[#262626] rounded-md">
-            <PrefaceComponent />
+            <Df717Component />
           </TabsContent>
           
           <TabsContent value="isaac" className="p-6 bg-[#262626] rounded-md">

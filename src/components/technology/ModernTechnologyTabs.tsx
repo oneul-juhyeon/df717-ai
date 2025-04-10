@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import CoreCompetence from "./CoreCompetence";
-import PrefaceComponent from "./Preface";
+import Df717Component from "./Df717";
 import HannahComponent from "./Hannah";
 
 type Tab = {
@@ -16,7 +16,7 @@ const ModernTechnologyTabs: React.FC = () => {
   // Define tab sections
   const tabSections: Tab[] = [
     { id: "core", title: "CORE COMPETENCE", component: <CoreCompetence /> },
-    { id: "df717", title: "DF717", component: <PrefaceComponent /> },
+    { id: "df717", title: "DF717", component: <Df717Component /> },
     { id: "hannah", title: "HANNAH", component: <HannahComponent /> }
   ];
 

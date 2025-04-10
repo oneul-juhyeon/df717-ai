@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const PrefaceComponent = () => {
+const Df717Component = () => {
   const { sectionRef, controls } = useScrollAnimation();
 
   return (
@@ -43,4 +43,4 @@ const PrefaceComponent = () => {
   );
 };
 
-export default PrefaceComponent;
+export default Df717Component;
