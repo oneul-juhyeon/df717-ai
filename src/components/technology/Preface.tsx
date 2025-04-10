@@ -89,7 +89,7 @@ const PrefaceComponent = () => {
           className="space-y-6"
         >
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <Cog className="text-white" size={48} strokeWidth={1.5} />
               </div>
@@ -106,7 +106,7 @@ const PrefaceComponent = () => {
           className="space-y-6"
         >
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <Container className="text-white" size={48} strokeWidth={1.5} />
               </div>
@@ -123,7 +123,7 @@ const PrefaceComponent = () => {
           className="space-y-6"
         >
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <LineChart className="text-white" size={48} strokeWidth={1.5} />
               </div>
@@ -140,7 +140,7 @@ const PrefaceComponent = () => {
           className="space-y-6"
         >
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <BarChart className="text-white" size={48} strokeWidth={1.5} />
               </div>

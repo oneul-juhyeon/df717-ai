@@ -43,7 +43,7 @@ const CoreCompetence: React.FC = () => {
         duration: 0.5
       }}>
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <Brain className="text-white" size={48} strokeWidth={1.5} />
               </div>
@@ -64,7 +64,7 @@ const CoreCompetence: React.FC = () => {
         delay: 0.2
       }}>
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <GraduationCap className="text-white" size={48} strokeWidth={1.5} />
               </div>
@@ -85,7 +85,7 @@ const CoreCompetence: React.FC = () => {
         delay: 0.4
       }}>
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <Search className="text-white" size={48} strokeWidth={1.5} />
               </div>
@@ -106,7 +106,7 @@ const CoreCompetence: React.FC = () => {
         delay: 0.6
       }}>
           <div>
-            <div className="flex items-center mb-6">
+            <div className="flex items-center justify-center mb-6">
               <div className="mr-4">
                 <Lock className="text-white" size={48} strokeWidth={1.5} />
               </div>
