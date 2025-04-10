@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import CoreCompetence from "./CoreCompetence";
 import PrefaceComponent from "./Preface";
-import IsaacComponent from "./Isaac";
+import HannahComponent from "./Hannah";
 
 type Tab = {
   id: string;
@@ -17,7 +17,7 @@ const ModernTechnologyTabs: React.FC = () => {
   const tabSections: Tab[] = [
     { id: "core", title: "CORE COMPETENCE", component: <CoreCompetence /> },
     { id: "df717", title: "DF717", component: <PrefaceComponent /> },
-    { id: "hannah", title: "HANNAH", component: <IsaacComponent /> }
+    { id: "hannah", title: "HANNAH", component: <HannahComponent /> }
   ];
 
   // Handle tab clicks with direct content switching

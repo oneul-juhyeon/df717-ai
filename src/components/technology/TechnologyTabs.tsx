@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import CoreCompetence from "./CoreCompetence";
 import PrefaceComponent from "./Preface";
-import IsaacComponent from "./Isaac";
+import HannahComponent from "./Hannah";
 
 const TechnologyTabs: React.FC = () => {
   return <Card className="bg-[#232323] border-gray-700 text-white shadow-xl overflow-hidden">
@@ -40,7 +40,7 @@ const TechnologyTabs: React.FC = () => {
           </TabsContent>
           
           <TabsContent value="isaac" className="p-6 bg-[#262626] rounded-md">
-            <IsaacComponent />
+            <HannahComponent />
           </TabsContent>
         </Tabs>
       </CardContent>
