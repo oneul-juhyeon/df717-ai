@@ -5,12 +5,29 @@ import { motion } from "framer-motion";
 
 const CoreCompetence: React.FC = () => {
   return <div className="max-w-4xl mx-auto">
-      <div className="flex flex-col md:flex-row md:justify-between mb-12">
-        <h2 className="text-4xl font-bold text-white mb-6 md:mb-0 md:w-1/2 pl-0">CORE COMPETENCE</h2>
-        <p className="text-gray-300 md:w-1/2 text-base">
+      <motion.div 
+        className="flex flex-col md:flex-row md:justify-between mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.h2 
+          className="text-4xl font-bold text-white mb-6 md:mb-0 md:w-1/2 pl-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          CORE COMPETENCE
+        </motion.h2>
+        <motion.p 
+          className="text-gray-300 md:w-1/2 text-base"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           DF717 secures a competitive edge by leveraging its unique AI robot and the proprietary HANNAH engine to lead financial innovation.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
       
       {/* Full-width divider line below the section description */}
       <div className="w-full h-[1px] bg-[#333333] mb-24"></div>
