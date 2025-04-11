@@ -22,9 +22,7 @@ const Df717Component = () => {
         opacity: 0,
         y: 20
       }} animate={controls}>
-          <p className="text-gray-300 leading-relaxed mb-16 text-center">
-            DF717 is a robot designed to provide simplified AI investment services.
-          </p>
+          <p className="text-gray-300 leading-relaxed mb-16 text-center">DF717 is a AI robot designed to provide automated investment services.</p>
           
           <Separator className="mb-16" />
           
