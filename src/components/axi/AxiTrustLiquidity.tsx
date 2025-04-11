@@ -32,9 +32,9 @@ const AxiTrustLiquidity: React.FC = () => {
       <div className="flex items-center justify-center">
         <div className="p-6 bg-[#1E1E1E] rounded-xl relative">
           <div className="flex items-center justify-center">
-            <TrendingUp className="h-12 w-12 text-red-500 absolute -top-6 -left-6 bg-[#161616] p-2 rounded-lg" />
-            <LineChart className="h-12 w-12 text-green-500 absolute -top-6 -right-6 bg-[#161616] p-2 rounded-lg" />
-            <BarChart3 className="h-12 w-12 text-blue-500 absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-[#161616] p-2 rounded-lg" />
+            <TrendingUp className="h-12 w-12 text-white absolute -top-6 -left-6 bg-[#161616] p-2 rounded-lg" />
+            <LineChart className="h-12 w-12 text-white absolute -top-6 -right-6 bg-[#161616] p-2 rounded-lg" />
+            <BarChart3 className="h-12 w-12 text-white absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-[#161616] p-2 rounded-lg" />
             <img 
               src="/lovable-uploads/df717_logo.png" 
               alt="DF717 Logo" 
