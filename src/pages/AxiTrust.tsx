@@ -13,6 +13,7 @@ import AxiTrustEducation from "@/components/axi/AxiTrustEducation";
 import AxiTrustTools from "@/components/axi/AxiTrustTools";
 import AxiTrustProtection from "@/components/axi/AxiTrustProtection";
 import AxiTrustRisk from "@/components/axi/AxiTrustRisk";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiLayout from "@/components/axi/AxiLayout";
 
 const AxiTrust: React.FC = () => {
@@ -66,6 +67,8 @@ const AxiTrust: React.FC = () => {
         <section className="mt-20 mb-20">
           <AxiTrustRisk />
         </section>
+        
+        <AxiSpaceXCallToAction />
       </div>
     </AxiLayout>
   );

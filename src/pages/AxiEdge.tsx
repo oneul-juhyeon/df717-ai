@@ -5,6 +5,7 @@ import AxiEdgeHero from "@/components/axi/AxiEdgeHero";
 import AxiEdgeContent from "@/components/axi/AxiEdgeContent";
 import AxiGivingMore from "@/components/axi/AxiGivingMore";
 import AxiTrustedPartner from "@/components/axi/AxiTrustedPartner";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiLayout from "@/components/axi/AxiLayout";
 
 const AxiEdge: React.FC = () => {
@@ -27,6 +28,8 @@ const AxiEdge: React.FC = () => {
         <section className="w-full py-20 px-0">
           <AxiTrustedPartner />
         </section>
+
+        <AxiSpaceXCallToAction />
       </div>
     </AxiLayout>
   );
