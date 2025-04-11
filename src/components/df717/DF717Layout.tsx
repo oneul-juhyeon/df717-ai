@@ -53,7 +53,7 @@ const DF717Layout: React.FC<DF717LayoutProps> = ({
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5 flex-grow">
+      <div className="max-w-none mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <DF717Header scrollToTop={scrollToTop} />
         
         <div className="mt-16 mb-20 flex">

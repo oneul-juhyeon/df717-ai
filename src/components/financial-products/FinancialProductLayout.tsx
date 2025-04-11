@@ -53,7 +53,7 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="w-full mx-auto px-[154px] max-md:px-10 max-sm:px-5 flex-grow">
+      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         {renderHeader(scrollToTop)}
         
         <div className="mt-8">          

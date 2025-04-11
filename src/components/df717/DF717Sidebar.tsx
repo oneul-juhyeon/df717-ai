@@ -29,7 +29,7 @@ const DF717Sidebar: React.FC = () => {
   return (
     <aside className="hidden lg:block w-64 shrink-0 border-r border-white/30 pr-6">
       <div className="sticky top-24 animate-fade-in-left">
-        <h3 className="text-lg font-semibold text-white mb-6 pl-4">DF717</h3>
+        <h3 className="text-lg font-semibold text-white mb-6 pl-4 border-l-2 border-white">DF717</h3>
         <ul className="space-y-2">
           {sidebarItems.map((item) => (
             <li key={item.name}>
