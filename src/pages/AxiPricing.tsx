@@ -11,7 +11,6 @@ import AxiTopTierLiquidity from "@/components/axi/AxiTopTierLiquidity";
 import AxiTradingProducts from "@/components/axi/AxiTradingProducts";
 import AxiSuperiorSetup from "@/components/axi/AxiSuperiorSetup";
 import AxiFlexibleLeverage from "@/components/axi/AxiFlexibleLeverage";
-import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 import AxiLayout from "@/components/axi/AxiLayout";
 
 const AxiPricing: React.FC = () => {
@@ -57,8 +56,6 @@ const AxiPricing: React.FC = () => {
         <section>
           <AxiFlexibleLeverage />
         </section>
-        
-        <AxiSpaceXCallToAction />
       </div>
     </AxiLayout>
   );

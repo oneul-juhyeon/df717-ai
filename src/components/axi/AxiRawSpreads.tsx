@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
 
 const AxiRawSpreads: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -32,10 +31,6 @@ const AxiRawSpreads: React.FC = () => {
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-white mb-6">Raw spreads from 0.0</h2>
         <p className="text-gray-300 text-lg mb-8">Want to see how low our spreads can be?</p>
-        
-        <Button className="bg-red-500 hover:bg-red-600 text-white font-medium">
-          Live Spreads
-        </Button>
       </div>
     </div>
   );
