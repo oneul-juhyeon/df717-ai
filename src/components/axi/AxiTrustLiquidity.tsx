@@ -36,8 +36,8 @@ const AxiTrustLiquidity: React.FC = () => {
             <LineChart className="h-12 w-12 text-green-500 absolute -top-6 -right-6 bg-[#161616] p-2 rounded-lg" />
             <BarChart3 className="h-12 w-12 text-blue-500 absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-[#161616] p-2 rounded-lg" />
             <img 
-              src="/lovable-uploads/13b4fb30-cd5c-42ae-b804-679c42c226d5.png" 
-              alt="Axi Logo" 
+              src="/lovable-uploads/df717_logo.png" 
+              alt="DF717 Logo" 
               className="w-32 h-auto my-16"
             />
           </div>

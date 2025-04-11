@@ -45,7 +45,7 @@ const AxiTrustCreated: React.FC = () => {
           <div className="relative">
             <Shield className="w-32 h-32 text-red-500" />
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <img src="/lovable-uploads/13b4fb30-cd5c-42ae-b804-679c42c226d5.png" alt="Axi Logo" className="w-16 h-6" />
+              <img src="/lovable-uploads/df717_logo.png" alt="DF717 Logo" className="w-16 h-6" />
             </div>
           </div>
         </div>
