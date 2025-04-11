@@ -1,6 +1,6 @@
 import React from "react";
 const AxiEdgeContent: React.FC = () => {
-  return <section className="py-16 text-white bg-black">
+  return <section className="text-white bg-black py-0">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
         <div>
           <h2 className="text-3xl font-bold mb-6 text-white">Trade your edge</h2>
