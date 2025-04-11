@@ -56,7 +56,7 @@ const AxiAwardWinningService: React.FC = () => {
       </div>
 
       {/* 24/5 Award-winning service */}
-      <div className="py-16 bg-[#1A1A1A]">
+      <div className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-2 text-white">
             <span className="text-red-500">24/5 award-winning</span> service.
