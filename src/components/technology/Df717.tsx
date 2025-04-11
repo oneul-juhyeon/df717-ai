@@ -114,7 +114,7 @@ const Df717Component = () => {
                 </div>
                 <h3 className="text-xl text-white font-bold">DF717-Web</h3>
               </div>
-              <p className="text-gray-300">Provides real-time operation monitoring, account status, and transaction updates. Partners can check and give instructions through web or mobile.</p>
+              <p className="text-gray-300">We provide real-time access to trading activity and account status, allowing clients to monitor their asset management through both web and mobile platforms.</p>
             </div>
           </motion.div>
         </div>
