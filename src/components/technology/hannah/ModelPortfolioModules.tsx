@@ -10,15 +10,15 @@ const ModelPortfolioModules: React.FC = () => {
   return (
     <motion.div 
       ref={sectionRef} 
-      className="mt-30" 
+      className="mt-16" 
       initial={{
         opacity: 0,
         y: 20
       }} 
       animate={controls}
     >
-      <Separator className="mb-30" />
-      <h3 className="text-2xl font-bold text-white mb-6">Model Portfolio Modules</h3>
+      <Separator className="mb-16" />
+      <h3 className="text-2xl font-bold text-white mb-8">Model Portfolio Modules</h3>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-9">
         <motion.div 

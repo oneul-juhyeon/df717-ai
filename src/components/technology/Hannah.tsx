@@ -12,7 +12,7 @@ const HannahComponent = () => {
       <h2 className="text-4xl font-bold mb-9">HANNAH</h2>
       
       <motion.div 
-        className="space-y-12" 
+        className="space-y-16" 
         initial={{
           opacity: 0
         }} 
