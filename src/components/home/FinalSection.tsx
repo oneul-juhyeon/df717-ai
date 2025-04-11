@@ -1,17 +1,21 @@
+
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+
 const FinalSection: React.FC = () => {
   const finalSectionRef = useRef<HTMLDivElement>(null);
   const isFinalInView = useInView(finalSectionRef);
   const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
+
   const handleNavigateToDF717 = (e: React.MouseEvent) => {
     e.preventDefault();
     scrollToTop();
@@ -20,6 +24,7 @@ const FinalSection: React.FC = () => {
       navigate('/df717');
     }, 100);
   };
+
   return <section ref={finalSectionRef} className="relative w-full min-h-screen flex flex-col justify-end text-left px-6 py-16 overflow-hidden">
       {/* Background Image with Gradient Overlays */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -61,6 +66,10 @@ const FinalSection: React.FC = () => {
         duration: 0.7,
         delay: 0.2
       }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider font-thin lg:text-xl">
+          "Blessed is the one who considers the poor.
+          <br />
+          In the day of trouble the Lord delivers him." - Psalm 41:1
+          <br /><br />
           DF717 aims to support people economically through financial innovation driven by AI technology.
           <br />
           DF717 seeks to serve the world together with partners who share the same vision and heart.
@@ -88,4 +97,5 @@ const FinalSection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default FinalSection;
