@@ -2,16 +2,19 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+
 const FinalSection: React.FC = () => {
   const finalSectionRef = useRef<HTMLDivElement>(null);
   const isFinalInView = useInView(finalSectionRef);
   const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
+
   const handleNavigateToDF717 = (e: React.MouseEvent) => {
     e.preventDefault();
     scrollToTop();
@@ -20,6 +23,7 @@ const FinalSection: React.FC = () => {
       navigate('/df717');
     }, 100);
   };
+
   return <section ref={finalSectionRef} className="relative w-full min-h-screen flex flex-col justify-end text-left px-6 py-16 overflow-hidden">
       {/* Background Image with Gradient Overlays */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -31,7 +35,21 @@ const FinalSection: React.FC = () => {
       </div>
 
       <div className="z-10 max-w-3xl mx-auto md:mx-0 md:ml-[10%] lg:ml-[15%] mb-16 md:mb-24">
-        
+        <motion.p initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.7
+      }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider lg:text-xl font-normal">
+          For thousands of years, the Bible has forewarned of times of famine.
+          Today, we are witnessing global economic turmoil unfolding before our eyes.
+          The poverty crisis is accelerating, and its impact will only grow more devastating over time.
+        </motion.p>
         
         <motion.p initial={{
         opacity: 0,
@@ -76,4 +94,5 @@ const FinalSection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default FinalSection;
