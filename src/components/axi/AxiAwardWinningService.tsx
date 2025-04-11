@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { Users, Headphones, Globe, DollarSign } from "lucide-react";
 import AxiAwardCards from "./AxiAwardCards";
 import AxiTestimonials from "./AxiTestimonials";
 import AxiServiceImages from "./AxiServiceImages";
-
 const AxiAwardWinningService: React.FC = () => {
   // Add scroll animation effects
   useEffect(() => {
@@ -31,11 +29,9 @@ const AxiAwardWinningService: React.FC = () => {
     // Clean up
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
-
-  return (
-    <div className="flex flex-col w-full">
+  return <div className="flex flex-col w-full">
       {/* Why traders choose Axi */}
-      <div className="py-12 bg-[#161616]">
+      <div className="py-12 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">
             Why traders choose Axi
@@ -95,11 +91,7 @@ const AxiAwardWinningService: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 flex justify-center">
-              <img 
-                src="/lovable-uploads/30eee2f6-1007-434f-97ed-1b71bffda0ea.png" 
-                alt="Female trader" 
-                className="max-w-full h-auto rounded-xl"
-              />
+              <img src="/lovable-uploads/30eee2f6-1007-434f-97ed-1b71bffda0ea.png" alt="Female trader" className="max-w-full h-auto rounded-xl" />
             </div>
             <div className="order-1 md:order-2 text-white">
               <h2 className="text-3xl font-bold mb-6">The right account for you</h2>
@@ -122,11 +114,7 @@ const AxiAwardWinningService: React.FC = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="/lovable-uploads/8335e11c-a525-43db-a8bd-533a8d647451.png" 
-                alt="Customer support representative" 
-                className="max-w-full h-auto rounded-xl"
-              />
+              <img src="/lovable-uploads/8335e11c-a525-43db-a8bd-533a8d647451.png" alt="Customer support representative" className="max-w-full h-auto rounded-xl" />
             </div>
           </div>
         </div>
@@ -137,11 +125,7 @@ const AxiAwardWinningService: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 flex justify-center">
-              <img 
-                src="/lovable-uploads/ab227cf6-54f6-4b18-a524-ff414ddf1729.png" 
-                alt="Global trading" 
-                className="max-w-full h-auto rounded-xl"
-              />
+              <img src="/lovable-uploads/ab227cf6-54f6-4b18-a524-ff414ddf1729.png" alt="Global trading" className="max-w-full h-auto rounded-xl" />
             </div>
             <div className="order-1 md:order-2 text-white">
               <h2 className="text-3xl font-bold mb-6">A truly global broker</h2>
@@ -165,17 +149,11 @@ const AxiAwardWinningService: React.FC = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <img 
-                src="/lovable-uploads/dc155393-715d-4340-920f-f555d7e47b99.png" 
-                alt="Trading costs visualization" 
-                className="max-w-full h-auto rounded-xl"
-              />
+              <img src="/lovable-uploads/dc155393-715d-4340-920f-f555d7e47b99.png" alt="Trading costs visualization" className="max-w-full h-auto rounded-xl" />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default AxiAwardWinningService;
