@@ -16,8 +16,29 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
 
   return (
     <div className="flex items-center gap-1">
-      {navigationItems.map((item) => (
-        item.hasSubmenu && item.submenu ? (
+      {navigationItems.map((item) => {
+        // Special case for Financial Products - direct link instead of dropdown
+        if (item.name === "Financial Products") {
+          return (
+            <Link 
+              key={item.name}
+              to={item.path}
+              className={`text-white px-4 py-2 transition whitespace-nowrap relative 
+                after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white
+                ${location.pathname === item.path || location.pathname.startsWith('/financial-products/') 
+                  ? 'after:scale-x-100' 
+                  : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'} 
+                after:transition-transform after:duration-300
+              `}
+              onClick={scrollToTop}
+            >
+              {item.name}
+            </Link>
+          );
+        }
+        
+        // Original dropdown functionality for other menu items
+        return item.hasSubmenu && item.submenu ? (
           <NavDropdown 
             key={item.name}
             name={item.name}
@@ -50,8 +71,8 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
           >
             {item.name}
           </Link>
-        )
-      ))}
+        );
+      })}
     </div>
   );
 };
