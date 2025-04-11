@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
@@ -48,9 +47,7 @@ const FinalSection: React.FC = () => {
         duration: 0.7
       }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider lg:text-xl font-normal">
           For thousands of years, the Bible has forewarned of times of famine.
-          <br /><br />
           Today, we are witnessing global economic turmoil unfolding before our eyes.
-          <br /><br />
           The poverty crisis is accelerating, and its impact will only grow more devastating over time.
         </motion.p>
         
