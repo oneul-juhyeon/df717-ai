@@ -1,10 +1,8 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Cog, Container, LineChart, BarChart } from "lucide-react";
 import { Separator } from "../ui/separator";
-
 const Df717Component = () => {
   const {
     sectionRef,
@@ -53,7 +51,7 @@ const Df717Component = () => {
                 </div>
                 <h3 className="text-xl text-white font-bold">DF717-Account</h3>
               </div>
-              <p className="text-gray-300">Each customer and account can operate a unique portfolio. The system is stable enough to manage tens of thousands of accounts simultaneously.</p>
+              <p className="text-gray-300">Each client and account is automatically matched with an optimal portfolio based on their investment amount.</p>
             </div>
           </motion.div>
           
@@ -74,7 +72,7 @@ const Df717Component = () => {
                 </div>
                 <h3 className="text-xl text-white font-bold">DF717-Container</h3>
               </div>
-              <p className="text-gray-300">This is the platform where investment logic operates and necessary data is processed. It enables flexible AI-powered investment logic execution.</p>
+              <p className="text-gray-300">This is a robot where investment logic is actually executed and necessary data is processed in real time. It implements a data-driven investment approach through an engine, enabling diverse operational strategies.</p>
             </div>
           </motion.div>
           
