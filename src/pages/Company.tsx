@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
@@ -63,7 +62,7 @@ const Company: React.FC = () => {
     return () => {
       observer.disconnect();
     };
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []);
   
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
