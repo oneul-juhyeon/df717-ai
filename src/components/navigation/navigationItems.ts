@@ -1,4 +1,3 @@
-
 import { NavigationItem, SubmenuItem } from "./types";
 
 export const axiCfdSubmenu: SubmenuItem[] = [
@@ -53,33 +52,36 @@ export const getNavigationItems = (): NavigationItem[] => [
   { name: "Contact", path: "/contact", hasSubmenu: false },
 ];
 
-export const isMenuActive = (item: NavigationItem, pathname: string): boolean => {
-  if (item.path === pathname) {
+/**
+ * Helper function to determine if a menu item is active based on the current path
+ */
+export function isMenuActive(item: NavigationItem, currentPath: string): boolean {
+  // Exact match for the path
+  if (currentPath === item.path) {
     return true;
   }
-  
-  if (item.path === '/home-intro' && pathname === '/') {
+
+  // Special case for Financial Products - check if we're in any of the subpages
+  if (item.name === "Financial Products" && currentPath.startsWith("/financial-products/")) {
     return true;
   }
-  
-  if (item.path === '/financial-products' && pathname.startsWith('/financial-products/')) {
-    return true;
+
+  // Check if we're on a subpage of this item
+  if (item.submenu) {
+    // For DF717, check if the current path starts with /df717/
+    if (item.name === "DF717" && currentPath.startsWith("/df717/")) {
+      return true;
+    }
+
+    // For AXI CFD, check if the current path is any of the related paths
+    if (item.name === "AXI CFD" && 
+        (currentPath.startsWith("/axi-") || currentPath === "/axi-cfd")) {
+      return true;
+    }
+    
+    // For any other item with submenu, check if we're on any of the submenu pages
+    return item.submenu.some(subItem => subItem.path === currentPath);
   }
-  
-  if (item.path === '/df717' && pathname.startsWith('/df717/')) {
-    return true;
-  }
-  
-  if (item.path === '/axi-cfd' && (
-    pathname.startsWith('/axi-') || 
-    pathname === '/axi-cfd' || 
-    pathname === '/axi-edge' || 
-    pathname === '/axi-trust' || 
-    pathname === '/axi-pricing' || 
-    pathname === '/axi-award'
-  )) {
-    return true;
-  }
-  
+
   return false;
-};
+}
