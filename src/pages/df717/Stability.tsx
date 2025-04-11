@@ -1,23 +1,13 @@
-
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
-
 const Stability: React.FC = () => {
-  return (
-    <DF717Layout>
+  return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader 
-          title="Technical Reliability & Architectural Stability"
-          subtitle="How DF717 maintains consistent performance and reliability in all market conditions."
-        />
+        <DF717ArticleHeader title="Technical Reliability & Architectural Stability" subtitle="How DF717 maintains consistent performance and reliability in all market conditions." />
         
         <div className="mb-14 animate-fade-in-up delay-100">
-          <p className="text-gray-300 leading-relaxed">
-            DF717 is built upon a robust and precision-engineered architecture that enables reliable and accurate 
-            trade execution. By identifying market inefficiencies through statistical modeling and conditional 
-            time-series logic, DF717 achieves emotion-free, logic-based decision automation.
-          </p>
+          <p className="text-gray-300 leading-relaxed">DF717 is built upon a robust and precision-engineered architecture that enables reliable and accurate trade execution. By identifying market inefficiencies through statistical modeling and conditional time-series logic, DF717 achieves emotion-free, automated decision-making through logic engines.</p>
         </div>
         
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-300">
@@ -73,8 +63,6 @@ const Stability: React.FC = () => {
           </div>
         </div>
       </div>
-    </DF717Layout>
-  );
+    </DF717Layout>;
 };
-
 export default Stability;
