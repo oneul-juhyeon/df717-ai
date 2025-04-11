@@ -33,9 +33,9 @@ const FinalSection: React.FC = () => {
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 30%)'
         }}></div>
-        {/* Bottom-to-top black gradient overlay - adding this new gradient */}
+        {/* Bottom-to-top black gradient overlay - reducing the coverage by ~50% */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 40%)'
+          background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 5%, rgba(0,0,0,0) 20%)'
         }}></div>
       </div>
 
