@@ -25,7 +25,7 @@ const FinalSection: React.FC = () => {
     }, 100);
   };
 
-  return <section ref={finalSectionRef} className="relative w-full min-h-screen flex flex-col justify-end text-left px-6 py-16 overflow-hidden">
+  return <section ref={finalSectionRef} className="relative w-full min-h-screen flex flex-col justify-center text-left px-6 py-16 overflow-hidden">
       {/* Background Image with Gradient Overlays */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <img src="/lovable-uploads/home_intro2.webp" alt="Yellow planet curve" className="object-cover w-full h-full" />
@@ -35,7 +35,7 @@ const FinalSection: React.FC = () => {
       }}></div>
       </div>
 
-      <div className="z-10 max-w-3xl mx-auto md:mx-0 md:ml-[10%] lg:ml-[15%] mb-16 md:mb-24">
+      <div className="z-10 max-w-3xl mx-auto md:mx-0 md:ml-[10%] lg:ml-[15%]">
         <motion.p initial={{
         opacity: 0,
         y: 20
