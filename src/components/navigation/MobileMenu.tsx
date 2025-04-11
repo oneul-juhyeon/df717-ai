@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -59,7 +60,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                         `}
                         onClick={() => handleNavigation(item.path)}
                       >
-                        <span>{item.name}</span>
+                        <span className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-transform after:duration-300
+                          ${isMenuActive(item, location.pathname) 
+                            ? 'after:scale-x-100' 
+                            : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'}">
+                          {item.name}
+                        </span>
                       </button>
                       
                       {/* Arrow button to expand submenu */}
@@ -86,7 +92,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  // Regular items (unchanged)
+                  // Regular items with text-length underline
                   item.hasSubmenu && item.submenu ? (
                     <Collapsible className="w-full">
                       <div className="flex items-center">
@@ -96,7 +102,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                               ${isMenuActive(item, location.pathname) ? 'active' : ''}
                             `}
                           >
-                            <span>{item.name}</span>
+                            <span className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-transform after:duration-300
+                              ${isMenuActive(item, location.pathname) 
+                                ? 'after:scale-x-100' 
+                                : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'}">
+                              {item.name}
+                            </span>
                             <ChevronRight className="h-5 w-5 transition-transform duration-200 [&[data-state=open]]:rotate-90" />
                           </button>
                         </CollapsibleTrigger>
@@ -124,7 +135,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                       `}
                       onClick={() => handleNavigation(item.path)}
                     >
-                      <span>{item.name}</span>
+                      <span className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-transform after:duration-300
+                        ${isMenuActive(item, location.pathname) 
+                          ? 'after:scale-x-100' 
+                          : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'}">
+                        {item.name}
+                      </span>
                       <div className="w-5"></div>
                     </button>
                   )
