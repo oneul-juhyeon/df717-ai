@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from "react";
-import { AlertCircle, TrendingDown, TrendingUp, Bell } from "lucide-react";
 
 const AxiTrustProtection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -29,22 +28,18 @@ const AxiTrustProtection: React.FC = () => {
   
   const protections = [
     {
-      icon: <TrendingDown className="h-8 w-8 text-white" />,
       title: "Free protection against adverse market movements",
       content: "Set a Stop Loss order to close your position automatically if the market moves against you. Although there's no trigger charge, there's no guarantee of protection against slippage so your position could be closed out at a worse level if the market gaps."
     },
     {
-      icon: <TrendingUp className="h-8 w-8 text-white" />,
       title: "Don't miss out on profits",
       content: "Place a Trailing Stop when you open your trade and it will move with your profit. If the market turns against you, your position will close out at your Trailing Stop's new level. This means you can lock in profits without the need to monitor your position and adjust your stop. Like regular stop-losses, trailing stops don't protect against slippage."
     },
     {
-      icon: <AlertCircle className="h-8 w-8 text-white" />,
       title: "Take profit automatically",
       content: "Set a limit order in line with your profit target, and we'll close your position for you when the price hits your chosen level!"
     },
     {
-      icon: <Bell className="h-8 w-8 text-white" />,
       title: "Stay on top of market movements",
       content: "Set price alerts and we will notify you by text or email when a market reaches your specified price. Push alert notifications are available free of charge and can be set up on our web-based platform and apps, and appear as in-platform pop-ups on PC and mobile app."
     }
@@ -60,14 +55,9 @@ const AxiTrustProtection: React.FC = () => {
       <div className="space-y-8">
         {protections.map((protection, index) => (
           <div key={index} className="bg-[#1E1E1E] p-6 rounded-xl">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 mt-1">
-                {protection.icon}
-              </div>
-              <div>
-                <h3 className="text-xl text-white font-bold mb-2">{protection.title}</h3>
-                <p className="text-gray-300">{protection.content}</p>
-              </div>
+            <div>
+              <h3 className="text-xl text-white font-bold mb-2">{protection.title}</h3>
+              <p className="text-gray-300">{protection.content}</p>
             </div>
           </div>
         ))}
