@@ -48,7 +48,7 @@ const FinalSection: React.FC = () => {
 
       <div className="z-10 max-w-3xl mx-auto md:mx-0 md:ml-[10%] lg:ml-[15%] mb-16 md:mb-24">
         <motion.p 
-          className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider"
+          className="font-din text-xl md:text-2xl lg:text-3xl text-white leading-relaxed mb-10 tracking-wider"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -57,6 +57,8 @@ const FinalSection: React.FC = () => {
           For thousands of years, the Bible has forewarned of times of famine.
           <br /><br />
           Today, we are witnessing global economic turmoil unfolding before our eyes.
+          <br /><br />
+          The poverty crisis is accelerating, and its impact will only grow more devastating over time.
         </motion.p>
         
         <motion.p 
@@ -66,8 +68,6 @@ const FinalSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          The poverty crisis is accelerating, and its impact will only grow more devastating over time.
-          <br />
           DF717 aims to support people economically through financial innovation driven by AI technology.
           <br />
           DF717 seeks to serve the world together with partners who share the same vision and heart.
