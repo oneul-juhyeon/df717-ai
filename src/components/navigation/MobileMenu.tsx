@@ -9,6 +9,9 @@ import { NavigationItem } from "./types";
 import { isMenuActive } from "./navigationItems";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
+// Add CSS for mobile navigation animation
+import "./mobileNavAnimation.css";
+
 interface MobileMenuProps {
   navigationItems: NavigationItem[];
   scrollToTop: () => void;
@@ -56,16 +59,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                       {/* Financial Products text (clickable to go to main page) */}
                       <button
                         className={`mobile-nav-item flex items-center text-white py-2 text-lg font-medium transition px-0 relative
-                          ${isMenuActive(item, location.pathname) ? 'active' : ''}
+                          ${isMenuActive(item, location.pathname) ? 'active mobile-nav-active' : ''}
                         `}
                         onClick={() => handleNavigation(item.path)}
                       >
-                        <span className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-transform after:duration-300
-                          ${isMenuActive(item, location.pathname) 
-                            ? 'after:scale-x-100' 
-                            : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'}">
-                          {item.name}
-                        </span>
+                        <span className="mobile-nav-text">{item.name}</span>
                       </button>
                       
                       {/* Arrow button to expand submenu */}
@@ -92,22 +90,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  // Regular items with text-length underline
+                  // Regular items with click animation
                   item.hasSubmenu && item.submenu ? (
                     <Collapsible className="w-full">
                       <div className="flex items-center">
                         <CollapsibleTrigger asChild>
                           <button
                             className={`mobile-nav-item flex items-center justify-between w-full text-white py-2 text-lg font-medium transition px-0 relative
-                              ${isMenuActive(item, location.pathname) ? 'active' : ''}
+                              ${isMenuActive(item, location.pathname) ? 'active mobile-nav-active' : ''}
                             `}
                           >
-                            <span className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-transform after:duration-300
-                              ${isMenuActive(item, location.pathname) 
-                                ? 'after:scale-x-100' 
-                                : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'}">
-                              {item.name}
-                            </span>
+                            <span className="mobile-nav-text">{item.name}</span>
                             <ChevronRight className="h-5 w-5 transition-transform duration-200 [&[data-state=open]]:rotate-90" />
                           </button>
                         </CollapsibleTrigger>
@@ -131,16 +124,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                   ) : (
                     <button 
                       className={`mobile-nav-item flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
-                        ${isMenuActive(item, location.pathname) ? 'active' : ''}
+                        ${isMenuActive(item, location.pathname) ? 'active mobile-nav-active' : ''}
                       `}
                       onClick={() => handleNavigation(item.path)}
                     >
-                      <span className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-transform after:duration-300
-                        ${isMenuActive(item, location.pathname) 
-                          ? 'after:scale-x-100' 
-                          : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'}">
-                        {item.name}
-                      </span>
+                      <span className="mobile-nav-text">{item.name}</span>
                       <div className="w-5"></div>
                     </button>
                   )

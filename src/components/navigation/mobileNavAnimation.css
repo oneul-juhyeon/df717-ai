@@ -1,0 +1,38 @@
+
+/* Mobile navigation text styling */
+.mobile-nav-text {
+  position: relative;
+  display: inline-block;
+}
+
+/* Only show underline for active items */
+.mobile-nav-active .mobile-nav-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  transform: scaleX(1);
+  transition: transform 0.3s ease;
+}
+
+/* Animation effect when clicked (added by JavaScript on click) */
+.mobile-nav-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* Button hover effect */
+.mobile-nav-item:hover .mobile-nav-text::after {
+  transform: scaleX(1);
+}
