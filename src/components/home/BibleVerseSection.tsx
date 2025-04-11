@@ -67,10 +67,7 @@ const BibleVerseSection: React.FC = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="inline"
               >
-                "For nation shall rise against nation,
-                and kingdom against kingdom.
-                There shall be famines, and pestilences,
-                and earthquakes in various places."
+                "For nation will rise against nation, and kingdom against kingdom, and there will be famines and earthquakes in various places."
               </motion.div>
               <motion.span
                 initial={{ opacity: 0 }}
