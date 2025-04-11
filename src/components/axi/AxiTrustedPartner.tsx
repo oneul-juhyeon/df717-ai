@@ -11,7 +11,7 @@ const AxiTrustedPartner: React.FC = () => {
   ];
 
   return (
-    <div className="flex max-lg:flex-col bg-gradient-to-br from-red-600 to-red-500 rounded-2xl overflow-hidden max-w-[28%] mx-auto">
+    <div className="flex max-lg:flex-col bg-gradient-to-br from-red-600 to-red-500 rounded-2xl overflow-hidden w-full">
       <div className="p-6 max-sm:p-4 flex-1">
         <h2 className="text-2xl font-bold text-white mb-3 max-sm:text-xl text-center">Trusted Partner</h2>
         <p className="text-white text-sm mb-4 text-center">

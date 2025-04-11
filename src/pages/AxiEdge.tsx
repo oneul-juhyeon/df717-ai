@@ -24,7 +24,7 @@ const AxiEdge: React.FC = () => {
           <AxiGivingMore />
         </section>
       
-        <section className="w-full py-20">
+        <section className="w-full py-20 px-0">
           <AxiTrustedPartner />
         </section>
       </div>
