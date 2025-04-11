@@ -16,11 +16,11 @@ const AxiEdge: React.FC = () => {
       <div className="w-full">
         <AxiEdgeHero />
       
-        <section className="w-full py-16 md:py-24">
+        <section className="w-full py-8 md:py-12">
           <AxiEdgeContent />
         </section>
       
-        <section className="w-full py-20">
+        <section className="w-full py-16">
           <AxiGivingMore />
         </section>
       
