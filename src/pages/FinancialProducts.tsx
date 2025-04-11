@@ -44,7 +44,7 @@ const FinancialProducts: React.FC = () => {
               delay: 0.4 // Delay after title appears
             }}
           >
-            Explore our comprehensive range of financial products designed to meet your trading needs.
+            DF717 leverages AI technology to analyze real-time movements across global financial markets and apply optimized investment strategies tailored to current market conditions.
           </motion.p>
           
           <div className="w-full">
