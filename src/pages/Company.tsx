@@ -3,8 +3,6 @@ import React, { useEffect, useRef } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
 import CompanyBrandSection from "@/components/company/CompanyBrandSection";
-import DF717Section from "@/components/company/DF717Section";
-import HannahSection from "@/components/company/HannahSection";
 import Footer from "@/components/common/Footer";
 
 const Company: React.FC = () => {
@@ -78,16 +76,6 @@ const Company: React.FC = () => {
         
         <section ref={valuesSectionRef} className="mt-24 mb-32 w-full max-w-5xl mx-auto relative">          
           <CompanyBrandSection />
-          
-          {/* DF717 Section */}
-          <div className="mt-32">
-            <DF717Section />
-          </div>
-          
-          {/* Hannah Section */}
-          <div className="mt-32">
-            <HannahSection />
-          </div>
         </section>
       </div>
       
