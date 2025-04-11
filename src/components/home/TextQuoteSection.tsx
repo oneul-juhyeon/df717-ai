@@ -7,9 +7,12 @@ const TextQuoteSection: React.FC = () => {
   const isQuoteInView = useInView(quoteRef, { once: true });
 
   return (
-    <section 
+    <motion.section 
       ref={quoteRef}
-      className="relative w-full min-h-screen flex flex-col justify-center items-center bg-black px-6 py-16"
+      className="w-full bg-black relative pt-24 pb-16 md:py-32 px-6 flex items-center justify-center min-h-[80vh]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2 }}
     >
       <div className="max-w-3xl mx-auto text-center z-10">
         <motion.p 
@@ -23,7 +26,7 @@ const TextQuoteSection: React.FC = () => {
           The poverty crisis is accelerating, and its impact will only grow more devastating over time.
         </motion.p>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
