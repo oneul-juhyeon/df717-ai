@@ -1,8 +1,8 @@
 
 import React from "react";
+import { HeaderProps } from "@/components/navigation/types";
 import BaseHeader from "@/components/navigation/BaseHeader";
 import { getNavigationItems } from "@/components/navigation/navigationItems";
-import { HeaderProps } from "@/components/navigation/types";
 
 const ForexHeader: React.FC<HeaderProps> = ({ scrollToTop }) => {
   const navigationItems = getNavigationItems();

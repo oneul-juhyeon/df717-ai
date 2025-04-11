@@ -28,3 +28,9 @@
 .mobile-nav-item:hover .mobile-nav-text::after {
   transform: scaleX(1);
 }
+
+/* Disappear animation - transform from right when not hovered */
+.mobile-nav-item:not(:hover):not(.mobile-nav-active) .mobile-nav-text::after {
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
