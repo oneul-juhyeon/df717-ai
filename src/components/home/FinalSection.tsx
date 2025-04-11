@@ -54,9 +54,9 @@ const FinalSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          For thousands of years, the Bible has foretold a time of famine in the last days.
+          For thousands of years, the Bible has forewarned of times of famine.
           <br /><br />
-          Today, as we live in the end times, we are already witnessing global economic hardship.
+          Today, we are witnessing global economic turmoil unfolding before our eyes.
         </motion.p>
         
         <motion.p 
@@ -66,11 +66,11 @@ const FinalSection: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          DF717 is a modern-day ark of salvation,
+          The poverty crisis is accelerating, and its impact will only grow more devastating over time.
           <br />
-          using AI-powered financial innovation
+          DF717 aims to support people economically through financial innovation driven by AI technology.
           <br />
-          to help prepare for the famine to come.
+          DF717 seeks to serve the world together with partners who share the same vision and heart.
         </motion.p>
         
         <motion.div

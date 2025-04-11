@@ -32,10 +32,10 @@ const TextSection: React.FC = () => {
           className="text-center"
         >
           <p className="font-din text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed tracking-wider">
-            For thousands of years, the Bible has foretold a time of famine in the last days.
+            For thousands of years, the Bible has forewarned of times of famine.
             <br className="hidden sm:block" />
             <br className="hidden sm:block" />
-            Today, as we live in the end times, we are already witnessing global economic hardship.
+            Today, we are witnessing global economic turmoil unfolding before our eyes.
           </p>
         </motion.div>
         
@@ -48,11 +48,13 @@ const TextSection: React.FC = () => {
           className="text-center"
         >
           <p className="font-din text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white leading-relaxed tracking-wider">
-            DF717 is a modern-day ark of salvation,
+            The poverty crisis is accelerating,
             <br />
-            using AI-powered financial innovation
+            and its impact will only grow more devastating over time.
             <br />
-            to help prepare for the famine to come.
+            DF717 aims to support people economically
+            <br />
+            through financial innovation driven by AI technology.
           </p>
         </motion.div>
 
