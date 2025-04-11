@@ -5,7 +5,7 @@ const TextQuoteSection: React.FC = () => {
   const isQuoteInView = useInView(quoteRef, {
     once: true
   });
-  return <section ref={quoteRef} className="relative w-full min-h-screen flex flex-col justify-center items-center bg-black px-6 py-16">
+  return <section ref={quoteRef} className="relative w-full min-h-screen flex flex-col justify-center items-center bg-black px-6 py-16 font-normal text-base">
       <div className="container max-w-3xl mx-auto text-center">
         <motion.p initial={{
         opacity: 0
