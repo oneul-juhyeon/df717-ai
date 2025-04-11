@@ -15,7 +15,7 @@ const CompanyBrandSection: React.FC = () => {
           
           <div className="scroll-animate opacity-0">
             <p className="text-lg text-gray-300 mb-4">
-              At Destiny Finance, we believe that "destiny" is not merely fate — it's about the unique purpose and calling that God has already designed for every individual.
+              At DF717, "DF" stands for Destiny Finance. we believe that "destiny" is not merely fate — it's about the unique purpose and calling that God has already intentionally designed for every individual.
             </p>
             <p className="text-lg text-gray-300 mb-4">
               In other words, it refers to the direction a person should take in life and the reason for their existence, all within God's divine plan.
