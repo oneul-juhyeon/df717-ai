@@ -65,19 +65,19 @@ const AxiTrustAwards: React.FC = () => {
           <div className="w-24 h-24 rounded-full bg-[#333] flex items-center justify-center mb-4">
             <Award className="h-10 w-10 text-red-500" />
           </div>
-          <p className="text-white text-center">Best CFD Broker 2021</p>
+          <p className="text-white text-center">Best CFD Provider Winner 2022</p>
         </div>
         <div className="bg-[#1E1E1E] rounded-xl p-6 flex flex-col items-center justify-center">
           <div className="w-24 h-24 rounded-full bg-[#333] flex items-center justify-center mb-4">
             <Award className="h-10 w-10 text-red-500" />
           </div>
-          <p className="text-white text-center">Best Forex Trading Experience 2022</p>
+          <p className="text-white text-center">Best Forex Provider Winner 2023</p>
         </div>
         <div className="bg-[#1E1E1E] rounded-xl p-6 flex flex-col items-center justify-center">
           <div className="w-24 h-24 rounded-full bg-[#333] flex items-center justify-center mb-4">
             <Award className="h-10 w-10 text-red-500" />
           </div>
-          <p className="text-white text-center">Most Transparent Broker 2021</p>
+          <p className="text-white text-center">Best Forex Trading Platform Winner 2023</p>
         </div>
       </div>
       
