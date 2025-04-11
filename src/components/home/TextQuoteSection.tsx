@@ -11,12 +11,12 @@ const TextQuoteSection: React.FC = () => {
       ref={quoteRef}
       className="relative w-full min-h-screen flex flex-col justify-center items-center bg-black px-6 py-16"
     >
-      <div className="container max-w-3xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center z-10">
         <motion.p 
+          className="font-din text-xl md:text-2xl lg:text-3xl text-white leading-relaxed mb-6 tracking-wider"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isQuoteInView ? 1 : 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-din text-xl md:text-2xl lg:text-3xl text-white leading-relaxed tracking-wider"
         >
           For thousands of years, the Bible has forewarned of times of famine.<br />
           Today, we are witnessing global economic turmoil unfolding before our eyes.<br />
