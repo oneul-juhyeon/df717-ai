@@ -67,8 +67,6 @@ const Company: React.FC = () => {
   
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="absolute inset-0 bg-black pointer-events-none"></div>
-      
       <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
