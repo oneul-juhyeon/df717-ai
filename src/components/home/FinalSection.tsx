@@ -31,8 +31,12 @@ const FinalSection: React.FC = () => {
         <img src="/lovable-uploads/home_intro2.webp" alt="Yellow planet curve" className="object-cover w-full h-full" />
         {/* Top-to-bottom black gradient overlay */}
         <div className="absolute inset-0" style={{
-        background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 30%)'
-      }}></div>
+          background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 30%)'
+        }}></div>
+        {/* Bottom-to-top black gradient overlay - adding this new gradient */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 40%)'
+        }}></div>
       </div>
 
       <div className="z-10 max-w-3xl mx-auto md:mx-0 md:ml-[10%] lg:ml-[15%]">
