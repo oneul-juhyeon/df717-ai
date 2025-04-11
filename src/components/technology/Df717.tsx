@@ -93,7 +93,7 @@ const Df717Component = () => {
                 </div>
                 <h3 className="text-xl text-white font-bold">DF717-Database</h3>
               </div>
-              <p className="text-gray-300">Processing and cleansing data is essential for strategy operation and simulation. DF717 ensures fast and accurate data handling.</p>
+              <p className="text-gray-300">Processing and cleansing data is a critical foundation for both strategy execution and simulation. Through these steps, we ensure accurate and efficient management of diverse datasets.</p>
             </div>
           </motion.div>
           
