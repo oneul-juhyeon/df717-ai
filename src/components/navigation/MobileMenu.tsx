@@ -59,7 +59,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                       {/* Financial Products text (clickable to go to main page) */}
                       <button
                         className={`mobile-nav-item flex items-center text-white py-2 text-lg font-medium transition px-0 relative
-                          ${isMenuActive(item, location.pathname) ? 'active mobile-nav-active' : ''}
+                          ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
                         `}
                         onClick={() => handleNavigation(item.path)}
                       >
@@ -90,14 +90,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  // Regular items with click animation
+                  // Regular items with consistent styling
                   item.hasSubmenu && item.submenu ? (
                     <Collapsible className="w-full">
                       <div className="flex items-center">
                         <CollapsibleTrigger asChild>
                           <button
                             className={`mobile-nav-item flex items-center justify-between w-full text-white py-2 text-lg font-medium transition px-0 relative
-                              ${isMenuActive(item, location.pathname) ? 'active mobile-nav-active' : ''}
+                              ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
                             `}
                           >
                             <span className="mobile-nav-text">{item.name}</span>
@@ -124,7 +124,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                   ) : (
                     <button 
                       className={`mobile-nav-item flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
-                        ${isMenuActive(item, location.pathname) ? 'active mobile-nav-active' : ''}
+                        ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
                       `}
                       onClick={() => handleNavigation(item.path)}
                     >
