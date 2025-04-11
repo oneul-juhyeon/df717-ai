@@ -11,6 +11,7 @@ const AxiEdge: React.FC = () => {
   return (
     <AxiLayout 
       renderHeader={(scrollToTop) => <AxiCFDHeader scrollToTop={scrollToTop} />}
+      showSidebar={true}
     >
       <div className="w-full">
         <AxiEdgeHero />

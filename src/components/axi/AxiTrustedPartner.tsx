@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Check, ShieldCheck } from "lucide-react";
+import { Check, Shield } from "lucide-react";
 
 const AxiTrustedPartner: React.FC = () => {
   const benefits = [
@@ -11,7 +11,7 @@ const AxiTrustedPartner: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-12 max-lg:grid-cols-1 bg-gradient-to-br from-red-600 to-red-500 rounded-2xl overflow-hidden">
+    <div className="grid grid-cols-2 gap-12 max-lg:grid-cols-1 bg-gradient-to-br from-red-600 to-red-500 rounded-2xl overflow-hidden max-w-[70%] mx-auto">
       <div className="p-12 max-sm:p-6">
         <h2 className="text-4xl font-bold text-white mb-8 max-sm:text-3xl">Trusted Partner</h2>
         <p className="text-white text-lg mb-8">
@@ -30,7 +30,14 @@ const AxiTrustedPartner: React.FC = () => {
       
       <div className="relative bg-white/10 flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-bl from-transparent to-red-600/40"></div>
-        <ShieldCheck className="text-white h-48 w-48 relative z-10 opacity-80" />
+        <div className="relative z-10 flex items-center justify-center">
+          <div className="relative">
+            <Shield className="text-white h-48 w-48 opacity-80" />
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <img src="/lovable-uploads/df717_logo.png" alt="DF717 Logo" className="w-24 h-8" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
