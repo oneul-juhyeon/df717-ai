@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
+import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "@/components/ui/table";
 
 const AxiExecutionMetrics: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -40,31 +41,27 @@ const AxiExecutionMetrics: React.FC = () => {
   return (
     <div ref={sectionRef} className="mb-20 transition-all duration-1000 transform opacity-0 translate-y-10">
       <div className="max-w-4xl mx-auto overflow-x-auto">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-[#222222] border-b border-gray-700">
-              <th className="py-4 px-6 text-left text-sm font-semibold text-white">Month</th>
-              <th className="py-4 px-6 text-left text-sm font-semibold text-white">Requested Price<br/>or Better</th>
-              <th className="py-4 px-6 text-left text-sm font-semibold text-white">Negative<br/>Slippage</th>
-              <th className="py-4 px-6 text-left text-sm font-semibold text-white">Median Execution<br/>Latency</th>
-              <th className="py-4 px-6 text-left text-sm font-semibold text-white">Fill Rates</th>
-            </tr>
-          </thead>
-          <tbody>
-            {metrics.map((metric, index) => (
-              <tr 
-                key={index} 
-                className={`border-b border-gray-700 ${index % 2 === 0 ? 'bg-[#1A1A1A]' : 'bg-[#1E1E1E]'}`}
-              >
-                <td className="py-4 px-6 text-white">{metric.month}</td>
-                <td className="py-4 px-6 text-white">{metric.requestedPrice}</td>
-                <td className="py-4 px-6 text-white">{metric.negativeSlippage}</td>
-                <td className="py-4 px-6 text-white">{metric.medianExecution}</td>
-                <td className="py-4 px-6 text-white">{metric.fillRates}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="w-full">
+          {/* Table Header */}
+          <div className="flex border-b border-[#5b5b5d] py-4">
+            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Month</div>
+            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Requested Price<br/>or Better</div>
+            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Negative<br/>Slippage</div>
+            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Median Execution<br/>Latency</div>
+            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Fill Rates</div>
+          </div>
+          
+          {/* Table Rows */}
+          {metrics.map((metric, index) => (
+            <div key={index} className="flex border-b border-[#5b5b5d] py-[15px]">
+              <div className="w-1/5 text-white text-[14px] px-2">{metric.month}</div>
+              <div className="w-1/5 text-white text-[14px] px-2">{metric.requestedPrice}</div>
+              <div className="w-1/5 text-white text-[14px] px-2">{metric.negativeSlippage}</div>
+              <div className="w-1/5 text-white text-[14px] px-2">{metric.medianExecution}</div>
+              <div className="w-1/5 text-white text-[14px] px-2">{metric.fillRates}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
