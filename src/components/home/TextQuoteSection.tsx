@@ -30,7 +30,7 @@ const TextQuoteSection: React.FC = () => {
           transition={{
             duration: 0.7
           }}
-          className="font-din md:text-2xl text-white leading-relaxed tracking-wider lg:text-lg text-sm mb-10"
+          className="font-din text-white leading-relaxed tracking-wider text-base"
         >
           For thousands of years, the Bible has forewarned of times of famine.<br />
           Today, we are witnessing global economic turmoil unfolding before our eyes.<br />

@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
@@ -41,7 +42,8 @@ const FinalSection: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.7
-      }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider lg:text-xl font-normal"></motion.p>
+      }} className="font-din text-white leading-relaxed tracking-wider text-base">
+        </motion.p>
         
         <motion.p initial={{
         opacity: 0,
@@ -54,7 +56,7 @@ const FinalSection: React.FC = () => {
       }} transition={{
         duration: 0.7,
         delay: 0.2
-      }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider font-thin lg:text-base">
+      }} className="font-din text-white leading-relaxed tracking-wider text-base">
           "Blessed is the one who considers the poor.
           <br />
           In the day of trouble the Lord delivers him." - Psalm 41:1
