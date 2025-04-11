@@ -62,9 +62,7 @@ const CompanyBrandSection: React.FC = () => {
             </div>
             
             <div className="scroll-animate opacity-0">
-              <h3 className="text-2xl font-bold mb-6 text-white">
-                Key Brand Statement
-              </h3>
+              <h3 className="text-2xl font-bold mb-6 text-white">Brand Key Statement</h3>
               <p className="text-lg text-gray-300">
                 Without Love, We are nothing.
               </p>
