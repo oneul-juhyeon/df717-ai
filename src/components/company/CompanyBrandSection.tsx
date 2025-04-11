@@ -8,6 +8,38 @@ const CompanyBrandSection: React.FC = () => {
     <div className="w-full mb-8 scroll-animate opacity-0">
       <div className="relative p-0">
         <div className="relative z-10">
+          {/* Philosophy Section - New */}
+          <h3 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
+            Philosophy
+          </h3>
+          
+          <div className="scroll-animate opacity-0">
+            <p className="text-lg text-gray-300 mb-4">
+              At Destiny Finance, we believe that "destiny" is not merely fate — it's about the unique purpose and calling that God has already designed for every individual.
+            </p>
+            <p className="text-lg text-gray-300 mb-4">
+              In other words, it refers to the direction a person should take in life and the reason for their existence, all within God's divine plan.
+            </p>
+            <p className="text-lg text-gray-300 mb-4">
+              Our mission is to walk alongside individuals and businesses as they pursue that God-given destiny, providing financial guidance, practical tools, and support grounded in trust, purpose, and biblical stewardship.
+            </p>
+            <p className="text-lg text-gray-300 mb-4">
+              At DF717, "717" represents Revelation 7:17. We believe that the journey to discovering our destiny and living in true fulfillment begins with the promise found in Rev 7:17.
+            </p>
+            <p className="text-lg text-gray-300 italic mb-4">
+              "For the Lamb in the midst of the throne will be their shepherd.<br />
+              And he will guide them to springs of living water.<br />
+              And God will wipe away every tear from their eyes." – Revelation 7:17
+            </p>
+            <p className="text-lg text-gray-300">
+              DF717 is here to help you move forward in faith, walking with our Shepherd, Jesus Christ — toward the life you were created to live.
+            </p>
+          </div>
+          
+          <div className="relative">
+            <Separator className="bg-[#333333] h-px my-24" />
+          </div>
+          
           <h3 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
             Values
           </h3>
