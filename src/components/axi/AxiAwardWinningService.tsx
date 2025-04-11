@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -80,14 +81,14 @@ const AxiAwardWinningService: React.FC = () => {
       </div>
 
       {/* Personalised service */}
-      <div className="py-16 bg-[#161616]">
+      <div className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <AxiServiceImages />
         </div>
       </div>
 
       {/* The right account for you */}
-      <div className="py-16 bg-[#1A1A1A]">
+      <div className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 flex justify-center">
@@ -104,7 +105,7 @@ const AxiAwardWinningService: React.FC = () => {
       </div>
 
       {/* 24 hour, multi-lingual support */}
-      <div className="py-16 bg-[#161616]">
+      <div className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
@@ -121,7 +122,7 @@ const AxiAwardWinningService: React.FC = () => {
       </div>
 
       {/* A truly global broker */}
-      <div className="py-16 bg-[#1A1A1A]">
+      <div className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1 flex justify-center">
@@ -139,7 +140,7 @@ const AxiAwardWinningService: React.FC = () => {
       </div>
 
       {/* Low trading costs */}
-      <div className="py-16 bg-[#161616]">
+      <div className="py-16 bg-black">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-white">
