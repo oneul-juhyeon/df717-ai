@@ -1,7 +1,5 @@
 
 import React, { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { BookOpen, GraduationCap } from "lucide-react";
 
 const AxiTrustEducation: React.FC = () => {
@@ -45,12 +43,6 @@ const AxiTrustEducation: React.FC = () => {
         <p className="text-gray-300 mb-8">
           When you want to become a smarter trader, trust education from the experts.
         </p>
-        
-        <Link to="/contact" className="self-start">
-          <Button className="bg-red-500 hover:bg-red-600 text-white font-medium">
-            Learn More
-          </Button>
-        </Link>
       </div>
       
       <div className="flex items-center justify-center">

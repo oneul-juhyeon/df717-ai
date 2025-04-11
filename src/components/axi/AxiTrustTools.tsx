@@ -1,7 +1,5 @@
 
 import React, { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { Wrench, Cpu, LineChart } from "lucide-react";
 
 const AxiTrustTools: React.FC = () => {
@@ -55,12 +53,6 @@ const AxiTrustTools: React.FC = () => {
         <p className="text-gray-300 mb-8">
           From an AI-driven analytics platform that helps improve your decision making through to automation software that allows you to maximise market opportunities, Axi gives you access to smart technology you can trust to hone your tactics and make it easier to trade your edge.
         </p>
-        
-        <Link to="/contact" className="self-start">
-          <Button className="bg-red-500 hover:bg-red-600 text-white font-medium">
-            Explore Our Trading Tools
-          </Button>
-        </Link>
       </div>
     </div>
   );

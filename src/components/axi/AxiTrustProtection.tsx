@@ -1,7 +1,5 @@
 
 import React, { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { AlertCircle, TrendingDown, TrendingUp, Bell } from "lucide-react";
 
 const AxiTrustProtection: React.FC = () => {
@@ -75,24 +73,11 @@ const AxiTrustProtection: React.FC = () => {
         ))}
       </div>
       
-      <div className="mt-8 flex justify-center">
-        <Link to="/contact">
-          <Button className="bg-red-500 hover:bg-red-600 text-white font-medium">
-            Explore MT4 Tutorials
-          </Button>
-        </Link>
-      </div>
-      
       <div className="mt-10 p-6 bg-[#1E1E1E] rounded-xl">
         <h3 className="text-xl text-white font-bold mb-4">Fraud Awareness</h3>
-        <p className="text-gray-300 mb-4">
+        <p className="text-gray-300">
           Protect your trading account and funds by taking some important precautions.
         </p>
-        <Link to="/contact">
-          <Button className="bg-white text-black hover:bg-gray-200">
-            Learn More
-          </Button>
-        </Link>
       </div>
     </div>
   );

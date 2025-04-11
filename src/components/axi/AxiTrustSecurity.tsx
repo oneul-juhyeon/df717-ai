@@ -1,8 +1,6 @@
 
 import React, { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ShieldCheck, Lock } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 const AxiTrustSecurity: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -40,15 +38,9 @@ const AxiTrustSecurity: React.FC = () => {
         
         <div className="flex-grow">
           <h2 className="text-2xl text-white font-bold mb-4">Securing your payments</h2>
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-300">
             As a responsible broker, online security and fraud prevention are our top priorities. To ensure your account is fully protected, we implement high industry standards of encryption for online payments and apply extra validation measures such as ensuring all deposits and withdrawals match up with the name on your credit card. These small but important steps add valuable layers of protection to your account and provide you with a safer and more secure trading experience.
           </p>
-          
-          <Link to="/contact">
-            <Button className="bg-white text-black hover:bg-gray-200">
-              Find Out More
-            </Button>
-          </Link>
         </div>
       </div>
     </div>

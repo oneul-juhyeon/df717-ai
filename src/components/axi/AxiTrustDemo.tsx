@@ -1,6 +1,5 @@
+
 import React, { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { LineChart } from "lucide-react";
 
 const AxiTrustDemo: React.FC = () => {
@@ -57,12 +56,6 @@ const AxiTrustDemo: React.FC = () => {
             <span className="text-white">Free and extensive educational resources to give your trading an edge</span>
           </div>
         </div>
-        
-        <Link to="/contact" className="self-start">
-          <Button className="bg-red-500 hover:bg-red-600 text-white font-medium">
-            Try a Free Demo
-          </Button>
-        </Link>
       </div>
       
       <div className="flex items-center justify-center">
