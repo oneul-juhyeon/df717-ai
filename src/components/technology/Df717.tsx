@@ -1,56 +1,46 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Cog, Container, LineChart, BarChart } from "lucide-react";
-
 const Df717Component = () => {
-  const { sectionRef, controls } = useScrollAnimation();
-
-  return (
-    <div className="max-w-4xl mx-auto text-white">
+  const {
+    sectionRef,
+    controls
+  } = useScrollAnimation();
+  return <div className="max-w-4xl mx-auto text-white">
       <h2 className="text-4xl font-bold mb-9 text-center">DF717</h2>
       
-      <motion.div 
-        className="space-y-16" 
-        initial={{
-          opacity: 0
-        }} 
-        animate={{
-          opacity: 1
-        }} 
-        transition={{
-          duration: 0.5
-        }}
-      >
-        <motion.div 
-          ref={sectionRef} 
-          initial={{
-            opacity: 0,
-            y: 20
-          }} 
-          animate={controls}
-        >
+      <motion.div className="space-y-16" initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      duration: 0.5
+    }}>
+        <motion.div ref={sectionRef} initial={{
+        opacity: 0,
+        y: 20
+      }} animate={controls}>
           <p className="text-gray-300 leading-relaxed mb-16 text-center">
             DF717 is a robot designed to provide simplified AI investment services.
           </p>
           
           <div className="mb-16 text-white">
-            <p className="text-lg mb-16 text-center">Each customer and account can operate a unique portfolio. The system is stable enough to manage tens of thousands of accounts simultaneously.</p>
+            
           </div>
         </motion.div>
 
         {/* Grid section with icons and descriptions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
           <motion.div className="space-y-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5
-          }}>
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5
+        }}>
             <div>
               <div className="flex items-center justify-center mb-6">
                 <div className="mr-4">
@@ -63,15 +53,15 @@ const Df717Component = () => {
           </motion.div>
           
           <motion.div className="space-y-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.2
-          }}>
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5,
+          delay: 0.2
+        }}>
             <div>
               <div className="flex items-center justify-center mb-6">
                 <div className="mr-4">
@@ -84,15 +74,15 @@ const Df717Component = () => {
           </motion.div>
           
           <motion.div className="space-y-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.4
-          }}>
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5,
+          delay: 0.4
+        }}>
             <div>
               <div className="flex items-center justify-center mb-6">
                 <div className="mr-4">
@@ -105,15 +95,15 @@ const Df717Component = () => {
           </motion.div>
           
           <motion.div className="space-y-6" initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.6
-          }}>
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.5,
+          delay: 0.6
+        }}>
             <div>
               <div className="flex items-center justify-center mb-6">
                 <div className="mr-4">
@@ -126,8 +116,6 @@ const Df717Component = () => {
           </motion.div>
         </div>
       </motion.div>
-    </div>
-  );
+    </div>;
 };
-
 export default Df717Component;
