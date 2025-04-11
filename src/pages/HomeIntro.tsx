@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import HomeHeader from "@/components/home/HomeHeader";
 import BibleVerseSection from "@/components/home/BibleVerseSection";
+import TextQuoteSection from "@/components/home/TextQuoteSection";
 import RevCounterSection from "@/components/home/RevCounterSection";
 import FinalSection from "@/components/home/FinalSection";
 import Footer from "@/components/common/Footer";
@@ -40,6 +41,9 @@ const HomeIntro: React.FC = () => {
 
       {/* First Section - Bible Verse with Earth Image */}
       <BibleVerseSection />
+
+      {/* New Text Quote Section */}
+      <TextQuoteSection />
 
       {/* Counter Section */}
       <RevCounterSection />
