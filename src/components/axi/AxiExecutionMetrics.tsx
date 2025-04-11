@@ -44,11 +44,11 @@ const AxiExecutionMetrics: React.FC = () => {
         <div className="w-full">
           {/* Table Header */}
           <div className="flex border-b border-[#5b5b5d] py-4">
-            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Month</div>
-            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Requested Price<br/>or Better</div>
-            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Negative<br/>Slippage</div>
-            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Median Execution<br/>Latency</div>
-            <div className="w-1/5 text-left text-white text-[14px] font-bold px-2">Fill Rates</div>
+            <div className="w-1/5 text-center text-white text-[14px] font-bold px-2">Month</div>
+            <div className="w-1/5 text-center text-white text-[14px] font-bold px-2">Requested Price<br/>or Better</div>
+            <div className="w-1/5 text-center text-white text-[14px] font-bold px-2">Negative<br/>Slippage</div>
+            <div className="w-1/5 text-center text-white text-[14px] font-bold px-2">Median Execution<br/>Latency</div>
+            <div className="w-1/5 text-center text-white text-[14px] font-bold px-2">Fill Rates</div>
           </div>
           
           {/* Table Rows */}
