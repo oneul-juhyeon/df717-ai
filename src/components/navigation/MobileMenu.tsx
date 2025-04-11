@@ -52,11 +52,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
           <div className="flex flex-col py-8 pr-2">
             {navigationItems.map((item) => (
               <div key={item.name} className="mb-2">
-                {/* Special case for Financial Products - direct link but with expandable submenu */}
-                {item.name === "Financial Products" && item.hasSubmenu && item.submenu ? (
+                {/* Check if item has submenu */}
+                {item.hasSubmenu && item.submenu ? (
                   <Collapsible className="w-full">
                     <div className="flex items-center justify-between">
-                      {/* Financial Products text (clickable to go to main page) */}
+                      {/* Menu item with submenu */}
                       <button
                         className={`mobile-nav-item flex items-center text-white py-2 text-lg font-medium transition px-0 relative
                           ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
@@ -90,48 +90,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     </CollapsibleContent>
                   </Collapsible>
                 ) : (
-                  // Regular items with consistent styling
-                  item.hasSubmenu && item.submenu ? (
-                    <Collapsible className="w-full">
-                      <div className="flex items-center">
-                        <CollapsibleTrigger asChild>
-                          <button
-                            className={`mobile-nav-item flex items-center justify-between w-full text-white py-2 text-lg font-medium transition px-0 relative
-                              ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
-                            `}
-                          >
-                            <span className="mobile-nav-text">{item.name}</span>
-                            <ChevronRight className="h-5 w-5 transition-transform duration-200 [&[data-state=open]]:rotate-90" />
-                          </button>
-                        </CollapsibleTrigger>
-                      </div>
-                      
-                      <CollapsibleContent className="ml-4 mt-2 space-y-2">
-                        {item.submenu.map((subItem) => (
-                          <button 
-                            key={subItem.name}
-                            className={`flex items-center gap-2 text-gray-300 hover:text-white py-1 text-md transition cursor-pointer whitespace-nowrap ${
-                              location.pathname === subItem.path ? 'font-medium' : ''
-                            }`}
-                            onClick={() => handleNavigation(subItem.path)}
-                          >
-                            <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0" />
-                            <span>{subItem.name}</span>
-                          </button>
-                        ))}
-                      </CollapsibleContent>
-                    </Collapsible>
-                  ) : (
-                    <button 
-                      className={`mobile-nav-item flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
-                        ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
-                      `}
-                      onClick={() => handleNavigation(item.path)}
-                    >
-                      <span className="mobile-nav-text">{item.name}</span>
-                      <div className="w-5"></div>
-                    </button>
-                  )
+                  // Regular menu item without submenu
+                  <button 
+                    className={`mobile-nav-item flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
+                      ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
+                    `}
+                    onClick={() => handleNavigation(item.path)}
+                  >
+                    <span className="mobile-nav-text">{item.name}</span>
+                    <div className="w-5"></div>
+                  </button>
                 )}
               </div>
             ))}
