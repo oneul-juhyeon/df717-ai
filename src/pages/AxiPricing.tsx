@@ -12,6 +12,7 @@ import AxiTradingProducts from "@/components/axi/AxiTradingProducts";
 import AxiSuperiorSetup from "@/components/axi/AxiSuperiorSetup";
 import AxiFlexibleLeverage from "@/components/axi/AxiFlexibleLeverage";
 import AxiLayout from "@/components/axi/AxiLayout";
+import AxiSpaceXCallToAction from "@/components/axi/AxiSpaceXCallToAction";
 
 const AxiPricing: React.FC = () => {
   return (
@@ -56,6 +57,8 @@ const AxiPricing: React.FC = () => {
         <section>
           <AxiFlexibleLeverage />
         </section>
+
+        <AxiSpaceXCallToAction />
       </div>
     </AxiLayout>
   );
