@@ -54,7 +54,7 @@ const FinalSection: React.FC = () => {
       }} transition={{
         duration: 0.7,
         delay: 0.2
-      }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider font-thin lg:text-xl">
+      }} className="font-din text-xl md:text-2xl text-white leading-relaxed mb-10 tracking-wider font-thin lg:text-base">
           "Blessed is the one who considers the poor.
           <br />
           In the day of trouble the Lord delivers him." - Psalm 41:1
