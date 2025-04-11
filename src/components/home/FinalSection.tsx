@@ -28,7 +28,7 @@ const FinalSection: React.FC = () => {
   return <section ref={finalSectionRef} className="relative w-full min-h-screen flex flex-col justify-end text-left px-6 py-16 overflow-hidden">
       {/* Background Image with Gradient Overlays */}
       <div className="absolute inset-0 z-0 w-full h-full">
-        <img src="/lovable-uploads/home-intro2.webp" alt="Yellow planet curve" className="object-cover w-full h-full" />
+        <img src="/lovable-uploads/home_intro2.webp" alt="Yellow planet curve" className="object-cover w-full h-full" />
         {/* Top-to-bottom black gradient overlay */}
         <div className="absolute inset-0" style={{
         background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0) 30%)'
