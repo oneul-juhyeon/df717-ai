@@ -1,9 +1,10 @@
 
 import React, { useEffect } from "react";
-import HomeHeader from "@/components/home/HomeHeader";
 import Footer from "@/components/common/Footer";
 import ProductGrid from "@/components/financial-products/ProductGrid";
 import { motion } from "framer-motion";
+import { getNavigationItems } from "@/components/navigation/navigationItems";
+import BaseHeader from "@/components/navigation/BaseHeader";
 
 const FinancialProducts: React.FC = () => {
   const scrollToTop = () => {
@@ -16,11 +17,13 @@ const FinancialProducts: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  const navigationItems = getNavigationItems();
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="w-full mx-0 px-5 sm:px-10 md:px-[154px] z-10">
-        <HomeHeader scrollToTop={scrollToTop} />
+      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] z-10">
+        <BaseHeader scrollToTop={scrollToTop} navigationItems={navigationItems} />
       </div>
       
       <section className="mt-20 mb-20 max-w-[1200px] mx-auto px-5 sm:px-10 md:px-[30px] flex-grow flex flex-col items-center">

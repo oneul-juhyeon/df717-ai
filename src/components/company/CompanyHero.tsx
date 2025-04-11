@@ -1,8 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 interface CompanyHeroProps {
   scrollToValues: () => void;
 }
+
 const CompanyHero: React.FC<CompanyHeroProps> = ({
   scrollToValues
 }) => {
@@ -32,6 +35,12 @@ const CompanyHero: React.FC<CompanyHeroProps> = ({
       clearTimeout(timer3);
     };
   }, []);
-  return;
+  
+  return (
+    <div>
+      {/* Component content would go here */}
+    </div>
+  );
 };
+
 export default CompanyHero;
