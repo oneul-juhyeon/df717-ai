@@ -1,19 +1,20 @@
 
 import React, { useEffect, useLayoutEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import AxiSidebar from "./AxiSidebar";
 import { useLocation } from "react-router-dom";
 import Footer from "../common/Footer";
-import AxiSpaceXCallToAction from "./AxiSpaceXCallToAction";
+import AxiSidebar from "./AxiSidebar";
 
 interface AxiLayoutProps {
   children: React.ReactNode;
   renderHeader: (scrollToTop: () => void) => React.ReactNode;
+  showSidebar?: boolean;
 }
 
 const AxiLayout: React.FC<AxiLayoutProps> = ({
   children,
-  renderHeader
+  renderHeader,
+  showSidebar = true
 }) => {
   const location = useLocation();
   
@@ -59,11 +60,11 @@ const AxiLayout: React.FC<AxiLayoutProps> = ({
         
         <div className="mt-8">          
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left sidebar with navigation */}
-            <AxiSidebar />
+            {/* Left sidebar with labels */}
+            {showSidebar && <AxiSidebar />}
             
             {/* Main content area */}
-            <div className="w-full text-white">
+            <div className={`w-full text-white ${showSidebar ? 'lg:ml-8' : ''}`}>
               <ScrollArea className="h-full">
                 {children}
               </ScrollArea>
@@ -71,8 +72,6 @@ const AxiLayout: React.FC<AxiLayoutProps> = ({
           </div>
         </div>
       </div>
-      
-      <AxiSpaceXCallToAction />
       
       <Footer />
     </main>
