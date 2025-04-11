@@ -19,7 +19,7 @@ const FinancialProductsSidebar: React.FC = () => {
   };
   
   return (
-    <aside className="hidden lg:block w-64 shrink-0 border-r border-white/30 pr-6">
+    <aside className="hidden lg:block w-[51px] shrink-0 border-r border-white/30 pr-6">
       <div className="sticky top-24 animate-fade-in-left">
         <h3 className="text-lg font-semibold text-white mb-6 pl-4 border-l-2 border-white">Financial Products</h3>
         <ul className="space-y-2">
