@@ -1,3 +1,4 @@
+
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
@@ -8,23 +9,28 @@ const DF717Main: React.FC = () => {
         
         <div className="space-y-8 text-gray-300 animate-fade-in-up delay-100">
           <p className="leading-relaxed">
-            DF717 is a modular algorithmic trading system specifically engineered for Contract for Difference (CFD) markets and high-volatility derivatives. DF717 is designed to process real-time market data, generate trading signals, and execute orders automatically based on structured, rules-based logic.
+            DF717 is a modular algorithmic trading system engineered for CFD markets and high-volatility derivatives.
+            It is built to process real-time data, generate trading signals, and execute orders through rule-based logic.
           </p>
           
           <p className="leading-relaxed font-medium text-inherit">
-            DF717 interprets financial markets using quantitative modeling and market microstructure analysis. By integrating real-time pipelines with advanced signal logic, DF717 serves as a high-frequency, AI-augmented trading platform capable of outperforming manual discretionary decision-making.
+            DF717 is a platform that interprets financial markets using mathematical models and real-time system architecture.
+            It fuses strategic reasoning with live execution pipelines to deliver adaptive, high-frequency performance.
           </p>
           
           <p className="leading-relaxed">
-            DF717 represents more than automation—it embodies the principles of quantitative portfolio management with consistent risk control. With precise execution mechanisms and horizontally scalable infrastructure, DF717 is suitable for both institutional-grade systems and sophisticated retail traders.
+            DF717 is a robot that transcends automation, embodying the discipline of quant investing with scalable infrastructure.
+            It combines control, consistency, and computation to drive decisions beyond human bias.
           </p>
           
           <p className="leading-relaxed animate-fade-in-up delay-300">
-            DF717 is built as a hybrid engine that fuses algorithmic structure, financial engineering principles, and adaptive artificial intelligence. This enables DF717 to operate seamlessly across diverse asset classes and adapt autonomously to regime shifts without human intervention.
+            DF717 is a hybrid system that unites algorithmic structure, financial engineering, and adaptive AI intelligence.
+            It responds autonomously to shifting regimes and trades across asset classes without manual intervention.
           </p>
           
           <p className="leading-relaxed animate-fade-in-up delay-400">
-            DF717 transforms subjective trading into a disciplined, data-driven process. By structuring decision logic, quantifying risk exposure, and ensuring repeatable trade outcomes, DF717 enables technical reproducibility in environments where uncertainty and volatility dominate.
+            DF717 transforms trading into a structured process—data-driven, risk-quantified, and technically repeatable.
+            It brings order to volatility, turning uncertainty into measurable opportunity.
           </p>
         </div>
       </div>
