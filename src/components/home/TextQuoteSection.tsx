@@ -7,7 +7,7 @@ const TextQuoteSection: React.FC = () => {
     margin: "0px 0px -10% 0px"
   });
   return <section ref={quoteRef} className="relative w-full min-h-screen flex flex-col justify-center items-center bg-black px-6 py-16 font-normal text-base">
-      <div className="container max-w-full sm:max-w-3xl text-center\\n">
+      <div className="w-full sm:max-w-3xl mx-auto text-center\n">
         <motion.p initial={{
         opacity: 0,
         y: 20
