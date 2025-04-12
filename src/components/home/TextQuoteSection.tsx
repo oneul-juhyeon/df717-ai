@@ -18,7 +18,7 @@ const TextQuoteSection: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.7
-      }} className="w-full font-din text-white leading-relaxed tracking-wider text-base">
+      }} className="w-full max-w-full text-center font-din text-white leading-relaxed tracking-wider text-base">
           For thousands of years, the Bible has forewarned of times of famine.<br />
           Today, we are witnessing global economic turmoil unfolding before our eyes.<br />
           The poverty crisis is accelerating, and its impact will only grow more devastating over time.
