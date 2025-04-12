@@ -1,23 +1,17 @@
-
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
-
 const DF717Main: React.FC = () => {
-  return (
-    <DF717Layout>
+  return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader 
-          title="What is DF717?"
-          subtitle="A modular algorithmic trading system engineered for CFD markets and high-volatility derivatives"
-        />
+        <DF717ArticleHeader title="What is DF717?" subtitle="A modular algorithmic trading system engineered for CFD markets and high-volatility derivatives" />
         
         <div className="space-y-8 text-gray-300 animate-fade-in-up delay-100">
           <p className="leading-relaxed">
             DF717 is a modular algorithmic trading system specifically engineered for Contract for Difference (CFD) markets and high-volatility derivatives. DF717 is designed to process real-time market data, generate trading signals, and execute orders automatically based on structured, rules-based logic.
           </p>
           
-          <p className="leading-relaxed font-medium text-white">
+          <p className="leading-relaxed font-medium text-inherit">
             DF717 interprets financial markets using quantitative modeling and market microstructure analysis. By integrating real-time pipelines with advanced signal logic, DF717 serves as a high-frequency, AI-augmented trading platform capable of outperforming manual discretionary decision-making.
           </p>
           
@@ -34,8 +28,6 @@ const DF717Main: React.FC = () => {
           </p>
         </div>
       </div>
-    </DF717Layout>
-  );
+    </DF717Layout>;
 };
-
 export default DF717Main;
