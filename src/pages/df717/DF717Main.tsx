@@ -2,10 +2,14 @@
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
+
 const DF717Main: React.FC = () => {
   return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader title="What is DF717?" subtitle="A modular algorithmic trading system engineered for CFD markets and high-volatility derivatives" />
+        <DF717ArticleHeader 
+          title="What is DF717?" 
+          subtitle="DF717 creates peace—by bringing order to chaos.\n\"For God is not a God of confusion but of peace.\"\n(1 Corinthians 14:33, ESV)" 
+        />
         
         <div className="space-y-8 text-gray-300 animate-fade-in-up delay-100">
           <p className="leading-relaxed">
