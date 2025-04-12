@@ -9,7 +9,11 @@ const DF717Main: React.FC = () => {
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="What is DF717?" 
-          subtitle={"DF717 creates peace—by bringing order to chaos.\n\"For God is not a God of confusion but of peace.\"\n(1 Corinthians 14:33, ESV)"} 
+          subtitle={<>
+            <span className="block">DF717 creates peace—by bringing order to chaos.</span>
+            <span className="block">"For God is not a God of confusion but of peace."</span>
+            <span className="block">(1 Corinthians 14:33, ESV)</span>
+          </>} 
         />
         
         <div className="space-y-8 text-gray-300 animate-fade-in-up delay-100">
