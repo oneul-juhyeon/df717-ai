@@ -1,13 +1,10 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
-
 const BibleVerseSection: React.FC = () => {
   const [quoteVisible, setQuoteVisible] = useState(false);
   const [authorVisible, setAuthorVisible] = useState(false);
   const [earthImageVisible, setEarthImageVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
-
   const quoteRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -59,41 +56,27 @@ const BibleVerseSection: React.FC = () => {
       clearTimeout(timer4);
     };
   }, [isInView]);
-
   return <section ref={sectionRef} className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden">
       <div className="z-10 max-w-3xl mx-auto">
         <div ref={quoteRef} className="relative">
-          {quoteVisible && <div className="font-din text-white text-base leading-relaxed tracking-wider mb-2">
-              <motion.div 
-                initial={{
-                  opacity: 0
-                }} 
-                animate={{
-                  opacity: 1
-                }} 
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut"
-                }} 
-                className="inline"
-              >
-                <span className="inline sm:block">"For nation will rise against nation,</span>{" "}
-                <span className="inline sm:block">and kingdom against kingdom,</span>{" "}
-                <span className="inline sm:block">and there will be famines and earthquakes</span>{" "}
-                <span className="inline sm:block">in various places."</span>
+          {quoteVisible && <div className="font-din text-white text-base leading-relaxed tracking-wider mb-2\n">
+              <motion.div initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} transition={{
+            duration: 0.8,
+            ease: "easeOut"
+          }} className="inline">
+                "For nation will rise against nation, and kingdom against kingdom, and there will be famines and earthquakes in various places."
               </motion.div>
-              <motion.span 
-                initial={{
-                  opacity: 0
-                }} 
-                animate={{
-                  opacity: authorVisible ? 1 : 0
-                }} 
-                transition={{
-                  duration: 0.5
-                }} 
-                className="inline"
-              >
+              <motion.span initial={{
+            opacity: 0
+          }} animate={{
+            opacity: authorVisible ? 1 : 0
+          }} transition={{
+            duration: 0.5
+          }} className="inline">
                 &nbsp;– Matthew 24:7
               </motion.span>
             </div>}
@@ -135,5 +118,4 @@ const BibleVerseSection: React.FC = () => {
       </motion.div>
     </section>;
 };
-
 export default BibleVerseSection;
