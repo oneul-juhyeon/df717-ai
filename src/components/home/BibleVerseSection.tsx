@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 const BibleVerseSection: React.FC = () => {
@@ -68,7 +69,10 @@ const BibleVerseSection: React.FC = () => {
             duration: 0.8,
             ease: "easeOut"
           }} className="inline">
-                "For nation will rise against nation, and kingdom against kingdom, and there will be famines and earthquakes in various places."
+                <span className="block sm:inline">For nation will rise against nation,</span>
+                <span className="block sm:inline">and kingdom against kingdom,</span>
+                <span className="block sm:inline">and there will be famines and earthquakes</span>
+                <span className="block sm:inline">in various places.</span>
               </motion.div>
               <motion.span initial={{
             opacity: 0
