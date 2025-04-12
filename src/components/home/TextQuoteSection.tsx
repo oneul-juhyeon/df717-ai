@@ -3,39 +3,29 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const TextQuoteSection: React.FC = () => {
-  const quoteRef = useRef<HTMLDivElement>(null);
-  const isQuoteInView = useInView(quoteRef, {
-    once: true,
-    margin: "0px 0px -10% 0px"
-  });
-
+  const quoteRef = useRef(null);
+  const isInView = useInView(quoteRef, { once: true, margin: "-100px" });
+  
   return (
-    <section
-      ref={quoteRef}
-      className="relative w-full min-h-screen flex flex-col justify-center items-center bg-black px-6 py-16 font-normal text-base"
-    >
-      <div className="container max-w-3xl mx-auto text-center">
-        <motion.p 
-          initial={{
-            opacity: 0,
-            y: 20
+    <section ref={quoteRef} className="bg-black text-white py-28 md:py-40 px-6 relative overflow-hidden">
+      {/* Background overlay effect */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-black/70 z-0"></div>
+      
+      <div className="container mx-auto max-w-4xl relative z-10">
+        <motion.div 
+          style={{
+            opacity: isInView ? 1 : 0,
+            transform: isInView ? "translateY(0)" : "translateY(30px)",
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s"
           }}
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-          viewport={{
-            once: true
-          }}
-          transition={{
-            duration: 0.7
-          }}
-          className="font-din text-white leading-relaxed tracking-wider text-base"
+          className="text-center"
         >
-          For thousands of years, the Bible has forewarned of times of famine.<br />
-          Today, we are witnessing global economic turmoil unfolding before our eyes.<br />
-          The poverty crisis is accelerating, and its impact will only grow more devastating over time.
-        </motion.p>
+          <p className="text-base text-white font-din tracking-wider leading-relaxed">
+            Blessed is the one who considers the poor!<br />
+            In the day of trouble the LORD delivers him.
+          </p>
+          <p className="text-base text-white/80 font-din mt-4 tracking-wider">– Psalm 41:1</p>
+        </motion.div>
       </div>
     </section>
   );
