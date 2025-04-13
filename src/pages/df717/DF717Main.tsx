@@ -5,7 +5,13 @@ import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
 const DF717Main: React.FC = () => {
   return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader title="DF717 Essence" subtitle="DF717 creates peace—by bringing order to chaos. 'For God is not a God of confusion but of peace.' (1 Corinthians 14:33, ESV)" />
+        <DF717ArticleHeader title="DF717 Essence" subtitle={
+          <>
+            <span className="block">DF717 creates peace—by bringing order to chaos.</span>
+            <span className="block">'For God is not a God of confusion but of peace.'</span>
+            <span className="block">(1 Corinthians 14:33, ESV)</span>
+          </>
+        } />
         
         <div className="space-y-8 text-gray-300 animate-fade-in-up delay-100">
           <div>
