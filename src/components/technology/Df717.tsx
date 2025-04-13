@@ -1,8 +1,10 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Cog, Container, LineChart, BarChart } from "lucide-react";
 import { Separator } from "../ui/separator";
+
 const Df717Component = () => {
   const {
     sectionRef,
@@ -24,7 +26,7 @@ const Df717Component = () => {
       }} animate={controls}>
           <p className="text-gray-300 leading-relaxed mb-16 text-center">DF717 is a AI robot designed to provide automated investment services.</p>
           
-          <Separator className="mb-16" />
+          <Separator className="mb-16 bg-[#333333] h-[1px]" />
           
           <div className="mb-16 text-white">
             
@@ -119,4 +121,5 @@ const Df717Component = () => {
       </motion.div>
     </div>;
 };
+
 export default Df717Component;

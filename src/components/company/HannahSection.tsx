@@ -56,7 +56,7 @@ const HannahSection: React.FC = () => {
             delay: 0.1
           }}
         >
-          <Separator className="mb-16" />
+          <Separator className="mb-16 bg-[#333333] h-[1px]" />
           <h3 className="text-2xl font-bold text-white mb-8">Model Portfolio Modules</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-12">
@@ -93,7 +93,7 @@ const HannahSection: React.FC = () => {
             delay: 0.2
           }}
         >
-          <Separator className="mb-16" />
+          <Separator className="mb-16 bg-[#333333] h-[1px]" />
           <h3 className="text-2xl font-bold text-white mb-8">Trade Execution & Monitoring</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
@@ -125,7 +125,7 @@ const HannahSection: React.FC = () => {
             delay: 0.3
           }}
         >
-          <Separator className="mb-16" />
+          <Separator className="mb-16 bg-[#333333] h-[1px]" />
           <h3 className="text-2xl font-bold text-white mb-8">Risk Management</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-12">
