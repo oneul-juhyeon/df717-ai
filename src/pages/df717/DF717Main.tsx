@@ -8,7 +8,7 @@ const DF717Main: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="What is DF717?" 
+          title="DF717 Essence" 
           subtitle="DF717 creates peace—by bringing order to chaos. 'For God is not a God of confusion but of peace.' (1 Corinthians 14:33, ESV)"
         />
         
