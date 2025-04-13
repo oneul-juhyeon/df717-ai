@@ -10,11 +10,11 @@ const DF717Main: React.FC = () => {
         <DF717ArticleHeader 
           title="What is DF717?" 
           subtitle={
-            <>
+            <React.Fragment>
               <span className="block">DF717 creates peace—by bringing order to chaos.</span>
               <span className="block">"For God is not a God of confusion but of peace."</span>
               <span className="block">(1 Corinthians 14:33, ESV)</span>
-            </>
+            </React.Fragment>
           } 
         />
         
