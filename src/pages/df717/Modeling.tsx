@@ -19,51 +19,49 @@ const Modeling: React.FC = () => {
         <div className="grid grid-cols-1 gap-10 mt-8 animate-fade-in-up delay-200">
           <div className="w-full">
             <h3 className="text-xl font-bold text-white mb-4">
-              Time-Series Decomposition
+              Monte Carlo Simulation
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              Our algorithms decompose price action into trend, cyclical, and noise components using advanced mathematical 
-              techniques including wavelet transformations and spectral analysis. This allows us to isolate actionable 
-              trading signals from market noise with high precision.
+              Simulates return dispersion, expected yield distributions, and potential drawdown clusters for forward-testing.
+              By generating a wide range of potential outcomes, this method helps DF717 stress-test strategy robustness under various market regimes.
             </p>
             <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-              <li>Multi-resolution wavelet analysis</li>
-              <li>Non-linear trend extraction</li>
-              <li>Adaptive noise filtering</li>
-              <li>Statistical significance testing</li>
+              <li>Path-dependent scenario simulation</li>
+              <li>Forward yield projection analysis</li>
+              <li>Cluster-based drawdown detection</li>
+              <li>Long-tail event stress testing</li>
             </ul>
           </div>
           
           <div className="w-full">
             <h3 className="text-xl font-bold text-white mb-4">
-              Multi-factor Analysis
+              Markowitz Portfolio Optimization
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              DF717 integrates data from multiple sources and timeframes to build a comprehensive market perspective. 
-              Our proprietary factor weighting system dynamically adjusts to changing market conditions, emphasizing 
-              factors with the highest predictive power for current conditions.
+              Adjusts capital allocation across CFD instruments based on risk/return profiles and asset correlations.
+              DF717 refines classical optimization through real-time covariance estimation and volatility-responsive rebalancing.
             </p>
             <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-              <li>Dynamic factor weighting</li>
-              <li>Cross-timeframe signal confirmation</li>
-              <li>Correlation-aware feature selection</li>
-              <li>Regime-specific factor models</li>
+              <li>Dynamic correlation matrix estimation</li>
+              <li>Volatility-weighted portfolio allocation</li>
+              <li>Risk parity balancing techniques</li>
+              <li>Signal-synchronized capital shifts</li>
             </ul>
           </div>
           
           <div className="w-full">
             <h3 className="text-xl font-bold text-white mb-4">
-              Market Microstructure Analysis
+              Sharpe, Sortino, and Calmar Ratios
             </h3>
             <p className="text-gray-300 leading-relaxed">
-              Our systems analyze order flow, market depth, and liquidity patterns to identify short-term market inefficiencies. 
-              This high-frequency data processing capability provides an edge in execution timing and price discovery.
+              Monitors system performance quantitatively, triggering strategic transitions when deviations exceed defined thresholds.
+              These metrics help ensure risk-adjusted return stability and inform trade-offs between performance and protection.
             </p>
             <ul className="list-disc pl-5 mt-6 text-gray-300 space-y-2">
-              <li>Order flow imbalance detection</li>
-              <li>Liquidity contour mapping</li>
-              <li>Price impact modeling</li>
-              <li>Execution probability forecasting</li>
+              <li>Rolling ratio monitoring</li>
+              <li>Strategy switch triggers based on deviation thresholds</li>
+              <li>Comparative analysis across asset groups</li>
+              <li>Ratio-weighted performance scoring</li>
             </ul>
           </div>
         </div>
