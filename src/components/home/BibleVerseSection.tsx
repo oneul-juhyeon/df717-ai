@@ -1,5 +1,7 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+
 const BibleVerseSection: React.FC = () => {
   const [quoteVisible, setQuoteVisible] = useState(false);
   const [authorVisible, setAuthorVisible] = useState(false);
@@ -56,69 +58,79 @@ const BibleVerseSection: React.FC = () => {
       clearTimeout(timer4);
     };
   }, [isInView]);
-  return <section ref={sectionRef} className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden">
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 py-16 overflow-hidden"
+    >
       <div className="z-10 max-w-3xl mx-auto">
         <div ref={quoteRef} className="relative">
-          {quoteVisible && <div className="font-din text-white text-base leading-relaxed tracking-wider mb-2\n">
-              <motion.div initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            duration: 0.8,
-            ease: "easeOut"
-          }} className="inline">
-                <span className="block sm:inline">For nation will rise against nation, </span>
-                <span className="block sm:inline">and kingdom against kingdom, </span>
-                <span className="block sm:inline">and there will be famines and earthquakes </span>
+          {quoteVisible && (
+            <div className="font-din text-white text-base leading-relaxed tracking-wider mb-2\n">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="inline"
+              >
+                <span className="block sm:inline">For nation will rise against nation, </span>
+                <span className="block sm:inline">and kingdom against kingdom,<br className="hidden sm:block" /> </span>
+                <span className="block sm:inline">and there will be famines and earthquakes </span>
                 <span className="block sm:inline">in various places.</span>
               </motion.div>
-              <motion.span initial={{
-            opacity: 0
-          }} animate={{
-            opacity: authorVisible ? 1 : 0
-          }} transition={{
-            duration: 0.5
-          }} className="inline">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: authorVisible ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline"
+              >
                 &nbsp;– Matthew 24:7
               </motion.span>
-            </div>}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Earth Image with Gradient Overlay */}
-      <motion.div className="absolute inset-0 z-0 w-full h-full" initial={{
-      opacity: 0
-    }} animate={{
-      opacity: earthImageVisible ? 1 : 0
-    }} transition={{
-      duration: 1
-    }}>
+      <motion.div
+        className="absolute inset-0 z-0 w-full h-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: earthImageVisible ? 1 : 0 }}
+        transition={{ duration: 1 }}
+      >
         <div className="relative w-full h-full">
-          <img src="/lovable-uploads/home-intro1.webp" alt="Earth from space" className="object-cover w-full h-full" style={{
-          objectFit: "cover"
-        }} />
+          <img
+            src="/lovable-uploads/home-intro1.webp"
+            alt="Earth from space"
+            className="object-cover w-full h-full"
+            style={{ objectFit: "cover" }}
+          />
           {/* Gradient Overlay - Bottom fade to black */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" style={{
-          background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0) 70%)'
-        }}></div>
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"
+            style={{
+              background:
+                'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 30%, rgba(0,0,0,0) 70%)'
+            }}
+          ></div>
         </div>
       </motion.div>
 
       {/* Down Arrow - Unicode character "ᐯ" */}
-      <motion.div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20" initial={{
-      opacity: 0,
-      y: -10
-    }} animate={{
-      opacity: arrowVisible ? [0, 1, 0.5, 1] : 0,
-      y: arrowVisible ? [0, 10, 5, 10] : 0
-    }} transition={{
-      duration: 2,
-      repeat: Infinity,
-      repeatType: "reverse"
-    }}>
+      <motion.div
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{
+          opacity: arrowVisible ? [0, 1, 0.5, 1] : 0,
+          y: arrowVisible ? [0, 10, 5, 10] : 0
+        }}
+        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+      >
         <div className="text-4xl text-white">ᐯ</div>
       </motion.div>
-    </section>;
+    </section>
+  );
 };
+
 export default BibleVerseSection;
