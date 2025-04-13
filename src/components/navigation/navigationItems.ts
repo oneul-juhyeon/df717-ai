@@ -20,7 +20,7 @@ export const financialProductsSubmenu: SubmenuItem[] = [
 
 export const df717Submenu: SubmenuItem[] = [
   { name: "DF717 Essence", path: "/df717" },
-  { name: "System Reliability", path: "/df717/stability" },
+  { name: "System Reliability", path: "/df717/reliability" },
   { name: "Quant Modeling", path: "/df717/modeling" },
   { name: "AI Engine", path: "/df717/engine" },
   { name: "Execution Framework", path: "/df717/execution" },

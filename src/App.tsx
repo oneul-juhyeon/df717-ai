@@ -58,12 +58,13 @@ function App() {
             <Route path="/financial-products/oil" element={<Oil />} />
             <Route path="/financial-products/crypto" element={<Crypto />} />
             <Route path="/df717" element={<DF717Main />} />
-            <Route path="/df717/stability" element={<Stability />} />
+            <Route path="/df717/reliability" element={<Stability />} />
             <Route path="/df717/modeling" element={<Modeling />} />
             <Route path="/df717/engine" element={<Engine />} />
             <Route path="/df717/execution" element={<Execution />} />
             <Route path="/df717/examples" element={<Examples />} />
             <Route path="/df717/ai-strategy" element={<Navigate to="/df717/engine" replace />} />
+            <Route path="/df717/stability" element={<Navigate to="/df717/reliability" replace />} />
             <Route path="/robot" element={<Navigate to="/df717" replace />} />
             <Route path="/axi-cfd" element={<AxiCFD />} />
             <Route path="/axi-edge" element={<AxiEdge />} />
