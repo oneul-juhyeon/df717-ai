@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Accordion,
@@ -87,7 +86,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How long does it take to become a successful forex trader?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The time it takes to become a successful forex trader varies from person to person. Factors include the individual's commitment to learning, their trading knowledge and experience, the effectiveness of their trading strategies, and how much time they can dedicate to meeting their trading goals. Success in trading is considered a long-term exercise, requiring continuous practise, learning, and adapting to market conditions. Being able to learn from failures is also a significant factor contributing to long-term success.
               </p>
@@ -98,7 +97,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is a base currency and a quote currency?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Every currency has its own three-digit currency code (e.g., GBP for the Great British Pound and USD for the US dollar). A forex trade involves two currencies, referred to as a currency pair. The price of the first currency is expressed in terms of the second.
               </p>
@@ -115,7 +114,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How do I learn to trade forex?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Many traders acquire the skills necessary to trade forex by combining self-education, practise, and ongoing learning. To learn the fundamentals of forex trading and how the markets function, you can use instructional tools like tutorials, webinars, videos, how-to articles, and analysis. These materials, many of which are free, can be used as a starting point for deeper research into specialised fields such as market analysis, trading techniques, risk management, and trading psychology.
               </p>
@@ -129,7 +128,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is a pip in forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Short for 'Percentage in Points', the 'pip' is a change in the value of a currency that is reflected in the fourth decimal point. For example, if the SGD is valued at $0.9630 and increases by two 'pips', it will then be valued at $0.9632 against the Australian dollar.
               </p>
@@ -140,7 +139,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is a lot in forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 A 'lot' in forex trading refers to the number of units of a base currency. A standard lot is equal to 100,000 units of the base currency in a forex trade pair. You can also trade mini, micro, and nano lots, which are 10,000, 1,000, and 100 units, respectively. For example, trade a standard lot in Australian dollars, and the value of the trade would be AUD $100,000.
               </p>
@@ -157,7 +156,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is leverage in forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Leverage in forex trading allows you to accept trades with a higher value than the quantity of money in your trading account. If the leverage ratio is 5:1, for example, it indicates that you can trade with 5 times the capital you have deposited. For instance, if the account has $1,000 in it, the trader could execute trades worth a total of $5,000.
               </p>
@@ -174,7 +173,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is margin in forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Margin is effectively a downpayment on a leveraged trade. You can think of it as being like purchasing a home with a mortgage, where you need to put down a percentage of the total amount to make the purchase.
               </p>
@@ -191,7 +190,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is spread in forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The 'spread' in forex is a small cost built into the buy (bid) and sell (ask) prices of every currency pair trade, also known as 'markup.'
               </p>
@@ -205,7 +204,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is the difference between a long or short position in forex?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 To "go long" means you are buying a currency pair in anticipation that the price will rise. "Going short" on a currency pair means you are selling it, hoping the market price will decline.
               </p>
@@ -216,7 +215,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is a stop-loss and take-profit order?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Due to the fluctuating nature of the forex market, there is an inherent risk that a trade could go against you. To help reduce that risk and protect your capital, there are two key tools commonly used by traders.
               </p>
@@ -235,7 +234,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is a limit order?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 On the forex market, a 'limit' order dictates buying or selling at a specific price or a better price.
               </p>
@@ -249,7 +248,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are gaps in forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Although the foreign exchange market is not open seven days a week, prices can still change over the two days when trading does not take place. Sudden price changes can also occur, usually because of a major economic or environmental event that drastically influences the value of a currency.
               </p>
@@ -263,7 +262,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What is the swap rate?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 In forex, a 'swap rate' is also known as a rollover rate. It is the amount either added to or subtracted from your overnight holding position.
               </p>
@@ -280,7 +279,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are safe-haven currencies?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 There is a small group of currencies that are informally known in the forex trading markets as 'safe haven' currencies. These include the Japanese yen (JPY), the pound sterling (GBP), the US dollar (USD), the euro (EUR), and the Swiss franc (CHF).
               </p>
@@ -294,7 +293,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How do I know when major forex news is announced?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 An online economic calendar can be used to monitor scheduled economic events around the world that may affect the movement of the whole market or individual currencies. A good economic calendar will include news such as inflation numbers, employment data, interest rate announcements, retail sales reports, export data, and GDP growth.
               </p>
@@ -305,7 +304,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Why is an economic calendar important for forex trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Economies around the world are constantly changing and are influenced by factors such as changes in government, trade deals, resources, consumer confidence, and conflicts. Events such as unemployment figure announcements in Canada and the latest mortgage application numbers in the UK can impact the foreign exchange market. A speech made by the US President can impact the foreign exchange rate, as can property price changes in Australia.
               </p>
@@ -319,7 +318,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What software do you use to trade forex online?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 After signing up with an online broker, you will have access to the tools and software required to be able to trade forex online.
               </p>

@@ -63,7 +63,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Which countries produce the most oil in the world?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 According to data collected by the Energy Information Administration (EIA), total global oil production averages more than 100.61 million 
                 barrels per day. The top five oil-producing nations, responsible for nearly half of the world's production of crude oil, are the USA, Saudi Arabia, 
@@ -76,7 +76,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Can I make money trading oil?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Crude oil is the world's most traded commodity. From its high liquidity and volatility arise opportunities to trade the fluctuations for profit. 
                 The degree to which trading crude oil can be beneficial for you depends on a variety of factors, including your level of trading expertise, your 
@@ -92,7 +92,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the risks involved with oil trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 There are two main types of risk associated with oil trading.
               </p>
@@ -113,7 +113,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the most popular oil trading products?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The top oil trading products include crude oil futures, crude oil spot markets, oil exchange-traded funds (ETFs), and oil CFDs. For a full list 
                 of oil trading products, please refer to our Product Schedule.
@@ -125,7 +125,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What are the oil trading market hours?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The oil trading market is split up into two trading sessions: Brent crude oil and West Texas oil.
               </p>
@@ -140,7 +140,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How much money do you need to start trading oil?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 The amount of money needed to start trading oil will depend on your goals, the oil products you want to trade, and whether you want to trade 
                 using leverage.
@@ -162,7 +162,7 @@ const OilFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               What spreads and margin does Axi offer on oil trading?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Axi offers extremely competitive variable spreads on oil, with spreads changing throughout the day. To experience how spreads work in real time, 
                 open a free demo account where you can practise your trading using virtual funds. The initial margin rate starts at 2% for oil cash CFDs and 
