@@ -1,4 +1,3 @@
-
 import { NavigationItem, SubmenuItem } from "./types";
 
 export const axiCfdSubmenu: SubmenuItem[] = [
