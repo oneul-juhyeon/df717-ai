@@ -4,6 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import FinancialProductsSidebar from "./FinancialProductsSidebar";
 import Footer from "../common/Footer";
 import AxiSpaceXCallToAction from "../axi/AxiSpaceXCallToAction";
+import { useLocation } from "react-router-dom";
 
 interface FinancialProductLayoutProps {
   children: React.ReactNode;
@@ -14,6 +15,9 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
   children,
   renderHeader,
 }) => {
+  const location = useLocation();
+  const isMainPage = location.pathname === "/financial-products";
+  
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -33,14 +37,15 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
         
         <div className="mt-8 mb-12">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left sidebar with labels */}
-            <FinancialProductsSidebar />
+            {/* Left sidebar with labels - only show on subpages */}
+            {!isMainPage && <FinancialProductsSidebar />}
             
             {/* Main content area */}
             <div className="w-full lg:ml-8 text-white">
               <ScrollArea className="h-full">
                 {children}
-                <AxiSpaceXCallToAction />
+                {/* Only show the call to action on subpages */}
+                {!isMainPage && <AxiSpaceXCallToAction />}
               </ScrollArea>
             </div>
           </div>
