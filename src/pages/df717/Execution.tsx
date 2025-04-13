@@ -1,16 +1,10 @@
-
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
-
 const Execution: React.FC = () => {
-  return (
-    <DF717Layout>
+  return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader 
-          title="Execution Logic"
-          subtitle="How DF717 translates signals into precise market actions"
-        />
+        <DF717ArticleHeader title="Execution Logic" subtitle="How DF717 translates signals into precise market actions" />
         
         <div className="mb-14 animate-fade-in-up delay-100">
           <p className="text-gray-300 leading-relaxed">
@@ -72,14 +66,8 @@ const Execution: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-12 p-4 border-t border-gray-800 animate-fade-in-up delay-300">
-          <p className="text-white font-medium italic">
-            The execution logic and algorithms described are proprietary to DF717 and continuously refined to maintain optimal performance.
-          </p>
-        </div>
+        
       </div>
-    </DF717Layout>
-  );
+    </DF717Layout>;
 };
-
 export default Execution;
