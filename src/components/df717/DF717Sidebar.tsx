@@ -8,11 +8,11 @@ const DF717Sidebar: React.FC = () => {
   
   const sidebarItems = [
     { name: "DF717 Essence", path: "/df717" },
-    { name: "Reliability & Stability", path: "/df717/stability" },
+    { name: "System Reliability", path: "/df717/stability" },
     { name: "Quant Modeling", path: "/df717/modeling" },
     { name: "AI Engine", path: "/df717/engine" },
-    { name: "Execution Logic", path: "/df717/execution" },
-    { name: "Examples", path: "/df717/examples" },
+    { name: "Execution Framework", path: "/df717/execution" },
+    { name: "Strategy Examples", path: "/df717/examples" },
   ];
 
   const handleNavigation = (path: string) => {

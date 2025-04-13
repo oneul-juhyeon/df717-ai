@@ -1,3 +1,4 @@
+
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
@@ -6,7 +7,7 @@ const Execution: React.FC = () => {
   return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="CFD Execution Logic" 
+          title="CFD Execution Framework" 
           subtitle="How DF717 translates strategies into precise execution across asset classes" 
         />
         
