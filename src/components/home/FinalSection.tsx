@@ -67,7 +67,7 @@ const FinalSection: React.FC = () => {
       }} className="font-din text-white leading-relaxed tracking-wider text-base">
           "Blessed is the one who considers the poor.
           <br />
-          In the day of trouble the Lord delivers him."<br class="inline sm:hidden" /> – Psalm 41:1
+          In the day of trouble the Lord delivers him."<br className="inline sm:hidden" /> – Psalm 41:1
           <br /><br />
           DF717 aims to support people economically through financial innovation driven by AI technology.
           <br />
