@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import FinancialProductsSidebar from "./FinancialProductsSidebar";
 import Footer from "../common/Footer";
@@ -25,10 +25,33 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
     });
   };
 
-  // Reset scroll position on page load
-  useEffect(() => {
+  // UseLayoutEffect runs before browser paint, ensuring scroll reset happens before user sees the page
+  useLayoutEffect(() => {
+    // Immediate scroll reset using both methods for maximum compatibility
     window.scrollTo(0, 0);
-  }, []);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0; // For Safari
+  }, [location.pathname]);
+  
+  // Additional useEffect as a fallback to ensure scroll reset
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+    
+    // Add event listener to capture any scroll attempts immediately after navigation
+    const preventInitialScroll = (e: Event) => {
+      window.scrollTo(0, 0);
+    };
+    
+    window.addEventListener('scroll', preventInitialScroll, { once: true });
+    
+    return () => {
+      window.removeEventListener('scroll', preventInitialScroll);
+    };
+  }, [location.pathname]);
 
   return (
     <div className="w-full min-h-screen bg-black financial-product-layout flex flex-col">
