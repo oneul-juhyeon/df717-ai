@@ -8,8 +8,8 @@ const AIStrategy: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="AI-Powered Strategy" 
-          subtitle="How DF717 leverages artificial intelligence for optimal trading outcomes" 
+          title="AI Engine Architecture" 
+          subtitle="How DF717 adapts to shifting market regimes through intelligent learning systems" 
         />
         
         <div className="mb-14 animate-fade-in-up delay-100">

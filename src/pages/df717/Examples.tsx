@@ -8,8 +8,8 @@ const Examples: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="Strategy Examples"
-          subtitle="Case studies and examples of DF717's strategies in action"
+          title="Modular Strategy Examples"
+          subtitle="How DF717 illustrates the structure of its modular strategy systems through selected examples"
         />
         
         <div className="mb-14 animate-fade-in-up delay-100">

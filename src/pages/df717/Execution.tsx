@@ -1,4 +1,3 @@
-
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
@@ -6,7 +5,10 @@ import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
 const Execution: React.FC = () => {
   return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader title="Execution Logic" subtitle="How DF717 translates signals into precise market actions" />
+        <DF717ArticleHeader 
+          title="CFD Execution Logic" 
+          subtitle="How DF717 translates strategies into precise execution across asset classes" 
+        />
         
         <div className="mb-14 animate-fade-in-up delay-100">
           <p className="text-gray-300 leading-relaxed">

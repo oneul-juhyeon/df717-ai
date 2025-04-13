@@ -9,7 +9,7 @@ const Modeling: React.FC = () => {
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="Quantitative Modeling Engine" 
-          subtitle="How DF717 uses advanced modeling techniques to identify market opportunities" 
+          subtitle="How DF717 applies mathematical models to interpret financial markets" 
         />
         
         <div className="mb-14 animate-fade-in-up delay-100">
