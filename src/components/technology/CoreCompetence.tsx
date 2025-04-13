@@ -33,7 +33,7 @@ const CoreCompetence: React.FC = () => {
       </motion.div>
       
       {/* Full-width divider line below the section description */}
-      <div className="w-full h-[1px] bg-[#333333] mb-24"></div>
+      <div className="w-full h-[1px] bg-[#333333] mb-16"></div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mt-12">
         <motion.div className="space-y-6" initial={{
