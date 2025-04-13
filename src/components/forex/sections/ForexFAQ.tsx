@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Accordion,
@@ -44,7 +45,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Do I need a large amount of capital to start trading forex?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 No, you do not need to invest a large amount of money to start forex trading. It is possible to start trading forex with as little as $10. However, some platforms do require a higher amount of capital, sometimes up to a minimum of $500.
               </p>
@@ -58,7 +59,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               How much money can forex traders make?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 While there are technically no limits to how much money you can make on the foreign exchange market, the reality is that you will not make money on every trade; nobody can always predict how markets will behave.
               </p>
@@ -75,7 +76,7 @@ const ForexFAQ: React.FC = () => {
             <AccordionTrigger className="text-xl font-semibold text-left">
               Can I trade forex part-time while working a full-time job?
             </AccordionTrigger>
-            <AccordionContent className="text-gray-700">
+            <AccordionContent className="text-white">
               <p className="text-left">
                 Yes, forex trading offers flexibility and can be done part-time alongside other commitments, including a full-time job. The forex market operates 24 hours a day, five days a week, allowing most traders to choose trading hours that suit their schedule. While modern trading apps and trade management tools make it easier to do analysis at your convenience, sufficient time should be factored in for trade analysis, monitoring, market updates, and other key responsibilities.
               </p>
