@@ -19,7 +19,7 @@ const CoreCompetence: React.FC = () => {
       }} transition={{
         duration: 0.5,
         delay: 0.2
-      }} className="text-4xl font-bold text-white mb-9 md:mb-0 md:w-1/2 pl-0">
+      }} className="text-4xl font-bold text-white mb-10 md:mb-0 md:w-1/2 pl-0">
           CORE COMPETENCE
         </motion.h2>
         <motion.p className="text-gray-300 md:w-1/2 text-base" initial={{
