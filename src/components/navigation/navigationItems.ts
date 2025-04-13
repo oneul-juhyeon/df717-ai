@@ -1,3 +1,4 @@
+
 import { NavigationItem, SubmenuItem } from "./types";
 
 export const axiCfdSubmenu: SubmenuItem[] = [
@@ -22,7 +23,7 @@ export const df717Submenu: SubmenuItem[] = [
   { name: "What is DF717?", path: "/df717" },
   { name: "Reliability & Stability", path: "/df717/stability" },
   { name: "Quant Modeling", path: "/df717/modeling" },
-  { name: "AI Strategy", path: "/df717/ai-strategy" },
+  { name: "AI Engine", path: "/df717/engine" },
   { name: "Execution Logic", path: "/df717/execution" },
   { name: "Examples", path: "/df717/examples" },
 ];

@@ -28,7 +28,7 @@ import Crypto from "./pages/financial-products/Crypto";
 import DF717Main from "./pages/df717/DF717Main";
 import Stability from "./pages/df717/Stability";
 import Modeling from "./pages/df717/Modeling";
-import AIStrategy from "./pages/df717/AIStrategy";
+import Engine from "./pages/df717/Engine";
 import Execution from "./pages/df717/Execution";
 import Examples from "./pages/df717/Examples";
 import Suppliers from "./pages/Suppliers";
@@ -60,9 +60,10 @@ function App() {
             <Route path="/df717" element={<DF717Main />} />
             <Route path="/df717/stability" element={<Stability />} />
             <Route path="/df717/modeling" element={<Modeling />} />
-            <Route path="/df717/ai-strategy" element={<AIStrategy />} />
+            <Route path="/df717/engine" element={<Engine />} />
             <Route path="/df717/execution" element={<Execution />} />
             <Route path="/df717/examples" element={<Examples />} />
+            <Route path="/df717/ai-strategy" element={<Navigate to="/df717/engine" replace />} />
             <Route path="/robot" element={<Navigate to="/df717" replace />} />
             <Route path="/axi-cfd" element={<AxiCFD />} />
             <Route path="/axi-edge" element={<AxiEdge />} />
