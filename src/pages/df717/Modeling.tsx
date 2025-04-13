@@ -1,16 +1,10 @@
-
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
-
 const Modeling: React.FC = () => {
-  return (
-    <DF717Layout>
+  return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
-        <DF717ArticleHeader 
-          title="Quantitative Modeling Engine"
-          subtitle="How DF717 uses advanced modeling techniques to identify market opportunities"
-        />
+        <DF717ArticleHeader title="Financial Modeling" subtitle="How DF717 uses advanced modeling techniques to identify market opportunities" />
         
         <div className="mb-14 animate-fade-in-up delay-100">
           <p className="text-gray-300 leading-relaxed">
@@ -72,14 +66,8 @@ const Modeling: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-12 p-4 border-t border-gray-800 animate-fade-in-up delay-300">
-          <p className="text-white font-medium italic">
-            All modeling techniques and mathematical formulations are proprietary and continuously refined to maintain DF717's edge in the market.
-          </p>
-        </div>
+        
       </div>
-    </DF717Layout>
-  );
+    </DF717Layout>;
 };
-
 export default Modeling;
