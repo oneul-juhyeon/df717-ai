@@ -37,7 +37,7 @@ const CoreCompetence: React.FC = () => {
       <div className="w-full h-[1px] bg-[#333333] mb-16"></div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 mt-12">
-        <motion.div className="space-y-6" initial={{
+        <motion.div className="space-y-6 text-center" initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -47,11 +47,11 @@ const CoreCompetence: React.FC = () => {
         duration: 0.5
       }}>
           <div>
-            <div className="flex items-start mb-6">
+            <div className="inline-flex items-start mb-6">
               <div className="flex-shrink-0 mr-4">
                 <Brain className="text-white" size={48} strokeWidth={1.5} />
               </div>
-              <div className="flex-grow-1">
+              <div className="flex-grow text-left">
                 <h3 className="text-xl text-white font-bold">Proprietary AI Investment Engine</h3>
               </div>
             </div>
@@ -59,7 +59,7 @@ const CoreCompetence: React.FC = () => {
           </div>
         </motion.div>
         
-        <motion.div className="space-y-6" initial={{
+        <motion.div className="space-y-6 text-center" initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -70,11 +70,11 @@ const CoreCompetence: React.FC = () => {
         delay: 0.2
       }}>
           <div>
-            <div className="flex items-start mb-6">
+            <div className="inline-flex items-start mb-6">
               <div className="flex-shrink-0 mr-4">
                 <GraduationCap className="text-white" size={48} strokeWidth={1.5} />
               </div>
-              <div className="flex-grow-1">
+              <div className="flex-grow text-left">
                 <h3 className="text-xl text-white font-bold">Top-Tier Research Talent</h3>
               </div>
             </div>
@@ -82,7 +82,7 @@ const CoreCompetence: React.FC = () => {
           </div>
         </motion.div>
         
-        <motion.div className="space-y-6" initial={{
+        <motion.div className="space-y-6 text-center" initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -93,11 +93,11 @@ const CoreCompetence: React.FC = () => {
         delay: 0.4
       }}>
           <div>
-            <div className="flex items-start mb-6">
+            <div className="inline-flex items-start mb-6">
               <div className="flex-shrink-0 mr-4">
                 <Search className="text-white" size={48} strokeWidth={1.5} />
               </div>
-              <div className="flex-grow-1">
+              <div className="flex-grow text-left">
                 <h3 className="text-xl text-white font-bold">Proprietary Research Methodology</h3>
               </div>
             </div>
@@ -105,7 +105,7 @@ const CoreCompetence: React.FC = () => {
           </div>
         </motion.div>
         
-        <motion.div className="space-y-6" initial={{
+        <motion.div className="space-y-6 text-center" initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -116,11 +116,11 @@ const CoreCompetence: React.FC = () => {
         delay: 0.6
       }}>
           <div>
-            <div className="flex items-start mb-6">
+            <div className="inline-flex items-start mb-6">
               <div className="flex-shrink-0 mr-4">
                 <Lock className="text-white" size={48} strokeWidth={1.5} />
               </div>
-              <div className="flex-grow-1">
+              <div className="flex-grow text-left">
                 <h3 className="text-xl text-white font-bold">Real-Time Monitoring & Security</h3>
               </div>
             </div>

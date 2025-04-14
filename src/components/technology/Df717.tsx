@@ -35,7 +35,7 @@ const Df717Component = () => {
 
         {/* Grid section with icons and descriptions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-          <motion.div className="space-y-6" initial={{
+          <motion.div className="space-y-6 text-center" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -45,11 +45,11 @@ const Df717Component = () => {
           duration: 0.5
         }}>
             <div>
-              <div className="flex items-start mb-6">
+              <div className="inline-flex items-start mb-6">
                 <div className="flex-shrink-0 mr-4">
                   <Cog className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <div className="flex-grow-1">
+                <div className="flex-grow text-left">
                   <h3 className="text-xl text-white font-bold">DF717-Account</h3>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const Df717Component = () => {
             </div>
           </motion.div>
           
-          <motion.div className="space-y-6" initial={{
+          <motion.div className="space-y-6 text-center" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -68,11 +68,11 @@ const Df717Component = () => {
           delay: 0.2
         }}>
             <div>
-              <div className="flex items-start mb-6">
+              <div className="inline-flex items-start mb-6">
                 <div className="flex-shrink-0 mr-4">
                   <Container className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <div className="flex-grow-1">
+                <div className="flex-grow text-left">
                   <h3 className="text-xl text-white font-bold">DF717-Container</h3>
                 </div>
               </div>
@@ -80,7 +80,7 @@ const Df717Component = () => {
             </div>
           </motion.div>
           
-          <motion.div className="space-y-6" initial={{
+          <motion.div className="space-y-6 text-center" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -91,11 +91,11 @@ const Df717Component = () => {
           delay: 0.4
         }}>
             <div>
-              <div className="flex items-start mb-6">
+              <div className="inline-flex items-start mb-6">
                 <div className="flex-shrink-0 mr-4">
                   <LineChart className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <div className="flex-grow-1">
+                <div className="flex-grow text-left">
                   <h3 className="text-xl text-white font-bold">DF717-Database</h3>
                 </div>
               </div>
@@ -103,7 +103,7 @@ const Df717Component = () => {
             </div>
           </motion.div>
           
-          <motion.div className="space-y-6" initial={{
+          <motion.div className="space-y-6 text-center" initial={{
           opacity: 0,
           y: 20
         }} animate={{
@@ -114,11 +114,11 @@ const Df717Component = () => {
           delay: 0.6
         }}>
             <div>
-              <div className="flex items-start mb-6">
+              <div className="inline-flex items-start mb-6">
                 <div className="flex-shrink-0 mr-4">
                   <BarChart className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <div className="flex-grow-1">
+                <div className="flex-grow text-left">
                   <h3 className="text-xl text-white font-bold">DF717-Web</h3>
                 </div>
               </div>
