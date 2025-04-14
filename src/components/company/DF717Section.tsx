@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Cog, Container, LineChart, BarChart } from "lucide-react";
@@ -51,11 +52,13 @@ const DF717Section: React.FC = () => {
             duration: 0.5
           }}>
             <div>
-              <div className="flex items-center justify-center mb-6">
-                <div className="mr-4">
+              <div className="flex items-start mb-6">
+                <div className="flex-shrink-0 mr-4">
                   <Cog className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl text-white font-bold">DF717-Account</h3>
+                <div className="flex-grow-1">
+                  <h3 className="text-xl text-white font-bold">DF717-Account</h3>
+                </div>
               </div>
               <p className="text-gray-300">Each customer and account can operate a unique portfolio. The system is stable enough to manage tens of thousands of accounts simultaneously.</p>
             </div>
@@ -72,11 +75,13 @@ const DF717Section: React.FC = () => {
             delay: 0.2
           }}>
             <div>
-              <div className="flex items-center justify-center mb-6">
-                <div className="mr-4">
+              <div className="flex items-start mb-6">
+                <div className="flex-shrink-0 mr-4">
                   <Container className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl text-white font-bold">DF717-Container</h3>
+                <div className="flex-grow-1">
+                  <h3 className="text-xl text-white font-bold">DF717-Container</h3>
+                </div>
               </div>
               <p className="text-gray-300">This is the platform where investment logic operates and necessary data is processed. It enables flexible AI-powered investment logic execution.</p>
             </div>
@@ -93,11 +98,13 @@ const DF717Section: React.FC = () => {
             delay: 0.4
           }}>
             <div>
-              <div className="flex items-center justify-center mb-6">
-                <div className="mr-4">
+              <div className="flex items-start mb-6">
+                <div className="flex-shrink-0 mr-4">
                   <LineChart className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl text-white font-bold">DF717-Database</h3>
+                <div className="flex-grow-1">
+                  <h3 className="text-xl text-white font-bold">DF717-Database</h3>
+                </div>
               </div>
               <p className="text-gray-300">Processing and cleansing data is essential for strategy operation and simulation. DF717 ensures fast and accurate data handling.</p>
             </div>
@@ -114,11 +121,13 @@ const DF717Section: React.FC = () => {
             delay: 0.6
           }}>
             <div>
-              <div className="flex items-center justify-center mb-6">
-                <div className="mr-4">
+              <div className="flex items-start mb-6">
+                <div className="flex-shrink-0 mr-4">
                   <BarChart className="text-white" size={48} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl text-white font-bold">DF717-Web</h3>
+                <div className="flex-grow-1">
+                  <h3 className="text-xl text-white font-bold">DF717-Web</h3>
+                </div>
               </div>
               <p className="text-gray-300">Provides real-time operation monitoring, account status, and transaction updates. Partners can check and give instructions through web or mobile.</p>
             </div>
