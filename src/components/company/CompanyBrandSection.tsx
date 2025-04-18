@@ -1,6 +1,7 @@
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import CompanyValueCards from "./CompanyValueCards";
+
 const CompanyBrandSection: React.FC = () => {
   return <div className="w-full mb-8 scroll-animate opacity-0">
       <div className="relative p-0">
@@ -73,11 +74,11 @@ With reliable data and sophisticated systems, we create smarter ways to live.</p
               <Separator className="bg-[#333333] h-px my-24" />
             </div>
             
-            <div className="text-center mb-6 scroll-animate opacity-0">
+            <div className="text-center mb-4 scroll-animate opacity-0">
               <h3 className="text-2xl font-bold text-white">Brand Core Values</h3>
             </div>
             
-            <div className="scroll-animate opacity-0">
+            <div className="scroll-animate opacity-0 mt-0">
               <CompanyValueCards />
             </div>
           </div>
@@ -85,4 +86,5 @@ With reliable data and sophisticated systems, we create smarter ways to live.</p
       </div>
     </div>;
 };
+
 export default CompanyBrandSection;
