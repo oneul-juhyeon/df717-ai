@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import CompanyValueCards from "./CompanyValueCards";
@@ -44,7 +45,7 @@ We believe that the journey to discovering our destiny and living in true fulfil
           
           <div className="space-y-24 mt-6">
             <div className="scroll-animate opacity-0">
-              <p className="text-lg text-gray-300">At DF717, we're constantly engineering next-generation technologies to shape the future. 
+              <p className="text-lg text-gray-300">At DF717, we're constantly engineering next-generation technologies to shape the future. 
 With reliable data and sophisticated systems, we create smarter ways to live.</p>
             </div>
             
@@ -74,7 +75,7 @@ With reliable data and sophisticated systems, we create smarter ways to live.</p
               <Separator className="bg-[#333333] h-px my-24" />
             </div>
             
-            <div className="text-center mb-4 scroll-animate opacity-0">
+            <div className="text-center mb-2 scroll-animate opacity-0">
               <h3 className="text-2xl font-bold text-white">Brand Core Values</h3>
             </div>
             
