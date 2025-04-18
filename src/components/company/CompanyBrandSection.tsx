@@ -43,7 +43,8 @@ We believe that the journey to discovering our destiny and living in true fulfil
           
           <div className="space-y-24 mt-6">
             <div className="scroll-animate opacity-0">
-              <p className="text-lg text-gray-300">At DF717, we're constantly engineering next-generation technologies to shape the future. With reliable data and sophisticated systems, we create smarter ways to live.</p>
+              <p className="text-lg text-gray-300">At DF717, we're constantly engineering next-generation technologies to shape the future. 
+With reliable data and sophisticated systems, we create smarter ways to live.</p>
             </div>
             
             <div className="relative">
