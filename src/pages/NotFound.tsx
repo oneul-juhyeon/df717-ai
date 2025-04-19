@@ -35,7 +35,7 @@ const NotFound = () => {
             <Link to="/">
               <Button 
                 variant="outline" 
-                className="font-din group hover:bg-white/10"
+                className="font-din group hover:bg-white/10 text-black"
               >
                 <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
                 Return Home
@@ -44,7 +44,7 @@ const NotFound = () => {
             <Link to="/df717">
               <Button 
                 variant="outline"
-                className="font-din hover:bg-white/10"
+                className="font-din hover:bg-white/10 text-black"
               >
                 Go to DF717
               </Button>
