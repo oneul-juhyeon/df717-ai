@@ -8,6 +8,9 @@ import Footer from "@/components/common/Footer";
 const Index: React.FC = () => {
   return (
     <main className="w-full min-h-screen relative overflow-hidden flex flex-col">
+      {/* SEO H1 Tag */}
+      <h1 className="sr-only">DF717: Automate Your Investment with AI</h1>
+      
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video

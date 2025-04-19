@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import CompanyValueCards from "./CompanyValueCards";
@@ -7,10 +6,10 @@ const CompanyBrandSection: React.FC = () => {
   return <div className="w-full mb-8 scroll-animate opacity-0">
       <div className="relative p-0">
         <div className="relative z-10">
-          {/* Philosophy Section - New */}
-          <h3 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
+          {/* Philosophy Section */}
+          <h2 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
             Philosophy
-          </h3>
+          </h2>
           
           <div className="scroll-animate opacity-0">
             <p className="text-lg text-gray-300 mb-4">At DF717, "DF" stands for Destiny Finance.
@@ -39,9 +38,9 @@ We believe that the journey to discovering our destiny and living in true fulfil
             <Separator className="bg-[#333333] h-px my-24" />
           </div>
           
-          <h3 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
+          <h2 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
             Values
-          </h3>
+          </h2>
           
           <div className="space-y-24 mt-6">
             <div className="scroll-animate opacity-0">
@@ -54,9 +53,9 @@ With reliable data and sophisticated systems, we create smarter ways to live.</p
             </div>
             
             <div className="scroll-animate opacity-0">
-              <h3 className="text-2xl font-bold mb-6 text-white">
+              <h2 className="text-2xl font-bold mb-6 text-white">
                 Brand Definition
-              </h3>
+              </h2>
               <p className="text-lg text-gray-300">A company driving change and innovation in financial markets through technological excellence.</p>
             </div>
             
@@ -65,7 +64,7 @@ With reliable data and sophisticated systems, we create smarter ways to live.</p
             </div>
             
             <div className="scroll-animate opacity-0">
-              <h3 className="text-2xl font-bold mb-6 text-white">Brand Key Statement</h3>
+              <h2 className="text-2xl font-bold mb-6 text-white">Brand Key Statement</h2>
               <p className="text-lg text-gray-300">
                 Without Love, We are nothing.
               </p>
@@ -76,7 +75,7 @@ With reliable data and sophisticated systems, we create smarter ways to live.</p
             </div>
             
             <div className="text-center mb-2 scroll-animate opacity-0">
-              <h3 className="text-2xl font-bold text-white">Brand Core Values</h3>
+              <h2 className="text-2xl font-bold text-white">Brand Core Values</h2>
             </div>
             
             <div className="scroll-animate opacity-0 mt-0">

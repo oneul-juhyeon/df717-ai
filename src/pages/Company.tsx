@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
@@ -66,6 +67,9 @@ const Company: React.FC = () => {
   
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
+      {/* SEO H1 Tag */}
+      <h1 className="sr-only">About DF717: Our Mission, Philosophy & Values</h1>
+
       <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
