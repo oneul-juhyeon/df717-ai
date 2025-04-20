@@ -1,4 +1,3 @@
-
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import HeroSection from "@/components/landing/HeroSection";
@@ -10,6 +9,14 @@ const Index: React.FC = () => {
     <main className="w-full min-h-screen relative overflow-hidden flex flex-col">
       {/* SEO H1 Tag */}
       <h1 className="sr-only">DF717: Automate Your Investment with AI</h1>
+      
+      {/* SEO Content Block */}
+      <div className="sr-only">
+        DF717 is an AI Finance & AI investment platform engineered to automate portfolio management across global CFD markets.  
+        DF717's quant-driven system executes trades in real time, ensuring consistent, data-backed performance.  
+        Designed for both new and experienced investors, DF717 combines advanced AI models with financial discipline  
+        to deliver a smarter, scalable, and fully automated trading experience.
+      </div>
       
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
