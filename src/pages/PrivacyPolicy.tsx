@@ -29,6 +29,12 @@ const PrivacyPolicy: React.FC = () => {
         >
           <h1 className="text-3xl md:text-4xl font-bold mb-16 uppercase font-din">PRIVACY POLICY</h1>
           
+          <div className="sr-only">
+            DF717's Privacy Policy outlines how we collect, use, and protect personal information from our website users and customers.  
+            We follow global privacy standards including GDPR and are committed to data security, transparency, and ethical use of user data.  
+            This policy explains the types of information we collect, how we use it, and how users can contact us for privacy-related inquiries.
+          </div>
+          
           <div className="space-y-8 text-lg font-din">
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
