@@ -30,6 +30,13 @@ const Suppliers: React.FC = () => {
         >
           <h1 className="text-3xl md:text-4xl font-bold mb-16 uppercase font-din">BECOMING A SUPPLIER</h1>
           
+          <div className="sr-only">
+            DF717 works with diverse and qualified suppliers who support our mission to deliver high-quality, reliable financial technology.  
+            Our vendor onboarding process ensures alignment with our values of transparency, agility, and technological innovation.  
+            We welcome small, specialized, and local suppliers to participate in our sourcing process and help us serve global clients efficiently.  
+            DF717's supplier relationships are built on trust, collaboration, and a commitment to excellence.
+          </div>
+          
           <div className="space-y-8 text-lg font-din">
             <motion.p 
               initial={{ opacity: 0, y: 10 }}
