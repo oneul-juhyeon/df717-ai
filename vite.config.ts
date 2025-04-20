@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    headers: mode === 'production' ? headersConfig.headers[0].headers.reduce((acc, header) => {
+    headers: mode === 'production' ? headersConfig.headers[0].headers.reduce((acc: Record<string, string>, header) => {
       acc[header.key] = header.value;
       return acc;
     }, {}) : {}

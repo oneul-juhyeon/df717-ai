@@ -1,6 +1,20 @@
 
 // Configuration file for custom HTTP headers
-export default {
+interface Header {
+  key: string;
+  value: string;
+}
+
+interface HeaderConfig {
+  source: string;
+  headers: Header[];
+}
+
+interface HeadersConfig {
+  headers: HeaderConfig[];
+}
+
+const headersConfig: HeadersConfig = {
   headers: [
     {
       source: "/(.*)",
@@ -12,4 +26,6 @@ export default {
       ]
     }
   ]
-}
+};
+
+export default headersConfig;
