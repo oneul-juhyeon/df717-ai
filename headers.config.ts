@@ -1,16 +1,16 @@
 
 // Configuration file for custom HTTP headers
-interface Header {
+export interface Header {
   key: string;
   value: string;
 }
 
-interface HeaderConfig {
+export interface HeaderConfig {
   source: string;
   headers: Header[];
 }
 
-interface HeadersConfig {
+export interface HeadersConfig {
   headers: HeaderConfig[];
 }
 
@@ -22,6 +22,22 @@ const headersConfig: HeadersConfig = {
         {
           key: "Strict-Transport-Security",
           value: "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          key: "X-Content-Type-Options",
+          value: "nosniff"
+        },
+        {
+          key: "X-Frame-Options",
+          value: "DENY"
+        },
+        {
+          key: "X-XSS-Protection",
+          value: "1; mode=block"
+        },
+        {
+          key: "Referrer-Policy",
+          value: "strict-origin-when-cross-origin"
         }
       ]
     }
