@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Brain, GraduationCap, Search, Lock } from "lucide-react";
 import { motion } from "framer-motion";
@@ -11,14 +12,14 @@ const CoreCompetence: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <motion.h2
+        <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl font-bold text-white mb-10 md:mb-0 md:w-1/2 pl-0"
         >
           CORE COMPETENCE
-        </motion.h2>
+        </motion.h1>
         <motion.p
           className="text-gray-300 md:w-1/2 text-base"
           initial={{ opacity: 0 }}
