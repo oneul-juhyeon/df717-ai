@@ -9,7 +9,7 @@ interface TechnologyHeaderProps extends HeaderProps {}
 const TechnologyHeader: React.FC<TechnologyHeaderProps> = ({ scrollToTop }) => {
   const navigationItems = getNavigationItems();
   
-  return <BaseHeader scrollToTop={scrollToTop} navigationItems={navigationItems} />;
+  return <BaseHeader scrollToTop={scrollToTop} navigationItems={navigationItems} logoAs="div" />;
 };
 
 export default TechnologyHeader;

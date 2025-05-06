@@ -7,7 +7,8 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className = "", as = "div" }) => {
-  const Component = as; // Use the specified component type
+  // Explicitly use the component type based on the 'as' prop
+  const Component = as;
 
   return (
     <Component className={`${className}`}>
