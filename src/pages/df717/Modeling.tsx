@@ -8,7 +8,7 @@ const Modeling: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="Quantitative Modeling Engine" 
+          title="DF717 Quantitative Modeling Engine" 
           subtitle="How DF717 applies mathematical models to interpret financial markets" 
         />
         

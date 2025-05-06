@@ -7,7 +7,7 @@ const Execution: React.FC = () => {
   return <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="CFD Execution Framework" 
+          title="DF717 CFD Execution Framework" 
           subtitle="How DF717 translates strategies into precise execution across asset classes" 
         />
         

@@ -8,7 +8,7 @@ const Engine: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="AI Engine Architecture" 
+          title="DF717 AI Engine Architecture" 
           subtitle="How DF717 adapts to shifting market regimes through intelligent learning systems" 
         />
         

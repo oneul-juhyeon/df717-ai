@@ -8,7 +8,7 @@ const Examples: React.FC = () => {
     <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
-          title="Modular Strategy Examples"
+          title="DF717 Modular Strategy Examples"
           subtitle="How DF717 illustrates the structure of its modular strategy systems through selected examples"
         />
         
