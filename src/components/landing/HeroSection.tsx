@@ -13,9 +13,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return <div className={className}>
       <div className="space-y-4 container mx-auto py-6 sm:py-10 md:py-14">
-        <h1 className="text-white leading-[1.1] tracking-tight mb-4 sm:mb-6 md:mb-10 font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-left">
+        <h2 className="text-white leading-[1.1] tracking-tight mb-4 sm:mb-6 md:mb-10 font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-left">
           AI FINANCE<br />
-        </h1>
+        </h2>
         
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white mb-5 sm:mb-8 md:mb-10 max-w-xl font-normal text-left">Automate Your Investment with DF717</p>
         

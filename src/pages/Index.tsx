@@ -1,3 +1,4 @@
+
 import React from "react";
 import Logo from "@/components/landing/Logo";
 import HeroSection from "@/components/landing/HeroSection";
@@ -7,9 +8,6 @@ import Footer from "@/components/common/Footer";
 const Index: React.FC = () => {
   return (
     <main className="w-full min-h-screen relative overflow-hidden flex flex-col">
-      {/* SEO H1 Tag */}
-      <h1 className="sr-only">DF717: Automate Your Investment with AI</h1>
-      
       {/* SEO Content Block */}
       <div className="sr-only">
         DF717 is an AI Finance & AI investment platform engineered to automate portfolio management across global CFD markets.  
@@ -41,7 +39,7 @@ const Index: React.FC = () => {
       <div className="relative z-20 max-w-none mx-auto px-5 sm:px-10 md:px-[154px] flex flex-col min-h-screen flex-grow">
         <header className="pt-5 sm:pt-8 md:pt-14">
           <Link to="/">
-            <Logo />
+            <Logo as="h1" />
           </Link>
         </header>
 

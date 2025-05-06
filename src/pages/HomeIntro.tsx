@@ -36,12 +36,13 @@ const HomeIntro: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col font-din overflow-x-hidden">
-      {/* SEO H1 Tag */}
-      <h1 className="sr-only">DF717: AI for Global Economic Recovery</h1>
-
       {/* Header */}
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] z-10">
-        <BaseHeader scrollToTop={scrollToTop} navigationItems={navigationItems} />
+        <BaseHeader 
+          scrollToTop={scrollToTop} 
+          navigationItems={navigationItems} 
+          logoAs="h1" 
+        />
       </div>
 
       {/* First Section - Bible Verse with Earth Image */}

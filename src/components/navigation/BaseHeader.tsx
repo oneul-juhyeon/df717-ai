@@ -10,12 +10,14 @@ import { HeaderProps, NavigationItem } from "./types";
 interface BaseHeaderProps extends HeaderProps {
   navigationItems: NavigationItem[];
   className?: string;
+  logoAs?: "h1" | "h2" | "div"; // New prop to determine the logo wrapper element
 }
 
 const BaseHeader: React.FC<BaseHeaderProps> = ({ 
   scrollToTop, 
   navigationItems,
-  className = "flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6" 
+  className = "flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6",
+  logoAs = "div" // Default to div for most pages
 }) => {
   const isMobile = useIsMobile();
 
@@ -23,7 +25,7 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
     <header className={className}>
       <div className="flex-none">
         <Link to="/">
-          <Logo />
+          <Logo as={logoAs} />
         </Link>
       </div>
       
