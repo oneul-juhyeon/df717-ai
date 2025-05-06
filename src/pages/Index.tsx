@@ -8,14 +8,6 @@ import Footer from "@/components/common/Footer";
 const Index: React.FC = () => {
   return (
     <main className="w-full min-h-screen relative overflow-hidden flex flex-col">
-      {/* SEO Content Block */}
-      <div className="sr-only">
-        DF717 is an AI Finance & AI investment platform engineered to automate portfolio management across global CFD markets.  
-        DF717's quant-driven system executes trades in real time, ensuring consistent, data-backed performance.  
-        Designed for both new and experienced investors, DF717 combines advanced AI models with financial discipline  
-        to deliver a smarter, scalable, and fully automated trading experience.
-      </div>
-      
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video

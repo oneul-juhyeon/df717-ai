@@ -10,7 +10,7 @@ import { HeaderProps, NavigationItem } from "./types";
 interface BaseHeaderProps extends HeaderProps {
   navigationItems: NavigationItem[];
   className?: string;
-  logoAs?: "h1" | "h2" | "div"; // New prop to determine the logo wrapper element
+  logoAs?: "h1" | "h2" | "div"; // Prop to determine the logo wrapper element
 }
 
 const BaseHeader: React.FC<BaseHeaderProps> = ({ 
