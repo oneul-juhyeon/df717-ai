@@ -16,7 +16,8 @@ const Index: React.FC = () => {
           muted
           playsInline
           disablePictureInPicture
-          preload="auto"
+          preload="metadata"
+          poster="/lovable-uploads/matthew_hd.webp"
           className="w-full h-full object-cover"
           style={{ objectPosition: "center" }}
         >
