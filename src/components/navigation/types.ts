@@ -1,10 +1,17 @@
 
 import { ReactNode } from "react";
 
-export interface NavigationItem {
+export interface SubmenuItem {
+  name: string;
   path: string;
-  label: string;
-  children?: NavigationItem[];
+  id?: string;
+}
+
+export interface NavigationItem {
+  name: string;
+  path: string;
+  hasSubmenu?: boolean;
+  submenu?: SubmenuItem[];
 }
 
 export interface HeaderProps {
