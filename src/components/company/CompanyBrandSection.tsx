@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import CompanyValueCards from "./CompanyValueCards";
@@ -7,9 +8,9 @@ const CompanyBrandSection: React.FC = () => {
       <div className="relative p-0">
         <div className="relative z-10">
           {/* Philosophy Section */}
-          <h2 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
-            Philosophy
-          </h2>
+          <h1 className="text-2xl font-bold mb-6 flex items-center justify-center text-white">
+            DF717 Philosophy
+          </h1>
           
           <div className="scroll-animate opacity-0">
             <p className="text-lg text-gray-300 mb-4">At DF717, "DF" stands for Destiny Finance.

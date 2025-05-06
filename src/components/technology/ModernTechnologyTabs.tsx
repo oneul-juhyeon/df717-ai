@@ -8,15 +8,16 @@ type Tab = {
   id: string;
   title: string;
   component: React.ReactNode;
+  isH1?: boolean;
 };
 
 const ModernTechnologyTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("core");
 
-  // Define tab sections
+  // Define tab sections with heading level information
   const tabSections: Tab[] = [
     { id: "core", title: "CORE COMPETENCE", component: <CoreCompetence /> },
-    { id: "df717", title: "DF717", component: <Df717Component /> },
+    { id: "df717", title: "DF717", component: <Df717Component />, isH1: true },
     { id: "hannah", title: "HANNAH", component: <HannahComponent /> }
   ];
 
@@ -56,14 +57,22 @@ const ModernTechnologyTabs: React.FC = () => {
       {/* Content area */}
       <div className="mt-8">
         <div className="max-w-4xl mx-auto">
-          {tabSections.map((tab) => (
-            <div 
-              key={tab.id}
-              className={activeTab === tab.id ? "block" : "hidden"}
-            >
-              {tab.component}
-            </div>
-          ))}
+          {tabSections.map((tab) => {
+            // Only render the currently active tab
+            if (activeTab !== tab.id) return null;
+            
+            // For the active tab, if isH1 is true, wrap the title in h1, otherwise h2
+            return (
+              <div key={tab.id}>
+                {tab.isH1 ? (
+                  <h1 className="text-3xl font-bold mb-8 text-white">{tab.title}</h1>
+                ) : (
+                  <h2 className="text-2xl font-bold mb-6 text-white">{tab.title}</h2>
+                )}
+                {tab.component}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
