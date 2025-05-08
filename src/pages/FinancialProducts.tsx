@@ -1,4 +1,3 @@
-
 import React from "react";
 import BaseHeader from "@/components/navigation/BaseHeader";
 import ProductGrid from "@/components/financial-products/ProductGrid";
@@ -17,8 +16,7 @@ const FinancialProducts: React.FC = () => {
     >
       <div className="flex justify-center w-full">
         <div className="max-w-4xl text-center">
-          {/* SEO H1 Tag */}
-          <h1 className="sr-only">Financial Products Overview</h1>
+          {/* Removed sr-only h1 tag */}
           
           <motion.h1 
             className="text-5xl font-bold text-white mb-6"
@@ -42,7 +40,7 @@ const FinancialProducts: React.FC = () => {
             DF717 leverages AI technology to analyze real-time movements across global financial markets and apply optimized investment strategies tailored to current market conditions.
           </motion.p>
 
-          {/* SEO Content Block */}
+          {/* Keep SEO Content Block as sr-only but not as h1 */}
           <div className="sr-only">
             DF717 offers access to a wide range of CFD products including Forex, Shares, Indices, Commodities, Gold, Oil, and Crypto.  
             Through real-time AI-driven market analysis, each asset class is evaluated for opportunity, volatility, and risk conditions.  
