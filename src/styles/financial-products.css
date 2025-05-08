@@ -108,3 +108,17 @@ hr,
 [class*="separator"] {
   border-color: #ffffff !important;
 }
+
+/* DF717 pages styling - ensure consistent left alignment */
+.prose.prose-invert.max-w-none {
+  max-width: 42rem;
+  text-align: left;
+}
+
+/* Ensure proper spacing and alignment on DF717 pages */
+@media (min-width: 768px) {
+  .prose.prose-invert.max-w-none {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}

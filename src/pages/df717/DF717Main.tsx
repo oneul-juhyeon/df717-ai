@@ -1,8 +1,11 @@
+
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
+
 const DF717Main: React.FC = () => {
-  return <DF717Layout>
+  return (
+    <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="DF717 Essence" 
@@ -61,6 +64,8 @@ const DF717Main: React.FC = () => {
           </div>
         </div>
       </div>
-    </DF717Layout>;
+    </DF717Layout>
+  );
 };
+
 export default DF717Main;
