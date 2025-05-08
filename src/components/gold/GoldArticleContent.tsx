@@ -16,7 +16,7 @@ const GoldArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What is Gold trading and how to trade Gold?" />
+        <FinancialProductArticleHeader title="What is Gold trading and how to trade Gold?" isMainTitle={true} />
         
         <div className="prose max-w-none text-white
           prose-headings:font-bold 

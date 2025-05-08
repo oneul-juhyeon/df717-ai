@@ -15,7 +15,7 @@ const IndicesArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What are Indices and how to trade Indices?" />
+        <FinancialProductArticleHeader title="What are Indices and how to trade Indices?" isMainTitle={true} />
         
         <div className="prose max-w-none text-white
           prose-headings:font-bold 

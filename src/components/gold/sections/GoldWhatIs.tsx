@@ -4,7 +4,7 @@ import React from "react";
 const GoldWhatIs: React.FC = () => {
   return (
     <section className="mb-12">
-      <h1 className="text-4xl font-bold mb-6">What is gold?</h1>
+      <h2 className="text-4xl font-bold mb-6">What is gold?</h2>
       <p className="mb-4">
         Gold is a precious metal prized by humans throughout history due to its lustrous appearance and scarcity. 
         It has been used widely throughout history in jewellery and as money and has recently found applications in electronics, 

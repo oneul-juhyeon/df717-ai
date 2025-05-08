@@ -25,7 +25,7 @@ const ForexArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What is Forex trading and how to trade Forex?" />
+        <FinancialProductArticleHeader title="What is Forex trading and how to trade Forex?" isMainTitle={true} />
         
         <div className="prose max-w-none 
           prose-headings:font-bold 

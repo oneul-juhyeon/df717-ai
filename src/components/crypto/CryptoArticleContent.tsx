@@ -16,7 +16,7 @@ const CryptoArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What is Crypto trading and how to trade Cryptocurrencies?" />
+        <FinancialProductArticleHeader title="What is Crypto trading and how to trade Cryptocurrencies?" isMainTitle={true} />
         
         <div className="prose max-w-none 
           prose-headings:font-bold 

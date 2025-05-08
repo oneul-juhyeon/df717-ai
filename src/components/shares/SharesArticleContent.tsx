@@ -16,7 +16,7 @@ const SharesArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What are Shares and how to trade Shares?" />
+        <FinancialProductArticleHeader title="What are Shares and how to trade Shares?" isMainTitle={true} />
         
         <div className="prose max-w-none text-white
           prose-headings:font-bold 
