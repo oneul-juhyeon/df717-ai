@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -11,7 +10,7 @@ const Df717Component = () => {
     controls
   } = useScrollAnimation();
   return <div className="max-w-4xl mx-auto text-white">
-      <h2 className="text-4xl font-bold mb-9 text-center">DF717</h2>
+      <h1 className="text-4xl font-bold mb-9 text-center">DF717</h1>
       
       <motion.div className="space-y-16" initial={{
       opacity: 0
