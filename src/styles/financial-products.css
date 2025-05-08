@@ -4,6 +4,16 @@
   background-color: #000000;
 }
 
+.financial-product-layout * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.financial-product-layout *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
 .financial-product-sidebar {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
 }

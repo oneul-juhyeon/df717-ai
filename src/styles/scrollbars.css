@@ -13,12 +13,29 @@
 
 /* Hide scrollbars specifically for financial product pages */
 .scrollbar-hidden {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none !important; /* Chrome, Safari, Opera */
+  width: 0 !important;
+}
+
+/* Completely hide Radix UI scrollbars in financial product layout */
+.financial-product-layout [data-radix-scroll-area-viewport],
+.financial-product-layout [data-radix-scroll-area-scrollbar],
+.financial-product-layout [data-radix-scroll-area-thumb] {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.financial-product-layout [data-radix-scroll-area-viewport]::-webkit-scrollbar,
+.financial-product-layout [data-radix-scroll-area-scrollbar],
+.financial-product-layout [data-radix-scroll-area-thumb] {
+  display: none !important;
+  width: 0 !important;
+  opacity: 0 !important;
 }
 
 .scrollbar-hidden .scrollbar {
