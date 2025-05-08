@@ -65,7 +65,7 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
             
             {/* Main content area */}
             <div className="w-full lg:ml-8 text-white">
-              <ScrollArea className="h-full">
+              <ScrollArea className="h-full scrollbar-hidden">
                 {children}
                 {/* Only show the call to action on subpages */}
                 {!isMainPage && <AxiSpaceXCallToAction />}

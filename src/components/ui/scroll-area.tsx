@@ -42,8 +42,8 @@ const ScrollBar = React.forwardRef<
     <ScrollAreaPrimitive.ScrollAreaThumb 
       className={cn(
         "relative flex-1 rounded-full",
-        // Apply white scrollbar color for mobile menu
-        "bg-white/50"
+        // Apply white scrollbar color with reduced opacity
+        "bg-white/20"
       )} 
     />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
