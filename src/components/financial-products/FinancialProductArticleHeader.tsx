@@ -60,12 +60,12 @@ const FinancialProductArticleHeader: React.FC<FinancialProductArticleHeaderProps
   return (
     <>
       <style>{mobileNavStyles}</style>
-      <div className="mb-14 text-left animate-fade-in-up">
-        <HeadingTag className="text-4xl md:text-5xl font-bold text-white mb-4 text-left tracking-tight">{title}</HeadingTag>
+      <div className="mb-14 text-center md:text-left animate-fade-in-up">
+        <HeadingTag className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">{title}</HeadingTag>
         {subtitle && (
-          <p className="text-xl text-gray-300 text-left max-w-3xl leading-relaxed">{subtitle}</p>
+          <p className="text-xl text-gray-300 max-w-3xl leading-relaxed mx-auto md:mx-0">{subtitle}</p>
         )}
-        <div className="h-1 w-20 bg-white mt-6"></div>
+        <div className="h-1 w-20 bg-white mt-6 mx-auto md:mx-0"></div>
       </div>
     </>
   );

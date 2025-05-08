@@ -58,13 +58,13 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         {renderHeader(scrollToTop)}
         
-        <div className="mt-8 mb-12">
-          <div className="flex flex-col lg:flex-row gap-8">
+        <div className="mt-8 mb-12 flex justify-center">
+          <div className={`flex flex-col lg:flex-row gap-8 ${isMainPage ? 'w-full' : 'max-w-6xl mx-auto'}`}>
             {/* Left sidebar with labels - only show on subpages */}
             {!isMainPage && <FinancialProductsSidebar />}
             
             {/* Main content area */}
-            <div className="w-full lg:ml-8 text-white">
+            <div className={`w-full ${!isMainPage ? 'lg:ml-8' : ''} text-white`}>
               <ScrollArea className="h-full scrollbar-hidden">
                 <div className="scrollbar-hidden">
                   {children}
