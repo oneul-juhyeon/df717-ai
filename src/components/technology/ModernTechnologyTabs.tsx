@@ -14,21 +14,21 @@ type Tab = {
 const ModernTechnologyTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("core");
 
-  // Define tab sections with heading level information
+  // 각 섹션에 대한 탭 정의 및 제목 레벨 정보 확인
   const tabSections: Tab[] = [
     { id: "core", title: "CORE COMPETENCE", component: <CoreCompetence /> },
     { id: "df717", title: "DF717", component: <Df717Component />, isH1: true },
     { id: "hannah", title: "HANNAH", component: <HannahComponent /> }
   ];
 
-  // Handle tab clicks with direct content switching
+  // Tab 클릭 핸들러 - 직접 콘텐츠 전환
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
   };
 
   return (
     <div className="w-full">
-      {/* Sticky tabs navigation with SpaceX style - removed divider lines */}
+      {/* 고정된 탭 네비게이션 - 구분선 제거 */}
       <div className="sticky top-0 z-20 w-full mb-12 bg-black/50 backdrop-blur-sm py-5">
         <div className="flex justify-center space-x-2 md:space-x-8 max-w-4xl mx-auto">
           {tabSections.map((tab) => (
@@ -43,7 +43,6 @@ const ModernTechnologyTabs: React.FC = () => {
             >
               {tab.title}
               
-              {/* White underline and dot for active tab - kept for visual indication */}
               {activeTab === tab.id && (
                 <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-white">
                   <div className="absolute -top-[2px] left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full"></div>
@@ -54,21 +53,16 @@ const ModernTechnologyTabs: React.FC = () => {
         </div>
       </div>
 
-      {/* Content area */}
+      {/* 콘텐츠 영역 - 제목 태그를 렌더링하지 않도록 수정 */}
       <div className="mt-8">
         <div className="max-w-4xl mx-auto">
           {tabSections.map((tab) => {
-            // Only render the currently active tab
+            // 현재 활성화된 탭만 렌더링
             if (activeTab !== tab.id) return null;
             
-            // For the active tab, if isH1 is true, wrap the title in h1, otherwise h2
+            // 활성 탭의 경우, 탭 자체의 제목은 표시하지 않고 컴포넌트만 표시
             return (
               <div key={tab.id}>
-                {tab.isH1 ? (
-                  <h1 className="text-3xl font-bold mb-8 text-white">{tab.title}</h1>
-                ) : (
-                  <h2 className="text-2xl font-bold mb-6 text-white">{tab.title}</h2>
-                )}
                 {tab.component}
               </div>
             );
