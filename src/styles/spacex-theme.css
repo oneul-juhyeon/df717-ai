@@ -1,0 +1,18 @@
+
+.spacex-vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+.spacex-counter {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.spacex-earth-bg {
+  background-image: url('https://sxcontent9668.azureedge.us/cms-assets/assets/MISSION_EARTH_high_quality_3cf2cabe8e.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

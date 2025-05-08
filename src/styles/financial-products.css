@@ -1,0 +1,97 @@
+
+/* Financial product pages styling */
+.financial-product-layout {
+  background-color: #000000;
+}
+
+.financial-product-sidebar {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.financial-product-label {
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.financial-product-label:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.financial-product-content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.financial-product-heading {
+  font-family: 'DIN Condensed', 'Franklin Gothic Medium', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-left: 3px solid #ffffff;
+  padding-left: 12px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.financial-product-animate {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Content styling overrides for financial products */
+blockquote {
+  border-left: 4px solid #ffffff !important;
+  padding-left: 1rem;
+  font-style: italic;
+  margin-left: 0;
+}
+
+hr {
+  border-color: #ffffff !important;
+  opacity: 0.7;
+}
+
+table {
+  border-color: #ffffff !important;
+}
+
+th, td {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+*[class*="border-red"],
+*[class*="border-rose"],
+*[class*="border-pink"],
+*[class*="border-crimson"] {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+*[class*="bg-red"],
+*[class*="bg-rose"],
+*[class*="bg-pink"],
+*[class*="bg-crimson"] {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+blockquote,
+.blockquote,
+[class*="quote"] {
+  border-left-color: #ffffff !important;
+}
+
+.divider,
+hr,
+[class*="divider"],
+[class*="separator"] {
+  border-color: #ffffff !important;
+}
