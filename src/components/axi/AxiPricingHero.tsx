@@ -33,6 +33,7 @@ const AxiPricingHero: React.FC = () => {
         <FinancialProductArticleHeader 
           title="Best Pricing and Trade Execution"
           subtitle="Lower latency, faster execution and better pricing. Trade your edge."
+          isMainTitle={true}
         />
       </div>
       

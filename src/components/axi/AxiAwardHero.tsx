@@ -33,6 +33,7 @@ const AxiAwardHero: React.FC = () => {
         <FinancialProductArticleHeader 
           title="Award-Winning Service"
           subtitle="Trade with confidence. With our award-winning service."
+          isMainTitle={true}
         />
       </div>
     </div>

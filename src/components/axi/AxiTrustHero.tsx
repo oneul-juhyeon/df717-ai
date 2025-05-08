@@ -33,6 +33,7 @@ const AxiTrustHero: React.FC = () => {
         <FinancialProductArticleHeader 
           title="Trade With Trust"
           subtitle="Valued and respected. Trade your edge with a broker you can trust."
+          isMainTitle={true}
         />
       </div>
     </div>

@@ -33,6 +33,7 @@ const AxiEdgeHero: React.FC = () => {
         <FinancialProductArticleHeader 
           title="Our Edge"
           subtitle="We give you all the tools and support to unlock your advantage."
+          isMainTitle={true}
         />
       </div>
     </div>

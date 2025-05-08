@@ -15,7 +15,10 @@ const AxiCFDArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What is CFD trading and how to trade CFDs?" />
+        <FinancialProductArticleHeader 
+          title="What is CFD trading and how to trade CFDs?" 
+          isMainTitle={true}
+        />
         
         <div className="prose max-w-none text-white
           prose-headings:font-bold 
