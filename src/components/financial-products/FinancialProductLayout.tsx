@@ -5,6 +5,7 @@ import FinancialProductsSidebar from "./FinancialProductsSidebar";
 import Footer from "../common/Footer";
 import AxiSpaceXCallToAction from "../axi/AxiSpaceXCallToAction";
 import { useLocation } from "react-router-dom";
+import Breadcrumbs from "../navigation/Breadcrumbs";
 
 interface FinancialProductLayoutProps {
   children: React.ReactNode;
@@ -67,6 +68,8 @@ const FinancialProductLayout: React.FC<FinancialProductLayoutProps> = ({
             <div className={`w-full ${!isMainPage ? 'lg:ml-8' : ''} text-white`}>
               <ScrollArea className="h-full scrollbar-hidden">
                 <div className="scrollbar-hidden">
+                  {/* Add breadcrumbs for subpages only */}
+                  {!isMainPage && <Breadcrumbs />}
                   {children}
                   {/* Only show the call to action on subpages */}
                   {!isMainPage && <AxiSpaceXCallToAction />}

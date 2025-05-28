@@ -8,6 +8,7 @@ import FinalSection from "@/components/home/FinalSection";
 import Footer from "@/components/common/Footer";
 import BaseHeader from "@/components/navigation/BaseHeader";
 import { getNavigationItems } from "@/components/navigation/navigationItems";
+import SEOHead from "@/components/seo/SEOHead";
 
 const HomeIntro: React.FC = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -35,31 +36,39 @@ const HomeIntro: React.FC = () => {
   }, []);
 
   return (
-    <main className="w-full min-h-screen bg-black flex flex-col font-din overflow-x-hidden">
-      {/* Header */}
-      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] z-10">
-        <BaseHeader 
-          scrollToTop={scrollToTop} 
-          navigationItems={navigationItems} 
-          logoAs="h1" 
-        />
-      </div>
+    <>
+      <SEOHead
+        title="DF717 Home - AI-Powered Financial Innovation"
+        description="Discover DF717's revolutionary approach to financial trading with AI-powered systems, automated strategies, and cutting-edge technology for modern investors and traders."
+        canonical="https://df717.ai/home-intro"
+        type="website"
+      />
+      <main className="w-full min-h-screen bg-black flex flex-col font-din overflow-x-hidden">
+        {/* Header */}
+        <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] z-10">
+          <BaseHeader 
+            scrollToTop={scrollToTop} 
+            navigationItems={navigationItems} 
+            logoAs="h1" 
+          />
+        </div>
 
-      {/* First Section - Bible Verse with Earth Image */}
-      <BibleVerseSection />
+        {/* First Section - Bible Verse with Earth Image */}
+        <BibleVerseSection />
 
-      {/* New Text Quote Section */}
-      <TextQuoteSection />
+        {/* New Text Quote Section */}
+        <TextQuoteSection />
 
-      {/* Counter Section */}
-      <RevCounterSection />
+        {/* Counter Section */}
+        <RevCounterSection />
 
-      {/* Final Section */}
-      <FinalSection />
-      
-      {/* Footer */}
-      <Footer />
-    </main>
+        {/* Final Section */}
+        <FinalSection />
+        
+        {/* Footer */}
+        <Footer />
+      </main>
+    </>
   );
 };
 
