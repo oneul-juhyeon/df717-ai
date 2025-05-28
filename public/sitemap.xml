@@ -22,6 +22,41 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://df717.ai/financial-products/forex</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://df717.ai/financial-products/shares</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://df717.ai/financial-products/indices</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://df717.ai/financial-products/commodities</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://df717.ai/financial-products/gold</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://df717.ai/financial-products/oil</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://df717.ai/financial-products/crypto</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://df717.ai/df717</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

@@ -1,9 +1,11 @@
 
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -13,5 +15,16 @@ Allow: /
 
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Important pages for financial products
+Allow: /financial-products/
+Allow: /financial-products/forex
+Allow: /financial-products/shares
+Allow: /financial-products/indices
+Allow: /financial-products/commodities
+Allow: /financial-products/gold
+Allow: /financial-products/oil
+Allow: /financial-products/crypto
 
 Sitemap: https://df717.ai/sitemap.xml

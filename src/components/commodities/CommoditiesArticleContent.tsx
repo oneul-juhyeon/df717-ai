@@ -15,7 +15,11 @@ const CommoditiesArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What are Commodities and how to trade Commodities?" />
+        <FinancialProductArticleHeader 
+          title="What are Commodities and how to trade Commodities?" 
+          subtitle="Master commodity trading with comprehensive guides on precious metals, energy, agriculture, and raw materials market analysis."
+          isMainTitle={true}
+        />
         
         <div className="prose max-w-none 
           prose-headings:font-bold 

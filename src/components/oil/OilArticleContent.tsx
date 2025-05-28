@@ -16,7 +16,11 @@ const OilArticleContent: React.FC = () => {
   return (
     <article className="mx-auto">
       <div className="max-w-3xl mx-auto text-left">
-        <FinancialProductArticleHeader title="What is Oil trading and how to trade Oil?" />
+        <FinancialProductArticleHeader 
+          title="What is Oil trading and how to trade Oil?" 
+          subtitle="Discover crude oil trading strategies, market analysis, and risk management techniques for successful energy commodity trading."
+          isMainTitle={true}
+        />
         
         <div className="prose max-w-none text-white
           prose-headings:font-bold 
