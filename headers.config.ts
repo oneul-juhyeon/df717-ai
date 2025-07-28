@@ -29,7 +29,7 @@ const headersConfig: HeadersConfig = {
         },
         {
           key: "X-Frame-Options",
-          value: "DENY"
+          value: "SAMEORIGIN"
         },
         {
           key: "X-XSS-Protection",
