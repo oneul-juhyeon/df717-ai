@@ -1,9 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { Message } from "./types";
+import { useChatStore } from "./chatStore";
 
 interface MessageBubbleProps {
   message: Message;
 }
+
+const FormSection: React.FC<{ message: Message }> = ({ message }) => {
+  const { updateFormField } = useChatStore();
+
+  if (!message.formFields) return null;
+
+  return (
+    <div className="space-y-4">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+        <div className="flex items-start space-x-2">
+          <span className="text-blue-500">📝</span>
+          <div className="text-blue-800 text-sm font-medium">
+            {message.content}
+          </div>
+        </div>
+      </div>
+      
+      <div className="space-y-3">
+        {message.formFields.map((field) => (
+          <div key={field.id}>
+            <label className="block text-xs font-medium text-gray-700 mb-1">
+              {field.label} {field.required && <span className="text-red-500">*</span>}
+            </label>
+            <input
+              type={field.type}
+              placeholder={field.placeholder}
+              value={field.value}
+              onChange={(e) => updateFormField(message.id, field.id, e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00B7FF] focus:border-transparent"
+              required={field.required}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -90,6 +128,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   </div>
                 </div>
               </div>
+            )}
+
+            {message.type === "form" && (
+              <FormSection message={message} />
             )}
           </div>
           

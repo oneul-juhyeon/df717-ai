@@ -6,6 +6,16 @@ export interface Message {
   timestamp: Date;
   animate?: boolean;
   buttons?: MessageButton[];
+  formFields?: FormField[];
+}
+
+export interface FormField {
+  id: string;
+  label: string;
+  type: "text" | "email" | "tel";
+  placeholder: string;
+  required: boolean;
+  value: string;
 }
 
 export interface MessageButton {

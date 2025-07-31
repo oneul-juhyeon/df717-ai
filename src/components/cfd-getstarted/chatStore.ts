@@ -10,6 +10,10 @@ interface ChatStore extends ChatState {
   resetChat: () => void;
   initializeChat: () => void;
   startStep1: () => void;
+  startStep2: () => void;
+  startStep3: () => void;
+  updateFormField: (messageId: string, fieldId: string, value: string) => void;
+  submitUserForm: (messageId: string) => void;
 }
 
 const initialUserData: UserData = {
@@ -124,8 +128,9 @@ export const useChatStore = create<ChatStore>()(
                   timestamp: new Date(),
                   animate: false
                 });
-                get().setCurrentStep(2);
-                // Continue to step 2
+                setTimeout(() => {
+                  get().startStep2();
+                }, 500);
               }
             }
           ]
@@ -135,6 +140,158 @@ export const useChatStore = create<ChatStore>()(
           messages: [...state.messages, step1Message],
           currentStep: 1
         }));
+      },
+
+      startStep2: () => {
+        const step2Messages: Message[] = [
+          {
+            id: 'step2-1',
+            content: '좋습니다! 이제 2단계로 넘어가겠습니다.',
+            sender: 'ai',
+            type: 'text',
+            timestamp: new Date(),
+            animate: true,
+          },
+          {
+            id: 'step2-2',
+            content: 'ICMarkets에서 데모계좌 회원가입을 완료하신 후, 받으신 계정 정보를 입력해주세요.',
+            sender: 'ai',
+            type: 'text',
+            timestamp: new Date(),
+            animate: true,
+          }
+        ];
+
+        step2Messages.forEach((message, index) => {
+          setTimeout(() => {
+            set((state) => ({
+              messages: [...state.messages, message]
+            }));
+          }, index * 1500);
+        });
+
+        setTimeout(() => {
+          get().startStep3();
+        }, step2Messages.length * 1500 + 1000);
+
+        set({ currentStep: 2 });
+      },
+
+      startStep3: () => {
+        const step3Message: Message = {
+          id: 'step3',
+          content: '3단계: 회원정보 입력',
+          sender: 'ai',
+          type: 'form',
+          timestamp: new Date(),
+          animate: true,
+          formFields: [
+            {
+              id: 'firstName',
+              label: '이름',
+              type: 'text',
+              placeholder: '이름을 입력하세요',
+              required: true,
+              value: ''
+            },
+            {
+              id: 'lastName',
+              label: '성',
+              type: 'text',
+              placeholder: '성을 입력하세요',
+              required: true,
+              value: ''
+            },
+            {
+              id: 'email',
+              label: '이메일',
+              type: 'email',
+              placeholder: 'example@email.com',
+              required: true,
+              value: ''
+            },
+            {
+              id: 'phone',
+              label: '전화번호',
+              type: 'tel',
+              placeholder: '010-1234-5678',
+              required: true,
+              value: ''
+            }
+          ],
+          buttons: [
+            {
+              label: '입력 완료',
+              type: 'primary',
+              action: () => {
+                get().submitUserForm('step3');
+              }
+            }
+          ]
+        };
+
+        set((state) => ({
+          messages: [...state.messages, step3Message],
+          currentStep: 3
+        }));
+      },
+
+      updateFormField: (messageId: string, fieldId: string, value: string) => {
+        set((state) => ({
+          messages: state.messages.map(message => 
+            message.id === messageId && message.formFields
+              ? {
+                  ...message,
+                  formFields: message.formFields.map(field =>
+                    field.id === fieldId ? { ...field, value } : field
+                  )
+                }
+              : message
+          )
+        }));
+      },
+
+      submitUserForm: (messageId: string) => {
+        const { messages, userData } = get();
+        const formMessage = messages.find(m => m.id === messageId);
+        
+        if (formMessage && formMessage.formFields) {
+          const formData: any = {};
+          formMessage.formFields.forEach(field => {
+            formData[field.id] = field.value;
+          });
+
+          // Validation
+          const requiredFields = formMessage.formFields.filter(f => f.required);
+          const missingFields = requiredFields.filter(f => !f.value.trim());
+          
+          if (missingFields.length > 0) {
+            get().addMessage({
+              id: Date.now().toString(),
+              content: '모든 필수 항목을 입력해주세요.',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: true
+            });
+            return;
+          }
+
+          // Update user data
+          get().updateUserData(formData);
+          
+          // Success message
+          get().addMessage({
+            id: Date.now().toString(),
+            content: '정보가 성공적으로 저장되었습니다! 다음 단계로 진행하겠습니다.',
+            sender: 'ai',
+            type: 'success_box',
+            timestamp: new Date(),
+            animate: true
+          });
+
+          set({ currentStep: 4 });
+        }
       },
     }),
     {
