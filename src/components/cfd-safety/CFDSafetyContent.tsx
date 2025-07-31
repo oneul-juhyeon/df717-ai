@@ -13,7 +13,7 @@ const CFDSafetyContent: React.FC = () => {
       
       <div className="mt-8">
         <img 
-          src="/lovable-uploads/why-cfd-safety-matters-1.png" 
+          src="/lovable-uploads/why cfd safety matters 1.png" 
           alt="Professional trader analyzing multiple trading screens showing risk management dashboards and warning signals" 
           className="w-full h-auto rounded-lg shadow-md mb-8"
         />
@@ -81,7 +81,7 @@ const CFDSafetyContent: React.FC = () => {
         
         <div className="mt-8 mb-8">
           <img 
-            src="/lovable-uploads/why-cfd-safety-matters-2.png" 
+            src="/lovable-uploads/why cfd safety matters 2.png" 
             alt="Split image showing: left side - a stressed trader looking at major losses on screen, right side - newspaper headlines about broker failures and client fund losses" 
             className="w-full h-auto rounded-lg shadow-md"
           />
@@ -125,7 +125,7 @@ const CFDSafetyContent: React.FC = () => {
 
         <div className="mt-8 mb-8">
           <img 
-            src="/lovable-uploads/why-cfd-safety-matters-3.png" 
+            src="/lovable-uploads/why cfd safety matters 3.png" 
             alt="Modern financial compliance office with official regulatory documents, certificates on wall, and professional financial advisors reviewing compliance procedures" 
             className="w-full h-auto rounded-lg shadow-md"
           />
@@ -187,7 +187,7 @@ const CFDSafetyContent: React.FC = () => {
 
         <div className="mt-8 mb-8">
           <img 
-            src="/lovable-uploads/why-cfd-safety-matters-4.png" 
+            src="/lovable-uploads/why cfd safety matters 4.png" 
             alt="Professional financial team in boardroom reviewing charts and documents on large screens, conducting thorough broker evaluation meeting" 
             className="w-full h-auto rounded-lg shadow-md"
           />
@@ -256,7 +256,7 @@ const CFDSafetyContent: React.FC = () => {
 
         <div className="mt-8 mb-8">
           <img 
-            src="/lovable-uploads/why-cfd-safety-matters-5.png" 
+            src="/lovable-uploads/why cfd safety matters 5.png" 
             alt="Professional handshake between business partners in modern financial office, symbolizing trusted partnerships and successful collaboration" 
             className="w-full h-auto rounded-lg shadow-md"
           />
