@@ -1,0 +1,164 @@
+# Professional Trading: Built by Traders, for Traders
+
+*Experience institutional-grade trading with ICMarkets - where professional execution meets uncompromising safety*
+
+![icmarkets hero image]
+*Professional trading floor with multiple screens showing real-time market data and advanced trading interfaces*
+
+## Why ICMarkets Leads Professional Trading
+
+Since 2007, ICMarkets has revolutionized online forex trading by **bridging the gap between retail and institutional traders**. We provide access to pricing and liquidity previously only available to investment banks and high net worth individuals.
+
+### Our Mission: Democratize Institutional Trading
+
+ICMarkets was founded by financial services professionals with one clear vision: create the best and most transparent trading experience for both retail and institutional clients, allowing traders to focus on what matters most - their trading.
+
+**Built by traders, for traders** - every decision we make is viewed through one lens: "How does this benefit our clients?"
+
+## ## Superior Trading Conditions
+
+### Raw Spread Pricing: True Institutional Access
+
+Experience **0.0 pip spreads** with our Raw Spread pricing model - no requotes, no price manipulation, no restrictions. Just pure, institutional-grade pricing streamed from over 25 different sources.
+
+![trading conditions comparison chart]
+*Comparison chart showing ICMarkets spreads vs industry average*
+
+#### Live Spreads Performance
+| Currency Pair | ICMarkets Raw | Industry Average |
+|---------------|---------------|------------------|
+| **EUR/USD** | 0.02 pips | 0.8 pips |
+| **GBP/USD** | 0.23 pips | 1.2 pips |
+| **USD/JPY** | 0.14 pips | 0.9 pips |
+| **AUD/USD** | 0.03 pips | 0.7 pips |
+
+### Lightning-Fast Execution
+
+**Average execution: Under 40 milliseconds**
+
+Our enterprise-grade infrastructure delivers some of the fastest execution speeds in the industry:
+
+- **Equinix NY4 & LD5 Data Centers**: Premium financial infrastructure
+- **Fiber Optic Connectivity**: Direct connections to liquidity providers  
+- **25+ Pricing Providers**: Ensuring best possible pricing 24/5
+- **99.99% Uptime**: Enterprise reliability you can count on
+
+![execution speed visualization]
+*Infographic showing sub-40ms execution speeds and global server infrastructure*
+
+## ## Technology That Gives You The Edge
+
+### Professional Platforms for Every Trading Style
+
+#### MetaTrader 4 & 5: Enhanced for Professionals
+- **Raw Spread Access**: Direct institutional pricing
+- **No Trading Restrictions**: Scalping, hedging, EA trading fully supported
+- **Advanced Tools**: Depth of Market, spread monitoring, custom indicators
+- **Ultra-Low Latency**: Less than 1ms to major VPS providers
+
+#### cTrader: Built for Transparency  
+- **Level II Pricing**: Full market depth visibility
+- **Advanced Charting**: Professional analysis capabilities
+- **Algorithmic Trading**: Full cBot and automated trading support
+- **Transparent Execution**: Complete order book access
+
+#### TradingView Integration
+- **World-Class Charting**: 50+ technical indicators
+- **Social Trading Features**: Community insights and strategies
+- **Real-Time Data**: Professional-grade market information
+- **Seamless Execution**: Direct trading from charts
+
+![platform screenshots montage]
+*Screenshots showing MT4, MT5, cTrader, and TradingView platforms*
+
+### Infrastructure Built for Performance
+
+**Enterprise-Grade Technology Stack:**
+- **Co-located Servers**: Located in major financial centers
+- **Redundant Systems**: Multiple failsafe mechanisms
+- **Advanced Risk Management**: Real-time position monitoring
+- **Cybersecurity Excellence**: Bank-grade data protection
+
+## ## Uncompromising Safety & Regulation
+
+### Multi-Jurisdictional Regulatory Oversight
+
+ICMarkets operates under the strictest regulatory frameworks globally:
+
+![regulatory badges display]
+*Official regulatory logos and certification badges*
+
+#### ASIC (Australia) - License 335692
+- **Tier-1 Regulation**: World's most stringent framework
+- **Segregated Client Funds**: Complete protection at major banks
+- **Negative Balance Protection**: Never lose more than you invest
+- **Regular Audits**: Independent verification of compliance
+
+#### CySEC (Cyprus) - License 362/18
+- **EU MiFID II Compliance**: European regulatory standards
+- **Capital Adequacy**: Strict financial requirements
+- **Investor Protection**: EU-wide compensation schemes
+
+#### Additional Oversight
+- **FSA Seychelles**: Securities Dealer License SD018
+- **SCB Bahamas**: Capital markets regulation
+
+### Client Fund Protection Excellence
+
+**Your Money, Completely Protected:**
+- **Segregated Accounts**: Funds held separately at tier-1 banks
+- **No Operational Use**: Client money never used for business expenses
+- **Insurance Coverage**: Professional indemnity protection
+- **Transparent Auditing**: Regular third-party verification
+
+![fund protection diagram]
+*Infographic showing client fund segregation and protection measures*
+
+## ## Why 500,000+ Daily Trades Choose ICMarkets
+
+### Proven Track Record
+- **15+ Years Operation**: Stability through multiple market cycles
+- **500,000+ Trades Daily**: Processing institutional volumes
+- **Zero Restrictions**: Full support for all trading strategies
+- **Award-Winning Execution**: Industry recognition for performance
+
+### Professional-Grade Features
+- **Institutional Liquidity**: 25+ tier-1 pricing providers
+- **Scalable Infrastructure**: Handle any volume requirement
+- **Advanced Order Types**: Professional trade management
+- **Real-Time Analytics**: Comprehensive performance tracking
+
+![professional statistics dashboard]
+*Dashboard showing daily trading volumes, execution statistics, and performance metrics*
+
+## ## Account Types for Every Professional
+
+### Raw Spread Account (Most Popular)
+- **0.0 Pip Spreads**: True institutional pricing
+- **Low Commission**: From $3.50 per lot round turn
+- **All Platforms**: MT4, MT5, cTrader, TradingView
+- **No Restrictions**: Complete trading freedom
+
+### Standard Account  
+- **No Commission**: Zero additional fees
+- **Competitive Spreads**: From 0.8 pips
+- **Full Platform Access**: All trading tools included
+- **Beginner Friendly**: Ideal for new traders
+
+**Minimum Deposit: $200 across all account types**
+
+## Ready to Trade Like a Professional?
+
+ICMarkets provides the institutional-grade infrastructure, regulatory protection, and execution quality that professional traders demand. With over 15 years of proven performance and 500,000+ daily trades, we've built our reputation on delivering what matters most: **results**.
+
+Whether you're a scalper requiring ultra-fast execution, an algorithmic trader needing reliable infrastructure, or a professional seeking institutional conditions, ICMarkets provides the edge you need to succeed.
+
+**Experience the difference that true professional trading makes.**
+
+![professional trader success image]
+*Confident professional trader in modern trading environment*
+
+---
+
+**Ready to Get Started?**
+➡️ **[Open ICMarkets Account →](https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293)** - Start trading with institutional-grade conditions
