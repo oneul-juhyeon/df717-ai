@@ -6,6 +6,7 @@ const CFDProductsSidebar: React.FC = () => {
   const cfdPages = [
     { name: "CFD Safety", path: "/cfd-safety" },
     { name: "CFD Trading", path: "/cfd-trading" },
+    { name: "Get Started", path: "/cfd-getstarted" },
     { name: "Professional Trading", path: "/professional-trading" },
     { name: "Award-Winning Service", path: "/award-winning-service" },
   ];
