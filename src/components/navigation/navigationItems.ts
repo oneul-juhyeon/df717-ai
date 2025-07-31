@@ -71,9 +71,11 @@ export function isMenuActive(item: NavigationItem, currentPath: string): boolean
       return true;
     }
 
-    // For AXI CFD, check if the current path is any of the related paths
-    if (item.name === "AXI CFD" && 
-        (currentPath.startsWith("/axi-") || currentPath === "/axi-cfd")) {
+    // For Brokers, check if the current path is any of the related paths
+    if (item.name === "Brokers" && 
+        (currentPath.startsWith("/cfd-safety") || 
+         currentPath.startsWith("/professional-trading") ||
+         currentPath.startsWith("/award-winning-service"))) {
       return true;
     }
     

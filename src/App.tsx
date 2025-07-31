@@ -12,11 +12,9 @@ import Company from "./pages/Company";
 import Technology from "./pages/Technology";
 import NotFound from "./pages/NotFound";
 import Robot from "./pages/Robot";
-import AxiCFD from "./pages/AxiCFD";
-import AxiEdge from "./pages/AxiEdge";
-import AxiTrust from "./pages/AxiTrust";
-import AxiPricing from "./pages/AxiPricing";
-import AxiAward from "./pages/AxiAward";
+import CFDSafety from "./pages/CFDSafety";
+import ProfessionalTrading from "./pages/ProfessionalTrading";
+import AwardWinningService from "./pages/AwardWinningService";
 import Contact from "./pages/Contact";
 import FinancialProducts from "./pages/FinancialProducts";
 import Forex from "./pages/financial-products/Forex";
@@ -68,11 +66,9 @@ function App() {
               <Route path="/df717/ai-strategy" element={<Navigate to="/df717/engine" replace />} />
               <Route path="/df717/stability" element={<Navigate to="/df717/reliability" replace />} />
               <Route path="/robot" element={<Navigate to="/df717" replace />} />
-              <Route path="/axi-cfd" element={<AxiCFD />} />
-              <Route path="/axi-edge" element={<AxiEdge />} />
-              <Route path="/axi-trust" element={<AxiTrust />} />
-              <Route path="/axi-pricing" element={<AxiPricing />} />
-              <Route path="/axi-award" element={<AxiAward />} />
+              <Route path="/cfd-safety" element={<CFDSafety />} />
+              <Route path="/professional-trading" element={<ProfessionalTrading />} />
+              <Route path="/award-winning-service" element={<AwardWinningService />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
