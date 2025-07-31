@@ -1,11 +1,9 @@
 import { NavigationItem, SubmenuItem } from "./types";
 
-export const axiCfdSubmenu: SubmenuItem[] = [
-  { name: "CFD", id: "cfd-section", path: "/axi-cfd" },
-  { name: "Our Edge", id: "edge-section", path: "/axi-edge" },
-  { name: "Trade With Trust", id: "trusted-partner-section", path: "/axi-trust" },
-  { name: "Best Pricing & Execution", id: "features-section", path: "/axi-pricing" },
-  { name: "Award-Winning Service", id: "award-winning-section", path: "/axi-award" },
+export const brokerSubmenu: SubmenuItem[] = [
+  { name: "CFD Safety", path: "/cfd-safety" },
+  { name: "Professional Trading", path: "/professional-trading" },
+  { name: "Award-Winning Service", path: "/award-winning-service" },
 ];
 
 export const financialProductsSubmenu: SubmenuItem[] = [
@@ -44,10 +42,10 @@ export const getNavigationItems = (): NavigationItem[] => [
     submenu: df717Submenu,
   },
   { 
-    name: "AXI CFD", 
-    path: "/axi-cfd",
+    name: "Brokers", 
+    path: "/cfd-safety",
     hasSubmenu: true,
-    submenu: axiCfdSubmenu,
+    submenu: brokerSubmenu,
   },
   { name: "Contact", path: "/contact", hasSubmenu: false },
 ];
