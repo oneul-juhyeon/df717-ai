@@ -2,6 +2,7 @@ import { NavigationItem, SubmenuItem } from "./types";
 
 export const brokerSubmenu: SubmenuItem[] = [
   { name: "CFD Safety", path: "/cfd-safety" },
+  { name: "CFD Trading", path: "/cfd-trading" },
   { name: "Professional Trading", path: "/professional-trading" },
   { name: "Award-Winning Service", path: "/award-winning-service" },
 ];
@@ -42,7 +43,7 @@ export const getNavigationItems = (): NavigationItem[] => [
     submenu: df717Submenu,
   },
   { 
-    name: "Brokers", 
+    name: "CFD", 
     path: "/cfd-safety",
     hasSubmenu: true,
     submenu: brokerSubmenu,
@@ -71,9 +72,10 @@ export function isMenuActive(item: NavigationItem, currentPath: string): boolean
       return true;
     }
 
-    // For Brokers, check if the current path is any of the related paths
-    if (item.name === "Brokers" && 
+    // For CFD, check if the current path is any of the related paths
+    if (item.name === "CFD" && 
         (currentPath.startsWith("/cfd-safety") || 
+         currentPath.startsWith("/cfd-trading") ||
          currentPath.startsWith("/professional-trading") ||
          currentPath.startsWith("/award-winning-service"))) {
       return true;

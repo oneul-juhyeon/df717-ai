@@ -13,6 +13,7 @@ import Technology from "./pages/Technology";
 import NotFound from "./pages/NotFound";
 import Robot from "./pages/Robot";
 import CFDSafety from "./pages/CFDSafety";
+import CFDTrading from "./pages/CFDTrading";
 import ProfessionalTrading from "./pages/ProfessionalTrading";
 import AwardWinningService from "./pages/AwardWinningService";
 import Contact from "./pages/Contact";
@@ -67,6 +68,7 @@ function App() {
               <Route path="/df717/stability" element={<Navigate to="/df717/reliability" replace />} />
               <Route path="/robot" element={<Navigate to="/df717" replace />} />
               <Route path="/cfd-safety" element={<CFDSafety />} />
+              <Route path="/cfd-trading" element={<CFDTrading />} />
               <Route path="/professional-trading" element={<ProfessionalTrading />} />
               <Route path="/award-winning-service" element={<AwardWinningService />} />
               <Route path="/contact" element={<Contact />} />

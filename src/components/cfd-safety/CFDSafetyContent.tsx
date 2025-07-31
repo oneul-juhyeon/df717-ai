@@ -1,5 +1,6 @@
 import React from "react";
 import FinancialProductArticleHeader from "../financial-products/FinancialProductArticleHeader";
+import CFDProductsSidebar from "./CFDProductsSidebar";
 
 const CFDSafetyContent: React.FC = () => {
   return (
