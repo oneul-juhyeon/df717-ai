@@ -312,7 +312,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-4-intro',
+                  id: 'step-3-intro',
                   content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
                   sender: 'ai',
                   type: 'text',
@@ -329,7 +329,7 @@ export const useChatStore = create<ChatStore>()(
                   ]
                 },
                 {
-                  id: 'step-4-info',
+                  id: 'step-3-info',
                   content: '🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.',
                   sender: 'ai',
                   type: 'info_box',
@@ -373,7 +373,15 @@ export const useChatStore = create<ChatStore>()(
             case 4:
               get().addMessageGroup([
                 {
-                  id: 'step-5-intro',
+                  id: 'step-4-title',
+                  content: '4단계: 데모계좌 개설하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-4-intro',
                   content: '이제 AI 투자를 체험할 데모계좌를 만들어볼게요!',
                   sender: 'ai',
                   type: 'text',
@@ -381,7 +389,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-5-steps',
+                  id: 'step-4-steps',
                   content: '📌 로그인 후 다음 순서로 진행해주세요: Account 탭 → Demo Account → \'Open New Demo Account\' 버튼 클릭',
                   sender: 'ai',
                   type: 'info_box',
@@ -389,10 +397,18 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-5-safety',
+                  id: 'step-4-safety',
                   content: '💰 안심하세요! 데모계좌는 가상의 돈으로 거래하는 연습계좌예요. 실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.',
                   sender: 'ai',
                   type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-4-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
