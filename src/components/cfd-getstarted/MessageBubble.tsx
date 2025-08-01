@@ -67,6 +67,23 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
   const isAI = message.sender === "ai";
   
+  // Info boxes should be rendered outside chat bubbles
+  if (message.type === "info_box") {
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="max-w-[90%]">
+          <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
+            <div className="text-blue-800 text-sm leading-relaxed">
+              {displayedText}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <div className={`flex w-full ${isAI ? 'justify-start' : 'justify-end'} transform transition-all duration-500 ease-out ${
       isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
@@ -84,31 +101,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           <div className="text-left leading-relaxed">
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
-                {/* Enhanced typography for step titles */}
-                {displayedText.includes('단계:') ? (
-                  <div className="text-base font-bold text-blue-600 mb-1">
-                    {displayedText}
+                {/* Enhanced typography for step titles - consistent styling for all steps */}
+                {displayedText.match(/\d+단계/) ? (
+                  <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
+                    <div className="text-blue-800 text-base font-bold">
+                      {displayedText}
+                    </div>
                   </div>
                 ) : (
                   <div className="text-sm">
                     {displayedText}
                   </div>
                 )}
-              </div>
-            )}
-            
-            {message.type === "info_box" && (
-              <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
-                <div className="text-blue-800 text-sm leading-relaxed">
-                  <strong className="font-semibold">
-                    {displayedText.split('?')[0]}?
-                  </strong>
-                  {displayedText.includes('?') && (
-                    <span className="ml-1">
-                      {displayedText.split('?')[1]}
-                    </span>
-                  )}
-                </div>
               </div>
             )}
             
