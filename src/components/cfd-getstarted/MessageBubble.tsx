@@ -114,7 +114,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             
             {message.type === "warning_box" && (
               <div className="bg-orange-50 rounded-lg px-4 py-3 my-2 border-l-4 border-orange-400">
-                <div className="text-orange-800 text-sm leading-relaxed font-medium">
+                <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap">
                   {displayedText}
                 </div>
               </div>
