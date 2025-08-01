@@ -458,9 +458,9 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-5-settings',
-                  content: `**계좌 설정**\n• Platform: MetaTrader 4\n• Account Type: Raw Spread\n• Currency: USD\n• Leverage: 1:1000\n• Initial Deposit: 25000`,
+                  content: '',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'account_settings',
                   timestamp: new Date(),
                   animate: false,
                 },

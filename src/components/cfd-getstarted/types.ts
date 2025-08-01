@@ -2,7 +2,7 @@ export interface Message {
   id: string;
   content: string;
   sender: "ai" | "user";
-  type: "text" | "info_box" | "warning_box" | "success_box" | "form" | "action_button";
+  type: "text" | "info_box" | "warning_box" | "success_box" | "form" | "action_button" | "account_settings";
   timestamp: Date;
   animate?: boolean;
   buttons?: MessageButton[];

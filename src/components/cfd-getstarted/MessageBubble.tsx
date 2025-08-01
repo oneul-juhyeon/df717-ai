@@ -175,6 +175,39 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     );
   }
 
+  // Account settings table - 계좌 설정 테이블
+  if (message.type === "account_settings") {
+    const settings = [
+      { label: "Platform", value: "MetaTrader 4" },
+      { label: "Account Type", value: "Raw Spread" },
+      { label: "Currency", value: "USD" },
+      { label: "Leverage", value: "1:1000" },
+      { label: "Initial Deposit", value: "25000" }
+    ];
+
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full mx-2">
+          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden my-2 shadow-sm">
+            <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
+              <h3 className="text-blue-800 font-semibold text-sm">계좌 설정</h3>
+            </div>
+            <div className="divide-y divide-gray-100">
+              {settings.map((setting, index) => (
+                <div key={index} className="flex justify-between items-center px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <span className="text-gray-600 text-sm font-medium">{setting.label}</span>
+                  <span className="text-gray-900 text-sm font-semibold">{setting.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Form messages - 채팅 버블 밖으로 완전히 분리
   if (message.type === "form") {
     return (
