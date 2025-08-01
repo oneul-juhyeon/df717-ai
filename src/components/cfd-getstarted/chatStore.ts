@@ -776,14 +776,6 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-9-intro',
-                  content: '축하합니다! 이제 실시간으로 거래 내역과 수익률을 확인하실 수 있어요.\n프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요!\n\n더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
                   id: 'step-9-success',
                    content: '✅ **모든 설정이 완료되었습니다!**\n\n• **데모계좌 개설** 완료\n• **AI 프로그램 연동 신청** 완료\n• **모니터링 앱 설치** 완료',
                    sender: 'ai',
@@ -791,6 +783,14 @@ export const useChatStore = create<ChatStore>()(
                    timestamp: new Date(),
                    animate: false,
                  },
+                {
+                  id: 'step-9-intro',
+                  content: '축하합니다! 이제 실시간으로 거래 내역과 수익률을 확인하실 수 있어요.\n프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요!\n\n더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
                  {
                    id: 'final-buttons',
                    content: '',
