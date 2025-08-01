@@ -82,7 +82,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
               <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
                 {stepNumber}
               </div>
-              <div className="text-blue-800 font-semibold">
+              <div className="text-blue-800 font-semibold text-left">
                 {stepText}
               </div>
             </div>
@@ -92,18 +92,65 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     );
   }
   
-  // Info boxes should be rendered outside chat bubbles with yellow/orange styling
+  // Info boxes (파란색) - 채팅 버블 밖으로 완전히 분리
   if (message.type === "info_box") {
     return (
       <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
         <div className="w-full mx-2">
-          <div className="bg-yellow-50 rounded-lg px-4 py-3 my-2 border-l-4 border-yellow-400">
-            <div className="text-yellow-800 text-sm leading-relaxed">
+          <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
+            <div className="text-blue-800 text-sm leading-relaxed text-left">
               {displayedText}
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Warning boxes (주황색) - 채팅 버블 밖으로 완전히 분리
+  if (message.type === "warning_box") {
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full mx-2">
+          <div className="bg-orange-50 rounded-lg px-4 py-3 my-2 border-l-4 border-orange-400">
+            <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap text-left">
+              {displayedText}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Success boxes (초록색) - 채팅 버블 밖으로 완전히 분리
+  if (message.type === "success_box") {
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full mx-2">
+          <div className="bg-green-50 rounded-lg px-4 py-3 my-2 border-l-4 border-green-400">
+            <div className="text-green-800 text-sm leading-relaxed font-medium text-left">
+              {displayedText}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Form messages - 채팅 버블 밖으로 완전히 분리
+  if (message.type === "form") {
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full mx-2">
+          <FormSection message={message} />
         </div>
       </div>
     );
@@ -126,30 +173,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           <div className="text-left leading-relaxed">
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
-                <div className="text-sm">
+                <div className="text-sm text-left">
                   {displayedText}
                 </div>
               </div>
-            )}
-            
-            {message.type === "warning_box" && (
-              <div className="bg-orange-50 rounded-lg px-4 py-3 my-2 border-l-4 border-orange-400">
-                <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap">
-                  {displayedText}
-                </div>
-              </div>
-            )}
-            
-            {message.type === "success_box" && (
-              <div className="bg-green-50 rounded-lg px-4 py-3 my-2 border-l-4 border-green-400">
-                <div className="text-green-800 text-sm leading-relaxed font-medium">
-                  {displayedText}
-                </div>
-              </div>
-            )}
-
-            {message.type === "form" && (
-              <FormSection message={message} />
             )}
           </div>
           
@@ -161,7 +188,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-left ${
                     button.type === "primary" 
                       ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
