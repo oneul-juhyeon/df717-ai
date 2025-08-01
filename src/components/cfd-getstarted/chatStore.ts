@@ -184,7 +184,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-critical-warning',
-                  content: "⚠️ **중요!**\n\n이름과 성은 꼭 **영어로** 작성해주세요.\n\n**예시**\n김자동 → First Name: **Jadong**, Last Name: **Kim**",
+                  content: "⚠️ **중요!**\n\n이름과 성은 꼭 **영어로** 작성해주세요.\n예시) 김자동 → First Name: **Jadong**, Last Name: **Kim**",
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
