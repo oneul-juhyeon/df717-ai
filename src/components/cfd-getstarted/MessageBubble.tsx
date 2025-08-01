@@ -132,7 +132,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
-        <div className="w-full mx-2">
+        <div className="mx-2">
           {message.buttons && message.buttons.length > 0 && (
             <div className="space-y-2">
               {message.buttons.map((button, index) => (
@@ -140,7 +140,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-left ${
+                  className={`inline-block px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                     button.type === "primary" 
                       ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
