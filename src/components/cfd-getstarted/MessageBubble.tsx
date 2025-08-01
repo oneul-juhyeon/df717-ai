@@ -22,7 +22,7 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
       <div className="space-y-3">
         {message.formFields.map((field) => (
           <div key={field.id} className="w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               {field.label} {field.required && <span className="text-red-500">*</span>}
             </label>
             <input
