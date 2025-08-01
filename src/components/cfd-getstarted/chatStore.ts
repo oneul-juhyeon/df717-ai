@@ -507,91 +507,110 @@ export const useChatStore = create<ChatStore>()(
 
             // STEP 6: Account Information Form (이전 Step 7을 Step 6으로 변경)
             case 6:
-              get().addMessageGroup([
-                {
-                  id: 'step-6-title',
-                  content: '6단계: 프로그램 시작 요청하기',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
+              // First message
+              get().addMessage({
+                id: 'step-6-title',
+                content: '6단계: 프로그램 시작 요청하기',
+                sender: 'ai',
+                type: 'text',
+                timestamp: new Date(),
+                animate: false,
+              });
+
+              // Second message after 800ms
+              setTimeout(() => {
+                get().addMessage({
                   id: 'step-6-celebration',
                   content: '축하해요! 데모계좌 개설이 완료되었어요🎉',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
-                },
-                {
-                  id: 'step-6-intro',
-                  content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-6-account-info',
-                  content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요.\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-6-security',
-                  content: '🔒 **안심하세요!**\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요.\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
-                  sender: 'ai',
-                  type: 'warning_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-6-form',
-                  content: '',
-                  sender: 'ai',
-                  type: 'form',
-                  timestamp: new Date(),
-                  animate: false,
-                  formFields: [
-                    {
-                      id: 'accountId',
-                      label: 'Account ID',
-                      type: 'tel',
-                      placeholder: '계좌번호를 입력하세요',
-                      required: true,
-                      value: ''
-                    },
-                    {
-                      id: 'password',
-                      label: 'Password',
-                      type: 'text',
-                      placeholder: '계좌 비밀번호를 입력하세요',
-                      required: true,
-                      value: ''
-                    },
-                    {
-                      id: 'server',
-                      label: 'Server',
-                      type: 'text',
-                      placeholder: '서버명을 입력하세요',
-                      required: true,
-                      value: ''
-                    }
-                  ],
-                  buttons: [
-                    {
-                      label: '프로그램 시작 요청하기',
-                      type: 'primary',
-                      action: () => {
-                        get().submitUserForm('step-6-form');
-                      }
-                    }
-                  ]
-                }
-              ]);
+                });
+
+                // Third message after 800ms more
+                setTimeout(() => {
+                  get().addMessage({
+                    id: 'step-6-intro',
+                    content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요',
+                    sender: 'ai',
+                    type: 'text',
+                    timestamp: new Date(),
+                    animate: false,
+                  });
+
+                  // Info box after 800ms more
+                  setTimeout(() => {
+                    get().addMessage({
+                      id: 'step-6-account-info',
+                      content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요.\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
+                      sender: 'ai',
+                      type: 'info_box',
+                      timestamp: new Date(),
+                      animate: false,
+                    });
+
+                    // Warning box after 800ms more
+                    setTimeout(() => {
+                      get().addMessage({
+                        id: 'step-6-security',
+                        content: '🔒 **안심하세요!**\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요.\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
+                        sender: 'ai',
+                        type: 'warning_box',
+                        timestamp: new Date(),
+                        animate: false,
+                      });
+
+                      // Form after 800ms more
+                      setTimeout(() => {
+                        get().addMessage({
+                          id: 'step-6-form',
+                          content: '',
+                          sender: 'ai',
+                          type: 'form',
+                          timestamp: new Date(),
+                          animate: false,
+                          formFields: [
+                            {
+                              id: 'accountId',
+                              label: 'Account ID',
+                              type: 'tel',
+                              placeholder: '계좌번호를 입력하세요',
+                              required: true,
+                              value: ''
+                            },
+                            {
+                              id: 'password',
+                              label: 'Password',
+                              type: 'text',
+                              placeholder: '계좌 비밀번호를 입력하세요',
+                              required: true,
+                              value: ''
+                            },
+                            {
+                              id: 'server',
+                              label: 'Server',
+                              type: 'text',
+                              placeholder: '서버명을 입력하세요',
+                              required: true,
+                              value: ''
+                            }
+                          ],
+                          buttons: [
+                            {
+                              label: '프로그램 시작 요청하기',
+                              type: 'primary',
+                              action: () => {
+                                get().submitUserForm('step-6-form');
+                              }
+                            }
+                          ]
+                        });
+                      }, 800);
+                    }, 800);
+                  }, 800);
+                }, 800);
+              }, 800);
               
               set({ currentStep: 6, isProcessing: false });
               break;
