@@ -106,12 +106,12 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
         <div className="w-full">
-          <div className="bg-blue-50 rounded-lg px-4 py-3 mx-2 mb-2">
+          <div className="bg-blue-50 rounded-lg px-4 py-4 mx-2 mb-2">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+              <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                 {stepNumber}
               </div>
-              <div className="text-blue-800 font-semibold text-left">
+              <div className="text-blue-800 font-semibold text-left flex-1 leading-6 word-break break-words">
                 {stepText}
               </div>
             </div>
@@ -128,10 +128,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
         <div className="w-full mx-2">
-          <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
-            <div className="text-blue-800 text-sm leading-relaxed text-left whitespace-pre-wrap">
+          <div className="bg-blue-50 rounded-lg px-4 py-4 my-2 border-l-4 border-blue-400">
+            <div className="text-blue-800 text-sm leading-7 text-left word-break break-words">
               {displayedText.split('**').map((part, index) => 
-                index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
               )}
             </div>
           </div>
@@ -147,10 +147,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
         <div className="w-full mx-2">
-          <div className="bg-orange-50 rounded-lg px-4 py-3 my-2 border-l-4 border-orange-400">
-            <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap text-left">
+          <div className="bg-orange-50 rounded-lg px-4 py-4 my-2 border-l-4 border-orange-400">
+            <div className="text-orange-800 text-sm leading-7 font-medium text-left word-break break-words">
               {displayedText.split('**').map((part, index) => 
-                index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
               )}
             </div>
           </div>
@@ -165,15 +165,15 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
-        <div className="mx-2">
+        <div className="w-full mx-2">
           {message.buttons && message.buttons.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-3">
               {message.buttons.map((button, index) => (
                 <button
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`inline-block px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`w-full flex items-center justify-center px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed leading-6 word-break break-words text-center ${
                     button.type === "primary" 
                       ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
@@ -181,7 +181,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  {button.label}
+                  <span className="text-center leading-6">{button.label}</span>
                 </button>
               ))}
             </div>
@@ -280,13 +280,13 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           
           {/* Enhanced buttons with better styling */}
           {message.buttons && message.buttons.length > 0 && (
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 space-y-3">
               {message.buttons.map((button, index) => (
                 <button
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-left ${
+                  className={`w-full flex items-center justify-center px-4 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed leading-6 word-break break-words ${
                     button.type === "primary" 
                       ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
@@ -294,7 +294,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  {button.label}
+                  <span className="text-center leading-6">{button.label}</span>
                 </button>
               ))}
             </div>
