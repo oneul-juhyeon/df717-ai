@@ -441,7 +441,15 @@ export const useChatStore = create<ChatStore>()(
             case 5:
               get().addMessageGroup([
                 {
-                  id: 'step-6-intro',
+                  id: 'step-5-title',
+                  content: '5단계: 계좌 설정하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-5-intro',
                   content: '아래 설정과 정확히 동일하게 계좌를 개설해주세요.',
                   sender: 'ai',
                   type: 'text',
@@ -449,7 +457,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-6-settings',
+                  id: 'step-5-settings',
                   content: `**계좌 설정**\n• Platform: MetaTrader 4\n• Account Type: Raw Spread\n• Currency: USD\n• Leverage: 1:1000\n• Initial Deposit: 25000`,
                   sender: 'ai',
                   type: 'info_box',
@@ -457,10 +465,18 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-6-warning',
+                  id: 'step-5-warning',
                   content: '⚠️ 주의! 계좌설정이 다르면 AI 프로그램이 작동하지 않아요. 꼭 위의 설정대로 만들어주세요!',
                   sender: 'ai',
                   type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-5-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
