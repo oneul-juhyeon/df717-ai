@@ -510,7 +510,15 @@ export const useChatStore = create<ChatStore>()(
               get().addMessageGroup([
                 {
                   id: 'step-6-title',
-                  content: '6단계: 계좌 정보 입력하기',
+                  content: '6단계: 프로그램 시작 요청하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-6-celebration',
+                  content: '축하해요! 데모계좌 개설이 완료되었어요🎉',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -518,7 +526,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-intro',
-                  content: '마지막으로 생성된 계좌 정보를 입력해주세요.',
+                  content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
