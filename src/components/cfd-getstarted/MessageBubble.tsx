@@ -12,20 +12,20 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
   if (!message.formFields) return null;
 
   return (
-    <div className="space-y-4 w-full">
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-        <div className="flex items-start space-x-3">
-          <span className="text-blue-500 text-lg">📝</span>
-          <div className="text-blue-800 text-sm font-medium leading-relaxed">
+    <div className="space-y-3 w-full">
+      <div className="bg-blue-50/70 border-l-4 border-blue-400 rounded-r-lg px-3 py-2">
+        <div className="flex items-start space-x-2">
+          <span className="text-blue-500 text-base">📝</span>
+          <div className="text-blue-800 text-sm leading-relaxed">
             {message.content}
           </div>
         </div>
       </div>
       
-      <div className="space-y-4">
+      <div className="space-y-3">
         {message.formFields.map((field) => (
           <div key={field.id} className="w-full">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               {field.label} {field.required && <span className="text-red-500">*</span>}
             </label>
             <input
@@ -33,7 +33,7 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
               placeholder={field.placeholder}
               value={field.value}
               onChange={(e) => updateFormField(message.id, field.id, e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-[#00B7FF] focus:border-transparent transition-all"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               required={field.required}
             />
           </div>
@@ -69,17 +69,15 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const isAI = message.sender === "ai";
   
   return (
-    <div className={`flex ${isAI ? "justify-start" : "justify-end"} w-full`}>
-      <div className={`w-full max-w-[95%] sm:max-w-[90%] ${
-        isAI ? "" : "flex justify-end"
-      }`}>
+    <div className={`flex ${isAI ? "justify-start" : "justify-end"} w-full mb-1`}>
+      <div className={`max-w-[85%] ${isAI ? "" : "flex justify-end"}`}>
         
-        {/* Message bubble - wider and more spacious */}
-        <div className={`px-6 py-4 rounded-2xl shadow-sm ${
+        {/* Modern chat bubble */}
+        <div className={`px-4 py-2.5 rounded-2xl ${
           isAI 
-            ? "bg-white text-gray-800 border border-gray-100 w-full" 
-            : "bg-[#00B7FF] text-white max-w-[80%]"
-        } ${isAI ? "rounded-tl-md" : "rounded-tr-md"}`}>
+            ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md" 
+            : "bg-blue-500 text-white rounded-br-md"
+        }`}>
           
           {/* Message content */}
           <div className="text-sm leading-relaxed">
@@ -90,10 +88,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             )}
             
             {message.type === "info_box" && (
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-                <div className="flex items-start space-x-3">
-                  <span className="text-blue-500 text-lg">💡</span>
-                  <div className="text-blue-800 text-sm font-medium leading-relaxed">
+              <div className="bg-blue-50/70 border-l-4 border-blue-400 rounded-r-lg px-3 py-2 my-1">
+                <div className="flex items-start space-x-2">
+                  <span className="text-blue-500 text-base">💡</span>
+                  <div className="text-blue-800 text-sm leading-relaxed">
                     {displayedText}
                   </div>
                 </div>
@@ -101,10 +99,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             )}
             
             {message.type === "warning_box" && (
-              <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
-                <div className="flex items-start space-x-3">
-                  <span className="text-orange-500 text-lg">⚠️</span>
-                  <div className="text-orange-800 text-sm font-medium leading-relaxed">
+              <div className="bg-orange-50/70 border-l-4 border-orange-400 rounded-r-lg px-3 py-2 my-1">
+                <div className="flex items-start space-x-2">
+                  <span className="text-orange-500 text-base">⚠️</span>
+                  <div className="text-orange-800 text-sm leading-relaxed">
                     {displayedText}
                   </div>
                 </div>
@@ -112,10 +110,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             )}
             
             {message.type === "success_box" && (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                <div className="flex items-start space-x-3">
-                  <span className="text-green-500 text-lg">✅</span>
-                  <div className="text-green-800 text-sm font-medium leading-relaxed">
+              <div className="bg-green-50/70 border-l-4 border-green-400 rounded-r-lg px-3 py-2 my-1">
+                <div className="flex items-start space-x-2">
+                  <span className="text-green-500 text-base">✅</span>
+                  <div className="text-green-800 text-sm leading-relaxed">
                     {displayedText}
                   </div>
                 </div>
@@ -129,18 +127,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           
           {/* Buttons if any */}
           {message.buttons && message.buttons.length > 0 && (
-            <div className="mt-4 space-y-3">
+            <div className="mt-3 space-y-2">
               {message.buttons.map((button, index) => (
                 <button
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`w-full px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                     button.type === "primary" 
-                      ? "bg-[#00B7FF] text-white hover:bg-[#0066CC] shadow-md hover:shadow-lg"
+                      ? "bg-blue-500 text-white hover:bg-blue-600"
                       : button.type === "link"
-                      ? "bg-blue-50 text-[#00B7FF] hover:bg-blue-100 border border-blue-200"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                      ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   {button.label}

@@ -17,8 +17,8 @@ const MessageList: React.FC = () => {
 
   return (
     <div className="h-full overflow-y-auto bg-gray-50">
-      {/* Messages container with proper padding for mobile */}
-      <div className="px-4 py-6 space-y-6 min-h-full">
+      {/* Messages container with minimal padding */}
+      <div className="px-4 py-4 space-y-2 min-h-full">
         {messages.reduce((groups, message, index) => {
           // Group messages that appear together (same groupId or consecutive AI messages)
           const prevMessage = messages[index - 1];
@@ -34,7 +34,7 @@ const MessageList: React.FC = () => {
           }
           return groups;
         }, [] as Message[][]).map((messageGroup, groupIndex) => (
-          <div key={`group-${groupIndex}`} className="animate-fade-in space-y-3">
+          <div key={`group-${groupIndex}`} className="animate-fade-in space-y-1">
             {messageGroup.map((message) => (
               <MessageBubble key={message.id} message={message} />
             ))}
