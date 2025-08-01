@@ -67,15 +67,40 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
   const isAI = message.sender === "ai";
   
-  // Info boxes should be rendered outside chat bubbles
+  // Step titles should be rendered completely outside chat bubbles
+  if (message.type === "text" && displayedText.match(/\d+단계/)) {
+    const stepNumber = displayedText.match(/(\d+)단계/)?.[1];
+    const stepText = displayedText.replace(/\d+단계:\s*/, '');
+    
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full">
+          <div className="bg-blue-50 rounded-lg px-4 py-3 mx-2 mb-2">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                {stepNumber}
+              </div>
+              <div className="text-blue-800 font-semibold">
+                {stepText}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  // Info boxes should be rendered outside chat bubbles with yellow/orange styling
   if (message.type === "info_box") {
     return (
       <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
-        <div className="max-w-[90%]">
-          <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
-            <div className="text-blue-800 text-sm leading-relaxed">
+        <div className="w-full mx-2">
+          <div className="bg-yellow-50 rounded-lg px-4 py-3 my-2 border-l-4 border-yellow-400">
+            <div className="text-yellow-800 text-sm leading-relaxed">
               {displayedText}
             </div>
           </div>
@@ -101,18 +126,9 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           <div className="text-left leading-relaxed">
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
-                {/* Enhanced typography for step titles - consistent styling for all steps */}
-                {displayedText.match(/\d+단계/) ? (
-                  <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
-                    <div className="text-blue-800 text-base font-bold">
-                      {displayedText}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-sm">
-                    {displayedText}
-                  </div>
-                )}
+                <div className="text-sm">
+                  {displayedText}
+                </div>
               </div>
             )}
             
