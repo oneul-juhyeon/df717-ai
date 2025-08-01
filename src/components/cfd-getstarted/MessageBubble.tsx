@@ -52,15 +52,18 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
               key={index}
               onClick={() => handleButtonClick(button.action)}
               disabled={isButtonDisabled}
-              className={`w-full px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+              className={`w-full flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                 button.type === "primary" 
                   ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                   : button.type === "link"
                   ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
+              style={{
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif'
+              }}
             >
-              {button.label}
+              <span className="text-center leading-6 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>{button.label}</span>
             </button>
           ))}
         </div>
@@ -173,15 +176,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full flex items-center justify-center px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed leading-6 word-break break-words text-center ${
+                  className={`w-full flex items-center justify-center px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                     button.type === "primary" 
                       ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
                       ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
+                  style={{
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif'
+                  }}
                 >
-                  <span className="text-center leading-6">{button.label}</span>
+                  <span className="text-center leading-6 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>{button.label}</span>
                 </button>
               ))}
             </div>
@@ -286,15 +292,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full flex items-center justify-center px-4 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed leading-6 word-break break-words ${
+                  className={`w-full flex items-center justify-center px-4 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                     button.type === "primary" 
                       ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
                       ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
+                  style={{
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif'
+                  }}
                 >
-                  <span className="text-center leading-6">{button.label}</span>
+                  <span className="text-center leading-6 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>{button.label}</span>
                 </button>
               ))}
             </div>

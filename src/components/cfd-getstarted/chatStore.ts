@@ -192,7 +192,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'ICMarkets 계좌 신청 홈페이지 열기',
+                      label: 'ICMarkets 계좌 신청 홈페이지 열기 →',
                       type: 'link',
                       action: () => {
                         window.open('https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293', '_blank');
