@@ -312,6 +312,14 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
+                  id: 'step-4-intro',
+                  content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-3-login-link',
                   content: 'ICMarkets 로그인 페이지로 이동',
                   sender: 'ai',
@@ -327,6 +335,14 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
+                },
+                {
+                  id: 'step-4-info',
+                  content: '🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
                 },
                 {
                   id: 'step-3-action',
@@ -355,22 +371,6 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                },
-                {
-                  id: 'step-4-intro',
-                  content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-4-info',
-                  content: '🔐 방금 신청하신 이메일과 비밀번호로 로그인해주세요.',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
                 }
               ]);
               
