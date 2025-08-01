@@ -152,6 +152,14 @@ export const useChatStore = create<ChatStore>()(
             case 1:
               get().addMessageGroup([
                 {
+                  id: 'step-1-title',
+                  content: '1단계: ICMarkets 브로커 회원가입',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-1-intro',
                   content: '첫 번째로, ICMarkets 브로커에 회원가입을 해볼게요.',
                   sender: 'ai',
@@ -161,7 +169,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-info',
-                  content: '💡 브로커란? 우리나라에서 주식거래를 하기 위해 증권사에 회원가입하거나, 코인거래를 하기 위해 거래소에 가입하는 것과 같아요. 그중에서도 ICMarkets는 글로벌 1위로 가장 신뢰할 수 있는 Tier-1 브로커예요.',
+                  content: '브로커란? 우리나라에서 주식거래를 하기 위해 증권사에 회원가입하거나, 코인거래를 하기 위해 거래소에 가입하는 것과 같아요. 그중에서도 ICMarkets는 글로벌 1위로 가장 신뢰할 수 있는 Tier-1 브로커예요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -169,9 +177,9 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-action',
-                  content: '1단계: ICMarkets 브로커 회원가입',
+                  content: '회원가입 페이지에서 아래 정보를 입력해주세요.',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'text',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [

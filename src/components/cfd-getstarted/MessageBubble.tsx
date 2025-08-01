@@ -13,12 +13,9 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
 
   return (
     <div className="space-y-3 w-full">
-      <div className="bg-blue-50/70 border-l-4 border-blue-400 rounded-r-lg px-3 py-2">
-        <div className="flex items-start space-x-2">
-          <span className="text-blue-500 text-base">📝</span>
-          <div className="text-blue-800 text-sm leading-relaxed">
-            {message.content}
-          </div>
+      <div className="bg-blue-50 rounded-lg px-4 py-3 my-2">
+        <div className="text-blue-800 text-sm leading-relaxed">
+          {message.content}
         </div>
       </div>
       
@@ -69,10 +66,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const isAI = message.sender === "ai";
   
   return (
-    <div className={`flex ${isAI ? "justify-start" : "justify-end"} w-full mb-1`}>
-      <div className={`max-w-[85%] ${isAI ? "" : "flex justify-end"}`}>
+    <div className="flex justify-start w-full mb-1">
+      <div className="max-w-[85%]">
         
-        {/* Modern chat bubble */}
+        {/* WhatsApp-style chat bubble - always left aligned */}
         <div className={`px-4 py-2.5 rounded-2xl ${
           isAI 
             ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md" 
@@ -88,34 +85,25 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             )}
             
             {message.type === "info_box" && (
-              <div className="bg-blue-50/70 border-l-4 border-blue-400 rounded-r-lg px-3 py-2 my-1">
-                <div className="flex items-start space-x-2">
-                  <span className="text-blue-500 text-base">💡</span>
-                  <div className="text-blue-800 text-sm leading-relaxed">
-                    {displayedText}
-                  </div>
+              <div className="bg-blue-50 rounded-lg px-4 py-3 my-2">
+                <div className="text-blue-800 text-sm leading-relaxed">
+                  {displayedText}
                 </div>
               </div>
             )}
             
             {message.type === "warning_box" && (
-              <div className="bg-orange-50/70 border-l-4 border-orange-400 rounded-r-lg px-3 py-2 my-1">
-                <div className="flex items-start space-x-2">
-                  <span className="text-orange-500 text-base">⚠️</span>
-                  <div className="text-orange-800 text-sm leading-relaxed">
-                    {displayedText}
-                  </div>
+              <div className="bg-orange-50 rounded-lg px-4 py-3 my-2">
+                <div className="text-orange-800 text-sm leading-relaxed">
+                  {displayedText}
                 </div>
               </div>
             )}
             
             {message.type === "success_box" && (
-              <div className="bg-green-50/70 border-l-4 border-green-400 rounded-r-lg px-3 py-2 my-1">
-                <div className="flex items-start space-x-2">
-                  <span className="text-green-500 text-base">✅</span>
-                  <div className="text-green-800 text-sm leading-relaxed">
-                    {displayedText}
-                  </div>
+              <div className="bg-green-50 rounded-lg px-4 py-3 my-2">
+                <div className="text-green-800 text-sm leading-relaxed">
+                  {displayedText}
                 </div>
               </div>
             )}
