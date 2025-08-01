@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ChatContainer from "@/components/cfd-getstarted/ChatContainer";
 import { useChatStore } from "@/components/cfd-getstarted/chatStore";
 
-const CFDGetStarted: React.FC = () => {
+const GetStarted: React.FC = () => {
   const { initializeChat } = useChatStore();
 
   const handleBackToHome = () => {
@@ -20,4 +20,4 @@ const CFDGetStarted: React.FC = () => {
   );
 };
 
-export default CFDGetStarted;
+export default GetStarted;

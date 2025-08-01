@@ -12,6 +12,9 @@ interface ChatStore extends ChatState {
   updateFormField: (messageId: string, fieldId: string, value: string) => void;
   submitUserForm: (messageId: string) => void;
   setProcessing: (processing: boolean) => void;
+  executedSteps: Set<number>;
+  isStepExecuted: (step: number) => boolean;
+  markStepExecuted: (step: number) => void;
 }
 
 const initialUserData: UserData = {
@@ -33,10 +36,28 @@ export const useChatStore = create<ChatStore>()(
       currentStep: 0,
       userData: initialUserData,
       isProcessing: false,
+      executedSteps: new Set<number>(),
 
       addMessage: (message: Message) => {
+        set((state) => {
+          // Check for duplicate messages by ID to prevent duplication
+          const messageExists = state.messages.some(m => m.id === message.id);
+          if (messageExists) {
+            return state; // Don't add if already exists
+          }
+          return {
+            messages: [...state.messages, message]
+          };
+        });
+      },
+
+      isStepExecuted: (step: number) => {
+        return get().executedSteps.has(step);
+      },
+
+      markStepExecuted: (step: number) => {
         set((state) => ({
-          messages: [...state.messages, message]
+          executedSteps: new Set([...state.executedSteps, step])
         }));
       },
 
@@ -60,6 +81,7 @@ export const useChatStore = create<ChatStore>()(
           currentStep: 0,
           userData: initialUserData,
           isProcessing: false,
+          executedSteps: new Set<number>(),
         });
       },
 
@@ -96,12 +118,13 @@ export const useChatStore = create<ChatStore>()(
       },
 
       proceedToStep: (step: number) => {
-        const { isProcessing } = get();
+        const { isProcessing, isStepExecuted } = get();
         
-        // Prevent multiple simultaneous calls
-        if (isProcessing) return;
+        // Prevent multiple simultaneous calls or re-execution of same step
+        if (isProcessing || isStepExecuted(step)) return;
         
         set({ isProcessing: true });
+        get().markStepExecuted(step);
 
         switch (step) {
           case 1:
@@ -411,7 +434,14 @@ export const useChatStore = create<ChatStore>()(
         messages: state.messages,
         currentStep: state.currentStep,
         userData: state.userData,
+        executedSteps: Array.from(state.executedSteps), // Convert Set to Array for persistence
       }),
+      onRehydrateStorage: () => (state) => {
+        if (state && Array.isArray(state.executedSteps)) {
+          // Convert Array back to Set after rehydration
+          state.executedSteps = new Set(state.executedSteps);
+        }
+      },
     }
   )
 );

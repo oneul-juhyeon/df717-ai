@@ -77,7 +77,6 @@ export function isMenuActive(item: NavigationItem, currentPath: string): boolean
     if (item.name === "CFD" && 
         (currentPath.startsWith("/cfd-safety") || 
          currentPath.startsWith("/cfd-trading") ||
-         currentPath.startsWith("/cfd-getstarted") ||
          currentPath.startsWith("/get-started") ||
          currentPath.startsWith("/professional-trading") ||
          currentPath.startsWith("/award-winning-service"))) {
