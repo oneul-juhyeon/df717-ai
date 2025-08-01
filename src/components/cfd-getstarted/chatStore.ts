@@ -984,6 +984,7 @@ export const useChatStore = create<ChatStore>()(
           setTimeout(() => {
             if (messageId === 'step-6-form') {
               console.log('Step 6 form submitted, proceeding to step 7');
+              set({ isProcessing: false }); // isProcessing을 false로 재설정
               get().proceedToStep(7);
             } else {
               console.log('Form submitted but not step-6-form:', messageId);
