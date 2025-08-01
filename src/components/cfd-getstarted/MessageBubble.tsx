@@ -260,18 +260,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     }`}>
       <div className="max-w-[90%]">
         
-        {/* WhatsApp-style chat bubble - AI left, User right */}
-        <div className={`px-4 py-3 rounded-2xl transition-all duration-300 ${
+        {/* WhatsApp-style chat bubble - AI left, User right with improved mobile spacing */}
+        <div className={`px-4 py-4 sm:py-3 rounded-2xl transition-all duration-300 ${
           isAI 
             ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md hover:shadow-md" 
             : "bg-blue-500 text-white rounded-br-md"
         }`}>
           
-          {/* Message content with enhanced typography */}
+          {/* Message content with enhanced typography and better mobile text size */}
           <div className="text-left leading-relaxed">
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
-                <div className="text-sm text-left">
+                <div className="text-sm sm:text-sm text-left leading-6">
                   {displayedText}
                 </div>
               </div>

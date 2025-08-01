@@ -6,7 +6,7 @@ interface ChatContainerProps {
 const ChatContainer: React.FC<ChatContainerProps> = ({
   onBack
 }) => {
-  return <div className="w-full h-screen flex flex-col bg-gray-50">
+  return <div className="w-full h-screen flex flex-col bg-gray-50" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif' }}>
       {/* Enhanced header with better back button */}
       <div className="px-4 py-3 bg-white border-b border-gray-100 shadow-sm">
         <div className="flex items-center">
