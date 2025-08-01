@@ -269,7 +269,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-tip',
-                  content: '💡 **Tip!** 메일이 안 보이나요?\n\n**스팸함**도 확인해보세요.\n**ICMarkets** 메일이 가끔 스팸으로 분류될 수 있어요.',
+                  content: '💡 **Tip!**\n메일이 안 보이나요?\n\n**스팸함**도 확인해보세요. **ICMarkets** 메일이 가끔 스팸으로 분류될 수 있어요.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -643,7 +643,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-info',
-                  content: '💡 **MetaTrader 4란?**\n\n쉽게 말해서 **토스**라고 보면 돼요.\n\n하나의 앱에 모든 은행 계좌를 연결하고 한 곳에서 볼 수 있는 것처럼,\n**MetaTrader 4**는 여러 브로커의 거래 계좌를 한 앱에서 관리하고\n실시간으로 확인할 수 있어요.',
+                  content: '💡 **MetaTrader 4란?**\n\n쉽게 말해서 **토스**라고 보면 돼요. 하나의 앱에 모든 은행 계좌를 연결하고 한 곳에서 볼 수 있는 것처럼, **MetaTrader 4**는 여러 브로커의 거래 계좌를 한 앱에서 관리하고 실시간으로 확인할 수 있어요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -744,7 +744,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-tip',
-                  content: '💡 **Tip!** 서버 이름이 정확히 보이지 않으면\n검색창에 **"ICMarkets"**라고 입력해서 찾아보세요.\n\n⚠️ 로그인이 안 된다면 계좌 활성화까지\n**몇 분 정도 걸릴 수 있어요**.',
+                  content: '💡 **Tip!**\n서버 이름이 정확히 보이지 않으면 검색창에 **"ICMarkets"**라고 입력해서 찾아보세요.\n\n⚠️ 로그인이 안 된다면 계좌 활성화까지 **몇 분 정도 걸릴 수 있어요**.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
