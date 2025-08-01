@@ -8,17 +8,24 @@ interface MessageBubbleProps {
 
 const FormSection: React.FC<{ message: Message }> = ({ message }) => {
   const { updateFormField } = useChatStore();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const handleButtonClick = useCallback((action: () => void) => {
+    if (isButtonDisabled) return;
+    
+    setIsButtonDisabled(true);
+    action();
+    
+    // Re-enable button after delay to prevent spam
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 2000);
+  }, [isButtonDisabled]);
 
   if (!message.formFields) return null;
 
   return (
-    <div className="space-y-3 w-full">
-      <div className="bg-blue-50 rounded-lg px-4 py-3 my-2">
-        <div className="text-blue-800 text-sm leading-relaxed">
-          {message.content}
-        </div>
-      </div>
-      
+    <div className="space-y-4 w-full">
       <div className="space-y-3">
         {message.formFields.map((field) => (
           <div key={field.id} className="w-full">
@@ -36,6 +43,28 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
           </div>
         ))}
       </div>
+
+      {/* Form buttons */}
+      {message.buttons && message.buttons.length > 0 && (
+        <div className="space-y-2">
+          {message.buttons.map((button, index) => (
+            <button
+              key={index}
+              onClick={() => handleButtonClick(button.action)}
+              disabled={isButtonDisabled}
+              className={`w-full px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                button.type === "primary" 
+                  ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
+                  : button.type === "link"
+                  ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {button.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
