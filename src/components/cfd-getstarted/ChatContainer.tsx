@@ -1,6 +1,5 @@
 import React from "react";
 import MessageList from "./MessageList";
-import ChatInput from "./ChatInput";
 interface ChatContainerProps {
   onBack: () => void;
 }
@@ -24,9 +23,6 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
       <div className="flex-1 overflow-hidden">
         <MessageList />
       </div>
-      
-      {/* Input Area - Fixed at bottom */}
-      <ChatInput />
     </div>;
 };
 export default ChatContainer;

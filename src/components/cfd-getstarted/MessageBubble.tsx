@@ -66,10 +66,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const isAI = message.sender === "ai";
   
   return (
-    <div className="flex justify-start w-full">
+    <div className={`flex w-full ${isAI ? 'justify-start' : 'justify-end'}`}>
       <div className="max-w-[90%]">
         
-        {/* WhatsApp-style chat bubble - always left aligned */}
+        {/* WhatsApp-style chat bubble - AI left, User right */}
         <div className={`px-4 py-3 rounded-2xl ${
           isAI 
             ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md" 
