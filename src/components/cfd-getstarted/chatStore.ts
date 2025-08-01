@@ -139,11 +139,18 @@ export const useChatStore = create<ChatStore>()(
       proceedToStep: (step: number) => {
         const { isProcessing, isStepExecuted } = get();
         
+        console.log(`Attempting to proceed to step ${step}, isProcessing: ${isProcessing}, isStepExecuted: ${isStepExecuted(step)}`);
+        
         // Prevent multiple simultaneous calls or re-execution of same step
-        if (isProcessing || isStepExecuted(step)) return;
+        if (isProcessing || isStepExecuted(step)) {
+          console.log(`Step ${step} blocked - isProcessing: ${isProcessing}, isStepExecuted: ${isStepExecuted(step)}`);
+          return;
+        }
         
         set({ isProcessing: true });
         get().markStepExecuted(step);
+        
+        console.log(`Proceeding to step ${step}`);
 
         // Wait 800ms before showing step content
         setTimeout(() => {
@@ -976,8 +983,10 @@ export const useChatStore = create<ChatStore>()(
 
           setTimeout(() => {
             if (messageId === 'step-6-form') {
+              console.log('Step 6 form submitted, proceeding to step 7');
               get().proceedToStep(7);
             } else {
+              console.log('Form submitted but not step-6-form:', messageId);
               set({ isProcessing: false });
             }
           }, 800);
