@@ -586,7 +586,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-info',
-                  content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요:\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
+                  content: '📋 **Account** 페이지에서 다음 정보를 확인할 수 있어요:\n\n• **Account ID** (계좌번호)\n\n• **Password** (비밀번호)\n\n• **Server** (서버명)',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -594,7 +594,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-security',
-                  content: '🔒 안심하세요! 브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요. 계좌 정보는 AI 프로그램 연동에만 사용됩니다.',
+                  content: '🔒 **안심하세요!**\n\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요.\n\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),

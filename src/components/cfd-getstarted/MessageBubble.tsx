@@ -100,8 +100,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
-            <div className="text-blue-800 text-sm leading-relaxed text-left">
-              {displayedText}
+            <div className="text-blue-800 text-sm leading-relaxed text-left whitespace-pre-wrap">
+              {displayedText.split('**').map((part, index) => 
+                index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+              )}
             </div>
           </div>
         </div>
@@ -118,7 +120,9 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         <div className="w-full mx-2">
           <div className="bg-orange-50 rounded-lg px-4 py-3 my-2 border-l-4 border-orange-400">
             <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap text-left">
-              {displayedText}
+              {displayedText.split('**').map((part, index) => 
+                index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+              )}
             </div>
           </div>
         </div>
