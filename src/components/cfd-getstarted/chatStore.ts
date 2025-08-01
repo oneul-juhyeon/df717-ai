@@ -648,8 +648,237 @@ export const useChatStore = create<ChatStore>()(
               set({ currentStep: 7, isProcessing: false });
               break;
 
-            // FINAL COMPLETION
+            // STEP 8: MetaTrader 4 App Installation
             case 8:
+              get().addMessageGroup([
+                {
+                  id: 'step-8-title',
+                  content: '8단계: MetaTrader 4 앱 설치하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-8-intro',
+                  content: '그동안 투자 결과를 실시간으로 확인할 수 있는 앱을 설치해볼게요!',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-8-info',
+                  content: '💡 MetaTrader 4란? 쉽게 말해서 토스라고 보면 돼요. 하나의 앱에 모든 은행 계좌를 연결하고 한 곳에서 볼 수 있는 것처럼, MetaTrader 4는 여러 브로커의 거래 계좌를 한 앱에서 관리하고 실시간으로 확인할 수 있어요.',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-8-downloads',
+                  content: '',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: '안드로이드 앱 다운로드 →',
+                      type: 'link',
+                      action: () => {
+                        window.open('https://play.google.com/store/search?q=metatrader%204&c=apps&hl=ko', '_blank');
+                      }
+                    },
+                    {
+                      label: '아이폰 앱 다운로드 →',
+                      type: 'link',
+                      action: () => {
+                        window.open('https://apps.apple.com/kr/app/metatrader-4/id496212596', '_blank');
+                      }
+                    }
+                  ]
+                },
+                {
+                  id: 'step-8-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: '앱 설치를 완료했어요',
+                      type: 'primary',
+                      action: () => {
+                        get().addMessage({
+                          id: `user-response-${Date.now()}`,
+                          content: '앱 설치를 완료했어요',
+                          sender: 'user',
+                          type: 'text',
+                          timestamp: new Date(),
+                          animate: false
+                        });
+                        
+                        setTimeout(() => {
+                          get().proceedToStep(9);
+                        }, 800);
+                      }
+                    }
+                  ]
+                }
+              ]);
+              
+              set({ currentStep: 8, isProcessing: false });
+              break;
+
+            // STEP 9: MetaTrader 4 Login
+            case 9:
+              const { userData } = get();
+              get().addMessageGroup([
+                {
+                  id: 'step-9-title',
+                  content: '9단계: MetaTrader 4 로그인하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-9-intro',
+                  content: '설치한 MetaTrader 4 앱에 방금 생성한 계좌로 로그인해볼게요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-9-instructions',
+                  content: '📱 MetaTrader 4 앱에서 로그인 방법: 1. 우측 하단 ⚙️ 세팅 클릭 2. 새 계좌 클릭 3. 기존 계좌로 로그인 클릭 4. 서버 검색해서 선택 5. 로그인, 비밀번호 입력 후 로그인 클릭',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-9-userdata',
+                  content: `📋 입력할 정보 (앞서 생성한 계좌 정보): • 서버: ${userData.server || '[서버 정보 없음]'} • 로그인 (계좌번호): ${userData.accountId || '[계좌번호 없음]'} • 비밀번호: ${userData.password || '[비밀번호 없음]'}`,
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-9-tip',
+                  content: '💡 Tip! 서버 이름이 정확히 보이지 않으면 검색창에 \'ICMarkets\'라고 입력해서 찾아보세요. ⚠️ 로그인이 안 된다면 계좌 활성화까지 몇 분 정도 걸릴 수 있어요.',
+                  sender: 'ai',
+                  type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-9-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: '로그인을 완료했어요',
+                      type: 'primary',
+                      action: () => {
+                        get().addMessage({
+                          id: `user-response-${Date.now()}`,
+                          content: '로그인을 완료했어요',
+                          sender: 'user',
+                          type: 'text',
+                          timestamp: new Date(),
+                          animate: false
+                        });
+                        
+                        setTimeout(() => {
+                          get().proceedToStep(10);
+                        }, 800);
+                      }
+                    }
+                  ]
+                }
+              ]);
+              
+              set({ currentStep: 9, isProcessing: false });
+              break;
+
+            // STEP 10: Final Monitoring
+            case 10:
+              get().addMessageGroup([
+                {
+                  id: 'step-10-title',
+                  content: '✨ 모니터링 시작!',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-intro',
+                  content: '축하합니다! 이제 AI 자동투자를 실시간으로 모니터링할 수 있어요 🎉',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-success',
+                  content: '✅ 모든 설정이 완료되었습니다! • 데모계좌 개설 완료 • AI 프로그램 연동 신청 완료 • 모니터링 앱 설치 완료',
+                  sender: 'ai',
+                  type: 'success_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-final',
+                  content: 'MetaTrader 4 앱에서 실시간으로 거래 내역과 수익률을 확인하실 수 있어요. 매니저가 프로그램을 시작하면 자동으로 거래가 시작됩니다.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: '완료했어요',
+                      type: 'primary',
+                      action: () => {
+                        get().addMessage({
+                          id: `user-response-${Date.now()}`,
+                          content: '완료했어요',
+                          sender: 'user',
+                          type: 'text',
+                          timestamp: new Date(),
+                          animate: false
+                        });
+                        
+                        setTimeout(() => {
+                          get().proceedToStep(11);
+                        }, 800);
+                      }
+                    }
+                  ]
+                }
+              ]);
+              
+              set({ currentStep: 10, isProcessing: false });
+              break;
+
+            // FINAL COMPLETION
+            case 11:
               get().addMessageGroup([
                 {
                   id: 'final-celebration',
@@ -708,7 +937,7 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 8, isProcessing: false });
+              set({ currentStep: 11, isProcessing: false });
               break;
 
             default:
@@ -771,7 +1000,7 @@ export const useChatStore = create<ChatStore>()(
           // Success message
           get().addMessage({
             id: `success-${Date.now()}`,
-            content: '정보가 성공적으로 저장되었습니다! 다음 단계로 진행하겠습니다.',
+            content: '✅ 프로그램 시작 요청이 접수되었습니다! 매니저가 곧 AI 자동투자를 시작해드릴게요.',
             sender: 'ai',
             type: 'success_box',
             timestamp: new Date(),
