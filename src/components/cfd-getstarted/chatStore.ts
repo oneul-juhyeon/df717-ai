@@ -505,87 +505,27 @@ export const useChatStore = create<ChatStore>()(
               set({ currentStep: 5, isProcessing: false });
               break;
 
-            // STEP 6: 계좌 정보 입력
+            // STEP 6: Account Information Form (이전 Step 7을 Step 6으로 변경)
             case 6:
               get().addMessageGroup([
                 {
                   id: 'step-6-title',
-                  content: '6단계: 완료!',
+                  content: '6단계: 계좌 정보 입력하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-6-congrats',
-                  content: '축하해요! 데모계좌 개설이 완료되었어요 🎉',
+                  id: 'step-6-intro',
+                  content: '마지막으로 생성된 계좌 정보를 입력해주세요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-6-ready',
-                  content: '✅ AI 자동투자를 체험할 준비가 모두 끝났어요!',
-                  sender: 'ai',
-                  type: 'success_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-6-action',
-                  content: '',
-                  sender: 'ai',
-                  type: 'action_button',
-                  timestamp: new Date(),
-                  animate: false,
-                  buttons: [
-                    {
-                      label: '프로그램 시작 요청하기',
-                      type: 'primary',
-                      action: () => {
-                        get().addMessage({
-                          id: `user-response-${Date.now()}`,
-                          content: '프로그램 시작 요청하기',
-                          sender: 'user',
-                          type: 'text',
-                          timestamp: new Date(),
-                          animate: false
-                        });
-                        
-                        setTimeout(() => {
-                          get().proceedToStep(7);
-                        }, 800);
-                      }
-                    }
-                  ]
-                }
-              ]);
-              
-              set({ currentStep: 6, isProcessing: false });
-              break;
-
-            // STEP 7: FINAL FORM
-            case 7:
-              get().addMessageGroup([
-                {
-                  id: 'step-7-title',
-                  content: '7단계: 프로그램 시작 요청',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-7-intro',
-                  content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-7-account-info',
+                  id: 'step-6-account-info',
                   content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요.\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
                   sender: 'ai',
                   type: 'info_box',
@@ -593,7 +533,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-7-security',
+                  id: 'step-6-security',
                   content: '🔒 **안심하세요!**\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요.\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
                   sender: 'ai',
                   type: 'warning_box',
@@ -601,7 +541,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-7-form',
+                  id: 'step-6-form',
                   content: '',
                   sender: 'ai',
                   type: 'form',
@@ -638,29 +578,29 @@ export const useChatStore = create<ChatStore>()(
                       label: '프로그램 시작 요청하기',
                       type: 'primary',
                       action: () => {
-                        get().submitUserForm('step-7-form');
+                        get().submitUserForm('step-6-form');
                       }
                     }
                   ]
                 }
               ]);
               
-              set({ currentStep: 7, isProcessing: false });
+              set({ currentStep: 6, isProcessing: false });
               break;
 
-            // STEP 8: MetaTrader 4 App Installation
-            case 8:
+            // STEP 7: MetaTrader 4 App Installation (이전 Step 8을 Step 7로 변경)
+            case 7:
               get().addMessageGroup([
                 {
-                  id: 'step-8-title',
-                  content: '8단계: MetaTrader 4 앱 설치하기',
+                  id: 'step-7-title',
+                  content: '7단계: MetaTrader 4 앱 설치하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-8-intro',
+                  id: 'step-7-intro',
                   content: '그동안 투자 결과를 실시간으로 확인할 수 있는 앱을 설치해볼게요!',
                   sender: 'ai',
                   type: 'text',
@@ -668,7 +608,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-8-info',
+                  id: 'step-7-info',
                   content: '💡 MetaTrader 4란? 쉽게 말해서 토스라고 보면 돼요. 하나의 앱에 모든 은행 계좌를 연결하고 한 곳에서 볼 수 있는 것처럼, MetaTrader 4는 여러 브로커의 거래 계좌를 한 앱에서 관리하고 실시간으로 확인할 수 있어요.',
                   sender: 'ai',
                   type: 'info_box',
@@ -676,7 +616,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-8-downloads',
+                  id: 'step-7-downloads',
                   content: '',
                   sender: 'ai',
                   type: 'text',
@@ -700,7 +640,7 @@ export const useChatStore = create<ChatStore>()(
                   ]
                 },
                 {
-                  id: 'step-8-action',
+                  id: 'step-7-action',
                   content: '',
                   sender: 'ai',
                   type: 'action_button',
@@ -721,7 +661,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(9);
+                          get().proceedToStep(8);
                         }, 800);
                       }
                     }
@@ -729,23 +669,23 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 8, isProcessing: false });
+              set({ currentStep: 7, isProcessing: false });
               break;
 
-            // STEP 9: MetaTrader 4 Login
-            case 9:
+            // STEP 8: MetaTrader 4 Login (이전 Step 9를 Step 8로 변경)
+            case 8:
               const { userData } = get();
               get().addMessageGroup([
                 {
-                  id: 'step-9-title',
-                  content: '9단계: MetaTrader 4 로그인하기',
+                  id: 'step-8-title',
+                  content: '8단계: MetaTrader 4 로그인하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-9-intro',
+                  id: 'step-8-intro',
                   content: '설치한 MetaTrader 4 앱에 방금 생성한 계좌로 로그인해볼게요.',
                   sender: 'ai',
                   type: 'text',
@@ -753,7 +693,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-9-instructions',
+                  id: 'step-8-instructions',
                   content: '📱 MetaTrader 4 앱에서 로그인 방법: 1. 우측 하단 ⚙️ 세팅 클릭 2. 새 계좌 클릭 3. 기존 계좌로 로그인 클릭 4. 서버 검색해서 선택 5. 로그인, 비밀번호 입력 후 로그인 클릭',
                   sender: 'ai',
                   type: 'info_box',
@@ -761,7 +701,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-9-userdata',
+                  id: 'step-8-userdata',
                   content: `📋 입력할 정보 (앞서 생성한 계좌 정보): • 서버: ${userData.server || '[서버 정보 없음]'} • 로그인 (계좌번호): ${userData.accountId || '[계좌번호 없음]'} • 비밀번호: ${userData.password || '[비밀번호 없음]'}`,
                   sender: 'ai',
                   type: 'info_box',
@@ -769,7 +709,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-9-tip',
+                  id: 'step-8-tip',
                   content: '💡 Tip! 서버 이름이 정확히 보이지 않으면 검색창에 \'ICMarkets\'라고 입력해서 찾아보세요. ⚠️ 로그인이 안 된다면 계좌 활성화까지 몇 분 정도 걸릴 수 있어요.',
                   sender: 'ai',
                   type: 'warning_box',
@@ -777,7 +717,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-9-action',
+                  id: 'step-8-action',
                   content: '',
                   sender: 'ai',
                   type: 'action_button',
@@ -798,7 +738,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(10);
+                          get().proceedToStep(9);
                         }, 800);
                       }
                     }
@@ -806,14 +746,14 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 9, isProcessing: false });
+              set({ currentStep: 8, isProcessing: false });
               break;
 
-            // STEP 10: Final Monitoring
-            case 10:
+            // STEP 9: Final Monitoring (이전 Step 10을 Step 9로 변경)
+            case 9:
               get().addMessageGroup([
                 {
-                  id: 'step-10-title',
+                  id: 'step-9-title',
                   content: '✨ 모니터링 시작!',
                   sender: 'ai',
                   type: 'text',
@@ -821,7 +761,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-10-intro',
+                  id: 'step-9-intro',
                   content: '축하합니다! 이제 AI 자동투자를 실시간으로 모니터링할 수 있어요 🎉',
                   sender: 'ai',
                   type: 'text',
@@ -829,7 +769,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-10-success',
+                  id: 'step-9-success',
                   content: '✅ 모든 설정이 완료되었습니다! • 데모계좌 개설 완료 • AI 프로그램 연동 신청 완료 • 모니터링 앱 설치 완료',
                   sender: 'ai',
                   type: 'success_box',
@@ -837,7 +777,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-10-final',
+                  id: 'step-9-final',
                   content: 'MetaTrader 4 앱에서 실시간으로 거래 내역과 수익률을 확인하실 수 있어요. 매니저가 프로그램을 시작하면 자동으로 거래가 시작됩니다.',
                   sender: 'ai',
                   type: 'text',
@@ -845,7 +785,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-10-action',
+                  id: 'step-9-action',
                   content: '',
                   sender: 'ai',
                   type: 'action_button',
@@ -866,7 +806,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(11);
+                          get().proceedToStep(10);
                         }, 800);
                       }
                     }
@@ -874,11 +814,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 10, isProcessing: false });
+              set({ currentStep: 9, isProcessing: false });
               break;
 
-            // FINAL COMPLETION
-            case 11:
+            // FINAL COMPLETION (이전 Step 11을 Step 10으로 변경)
+            case 10:
               get().addMessageGroup([
                 {
                   id: 'final-celebration',
@@ -937,7 +877,7 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 11, isProcessing: false });
+              set({ currentStep: 10, isProcessing: false });
               break;
 
             default:
@@ -1008,8 +948,8 @@ export const useChatStore = create<ChatStore>()(
           });
 
           setTimeout(() => {
-            if (messageId === 'step-7-form') {
-              get().proceedToStep(8);
+            if (messageId === 'step-6-form') {
+              get().proceedToStep(7);
             } else {
               set({ isProcessing: false });
             }
