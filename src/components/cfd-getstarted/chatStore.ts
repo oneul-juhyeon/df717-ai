@@ -541,12 +541,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: '다음 단계로',
+                      label: '프로그램 시작 요청하기',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '다음 단계로',
+                          content: '프로그램 시작 요청하기',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -578,9 +578,17 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-intro',
-                  content: 'AI 자동투자 프로그램 시작을 위해 데모계좌 정보를 입력해주세요.',
+                  content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요.',
                   sender: 'ai',
                   type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-7-account-info',
+                  content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요.\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
+                  sender: 'ai',
+                  type: 'info_box',
                   timestamp: new Date(),
                   animate: false,
                 },
@@ -594,7 +602,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-form',
-                  content: 'AI 자동투자 프로그램 시작을 위해 데모계좌 정보를 입력해주세요.',
+                  content: '',
                   sender: 'ai',
                   type: 'form',
                   timestamp: new Date(),
