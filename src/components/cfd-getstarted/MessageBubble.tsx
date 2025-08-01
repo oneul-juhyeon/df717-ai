@@ -132,7 +132,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-blue-50 rounded-lg px-4 py-4 my-2 border-l-4 border-blue-400">
-            <div className="text-blue-800 text-sm leading-7 text-left break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+            <div className="text-blue-800 text-sm leading-7 text-left break-keep word-break-keep whitespace-pre-wrap" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
               {displayedText.split('**').map((part, index) => 
                 index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
               )}
@@ -151,7 +151,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-orange-50 rounded-lg px-4 py-4 my-2 border-l-4 border-orange-400">
-            <div className="text-orange-800 text-sm leading-7 font-medium text-left break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+            <div className="text-orange-800 text-sm leading-7 font-medium text-left break-keep word-break-keep whitespace-pre-wrap" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
               {displayedText.split('**').map((part, index) => 
                 index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
               )}
@@ -205,8 +205,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-green-50 rounded-lg px-4 py-3 my-2 border-l-4 border-green-400">
-            <div className="text-green-800 text-sm leading-relaxed font-medium text-left break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
-              {displayedText}
+            <div className="text-green-800 text-sm leading-relaxed font-medium text-left break-keep word-break-keep whitespace-pre-wrap" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
+              {displayedText.split('**').map((part, index) => 
+                index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
+              )}
             </div>
           </div>
         </div>
