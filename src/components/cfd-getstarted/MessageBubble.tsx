@@ -66,43 +66,59 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const isAI = message.sender === "ai";
   
   return (
-    <div className="flex justify-start w-full mb-1">
-      <div className="max-w-[85%]">
+    <div className="flex justify-start w-full">
+      <div className="max-w-[90%]">
         
         {/* WhatsApp-style chat bubble - always left aligned */}
-        <div className={`px-4 py-2.5 rounded-2xl ${
+        <div className={`px-4 py-3 rounded-2xl ${
           isAI 
             ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md" 
             : "bg-blue-500 text-white rounded-br-md"
         }`}>
           
-          {/* Message content */}
-          <div className="text-sm leading-relaxed">
+          {/* Message content with enhanced typography */}
+          <div className="text-left leading-relaxed">
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
-                {displayedText}
+                {/* Enhanced typography for step titles */}
+                {displayedText.includes('단계:') ? (
+                  <div className="text-base font-bold text-blue-600 mb-1">
+                    {displayedText}
+                  </div>
+                ) : (
+                  <div className="text-sm">
+                    {displayedText}
+                  </div>
+                )}
               </div>
             )}
             
             {message.type === "info_box" && (
-              <div className="bg-blue-50 rounded-lg px-4 py-3 my-2">
+              <div className="bg-blue-50 rounded-lg px-4 py-3 my-2 border-l-4 border-blue-400">
                 <div className="text-blue-800 text-sm leading-relaxed">
-                  {displayedText}
+                  <strong className="font-semibold">
+                    {displayedText.split('?')[0]}?
+                  </strong>
+                  {displayedText.includes('?') && (
+                    <span className="ml-1">
+                      {displayedText.split('?')[1]}
+                    </span>
+                  )}
                 </div>
               </div>
             )}
             
             {message.type === "warning_box" && (
-              <div className="bg-orange-50 rounded-lg px-4 py-3 my-2">
-                <div className="text-orange-800 text-sm leading-relaxed">
+              <div className="bg-orange-50 rounded-lg px-4 py-3 my-2 border-l-4 border-orange-400">
+                <div className="text-orange-800 text-sm leading-relaxed font-medium">
                   {displayedText}
                 </div>
               </div>
             )}
             
             {message.type === "success_box" && (
-              <div className="bg-green-50 rounded-lg px-4 py-3 my-2">
-                <div className="text-green-800 text-sm leading-relaxed">
+              <div className="bg-green-50 rounded-lg px-4 py-3 my-2 border-l-4 border-green-400">
+                <div className="text-green-800 text-sm leading-relaxed font-medium">
                   {displayedText}
                 </div>
               </div>
@@ -113,19 +129,19 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             )}
           </div>
           
-          {/* Buttons if any */}
+          {/* Enhanced buttons with better styling */}
           {message.buttons && message.buttons.length > 0 && (
-            <div className="mt-3 space-y-2">
+            <div className="mt-4 space-y-2">
               {message.buttons.map((button, index) => (
                 <button
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                     button.type === "primary" 
-                      ? "bg-blue-500 text-white hover:bg-blue-600"
+                      ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                       : button.type === "link"
-                      ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200"
+                      ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >

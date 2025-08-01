@@ -9,17 +9,20 @@ interface ChatContainerProps {
 const ChatContainer: React.FC<ChatContainerProps> = ({ onBack }) => {
   return (
     <div className="w-full h-screen flex flex-col bg-gray-50">
-      {/* Simple back button - minimal design */}
-      <div className="p-3 bg-white border-b border-gray-100">
-        <button 
-          onClick={onBack}
-          className="text-gray-600 hover:text-gray-800 transition-colors p-1 rounded-lg hover:bg-gray-100 active:scale-95"
-          aria-label="뒤로 가기"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+      {/* Enhanced header with better back button */}
+      <div className="px-4 py-3 bg-white border-b border-gray-100 shadow-sm">
+        <div className="flex items-center">
+          <button 
+            onClick={onBack}
+            className="flex items-center justify-center w-10 h-10 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-all duration-200 active:scale-95 -ml-2"
+            aria-label="뒤로 가기"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h1 className="ml-3 text-lg font-semibold text-gray-800">AI 투자 체험</h1>
+        </div>
       </div>
       
       {/* Messages Area - Full height with proper overflow */}
