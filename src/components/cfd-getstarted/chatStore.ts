@@ -197,7 +197,17 @@ export const useChatStore = create<ChatStore>()(
                       action: () => {
                         window.open('https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293', '_blank');
                       }
-                    },
+                    }
+                  ]
+                },
+                {
+                  id: 'step-1-complete',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
                     {
                       label: '계좌 신청을 완료했어요',
                       type: 'primary',
@@ -255,6 +265,14 @@ export const useChatStore = create<ChatStore>()(
                   content: '💡 Tip! 메일이 안 보이나요?\n스팸함도 확인해보세요. ICMarkets 메일이 가끔 스팸으로 분류될 수 있어요.',
                   sender: 'ai',
                   type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: true,
+                },
+                {
+                  id: 'step-2-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
                   timestamp: new Date(),
                   animate: true,
                   buttons: [

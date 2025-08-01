@@ -120,29 +120,39 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap text-left">
               {displayedText}
             </div>
-            
-            {/* Enhanced buttons with better styling */}
-            {message.buttons && message.buttons.length > 0 && (
-              <div className="mt-4 space-y-2">
-                {message.buttons.map((button, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleButtonClick(button.action)}
-                    disabled={isButtonDisabled}
-                    className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-left ${
-                      button.type === "primary" 
-                        ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
-                        : button.type === "link"
-                        ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
-                    {button.label}
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Action buttons - 완전히 독립적인 버튼 (채팅 버블과 분리)
+  if (message.type === "action_button") {
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full mx-2">
+          {message.buttons && message.buttons.length > 0 && (
+            <div className="space-y-2">
+              {message.buttons.map((button, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleButtonClick(button.action)}
+                  disabled={isButtonDisabled}
+                  className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-left ${
+                    button.type === "primary" 
+                      ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
+                      : button.type === "link"
+                      ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {button.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );
