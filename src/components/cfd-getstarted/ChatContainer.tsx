@@ -6,7 +6,9 @@ interface ChatContainerProps {
 const ChatContainer: React.FC<ChatContainerProps> = ({
   onBack
 }) => {
-  return <div className="w-full h-screen flex flex-col bg-gray-50" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif' }}>
+  return <div className="w-full h-screen flex flex-col bg-gray-50" style={{
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif'
+  }}>
       {/* Enhanced header with better back button and mobile alignment */}
       <div className="px-4 py-4 bg-white border-b border-gray-100 shadow-sm">
         <div className="flex items-center">
@@ -15,7 +17,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <h1 className="ml-3 text-lg font-semibold text-gray-800 leading-6 word-break break-words flex-1">DF717 시작 가이드</h1>
+          <h1 className="ml-3 text-lg font-semibold text-gray-800 leading-6 word-break break-words flex-1 text-left">DF717 시작 가이드</h1>
         </div>
       </div>
       
