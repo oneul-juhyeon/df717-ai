@@ -15,11 +15,14 @@ const MessageList: React.FC = () => {
   }, [messages]);
 
   return (
-    <div className="h-full overflow-y-auto p-4 space-y-4 bg-gray-50">
-      {messages.map((message) => (
-        <MessageBubble key={message.id} message={message} />
-      ))}
-      <div ref={messagesEndRef} />
+    <div className="h-full overflow-y-auto bg-gray-50">
+      {/* Messages container with proper padding for mobile */}
+      <div className="px-4 py-6 space-y-4 min-h-full">
+        {messages.map((message) => (
+          <MessageBubble key={message.id} message={message} />
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
     </div>
   );
 };

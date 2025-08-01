@@ -38,5 +38,5 @@ export interface ChatState {
   messages: Message[];
   currentStep: number;
   userData: UserData;
-  showChat: boolean;
+  isProcessing: boolean;
 }

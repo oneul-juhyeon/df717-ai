@@ -6,16 +6,12 @@ interface ChatStore extends ChatState {
   addMessage: (message: Message) => void;
   setCurrentStep: (step: number) => void;
   updateUserData: (data: Partial<UserData>) => void;
-  setShowChat: (show: boolean) => void;
   resetChat: () => void;
   initializeChat: () => void;
-  startStep1: () => void;
-  startStep2: () => void;
-  startStep3: () => void;
-  startStep4: () => void;
-  startStep5: () => void;
+  proceedToStep: (step: number) => void;
   updateFormField: (messageId: string, fieldId: string, value: string) => void;
   submitUserForm: (messageId: string) => void;
+  setProcessing: (processing: boolean) => void;
 }
 
 const initialUserData: UserData = {
@@ -36,7 +32,7 @@ export const useChatStore = create<ChatStore>()(
       messages: initialMessages,
       currentStep: 0,
       userData: initialUserData,
-      showChat: false,
+      isProcessing: false,
 
       addMessage: (message: Message) => {
         set((state) => ({
@@ -54,8 +50,8 @@ export const useChatStore = create<ChatStore>()(
         }));
       },
 
-      setShowChat: (show: boolean) => {
-        set({ showChat: show });
+      setProcessing: (processing: boolean) => {
+        set({ isProcessing: processing });
       },
 
       resetChat: () => {
@@ -63,14 +59,17 @@ export const useChatStore = create<ChatStore>()(
           messages: initialMessages,
           currentStep: 0,
           userData: initialUserData,
-          showChat: false,
+          isProcessing: false,
         });
       },
 
       initializeChat: () => {
+        // Reset first to ensure clean state
+        get().resetChat();
+        
         const welcomeMessages: Message[] = [
           {
-            id: '1',
+            id: 'welcome-1',
             content: '안녕하세요! AI 자동투자 체험을 도와드릴게요 😊',
             sender: 'ai',
             type: 'text',
@@ -78,7 +77,7 @@ export const useChatStore = create<ChatStore>()(
             animate: true,
           },
           {
-            id: '2',
+            id: 'welcome-2',
             content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 투자를 체험하실 수 있어요.',
             sender: 'ai',
             type: 'text',
@@ -87,155 +86,248 @@ export const useChatStore = create<ChatStore>()(
           }
         ];
 
-        // Add messages with delay for better UX
-        welcomeMessages.forEach((message, index) => {
-          setTimeout(() => {
-            set((state) => ({
-              messages: [...state.messages, message]
-            }));
-          }, index * 1500);
-        });
-
-        // Add step 1 message after welcome messages
+        // Add welcome messages immediately
+        set({ messages: welcomeMessages });
+        
+        // Add step 1 message after a brief delay
         setTimeout(() => {
-          get().startStep1();
-        }, welcomeMessages.length * 1500 + 1000);
+          get().proceedToStep(1);
+        }, 2000);
       },
 
-      startStep1: () => {
-        const step1Message: Message = {
-          id: 'step1',
-          content: '1단계 ICMarkets 브로커 회원가입',
-          sender: 'ai',
-          type: 'info_box',
-          timestamp: new Date(),
-          animate: true,
-          buttons: [
-            {
-              label: 'ICMarkets 회원가입 홈페이지 열기',
-              type: 'link',
-              action: () => {
-                window.open('https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293', '_blank');
-              }
-            },
-            {
-              label: '회원가입 페이지를 열었어요',
-              type: 'primary',
-              action: () => {
-                get().addMessage({
-                  id: Date.now().toString(),
-                  content: '회원가입 페이지를 열었어요',
-                  sender: 'user',
+      proceedToStep: (step: number) => {
+        const { isProcessing } = get();
+        
+        // Prevent multiple simultaneous calls
+        if (isProcessing) return;
+        
+        set({ isProcessing: true });
+
+        switch (step) {
+          case 1:
+            get().addMessage({
+              id: 'step-1',
+              content: '1단계: ICMarkets 브로커 회원가입',
+              sender: 'ai',
+              type: 'info_box',
+              timestamp: new Date(),
+              animate: true,
+              buttons: [
+                {
+                  label: 'ICMarkets 회원가입 홈페이지 열기',
+                  type: 'link',
+                  action: () => {
+                    window.open('https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293', '_blank');
+                  }
+                },
+                {
+                  label: '회원가입 페이지를 열었어요',
+                  type: 'primary',
+                  action: () => {
+                    get().addMessage({
+                      id: `user-response-${Date.now()}`,
+                      content: '회원가입 페이지를 열었어요',
+                      sender: 'user',
+                      type: 'text',
+                      timestamp: new Date(),
+                      animate: false
+                    });
+                    
+                    setTimeout(() => {
+                      get().proceedToStep(2);
+                    }, 1000);
+                  }
+                }
+              ]
+            });
+            set({ currentStep: 1, isProcessing: false });
+            break;
+
+          case 2:
+            get().addMessage({
+              id: 'step-2-1',
+              content: '좋습니다! 이제 2단계로 넘어가겠습니다.',
+              sender: 'ai',
+              type: 'text',
+              timestamp: new Date(),
+              animate: true,
+            });
+            
+            setTimeout(() => {
+              get().addMessage({
+                id: 'step-2-2',
+                content: 'ICMarkets에서 데모계좌 회원가입을 완료하신 후, 받으신 계정 정보를 입력해주세요.',
+                sender: 'ai',
+                type: 'text',
+                timestamp: new Date(),
+                animate: true,
+              });
+              
+              setTimeout(() => {
+                get().proceedToStep(3);
+              }, 2000);
+            }, 1500);
+            
+            set({ currentStep: 2, isProcessing: false });
+            break;
+
+          case 3:
+            get().addMessage({
+              id: 'step-3',
+              content: '3단계: 회원정보 입력',
+              sender: 'ai',
+              type: 'form',
+              timestamp: new Date(),
+              animate: true,
+              formFields: [
+                {
+                  id: 'firstName',
+                  label: '이름',
                   type: 'text',
+                  placeholder: '이름을 입력하세요',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'lastName',
+                  label: '성',
+                  type: 'text',
+                  placeholder: '성을 입력하세요',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'email',
+                  label: '이메일',
+                  type: 'email',
+                  placeholder: 'example@email.com',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'phone',
+                  label: '전화번호',
+                  type: 'tel',
+                  placeholder: '010-1234-5678',
+                  required: true,
+                  value: ''
+                }
+              ],
+              buttons: [
+                {
+                  label: '입력 완료',
+                  type: 'primary',
+                  action: () => {
+                    get().submitUserForm('step-3');
+                  }
+                }
+              ]
+            });
+            set({ currentStep: 3, isProcessing: false });
+            break;
+
+          case 4:
+            get().addMessage({
+              id: 'step-4',
+              content: '4단계: ICMarkets 계정 정보 입력',
+              sender: 'ai',
+              type: 'form',
+              timestamp: new Date(),
+              animate: true,
+              formFields: [
+                {
+                  id: 'accountId',
+                  label: '계정 ID (Login)',
+                  type: 'text',
+                  placeholder: 'ICMarkets에서 받은 계정 ID',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'password',
+                  label: '비밀번호',
+                  type: 'text',
+                  placeholder: 'ICMarkets 계정 비밀번호',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'server',
+                  label: '서버',
+                  type: 'text',
+                  placeholder: 'ICMarkets-Demo02 (예시)',
+                  required: true,
+                  value: ''
+                }
+              ],
+              buttons: [
+                {
+                  label: '계정 연결하기',
+                  type: 'primary',
+                  action: () => {
+                    get().submitUserForm('step-4');
+                  }
+                }
+              ]
+            });
+            set({ currentStep: 4, isProcessing: false });
+            break;
+
+          case 5:
+            get().addMessage({
+              id: 'step-5-1',
+              content: '🎉 축하합니다! 모든 설정이 완료되었습니다.',
+              sender: 'ai',
+              type: 'success_box',
+              timestamp: new Date(),
+              animate: true,
+            });
+            
+            setTimeout(() => {
+              get().addMessage({
+                id: 'step-5-2',
+                content: '이제 DF717 AI가 자동으로 투자를 시작합니다. 실시간 수익 현황을 확인해보세요!',
+                sender: 'ai',
+                type: 'text',
+                timestamp: new Date(),
+                animate: true,
+              });
+              
+              setTimeout(() => {
+                get().addMessage({
+                  id: 'step-5-final',
+                  content: 'AI 투자 모니터링 시작',
+                  sender: 'ai',
+                  type: 'info_box',
                   timestamp: new Date(),
-                  animate: false
+                  animate: true,
+                  buttons: [
+                    {
+                      label: '실시간 수익 확인하기',
+                      type: 'primary',
+                      action: () => {
+                        window.open('/df717', '_blank');
+                      }
+                    },
+                    {
+                      label: '새로운 체험 시작',
+                      type: 'secondary',
+                      action: () => {
+                        get().resetChat();
+                        get().initializeChat();
+                      }
+                    }
+                  ]
                 });
-                setTimeout(() => {
-                  get().startStep2();
-                }, 500);
-              }
-            }
-          ]
-        };
+              }, 1500);
+            }, 1500);
+            
+            set({ currentStep: 5, isProcessing: false });
+            break;
 
-        set((state) => ({
-          messages: [...state.messages, step1Message],
-          currentStep: 1
-        }));
-      },
-
-      startStep2: () => {
-        const step2Messages: Message[] = [
-          {
-            id: 'step2-1',
-            content: '좋습니다! 이제 2단계로 넘어가겠습니다.',
-            sender: 'ai',
-            type: 'text',
-            timestamp: new Date(),
-            animate: true,
-          },
-          {
-            id: 'step2-2',
-            content: 'ICMarkets에서 데모계좌 회원가입을 완료하신 후, 받으신 계정 정보를 입력해주세요.',
-            sender: 'ai',
-            type: 'text',
-            timestamp: new Date(),
-            animate: true,
-          }
-        ];
-
-        step2Messages.forEach((message, index) => {
-          setTimeout(() => {
-            set((state) => ({
-              messages: [...state.messages, message]
-            }));
-          }, index * 1500);
-        });
-
-        setTimeout(() => {
-          get().startStep3();
-        }, step2Messages.length * 1500 + 1000);
-
-        set({ currentStep: 2 });
-      },
-
-      startStep3: () => {
-        const step3Message: Message = {
-          id: 'step3',
-          content: '3단계: 회원정보 입력',
-          sender: 'ai',
-          type: 'form',
-          timestamp: new Date(),
-          animate: true,
-          formFields: [
-            {
-              id: 'firstName',
-              label: '이름',
-              type: 'text',
-              placeholder: '이름을 입력하세요',
-              required: true,
-              value: ''
-            },
-            {
-              id: 'lastName',
-              label: '성',
-              type: 'text',
-              placeholder: '성을 입력하세요',
-              required: true,
-              value: ''
-            },
-            {
-              id: 'email',
-              label: '이메일',
-              type: 'email',
-              placeholder: 'example@email.com',
-              required: true,
-              value: ''
-            },
-            {
-              id: 'phone',
-              label: '전화번호',
-              type: 'tel',
-              placeholder: '010-1234-5678',
-              required: true,
-              value: ''
-            }
-          ],
-          buttons: [
-            {
-              label: '입력 완료',
-              type: 'primary',
-              action: () => {
-                get().submitUserForm('step3');
-              }
-            }
-          ]
-        };
-
-        set((state) => ({
-          messages: [...state.messages, step3Message],
-          currentStep: 3
-        }));
+          default:
+            set({ isProcessing: false });
+        }
       },
 
       updateFormField: (messageId: string, fieldId: string, value: string) => {
@@ -254,7 +346,13 @@ export const useChatStore = create<ChatStore>()(
       },
 
       submitUserForm: (messageId: string) => {
-        const { messages, userData } = get();
+        const { messages, isProcessing } = get();
+        
+        // Prevent multiple submissions
+        if (isProcessing) return;
+        
+        set({ isProcessing: true });
+        
         const formMessage = messages.find(m => m.id === messageId);
         
         if (formMessage && formMessage.formFields) {
@@ -269,13 +367,14 @@ export const useChatStore = create<ChatStore>()(
           
           if (missingFields.length > 0) {
             get().addMessage({
-              id: Date.now().toString(),
+              id: `warning-${Date.now()}`,
               content: '모든 필수 항목을 입력해주세요.',
               sender: 'ai',
               type: 'warning_box',
               timestamp: new Date(),
               animate: true
             });
+            set({ isProcessing: false });
             return;
           }
 
@@ -284,7 +383,7 @@ export const useChatStore = create<ChatStore>()(
           
           // Success message
           get().addMessage({
-            id: Date.now().toString(),
+            id: `success-${Date.now()}`,
             content: '정보가 성공적으로 저장되었습니다! 다음 단계로 진행하겠습니다.',
             sender: 'ai',
             type: 'success_box',
@@ -293,130 +392,17 @@ export const useChatStore = create<ChatStore>()(
           });
 
           setTimeout(() => {
-            if (messageId === 'step3') {
-              get().startStep4();
-            } else if (messageId === 'step4') {
-              get().startStep5();
+            if (messageId === 'step-3') {
+              get().proceedToStep(4);
+            } else if (messageId === 'step-4') {
+              get().proceedToStep(5);
+            } else {
+              set({ isProcessing: false });
             }
-          }, 1500);
+          }, 2000);
+        } else {
+          set({ isProcessing: false });
         }
-      },
-
-      startStep4: () => {
-        const step4Message: Message = {
-          id: 'step4',
-          content: '4단계: ICMarkets 계정 정보 입력',
-          sender: 'ai',
-          type: 'form',
-          timestamp: new Date(),
-          animate: true,
-          formFields: [
-            {
-              id: 'accountId',
-              label: '계정 ID (Login)',
-              type: 'text',
-              placeholder: 'ICMarkets에서 받은 계정 ID',
-              required: true,
-              value: ''
-            },
-            {
-              id: 'password',
-              label: '비밀번호',
-              type: 'text',
-              placeholder: 'ICMarkets 계정 비밀번호',
-              required: true,
-              value: ''
-            },
-            {
-              id: 'server',
-              label: '서버',
-              type: 'text',
-              placeholder: 'ICMarkets-Demo02 (예시)',
-              required: true,
-              value: ''
-            }
-          ],
-          buttons: [
-            {
-              label: '계정 연결하기',
-              type: 'primary',
-              action: () => {
-                get().submitUserForm('step4');
-              }
-            }
-          ]
-        };
-
-        set((state) => ({
-          messages: [...state.messages, step4Message],
-          currentStep: 4
-        }));
-      },
-
-      startStep5: () => {
-        const step5Messages: Message[] = [
-          {
-            id: 'step5-1',
-            content: '🎉 축하합니다! 모든 설정이 완료되었습니다.',
-            sender: 'ai',
-            type: 'success_box',
-            timestamp: new Date(),
-            animate: true,
-          },
-          {
-            id: 'step5-2',
-            content: '이제 DF717 AI가 자동으로 투자를 시작합니다. 실시간 수익 현황을 확인해보세요!',
-            sender: 'ai',
-            type: 'text',
-            timestamp: new Date(),
-            animate: true,
-          }
-        ];
-
-        step5Messages.forEach((message, index) => {
-          setTimeout(() => {
-            set((state) => ({
-              messages: [...state.messages, message]
-            }));
-          }, index * 1500);
-        });
-
-        // Add final button after messages
-        setTimeout(() => {
-          const finalMessage: Message = {
-            id: 'step5-final',
-            content: 'AI 투자 모니터링 시작',
-            sender: 'ai',
-            type: 'info_box',
-            timestamp: new Date(),
-            animate: true,
-            buttons: [
-              {
-                label: '실시간 수익 확인하기',
-                type: 'primary',
-                action: () => {
-                  // Here you would navigate to the monitoring dashboard
-                  window.open('/df717', '_blank');
-                }
-              },
-              {
-                label: '새로운 체험 시작',
-                type: 'secondary',
-                action: () => {
-                  get().resetChat();
-                  get().initializeChat();
-                }
-              }
-            ]
-          };
-
-          set((state) => ({
-            messages: [...state.messages, finalMessage],
-            currentStep: 5
-          }));
-        }, step5Messages.length * 1500 + 1000);
-
-        set({ currentStep: 5 });
       },
     }),
     {
@@ -425,7 +411,6 @@ export const useChatStore = create<ChatStore>()(
         messages: state.messages,
         currentStep: state.currentStep,
         userData: state.userData,
-        showChat: state.showChat,
       }),
     }
   )
