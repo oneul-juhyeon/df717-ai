@@ -785,59 +785,79 @@ export const useChatStore = create<ChatStore>()(
                  },
                 {
                   id: 'step-9-intro',
-                  content: '축하합니다! 이제 실시간으로 거래 내역과 수익률을 확인하실 수 있어요.\n프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요!\n\n더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
+                  content: '축하합니다! 이제 실시간으로 거래 내역과 수익률을 확인하실 수 있어요.\n프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
-                },
-                 {
-                   id: 'final-buttons',
-                   content: '',
-                   sender: 'ai',
-                   type: 'final_cards',
-                   timestamp: new Date(),
-                   animate: false,
-                   buttons: [
-                     {
-                       label: '🏠 DF717 소개',
-                       description: '우리가 누구인지 알아보기',
-                       type: 'card',
-                       action: () => {
-                         window.open('https://www.df717.ai/', '_blank');
-                       }
-                     },
-                     {
-                       label: '📊 실시간 수익률',
-                       description: '8.3년 검증된 실계좌',
-                       type: 'card',
-                       action: () => {
-                         window.open('https://aiwow.notion.site/DF717-LIVE-ACCOUNT-20dc67e3da6880dfbc4cefa57ae38bf7', '_blank');
-                       }
-                     },
-                     {
-                       label: '📈 백테스트 결과',
-                       description: '20년 검증, 65.9% 수익률',
-                       type: 'card',
-                       action: () => {
-                         window.open('https://aiwow.notion.site/DF717-Backtest-20fc67e3da68809780c0f8302bfc12bf', '_blank');
-                       }
-                     },
-                     {
-                       label: '🔄 처음으로',
-                       description: '첫 화면으로 돌아가기',
-                       type: 'card',
-                       action: () => {
-                         get().resetChat();
-                         get().initializeChat();
-                       }
-                     }
-                   ]
-                 }
-               ]);
-               
-               set({ currentStep: 9, isProcessing: false });
-               break;
+                }
+                ]);
+                
+                // 800ms 지연 후 두 번째 메시지 추가
+                setTimeout(() => {
+                  set(state => ({
+                    messages: [...state.messages, {
+                      id: 'step-9-additional-info',
+                      content: '더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
+                      sender: 'ai',
+                      type: 'text',
+                      timestamp: new Date(),
+                      animate: true,
+                    }]
+                  }));
+                  
+                  // 추가 지연 후 버튼 표시
+                  setTimeout(() => {
+                    set(state => ({
+                      messages: [...state.messages, {
+                        id: 'final-buttons',
+                        content: '',
+                        sender: 'ai',
+                        type: 'final_cards',
+                        timestamp: new Date(),
+                        animate: false,
+                        buttons: [
+                          {
+                            label: '🏠 DF717 소개',
+                            description: '우리가 누구인지 알아보기',
+                            type: 'card',
+                            action: () => {
+                              window.open('https://www.df717.ai/', '_blank');
+                            }
+                          },
+                          {
+                            label: '📊 실시간 수익률',
+                            description: '8.3년 검증된 실계좌',
+                            type: 'card',
+                            action: () => {
+                              window.open('https://aiwow.notion.site/DF717-LIVE-ACCOUNT-20dc67e3da6880dfbc4cefa57ae38bf7', '_blank');
+                            }
+                          },
+                          {
+                            label: '📈 백테스트 결과',
+                            description: '20년 검증, 65.9% 수익률',
+                            type: 'card',
+                            action: () => {
+                              window.open('https://aiwow.notion.site/DF717-Backtest-20fc67e3da68809780c0f8302bfc12bf', '_blank');
+                            }
+                          },
+                          {
+                            label: '🔄 처음으로',
+                            description: '첫 화면으로 돌아가기',
+                            type: 'card',
+                            action: () => {
+                              get().resetChat();
+                              get().initializeChat();
+                            }
+                          }
+                        ]
+                      }]
+                    }));
+                  }, 400);
+                }, 800);
+                
+                set({ currentStep: 9, isProcessing: false });
+                break;
 
             default:
               set({ isProcessing: false });

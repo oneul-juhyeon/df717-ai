@@ -255,7 +255,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
-        <div className="w-full mx-2 mt-12">
+        <div className="w-full mt-12">
           {message.buttons && message.buttons.length > 0 && (
             <div className="grid grid-cols-2 gap-4">
               {message.buttons.map((button, index) => (
