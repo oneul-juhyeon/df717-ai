@@ -18,7 +18,7 @@ const MessageList: React.FC = () => {
   return (
     <div className="h-full overflow-y-auto bg-gray-50 px-4">
       {/* Messages container with better spacing and mobile vertical centering */}
-      <div className="py-6 space-y-4 min-h-full flex flex-col justify-center sm:justify-start">
+      <div className="py-6 space-y-4 min-h-full flex flex-col justify-start">
         {messages.reduce((groups, message, index) => {
           // Group messages that appear together (same groupId or consecutive AI messages)
           const prevMessage = messages[index - 1];
