@@ -257,7 +257,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           {message.buttons && message.buttons.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {message.buttons.map((button, index) => (
                 <button
                   key={index}
