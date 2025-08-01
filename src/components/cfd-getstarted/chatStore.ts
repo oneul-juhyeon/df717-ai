@@ -301,27 +301,26 @@ export const useChatStore = create<ChatStore>()(
               set({ currentStep: 2, isProcessing: false });
               break;
 
-            // STEP 3: 로그인하기 (formerly step 4)
             case 3:
               get().addMessageGroup([
                 {
-                  id: 'step-4-intro',
-                  content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
+                  id: 'step-3-title',
+                  content: '3단계: 로그인하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-3-link',
-                  content: '3단계: 로그인하기',
+                  id: 'step-3-login-link',
+                  content: 'ICMarkets 로그인 페이지로 이동',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'text',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
                     {
-                      label: 'ICMarkets 로그인 페이지로 이동',
+                      label: 'ICMarkets 로그인 페이지로 이동 →',
                       type: 'link',
                       action: () => {
                         window.open('https://secure.icmarkets.com/Account/LogOn', '_blank');
@@ -330,10 +329,10 @@ export const useChatStore = create<ChatStore>()(
                   ]
                 },
                 {
-                  id: 'step-4-info',
-                  content: '🔐 방금 신청하신 이메일과 비밀번호로 로그인해주세요.',
+                  id: 'step-3-action',
+                  content: '',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'action_button',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
@@ -356,6 +355,22 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
+                },
+                {
+                  id: 'step-4-intro',
+                  content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-4-info',
+                  content: '🔐 방금 신청하신 이메일과 비밀번호로 로그인해주세요.',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
                 }
               ]);
               
