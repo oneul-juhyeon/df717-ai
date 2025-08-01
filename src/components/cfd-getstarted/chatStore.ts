@@ -318,14 +318,6 @@ export const useChatStore = create<ChatStore>()(
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
-                },
-                {
-                  id: 'step-3-login-link',
-                  content: 'ICMarkets 로그인 페이지로 이동',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
                   buttons: [
                     {
                       label: 'ICMarkets 로그인 페이지로 이동 →',
