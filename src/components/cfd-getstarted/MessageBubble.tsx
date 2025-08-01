@@ -249,6 +249,46 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     );
   }
 
+  // Final cards layout - 2x2 grid of card buttons
+  if (message.type === "final_cards") {
+    return (
+      <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}>
+        <div className="w-full mx-2">
+          {message.buttons && message.buttons.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {message.buttons.map((button, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleButtonClick(button.action)}
+                  disabled={isButtonDisabled}
+                  className="group relative bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-300"
+                >
+                  <div className="flex flex-col items-start text-left space-y-2">
+                    <div className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {button.label}
+                    </div>
+                    {button.description && (
+                      <div className="text-sm text-gray-600 leading-relaxed">
+                        {button.description}
+                      </div>
+                    )}
+                  </div>
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   // Form messages - 채팅 버블 밖으로 완전히 분리
   if (message.type === "form") {
     return (

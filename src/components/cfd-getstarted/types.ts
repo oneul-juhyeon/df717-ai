@@ -2,7 +2,7 @@ export interface Message {
   id: string;
   content: string;
   sender: "ai" | "user";
-  type: "text" | "info_box" | "warning_box" | "success_box" | "form" | "action_button" | "account_settings";
+  type: "text" | "info_box" | "warning_box" | "success_box" | "form" | "action_button" | "account_settings" | "final_cards";
   timestamp: Date;
   animate?: boolean;
   buttons?: MessageButton[];
@@ -27,7 +27,8 @@ export interface FormField {
 
 export interface MessageButton {
   label: string;
-  type: "primary" | "secondary" | "link";
+  description?: string;
+  type: "primary" | "secondary" | "link" | "card";
   action: () => void;
 }
 
