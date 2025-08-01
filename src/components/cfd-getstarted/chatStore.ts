@@ -337,7 +337,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-3-info',
-                  content: '🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.',
+                  content: '🔐 방금 가입하신 **이메일과 비밀번호**로 로그인해주세요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -405,7 +405,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-safety',
-                  content: '💰 **안심하세요!**\n\n**데모계좌**는 가상의 돈으로 거래하는 연습계좌예요.\n실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.',
+                  content: '💰 **안심하세요!**\n\n**데모계좌**는 가상의 돈으로 거래하는 연습계좌예요. 실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -561,7 +561,7 @@ export const useChatStore = create<ChatStore>()(
                     setTimeout(() => {
                       get().addMessage({
                         id: 'step-6-security',
-                        content: '🔒 **안심하세요!**\n\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는\n**완전히 다른 거**예요.\n\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
+                        content: '🔒 **안심하세요!**\n\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 **완전히 다른 거**예요.\n\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
                         sender: 'ai',
                         type: 'warning_box',
                         timestamp: new Date(),
@@ -958,7 +958,7 @@ export const useChatStore = create<ChatStore>()(
           if (missingFields.length > 0) {
             get().addMessage({
               id: `warning-${Date.now()}`,
-              content: '모든 필수 항목을 입력해주세요.',
+              content: '⚠️ **모든 필수 항목을 입력해주세요.**',
               sender: 'ai',
               type: 'warning_box',
               timestamp: new Date(),
@@ -974,7 +974,7 @@ export const useChatStore = create<ChatStore>()(
           // Success message
           get().addMessage({
             id: `success-${Date.now()}`,
-            content: '✅ 프로그램 시작 요청이 접수되었습니다! 매니저가 곧 AI 자동투자를 시작해드릴게요.',
+            content: '✅ **프로그램 시작 요청이 접수되었습니다!**\n\n매니저가 곧 **AI 자동투자**를 시작해드릴게요.',
             sender: 'ai',
             type: 'success_box',
             timestamp: new Date(),
