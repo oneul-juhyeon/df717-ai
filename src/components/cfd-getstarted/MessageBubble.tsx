@@ -111,7 +111,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
               <div className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                 {stepNumber}
               </div>
-              <div className="text-blue-800 font-semibold text-left flex-1 leading-6 word-break break-words">
+              <div className="text-blue-800 font-semibold text-left flex-1 leading-6 break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
                 {stepText}
               </div>
             </div>
@@ -129,7 +129,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-blue-50 rounded-lg px-4 py-4 my-2 border-l-4 border-blue-400">
-            <div className="text-blue-800 text-sm leading-7 text-left word-break break-words">
+            <div className="text-blue-800 text-sm leading-7 text-left break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
               {displayedText.split('**').map((part, index) => 
                 index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
               )}
@@ -148,7 +148,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-orange-50 rounded-lg px-4 py-4 my-2 border-l-4 border-orange-400">
-            <div className="text-orange-800 text-sm leading-7 font-medium text-left word-break break-words">
+            <div className="text-orange-800 text-sm leading-7 font-medium text-left break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
               {displayedText.split('**').map((part, index) => 
                 index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
               )}
@@ -199,7 +199,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}>
         <div className="w-full mx-2">
           <div className="bg-green-50 rounded-lg px-4 py-3 my-2 border-l-4 border-green-400">
-            <div className="text-green-800 text-sm leading-relaxed font-medium text-left">
+            <div className="text-green-800 text-sm leading-relaxed font-medium text-left break-keep word-break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>
               {displayedText}
             </div>
           </div>
