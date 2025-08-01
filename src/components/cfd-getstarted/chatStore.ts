@@ -181,7 +181,7 @@ export const useChatStore = create<ChatStore>()(
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
-                  animate: false,
+                  animate: true,
                 },
                 {
                   id: 'step-1-action',

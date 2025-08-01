@@ -44,6 +44,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleButtonClick = useCallback((action: () => void) => {
     if (isButtonDisabled) return;
@@ -58,7 +59,8 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   }, [isButtonDisabled]);
 
   useEffect(() => {
-    // No more typewriter animation - just show content immediately
+    // Start animation immediately
+    setIsVisible(true);
     setDisplayedText(message.content);
     setIsTyping(false);
   }, [message]);
@@ -66,13 +68,15 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   const isAI = message.sender === "ai";
   
   return (
-    <div className={`flex w-full ${isAI ? 'justify-start' : 'justify-end'}`}>
+    <div className={`flex w-full ${isAI ? 'justify-start' : 'justify-end'} transform transition-all duration-500 ease-out ${
+      isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+    }`}>
       <div className="max-w-[90%]">
         
         {/* WhatsApp-style chat bubble - AI left, User right */}
-        <div className={`px-4 py-3 rounded-2xl ${
+        <div className={`px-4 py-3 rounded-2xl transition-all duration-300 ${
           isAI 
-            ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md" 
+            ? "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md hover:shadow-md" 
             : "bg-blue-500 text-white rounded-br-md"
         }`}>
           
