@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Message, UserData, ChatState } from './types';
+import { Message, MessageGroup, UserData, ChatState } from './types';
 
 interface ChatStore extends ChatState {
   addMessage: (message: Message) => void;
+  addMessageGroup: (messages: Message[]) => void;
   setCurrentStep: (step: number) => void;
   updateUserData: (data: Partial<UserData>) => void;
   resetChat: () => void;
@@ -33,6 +34,7 @@ export const useChatStore = create<ChatStore>()(
   persist(
     (set, get) => ({
       messages: initialMessages,
+      messageGroups: [],
       currentStep: 0,
       userData: initialUserData,
       isProcessing: false,
@@ -49,6 +51,20 @@ export const useChatStore = create<ChatStore>()(
             messages: [...state.messages, message]
           };
         });
+      },
+
+      addMessageGroup: (messages: Message[]) => {
+        const groupId = `group-${Date.now()}`;
+        const messageGroup: MessageGroup = {
+          id: groupId,
+          messages: messages.map(msg => ({ ...msg, groupId })),
+          timestamp: new Date()
+        };
+        
+        set((state) => ({
+          messages: [...state.messages, ...messageGroup.messages],
+          messageGroups: [...state.messageGroups, messageGroup]
+        }));
       },
 
       isStepExecuted: (step: number) => {
@@ -78,6 +94,7 @@ export const useChatStore = create<ChatStore>()(
       resetChat: () => {
         set({
           messages: initialMessages,
+          messageGroups: [],
           currentStep: 0,
           userData: initialUserData,
           isProcessing: false,
@@ -89,31 +106,33 @@ export const useChatStore = create<ChatStore>()(
         // Reset first to ensure clean state
         get().resetChat();
         
-        // Add first welcome message immediately
-        get().addMessage({
-          id: 'welcome-1',
-          content: '안녕하세요! AI 자동투자 체험을 도와드릴게요 😊',
-          sender: 'ai',
-          type: 'text',
-          timestamp: new Date(),
-          animate: true,
-        });
-        
-        // Add second welcome message after 800ms
+        // Add first welcome message after 800ms
         setTimeout(() => {
           get().addMessage({
-            id: 'welcome-2',
-            content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 투자를 체험하실 수 있어요.',
+            id: 'welcome-1',
+            content: '안녕하세요! AI 자동투자 체험을 도와드릴게요 😊',
             sender: 'ai',
             type: 'text',
             timestamp: new Date(),
-            animate: true,
+            animate: false,
           });
           
-          // Start step 1 after 1000ms
+          // Add second welcome message after 800ms
           setTimeout(() => {
-            get().proceedToStep(1);
-          }, 1000);
+            get().addMessage({
+              id: 'welcome-2',
+              content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 투자를 체험하실 수 있어요.',
+              sender: 'ai',
+              type: 'text',
+              timestamp: new Date(),
+              animate: false,
+            });
+            
+            // Start step 1 after 1000ms
+            setTimeout(() => {
+              get().proceedToStep(1);
+            }, 1000);
+          }, 800);
         }, 800);
       },
 
@@ -126,36 +145,35 @@ export const useChatStore = create<ChatStore>()(
         set({ isProcessing: true });
         get().markStepExecuted(step);
 
-        switch (step) {
-          // STEP 1: ICMarkets 브로커 회원가입
-          case 1:
-            get().addMessage({
-              id: 'step-1-intro',
-              content: '첫 번째로, ICMarkets 브로커에 회원가입을 해볼게요.',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-1-info',
-                content: '💡 브로커란? 우리나라에서 주식거래를 하기 위해 증권사에 회원가입하거나, 코인거래를 하기 위해 거래소에 가입하는 것과 같아요. 그중에서도 ICMarkets는 글로벌 1위로 가장 신뢰할 수 있는 Tier-1 브로커예요.',
-                sender: 'ai',
-                type: 'info_box',
-                timestamp: new Date(),
-                animate: true,
-              });
-              
-              setTimeout(() => {
-                get().addMessage({
+        // Wait 800ms before showing step content
+        setTimeout(() => {
+          switch (step) {
+            // STEP 1: ICMarkets 브로커 회원가입
+            case 1:
+              get().addMessageGroup([
+                {
+                  id: 'step-1-intro',
+                  content: '첫 번째로, ICMarkets 브로커에 회원가입을 해볼게요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-1-info',
+                  content: '💡 브로커란? 우리나라에서 주식거래를 하기 위해 증권사에 회원가입하거나, 코인거래를 하기 위해 거래소에 가입하는 것과 같아요. 그중에서도 ICMarkets는 글로벌 1위로 가장 신뢰할 수 있는 Tier-1 브로커예요.',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-1-action',
                   content: '1단계: ICMarkets 브로커 회원가입',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   buttons: [
                     {
                       label: 'ICMarkets 회원가입 홈페이지 열기',
@@ -183,42 +201,38 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 1, isProcessing: false });
-            break;
-
-          // STEP 2: 회원정보 입력하기
-          case 2:
-            get().addMessage({
-              id: 'step-2-intro',
-              content: '회원가입 페이지에서 아래 정보를 입력해주세요.',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-2-warning',
-                content: '⚠️ 중요! 이름과 성은 꼭 영어로 작성해주세요. 예시) 홍길동 → First Name: Gildong, Last Name: Hong',
-                sender: 'ai',
-                type: 'warning_box',
-                timestamp: new Date(),
-                animate: true,
-              });
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 1, isProcessing: false });
+              break;
+
+            // STEP 2: 회원정보 입력하기
+            case 2:
+              get().addMessageGroup([
+                {
+                  id: 'step-2-intro',
+                  content: '회원가입 페이지에서 아래 정보를 입력해주세요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-2-warning',
+                  content: '⚠️ 중요! 이름과 성은 꼭 영어로 작성해주세요. 예시) 홍길동 → First Name: Gildong, Last Name: Hong',
+                  sender: 'ai',
+                  type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-2-form',
                   content: '2단계: 회원정보 입력',
                   sender: 'ai',
                   type: 'form',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   formFields: [
                     {
                       id: 'firstName',
@@ -262,43 +276,39 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 2, isProcessing: false });
-            break;
-
-          // STEP 3: 이메일 인증 및 비밀번호 설정
-          case 3:
-            get().addMessage({
-              id: 'step-3-intro',
-              content: '잘하셨어요! 이제 이메일을 확인해주세요.',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              const userEmail = get().userData.email || '입력하신 이메일';
-              get().addMessage({
-                id: 'step-3-email',
-                content: `📧 ${userEmail}로 인증 메일이 발송되었어요. 메일에서 'Secure Client Area' 버튼을 클릭하면 비밀번호 설정 페이지로 이동해요. 비밀번호를 설정하시면 회원가입이 완료됩니다!`,
-                sender: 'ai',
-                type: 'info_box',
-                timestamp: new Date(),
-                animate: true,
-              });
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 2, isProcessing: false });
+              break;
+
+            // STEP 3: 이메일 인증 및 비밀번호 설정
+            case 3:
+              const userEmail = get().userData.email || '입력하신 이메일';
+              get().addMessageGroup([
+                {
+                  id: 'step-3-intro',
+                  content: '잘하셨어요! 이제 이메일을 확인해주세요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-3-email',
+                  content: `📧 ${userEmail}로 인증 메일이 발송되었어요. 메일에서 'Secure Client Area' 버튼을 클릭하면 비밀번호 설정 페이지로 이동해요. 비밀번호를 설정하시면 회원가입이 완료됩니다!`,
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-3-tip',
                   content: '💡 Tip! 메일이 안 보이나요? 스팸함도 확인해보세요. ICMarkets 메일이 가끔 스팸으로 분류될 수 있어요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   buttons: [
                     {
                       label: '회원가입을 완료했어요',
@@ -319,51 +329,47 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 3, isProcessing: false });
-            break;
-
-          // STEP 4: 로그인하기
-          case 4:
-            get().addMessage({
-              id: 'step-4-intro',
-              content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-4-link',
-                content: '4단계: 로그인하기',
-                sender: 'ai',
-                type: 'info_box',
-                timestamp: new Date(),
-                animate: true,
-                buttons: [
-                  {
-                    label: 'ICMarkets 로그인 페이지로 이동',
-                    type: 'link',
-                    action: () => {
-                      window.open('https://secure.icmarkets.com/Account/LogOn', '_blank');
-                    }
-                  }
-                ]
-              });
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 3, isProcessing: false });
+              break;
+
+            // STEP 4: 로그인하기
+            case 4:
+              get().addMessageGroup([
+                {
+                  id: 'step-4-intro',
+                  content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-4-link',
+                  content: '4단계: 로그인하기',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: 'ICMarkets 로그인 페이지로 이동',
+                      type: 'link',
+                      action: () => {
+                        window.open('https://secure.icmarkets.com/Account/LogOn', '_blank');
+                      }
+                    }
+                  ]
+                },
+                {
                   id: 'step-4-info',
                   content: '🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   buttons: [
                     {
                       label: '로그인했어요',
@@ -384,42 +390,38 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 4, isProcessing: false });
-            break;
-
-          // STEP 5: 데모계좌 개설하기
-          case 5:
-            get().addMessage({
-              id: 'step-5-intro',
-              content: '이제 AI 투자를 체험할 데모계좌를 만들어볼게요!',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-5-steps',
-                content: '📌 로그인 후 다음 순서로 진행해주세요: Account 탭 → Demo Account → \'Open New Demo Account\' 버튼 클릭',
-                sender: 'ai',
-                type: 'info_box',
-                timestamp: new Date(),
-                animate: true,
-              });
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 4, isProcessing: false });
+              break;
+
+            // STEP 5: 데모계좌 개설하기
+            case 5:
+              get().addMessageGroup([
+                {
+                  id: 'step-5-intro',
+                  content: '이제 AI 투자를 체험할 데모계좌를 만들어볼게요!',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-5-steps',
+                  content: '📌 로그인 후 다음 순서로 진행해주세요: Account 탭 → Demo Account → \'Open New Demo Account\' 버튼 클릭',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-5-safety',
                   content: '💰 안심하세요! 데모계좌는 가상의 돈으로 거래하는 연습계좌예요. 실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   buttons: [
                     {
                       label: '데모계좌 개설 버튼을 눌렀어요',
@@ -440,42 +442,38 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 5, isProcessing: false });
-            break;
-
-          // STEP 6: 계좌 설정하기
-          case 6:
-            get().addMessage({
-              id: 'step-6-intro',
-              content: '아래 설정과 정확히 동일하게 계좌를 개설해주세요.',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-6-settings',
-                content: `**계좌 설정**\n• Platform: MetaTrader 4\n• Account Type: Raw Spread\n• Currency: USD\n• Leverage: 1:1000\n• Initial Deposit: 25000`,
-                sender: 'ai',
-                type: 'info_box',
-                timestamp: new Date(),
-                animate: true,
-              });
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 5, isProcessing: false });
+              break;
+
+            // STEP 6: 계좌 설정하기
+            case 6:
+              get().addMessageGroup([
+                {
+                  id: 'step-6-intro',
+                  content: '아래 설정과 정확히 동일하게 계좌를 개설해주세요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-6-settings',
+                  content: `**계좌 설정**\n• Platform: MetaTrader 4\n• Account Type: Raw Spread\n• Currency: USD\n• Leverage: 1:1000\n• Initial Deposit: 25000`,
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-6-warning',
                   content: '⚠️ 주의! 계좌설정이 다르면 AI 프로그램이 작동하지 않아요. 꼭 위의 설정대로 만들어주세요!',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   buttons: [
                     {
                       label: '설정대로 계좌를 개설했어요',
@@ -496,169 +494,157 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 6, isProcessing: false });
-            break;
-
-          // STEP 7: 계좌 개설 완료
-          case 7:
-            get().addMessage({
-              id: 'step-7-congrats',
-              content: '축하해요! 데모계좌 개설이 완료되었어요 🎉',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-7-ready',
-                content: '✅ AI 자동투자를 체험할 준비가 모두 끝났어요!',
-                sender: 'ai',
-                type: 'success_box',
-                timestamp: new Date(),
-                animate: true,
-                buttons: [
-                  {
-                    label: '다음 단계로',
-                    type: 'primary',
-                    action: () => {
-                      get().addMessage({
-                        id: `user-response-${Date.now()}`,
-                        content: '다음 단계로',
-                        sender: 'user',
-                        type: 'text',
-                        timestamp: new Date(),
-                        animate: false
-                      });
-                      
-                      setTimeout(() => {
-                        get().proceedToStep(8);
-                      }, 800);
-                    }
-                  }
-                ]
-              });
-            }, 800);
-            
-            set({ currentStep: 7, isProcessing: false });
-            break;
-
-          // STEP 8: 계좌 정보 입력
-          case 8:
-            get().addMessage({
-              id: 'step-8-intro',
-              content: '마지막으로 계좌 정보를 확인해주세요.',
-              sender: 'ai',
-              type: 'text',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'step-8-info',
-                content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요:\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
-                sender: 'ai',
-                type: 'info_box',
-                timestamp: new Date(),
-                animate: true,
-              });
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 6, isProcessing: false });
+              break;
+
+            // STEP 7: 계좌 개설 완료
+            case 7:
+              get().addMessageGroup([
+                {
+                  id: 'step-7-congrats',
+                  content: '축하해요! 데모계좌 개설이 완료되었어요 🎉',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-7-ready',
+                  content: '✅ AI 자동투자를 체험할 준비가 모두 끝났어요!',
+                  sender: 'ai',
+                  type: 'success_box',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: '다음 단계로',
+                      type: 'primary',
+                      action: () => {
+                        get().addMessage({
+                          id: `user-response-${Date.now()}`,
+                          content: '다음 단계로',
+                          sender: 'user',
+                          type: 'text',
+                          timestamp: new Date(),
+                          animate: false
+                        });
+                        
+                        setTimeout(() => {
+                          get().proceedToStep(8);
+                        }, 800);
+                      }
+                    }
+                  ]
+                }
+              ]);
+              
+              set({ currentStep: 7, isProcessing: false });
+              break;
+
+            // STEP 8: 계좌 정보 입력
+            case 8:
+              get().addMessageGroup([
+                {
+                  id: 'step-8-intro',
+                  content: '마지막으로 계좌 정보를 확인해주세요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-8-info',
+                  content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요:\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'step-8-security',
                   content: '🔒 안심하세요! 브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요. 계좌 정보는 AI 프로그램 연동에만 사용됩니다.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: true,
-                });
-                
-                setTimeout(() => {
-                  get().addMessage({
-                    id: 'step-8-form',
-                    content: '8단계: 계좌 정보 입력',
-                    sender: 'ai',
-                    type: 'form',
-                    timestamp: new Date(),
-                    animate: true,
-                    formFields: [
-                      {
-                        id: 'accountId',
-                        label: 'Account ID',
-                        type: 'text',
-                        placeholder: '계좌번호를 입력하세요',
-                        required: true,
-                        value: ''
-                      },
-                      {
-                        id: 'password',
-                        label: 'Password',
-                        type: 'text',
-                        placeholder: '계좌 비밀번호를 입력하세요',
-                        required: true,
-                        value: ''
-                      },
-                      {
-                        id: 'server',
-                        label: 'Server',
-                        type: 'text',
-                        placeholder: '서버명을 입력하세요',
-                        required: true,
-                        value: ''
+                  animate: false,
+                },
+                {
+                  id: 'step-8-form',
+                  content: '8단계: 계좌 정보 입력',
+                  sender: 'ai',
+                  type: 'form',
+                  timestamp: new Date(),
+                  animate: false,
+                  formFields: [
+                    {
+                      id: 'accountId',
+                      label: 'Account ID',
+                      type: 'text',
+                      placeholder: '계좌번호를 입력하세요',
+                      required: true,
+                      value: ''
+                    },
+                    {
+                      id: 'password',
+                      label: 'Password',
+                      type: 'text',
+                      placeholder: '계좌 비밀번호를 입력하세요',
+                      required: true,
+                      value: ''
+                    },
+                    {
+                      id: 'server',
+                      label: 'Server',
+                      type: 'text',
+                      placeholder: '서버명을 입력하세요',
+                      required: true,
+                      value: ''
+                    }
+                  ],
+                  buttons: [
+                    {
+                      label: '완료하기',
+                      type: 'primary',
+                      action: () => {
+                        get().submitUserForm('step-8-form');
                       }
-                    ],
-                    buttons: [
-                      {
-                        label: '완료하기',
-                        type: 'primary',
-                        action: () => {
-                          get().submitUserForm('step-8-form');
-                        }
-                      }
-                    ]
-                  });
-                }, 800);
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 8, isProcessing: false });
-            break;
-
-          // FINAL COMPLETION
-          case 9:
-            get().addMessage({
-              id: 'final-celebration',
-              content: '🎊 프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요! 시작해보아요!',
-              sender: 'ai',
-              type: 'success_box',
-              timestamp: new Date(),
-              animate: true,
-            });
-            
-            setTimeout(() => {
-              get().addMessage({
-                id: 'final-info',
-                content: '이제 AI 자동투자의 놀라운 성과를 직접 체험해보세요. 더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
-                sender: 'ai',
-                type: 'text',
-                timestamp: new Date(),
-                animate: true,
-              });
+                    }
+                  ]
+                }
+              ]);
               
-              setTimeout(() => {
-                get().addMessage({
+              set({ currentStep: 8, isProcessing: false });
+              break;
+
+            // FINAL COMPLETION
+            case 9:
+              get().addMessageGroup([
+                {
+                  id: 'final-celebration',
+                  content: '🎊 프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요! 시작해보아요!',
+                  sender: 'ai',
+                  type: 'success_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'final-info',
+                  content: '이제 AI 자동투자의 놀라운 성과를 직접 체험해보세요. 더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
                   id: 'final-buttons',
                   content: 'AI 투자 체험 완료!',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: true,
+                  animate: false,
                   buttons: [
                     {
                       label: 'DF717 소개',
@@ -690,16 +676,16 @@ export const useChatStore = create<ChatStore>()(
                       }
                     }
                   ]
-                });
-              }, 800);
-            }, 800);
-            
-            set({ currentStep: 9, isProcessing: false });
-            break;
+                }
+              ]);
+              
+              set({ currentStep: 9, isProcessing: false });
+              break;
 
-          default:
-            set({ isProcessing: false });
-        }
+            default:
+              set({ isProcessing: false });
+          }
+        }, 800);
       },
 
       updateFormField: (messageId: string, fieldId: string, value: string) => {
@@ -744,7 +730,7 @@ export const useChatStore = create<ChatStore>()(
               sender: 'ai',
               type: 'warning_box',
               timestamp: new Date(),
-              animate: true
+              animate: false
             });
             set({ isProcessing: false });
             return;
@@ -760,7 +746,7 @@ export const useChatStore = create<ChatStore>()(
             sender: 'ai',
             type: 'success_box',
             timestamp: new Date(),
-            animate: true
+            animate: false
           });
 
           setTimeout(() => {

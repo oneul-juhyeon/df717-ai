@@ -61,59 +61,31 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   }, [isButtonDisabled]);
 
   useEffect(() => {
-    if (message.sender === "ai" && message.animate && message.type === "text") {
-      // Typing animation for AI text messages only
-      let index = 0;
-      setDisplayedText("");
-      setIsTyping(true);
-      
-      const interval = setInterval(() => {
-        if (index < message.content.length) {
-          setDisplayedText(message.content.slice(0, index + 1));
-          index++;
-        } else {
-          setIsTyping(false);
-          clearInterval(interval);
-        }
-      }, 30);
-
-      return () => clearInterval(interval);
-    } else {
-      setDisplayedText(message.content);
-      setIsTyping(false);
-    }
+    // No more typewriter animation - just show content immediately
+    setDisplayedText(message.content);
+    setIsTyping(false);
   }, [message]);
 
   const isAI = message.sender === "ai";
   
   return (
     <div className={`flex ${isAI ? "justify-start" : "justify-end"} w-full`}>
-      <div className={`flex items-start space-x-3 max-w-[85%] sm:max-w-[75%] ${
-        isAI ? "flex-row" : "flex-row-reverse space-x-reverse"
+      <div className={`w-full max-w-[95%] sm:max-w-[90%] ${
+        isAI ? "" : "flex justify-end"
       }`}>
         
-        {/* Avatar for AI messages */}
-        {isAI && (
-          <div className="w-9 h-9 bg-gradient-to-br from-[#00B7FF] to-[#0066CC] rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-md">
-            <span className="text-white text-sm font-bold">AI</span>
-          </div>
-        )}
-        
-        {/* Message bubble */}
-        <div className={`px-4 py-3 rounded-2xl shadow-sm ${
+        {/* Message bubble - wider and more spacious */}
+        <div className={`px-6 py-4 rounded-2xl shadow-sm ${
           isAI 
-            ? "bg-white text-gray-800 border border-gray-100" 
-            : "bg-[#00B7FF] text-white"
-        } ${isAI ? "rounded-tl-sm" : "rounded-tr-sm"}`}>
+            ? "bg-white text-gray-800 border border-gray-100 w-full" 
+            : "bg-[#00B7FF] text-white max-w-[80%]"
+        } ${isAI ? "rounded-tl-md" : "rounded-tr-md"}`}>
           
           {/* Message content */}
           <div className="text-sm leading-relaxed">
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
                 {displayedText}
-                {isTyping && (
-                  <span className="inline-block w-2 h-4 bg-gray-400 ml-1 animate-pulse" />
-                )}
               </div>
             )}
             

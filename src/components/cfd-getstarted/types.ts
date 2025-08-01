@@ -7,6 +7,13 @@ export interface Message {
   animate?: boolean;
   buttons?: MessageButton[];
   formFields?: FormField[];
+  groupId?: string; // For grouping messages that should appear together
+}
+
+export interface MessageGroup {
+  id: string;
+  messages: Message[];
+  timestamp: Date;
 }
 
 export interface FormField {
@@ -36,6 +43,7 @@ export interface UserData {
 
 export interface ChatState {
   messages: Message[];
+  messageGroups: MessageGroup[];
   currentStep: number;
   userData: UserData;
   isProcessing: boolean;
