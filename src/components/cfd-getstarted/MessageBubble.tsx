@@ -120,6 +120,28 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
             <div className="text-orange-800 text-sm leading-relaxed font-medium whitespace-pre-wrap text-left">
               {displayedText}
             </div>
+            
+            {/* Enhanced buttons with better styling */}
+            {message.buttons && message.buttons.length > 0 && (
+              <div className="mt-4 space-y-2">
+                {message.buttons.map((button, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleButtonClick(button.action)}
+                    disabled={isButtonDisabled}
+                    className={`w-full px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-left ${
+                      button.type === "primary" 
+                        ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
+                        : button.type === "link"
+                        ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {button.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
