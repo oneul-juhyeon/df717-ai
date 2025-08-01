@@ -212,7 +212,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(3);
+                          get().proceedToStep(2);
                         }, 800);
                       }
                     }
@@ -223,34 +223,41 @@ export const useChatStore = create<ChatStore>()(
               set({ currentStep: 1, isProcessing: false });
               break;
 
-            // STEP 2: 이메일 인증 및 비밀번호 설정 (formerly step 3)
+            // STEP 2: 이메일 인증 및 비밀번호 설정
 
-            case 2:
-              const userEmail = get().userData.email || '입력하신 이메일';
+            case 3:
               get().addMessageGroup([
                 {
-                  id: 'step-3-intro',
+                  id: 'step-2-title',
+                  content: '2단계: 이메일 인증 및 비밀번호 설정',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: true,
+                },
+                {
+                  id: 'step-2-intro',
                   content: '잘하셨어요! 이제 이메일을 확인해주세요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
-                  animate: false,
+                  animate: true,
                 },
                 {
-                  id: 'step-3-email',
-                  content: `📧 ${userEmail}로 인증 메일이 발송되었어요. 메일에서 'Secure Client Area' 버튼을 클릭하면 비밀번호 설정 페이지로 이동해요. 비밀번호를 설정하시면 회원가입이 완료됩니다!`,
+                  id: 'step-2-email',
+                  content: '📧 메일에서 "Secure Client Area" 버튼을 클릭하면 비밀번호 설정 페이지로 이동해요.\n비밀번호를 설정하시면 회원가입이 완료됩니다!',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: false,
+                  animate: true,
                 },
                 {
-                  id: 'step-3-tip',
-                  content: '💡 Tip! 메일이 안 보이나요? 스팸함도 확인해보세요. ICMarkets 메일이 가끔 스팸으로 분류될 수 있어요.',
+                  id: 'step-2-tip',
+                  content: '💡 Tip! 메일이 안 보이나요?\n스팸함도 확인해보세요. ICMarkets 메일이 가끔 스팸으로 분류될 수 있어요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
-                  animate: false,
+                  animate: true,
                   buttons: [
                     {
                       label: '회원가입을 완료했어요',
@@ -266,7 +273,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(3);
+                          get().proceedToStep(4);
                         }, 800);
                       }
                     }
@@ -274,11 +281,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 2, isProcessing: false });
+              set({ currentStep: 3, isProcessing: false });
               break;
 
-            // STEP 3: 로그인하기 (formerly step 4)
-            case 3:
+            // STEP 4: 데모계좌 개설하기 (formerly step 5)
+            case 4:
               get().addMessageGroup([
                 {
                   id: 'step-4-intro',
@@ -290,7 +297,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-link',
-                  content: '3단계: 로그인하기',
+                  content: '4단계: 로그인하기',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -327,7 +334,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(4);
+                          get().proceedToStep(5);
                         }, 800);
                       }
                     }
@@ -335,11 +342,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 3, isProcessing: false });
+              set({ currentStep: 4, isProcessing: false });
               break;
 
-            // STEP 4: 데모계좌 개설하기 (formerly step 5)
-            case 4:
+            // STEP 5: 계좌 설정하기 (formerly step 6)
+            case 5:
               get().addMessageGroup([
                 {
                   id: 'step-5-intro',
@@ -379,7 +386,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(5);
+                          get().proceedToStep(6);
                         }, 800);
                       }
                     }
@@ -387,11 +394,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 4, isProcessing: false });
+              set({ currentStep: 5, isProcessing: false });
               break;
 
-            // STEP 5: 계좌 설정하기 (formerly step 6)
-            case 5:
+            // STEP 6: 계좌 개설 완료 (formerly step 7)
+            case 6:
               get().addMessageGroup([
                 {
                   id: 'step-6-intro',
@@ -431,7 +438,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(6);
+                          get().proceedToStep(7);
                         }, 800);
                       }
                     }
@@ -439,11 +446,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 5, isProcessing: false });
+              set({ currentStep: 6, isProcessing: false });
               break;
 
-            // STEP 6: 계좌 개설 완료 (formerly step 7)
-            case 6:
+            // STEP 7: 계좌 정보 입력 (formerly step 8)
+            case 7:
               get().addMessageGroup([
                 {
                   id: 'step-7-congrats',
@@ -475,7 +482,7 @@ export const useChatStore = create<ChatStore>()(
                         });
                         
                         setTimeout(() => {
-                          get().proceedToStep(7);
+                          get().proceedToStep(8);
                         }, 800);
                       }
                     }
@@ -483,11 +490,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 6, isProcessing: false });
+              set({ currentStep: 7, isProcessing: false });
               break;
 
-            // STEP 7: 계좌 정보 입력 (formerly step 8)
-            case 7:
+            // FINAL COMPLETION
+            case 8:
               get().addMessageGroup([
                 {
                   id: 'step-8-intro',
@@ -515,7 +522,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-form',
-                  content: '7단계: 계좌 정보 입력',
+                  content: '8단계: 계좌 정보 입력',
                   sender: 'ai',
                   type: 'form',
                   timestamp: new Date(),
@@ -558,11 +565,11 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 7, isProcessing: false });
+              set({ currentStep: 8, isProcessing: false });
               break;
 
             // FINAL COMPLETION
-            case 8:
+            case 9:
               get().addMessageGroup([
                 {
                   id: 'final-celebration',
@@ -621,7 +628,7 @@ export const useChatStore = create<ChatStore>()(
                 }
               ]);
               
-              set({ currentStep: 8, isProcessing: false });
+              set({ currentStep: 9, isProcessing: false });
               break;
 
             default:
@@ -693,7 +700,7 @@ export const useChatStore = create<ChatStore>()(
 
           setTimeout(() => {
             if (messageId === 'step-8-form') {
-              get().proceedToStep(8);
+              get().proceedToStep(9);
             } else {
               set({ isProcessing: false });
             }
