@@ -804,111 +804,67 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-9-success',
-                  content: '✅ **모든 설정이 완료되었습니다!**\n\n• **데모계좌 개설** 완료\n• **AI 프로그램 연동 신청** 완료\n• **모니터링 앱 설치** 완료',
-                  sender: 'ai',
-                  type: 'success_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-9-final',
-                  content: 'MetaTrader 4 앱에서 실시간으로 거래 내역과 수익률을 확인하실 수 있어요. 매니저가 프로그램을 시작하면 자동으로 거래가 시작됩니다.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-9-action',
-                  content: '',
-                  sender: 'ai',
-                  type: 'action_button',
-                  timestamp: new Date(),
-                  animate: false,
-                  buttons: [
-                    {
-                      label: '완료했어요',
-                      type: 'primary',
-                      action: () => {
-                        get().addMessage({
-                          id: `user-response-${Date.now()}`,
-                          content: '완료했어요',
-                          sender: 'user',
-                          type: 'text',
-                          timestamp: new Date(),
-                          animate: false
-                        });
-                        
-                        setTimeout(() => {
-                          get().proceedToStep(10);
-                        }, 800);
-                      }
-                    }
-                  ]
-                }
-              ]);
-              
-              set({ currentStep: 9, isProcessing: false });
-              break;
-
-            // FINAL COMPLETION (이전 Step 11을 Step 10으로 변경)
-            case 10:
-              get().addMessageGroup([
-                {
-                  id: 'final-celebration',
-                  content: '🎊 **모든 설정이 완료되었습니다!**\n\n이제 실시간으로 **AI 자동투자 모니터링**을 시작하세요!',
-                  sender: 'ai',
-                  type: 'success_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'final-buttons',
-                  content: '',
-                  sender: 'ai',
-                  type: 'final_cards',
-                  timestamp: new Date(),
-                  animate: false,
-                  buttons: [
-                    {
-                      label: '🏠 DF717 소개',
-                      description: '우리가 누구인지 알아보기',
-                      type: 'card',
-                      action: () => {
-                        window.open('https://www.df717.ai/', '_blank');
-                      }
-                    },
-                    {
-                      label: '📊 실시간 수익률',
-                      description: '8.3년 검증된 실계좌',
-                      type: 'card',
-                      action: () => {
-                        window.open('https://aiwow.notion.site/DF717-LIVE-ACCOUNT-20dc67e3da6880dfbc4cefa57ae38bf7', '_blank');
-                      }
-                    },
-                    {
-                      label: '📈 백테스트 결과',
-                      description: '20년 검증, 65.9% 수익률',
-                      type: 'card',
-                      action: () => {
-                        window.open('https://aiwow.notion.site/DF717-Backtest-20fc67e3da68809780c0f8302bfc12bf', '_blank');
-                      }
-                    },
-                    {
-                      label: '🔄 처음으로',
-                      description: '첫 화면으로 돌아가기',
-                      type: 'card',
-                      action: () => {
-                        get().resetChat();
-                        get().initializeChat();
-                      }
-                    }
-                  ]
-                }
-              ]);
-              
-              set({ currentStep: 10, isProcessing: false });
-              break;
+                   content: '✅ **모든 설정이 완료되었습니다!**\n\n• **데모계좌 개설** 완료\n• **AI 프로그램 연동 신청** 완료\n• **모니터링 앱 설치** 완료',
+                   sender: 'ai',
+                   type: 'success_box',
+                   timestamp: new Date(),
+                   animate: false,
+                 },
+                 {
+                   id: 'step-9-final',
+                   content: 'MetaTrader 4 앱에서 실시간으로 거래 내역과 수익률을 확인하실 수 있어요. 매니저가 프로그램을 시작하면 자동으로 거래가 시작됩니다.',
+                   sender: 'ai',
+                   type: 'text',
+                   timestamp: new Date(),
+                   animate: false,
+                 },
+                 {
+                   id: 'final-buttons',
+                   content: '',
+                   sender: 'ai',
+                   type: 'final_cards',
+                   timestamp: new Date(),
+                   animate: false,
+                   buttons: [
+                     {
+                       label: '🏠 DF717 소개',
+                       description: '우리가 누구인지 알아보기',
+                       type: 'card',
+                       action: () => {
+                         window.open('https://www.df717.ai/', '_blank');
+                       }
+                     },
+                     {
+                       label: '📊 실시간 수익률',
+                       description: '8.3년 검증된 실계좌',
+                       type: 'card',
+                       action: () => {
+                         window.open('https://aiwow.notion.site/DF717-LIVE-ACCOUNT-20dc67e3da6880dfbc4cefa57ae38bf7', '_blank');
+                       }
+                     },
+                     {
+                       label: '📈 백테스트 결과',
+                       description: '20년 검증, 65.9% 수익률',
+                       type: 'card',
+                       action: () => {
+                         window.open('https://aiwow.notion.site/DF717-Backtest-20fc67e3da68809780c0f8302bfc12bf', '_blank');
+                       }
+                     },
+                     {
+                       label: '🔄 처음으로',
+                       description: '첫 화면으로 돌아가기',
+                       type: 'card',
+                       action: () => {
+                         get().resetChat();
+                         get().initializeChat();
+                       }
+                     }
+                   ]
+                 }
+               ]);
+               
+               set({ currentStep: 9, isProcessing: false });
+               break;
 
             default:
               set({ isProcessing: false });
