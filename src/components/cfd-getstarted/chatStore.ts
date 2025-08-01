@@ -637,8 +637,8 @@ export const useChatStore = create<ChatStore>()(
                     {
                       label: '프로그램 시작 요청하기',
                       type: 'primary',
-                       action: () => {
-                         get().submitUserForm('step-7-form');
+                      action: () => {
+                        get().submitUserForm('step-7-form');
                       }
                     }
                   ]
