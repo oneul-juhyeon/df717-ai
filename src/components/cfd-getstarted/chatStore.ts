@@ -177,7 +177,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-critical-warning',
-                  content: "🚨 매우 중요! 이름과 성은 반드시 영어로 입력하세요! 🚨\n\n📝 올바른 입력 예시:\n• 홍길동 → First Name: Gildong, Last Name: Hong\n• 김철수 → First Name: Cheolsu, Last Name: Kim\n\n⚠️ 주의사항:\n한글로 입력하면 나중에 계좌 연동이 불가능해서\n처음부터 다시 해야 합니다!",
+                  content: "⚠️ 중요! 이름과 성은 꼭 영어로 작성해주세요.\n\n예시) 김자동 → First Name: Jadong, Last Name: Kim",
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
