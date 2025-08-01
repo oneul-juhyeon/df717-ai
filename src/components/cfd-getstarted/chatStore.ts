@@ -254,17 +254,17 @@ export const useChatStore = create<ChatStore>()(
                   id: 'step-2-tip',
                   content: '💡 Tip! 메일이 안 보이나요?\n스팸함도 확인해보세요. ICMarkets 메일이 가끔 스팸으로 분류될 수 있어요.',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'warning_box',
                   timestamp: new Date(),
                   animate: true,
                   buttons: [
                     {
-                      label: '계좌 신청을 완료했어요',
+                      label: '비밀번호 설정을 완료했어요',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '계좌 신청을 완료했어요',
+                          content: '비밀번호 설정을 완료했어요',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -515,7 +515,7 @@ export const useChatStore = create<ChatStore>()(
                   id: 'step-8-security',
                   content: '🔒 안심하세요! 브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요. 계좌 정보는 AI 프로그램 연동에만 사용됩니다.',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'warning_box',
                   timestamp: new Date(),
                   animate: false,
                 },
