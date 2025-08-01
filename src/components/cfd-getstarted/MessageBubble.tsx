@@ -266,11 +266,11 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   className="group relative bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-300"
                 >
                   <div className="flex flex-col items-start text-left space-y-2">
-                    <div className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <div className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors font-din">
                       {button.label}
                     </div>
                     {button.description && (
-                      <div className="text-sm text-gray-600 leading-relaxed">
+                      <div className="text-xs text-gray-600 leading-relaxed font-din">
                         {button.description}
                       </div>
                     )}
