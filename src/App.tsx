@@ -71,6 +71,7 @@ function App() {
               <Route path="/cfd-safety" element={<CFDSafety />} />
               <Route path="/cfd-trading" element={<CFDTrading />} />
               <Route path="/cfd-getstarted" element={<CFDGetStarted />} />
+              <Route path="/get-started" element={<CFDGetStarted />} />
               <Route path="/professional-trading" element={<ProfessionalTrading />} />
               <Route path="/award-winning-service" element={<AwardWinningService />} />
               <Route path="/contact" element={<Contact />} />

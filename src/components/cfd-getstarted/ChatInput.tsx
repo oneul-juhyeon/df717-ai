@@ -21,19 +21,19 @@ const ChatInput: React.FC = () => {
   };
 
   return (
-    <div className="p-4 border-t border-gray-200 bg-white">
-      <form onSubmit={handleSubmit} className="flex space-x-2">
+    <div className="p-4 bg-gray-50 border-t border-gray-100">
+      <form onSubmit={handleSubmit} className="flex space-x-3">
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="메시지를 입력하세요..."
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00B7FF] focus:border-transparent"
+          className="flex-1 px-5 py-3 bg-white border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#00B7FF]/20 focus:border-[#00B7FF] transition-all text-sm"
         />
         <button
           type="submit"
           disabled={!inputValue.trim()}
-          className="px-6 py-2 bg-[#00B7FF] text-white rounded-full hover:bg-[#0066CC] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-3 bg-gradient-to-r from-[#00B7FF] to-[#0066CC] text-white rounded-2xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium text-sm transform hover:scale-105"
         >
           전송
         </button>

@@ -3,7 +3,7 @@ import { NavigationItem, SubmenuItem } from "./types";
 export const brokerSubmenu: SubmenuItem[] = [
   { name: "CFD Safety", path: "/cfd-safety" },
   { name: "CFD Trading", path: "/cfd-trading" },
-  { name: "Get Started", path: "/cfd-getstarted" },
+  { name: "Get Started", path: "/get-started" },
   { name: "Professional Trading", path: "/professional-trading" },
   { name: "Award-Winning Service", path: "/award-winning-service" },
 ];
@@ -78,6 +78,7 @@ export function isMenuActive(item: NavigationItem, currentPath: string): boolean
         (currentPath.startsWith("/cfd-safety") || 
          currentPath.startsWith("/cfd-trading") ||
          currentPath.startsWith("/cfd-getstarted") ||
+         currentPath.startsWith("/get-started") ||
          currentPath.startsWith("/professional-trading") ||
          currentPath.startsWith("/award-winning-service"))) {
       return true;
