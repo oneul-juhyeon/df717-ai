@@ -509,7 +509,15 @@ export const useChatStore = create<ChatStore>()(
             case 6:
               get().addMessageGroup([
                 {
-                  id: 'step-7-congrats',
+                  id: 'step-6-title',
+                  content: '6단계: 완료!',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-6-congrats',
                   content: '축하해요! 데모계좌 개설이 완료되었어요 🎉',
                   sender: 'ai',
                   type: 'text',
@@ -517,10 +525,18 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-7-ready',
+                  id: 'step-6-ready',
                   content: '✅ AI 자동투자를 체험할 준비가 모두 끝났어요!',
                   sender: 'ai',
                   type: 'success_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-6-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
@@ -553,7 +569,15 @@ export const useChatStore = create<ChatStore>()(
             case 7:
               get().addMessageGroup([
                 {
-                  id: 'step-8-intro',
+                  id: 'step-7-title',
+                  content: '7단계: 계좌 정보 확인하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-7-intro',
                   content: '마지막으로 계좌 정보를 확인해주세요.',
                   sender: 'ai',
                   type: 'text',
@@ -561,7 +585,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-8-info',
+                  id: 'step-7-info',
                   content: '📋 Account 페이지에서 다음 정보를 확인할 수 있어요:\n• Account ID (계좌번호)\n• Password (비밀번호)\n• Server (서버명)',
                   sender: 'ai',
                   type: 'info_box',
@@ -569,7 +593,7 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-8-security',
+                  id: 'step-7-security',
                   content: '🔒 안심하세요! 브로커 홈페이지 로그인 정보와 거래 계좌 정보는 완전히 다른 거예요. 계좌 정보는 AI 프로그램 연동에만 사용됩니다.',
                   sender: 'ai',
                   type: 'warning_box',
@@ -577,8 +601,8 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                 },
                 {
-                  id: 'step-8-form',
-                  content: '7단계: 계좌 정보 입력',
+                  id: 'step-7-form',
+                  content: '',
                   sender: 'ai',
                   type: 'form',
                   timestamp: new Date(),
@@ -613,8 +637,8 @@ export const useChatStore = create<ChatStore>()(
                     {
                       label: '완료하기',
                       type: 'primary',
-                      action: () => {
-                        get().submitUserForm('step-8-form');
+                       action: () => {
+                         get().submitUserForm('step-7-form');
                       }
                     }
                   ]
@@ -755,7 +779,7 @@ export const useChatStore = create<ChatStore>()(
           });
 
           setTimeout(() => {
-            if (messageId === 'step-8-form') {
+            if (messageId === 'step-7-form') {
               get().proceedToStep(8);
             } else {
               set({ isProcessing: false });
