@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { supabase } from '@/integrations/supabase/client';
 import { Message, MessageGroup, UserData, ChatState } from './types';
 
 interface ChatStore extends ChatState {
@@ -916,15 +917,63 @@ export const useChatStore = create<ChatStore>()(
           // Update user data
           get().updateUserData(formData);
           
-          // Success message
-          get().addMessage({
-            id: `success-${Date.now()}`,
-            content: '✅ **프로그램 시작 요청이 접수되었습니다!**\n\n매니저가 곧 **AI 자동투자**를 시작해드릴게요.',
-            sender: 'ai',
-            type: 'success_box',
-            timestamp: new Date(),
-            animate: false
-          });
+          // Save to database if this is the step 6 form
+          const saveToDatabase = async () => {
+            if (messageId === 'step-6-form') {
+              try {
+                const sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+                
+                const { error } = await supabase
+                  .from('user_accounts')
+                  .insert({
+                    account_id: formData.accountId,
+                    account_password: formData.password,
+                    server_name: formData.server,
+                    session_id: sessionId,
+                    status: 'pending'
+                  });
+
+                if (error) {
+                  console.error('Database error:', error);
+                  get().addMessage({
+                    id: `error-${Date.now()}`,
+                    content: '⚠️ **데이터 저장 중 오류가 발생했습니다.**\n\n정보는 접수되었지만, 매니저에게 직접 문의해주세요.',
+                    sender: 'ai',
+                    type: 'warning_box',
+                    timestamp: new Date(),
+                    animate: false
+                  });
+                  return;
+                }
+
+                console.log('User account data saved successfully');
+              } catch (error) {
+                console.error('Database save error:', error);
+                get().addMessage({
+                  id: `error-${Date.now()}`,
+                  content: '⚠️ **데이터 저장 중 오류가 발생했습니다.**\n\n정보는 접수되었지만, 매니저에게 직접 문의해주세요.',
+                  sender: 'ai',
+                  type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false
+                });
+                return;
+              }
+            }
+            
+            // Success message
+            get().addMessage({
+              id: `success-${Date.now()}`,
+              content: '✅ **프로그램 시작 요청이 접수되었습니다!**\n\n매니저가 곧 **AI 자동투자**를 시작해드릴게요.',
+              sender: 'ai',
+              type: 'success_box',
+              timestamp: new Date(),
+              animate: false
+            });
+          };
+
+          // Execute database save
+          saveToDatabase();
 
           setTimeout(() => {
             if (messageId === 'step-6-form') {
