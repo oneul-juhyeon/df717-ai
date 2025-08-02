@@ -176,7 +176,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-info',
-                  content: '**브로커란?**\n\n우리나라에서 주식거래를 하기 위해 증권사에 계좌를 개설하거나, 코인거래를 하기 위해 거래소에 가입하는 것과 같아요.\n\n그중에서도 **ICMarkets**는 글로벌 1위로 가장 신뢰할 수 있는 **Tier-1 브로커**예요.',
+                  content: '**브로커란?**\n\n주식거래를 하기 위해 증권사에 계좌를 개설하거나, 코인거래를 하기 위해 거래소에 가입하는 것처럼, CFD거래를 위해서도 이런 중개 플랫폼이 필요해요.\n\n그 중에서도 **ICMarkets**은 전 세계 트레이더들에게 신뢰받고 있는 **Tier-1 브로커** 중 하나예요.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
