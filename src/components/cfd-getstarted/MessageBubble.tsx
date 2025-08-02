@@ -22,6 +22,18 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
     }, 2000);
   }, [isButtonDisabled]);
 
+  const handleInputChange = (fieldId: string, value: string) => {
+    // Check if this is the Account ID field (assuming it has 'account' in the id or label)
+    const field = message.formFields?.find(f => f.id === fieldId);
+    if (field && (field.id.toLowerCase().includes('account') || field.label.toLowerCase().includes('account id'))) {
+      // Only allow numbers for Account ID field
+      const numericValue = value.replace(/\D/g, '');
+      updateFormField(message.id, fieldId, numericValue);
+    } else {
+      updateFormField(message.id, fieldId, value);
+    }
+  };
+
   if (!message.formFields) return null;
 
   return (
@@ -36,7 +48,7 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
               type={field.type}
               placeholder={field.placeholder}
               value={field.value}
-              onChange={(e) => updateFormField(message.id, field.id, e.target.value)}
+              onChange={(e) => handleInputChange(field.id, e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               required={field.required}
             />
