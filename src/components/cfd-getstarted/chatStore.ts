@@ -950,11 +950,26 @@ export const useChatStore = create<ChatStore>()(
                 
                 // Enhanced webhook debugging
                 console.log('=== STARTING WEBHOOK PROCESS ===');
+                console.log('Current route:', window.location.pathname);
+                console.log('Is on get-started route:', window.location.pathname === '/get-started');
                 console.log('Webhook data:', {
                   account_id: formData.accountId,
                   server_name: formData.server,
                   password_present: !!formData.password
                 });
+                
+                // Add route check warning
+                if (window.location.pathname !== '/get-started') {
+                  console.warn('⚠️ User is not on /get-started route! Current route:', window.location.pathname);
+                  get().addMessage({
+                    id: `route-warning-${Date.now()}`,
+                    content: '⚠️ **경고**: 현재 올바른 페이지에 있지 않습니다. `/get-started` 페이지로 이동해주세요.',
+                    sender: 'ai',
+                    type: 'warning_box',
+                    timestamp: new Date(),
+                    animate: false
+                  });
+                }
                 
                 // 1. Test Supabase client configuration
                 console.log('=== SUPABASE CLIENT DIAGNOSTICS ===');
