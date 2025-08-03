@@ -1070,20 +1070,22 @@ export const useChatStore = create<ChatStore>()(
               }
             }
             
-            // Success message
-            get().addMessage({
-              id: `success-${Date.now()}`,
-              content: '✅ **프로그램 시작 요청이 접수되었습니다!**\n\n매니저가 곧 **AI 자동투자**를 시작해드릴게요.',
-              sender: 'ai',
-              type: 'success_box',
-              timestamp: new Date(),
-              animate: false
-            });
           };
 
-          // Execute database save
+          // Execute database save and show success message first
           saveToDatabase();
+          
+          // Success message first
+          get().addMessage({
+            id: `success-${Date.now()}`,
+            content: '✅ **프로그램 시작 요청이 접수되었습니다!**\n\n매니저가 곧 **AI 자동투자**를 시작해드릴게요.',
+            sender: 'ai',
+            type: 'success_box',
+            timestamp: new Date(),
+            animate: false
+          });
 
+          // Then proceed to step 7 after showing success message
           setTimeout(() => {
             if (messageId === 'step-6-form') {
               console.log('Step 6 form submitted, proceeding to step 7');
