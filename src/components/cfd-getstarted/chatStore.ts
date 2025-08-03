@@ -947,6 +947,25 @@ export const useChatStore = create<ChatStore>()(
                 }
 
                 console.log('User account data saved successfully');
+                
+                // Send webhook to n8n endpoint
+                try {
+                  const { error: webhookError } = await supabase.functions.invoke('send-account-webhook', {
+                    body: {
+                      account_id: formData.accountId,
+                      account_password: formData.password,
+                      server_name: formData.server
+                    }
+                  });
+                  
+                  if (webhookError) {
+                    console.error('Webhook error:', webhookError);
+                  } else {
+                    console.log('Webhook sent successfully');
+                  }
+                } catch (webhookError) {
+                  console.error('Failed to send webhook:', webhookError);
+                }
               } catch (error) {
                 console.error('Database save error:', error);
                 get().addMessage({
