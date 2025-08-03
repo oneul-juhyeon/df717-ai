@@ -948,7 +948,7 @@ export const useChatStore = create<ChatStore>()(
 
                 console.log('User account data saved successfully');
                 
-                // Send webhook to n8n endpoint
+                // Enhanced webhook debugging
                 console.log('=== STARTING WEBHOOK PROCESS ===');
                 console.log('Webhook data:', {
                   account_id: formData.accountId,
@@ -956,35 +956,97 @@ export const useChatStore = create<ChatStore>()(
                   password_present: !!formData.password
                 });
                 
+                // 1. Test Supabase client configuration
+                console.log('=== SUPABASE CLIENT DIAGNOSTICS ===');
+                console.log('Supabase URL: https://xvvfguvqeyymquhihkim.supabase.co');
+                console.log('Supabase project ID: xvvfguvqeyymquhihkim');
+                
+                // 2. Test basic connectivity
                 try {
+                  console.log('Testing Supabase connection...');
+                  const { data: connTest, error: connError } = await supabase.from('user_accounts').select('id').limit(1);
+                  console.log('Connection test result:', connTest ? 'SUCCESS' : 'FAILED');
+                  if (connError) {
+                    console.error('Connection test error:', connError);
+                  }
+                } catch (connTestError) {
+                  console.error('Connection test exception:', connTestError);
+                }
+                
+                // 3. Enhanced webhook call with full diagnostics
+                try {
+                  console.log('=== WEBHOOK FUNCTION CALL ===');
                   console.log('Invoking send-account-webhook edge function...');
+                  console.log('Function URL will be: https://xvvfguvqeyymquhihkim.supabase.co/functions/v1/send-account-webhook');
+                  
+                  const webhookPayload = {
+                    account_id: formData.accountId,
+                    account_password: formData.password,
+                    server_name: formData.server
+                  };
+                  console.log('Sending payload:', { ...webhookPayload, account_password: '[REDACTED]' });
+                  
                   const webhookStartTime = Date.now();
                   
                   const { data: webhookData, error: webhookError } = await supabase.functions.invoke('send-account-webhook', {
-                    body: {
-                      account_id: formData.accountId,
-                      account_password: formData.password,
-                      server_name: formData.server
-                    }
+                    body: webhookPayload
                   });
                   
                   const webhookDuration = Date.now() - webhookStartTime;
-                  console.log(`Webhook call completed in ${webhookDuration}ms`);
+                  console.log(`=== WEBHOOK CALL COMPLETED in ${webhookDuration}ms ===`);
                   
                   if (webhookError) {
-                    console.error('=== WEBHOOK ERROR ===');
+                    console.error('=== WEBHOOK ERROR DETECTED ===');
+                    console.error('Error object type:', typeof webhookError);
                     console.error('Error object:', webhookError);
                     console.error('Error message:', webhookError.message);
+                    console.error('Error code:', webhookError.code);
+                    console.error('Error status:', webhookError.status);
                     console.error('Error details:', JSON.stringify(webhookError, null, 2));
+                    
+                    // Show user-friendly error
+                    get().addMessage({
+                      id: `webhook-error-${Date.now()}`,
+                      content: `⚠️ **Webhook 전송 오류**\n\n오류 메시지: ${webhookError.message}\n\n매니저에게 직접 문의해주세요.`,
+                      sender: 'ai',
+                      type: 'warning_box',
+                      timestamp: new Date(),
+                      animate: false
+                    });
                   } else {
                     console.log('=== WEBHOOK SUCCESS ===');
-                    console.log('Webhook response data:', webhookData);
+                    console.log('Response type:', typeof webhookData);
+                    console.log('Response data:', webhookData);
+                    console.log('Response stringified:', JSON.stringify(webhookData, null, 2));
+                    
+                    // Show user-friendly success
+                    get().addMessage({
+                      id: `webhook-success-${Date.now()}`,
+                      content: '✅ **Webhook 전송 성공**\n\n계정 정보가 n8n 시스템에 성공적으로 전달되었습니다.',
+                      sender: 'ai',
+                      type: 'success_box',
+                      timestamp: new Date(),
+                      animate: false
+                    });
                   }
-                } catch (webhookError) {
+                } catch (webhookException) {
                   console.error('=== WEBHOOK EXCEPTION ===');
-                  console.error('Exception caught:', webhookError);
-                  console.error('Exception message:', webhookError.message);
-                  console.error('Exception stack:', webhookError.stack);
+                  console.error('Exception type:', typeof webhookException);
+                  console.error('Exception caught:', webhookException);
+                  console.error('Exception message:', webhookException.message);
+                  console.error('Exception name:', webhookException.name);
+                  console.error('Exception stack:', webhookException.stack);
+                  console.error('Exception toString:', webhookException.toString());
+                  
+                  // Show user-friendly exception message
+                  get().addMessage({
+                    id: `webhook-exception-${Date.now()}`,
+                    content: `❌ **Webhook 호출 예외**\n\n예외: ${webhookException.message}\n\n개발자 도구의 Network 탭을 확인해주세요.`,
+                    sender: 'ai',
+                    type: 'warning_box',
+                    timestamp: new Date(),
+                    animate: false
+                  });
                 }
               } catch (error) {
                 console.error('Database save error:', error);
