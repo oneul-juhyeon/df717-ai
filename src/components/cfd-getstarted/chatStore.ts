@@ -1034,15 +1034,8 @@ export const useChatStore = create<ChatStore>()(
                     console.log('Response data:', webhookData);
                     console.log('Response stringified:', JSON.stringify(webhookData, null, 2));
                     
-                    // Show user-friendly success
-                    get().addMessage({
-                      id: `webhook-success-${Date.now()}`,
-                      content: '✅ **Webhook 전송 성공**\n\n계정 정보가 n8n 시스템에 성공적으로 전달되었습니다.',
-                      sender: 'ai',
-                      type: 'success_box',
-                      timestamp: new Date(),
-                      animate: false
-                    });
+                     // Webhook successful - no message shown to user
+                     console.log('Webhook sent successfully to n8n system');
                   }
                 } catch (webhookException) {
                   console.error('=== WEBHOOK EXCEPTION ===');
