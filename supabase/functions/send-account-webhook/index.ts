@@ -37,7 +37,7 @@ serve(async (req) => {
     
     console.log('Validated data:', { account_id, server_name, password_present: !!account_password });
 
-    const webhookUrl = 'https://n8n.huhsame.com/webhook-test/account-insert';
+    const webhookUrl = 'https://n8n.huhsame.com/webhook/account-insert';
     const payload = {
       account_id,
       account_password,
@@ -50,7 +50,7 @@ serve(async (req) => {
 
     // Test connectivity first
     try {
-      const connectivityTest = await fetch(webhookUrl.replace('/webhook-test/account-insert', '/'), {
+      const connectivityTest = await fetch(webhookUrl.replace('/webhook/account-insert', '/'), {
         method: 'GET',
         signal: AbortSignal.timeout(5000)
       });
