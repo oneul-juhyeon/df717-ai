@@ -949,8 +949,18 @@ export const useChatStore = create<ChatStore>()(
                 console.log('User account data saved successfully');
                 
                 // Send webhook to n8n endpoint
+                console.log('=== STARTING WEBHOOK PROCESS ===');
+                console.log('Webhook data:', {
+                  account_id: formData.accountId,
+                  server_name: formData.server,
+                  password_present: !!formData.password
+                });
+                
                 try {
-                  const { error: webhookError } = await supabase.functions.invoke('send-account-webhook', {
+                  console.log('Invoking send-account-webhook edge function...');
+                  const webhookStartTime = Date.now();
+                  
+                  const { data: webhookData, error: webhookError } = await supabase.functions.invoke('send-account-webhook', {
                     body: {
                       account_id: formData.accountId,
                       account_password: formData.password,
@@ -958,13 +968,23 @@ export const useChatStore = create<ChatStore>()(
                     }
                   });
                   
+                  const webhookDuration = Date.now() - webhookStartTime;
+                  console.log(`Webhook call completed in ${webhookDuration}ms`);
+                  
                   if (webhookError) {
-                    console.error('Webhook error:', webhookError);
+                    console.error('=== WEBHOOK ERROR ===');
+                    console.error('Error object:', webhookError);
+                    console.error('Error message:', webhookError.message);
+                    console.error('Error details:', JSON.stringify(webhookError, null, 2));
                   } else {
-                    console.log('Webhook sent successfully');
+                    console.log('=== WEBHOOK SUCCESS ===');
+                    console.log('Webhook response data:', webhookData);
                   }
                 } catch (webhookError) {
-                  console.error('Failed to send webhook:', webhookError);
+                  console.error('=== WEBHOOK EXCEPTION ===');
+                  console.error('Exception caught:', webhookError);
+                  console.error('Exception message:', webhookError.message);
+                  console.error('Exception stack:', webhookError.stack);
                 }
               } catch (error) {
                 console.error('Database save error:', error);
