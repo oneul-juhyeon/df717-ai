@@ -20,27 +20,33 @@ export type Database = {
           account_password: string
           created_at: string | null
           id: number
+          referrer_name: string | null
           server_name: string
           session_id: string | null
           status: string | null
+          user_name: string | null
         }
         Insert: {
           account_id: string
           account_password: string
           created_at?: string | null
           id?: number
+          referrer_name?: string | null
           server_name: string
           session_id?: string | null
           status?: string | null
+          user_name?: string | null
         }
         Update: {
           account_id?: string
           account_password?: string
           created_at?: string | null
           id?: number
+          referrer_name?: string | null
           server_name?: string
           session_id?: string | null
           status?: string | null
+          user_name?: string | null
         }
         Relationships: []
       }

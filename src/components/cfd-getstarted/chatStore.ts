@@ -13,6 +13,8 @@ interface ChatStore extends ChatState {
   proceedToStep: (step: number) => void;
   updateFormField: (messageId: string, fieldId: string, value: string) => void;
   submitUserForm: (messageId: string) => void;
+  submitPersonalInfoForm: (messageId: string) => void;
+  showPersonalInfoForm: () => void;
   setProcessing: (processing: boolean) => void;
   executedSteps: Set<number>;
   isStepExecuted: (step: number) => boolean;
@@ -107,34 +109,169 @@ export const useChatStore = create<ChatStore>()(
         // Reset first to ensure clean state
         get().resetChat();
         
-        // Add first welcome message after 800ms
+        // New initial welcome messages
         setTimeout(() => {
           get().addMessage({
             id: 'welcome-1',
-            content: '안녕하세요! AI 자동투자 체험을 도와드릴게요 😊',
+            content: 'DF717에 오신 걸 환영해요! 😊',
             sender: 'ai',
             type: 'text',
             timestamp: new Date(),
             animate: false,
           });
           
-          // Add second welcome message after 800ms
+          // Second welcome message after 800ms
           setTimeout(() => {
             get().addMessage({
               id: 'welcome-2',
-              content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 투자를 체험하실 수 있어요.',
+              content: '개인 맞춤 가이드를 위해 간단한 정보를 알려주세요.',
               sender: 'ai',
               type: 'text',
               timestamp: new Date(),
               animate: false,
             });
             
-            // Start step 1 after 1000ms
+            // Show personal info form after 800ms
             setTimeout(() => {
-              get().proceedToStep(1);
-            }, 1000);
+              get().showPersonalInfoForm();
+            }, 800);
           }, 800);
-        }, 800);
+        }, 500);
+      },
+
+      showPersonalInfoForm: () => {
+        get().addMessage({
+          id: 'personal-info-form',
+          content: '',
+          sender: 'ai',
+          type: 'form',
+          timestamp: new Date(),
+          animate: false,
+          formFields: [
+            {
+              id: 'userName',
+              label: '이름 *',
+              type: 'text',
+              placeholder: '이름을 입력하세요',
+              required: true,
+              value: ''
+            },
+            {
+              id: 'referrerName',
+              label: '추천인 (선택사항)',
+              type: 'text',
+              placeholder: '추천인 이름을 입력하세요',
+              required: false,
+              value: ''
+            }
+          ],
+          buttons: [
+            {
+              label: '시작하기',
+              type: 'primary',
+              action: () => {
+                get().submitPersonalInfoForm('personal-info-form');
+              }
+            }
+          ]
+        });
+      },
+
+      submitPersonalInfoForm: (messageId: string) => {
+        const { messages, isProcessing } = get();
+        
+        // Prevent multiple submissions
+        if (isProcessing) return;
+        
+        set({ isProcessing: true });
+        
+        const formMessage = messages.find(m => m.id === messageId);
+        
+        if (formMessage && formMessage.formFields) {
+          const userName = formMessage.formFields.find(f => f.id === 'userName')?.value || '';
+          const referrerName = formMessage.formFields.find(f => f.id === 'referrerName')?.value || '';
+
+          // Validation for required name field
+          if (!userName.trim()) {
+            get().addMessage({
+              id: `validation-error-${Date.now()}`,
+              content: '⚠️ **이름을 입력해주세요.**',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false
+            });
+            set({ isProcessing: false });
+            return;
+          }
+
+          // Save the personal info to database
+          const savePersonalInfo = async () => {
+            try {
+              const sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+              
+              const { error } = await supabase
+                .from('user_accounts')
+                .insert({
+                  user_name: userName,
+                  referrer_name: referrerName || null,
+                  account_id: '', // Will be filled later
+                  account_password: '', // Will be filled later
+                  server_name: '', // Will be filled later
+                  session_id: sessionId,
+                  status: 'info_collected'
+                });
+
+              if (error) {
+                console.error('Database error:', error);
+                // Continue with the flow even if database save fails
+              } else {
+                console.log('Personal info saved successfully');
+              }
+            } catch (error) {
+              console.error('Database save error:', error);
+              // Continue with the flow even if database save fails
+            }
+          };
+
+          // Save to database
+          savePersonalInfo();
+
+          // Store user name for later use in messages
+          set((state) => ({
+            userData: { ...state.userData, firstName: userName }
+          }));
+
+          // Show personalized messages
+          setTimeout(() => {
+            get().addMessage({
+              id: `personalized-greeting-${Date.now()}`,
+              content: `${userName}님, AI 자동투자 체험을 시작해볼까요?`,
+              sender: 'ai',
+              type: 'text',
+              timestamp: new Date(),
+              animate: false
+            });
+
+            setTimeout(() => {
+              get().addMessage({
+                id: `intro-message-${Date.now()}`,
+                content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 투자를 체험하실 수 있어요.',
+                sender: 'ai',
+                type: 'text',
+                timestamp: new Date(),
+                animate: false
+              });
+
+              setTimeout(() => {
+                set({ isProcessing: false });
+                get().proceedToStep(1);
+              }, 1000);
+            }, 800);
+          }, 800);
+        } else {
+          set({ isProcessing: false });
+        }
       },
 
       proceedToStep: (step: number) => {
