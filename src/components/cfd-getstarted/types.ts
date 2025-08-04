@@ -40,6 +40,8 @@ export interface UserData {
   accountId: string;
   password: string;
   server: string;
+  sessionId?: string;
+  referrerName?: string;
 }
 
 export interface ChatState {

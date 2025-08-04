@@ -227,9 +227,9 @@ export const useChatStore = create<ChatStore>()(
                 .insert({
                   user_name: userName,
                   referrer_name: referrerName || null,
-                  account_id: '', // Will be filled later
-                  account_password: '', // Will be filled later
-                  server_name: '', // Will be filled later
+                  account_id: '',
+                  account_password: '',
+                  server_name: '',
                   session_id: sessionId,
                   status: 'info_collected'
                 });
@@ -238,7 +238,11 @@ export const useChatStore = create<ChatStore>()(
                 console.error('Database error:', error);
                 // Continue with the flow even if database save fails
               } else {
-                console.log('Personal info saved successfully');
+                console.log('Personal info saved successfully with session_id:', sessionId);
+                // Store session_id for later use
+                set((state) => ({
+                  userData: { ...state.userData, sessionId }
+                }));
               }
             } catch (error) {
               console.error('Database save error:', error);
@@ -251,7 +255,7 @@ export const useChatStore = create<ChatStore>()(
 
           // Store user name for later use in messages
           set((state) => ({
-            userData: { ...state.userData, firstName: userName }
+            userData: { ...state.userData, firstName: userName, referrerName }
           }));
 
           // Show personalized messages after start button click
@@ -1062,17 +1066,32 @@ export const useChatStore = create<ChatStore>()(
           const saveToDatabase = async () => {
             if (messageId === 'step-6-form') {
               try {
-                const sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+                const { userData } = get();
+                const sessionId = userData.sessionId;
                 
+                if (!sessionId) {
+                  console.error('No session ID found, cannot update user account');
+                  get().addMessage({
+                    id: `error-${Date.now()}`,
+                    content: '⚠️ **세션 정보를 찾을 수 없습니다.**\n\n매니저에게 직접 문의해주세요.',
+                    sender: 'ai',
+                    type: 'warning_box',
+                    timestamp: new Date(),
+                    animate: false
+                  });
+                  return;
+                }
+
+                // Update existing row with account information
                 const { error } = await supabase
                   .from('user_accounts')
-                  .insert({
+                  .update({
                     account_id: formData.accountId,
                     account_password: formData.password,
                     server_name: formData.server,
-                    session_id: sessionId,
                     status: 'pending'
-                  });
+                  })
+                  .eq('session_id', sessionId);
 
                 if (error) {
                   console.error('Database error:', error);
@@ -1087,7 +1106,7 @@ export const useChatStore = create<ChatStore>()(
                   return;
                 }
 
-                console.log('User account data saved successfully');
+                console.log('User account data updated successfully');
                 
                 // Enhanced webhook debugging
                 console.log('=== STARTING WEBHOOK PROCESS ===');
@@ -1138,7 +1157,9 @@ export const useChatStore = create<ChatStore>()(
                   const webhookPayload = {
                     account_id: formData.accountId,
                     account_password: formData.password,
-                    server_name: formData.server
+                    server_name: formData.server,
+                    user_name: userData.firstName,
+                    referrer_name: userData.referrerName || null
                   };
                   console.log('Sending payload:', { ...webhookPayload, account_password: '[REDACTED]' });
                   
