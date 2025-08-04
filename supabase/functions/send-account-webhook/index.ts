@@ -20,7 +20,7 @@ serve(async (req) => {
     const requestBody = await req.json();
     console.log('Request body received:', requestBody);
     
-    const { account_id, account_password, server_name } = requestBody;
+    const { account_id, account_password, server_name, user_name, referrer_name } = requestBody;
     
     // Validate required fields
     if (!account_id || !account_password || !server_name) {
@@ -35,13 +35,21 @@ serve(async (req) => {
       });
     }
     
-    console.log('Validated data:', { account_id, server_name, password_present: !!account_password });
+    console.log('Validated data:', { 
+      account_id, 
+      server_name, 
+      password_present: !!account_password,
+      user_name: user_name || 'Not provided',
+      referrer_name: referrer_name || 'Not provided'
+    });
 
     const webhookUrl = 'https://n8n.huhsame.com/webhook/account-insert';
     const payload = {
       account_id,
       account_password,
       server_name,
+      user_name: user_name || null,
+      referrer_name: referrer_name || null,
       timestamp: new Date().toISOString()
     };
 
