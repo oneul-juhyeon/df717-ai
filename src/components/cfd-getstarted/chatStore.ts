@@ -109,11 +109,11 @@ export const useChatStore = create<ChatStore>()(
         // Reset first to ensure clean state
         get().resetChat();
         
-        // New initial welcome messages
+        // New Toss-style welcome sequence
         setTimeout(() => {
           get().addMessage({
             id: 'welcome-1',
-            content: 'DF717에 오신 걸 환영해요! 😊',
+            content: '안녕하세요! DF717에 오신 걸 환영해요! 😊',
             sender: 'ai',
             type: 'text',
             timestamp: new Date(),
@@ -124,17 +124,29 @@ export const useChatStore = create<ChatStore>()(
           setTimeout(() => {
             get().addMessage({
               id: 'welcome-2',
-              content: '개인 맞춤 가이드를 위해 간단한 정보를 알려주세요.',
+              content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 자동투자를 체험하실 수 있어요.',
               sender: 'ai',
               type: 'text',
               timestamp: new Date(),
               animate: false,
             });
             
-            // Show personal info form after 800ms
+            // Third welcome message after 1000ms
             setTimeout(() => {
-              get().showPersonalInfoForm();
-            }, 800);
+              get().addMessage({
+                id: 'welcome-3',
+                content: '더 정확한 안내를 위해 성함을 알려주실 수 있나요?',
+                sender: 'ai',
+                type: 'text',
+                timestamp: new Date(),
+                animate: false,
+              });
+              
+              // Show personal info form after 800ms
+              setTimeout(() => {
+                get().showPersonalInfoForm();
+              }, 800);
+            }, 1000);
           }, 800);
         }, 500);
       },
@@ -150,7 +162,7 @@ export const useChatStore = create<ChatStore>()(
           formFields: [
             {
               id: 'userName',
-              label: '이름 *',
+              label: '이름',
               type: 'text',
               placeholder: '이름을 입력하세요',
               required: true,
@@ -242,11 +254,11 @@ export const useChatStore = create<ChatStore>()(
             userData: { ...state.userData, firstName: userName }
           }));
 
-          // Show personalized messages
+          // Show personalized messages after start button click
           setTimeout(() => {
             get().addMessage({
               id: `personalized-greeting-${Date.now()}`,
-              content: `${userName}님, AI 자동투자 체험을 시작해볼까요?`,
+              content: `${userName}님을 위한 맞춤 가이드를 시작할 준비가 완료되었어요.`,
               sender: 'ai',
               type: 'text',
               timestamp: new Date(),
@@ -255,8 +267,8 @@ export const useChatStore = create<ChatStore>()(
 
             setTimeout(() => {
               get().addMessage({
-                id: `intro-message-${Date.now()}`,
-                content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 투자를 체험하실 수 있어요.',
+                id: `step-intro-message-${Date.now()}`,
+                content: '첫 번째로, ICMarkets에서 계좌 신청을 해볼게요.',
                 sender: 'ai',
                 type: 'text',
                 timestamp: new Date(),
@@ -299,14 +311,6 @@ export const useChatStore = create<ChatStore>()(
                 {
                   id: 'step-1-title',
                   content: '1단계: 계좌 신청하기',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-1-intro',
-                  content: '첫 번째로, ICMarkets에서 계좌 신청을 해볼게요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),

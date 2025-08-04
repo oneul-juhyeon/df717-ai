@@ -64,7 +64,7 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
               key={index}
               onClick={() => handleButtonClick(button.action)}
               disabled={isButtonDisabled}
-              className={`w-full flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+              className={`w-full flex items-center justify-center px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
                 button.type === "primary" 
                   ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
                   : button.type === "link"
