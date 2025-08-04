@@ -1083,7 +1083,14 @@ export const useChatStore = create<ChatStore>()(
                 }
 
                 // Update existing row with account information
-                const { error } = await supabase
+                console.log('Attempting UPDATE with session_id:', sessionId);
+                console.log('Update data:', { 
+                  account_id: formData.accountId, 
+                  account_password: '[REDACTED]', 
+                  server_name: formData.server 
+                });
+                
+                const { data, error, count } = await supabase
                   .from('user_accounts')
                   .update({
                     account_id: formData.accountId,
@@ -1091,7 +1098,8 @@ export const useChatStore = create<ChatStore>()(
                     server_name: formData.server,
                     status: 'pending'
                   })
-                  .eq('session_id', sessionId);
+                  .eq('session_id', sessionId)
+                  .select();
 
                 if (error) {
                   console.error('Database error:', error);
@@ -1106,7 +1114,32 @@ export const useChatStore = create<ChatStore>()(
                   return;
                 }
 
-                console.log('User account data updated successfully');
+                console.log('UPDATE result - data:', data);
+                console.log('UPDATE result - count:', count);
+                
+                if (!data || data.length === 0) {
+                  console.error('No rows were updated. Session ID may not exist in database.');
+                  // Fallback: try to insert new row
+                  const { error: insertError } = await supabase
+                    .from('user_accounts')
+                    .insert({
+                      account_id: formData.accountId,
+                      account_password: formData.password,
+                      server_name: formData.server,
+                      user_name: userData.firstName,
+                      referrer_name: userData.referrerName || null,
+                      session_id: sessionId,
+                      status: 'pending'
+                    });
+                    
+                  if (insertError) {
+                    console.error('Fallback insert failed:', insertError);
+                  } else {
+                    console.log('Fallback insert successful');
+                  }
+                } else {
+                  console.log('User account data updated successfully');
+                }
                 
                 // Enhanced webhook debugging
                 console.log('=== STARTING WEBHOOK PROCESS ===');
