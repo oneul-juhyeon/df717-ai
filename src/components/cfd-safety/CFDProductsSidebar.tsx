@@ -4,11 +4,11 @@ import { Link, useLocation } from "react-router-dom";
 const CFDProductsSidebar: React.FC = () => {
   const location = useLocation();
   const cfdPages = [
-    { name: "CFD Safety", path: "/cfd-safety" },
     { name: "CFD Trading", path: "/cfd-trading" },
-    { name: "Get Started", path: "/cfd-getstarted" },
+    { name: "CFD Safety", path: "/cfd-safety" },
     { name: "Professional Trading", path: "/professional-trading" },
     { name: "Award-Winning Service", path: "/award-winning-service" },
+    { name: "Get Started", path: "/get-started" },
   ];
 
   return (

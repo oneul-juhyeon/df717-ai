@@ -1,11 +1,11 @@
 import { NavigationItem, SubmenuItem } from "./types";
 
 export const brokerSubmenu: SubmenuItem[] = [
-  { name: "CFD Safety", path: "/cfd-safety" },
   { name: "CFD Trading", path: "/cfd-trading" },
-  { name: "Get Started", path: "/get-started" },
+  { name: "CFD Safety", path: "/cfd-safety" },
   { name: "Professional Trading", path: "/professional-trading" },
   { name: "Award-Winning Service", path: "/award-winning-service" },
+  { name: "Get Started", path: "/get-started" },
 ];
 
 export const financialProductsSubmenu: SubmenuItem[] = [

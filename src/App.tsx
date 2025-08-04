@@ -15,7 +15,7 @@ import Robot from "./pages/Robot";
 import CFDSafety from "./pages/CFDSafety";
 import CFDTrading from "./pages/CFDTrading";
 import GetStarted from "./pages/GetStarted";
-import TestWebhook from "./pages/TestWebhook";
+
 
 import ProfessionalTrading from "./pages/ProfessionalTrading";
 import AwardWinningService from "./pages/AwardWinningService";
@@ -73,7 +73,7 @@ function App() {
               <Route path="/cfd-safety" element={<CFDSafety />} />
               <Route path="/cfd-trading" element={<CFDTrading />} />
               <Route path="/get-started" element={<GetStarted />} />
-              <Route path="/test-webhook" element={<TestWebhook />} />
+              
               <Route path="/professional-trading" element={<ProfessionalTrading />} />
               <Route path="/award-winning-service" element={<AwardWinningService />} />
               <Route path="/contact" element={<Contact />} />
