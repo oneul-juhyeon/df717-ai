@@ -28,7 +28,7 @@ const CFDProductsSidebar: React.FC = () => {
                 className={`block px-4 py-3 rounded-lg transition-colors duration-200 financial-product-label ${
                   isActive 
                     ? 'text-white bg-gray-800' 
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                    : 'text-gray-400 hover:bg-gray-800 hover:text-white'
                 }`}
               >
                 {product.name}
