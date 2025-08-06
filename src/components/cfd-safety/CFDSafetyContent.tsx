@@ -92,12 +92,12 @@ const CFDSafetyContent: React.FC = () => {
           When the Swiss National Bank unexpectedly removed the EUR/CHF peg, the currency moved 20% in minutes. The outcome varied dramatically based on broker quality:
         </p>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-6">
-          <p className="text-gray-300 mb-4">
-            <strong className="text-white">Regulated Brokers:</strong> Provided negative balance protection, honored stop-losses where possible, and maintained transparent communication throughout the crisis.
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-6">
+          <p className="text-gray-400 mb-4">
+            <strong className="text-gray-200">Regulated Brokers:</strong> Provided negative balance protection, honored stop-losses where possible, and maintained transparent communication throughout the crisis.
           </p>
-          <p className="text-gray-300">
-            <strong className="text-white">Unregulated Brokers:</strong> Several went bankrupt, clients faced massive negative balances, and many never recovered their deposits.
+          <p className="text-gray-400">
+            <strong className="text-gray-200">Unregulated Brokers:</strong> Several went bankrupt, clients faced massive negative balances, and many never recovered their deposits.
           </p>
         </div>
 
@@ -106,12 +106,12 @@ const CFDSafetyContent: React.FC = () => {
           GBP/USD dropped over 10% in hours following the Brexit vote. The difference in trader experience was stark:
         </p>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-8">
-          <p className="text-gray-300 mb-4">
-            <strong className="text-white">Quality Brokers:</strong> Maintained stable platforms, provided accurate real-time pricing, and executed orders fairly even during extreme volatility.
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-8">
+          <p className="text-gray-400 mb-4">
+            <strong className="text-gray-200">Quality Brokers:</strong> Maintained stable platforms, provided accurate real-time pricing, and executed orders fairly even during extreme volatility.
           </p>
-          <p className="text-gray-300">
-            <strong className="text-white">Poor Quality Brokers:</strong> Experienced platform crashes, widened spreads artificially, delayed order execution, and some even refused withdrawal requests citing "exceptional circumstances."
+          <p className="text-gray-400">
+            <strong className="text-gray-200">Poor Quality Brokers:</strong> Experienced platform crashes, widened spreads artificially, delayed order execution, and some even refused withdrawal requests citing "exceptional circumstances."
           </p>
         </div>
 
@@ -132,9 +132,9 @@ const CFDSafetyContent: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-white mb-3">Client Fund Protection</h4>
-            <ul className="list-disc pl-6 text-gray-300 space-y-2">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h4 className="text-lg font-semibold text-gray-200 mb-3">Client Fund Protection</h4>
+            <ul className="list-disc pl-6 text-gray-400 space-y-2">
               <li>Segregated accounts with major banks</li>
               <li>Funds held separately from broker operations</li>
               <li>Insurance coverage beyond regulatory minimums</li>
@@ -142,9 +142,9 @@ const CFDSafetyContent: React.FC = () => {
             </ul>
           </div>
           
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-white mb-3">Operational Standards</h4>
-            <ul className="list-disc pl-6 text-gray-300 space-y-2">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h4 className="text-lg font-semibold text-gray-200 mb-3">Operational Standards</h4>
+            <ul className="list-disc pl-6 text-gray-400 space-y-2">
               <li>Substantial capital requirements</li>
               <li>Transparent financial reporting</li>
               <li>Fair execution policies</li>
@@ -156,9 +156,9 @@ const CFDSafetyContent: React.FC = () => {
         <h3 className="text-2xl font-bold text-white mb-4">Technology Infrastructure That Protects You</h3>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-white mb-3">Enterprise-Grade Execution</h4>
-            <ul className="list-disc pl-6 text-gray-300 space-y-2">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h4 className="text-lg font-semibold text-gray-200 mb-3">Enterprise-Grade Execution</h4>
+            <ul className="list-disc pl-6 text-gray-400 space-y-2">
               <li>Co-located servers in major financial centers</li>
               <li>Direct connections to multiple liquidity providers</li>
               <li>Redundant systems preventing downtime</li>
@@ -166,9 +166,9 @@ const CFDSafetyContent: React.FC = () => {
             </ul>
           </div>
           
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-white mb-3">Transparent Pricing</h4>
-            <ul className="list-disc pl-6 text-gray-300 space-y-2">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h4 className="text-lg font-semibold text-gray-200 mb-3">Transparent Pricing</h4>
+            <ul className="list-disc pl-6 text-gray-400 space-y-2">
               <li>No dealing desk intervention</li>
               <li>Direct market access</li>
               <li>Real-time execution statistics</li>
@@ -196,9 +196,9 @@ const CFDSafetyContent: React.FC = () => {
         <h4 className="text-xl font-bold text-white mb-6">Our 5-Point Safety Framework</h4>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h5 className="text-lg font-semibold text-white mb-3">1. Regulatory Excellence</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h5 className="text-lg font-semibold text-gray-200 mb-3">1. Regulatory Excellence</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Minimum Tier-1 regulation from major jurisdictions</li>
               <li>Clean regulatory record with no violations</li>
               <li>Transparent compliance history</li>
@@ -206,9 +206,9 @@ const CFDSafetyContent: React.FC = () => {
             </ul>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h5 className="text-lg font-semibold text-white mb-3">2. Financial Strength</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h5 className="text-lg font-semibold text-gray-200 mb-3">2. Financial Strength</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Capital reserves exceeding regulatory minimums</li>
               <li>Strong credit ratings and stability metrics</li>
               <li>Transparent financial reporting</li>
@@ -216,9 +216,9 @@ const CFDSafetyContent: React.FC = () => {
             </ul>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h5 className="text-lg font-semibold text-white mb-3">3. Technology Infrastructure</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h5 className="text-lg font-semibold text-gray-200 mb-3">3. Technology Infrastructure</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Enterprise-grade execution systems</li>
               <li>Co-located servers in financial centers</li>
               <li>Multiple redundant systems</li>
@@ -226,9 +226,9 @@ const CFDSafetyContent: React.FC = () => {
             </ul>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h5 className="text-lg font-semibold text-white mb-3">4. Execution Quality</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h5 className="text-lg font-semibold text-gray-200 mb-3">4. Execution Quality</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Sub-50ms average execution speeds</li>
               <li>Fill rates above 99.5%</li>
               <li>Transparent slippage statistics</li>
@@ -236,9 +236,9 @@ const CFDSafetyContent: React.FC = () => {
             </ul>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h5 className="text-lg font-semibold text-white mb-3">5. Client Protection Standards</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h5 className="text-lg font-semibold text-gray-200 mb-3">5. Client Protection Standards</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Segregated funds with tier-1 banks</li>
               <li>Negative balance protection policies</li>
               <li>Transparent fee structures with no hidden costs</li>
@@ -263,19 +263,19 @@ const CFDSafetyContent: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-white mb-4">ICMarkets: Professional-Grade Safety</h4>
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h4 className="text-lg font-semibold text-gray-200 mb-4">ICMarkets: Professional-Grade Safety</h4>
             
-            <h5 className="text-md font-semibold text-white mb-2">Regulatory Gold Standard</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1 mb-4">
+            <h5 className="text-md font-semibold text-gray-200 mb-2">Regulatory Gold Standard</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1 mb-4">
               <li>ASIC, CySEC, FSA, SCB licenses</li>
               <li>15+ years proven track record</li>
               <li>Segregated client funds at tier-1 banks</li>
               <li>Complete negative balance protection</li>
             </ul>
 
-            <h5 className="text-md font-semibold text-white mb-2">Technology Leadership</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+            <h5 className="text-md font-semibold text-gray-200 mb-2">Technology Leadership</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Sub-40ms execution speeds</li>
               <li>99.99% platform uptime</li>
               <li>25+ institutional liquidity providers</li>
@@ -292,19 +292,19 @@ const CFDSafetyContent: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h4 className="text-lg font-semibold text-white mb-4">Vantage: Award-Winning Protection</h4>
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
+            <h4 className="text-lg font-semibold text-gray-200 mb-4">Vantage: Award-Winning Protection</h4>
             
-            <h5 className="text-md font-semibold text-white mb-2">Industry Recognition</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1 mb-4">
+            <h5 className="text-md font-semibold text-gray-200 mb-2">Industry Recognition</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1 mb-4">
               <li>Most Trusted Broker Global 2025</li>
               <li>$1M insurance per account (Lloyd's of London)</li>
               <li>15+ years market leadership</li>
               <li>5+ million satisfied traders</li>
             </ul>
 
-            <h5 className="text-md font-semibold text-white mb-2">Comprehensive Coverage</h5>
-            <ul className="list-disc pl-6 text-gray-300 space-y-1">
+            <h5 className="text-md font-semibold text-gray-200 mb-2">Comprehensive Coverage</h5>
+            <ul className="list-disc pl-6 text-gray-400 space-y-1">
               <li>Willis Towers Watson partnership</li>
               <li>VFSC regulation and oversight</li>
               <li>Professional indemnity insurance</li>
@@ -330,33 +330,33 @@ const CFDSafetyContent: React.FC = () => {
           Still deciding between our safety-verified partners?
         </p>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-6">
-          <h4 className="text-lg font-semibold text-white mb-3">ICMarkets - Perfect for professional traders seeking institutional conditions</h4>
-          <ul className="list-disc pl-6 text-gray-300 space-y-2">
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-6">
+          <h4 className="text-lg font-semibold text-gray-200 mb-3">ICMarkets - Perfect for professional traders seeking institutional conditions</h4>
+          <ul className="list-disc pl-6 text-gray-400 space-y-2">
             <li>Ultra-fast execution and minimal spreads</li>
             <li>Advanced platforms with no restrictions</li>
             <li>Maximum regulatory protection</li>
           </ul>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-8">
-          <h4 className="text-lg font-semibold text-white mb-3">Vantage - Ideal for traders prioritizing comprehensive protection</h4>
-          <ul className="list-disc pl-6 text-gray-300 space-y-2">
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-8">
+          <h4 className="text-lg font-semibold text-gray-200 mb-3">Vantage - Ideal for traders prioritizing comprehensive protection</h4>
+          <ul className="list-disc pl-6 text-gray-400 space-y-2">
             <li>Award-winning trust and recognition</li>
             <li>Extensive insurance coverage</li>
             <li>User-friendly platforms with global support</li>
           </ul>
         </div>
 
-        <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Trading Safely?</h3>
+        <h3 className="text-2xl font-bold text-white mb-4">Trading Foundation</h3>
         
         <p className="text-gray-300 leading-relaxed mb-6">
-          Your CFD trading journey should begin with the strongest possible foundation. Choose safety. Choose regulation. Choose success.
+          Success in CFD trading requires a methodical approach to broker selection and risk management. The statistical reality of trader outcomes underscores the importance of proper preparation and regulatory oversight.
         </p>
 
-        <div className="bg-blue-900 p-6 rounded-lg text-center">
-          <p className="text-white text-lg font-semibold">
-            <strong>Remember:</strong> 75% of traders lose money, but with the right broker and proper understanding of safety, you can be in the winning 25%.
+        <div className="bg-black border border-gray-600 p-6 rounded-lg">
+          <p className="text-gray-400 text-lg">
+            Market data indicates that 75% of retail CFD accounts experience losses. Understanding this statistic emphasizes the critical importance of choosing regulated brokers with robust client protection measures.
           </p>
         </div>
       </div>
