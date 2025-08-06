@@ -1,15 +1,7 @@
-
 import React from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from "@/components/ui/accordion";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const SharesFAQ: React.FC = () => {
-  return (
-    <>
+  return <>
       <h2 className="text-3xl mt-8 mb-6 font-bold">FAQ</h2>
       
       <div className="space-y-4">
@@ -98,9 +90,7 @@ const SharesFAQ: React.FC = () => {
           </AccordionItem>
           
           <AccordionItem value="item-8">
-            <AccordionTrigger className="text-xl font-semibold text-left">
-              What are the costs of trading stock CFDs with Axi?
-            </AccordionTrigger>
+            
             <AccordionContent className="text-white">
               <p className="text-left mb-2">
                 Axi charges no commission on stock CFD trades.
@@ -115,8 +105,6 @@ const SharesFAQ: React.FC = () => {
           </AccordionItem>
         </Accordion>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default SharesFAQ;
