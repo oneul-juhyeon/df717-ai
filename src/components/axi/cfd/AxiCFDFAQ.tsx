@@ -1,15 +1,7 @@
-
 import React from "react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from "@/components/ui/accordion";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const AxiCFDFAQ: React.FC = () => {
-  return (
-    <>
+  return <>
       <h2 className="text-3xl mt-8 mb-6 font-bold">FAQ</h2>
       
       <div className="space-y-4">
@@ -113,9 +105,7 @@ const AxiCFDFAQ: React.FC = () => {
           </AccordionItem>
           
           <AccordionItem value="item-8">
-            <AccordionTrigger className="text-xl font-semibold text-left">
-              What markets can I trade with Axi?
-            </AccordionTrigger>
+            
             <AccordionContent className="text-white">
               <p className="text-left">
                 Axi provides access to a wide range of markets for CFD trading. Please refer to our Product Schedule for a full list of CFD trading instruments.
@@ -124,8 +114,6 @@ const AxiCFDFAQ: React.FC = () => {
           </AccordionItem>
         </Accordion>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default AxiCFDFAQ;
