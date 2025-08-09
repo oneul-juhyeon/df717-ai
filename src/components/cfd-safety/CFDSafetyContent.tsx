@@ -282,12 +282,15 @@ const CFDSafetyContent: React.FC = () => {
               <li>Equinix NY4/LD5 data center infrastructure</li>
             </ul>
 
-            <div className="mt-6">
+            <div className="mt-6 flex justify-start">
               <a 
                 href="/professional-trading" 
-                className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 text-white font-medium py-3 px-6 rounded-xl border border-gray-600 transition-all duration-300 hover:shadow-lg hover:border-gray-500 hover:-translate-y-0.5"
               >
-                Learn More About ICMarkets →
+                <span>Learn More About ICMarkets</span>
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </a>
             </div>
           </div>
@@ -311,12 +314,15 @@ const CFDSafetyContent: React.FC = () => {
               <li>Global regulatory compliance</li>
             </ul>
 
-            <div className="mt-6">
+            <div className="mt-6 flex justify-start">
               <a 
                 href="/award-winning-service" 
-                className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+                className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 text-white font-medium py-3 px-6 rounded-xl border border-gray-600 transition-all duration-300 hover:shadow-lg hover:border-gray-500 hover:-translate-y-0.5"
               >
-                Learn More About Vantage →
+                <span>Learn More About Vantage</span>
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </a>
             </div>
           </div>
