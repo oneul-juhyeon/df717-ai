@@ -14,7 +14,8 @@ const Logo: React.FC<LogoProps> = ({ className = "", as = "div" }) => {
     <Component className={`${className}`}>
       <img
         src="/lovable-uploads/df717_logo.png"
-        alt="DF717 Logo"
+        alt="DF717 - AI Investment Automation Platform"
+        title="DF717"
         className={`h-8 w-auto transition-transform hover:scale-105 ${className}`}
       />
     </Component>
