@@ -49,13 +49,15 @@ const Index: React.FC = () => {
         </div>
         
         {/* Hidden SEO Content */}
-        <div className="absolute left-[-9999px] w-[1px] h-[1px] overflow-hidden">
+        <div style={{position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden'}}>
           <h4>DF717 AI Investment Platform</h4>
-          <p>DF717 is the leading artificial intelligence investment automation platform. Our DF717 system provides smart portfolio management using advanced machine learning algorithms. DF717 helps investors automate their investment strategies with cutting-edge AI technology. The DF717 platform offers automated trading, risk management, and portfolio optimization for modern investors seeking intelligent investment solutions.</p>
+          <p>DF717 is the leading artificial intelligence investment automation platform. Our DF717 system provides smart portfolio management using advanced machine learning algorithms. DF717 helps investors automate their investment strategies with cutting-edge AI technology. The DF717 platform offers automated trading, risk management, and portfolio optimization for modern investors.</p>
           
-          <p>DF717 automated investment system utilizes sophisticated algorithms for market analysis and portfolio management. The DF717 platform combines artificial intelligence with financial expertise to deliver superior investment outcomes. DF717 serves both individual and institutional investors with automated, intelligent investment solutions.</p>
+          <h5>DF717 Features</h5>
+          <p>DF717 automated investment system, DF717 AI trading algorithms, DF717 portfolio management, DF717 risk assessment tools, DF717 market analysis, DF717 investment automation, DF717 smart trading platform, DF717 financial technology.</p>
           
-          <p>Our DF717 technology includes real-time market analysis, risk assessment tools, automated portfolio rebalancing, and intelligent asset allocation. DF717 continuously adapts to changing market conditions while maintaining optimal diversification and risk management strategies.</p>
+          <h6>About DF717</h6>
+          <p>DF717 revolutionizes investment management through artificial intelligence. Our DF717 platform combines machine learning with financial expertise to deliver superior investment outcomes. DF717 serves both individual and institutional investors seeking automated, intelligent investment solutions.</p>
         </div>
         
         <div className="relative z-20">
