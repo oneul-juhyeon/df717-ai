@@ -126,7 +126,7 @@ export const useChatStore = create<ChatStore>()(
           setTimeout(() => {
             get().addMessage({
               id: 'welcome-2',
-              content: '지금부터 단 10분이면 데모계좌를 개설하고 AI 자동투자를 체험하실 수 있어요.',
+              content: '지금부터 단 10분이면 AI 자동투자를 시작하실 수 있어요.',
               sender: 'ai',
               type: 'text',
               timestamp: new Date(),
@@ -202,7 +202,7 @@ export const useChatStore = create<ChatStore>()(
         setTimeout(() => {
           get().addMessage({
             id: 'personal-info-request',
-            content: '더 정확한 안내를 위해 성함을 알려주실 수 있나요?',
+            content: '맞춤형 가이드와 프로그램 시작 알림을 위해 간단한 정보를 알려주실 수 있나요?',
             sender: 'ai',
             type: 'text',
             timestamp: new Date(),
@@ -229,6 +229,22 @@ export const useChatStore = create<ChatStore>()(
               label: '이름',
               type: 'text',
               placeholder: '이름을 입력하세요',
+              required: true,
+              value: ''
+            },
+            {
+              id: 'email',
+              label: '이메일',
+              type: 'email',
+              placeholder: '이메일을 입력하세요',
+              required: true,
+              value: ''
+            },
+            {
+              id: 'phone',
+              label: '연락처',
+              type: 'tel',
+              placeholder: '연락처를 입력하세요',
               required: true,
               value: ''
             },
@@ -265,13 +281,71 @@ export const useChatStore = create<ChatStore>()(
         
         if (formMessage && formMessage.formFields) {
           const userName = formMessage.formFields.find(f => f.id === 'userName')?.value || '';
+          const email = formMessage.formFields.find(f => f.id === 'email')?.value || '';
+          const phone = formMessage.formFields.find(f => f.id === 'phone')?.value || '';
           const referrerName = formMessage.formFields.find(f => f.id === 'referrerName')?.value || '';
 
-          // Validation for required name field
+          // Validation for required fields
           if (!userName.trim()) {
             get().addMessage({
               id: `validation-error-${Date.now()}`,
               content: '⚠️ **이름을 입력해주세요.**',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false
+            });
+            set({ isProcessing: false });
+            return;
+          }
+
+          if (!email.trim()) {
+            get().addMessage({
+              id: `validation-error-${Date.now()}`,
+              content: '⚠️ **이메일을 입력해주세요.**',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false
+            });
+            set({ isProcessing: false });
+            return;
+          }
+
+          // Email format validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            get().addMessage({
+              id: `validation-error-${Date.now()}`,
+              content: '⚠️ **올바른 이메일 형식을 입력해주세요.**',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false
+            });
+            set({ isProcessing: false });
+            return;
+          }
+
+          if (!phone.trim()) {
+            get().addMessage({
+              id: `validation-error-${Date.now()}`,
+              content: '⚠️ **연락처를 입력해주세요.**',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false
+            });
+            set({ isProcessing: false });
+            return;
+          }
+
+          // Phone number format validation (Korean format)
+          const phoneRegex = /^01[0-9]-?[0-9]{4}-?[0-9]{4}$/;
+          if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
+            get().addMessage({
+              id: `validation-error-${Date.now()}`,
+              content: '⚠️ **올바른 연락처 형식을 입력해주세요. (예: 010-1234-5678)**',
               sender: 'ai',
               type: 'warning_box',
               timestamp: new Date(),
@@ -290,6 +364,8 @@ export const useChatStore = create<ChatStore>()(
                 .from('user_accounts')
                 .insert({
                   user_name: userName,
+                  email: email,
+                  phone: phone,
                   referrer_name: referrerName || null,
                   account_id: '',
                   account_password: '',
@@ -317,9 +393,15 @@ export const useChatStore = create<ChatStore>()(
           // Save to database
           savePersonalInfo();
 
-          // Store user name for later use in messages
+          // Store user data for later use in messages
           set((state) => ({
-            userData: { ...state.userData, firstName: userName, referrerName }
+            userData: { 
+              ...state.userData, 
+              firstName: userName, 
+              email: email,
+              phone: phone,
+              referrerName 
+            }
           }));
 
           // Show personalized messages after start button click

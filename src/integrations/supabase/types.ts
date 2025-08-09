@@ -19,7 +19,9 @@ export type Database = {
           account_id: string
           account_password: string
           created_at: string | null
+          email: string | null
           id: number
+          phone: string | null
           referrer_name: string | null
           server_name: string
           session_id: string | null
@@ -30,7 +32,9 @@ export type Database = {
           account_id: string
           account_password: string
           created_at?: string | null
+          email?: string | null
           id?: number
+          phone?: string | null
           referrer_name?: string | null
           server_name: string
           session_id?: string | null
@@ -41,7 +45,9 @@ export type Database = {
           account_id?: string
           account_password?: string
           created_at?: string | null
+          email?: string | null
           id?: number
+          phone?: string | null
           referrer_name?: string | null
           server_name?: string
           session_id?: string | null
