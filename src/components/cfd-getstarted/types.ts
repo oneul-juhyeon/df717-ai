@@ -42,6 +42,7 @@ export interface UserData {
   server: string;
   sessionId?: string;
   referrerName?: string;
+  accountType?: 'demo' | 'live';
 }
 
 export interface ChatState {

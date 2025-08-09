@@ -176,30 +176,57 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
   // Action buttons - 완전히 독립적인 버튼 (채팅 버블과 분리)
   if (message.type === "action_button") {
+    // Check if any button is card type for grid layout
+    const hasCardButtons = message.buttons?.some(button => button.type === 'card');
+    
     return (
       <div className={`flex w-full justify-start transform transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
         <div className="w-full mx-2">
           {message.buttons && message.buttons.length > 0 && (
-            <div className="space-y-3">
+            <div className={hasCardButtons ? "grid grid-cols-1 gap-4" : "space-y-3"}>
               {message.buttons.map((button, index) => (
                 <button
                   key={index}
                   onClick={() => handleButtonClick(button.action)}
                   disabled={isButtonDisabled}
-                  className={`w-full flex items-center justify-center px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    button.type === "primary" 
-                      ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
-                      : button.type === "link"
-                      ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
+                  className={
+                    button.type === 'card' 
+                      ? "group relative bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-300"
+                      : `w-full flex items-center justify-center px-6 py-4 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${
+                          button.type === "primary" 
+                            ? "bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow-md"
+                            : button.type === "link"
+                            ? "bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 hover:border-blue-300"
+                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        }`
+                  }
                   style={{
                     fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif'
                   }}
                 >
-                  <span className="text-center leading-6 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>{button.label}</span>
+                  {button.type === 'card' ? (
+                    <div className="flex flex-col items-start text-left space-y-2 w-full">
+                      <div className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors font-din">
+                        {button.label}
+                      </div>
+                      {button.description && (
+                        <div className="text-sm text-gray-600 leading-relaxed font-din">
+                          {button.description}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="text-center leading-6 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>{button.label}</span>
+                  )}
+                  {button.type === 'card' && (
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
+                  )}
                 </button>
               ))}
             </div>

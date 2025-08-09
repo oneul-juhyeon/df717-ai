@@ -15,6 +15,8 @@ interface ChatStore extends ChatState {
   submitUserForm: (messageId: string) => void;
   submitPersonalInfoForm: (messageId: string) => void;
   showPersonalInfoForm: () => void;
+  showAccountTypeSelection: () => void;
+  selectAccountType: (type: 'demo' | 'live') => void;
   setProcessing: (processing: boolean) => void;
   executedSteps: Set<number>;
   isStepExecuted: (step: number) => boolean;
@@ -131,24 +133,86 @@ export const useChatStore = create<ChatStore>()(
               animate: false,
             });
             
-            // Third welcome message after 1000ms
-            setTimeout(() => {
-              get().addMessage({
-                id: 'welcome-3',
-                content: '더 정확한 안내를 위해 성함을 알려주실 수 있나요?',
-                sender: 'ai',
-                type: 'text',
-                timestamp: new Date(),
-                animate: false,
-              });
-              
-              // Show personal info form after 800ms
-              setTimeout(() => {
-                get().showPersonalInfoForm();
-              }, 800);
-            }, 1000);
+          // Show account type selection after 800ms
+          setTimeout(() => {
+            get().showAccountTypeSelection();
+          }, 800);
           }, 800);
         }, 500);
+      },
+
+      showAccountTypeSelection: () => {
+        get().addMessage({
+          id: 'account-type-question',
+          content: '어떤 방식으로 AI 자동투자를 시작하시겠어요?',
+          sender: 'ai',
+          type: 'text',
+          timestamp: new Date(),
+          animate: false,
+        });
+
+        setTimeout(() => {
+          get().addMessage({
+            id: 'account-type-selection',
+            content: '',
+            sender: 'ai',
+            type: 'action_button',
+            timestamp: new Date(),
+            animate: false,
+            buttons: [
+              {
+                label: '📊 체험해보기',
+                description: '무료 데모계좌로 안전하게 체험',
+                type: 'card',
+                action: () => {
+                  get().selectAccountType('demo');
+                }
+              },
+              {
+                label: '💰 바로 시작하기',
+                description: '실제 자금으로 바로 투자 시작',
+                type: 'card',
+                action: () => {
+                  get().selectAccountType('live');
+                }
+              }
+            ]
+          });
+        }, 800);
+      },
+
+      selectAccountType: (type: 'demo' | 'live') => {
+        // Save account type selection
+        set((state) => ({
+          userData: { ...state.userData, accountType: type }
+        }));
+
+        // Add user response message
+        const typeText = type === 'demo' ? '📊 체험해보기' : '💰 바로 시작하기';
+        get().addMessage({
+          id: `user-account-type-${Date.now()}`,
+          content: typeText,
+          sender: 'user',
+          type: 'text',
+          timestamp: new Date(),
+          animate: false
+        });
+
+        // Show personal info form after selection
+        setTimeout(() => {
+          get().addMessage({
+            id: 'personal-info-request',
+            content: '더 정확한 안내를 위해 성함을 알려주실 수 있나요?',
+            sender: 'ai',
+            type: 'text',
+            timestamp: new Date(),
+            animate: false,
+          });
+          
+          setTimeout(() => {
+            get().showPersonalInfoForm();
+          }, 800);
+        }, 800);
       },
 
       showPersonalInfoForm: () => {
@@ -270,9 +334,12 @@ export const useChatStore = create<ChatStore>()(
             });
 
             setTimeout(() => {
+              const { userData } = get();
+              const brokerName = userData.accountType === 'live' ? 'Vantage' : 'ICMarkets';
+              
               get().addMessage({
                 id: `step-intro-message-${Date.now()}`,
-                content: '첫 번째로, ICMarkets에서 계좌 신청을 해볼게요.',
+                content: `첫 번째로, ${brokerName}에서 계좌 신청을 해볼게요.`,
                 sender: 'ai',
                 type: 'text',
                 timestamp: new Date(),
@@ -310,7 +377,15 @@ export const useChatStore = create<ChatStore>()(
         setTimeout(() => {
           switch (step) {
             // STEP 1: 계좌 신청하기
-            case 1:
+            case 1: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const brokerName = isDemo ? 'ICMarkets' : 'Vantage';
+              const accountTypeText = isDemo ? '데모' : '실거래';
+              const brokerUrl = isDemo 
+                ? 'https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293'
+                : 'https://www.vantagemarkets.com/open-live-account/?affid=NjEwNDAyODc0';
+
               get().addMessageGroup([
                 {
                   id: 'step-1-title',
@@ -322,7 +397,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-info',
-                  content: '**💡 브로커란?**\n주식거래를 하기 위해 증권사에 계좌를 개설하거나, 코인거래를 하기 위해 거래소에 가입하는 것처럼, CFD거래를 위해서도 이런 중개 플랫폼이 필요해요.\n그 중에서도 **ICMarkets, Vantage**는 전 세계 트레이더들에게 신뢰받고 있는 **Tier-1 브로커** 중 하나예요.',
+                  content: `**💡 브로커란?**\n주식거래를 하기 위해 증권사에 계좌를 개설하거나, 코인거래를 하기 위해 거래소에 가입하는 것처럼, CFD거래를 위해서도 이런 중개 플랫폼이 필요해요.\n그 중에서도 **${brokerName}**는 전 세계 트레이더들에게 신뢰받고 있는 **Tier-1 브로커** 중 하나예요.`,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -345,10 +420,10 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'ICMarkets 계좌 신청 홈페이지 열기 →',
+                      label: `${brokerName} ${accountTypeText}계좌 신청 홈페이지 열기 →`,
                       type: 'link',
                       action: () => {
-                        window.open('https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293', '_blank');
+                        window.open(brokerUrl, '_blank');
                       }
                     }
                   ]
@@ -385,9 +460,15 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 1, isProcessing: false });
               break;
+            }
 
             // STEP 2: 이메일 인증 및 비밀번호 설정
-            case 2:
+            case 2: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const brokerName = isDemo ? 'ICMarkets' : 'Vantage';
+              const clientAreaText = isDemo ? 'Secure Client Area' : 'Set Password';
+
               get().addMessageGroup([
                 {
                   id: 'step-2-title',
@@ -407,7 +488,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-email',
-                  content: '📧 메일에서 **"Secure Client Area"** 버튼을 클릭하면\n비밀번호 설정 페이지로 이동해요.\n\n비밀번호를 설정하시면 **계좌 신청이 완료**됩니다!',
+                  content: `📧 메일에서 **"${clientAreaText}"** 버튼을 클릭하면\n비밀번호 설정 페이지로 이동해요.\n\n비밀번호를 설정하시면 **계좌 신청이 완료**됩니다!`,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -415,7 +496,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-tip',
-                  content: '💡 **Tip!**\n메일이 안 보이나요?\n**스팸함**도 확인해보세요. **ICMarkets** 메일이 가끔 스팸으로 분류될 수 있어요.',
+                  content: `💡 **Tip!**\n메일이 안 보이나요?\n**스팸함**도 확인해보세요. **${brokerName}** 메일이 가끔 스팸으로 분류될 수 있어요.`,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -453,8 +534,16 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 2, isProcessing: false });
               break;
+            }
 
-            case 3:
+            case 3: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const brokerName = isDemo ? 'ICMarkets' : 'Vantage';
+              const loginUrl = isDemo 
+                ? 'https://secure.icmarkets.com/Account/LogOn'
+                : 'https://trader.vantagemarkets.com/';
+
               get().addMessageGroup([
                 {
                   id: 'step-3-title',
@@ -466,17 +555,17 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-3-intro',
-                  content: '좋아요! 이제 다시 ICMarkets에 로그인해볼게요.',
+                  content: `좋아요! 이제 다시 ${brokerName}에 로그인해볼게요.`,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
                     {
-                      label: 'ICMarkets 로그인 페이지로 이동 →',
+                      label: `${brokerName} 로그인 페이지로 이동 →`,
                       type: 'link',
                       action: () => {
-                        window.open('https://secure.icmarkets.com/Account/LogOn', '_blank');
+                        window.open(loginUrl, '_blank');
                       }
                     }
                   ]
@@ -521,6 +610,7 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 3, isProcessing: false });
               break;
+            }
 
             // STEP 4: 계좌 설정하기
             case 4:
