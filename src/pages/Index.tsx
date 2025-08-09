@@ -11,7 +11,7 @@ const Index: React.FC = () => {
     <>
       <SEOHead
         title="DF717 | AI Investment Platform"
-        description="DF717 AI investment automation platform uses advanced machine learning for smart portfolio management. Automate your investment strategies with cutting-edge DF717 AI technology for superior investment outcomes."
+        description="DF717 AI Investment Platform by 40+ Year Tech Veterans - Automate your investment with DF717's advanced HANNAH engine for intelligent portfolio management."
         canonical="https://df717.ai/"
         type="website"
       />
