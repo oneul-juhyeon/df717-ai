@@ -23,7 +23,7 @@ const AwardWinningServiceContent: React.FC = () => {
           For more than 15 years, we've purpose-built our platform and services to help you trade seamlessly and capitalize on market opportunities. The Vantage ecosystem serves not only as a trading platform, but as a comprehensive hub for learning, exploring, and connecting with like-minded investors worldwide.
         </p>
 
-        <div className="bg-orange-900/20 border-l-4 border-orange-500 p-6 rounded mb-8">
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-8">
           <p className="text-orange-400 text-lg font-semibold">
             <strong>Always one step ahead</strong> - that's not just our tagline, it's our commitment to innovation and client success.
           </p>
@@ -36,16 +36,16 @@ const AwardWinningServiceContent: React.FC = () => {
         <h4 className="text-xl font-bold text-orange-400 mb-4">International Business Magazine Awards 2025</h4>
         
         <div className="grid md:grid-cols-2 gap-4 mb-8">
-          <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="bg-black border border-gray-600 p-4 rounded-lg">
             <p className="text-orange-400 font-semibold">🏆 Most Trusted Broker Global 2025</p>
           </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="bg-black border border-gray-600 p-4 rounded-lg">
             <p className="text-orange-400 font-semibold">🏆 Most Trusted Broker LATAM 2025</p>
           </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="bg-black border border-gray-600 p-4 rounded-lg">
             <p className="text-orange-400 font-semibold">🏆 Best Multi-Asset Trading Platform Global 2025</p>
           </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
+          <div className="bg-black border border-gray-600 p-4 rounded-lg">
             <p className="text-orange-400 font-semibold">🏆 Best Forex Affiliate Program Global 2025</p>
           </div>
         </div>
@@ -54,13 +54,13 @@ const AwardWinningServiceContent: React.FC = () => {
         <p className="text-gray-300 leading-relaxed mb-4">These prestigious recognitions reflect our unwavering commitment to:</p>
         
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-orange-400">Transparency and Trust:</strong> Verified by independent industry evaluation</li>
               <li><strong className="text-orange-400">Platform Excellence:</strong> Recognition for comprehensive trading capabilities</li>
             </ul>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-orange-400">Global Leadership:</strong> Acknowledged across multiple international markets</li>
               <li><strong className="text-orange-400">Client Satisfaction:</strong> Based on real trader feedback and performance metrics</li>
@@ -71,13 +71,13 @@ const AwardWinningServiceContent: React.FC = () => {
         <h3 className="text-2xl font-bold text-white mb-4">Proven Track Record</h3>
         
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-orange-400">15+ Years Market Leadership:</strong> Consistent excellence through all market conditions</li>
               <li><strong className="text-orange-400">5+ Million Satisfied Traders:</strong> Global community that trusts our platform</li>
             </ul>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-orange-400">30+ Global Offices:</strong> Local expertise with international reach</li>
               <li><strong className="text-orange-400">Multiple Award-Winning Years:</strong> 2024, 2025 consecutive recognition</li>
@@ -94,7 +94,7 @@ const AwardWinningServiceContent: React.FC = () => {
         </p>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Forex Trading</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -108,7 +108,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Global Indices</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -122,7 +122,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Comprehensive Markets</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -140,7 +140,7 @@ const AwardWinningServiceContent: React.FC = () => {
         <h3 className="text-2xl font-bold text-white mb-4">Award-Winning Trading Platforms</h3>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Vantage App: Mobile Excellence</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -155,7 +155,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">MetaTrader 4 & 5: Enhanced Experience</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -170,7 +170,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Copy Trading Innovation</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -195,7 +195,7 @@ const AwardWinningServiceContent: React.FC = () => {
         </p>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Lloyd's of London Partnership</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -209,7 +209,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Willis Towers Watson Alliance</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -227,7 +227,7 @@ const AwardWinningServiceContent: React.FC = () => {
         <h3 className="text-2xl font-bold text-white mb-4">Regulatory Excellence</h3>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">VFSC Regulation</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -241,7 +241,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Advanced Security Measures</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -265,7 +265,7 @@ const AwardWinningServiceContent: React.FC = () => {
         </p>
 
         <div className="space-y-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Equinix Partnership Excellence</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -279,7 +279,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-orange-500">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">oneZero™ MT4 Bridge Technology</h4>
             <div className="grid md:grid-cols-2 gap-4">
               <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -296,7 +296,7 @@ const AwardWinningServiceContent: React.FC = () => {
 
         <h3 className="text-2xl font-bold text-white mb-4">Advanced Trading Tools</h3>
         
-        <div className="bg-orange-900/20 border border-orange-500/30 p-6 rounded-lg mb-8">
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-8">
           <h4 className="text-lg font-semibold text-orange-400 mb-3">Professional Analysis Suite:</h4>
           <div className="grid md:grid-cols-2 gap-4">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
@@ -320,7 +320,7 @@ const AwardWinningServiceContent: React.FC = () => {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">Educational Resources</h4>
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-white">Trading Courses:</strong> Structured learning paths for all levels</li>
@@ -331,7 +331,7 @@ const AwardWinningServiceContent: React.FC = () => {
             </ul>
           </div>
           
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <h4 className="text-lg font-semibold text-orange-400 mb-3">24/7 Professional Support</h4>
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-white">Round-the-Clock Assistance:</strong> Support when markets are active</li>
@@ -352,13 +352,13 @@ const AwardWinningServiceContent: React.FC = () => {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-orange-400">Community Development:</strong> Supporting underprivileged communities worldwide</li>
               <li><strong className="text-orange-400">Educational Initiatives:</strong> Financial literacy programs in emerging markets</li>
             </ul>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-black border border-gray-600 p-6 rounded-lg">
             <ul className="list-disc pl-6 text-gray-300 space-y-2">
               <li><strong className="text-orange-400">Environmental Responsibility:</strong> Sustainable business practices</li>
               <li><strong className="text-orange-400">Strategic Partnerships:</strong> Collaborations with global impact organizations</li>
@@ -368,7 +368,7 @@ const AwardWinningServiceContent: React.FC = () => {
 
         <h3 className="text-2xl font-bold text-white mb-4">Premium Partnerships</h3>
         
-        <div className="bg-gray-800 p-6 rounded-lg mb-8">
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-8">
           <ul className="list-disc pl-6 text-gray-300 space-y-2">
             <li><strong className="text-orange-400">NEOM McLaren:</strong> Innovation and sustainability in motorsports</li>
             <li><strong className="text-orange-400">Global Financial Institutions:</strong> Tier-1 banking relationships</li>
@@ -382,21 +382,21 @@ const AwardWinningServiceContent: React.FC = () => {
           Vantage combines award-winning recognition, comprehensive protection, cutting-edge technology, and unmatched global reach to provide the ultimate CFD trading experience. Whether you're starting your trading journey or you're a seasoned professional, our platform provides everything you need to succeed.
         </p>
 
-        <div className="bg-orange-900/20 border-l-4 border-orange-500 p-6 rounded mb-8">
-          <p className="text-orange-400 text-lg font-semibold text-center">
-            <strong>Experience why millions choose Vantage as their trusted trading partner.</strong>
+        <div className="bg-black border border-gray-600 p-6 rounded-lg mb-8">
+          <p className="text-gray-400 text-lg text-center">
+            Vantage combines award-winning recognition with comprehensive protection for professional CFD trading.
           </p>
         </div>
 
         <div className="text-center">
-          <h3 className="text-xl font-semibold text-white mb-4">Start Your Success Story Today:</h3>
           <a 
-            href="https://www.vantagemarkets.com/open-live-account/?affid=NjEwNDAyODc0" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg"
+            href="/get-started"
+            className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-medium py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
           >
-            ➡️ Open Vantage Account → Join the award-winning platform trusted by 5M+ traders
+            <span className="text-lg">Start Award-Winning Trading</span>
+            <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </a>
         </div>
       </div>
