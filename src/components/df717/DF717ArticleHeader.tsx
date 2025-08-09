@@ -18,7 +18,7 @@ const DF717ArticleHeader: React.FC<DF717ArticleHeaderProps> = ({
     <div className="mb-14 text-left animate-fade-in-up">
       <HeadingTag className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">{title}</HeadingTag>
       {subtitle && (
-        <p className="text-xl text-gray-300 max-w-3xl leading-relaxed whitespace-pre-line">{subtitle}</p>
+        <h2 className="text-xl text-gray-300 max-w-3xl leading-relaxed whitespace-pre-line">{subtitle}</h2>
       )}
       <div className="h-1 w-20 bg-white mt-6"></div>
     </div>
