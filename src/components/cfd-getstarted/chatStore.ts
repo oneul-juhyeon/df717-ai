@@ -1262,11 +1262,27 @@ export const useChatStore = create<ChatStore>()(
                   server_name: formData.server 
                 });
                 
+                // Hash the password using our secure database function
+                const { data: hashedPassword, error: hashError } = await supabase
+                  .rpc('hash_password', { password: formData.password });
+                
+                if (hashError) {
+                  console.error('Password hashing failed:', hashError);
+                  get().addMessage({
+                    id: `error-${Date.now()}`,
+                    content: '⚠️ **보안 처리 중 오류가 발생했습니다.**\n\n다시 시도해주세요.',
+                    sender: 'ai',
+                    type: 'text',
+                    timestamp: new Date(),
+                  });
+                  return;
+                }
+                
                 const { data, error, count } = await supabase
                   .from('user_accounts')
                   .update({
                     account_id: formData.accountId,
-                    account_password: formData.password,
+                    account_password: hashedPassword,
                     server_name: formData.server,
                     status: 'pending'
                   })
@@ -1291,12 +1307,12 @@ export const useChatStore = create<ChatStore>()(
                 
                 if (!data || data.length === 0) {
                   console.error('No rows were updated. Session ID may not exist in database.');
-                  // Fallback: try to insert new row
+                  // Fallback: try to insert new row with hashed password
                   const { error: insertError } = await supabase
                     .from('user_accounts')
                     .insert({
                       account_id: formData.accountId,
-                      account_password: formData.password,
+                      account_password: hashedPassword,
                       server_name: formData.server,
                       user_name: userData.firstName,
                       referrer_name: userData.referrerName || null,
