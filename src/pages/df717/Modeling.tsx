@@ -2,10 +2,22 @@
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Modeling: React.FC = () => {
   return (
-    <DF717Layout>
+    <>
+      <SEOHead
+        title="DF717 Quantitative Modeling Engine - Mathematical Finance Models"
+        description="Discover how DF717 applies mathematical models to interpret financial markets using Monte Carlo simulation, Markowitz optimization, and performance ratios."
+        canonical="https://df717.ai/df717/modeling"
+        type="article"
+        article={{
+          section: "DF717 Technology",
+          tags: ["DF717", "Quantitative Modeling", "Monte Carlo", "Portfolio Optimization", "Financial Engineering"]
+        }}
+      />
+      <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="DF717 Quantitative Modeling Engine" 
@@ -67,6 +79,7 @@ const Modeling: React.FC = () => {
         </div>
       </div>
     </DF717Layout>
+    </>
   );
 };
 

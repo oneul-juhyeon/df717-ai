@@ -2,9 +2,22 @@
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Execution: React.FC = () => {
-  return <DF717Layout>
+  return (
+    <>
+      <SEOHead
+        title="DF717 CFD Execution Framework - Precise Trading Execution"
+        description="Learn how DF717 translates strategies into precise execution across asset classes with symbol-specific optimization, session-aware scheduling, and advanced slippage analysis."
+        canonical="https://df717.ai/df717/execution"
+        type="article"
+        article={{
+          section: "DF717 Technology",
+          tags: ["DF717", "CFD Execution", "Trading Framework", "Asset Management", "Trading Algorithms"]
+        }}
+      />
+      <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="DF717 CFD Execution Framework" 
@@ -71,7 +84,9 @@ const Execution: React.FC = () => {
         
         
       </div>
-    </DF717Layout>;
+    </DF717Layout>
+    </>
+  );
 };
 
 export default Execution;

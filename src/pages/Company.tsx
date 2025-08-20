@@ -3,6 +3,7 @@ import CompanyHeader from "@/components/company/CompanyHeader";
 import CompanyHero from "@/components/company/CompanyHero";
 import CompanyBrandSection from "@/components/company/CompanyBrandSection";
 import Footer from "@/components/common/Footer";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Company: React.FC = () => {
   const animatedElementsRef = useRef<HTMLElement[]>([]);
@@ -65,7 +66,14 @@ const Company: React.FC = () => {
   }, []);
   
   return (
-    <main className="w-full min-h-screen bg-black flex flex-col">
+    <>
+      <SEOHead
+        title="About DF717 - AI Investment Technology Company"
+        description="Learn about DF717's mission to revolutionize investment management through AI technology. Discover our company values, leadership team, and commitment to innovative trading solutions."
+        canonical="https://df717.ai/company"
+        type="website"
+      />
+      <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
@@ -78,6 +86,7 @@ const Company: React.FC = () => {
       
       <Footer />
     </main>
+    </>
   );
 };
 

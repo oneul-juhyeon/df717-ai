@@ -2,10 +2,22 @@
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Examples: React.FC = () => {
   return (
-    <DF717Layout>
+    <>
+      <SEOHead
+        title="DF717 Modular Strategy Examples - AI Trading Strategies"
+        description="Explore DF717's modular strategy systems through selected examples. Learn about proprietary algorithms, market regime recognition, and dynamic risk parameters."
+        canonical="https://df717.ai/df717/examples"
+        type="article"
+        article={{
+          section: "DF717 Technology",
+          tags: ["DF717", "Trading Strategies", "AI Algorithms", "Market Analysis", "Risk Management"]
+        }}
+      />
+      <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="DF717 Modular Strategy Examples"
@@ -62,6 +74,7 @@ const Examples: React.FC = () => {
         </div>
       </div>
     </DF717Layout>
+    </>
   );
 };
 
