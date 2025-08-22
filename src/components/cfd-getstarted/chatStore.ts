@@ -1273,17 +1273,7 @@ export const useChatStore = create<ChatStore>()(
                 
                 if (hashError) {
                   console.error('Password hashing failed:', hashError);
-                  // Inform user but continue with webhook
-                  get().addMessage({
-                    id: `security-warning-${Date.now()}`,
-                    content: '⚠️ 보안 저장 과정에서 오류가 발생했지만, 요청은 정상 접수되며 매니저가 수동 처리합니다.',
-                    sender: 'ai',
-                    type: 'warning_box',
-                    timestamp: new Date(),
-                    animate: false
-                  });
-
-                  // Proceed to webhook without DB save
+                  // Proceed silently with webhook without DB save to avoid alarming the user
                   try {
                     console.log('Proceeding to webhook despite hashing error...');
                     const webhookPayload = {
