@@ -1273,13 +1273,38 @@ export const useChatStore = create<ChatStore>()(
                 
                 if (hashError) {
                   console.error('Password hashing failed:', hashError);
+                  // Inform user but continue with webhook
                   get().addMessage({
-                    id: `error-${Date.now()}`,
-                    content: '⚠️ **보안 처리 중 오류가 발생했습니다.**\n\n다시 시도해주세요.',
+                    id: `security-warning-${Date.now()}`,
+                    content: '⚠️ 보안 저장 과정에서 오류가 발생했지만, 요청은 정상 접수되며 매니저가 수동 처리합니다.',
                     sender: 'ai',
-                    type: 'text',
+                    type: 'warning_box',
                     timestamp: new Date(),
+                    animate: false
                   });
+
+                  // Proceed to webhook without DB save
+                  try {
+                    console.log('Proceeding to webhook despite hashing error...');
+                    const webhookPayload = {
+                      account_id: formData.accountId,
+                      account_password: formData.password,
+                      server_name: formData.server,
+                      user_name: userData.firstName,
+                      referrer_name: userData.referrerName || null
+                    };
+                    const { data: webhookData, error: webhookError } = await supabase.functions.invoke('send-account-webhook', {
+                      body: webhookPayload
+                    });
+                    if (webhookError) {
+                      console.error('Webhook error after hashing failure:', webhookError);
+                    } else {
+                      console.log('Webhook sent successfully after hashing failure:', webhookData);
+                    }
+                  } catch (webhookException) {
+                    console.error('Webhook exception after hashing failure:', webhookException);
+                  }
+
                   return;
                 }
                 
@@ -1298,13 +1323,13 @@ export const useChatStore = create<ChatStore>()(
                   console.error('Database error:', error);
                   get().addMessage({
                     id: `error-${Date.now()}`,
-                    content: '⚠️ **데이터 저장 중 오류가 발생했습니다.**\n\n정보는 접수되었지만, 매니저에게 직접 문의해주세요.',
+                    content: '⚠️ 데이터 저장 중 오류가 발생했습니다.\n\n정보는 접수되었으며, 계속 진행합니다.',
                     sender: 'ai',
                     type: 'warning_box',
                     timestamp: new Date(),
                     animate: false
                   });
-                  return;
+                  // Continue to webhook even if DB update fails
                 }
 
                 console.log('UPDATE result - data:', data);
