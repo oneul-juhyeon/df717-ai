@@ -3,151 +3,157 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://df717.ai/</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://df717.ai/home-intro</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://df717.ai/company</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/technology</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/forex</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/shares</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/indices</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/commodities</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/gold</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/oil</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/financial-products/crypto</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/df717</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://df717.ai/df717/reliability</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://df717.ai/df717/modeling</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://df717.ai/df717/engine</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://df717.ai/df717/execution</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://df717.ai/df717/examples</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://df717.ai/axi-cfd</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://df717.ai/cfd-safety</loc>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://df717.ai/axi-edge</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://df717.ai/cfd-trading</loc>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://df717.ai/axi-trust</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://df717.ai/get-started</loc>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://df717.ai/axi-pricing</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://df717.ai/professional-trading</loc>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://df717.ai/axi-award</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://df717.ai/award-winning-service</loc>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://df717.ai/contact</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://df717.ai/suppliers</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://df717.ai/privacy-policy</loc>
-    <lastmod>2025-01-15</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
