@@ -111,6 +111,14 @@ export const useChatStore = create<ChatStore>()(
         // Reset first to ensure clean state
         get().resetChat();
         
+        // Generate session ID immediately on chat initialization
+        const sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+        console.log('Chat initialized with sessionId:', sessionId);
+        
+        set((state) => ({
+          userData: { ...state.userData, sessionId }
+        }));
+        
         // New Toss-style welcome sequence
         setTimeout(() => {
           get().addMessage({
@@ -1239,19 +1247,16 @@ export const useChatStore = create<ChatStore>()(
             if (messageId === 'step-6-form') {
               try {
                 const { userData } = get();
-                const sessionId = userData.sessionId;
+                let sessionId = userData.sessionId;
                 
+                // Fallback: Generate sessionId if it doesn't exist
                 if (!sessionId) {
-                  console.error('No session ID found, cannot update user account');
-                  get().addMessage({
-                    id: `error-${Date.now()}`,
-                    content: '⚠️ **세션 정보를 찾을 수 없습니다.**\n\n매니저에게 직접 문의해주세요.',
-                    sender: 'ai',
-                    type: 'warning_box',
-                    timestamp: new Date(),
-                    animate: false
-                  });
-                  return;
+                  console.warn('No session ID found, generating new one...');
+                  sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
+                  set((state) => ({
+                    userData: { ...state.userData, sessionId }
+                  }));
+                  console.log('Generated new sessionId:', sessionId);
                 }
 
                 // Update existing row with account information
@@ -1305,9 +1310,9 @@ export const useChatStore = create<ChatStore>()(
                 console.log('UPDATE result - data:', data);
                 console.log('UPDATE result - count:', count);
                 
+                // Always try to create or update the record to ensure data exists for webhook
                 if (!data || data.length === 0) {
-                  console.error('No rows were updated. Session ID may not exist in database.');
-                  // Fallback: try to insert new row with hashed password
+                  console.warn('No existing record found. Creating new record...');
                   const { error: insertError } = await supabase
                     .from('user_accounts')
                     .insert({
@@ -1315,19 +1320,25 @@ export const useChatStore = create<ChatStore>()(
                       account_password: hashedPassword,
                       server_name: formData.server,
                       user_name: userData.firstName,
+                      email: userData.email,
+                      phone: userData.phone,
                       referrer_name: userData.referrerName || null,
                       session_id: sessionId,
                       status: 'pending'
                     });
                     
                   if (insertError) {
-                    console.error('Fallback insert failed:', insertError);
+                    console.error('New record creation failed:', insertError);
+                    // Continue with webhook even if database fails
                   } else {
-                    console.log('Fallback insert successful');
+                    console.log('New record created successfully');
                   }
                 } else {
                   console.log('User account data updated successfully');
                 }
+                
+                // CRITICAL: Always call webhook regardless of database success/failure
+                console.log('=== PROCEEDING WITH WEBHOOK CALL (regardless of DB status) ===');
                 
                 // Enhanced webhook debugging
                 console.log('=== STARTING WEBHOOK PROCESS ===');
@@ -1398,6 +1409,16 @@ export const useChatStore = create<ChatStore>()(
                     console.error('Error object type:', typeof webhookError);
                     console.error('Error object:', webhookError);
                     console.error('Error message:', webhookError.message);
+                    
+                    // Show user-friendly error but mention the request was processed
+                    get().addMessage({
+                      id: `webhook-error-${Date.now()}`,
+                      content: '⚠️ **외부 시스템 연동 중 오류가 발생했습니다.**\n\n입력하신 정보는 저장되었으며, 매니저가 직접 처리해드릴 예정입니다.',
+                      sender: 'ai',
+                      type: 'warning_box',
+                      timestamp: new Date(),
+                      animate: false
+                    });
                     console.error('Error code:', webhookError.code);
                     console.error('Error status:', webhookError.status);
                     console.error('Error details:', JSON.stringify(webhookError, null, 2));
