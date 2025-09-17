@@ -134,7 +134,7 @@ export const useChatStore = create<ChatStore>()(
           setTimeout(() => {
             get().addMessage({
               id: 'welcome-2',
-              content: '지금부터 단 10분이면 AI 자동투자를 시작하실 수 있어요.',
+              content: '지금부터 단 3분이면 AI 자동투자를 시작하실 수 있어요.',
               sender: 'ai',
               type: 'text',
               timestamp: new Date(),
