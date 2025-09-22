@@ -1502,21 +1502,6 @@ export const useChatStore = create<ChatStore>()(
                     timestamp: new Date(),
                     animate: false
                   });
-                }
-              } catch (error) {
-                console.error('Database save error:', error);
-                get().addMessage({
-                  id: `error-${Date.now()}`,
-                  content: '⚠️ **데이터 저장 중 오류가 발생했습니다.**\n\n정보는 접수되었지만, 매니저에게 직접 문의해주세요.',
-                  sender: 'ai',
-                  type: 'warning_box',
-                  timestamp: new Date(),
-                  animate: false
-                });
-                return;
-              }
-            }
-            
           };
 
           // Execute database save and show success message first
