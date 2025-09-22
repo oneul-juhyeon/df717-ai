@@ -49,24 +49,15 @@ serve(async (req) => {
       )
     }
 
-    // Hash the password before storing
-    const { data: hashedPassword, error: hashError } = await supabaseAdmin.rpc('hash_password', {
-      password: password
-    });
+    // Hash the password before storing using SHA-256 (avoid DB extension dependency)
+    const sha256 = async (text: string) => {
+      const data = new TextEncoder().encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+    };
 
-    if (hashError) {
-      console.error('Error hashing password:', hashError);
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: 'Password processing failed'
-        }),
-        {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 500,
-        }
-      )
-    }
+    const hashedPassword = await sha256(password);
 
     // Insert the user account
     const { data, error } = await supabaseAdmin

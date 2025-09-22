@@ -363,42 +363,20 @@ export const useChatStore = create<ChatStore>()(
             return;
           }
 
-          // Save the personal info to database
+          // Save the personal info locally (no DB write here)
           const savePersonalInfo = async () => {
             try {
               const sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
-              
-              const { error } = await supabase
-                .from('user_accounts')
-                .insert({
-                  user_name: userName,
-                  email: email,
-                  phone: phone,
-                  referrer_name: referrerName || null,
-                  account_id: '',
-                  account_password: '',
-                  server_name: '',
-                  session_id: sessionId,
-                  status: 'info_collected'
-                });
-
-              if (error) {
-                console.error('Database error:', error);
-                // Continue with the flow even if database save fails
-              } else {
-                console.log('Personal info saved successfully with session_id:', sessionId);
-                // Store session_id for later use
-                set((state) => ({
-                  userData: { ...state.userData, sessionId }
-                }));
-              }
+              set((state) => ({
+                userData: { ...state.userData, sessionId }
+              }));
+              console.log('Personal info captured, session_id:', sessionId);
             } catch (error) {
-              console.error('Database save error:', error);
-              // Continue with the flow even if database save fails
+              console.error('Personal info capture error:', error);
             }
           };
 
-          // Save to database
+          // Save locally
           savePersonalInfo();
 
           // Store user data for later use in messages
