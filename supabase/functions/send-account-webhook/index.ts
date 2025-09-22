@@ -18,43 +18,47 @@ serve(async (req) => {
 
   try {
     const requestBody = await req.json();
-    console.log('Request body received:', requestBody);
-    
-    const { account_id, account_password, server_name, user_name, referrer_name } = requestBody;
-    
-    // Validate required fields
-    if (!account_id || !account_password || !server_name) {
-      const error = `Missing required fields: account_id=${account_id}, server_name=${server_name}, password=${account_password ? '[PRESENT]' : '[MISSING]'}`;
-      console.error('Validation error:', error);
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: error 
-      }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-    
-    console.log('Validated data:', { 
-      account_id, 
-      server_name, 
-      password_present: !!account_password,
-      user_name: user_name || 'Not provided',
-      referrer_name: referrer_name || 'Not provided'
-    });
+    console.log('Received webhook request body:', JSON.stringify(requestBody, null, 2));
 
-    const webhookUrl = 'https://n8n.huhsame.com/webhook/account-insert';
+    // Validate essential fields
+    const { account_id, account_password, server_name } = requestBody;
+    if (!account_id || !account_password || !server_name) {
+      console.error('Missing required fields:', { account_id, account_password: !!account_password, server_name });
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: 'Missing required fields: account_id, account_password, server_name' 
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
+
+    // Construct the payload for the external webhook with all data
     const payload = {
+      // Keep existing format for n8n compatibility
       account_id,
       account_password,
       server_name,
-      user_name: user_name || null,
-      referrer_name: referrer_name || null,
-      timestamp: new Date().toISOString()
+      user_name: requestBody.user_name || '',
+      referrer_name: requestBody.referrer_name || null,
+      timestamp: new Date().toISOString(),
+      
+      // Add all additional data for complete logging
+      email: requestBody.email || null,
+      phone: requestBody.phone || null,
+      session_id: requestBody.session_id || null,
+      account_type: requestBody.account_type || 'demo',
+      first_name: requestBody.first_name || null,
+      last_name: requestBody.last_name || null
     };
 
-    console.log('Sending webhook to:', webhookUrl);
+    console.log('Sending webhook to:', 'https://n8n.huhsame.com/webhook/account-insert');
     console.log('Payload:', { ...payload, account_password: '[REDACTED]' });
+
+    const webhookUrl = 'https://n8n.huhsame.com/webhook/account-insert';
 
     // Test connectivity first
     try {

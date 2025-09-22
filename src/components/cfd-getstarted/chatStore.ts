@@ -1247,6 +1247,34 @@ export const useChatStore = create<ChatStore>()(
             if (messageId === 'step-6-form') {
               try {
                 const { userData } = get();
+                
+                // Store user account using secure edge function
+                const { data, error } = await supabase.functions.invoke('store-user-account', {
+                  body: {
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    email: userData.email,
+                    phone: userData.phone,
+                    accountId: formData.accountId,
+                    password: formData.password,
+                    server: formData.server,
+                    sessionId: userData.sessionId || crypto.randomUUID(),
+                    referrerName: userData.referrerName,
+                    accountType: userData.accountType || 'demo'
+                  }
+                });
+
+                if (error) {
+                  console.error('Error storing user account:', error);
+                } else {
+                  console.log('User account stored and webhook sent successfully');
+                }
+              } catch (error) {
+                console.error('Account storage operation failed:', error);
+              }
+            }
+          };
+                const { userData } = get();
                 let sessionId = userData.sessionId;
                 
                 // Fallback: Generate sessionId if it doesn't exist
