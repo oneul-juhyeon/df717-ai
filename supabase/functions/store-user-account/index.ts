@@ -59,41 +59,64 @@ serve(async (req) => {
 
     const hashedPassword = await sha256(password);
 
-    // Insert the user account
-    const { data, error } = await supabaseAdmin
+    // Check if account already exists
+    const { data: existingAccount } = await supabaseAdmin
       .from('user_accounts')
-      .upsert({
-        account_id: accountId,
-        account_password: hashedPassword,
-        server_name: server,
-        user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
-        email: email || null,
-        phone: phone || null,
-        referrer_name: referrerName || null,
-        session_id: sessionId || null,
-        status: accountType === 'live' ? 'pending' : 'active',
-        created_at: new Date().toISOString()
-      }, {
-        onConflict: 'account_id'
-      });
+      .select('id')
+      .eq('account_id', accountId)
+      .maybeSingle();
 
-    if (error) {
-      console.error('Error storing user account:', error);
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: 'Database insertion failed'
-        }),
-        {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 500,
-        }
-      )
+    let dbOperation = 'none';
+    let dbError = null;
+
+    if (existingAccount) {
+      // Update existing account
+      const { error: updateError } = await supabaseAdmin
+        .from('user_accounts')
+        .update({
+          account_password: hashedPassword,
+          server_name: server,
+          user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
+          email: email || null,
+          phone: phone || null,
+          referrer_name: referrerName || null,
+          session_id: sessionId || null,
+          status: accountType === 'live' ? 'pending' : 'active',
+        })
+        .eq('account_id', accountId);
+      
+      dbError = updateError;
+      dbOperation = 'update';
+    } else {
+      // Insert new account
+      const { error: insertError } = await supabaseAdmin
+        .from('user_accounts')
+        .insert({
+          account_id: accountId,
+          account_password: hashedPassword,
+          server_name: server,
+          user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
+          email: email || null,
+          phone: phone || null,
+          referrer_name: referrerName || null,
+          session_id: sessionId || null,
+          status: accountType === 'live' ? 'pending' : 'active',
+          created_at: new Date().toISOString()
+        });
+      
+      dbError = insertError;
+      dbOperation = 'insert';
     }
 
-    console.log('Successfully stored user account:', accountId);
+    if (dbError) {
+      console.error(`Error during ${dbOperation} operation:`, dbError);
+      // Don't return error immediately - still try to send webhook
+    } else {
+      console.log(`Successfully ${dbOperation}ed user account:`, accountId);
+    }
 
-    // Now call the webhook function to send notification
+    // Now call the webhook function to send notification (regardless of DB status)
+    let webhookSuccess = false;
     try {
       const { data: webhookData, error: webhookError } = await supabaseAdmin.functions.invoke('send-account-webhook', {
         body: {
@@ -111,19 +134,35 @@ serve(async (req) => {
 
       if (webhookError) {
         console.error('Webhook call failed:', webhookError);
-        // Don't fail the main operation if webhook fails
       } else {
         console.log('Webhook sent successfully');
+        webhookSuccess = true;
       }
     } catch (webhookErr) {
       console.error('Webhook error:', webhookErr);
-      // Don't fail the main operation if webhook fails
+    }
+
+    // Return response based on both DB and webhook status
+    if (dbError) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Database operation failed',
+          webhook_sent: webhookSuccess,
+          account_id: accountId
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 500,
+        }
+      )
     }
 
     return new Response(
       JSON.stringify({
         success: true,
         message: 'User account stored successfully',
+        webhook_sent: webhookSuccess,
         account_id: accountId
       }),
       {
