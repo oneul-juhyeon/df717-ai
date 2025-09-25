@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { getNavigationItems } from "@/components/navigation/navigationItems";
 import FinancialProductLayout from "@/components/financial-products/FinancialProductLayout";
 import SEOHead from "@/components/seo/SEOHead";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 
 const FinancialProducts: React.FC = () => {
   const navigationItems = getNavigationItems();
@@ -25,9 +24,7 @@ const FinancialProducts: React.FC = () => {
       >
         <div className="flex justify-center w-full">
           <div className="max-w-4xl text-center">
-            <Breadcrumbs />
-            
-            <motion.h1 
+            <motion.h1
               className="text-5xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

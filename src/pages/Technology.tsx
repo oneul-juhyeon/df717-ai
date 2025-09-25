@@ -4,7 +4,6 @@ import TechnologyHeader from "@/components/technology/TechnologyHeader";
 import ModernTechnologyTabs from "@/components/technology/ModernTechnologyTabs";
 import Footer from "@/components/common/Footer";
 import SEOHead from "@/components/seo/SEOHead";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 
 const Technology: React.FC = () => {
   const scrollToTop = () => {
@@ -30,10 +29,6 @@ const Technology: React.FC = () => {
         
         <div className="relative z-10 w-full px-4 md:px-10 lg:px-[154px] flex-grow">
           <TechnologyHeader scrollToTop={scrollToTop} />
-          
-          <div className="mt-8">
-            <Breadcrumbs />
-          </div>
           
           <section className="mt-12 mb-20 w-full max-w-5xl mx-auto relative">
             <ModernTechnologyTabs />

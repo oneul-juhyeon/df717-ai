@@ -4,7 +4,6 @@ import ContactHeader from "@/components/contact/ContactHeader";
 import { NewContactForm } from "@/components/contact/NewContactForm";
 import Footer from "@/components/common/Footer";
 import SEOHead from "@/components/seo/SEOHead";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 
 const Contact = () => {
   const scrollToTop = () => {
@@ -25,10 +24,6 @@ const Contact = () => {
       <div className="min-h-screen bg-black text-white flex flex-col text-left">
         <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] z-10">
           <ContactHeader scrollToTop={scrollToTop} />
-          
-          <div className="mt-8">
-            <Breadcrumbs />
-          </div>
           
           {/* SEO Content Block */}
           <div className="sr-only">
