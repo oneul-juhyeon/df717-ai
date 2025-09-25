@@ -23,18 +23,23 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
   const [isOpen, setIsOpen] = useState(false);
 
   // Enhanced navigation function that ensures complete navigation
-  const handleNavigation = (path: string) => {
+  const handleNavigation = (path: string, external?: boolean) => {
     // First close the menu
     setIsOpen(false);
     
-    // Short delay to allow menu closing animation
-    setTimeout(() => {
-      // Navigate to the page
-      navigate(path);
-      
-      // Call the scrollToTop function
-      scrollToTop();
-    }, 100);
+    if (external) {
+      // For external links, open in new tab
+      window.open(path, '_blank', 'noopener,noreferrer');
+    } else {
+      // Short delay to allow menu closing animation
+      setTimeout(() => {
+        // Navigate to the page
+        navigate(path);
+        
+        // Call the scrollToTop function
+        scrollToTop();
+      }, 100);
+    }
   };
 
   return (
@@ -61,7 +66,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                         className={`mobile-nav-item flex items-center text-white py-2 text-lg font-medium transition px-0 relative
                           ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
                         `}
-                        onClick={() => handleNavigation(item.path)}
+                        onClick={() => handleNavigation(item.path, item.external)}
                       >
                         <span className="mobile-nav-text">{item.name}</span>
                       </button>
@@ -95,7 +100,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
                     className={`mobile-nav-item flex items-center justify-between text-white py-2 text-lg font-medium transition relative w-full
                       ${isMenuActive(item, location.pathname) ? 'mobile-nav-active' : ''}
                     `}
-                    onClick={() => handleNavigation(item.path)}
+                    onClick={() => handleNavigation(item.path, item.external)}
                   >
                     <span className="mobile-nav-text">{item.name}</span>
                     <div className="w-5"></div>

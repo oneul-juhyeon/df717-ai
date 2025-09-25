@@ -57,6 +57,20 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
             hoverColor=""
             activeColor=""
           />
+        ) : item.external ? (
+          <a 
+            key={item.name}
+            href={item.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`text-white px-4 py-2 transition whitespace-nowrap relative 
+              after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white
+              after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left
+              after:transition-transform after:duration-300
+            `}
+          >
+            {item.name}
+          </a>
         ) : (
           <Link 
             key={item.name}

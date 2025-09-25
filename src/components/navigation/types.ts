@@ -12,6 +12,7 @@ export interface NavigationItem {
   path: string;
   hasSubmenu?: boolean;
   submenu?: SubmenuItem[];
+  external?: boolean; // New property for external links
 }
 
 export interface HeaderProps {
