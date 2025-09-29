@@ -7,6 +7,14 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Naverbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yeti
+Allow: /
+Crawl-delay: 1
+
 User-agent: Twitterbot
 Allow: /
 
