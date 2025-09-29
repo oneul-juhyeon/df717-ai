@@ -36,3 +36,4 @@ Allow: /financial-products/oil
 Allow: /financial-products/crypto
 
 Sitemap: https://df717.ai/sitemap.xml
+Sitemap: https://df717.ai/rss.xml
