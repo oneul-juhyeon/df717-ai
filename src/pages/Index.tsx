@@ -14,6 +14,7 @@ const Index: React.FC = () => {
         description="Automate your investment with DF717's advanced AI engine. Trusted by 40+ year tech veterans for intelligent portfolio management."
         canonical="https://df717.ai/"
         type="website"
+        showOrganizationSchema={true}
       />
       <main className="w-full min-h-screen relative overflow-hidden flex flex-col">
         {/* Video Background */}

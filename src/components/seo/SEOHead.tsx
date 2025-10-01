@@ -14,6 +14,8 @@ interface SEOHeadProps {
     section?: string;
     tags?: string[];
   };
+  showOrganizationSchema?: boolean;
+  structuredData?: object;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -22,12 +24,14 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   canonical,
   type = "website",
   image = "https://df717.ai/lovable-uploads/df717_logo.png",
-  article
+  article,
+  showOrganizationSchema = false,
+  structuredData: customStructuredData
 }) => {
   const fullTitle = title.includes("DF717") ? title : `${title} | DF717`;
   const canonicalUrl = canonical || `https://df717.ai${window.location.pathname}`;
 
-  const structuredData = {
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "DF717",
@@ -99,9 +103,16 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       )}
       
       {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      {showOrganizationSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+      )}
+      {customStructuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(customStructuredData)}
+        </script>
+      )}
     </Helmet>
   );
 };
