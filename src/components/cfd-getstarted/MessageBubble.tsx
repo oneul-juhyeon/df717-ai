@@ -258,7 +258,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   // Account settings table - 계좌 설정 테이블
   if (message.type === "account_settings") {
     const settings = [
-      { label: "Platform", value: "MetaTrader 4" },
+      { label: "Platform", value: "MetaTrader 5" },
       { label: "Account Type", value: "Raw Spread" },
       { label: "Currency", value: "USD" },
       { label: "Leverage", value: "1:1000" },
