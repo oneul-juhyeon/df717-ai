@@ -49,6 +49,7 @@ export const getNavigationItems = (): NavigationItem[] => [
     hasSubmenu: true,
     submenu: brokerSubmenu,
   },
+  { name: "Solution", path: "/solution", hasSubmenu: false },
   { name: "Contact", path: "/contact", hasSubmenu: false },
   { name: "Space", path: "https://df717.notion.site/space", hasSubmenu: false, external: true },
 ];
