@@ -55,10 +55,10 @@ serve(async (req) => {
       last_name: requestBody.last_name || null
     };
 
-    console.log('Sending webhook to:', 'https://n8n.huhsame.com/webhook/account-insert');
+    console.log('Sending webhook to:', 'https://df717.app.n8n.cloud/webhook/account-insert');
     console.log('Payload:', { ...payload, account_password: '[REDACTED]' });
 
-    const webhookUrl = 'https://n8n.huhsame.com/webhook/account-insert';
+    const webhookUrl = 'https://df717.app.n8n.cloud/webhook/account-insert';
 
     // Test connectivity first
     try {
