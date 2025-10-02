@@ -44,7 +44,8 @@ const SolutionHero: React.FC = () => {
         delay: 0.8
       }} style={{
         textShadow: "0 2px 20px rgba(0, 0, 0, 0.8)"
-      }}>40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes. Discover the world's first automated investment program with a 100% loss compensation guarantee.</motion.p>
+      }}>40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
+Discover the world's first automated investment program with a 100% loss compensation guarantee.</motion.p>
 
         
       </motion.div>
