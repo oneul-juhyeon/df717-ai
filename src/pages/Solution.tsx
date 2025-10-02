@@ -4,6 +4,7 @@ import SolutionHeader from "@/components/solution/SolutionHeader";
 import SolutionHero from "@/components/solution/SolutionHero";
 import SolutionFeatures from "@/components/solution/SolutionFeatures";
 import SolutionSteps from "@/components/solution/SolutionSteps";
+import SolutionResults from "@/components/solution/SolutionResults";
 import SolutionProducts from "@/components/solution/SolutionProducts";
 import SolutionContactForm from "@/components/solution/SolutionContactForm";
 import Footer from "@/components/common/Footer";
@@ -32,6 +33,7 @@ const Solution: React.FC = () => {
         <SolutionHero />
         <SolutionFeatures />
         <SolutionSteps />
+        <SolutionResults />
         <SolutionProducts />
         <SolutionContactForm />
         
