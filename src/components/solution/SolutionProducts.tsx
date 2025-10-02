@@ -2,16 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import mockupPro from "@/assets/df717-solution-pro-mockup.png";
+import mockupPremium from "@/assets/df717-solution-premium-mockup.png";
 
 const products = [{
   name: "DAP-Plus",
   model: "DF717-FXEU-063-O0W",
-  image: "/df717%20solution%20pro%20mockup.png",
+  image: mockupPro,
   features: ["Professional Trading Interface", "Advanced Risk Management", "Real-time Market Analysis", "Multi-asset Support"]
 }, {
   name: "DAP-Premium",
   model: "DF717-FXAU-061-J0G",
-  image: "/df717%20solution%20premium%20mockup.png",
+  image: mockupPremium,
   features: ["Premium AI Strategies", "Enhanced Security Features", "Priority Customer Support", "Extended Backtesting Data"]
 }];
 const SolutionProducts: React.FC = () => {

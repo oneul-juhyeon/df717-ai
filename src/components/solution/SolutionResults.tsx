@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import myfxbookImg from "@/assets/df717-myfxbook-9years-results.png";
 
 const SolutionResults: React.FC = () => {
   return (
@@ -60,9 +61,10 @@ const SolutionResults: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.3)] hover:shadow-[0_0_70px_rgba(6,182,212,0.5)] transition-all duration-500">
               <img
-                src="/df717%20myfxbook%209years%20results.png"
+                src={myfxbookImg}
                 alt="MyfxBook Results - DF717 Automated Trading Performance showing +187% CAGR over 9 years"
                 className="w-full h-auto object-contain"
+                loading="lazy" decoding="async"
               />
             </div>
           </motion.div>
