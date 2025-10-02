@@ -7,7 +7,7 @@ const products = [
   {
     name: "DAP-Plus",
     model: "DF717-FXEU-063-O0W",
-    image: "/df717 solution pro mockup.png",
+    image: "/df717%20solution%20pro%20mockup.png",
     features: [
       "Professional Trading Interface",
       "Advanced Risk Management",
@@ -18,7 +18,7 @@ const products = [
   {
     name: "DAP-Premium",
     model: "DF717-FXAU-061-J0G",
-    image: "/df717 solution premium mockup.png",
+    image: "/df717%20solution%20premium%20mockup.png",
     features: [
       "Premium AI Strategies",
       "Enhanced Security Features",

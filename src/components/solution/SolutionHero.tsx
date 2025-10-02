@@ -7,7 +7,7 @@ const SolutionHero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/df717 solution hero.png"
+          src="/df717%20solution%20hero.png"
           alt="DF717 Solution Hero Background"
           className="w-full h-full object-cover"
         />
