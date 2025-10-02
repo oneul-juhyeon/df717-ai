@@ -1,7 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
 const SolutionHero: React.FC = () => {
-  return <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return <section className="relative w-full h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img src="/df717%20solution%20hero.png" alt="DF717 Solution Hero Background" className="w-full h-full object-cover" />
@@ -47,6 +56,33 @@ const SolutionHero: React.FC = () => {
       }}>40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
 Discover the world's first automated investment program with a 100% loss compensation guarantee.</motion.p>
 
+        <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12" initial={{
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 1,
+          delay: 1
+        }}>
+          <motion.button onClick={() => scrollToSection('contact-form')} className="group px-8 py-4 bg-white/90 hover:bg-white text-black rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 min-w-[180px] justify-center" whileHover={{
+          scale: 1.05
+        }} whileTap={{
+          scale: 0.98
+        }}>
+            Buy Now
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.button>
+
+          <motion.button onClick={() => scrollToSection('results-section')} className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 min-w-[180px]" whileHover={{
+          scale: 1.05
+        }} whileTap={{
+          scale: 0.98
+        }}>
+            See Results
+          </motion.button>
+        </motion.div>
         
       </motion.div>
     </section>;

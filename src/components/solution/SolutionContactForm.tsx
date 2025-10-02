@@ -60,7 +60,7 @@ const SolutionContactForm: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-900 to-black py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
+    <section id="contact-form" className="w-full bg-gradient-to-b from-gray-900 to-black py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
       <motion.div
         className="max-w-3xl mx-auto"
         initial={{ opacity: 0 }}

@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 
 const SolutionResults: React.FC = () => {
   return (
-    <section className="w-full bg-black py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
+    <section id="results-section" className="w-full bg-black py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
       <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
