@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import heroImage from "@/assets/df717-solution-hero.png";
 
 const SolutionHero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -13,7 +14,7 @@ const SolutionHero: React.FC = () => {
   return <section className="relative w-full h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img src="/df717%20solution%20hero.png" alt="DF717 Solution Hero Background" className="w-full h-full object-cover" />
+        <img src={heroImage} alt="DF717 Solution Hero Background" className="w-full h-full object-cover" />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90" />
       </div>
