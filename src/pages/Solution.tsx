@@ -32,8 +32,8 @@ const Solution: React.FC = () => {
         
         <SolutionHero />
         <SolutionFeatures />
-        <SolutionSteps />
         <SolutionResults />
+        <SolutionSteps />
         <SolutionProducts />
         <SolutionContactForm />
         
