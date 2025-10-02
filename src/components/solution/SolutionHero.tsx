@@ -17,34 +17,46 @@ const SolutionHero: React.FC = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 text-center px-6"
+        className="relative z-10 text-center px-6 max-w-6xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
         <motion.h1
-          className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-tight"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.5 }}
-          style={{
-            textShadow: "0 0 40px rgba(6, 182, 212, 0.5), 0 0 80px rgba(251, 146, 60, 0.3)",
-          }}
         >
-          DF717
+          Automate your investment.
+          <br />
+          Experience the power of DF717.
         </motion.h1>
 
         <motion.p
-          className="text-2xl md:text-4xl lg:text-5xl text-white font-light tracking-wider"
+          className="text-lg md:text-xl lg:text-2xl text-white/90 font-light leading-relaxed mb-4 italic"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
           style={{
-            fontFamily: "'Inter', sans-serif",
             textShadow: "0 2px 20px rgba(0, 0, 0, 0.8)",
           }}
         >
-          Automated Trading Solution
+          40+ years of technical expertise. 20+ years of market-proven data. All yours in just 3 minutes. 
+          Discover the world's first automated investment program with a 100% loss compensation guarantee.
+        </motion.p>
+
+        <motion.p
+          className="text-base md:text-lg lg:text-xl text-white/80 font-light leading-relaxed italic"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          style={{
+            textShadow: "0 2px 20px rgba(0, 0, 0, 0.8)",
+          }}
+        >
+          40년 이상의 기술 노하우, 20년 이상 시장에서 검증된 데이터. 모든 것이 단 3분이면 전부 내 자산이 됩니다. 
+          수익이 나지 않으면 100% 보상해드리는 세상에 없던 자동투자 프로그램을 만나보세요.
         </motion.p>
       </motion.div>
     </section>
