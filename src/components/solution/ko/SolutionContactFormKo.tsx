@@ -9,22 +9,24 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
-
 const formSchema = z.object({
-  name: z.string().min(1, { message: "이름을 입력해주세요." }),
-  email: z.string().email({ message: "올바른 이메일 주소를 입력해주세요." }),
-  phone: z.string().min(1, { message: "연락처를 입력해주세요." }),
-  referrer: z.string().optional(),
-  privacyConsent: z.boolean().refine((val) => val === true, {
-    message: "개인정보 수집 및 이용에 동의해주세요.",
+  name: z.string().min(1, {
+    message: "이름을 입력해주세요."
   }),
+  email: z.string().email({
+    message: "올바른 이메일 주소를 입력해주세요."
+  }),
+  phone: z.string().min(1, {
+    message: "연락처를 입력해주세요."
+  }),
+  referrer: z.string().optional(),
+  privacyConsent: z.boolean().refine(val => val === true, {
+    message: "개인정보 수집 및 이용에 동의해주세요."
+  })
 });
-
 type FormValues = z.infer<typeof formSchema>;
-
 const SolutionContactFormKo: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,161 +34,126 @@ const SolutionContactFormKo: React.FC = () => {
       email: "",
       phone: "",
       referrer: "",
-      privacyConsent: false,
-    },
+      privacyConsent: false
+    }
   });
-
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
-    
     try {
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+      await new Promise(resolve => setTimeout(resolve, 1500));
       console.log("Form submitted:", data);
-      
       toast.success("상담 신청이 완료되었습니다!", {
-        description: "담당자가 곧 연락드리겠습니다.",
+        description: "담당자가 곧 연락드리겠습니다."
       });
-      
       form.reset();
     } catch (error) {
       toast.error("오류가 발생했습니다.", {
-        description: "잠시 후 다시 시도해주세요.",
+        description: "잠시 후 다시 시도해주세요."
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  return (
-    <section id="contact-form" className="w-full bg-gradient-to-b from-gray-900 to-black py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
-      <motion.div
-        className="max-w-3xl mx-auto"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+  return <section id="contact-form" className="w-full bg-gradient-to-b from-gray-900 to-black py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
+      <motion.div className="max-w-3xl mx-auto" initial={{
+      opacity: 0
+    }} whileInView={{
+      opacity: 1
+    }} viewport={{
+      once: true
+    }} transition={{
+      duration: 0.8
+    }}>
+        <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6" initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6
+      }}>
           무료 상담 신청
         </motion.h2>
 
-        <motion.p
-          className="text-xl text-gray-300 text-center mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          지금 바로 상담을 신청하세요
-        </motion.p>
+        <motion.p className="text-xl text-gray-300 text-center mb-12" initial={{
+        opacity: 0
+      }} whileInView={{
+        opacity: 1
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6,
+        delay: 0.2
+      }}>Request Free Consultation</motion.p>
 
-        <motion.div
-          className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-3xl p-8 md:p-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
+        <motion.div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-cyan-500/30 rounded-3xl p-8 md:p-12" initial={{
+        opacity: 0,
+        y: 30
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} transition={{
+        duration: 0.6,
+        delay: 0.3
+      }}>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               {/* Name */}
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
+              <FormField control={form.control} name="name" render={({
+              field
+            }) => <FormItem>
                     <FormLabel className="text-white text-lg">이름 *</FormLabel>
                     <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="홍길동"
-                        className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
-                      />
+                      <Input {...field} placeholder="홍길동" className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors" />
                     </FormControl>
                     <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  </FormItem>} />
 
               {/* Email */}
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
+              <FormField control={form.control} name="email" render={({
+              field
+            }) => <FormItem>
                     <FormLabel className="text-white text-lg">이메일 *</FormLabel>
                     <FormControl>
-                      <Input
-                        {...field}
-                        type="email"
-                        placeholder="example@email.com"
-                        className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
-                      />
+                      <Input {...field} type="email" placeholder="example@email.com" className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors" />
                     </FormControl>
                     <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  </FormItem>} />
 
               {/* Phone */}
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
+              <FormField control={form.control} name="phone" render={({
+              field
+            }) => <FormItem>
                     <FormLabel className="text-white text-lg">연락처 *</FormLabel>
                     <FormControl>
-                      <Input
-                        {...field}
-                        type="tel"
-                        placeholder="010-1234-5678"
-                        className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
-                      />
+                      <Input {...field} type="tel" placeholder="010-1234-5678" className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors" />
                     </FormControl>
                     <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  </FormItem>} />
 
               {/* Referrer */}
-              <FormField
-                control={form.control}
-                name="referrer"
-                render={({ field }) => (
-                  <FormItem>
+              <FormField control={form.control} name="referrer" render={({
+              field
+            }) => <FormItem>
                     <FormLabel className="text-white text-lg">담당자</FormLabel>
                     <FormControl>
-                      <Input
-                        {...field}
-                        placeholder="없으면 비워두고 신청해주세요"
-                        className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
-                      />
+                      <Input {...field} placeholder="없으면 비워두고 신청해주세요" className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors" />
                     </FormControl>
                     <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  </FormItem>} />
 
               {/* Privacy Consent */}
-              <FormField
-                control={form.control}
-                name="privacyConsent"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormField control={form.control} name="privacyConsent" render={({
+              field
+            }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                     <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        className="border-cyan-500/50 data-[state=checked]:bg-cyan-500 data-[state=checked]:border-cyan-500"
-                      />
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} className="border-cyan-500/50 data-[state=checked]:bg-cyan-500 data-[state=checked]:border-cyan-500" />
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel className="text-white">
@@ -197,24 +164,16 @@ const SolutionContactFormKo: React.FC = () => {
                       </Link>
                       <FormMessage />
                     </div>
-                  </FormItem>
-                )}
-              />
+                  </FormItem>} />
 
               {/* Submit Button */}
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white h-14 text-lg font-semibold rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
-              >
+              <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white h-14 text-lg font-semibold rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]">
                 {isSubmitting ? "제출 중..." : "상담 신청하기"}
               </Button>
             </form>
           </Form>
         </motion.div>
       </motion.div>
-    </section>
-  );
+    </section>;
 };
-
 export default SolutionContactFormKo;
