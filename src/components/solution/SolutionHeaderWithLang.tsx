@@ -8,23 +8,23 @@ const SolutionHeaderWithLang: React.FC<HeaderProps> = ({ scrollToTop }) => {
   const navigationItems = getNavigationItems();
   
   return (
-    <div className="flex items-center justify-between w-full">
-      <div className="flex-grow">
+    <header className="flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6">
+      <div className="flex-none">
         <BaseHeader 
           scrollToTop={scrollToTop} 
           navigationItems={navigationItems} 
           logoAs="div"
-          className="flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6"
+          className="flex justify-between items-center w-full gap-6"
         />
       </div>
-      <div className="ml-4">
+      <div className="flex-none">
         <LanguageSwitcher
           currentLang="en"
           englishUrl="/solution"
           koreanUrl="/ko/solution"
         />
       </div>
-    </div>
+    </header>
   );
 };
 

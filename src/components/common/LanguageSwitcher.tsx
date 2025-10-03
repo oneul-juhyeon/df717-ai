@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Globe } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface LanguageSwitcherProps {
@@ -16,28 +15,26 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 }) => {
   return (
     <motion.div 
-      className="flex items-center gap-2"
+      className="flex items-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
-      <Globe className="w-5 h-5 text-cyan-400" />
-      
       {currentLang === "en" ? (
         <Link
           to={koreanUrl}
-          className="flex items-center gap-2 px-4 py-2 text-white hover:text-cyan-400 transition-colors duration-300 border border-white/20 hover:border-cyan-400/50 rounded-full"
+          className="flex items-center justify-center w-10 h-10 text-2xl hover:opacity-70 transition-opacity duration-300"
+          aria-label="Switch to Korean"
         >
-          <span className="text-lg">🇰🇷</span>
-          <span className="text-sm font-medium">한국어</span>
+          🇰🇷
         </Link>
       ) : (
         <Link
           to={englishUrl}
-          className="flex items-center gap-2 px-4 py-2 text-white hover:text-cyan-400 transition-colors duration-300 border border-white/20 hover:border-cyan-400/50 rounded-full"
+          className="flex items-center justify-center w-10 h-10 text-2xl hover:opacity-70 transition-opacity duration-300"
+          aria-label="Switch to English"
         >
-          <span className="text-lg">🇺🇸</span>
-          <span className="text-sm font-medium">English</span>
+          🇺🇸
         </Link>
       )}
     </motion.div>
