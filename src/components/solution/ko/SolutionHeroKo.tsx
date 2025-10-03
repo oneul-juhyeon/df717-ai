@@ -51,11 +51,9 @@ const SolutionHeroKo: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          40년 이상의 기술 노하우, 9년간의 검증된 성과.
+          40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
           <br />
-          모든 것이 단 3분이면 전부 내 자산이 됩니다.
-          <br />
-          수익이 나지 않으면 100% 보상해드리는 세상에 없던 자동투자 프로그램을 만나보세요.
+          Discover the world's first automated investment program with a 100% loss compensation guarantee.
         </motion.p>
 
         <motion.div
