@@ -48,7 +48,7 @@ const SolutionStepsKo: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.6
-      }} className="text-4xl md:text-5xl font-bold text-white text-center mb-6 lg:text-5xl">자동투자를 위한 5단계 프로세스</motion.h2>
+      }} className="text-4xl md:text-5xl font-bold text-white text-center mb-6 lg:text-6xl">5단계 시작 가이드</motion.h2>
 
         <motion.p className="text-xl text-gray-300 text-center mb-16" initial={{
         opacity: 0
