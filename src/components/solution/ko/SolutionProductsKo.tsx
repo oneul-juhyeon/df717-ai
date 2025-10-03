@@ -36,7 +36,7 @@ const SolutionProductsKo: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.6
-      }}>Our Solutions</motion.h2>
+      }}>어떤 투자를 원하시든 맞춤형으로</motion.h2>
 
         <motion.p className="text-xl text-gray-300 text-center mb-16" initial={{
         opacity: 0
@@ -47,9 +47,7 @@ const SolutionProductsKo: React.FC = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.2
-      }}>
-          최적의 솔루션을 선택하세요
-        </motion.p>
+      }}>Our Solutions</motion.p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {products.map((product, index) => <motion.div key={product.model} className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm border border-cyan-500/20 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 group" initial={{

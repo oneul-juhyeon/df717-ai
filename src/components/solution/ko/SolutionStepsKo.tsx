@@ -38,7 +38,7 @@ const SolutionStepsKo: React.FC = () => {
     }} transition={{
       duration: 0.8
     }}>
-        <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6" initial={{
+        <motion.h2 initial={{
         opacity: 0,
         y: 20
       }} whileInView={{
@@ -48,7 +48,7 @@ const SolutionStepsKo: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.6
-      }}>How to Get Started</motion.h2>
+      }} className="text-4xl md:text-5xl font-bold text-white text-center mb-6 lg:text-5xl">자동투자를 위한 5단계 프로세스</motion.h2>
 
         <motion.p className="text-xl text-gray-300 text-center mb-16" initial={{
         opacity: 0
@@ -59,7 +59,7 @@ const SolutionStepsKo: React.FC = () => {
       }} transition={{
         duration: 0.6,
         delay: 0.2
-      }}>시작 가이드</motion.p>
+      }}>How to Get Started</motion.p>
 
         <div className="relative">
           {/* Connection Line */}

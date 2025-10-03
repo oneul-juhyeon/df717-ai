@@ -37,7 +37,7 @@ const SolutionFeaturesKo: React.FC = () => {
     }} transition={{
       duration: 0.8
     }}>
-        <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-16" initial={{
+        <motion.h2 initial={{
         opacity: 0,
         y: 20
       }} whileInView={{
@@ -47,7 +47,7 @@ const SolutionFeaturesKo: React.FC = () => {
         once: true
       }} transition={{
         duration: 0.6
-      }}>Why DF717?</motion.h2>
+      }} className="text-4xl md:text-5xl font-bold text-white text-center mb-16 lg:text-5xl">왜 DF717을 선택해야 할까요?</motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => <motion.div key={feature.title} className="bg-gradient-to-br from-gray-900/50 to-gray-900/30 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 group" initial={{
