@@ -40,9 +40,9 @@ const SolutionHeroKo: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.5 }}
         >
-          투자를 자동화하세요.
+          Automate your investment.
           <br />
-          DF717의 힘을 경험하세요.
+          Experience the power of DF717.
         </motion.h1>
 
         <motion.p
@@ -51,9 +51,11 @@ const SolutionHeroKo: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          40년 이상의 기술 전문성. 9년 이상의 시장 검증 결과. 단 3분 만에 모두 당신의 것으로.
+          40년 이상의 기술 노하우, 9년간의 검증된 성과.
           <br />
-          100% 손실 보상 보장이 있는 세계 최초의 자동 투자 프로그램을 발견하세요.
+          모든 것이 단 3분이면 전부 내 자산이 됩니다.
+          <br />
+          수익이 나지 않으면 100% 보상해드리는 세상에 없던 자동투자 프로그램을 만나보세요.
         </motion.p>
 
         <motion.div
