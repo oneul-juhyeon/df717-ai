@@ -162,7 +162,7 @@ const SolutionContactFormKo: React.FC = () => {
                 name="referrer"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white text-lg">추천인</FormLabel>
+                    <FormLabel className="text-white text-lg">담당자</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
