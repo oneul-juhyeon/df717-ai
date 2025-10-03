@@ -38,6 +38,7 @@ import Examples from "./pages/df717/Examples";
 import Suppliers from "./pages/Suppliers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Solution from "./pages/Solution";
+import SolutionKo from "./pages/ko/SolutionKo";
 
 function App() {
   // Create a query client
@@ -81,6 +82,7 @@ function App() {
               <Route path="/award-winning-service" element={<AwardWinningService />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/solution" element={<Solution />} />
+              <Route path="/ko/solution" element={<SolutionKo />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

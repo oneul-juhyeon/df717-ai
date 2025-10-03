@@ -1,0 +1,89 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import heroBg from "@/assets/df717-solution-hero.png";
+
+const SolutionHeroKo: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="relative w-full h-screen min-h-[700px] flex items-start justify-center overflow-hidden pt-24 md:pt-32">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={heroBg} 
+          alt="DF717 솔루션 히어로 배경" 
+          className="w-full h-full object-cover object-bottom" 
+          loading="eager" 
+          decoding="async" 
+        />
+        {/* Gradient Overlay - darker at top */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <motion.div
+        className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-12 md:mt-20"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <motion.h1
+          className="text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] font-bold text-white mb-6 tracking-tight"
+          style={{ lineHeight: "1.2" }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.5 }}
+        >
+          투자를 자동화하세요.
+          <br />
+          DF717의 힘을 경험하세요.
+        </motion.h1>
+
+        <motion.p
+          className="text-lg md:text-xl lg:text-2xl text-white font-light leading-relaxed mb-4 italic opacity-90"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          40년 이상의 기술 전문성. 9년 이상의 시장 검증 결과. 단 3분 만에 모두 당신의 것으로.
+          <br />
+          100% 손실 보상 보장이 있는 세계 최초의 자동 투자 프로그램을 발견하세요.
+        </motion.p>
+
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          <motion.button
+            onClick={() => scrollToSection('contact-form')}
+            className="group px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2 min-w-[180px] justify-center"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            지금 구매하기
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.button>
+
+          <motion.button
+            onClick={() => scrollToSection('results-section')}
+            className="px-8 py-4 border-2 border-white text-white bg-transparent rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 min-w-[180px]"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            결과 보기
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default SolutionHeroKo;

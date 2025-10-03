@@ -16,6 +16,12 @@ interface SEOHeadProps {
   };
   showOrganizationSchema?: boolean;
   structuredData?: object;
+  hreflang?: {
+    en?: string;
+    ko?: string;
+    default?: string;
+  };
+  lang?: "en" | "ko";
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -26,7 +32,9 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   image = "https://df717.ai/lovable-uploads/df717_logo.png",
   article,
   showOrganizationSchema = false,
-  structuredData: customStructuredData
+  structuredData: customStructuredData,
+  hreflang,
+  lang = "en",
 }) => {
   const fullTitle = title.includes("DF717") ? title : `${title} | DF717`;
   const canonicalUrl = canonical || `https://df717.ai${window.location.pathname}`;
@@ -60,6 +68,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
   return (
     <Helmet>
+      <html lang={lang} />
       {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
@@ -69,6 +78,11 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
       
+      {/* hreflang tags for multilingual SEO */}
+      {hreflang?.en && <link rel="alternate" hrefLang="en" href={hreflang.en} />}
+      {hreflang?.ko && <link rel="alternate" hrefLang="ko" href={hreflang.ko} />}
+      {hreflang?.default && <link rel="alternate" hrefLang="x-default" href={hreflang.default} />}
+      
       {/* Open Graph Tags */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
@@ -76,7 +90,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content="DF717" />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={lang === "ko" ? "ko_KR" : "en_US"} />
       
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />

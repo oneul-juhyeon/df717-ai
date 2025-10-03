@@ -6,36 +6,36 @@ const steps = [
   {
     number: 1,
     icon: MessageSquare,
-    title: "Request Consultation",
-    description: "Fill out the consultation form below",
+    title: "상담 신청",
+    description: "아래 상담 신청 양식을 작성해주세요",
   },
   {
     number: 2,
     icon: UserCheck,
-    title: "Manager Assignment",
-    description: "Dedicated manager will be assigned to you",
+    title: "담당자 배정",
+    description: "전담 매니저가 배정됩니다",
   },
   {
     number: 3,
     icon: PlayCircle,
-    title: "Free Consultation & Trial",
-    description: "Experience our system with expert guidance",
+    title: "무료 상담 및 체험",
+    description: "전문가의 안내로 시스템을 체험하세요",
   },
   {
     number: 4,
     icon: Calendar,
-    title: "Schedule Installation",
-    description: "Set up your preferred installation time",
+    title: "설치 스케줄 예약",
+    description: "원하시는 설치 시간을 예약하세요",
   },
   {
     number: 5,
     icon: Rocket,
-    title: "Start Automated Trading",
-    description: "Begin your automated trading journey",
+    title: "자동투자 시작",
+    description: "자동 트레이딩 여정을 시작하세요",
   },
 ];
 
-const SolutionSteps: React.FC = () => {
+const SolutionStepsKo: React.FC = () => {
   return (
     <section className="w-full bg-gradient-to-b from-black to-gray-900 py-20 md:py-32 px-6 md:px-10 lg:px-[154px]">
       <motion.div
@@ -52,7 +52,7 @@ const SolutionSteps: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          How to Get Started
+          시작 방법
         </motion.h2>
 
         <motion.p
@@ -62,7 +62,7 @@ const SolutionSteps: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Simple 5-step process
+          간단한 5단계로 시작하세요
         </motion.p>
 
         <div className="relative">
@@ -116,4 +116,4 @@ const SolutionSteps: React.FC = () => {
   );
 };
 
-export default SolutionSteps;
+export default SolutionStepsKo;

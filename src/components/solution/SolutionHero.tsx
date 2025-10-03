@@ -54,8 +54,11 @@ const SolutionHero: React.FC = () => {
       }} transition={{
         duration: 1,
         delay: 0.8
-      }}>40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
-Discover the world's first automated investment program with a 100% loss compensation guarantee.</motion.p>
+      }}>
+          40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
+          <br />
+          Discover the world's first automated investment program with a 100% loss compensation guarantee.
+        </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12" initial={{
           opacity: 0,

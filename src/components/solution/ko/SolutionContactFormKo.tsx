@@ -11,18 +11,18 @@ import { toast } from "sonner";
 import { Link } from "react-router-dom";
 
 const formSchema = z.object({
-  name: z.string().min(1, { message: "Please enter your name." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  phone: z.string().min(1, { message: "Please enter your phone number." }),
+  name: z.string().min(1, { message: "이름을 입력해주세요." }),
+  email: z.string().email({ message: "올바른 이메일 주소를 입력해주세요." }),
+  phone: z.string().min(1, { message: "연락처를 입력해주세요." }),
   referrer: z.string().optional(),
   privacyConsent: z.boolean().refine((val) => val === true, {
-    message: "Please agree to the privacy policy.",
+    message: "개인정보 수집 및 이용에 동의해주세요.",
   }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
-const SolutionContactForm: React.FC = () => {
+const SolutionContactFormKo: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormValues>({
@@ -45,14 +45,14 @@ const SolutionContactForm: React.FC = () => {
       
       console.log("Form submitted:", data);
       
-      toast.success("Request submitted successfully!", {
-        description: "Our team will contact you soon.",
+      toast.success("상담 신청이 완료되었습니다!", {
+        description: "담당자가 곧 연락드리겠습니다.",
       });
       
       form.reset();
     } catch (error) {
-      toast.error("An error occurred.", {
-        description: "Please try again later.",
+      toast.error("오류가 발생했습니다.", {
+        description: "잠시 후 다시 시도해주세요.",
       });
     } finally {
       setIsSubmitting(false);
@@ -75,7 +75,7 @@ const SolutionContactForm: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Request Free Consultation
+          무료 상담 신청
         </motion.h2>
 
         <motion.p
@@ -85,7 +85,7 @@ const SolutionContactForm: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Start your journey with us
+          지금 바로 상담을 신청하세요
         </motion.p>
 
         <motion.div
@@ -103,11 +103,11 @@ const SolutionContactForm: React.FC = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white text-lg">Name *</FormLabel>
+                    <FormLabel className="text-white text-lg">이름 *</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="John Doe"
+                        placeholder="홍길동"
                         className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
                       />
                     </FormControl>
@@ -122,7 +122,7 @@ const SolutionContactForm: React.FC = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white text-lg">Email *</FormLabel>
+                    <FormLabel className="text-white text-lg">이메일 *</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -142,12 +142,12 @@ const SolutionContactForm: React.FC = () => {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white text-lg">Phone Number *</FormLabel>
+                    <FormLabel className="text-white text-lg">연락처 *</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         type="tel"
-                        placeholder="+1-123-456-7890"
+                        placeholder="010-1234-5678"
                         className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
                       />
                     </FormControl>
@@ -162,11 +162,11 @@ const SolutionContactForm: React.FC = () => {
                 name="referrer"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white text-lg">Referrer (Optional)</FormLabel>
+                    <FormLabel className="text-white text-lg">추천인</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="Leave blank if none"
+                        placeholder="없으면 비워두고 신청해주세요"
                         className="bg-gray-900/50 border-cyan-500/30 text-white h-12 rounded-xl focus:border-cyan-500 transition-colors"
                       />
                     </FormControl>
@@ -190,10 +190,10 @@ const SolutionContactForm: React.FC = () => {
                     </FormControl>
                     <div className="space-y-1 leading-none">
                       <FormLabel className="text-white">
-                        I agree to the privacy policy *
+                        개인정보 수집 및 이용에 동의합니다 *
                       </FormLabel>
                       <Link to="/privacy-policy" className="text-cyan-400 text-sm hover:underline block">
-                        View Privacy Policy
+                        개인정보 처리방침 보기
                       </Link>
                       <FormMessage />
                     </div>
@@ -207,7 +207,7 @@ const SolutionContactForm: React.FC = () => {
                 disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white h-14 text-lg font-semibold rounded-xl transition-all duration-300 shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
               >
-                {isSubmitting ? "Submitting..." : "Request Consultation"}
+                {isSubmitting ? "제출 중..." : "상담 신청하기"}
               </Button>
             </form>
           </Form>
@@ -217,4 +217,4 @@ const SolutionContactForm: React.FC = () => {
   );
 };
 
-export default SolutionContactForm;
+export default SolutionContactFormKo;
