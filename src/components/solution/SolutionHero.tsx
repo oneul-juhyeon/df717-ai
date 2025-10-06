@@ -91,7 +91,7 @@ const SolutionHero: React.FC = () => {
       </motion.div>
 
       {/* Stats Display - Full Width at Bottom */}
-      <div className="relative z-10 w-full mt-auto -mb-20">
+      <div className="relative z-10 w-full mt-auto">
         <AnimatedStatsDisplay locale="en" />
       </div>
     </section>;
