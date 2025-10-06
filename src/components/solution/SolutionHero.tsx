@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroBg from "@/assets/df717-solution-hero.png";
 import AnimatedStatsDisplay from "./AnimatedStatsDisplay";
 
 const SolutionHero: React.FC = () => {
@@ -15,7 +14,7 @@ const SolutionHero: React.FC = () => {
   return <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-start overflow-hidden pt-24 md:pt-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img src={heroBg} alt="DF717 Solution Hero Background" className="w-full h-full object-cover object-bottom" loading="eager" decoding="async" />
+        <img src="/df717 solution hero.png" alt="DF717 Solution Hero Background" className="w-full h-full object-cover object-bottom" loading="eager" decoding="async" />
         {/* Gradient Overlay - darker at top */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-transparent" />
       </div>
