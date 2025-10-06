@@ -94,7 +94,7 @@ const AnimatedStatsDisplay: React.FC<AnimatedStatsDisplayProps> = ({ locale = "e
                   >
                     {counts[index]}
                     {counts[index] === stat.target && (
-                      <span className="inline-block ml-1">{stat.suffix}</span>
+                      <span className="inline-block ml-1 text-[0.6em]">{stat.suffix}</span>
                     )}
                   </motion.div>
                   <div className="text-lg md:text-xl text-white/70 font-light tracking-wider">
