@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroBg from "@/assets/df717-solution-hero.png";
+import AnimatedStatsDisplay from "./AnimatedStatsDisplay";
 
 const SolutionHero: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -87,6 +88,8 @@ const SolutionHero: React.FC = () => {
             See Results
           </motion.button>
         </motion.div>
+
+        <AnimatedStatsDisplay locale="en" />
         
       </motion.div>
     </section>;
