@@ -68,12 +68,12 @@ serve(async (req) => {
       });
       console.log('Connectivity test - Status:', connectivityTest.status);
     } catch (connectError) {
-      console.error('Connectivity test failed:', connectError.message);
+      console.error('Connectivity test failed:', connectError instanceof Error ? connectError.message : 'Unknown error');
     }
 
     // Retry logic for webhook
     const maxRetries = 3;
-    let lastError;
+    let lastError: Error | unknown;
     
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       console.log(`Webhook attempt ${attempt}/${maxRetries}`);
@@ -119,7 +119,7 @@ serve(async (req) => {
         });
 
       } catch (fetchError) {
-        console.error(`Webhook attempt ${attempt} failed:`, fetchError.message);
+        console.error(`Webhook attempt ${attempt} failed:`, fetchError instanceof Error ? fetchError.message : 'Unknown error');
         lastError = fetchError;
         
         if (attempt < maxRetries) {
@@ -130,16 +130,16 @@ serve(async (req) => {
     }
 
     // If we get here, all retries failed
-    throw new Error(`All ${maxRetries} webhook attempts failed. Last error: ${lastError?.message}`);
+    throw new Error(`All ${maxRetries} webhook attempts failed. Last error: ${lastError instanceof Error ? lastError.message : 'Unknown error'}`);
 
   } catch (error) {
     console.error('=== WEBHOOK FUNCTION ERROR ===');
-    console.error('Error details:', error.message);
-    console.error('Error stack:', error.stack);
+    console.error('Error details:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace');
     return new Response(JSON.stringify({ 
       success: false, 
-      error: error.message,
-      stack: error.stack
+      error: error instanceof Error ? error.message : 'Unknown error occurred',
+      stack: error instanceof Error ? error.stack : undefined
     }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
