@@ -57,13 +57,13 @@ const AnimatedStatsDisplay: React.FC<AnimatedStatsDisplayProps> = ({ locale = "e
   return (
     <motion.div
       ref={sectionRef}
-      className="w-full mt-16 px-4"
+      className="w-full"
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div 
-        className="relative overflow-hidden"
+        className="relative overflow-hidden w-full"
         style={{
           background: "linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%)",
           backdropFilter: "blur(20px)",

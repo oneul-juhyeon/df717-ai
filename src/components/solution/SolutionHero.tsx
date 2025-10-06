@@ -12,7 +12,7 @@ const SolutionHero: React.FC = () => {
     }
   };
 
-  return <section className="relative w-full h-screen min-h-[700px] flex items-start justify-center overflow-hidden pt-24 md:pt-32">
+  return <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-start overflow-hidden pt-24 md:pt-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img src={heroBg} alt="DF717 Solution Hero Background" className="w-full h-full object-cover object-bottom" loading="eager" decoding="async" />
@@ -21,7 +21,7 @@ const SolutionHero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <motion.div className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-12 md:mt-20" initial={{
+      <motion.div className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-12 md:mt-20 flex-shrink-0" initial={{
       opacity: 0,
       y: 30
     }} animate={{
@@ -88,10 +88,12 @@ const SolutionHero: React.FC = () => {
             See Results
           </motion.button>
         </motion.div>
-
-        <AnimatedStatsDisplay locale="en" />
-        
       </motion.div>
+
+      {/* Stats Display - Full Width at Bottom */}
+      <div className="relative z-10 w-full mt-auto">
+        <AnimatedStatsDisplay locale="en" />
+      </div>
     </section>;
 };
 export default SolutionHero;
