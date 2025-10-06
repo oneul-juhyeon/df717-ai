@@ -57,59 +57,62 @@ const AnimatedStatsDisplay: React.FC<AnimatedStatsDisplayProps> = ({ locale = "e
   return (
     <motion.div
       ref={sectionRef}
-      className="w-full max-w-[1200px] mx-auto mt-16 px-6"
+      className="w-full mt-16 px-4"
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div 
-        className="relative rounded-2xl overflow-hidden"
+        className="relative overflow-hidden"
         style={{
-          background: "rgba(0, 0, 0, 0.6)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3), 0 0 60px rgba(59, 130, 246, 0.15)"
+          background: "linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          boxShadow: "0 -4px 40px rgba(0, 0, 0, 0.3)"
         }}
       >
-        <div className="py-12 md:py-16 px-8 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
-            {stats.map((stat, index) => (
-              <React.Fragment key={index}>
-                <motion.div 
-                  className="flex flex-col items-center justify-center text-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                >
+        <div className="py-16 md:py-20 px-6 md:px-12">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+              {stats.map((stat, index) => (
+                <React.Fragment key={index}>
                   <motion.div 
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 tabular-nums"
-                    animate={
-                      isInView && counts[index] === stat.target
-                        ? { scale: [1, 1.05, 1] }
-                        : {}
-                    }
-                    transition={{ duration: 0.4, delay: 2.5 }}
+                    className="flex flex-col items-center justify-center text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                   >
-                    {counts[index]}
-                    {counts[index] === stat.target && (
-                      <span className="inline-block">{stat.suffix}</span>
-                    )}
+                    <motion.div 
+                      className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tabular-nums tracking-tight"
+                      style={{ fontWeight: 700 }}
+                      animate={
+                        isInView && counts[index] === stat.target
+                          ? { scale: [1, 1.05, 1] }
+                          : {}
+                      }
+                      transition={{ duration: 0.4, delay: 2.5 }}
+                    >
+                      {counts[index]}
+                      {counts[index] === stat.target && (
+                        <span className="inline-block ml-1">{stat.suffix}</span>
+                      )}
+                    </motion.div>
+                    <div className="text-lg md:text-xl text-white/70 font-light tracking-wider">
+                      {locale === "ko" && stat.labelKo ? stat.labelKo : stat.label}
+                    </div>
                   </motion.div>
-                  <div className="text-base md:text-lg text-white/80 font-light tracking-wide">
-                    {locale === "ko" && stat.labelKo ? stat.labelKo : stat.label}
-                  </div>
-                </motion.div>
-                
-                {index < stats.length - 1 && (
-                  <div className="hidden md:flex items-center justify-center">
-                    <div 
-                      className="h-24 w-px"
-                      style={{ background: "rgba(255, 255, 255, 0.2)" }}
-                    />
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
+                  
+                  {index < stats.length - 1 && (
+                    <div className="hidden md:flex items-center justify-center">
+                      <div 
+                        className="h-32 w-px"
+                        style={{ background: "rgba(255, 255, 255, 0.15)" }}
+                      />
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
         </div>
       </div>
