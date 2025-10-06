@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroBg from "@/assets/df717-solution-hero-new.png";
+import heroBg from "@/assets/df717-solution-hero.png";
 import AnimatedStatsDisplay from "./AnimatedStatsDisplay";
 
 const SolutionHero: React.FC = () => {
