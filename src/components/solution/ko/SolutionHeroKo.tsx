@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import heroBg from "@/assets/df717-solution-hero.png";
+import heroBg from "@/assets/df717-solution-hero-new.png";
+import AnimatedStatsDisplay from "../AnimatedStatsDisplay";
 
 const SolutionHeroKo: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,7 +13,7 @@ const SolutionHeroKo: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full h-screen min-h-[700px] flex items-start justify-center overflow-hidden pt-24 md:pt-32">
+    <section className="relative w-full h-screen min-h-[700px] flex flex-col items-center justify-start overflow-hidden pt-24 md:pt-32">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -28,7 +29,7 @@ const SolutionHeroKo: React.FC = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-12 md:mt-20"
+        className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-12 md:mt-20 flex-shrink-0"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.3 }}
@@ -51,9 +52,7 @@ const SolutionHeroKo: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
-          <br />
-          Discover the world's first automated investment program with a 100% loss compensation guarantee.
+          100% 손실 보상 보증을 제공하는 세계 최초의 자동 투자 프로그램을 만나보세요.
         </motion.p>
 
         <motion.div
@@ -82,6 +81,11 @@ const SolutionHeroKo: React.FC = () => {
           </motion.button>
         </motion.div>
       </motion.div>
+
+      {/* Stats Display - Full Width at Bottom */}
+      <div className="relative z-10 w-full mt-auto">
+        <AnimatedStatsDisplay locale="ko" />
+      </div>
     </section>
   );
 };

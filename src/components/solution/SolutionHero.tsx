@@ -56,8 +56,6 @@ const SolutionHero: React.FC = () => {
         duration: 1,
         delay: 0.8
       }}>
-          40+ years of technical expertise. 9+ years of market-proven results. All yours in just 3 minutes.
-          <br />
           Discover the world's first automated investment program with a 100% loss compensation guarantee.
         </motion.p>
 

@@ -23,18 +23,18 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       {currentLang === "en" ? (
         <Link
           to={koreanUrl}
-          className="flex items-center justify-center w-10 h-10 text-base text-white/90 hover:text-white transition-colors duration-300 border border-white/20 hover:border-white rounded"
+          className="flex items-center justify-center px-3 py-2 text-xs font-semibold text-white/90 hover:text-white transition-colors duration-300 border border-white/20 hover:border-white rounded"
           aria-label="Switch to Korean"
         >
-          🇰🇷
+          KR
         </Link>
       ) : (
         <Link
           to={englishUrl}
-          className="flex items-center justify-center w-10 h-10 text-base text-white/90 hover:text-white transition-colors duration-300 border border-white/20 hover:border-white rounded"
+          className="flex items-center justify-center px-3 py-2 text-xs font-semibold text-white/90 hover:text-white transition-colors duration-300 border border-white/20 hover:border-white rounded"
           aria-label="Switch to English"
         >
-          🇺🇸
+          US
         </Link>
       )}
     </motion.div>
