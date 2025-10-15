@@ -183,7 +183,7 @@ export const useChatStore = create<ChatStore>()(
             buttons: [
               {
                 label: '📊 Try Demo',
-                description: 'Safe practice with free demo account',
+                description: "Test DF717's AI strategies safely with a free demo account.",
                 type: 'card',
                 action: () => {
                   get().selectAccountType('demo');
