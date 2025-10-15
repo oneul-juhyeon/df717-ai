@@ -396,7 +396,7 @@ export const useChatStore = create<ChatStore>()(
           setTimeout(() => {
             get().addMessage({
               id: `personalized-greeting-${Date.now()}`,
-              content: `Your personalized guide is ready, ${userName}.`,
+              content: `Your personalized guide is ready, ${userName}`,
               sender: 'ai',
               type: 'text',
               timestamp: new Date(),
