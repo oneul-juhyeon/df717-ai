@@ -864,7 +864,7 @@ export const useChatStore = create<ChatStore>()(
                   formFields: [
                     {
                       id: 'accountId',
-                      label: 'Account ID',
+                      label: 'Account Number',
                       type: 'tel',
                       placeholder: 'Enter account number',
                       required: true,
