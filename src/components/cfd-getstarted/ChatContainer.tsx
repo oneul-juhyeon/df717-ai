@@ -2,9 +2,11 @@ import React from "react";
 import MessageList from "./MessageList";
 interface ChatContainerProps {
   onBack: () => void;
+  useChatStoreHook?: any;
 }
 const ChatContainer: React.FC<ChatContainerProps> = ({
-  onBack
+  onBack,
+  useChatStoreHook
 }) => {
   return <div className="w-full h-screen flex flex-col bg-gray-50" style={{
     fontFamily: '-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif'
@@ -23,7 +25,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
       
       {/* Messages Area - Full height with proper overflow */}
       <div className="flex-1 overflow-hidden">
-        <MessageList />
+        <MessageList useChatStore={useChatStoreHook} />
       </div>
     </div>;
 };

@@ -1,10 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import MessageBubble from "./MessageBubble";
-import { useChatStore } from "./chatStore";
+import { useChatStore as defaultUseChatStore } from "./chatStore";
 import { Message } from "./types";
 
-const MessageList: React.FC = () => {
-  const { messages } = useChatStore();
+interface MessageListProps {
+  useChatStore?: any;
+}
+
+const MessageList: React.FC<MessageListProps> = ({ useChatStore }) => {
+  const useStore = useChatStore || defaultUseChatStore;
+  const { messages } = useStore();
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -43,7 +48,7 @@ const MessageList: React.FC = () => {
             }}
           >
             {messageGroup.map((message) => (
-              <MessageBubble key={message.id} message={message} />
+              <MessageBubble key={message.id} message={message} useChatStore={useStore} />
             ))}
           </div>
         ))}

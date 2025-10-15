@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Message } from "./types";
-import { useChatStore } from "./chatStore";
+import { useChatStore as defaultUseChatStore } from "./chatStore";
 
 interface MessageBubbleProps {
   message: Message;
+  useChatStore?: any;
 }
 
-const FormSection: React.FC<{ message: Message }> = ({ message }) => {
-  const { updateFormField } = useChatStore();
+const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ message, useChatStore }) => {
+  const storeHook = useChatStore || defaultUseChatStore;
+  const { updateFormField } = storeHook();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleButtonClick = useCallback((action: () => void) => {
@@ -84,7 +86,7 @@ const FormSection: React.FC<{ message: Message }> = ({ message }) => {
   );
 };
 
-const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
+const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -335,7 +337,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}>
         <div className="w-full mx-2">
-          <FormSection message={message} />
+          <FormSection message={message} useChatStore={useChatStore} />
         </div>
       </div>
     );

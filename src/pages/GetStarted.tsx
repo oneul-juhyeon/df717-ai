@@ -15,7 +15,7 @@ const GetStarted: React.FC = () => {
 
   return (
     <div className="w-full h-screen overflow-hidden">
-      <ChatContainer onBack={handleBackToHome} />
+      <ChatContainer onBack={handleBackToHome} useChatStoreHook={useChatStore} />
     </div>
   );
 };
