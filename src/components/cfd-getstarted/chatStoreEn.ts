@@ -621,7 +621,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-3-intro',
-                  content: "Perfect! Now let's log in to ICMarkets.",
+                  content: "Perfect! Now let's log in to Vantage.",
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
