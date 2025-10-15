@@ -220,7 +220,7 @@ export const useChatStore = create<ChatStore>()(
         setTimeout(() => {
           get().addMessage({
             id: 'personal-info-request',
-            content: "We would like to provide you with personalized guidance and program updates. Could you share some basic information?",
+            content: "Could you share a few basic details? I'll use them to guide you personally and let you know when the program starts.",
             sender: 'ai',
             type: 'text',
             timestamp: new Date(),
