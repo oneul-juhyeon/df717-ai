@@ -19,7 +19,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <h1 className="ml-3 text-lg font-medium text-gray-800 leading-6 word-break break-words flex-1 text-left font-din">DF717 시작 가이드</h1>
+          <h1 className="ml-3 text-lg font-medium text-gray-800 leading-6 word-break break-words flex-1 text-left font-din">DF717 Start Guide</h1>
         </div>
       </div>
       
