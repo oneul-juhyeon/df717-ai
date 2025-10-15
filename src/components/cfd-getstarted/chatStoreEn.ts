@@ -472,7 +472,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-critical-warning',
-                  content: "⚠️ **Please note:**\nEnter your name in **English (Latin) characters only**.\nExample: First Name: **Auto**, Last Name: **Trader**",
+                  content: "⚠️ **Please note:**\nEnter your name in **English (Latin) characters only**.\nExample: First Name: **John**, Last Name: **Smith**",
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
