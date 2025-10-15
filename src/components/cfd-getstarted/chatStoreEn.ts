@@ -824,7 +824,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-celebration',
-                  content: 'Congratulations! Your demo account is ready 🎉',
+                  content: 'Congratulations! Your live account is ready 🎉',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
