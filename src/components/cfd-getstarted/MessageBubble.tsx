@@ -282,7 +282,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) 
         <div className="w-full mx-2">
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden my-2 shadow-sm">
             <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
-              <h3 className="text-blue-800 font-semibold text-sm">계좌 설정</h3>
+              <h3 className="text-blue-800 font-semibold text-sm">Account Settings</h3>
             </div>
             <div className="divide-y divide-gray-100">
               {settings.map((setting, index) => (
