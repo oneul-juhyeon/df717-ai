@@ -721,12 +721,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: "I've clicked the Demo Account button",
+                      label: "I've clicked the Live Account button",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: "I've clicked the Demo Account button",
+                          content: "I've clicked the Live Account button",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
