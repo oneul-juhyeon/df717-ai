@@ -464,7 +464,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-info',
-                  content: `**💡 What is a Broker?**\nJust like you need a brokerage account for stocks or an exchange for crypto trading, CFD trading requires a similar intermediary platform.\n**${brokerName}** is one of the most trusted **Tier-1 brokers** among traders globally.`,
+                  content: `To trade assets like stocks or crypto, you use a platform that connects you to the market. CFD trading works the same way — it requires a regulated broker that provides access to global markets.\nAmong them, **${brokerName}** is recognized worldwide as a trusted **Tier-1 broker** by traders of all levels.`,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
