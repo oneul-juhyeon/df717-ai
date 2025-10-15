@@ -165,7 +165,7 @@ export const useChatStore = create<ChatStore>()(
       showAccountTypeSelection: () => {
         get().addMessage({
           id: 'account-type-question',
-          content: 'How would you like to start AI automated investing?',
+          content: 'How would you like to start your AI automated investing?',
           sender: 'ai',
           type: 'text',
           timestamp: new Date(),
