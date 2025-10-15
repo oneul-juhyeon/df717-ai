@@ -480,7 +480,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-action',
-                  content: 'Complete the account application with accurate information.',
+                  content: 'Please complete your account application with accurate details.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
