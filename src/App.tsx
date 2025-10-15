@@ -15,6 +15,7 @@ import Robot from "./pages/Robot";
 import CFDSafety from "./pages/CFDSafety";
 import CFDTrading from "./pages/CFDTrading";
 import GetStarted from "./pages/GetStarted";
+import GetStartedKo from "./pages/ko/GetStartedKo";
 import AdminBackfill from "./pages/AdminBackfill";
 
 
@@ -76,6 +77,7 @@ function App() {
               <Route path="/cfd-safety" element={<CFDSafety />} />
               <Route path="/cfd-trading" element={<CFDTrading />} />
               <Route path="/get-started" element={<GetStarted />} />
+              <Route path="/ko/get-started" element={<GetStartedKo />} />
               <Route path="/admin/backfill" element={<AdminBackfill />} />
               
               <Route path="/professional-trading" element={<ProfessionalTrading />} />
