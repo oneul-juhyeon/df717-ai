@@ -409,7 +409,7 @@ export const useChatStore = create<ChatStore>()(
               
               get().addMessage({
                 id: `step-intro-message-${Date.now()}`,
-                content: `First, let's open an account with ${brokerName}.`,
+                content: `First, let\'s open an account with ${brokerName}.`,
                 sender: 'ai',
                 type: 'text',
                 timestamp: new Date(),
@@ -562,7 +562,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-tip',
-                  content: `💡 **Tip!**\nCan't find the email?\nCheck your **spam folder**. **${brokerName}** emails may occasionally be filtered as spam.`,
+                  content: `💡 **Tip!**\nCan\'t find the email?\nCheck your **spam folder**. **${brokerName}** emails may occasionally be filtered as spam.`,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -690,7 +690,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-intro',
-                  content: 'Now let's create a demo account to experience AI investing!',
+                  content: 'Now let\'s create a demo account to experience AI investing!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -914,7 +914,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-intro',
-                  content: 'Meanwhile, let's install the app to monitor your investment results in real-time!',
+                  content: 'Meanwhile, let\'s install the app to monitor your investment results in real-time!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
