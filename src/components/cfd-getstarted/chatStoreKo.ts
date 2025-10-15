@@ -108,8 +108,16 @@ export const useChatStore = create<ChatStore>()(
       },
 
       initializeChat: () => {
-        // Reset first to ensure clean state
-        get().resetChat();
+        const state = get();
+        
+        // 이미 초기화되었다면 스킵 (메시지가 있거나 step 0이 실행된 경우)
+        if (state.messages.length > 0 || state.isStepExecuted(0)) {
+          console.log('Chat already initialized, skipping');
+          return;
+        }
+        
+        console.log('Starting chat initialization...');
+        get().markStepExecuted(0);
         
         // Generate session ID immediately on chat initialization
         const sessionId = crypto.getRandomValues(new Uint32Array(1))[0].toString(36);
@@ -121,6 +129,7 @@ export const useChatStore = create<ChatStore>()(
         
         // New Toss-style welcome sequence
         setTimeout(() => {
+          console.log('Adding welcome-1 message');
           get().addMessage({
             id: 'welcome-1',
             content: '안녕하세요! DF717에 오신 걸 환영해요! 😊',
@@ -132,6 +141,7 @@ export const useChatStore = create<ChatStore>()(
           
           // Second welcome message after 800ms
           setTimeout(() => {
+            console.log('Adding welcome-2 message');
             get().addMessage({
               id: 'welcome-2',
               content: '지금부터 단 3분이면 AI 자동투자를 시작하실 수 있어요.',
@@ -143,6 +153,7 @@ export const useChatStore = create<ChatStore>()(
             
           // Show account type selection after 800ms
           setTimeout(() => {
+            console.log('Showing account type selection');
             get().showAccountTypeSelection();
           }, 800);
           }, 800);
