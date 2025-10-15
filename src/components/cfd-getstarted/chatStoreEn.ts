@@ -480,7 +480,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-action',
-                  content: 'Please complete your account application with accurate details.',
+                  content: 'Please ensure all information provided in your account application is accurate.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -504,12 +504,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'Account application completed',
+                      label: "I've completed my account application",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'Account application completed',
+                          content: "I've completed my account application",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -554,7 +554,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-email',
-                  content: `📧 Click the **"${clientAreaText}"** button in the email\nto proceed to the password setup page.\n\nOnce you set your password, **account creation is complete**!`,
+                  content: `📧 Click the **"Secure Client Area"** link in the email to proceed to the password setup page.\nOnce your password is set, your account creation will be complete!`,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -577,12 +577,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: true,
                   buttons: [
                     {
-                      label: 'I set my password',
+                      label: "I've set my password",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I set my password',
+                          content: "I've set my password",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -621,7 +621,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-3-intro',
-                  content: `Perfect! Now we will log in to ${brokerName}.`,
+                  content: "Perfect! Now let's log in to ICMarkets.",
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -638,7 +638,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-3-info',
-                  content: '🔐 Log in with the **email and password** you just created.',
+                  content: '🔐 Please log in with the email and password you just created.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -653,12 +653,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'I logged in',
+                      label: "I've logged in",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I logged in',
+                          content: "I've logged in",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -706,7 +706,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-safety',
-                  content: '💰 **No worries!**\nA **demo account** uses virtual money for practice trading. No real funds are involved, so feel free to explore.',
+                  content: '💰 No worries!\nA demo account uses virtual funds for practice trading. No real money is involved, so feel free to explore with confidence.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -721,12 +721,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'I clicked the demo account button',
+                      label: "I've clicked the Demo Account button",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I clicked the demo account button',
+                          content: "I've clicked the Demo Account button",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -773,7 +773,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-5-warning',
-                  content: '⚠️ **Warning!**\n\nIf the settings are different, **the AI program will not work**.\nPlease follow these exact settings!',
+                  content: '⚠️ Warning\nThe AI program will not function properly if the settings differ.\nPlease make sure to apply the exact settings as shown above.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -788,12 +788,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'I configured the account',
+                      label: "I've configured the account",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I configured the account',
+                          content: "I've configured the account",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -816,7 +816,7 @@ export const useChatStore = create<ChatStore>()(
               get().addMessageGroup([
                 {
                   id: 'step-6-title',
-                  content: 'Step 6: Request Program Start',
+                  content: 'Step 6: Request Program Activation',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -840,7 +840,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-account-info',
-                  content: '📋 **You can find this information on the Account page:**\n\n• **Account ID** (Account number)\n• **Password**\n• **Server** (Server name)',
+                  content: '📋 You can find this information on the Account page:\n\n• Account Number\n• Password\n• Server',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -848,7 +848,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-security',
-                  content: '🔒 **Rest assured!**\nYour broker login credentials and trading account details are **completely different**.\nAccount details are used **only for AI program integration**.',
+                  content: '🔒 Rest assured!\nYour broker login credentials and trading account details are completely separate.\nThese account details are used only for AI program integration.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -889,7 +889,7 @@ export const useChatStore = create<ChatStore>()(
                   ],
                   buttons: [
                     {
-                      label: 'Request Program Start',
+                      label: 'Request Program Activation',
                       type: 'primary',
                       action: () => {
                         get().submitUserForm('step-6-form');
