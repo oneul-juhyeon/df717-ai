@@ -1265,12 +1265,10 @@ export const useChatStore = create<ChatStore>()(
       },
     }),
     {
-      name: 'cfd_chat_ko',
+      name: 'cfd_chat_ko_v2',
       partialize: (state) => ({
-        messages: state.messages,
         currentStep: state.currentStep,
         userData: state.userData,
-        executedSteps: Array.from(state.executedSteps),
         locale: state.locale,
       }),
       onRehydrateStorage: () => (state) => {

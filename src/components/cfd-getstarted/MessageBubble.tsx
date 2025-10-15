@@ -12,16 +12,20 @@ const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ messa
   const { updateFormField } = storeHook();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-  const handleButtonClick = useCallback((action: () => void) => {
+  const handleButtonClick = useCallback((action: unknown) => {
     if (isButtonDisabled) return;
-    
+    if (typeof action !== 'function') {
+      console.warn('Invalid button action, ignoring:', action);
+      return;
+    }
     setIsButtonDisabled(true);
-    action();
-    
-    // Re-enable button after delay to prevent spam
-    setTimeout(() => {
-      setIsButtonDisabled(false);
-    }, 2000);
+    try {
+      (action as () => void)();
+    } finally {
+      setTimeout(() => {
+        setIsButtonDisabled(false);
+      }, 2000);
+    }
   }, [isButtonDisabled]);
 
   const handleInputChange = (fieldId: string, value: string) => {
@@ -92,16 +96,20 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) 
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleButtonClick = useCallback((action: () => void) => {
+  const handleButtonClick = useCallback((action: unknown) => {
     if (isButtonDisabled) return;
-    
+    if (typeof action !== 'function') {
+      console.warn('Invalid button action, ignoring:', action);
+      return;
+    }
     setIsButtonDisabled(true);
-    action();
-    
-    // Re-enable button after delay to prevent spam
-    setTimeout(() => {
-      setIsButtonDisabled(false);
-    }, 2000);
+    try {
+      (action as () => void)();
+    } finally {
+      setTimeout(() => {
+        setIsButtonDisabled(false);
+      }, 2000);
+    }
   }, [isButtonDisabled]);
 
   useEffect(() => {
