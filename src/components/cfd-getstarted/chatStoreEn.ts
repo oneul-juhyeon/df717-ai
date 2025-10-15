@@ -191,7 +191,7 @@ export const useChatStore = create<ChatStore>()(
               },
               {
                 label: '💰 Start Live',
-                description: 'Begin real investing instantly with your own funds.',
+                description: 'Begin live trading instantly with real funds.',
                 type: 'card',
                 action: () => {
                   get().selectAccountType('live');
