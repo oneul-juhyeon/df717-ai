@@ -678,11 +678,25 @@ export const useChatStore = create<ChatStore>()(
               break;
             }
 
-            case 4:
+            case 4: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const accountTypeTitle = isDemo ? '데모계좌' : '실계좌';
+              const buttonText = isDemo ? '데모계좌 개설 버튼을 눌렀어요' : '실계좌 개설 버튼을 눌렀어요';
+              const stepIntro = isDemo 
+                ? '이제 AI 투자를 체험할 데모계좌를 만들어볼게요!'
+                : '이제 실제 투자를 시작할 실계좌를 만들어볼게요!';
+              const stepInstructions = isDemo
+                ? '📌 **로그인 후 다음 순서로 진행해주세요:**\n**Account** 탭 → **Demo Account** → **"Open New Demo Account"** 버튼 클릭'
+                : '📌 **로그인 후 다음 순서로 진행해주세요:**\n**Account** 탭 → **Live Account** → **"Open New Live Account"** 버튼 클릭';
+              const safetyMessage = isDemo
+                ? '💰 **안심하세요!**\n**데모계좌**는 가상의 돈으로 거래하는 연습계좌예요. 실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.'
+                : '💰 **중요!**\n**실계좌**는 실제 자금으로 거래하는 계좌예요. 투자에 따른 위험을 충분히 이해하고 진행해주세요.';
+
               get().addMessageGroup([
                 {
                   id: 'step-4-title',
-                  content: '4단계: 데모계좌 개설하기',
+                  content: `4단계: ${accountTypeTitle} 개설하기`,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -690,7 +704,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-intro',
-                  content: '이제 AI 투자를 체험할 데모계좌를 만들어볼게요!',
+                  content: stepIntro,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -698,7 +712,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-steps',
-                  content: '📌 **로그인 후 다음 순서로 진행해주세요:**\n**Account** 탭 → **Demo Account** → **"Open New Demo Account"** 버튼 클릭',
+                  content: stepInstructions,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -706,7 +720,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-safety',
-                  content: '💰 **안심하세요!**\n**데모계좌**는 가상의 돈으로 거래하는 연습계좌예요. 실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.',
+                  content: safetyMessage,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -721,12 +735,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: '데모계좌 개설 버튼을 눌렀어요',
+                      label: buttonText,
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '데모계좌 개설 버튼을 눌렀어요',
+                          content: buttonText,
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -744,8 +758,12 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 4, isProcessing: false });
               break;
+            }
 
-            case 5:
+            case 5: {
+              const { userData } = get();
+              const accountType = userData.accountType || 'demo';
+              
               get().addMessageGroup([
                 {
                   id: 'step-5-title',
@@ -770,6 +788,7 @@ export const useChatStore = create<ChatStore>()(
                   type: 'account_settings',
                   timestamp: new Date(),
                   animate: false,
+                  accountType: accountType,
                 },
                 {
                   id: 'step-5-warning',
@@ -811,6 +830,7 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 5, isProcessing: false });
               break;
+            }
 
             case 6:
               get().addMessageGroup([

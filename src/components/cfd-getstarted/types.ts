@@ -8,6 +8,7 @@ export interface Message {
   buttons?: MessageButton[];
   formFields?: FormField[];
   groupId?: string; // For grouping messages that should appear together
+  accountType?: 'demo' | 'live'; // For differentiating account-specific settings
 }
 
 export interface MessageGroup {

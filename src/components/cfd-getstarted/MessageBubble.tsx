@@ -267,12 +267,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) 
 
   // Account settings table - 계좌 설정 테이블
   if (message.type === "account_settings") {
-    const settings = [
+    // Demo accounts show 5 settings, Live accounts show only 3
+    const isDemo = message.accountType === 'demo';
+    const settings = isDemo ? [
       { label: "Platform", value: "MetaTrader 5" },
       { label: "Account Type", value: "Raw Spread" },
       { label: "Currency", value: "USD" },
       { label: "Leverage", value: "1:1000" },
       { label: "Initial Deposit", value: "25000" }
+    ] : [
+      { label: "Platform", value: "MetaTrader 5" },
+      { label: "Account Type", value: "Raw Spread" },
+      { label: "Currency", value: "USD" }
     ];
 
     return (

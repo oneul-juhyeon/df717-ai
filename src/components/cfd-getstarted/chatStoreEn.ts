@@ -678,11 +678,26 @@ export const useChatStore = create<ChatStore>()(
               break;
             }
 
-            case 4:
+            case 4: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const accountTypeTitle = isDemo ? 'Demo Account' : 'Live Account';
+              const accountTypeText = isDemo ? 'demo' : 'live';
+              const buttonText = isDemo ? "I've clicked the Demo Account button" : "I've clicked the Live Account button";
+              const stepIntro = isDemo 
+                ? 'Now let\'s create a demo account to experience AI investing!'
+                : 'Now let\'s create a live account to start real investing!';
+              const stepInstructions = isDemo
+                ? '📌 **After logging in, follow these steps:**\nClick **Account** tab → **Demo Account** → **"Open New Demo Account"** button'
+                : '📌 **After logging in, follow these steps:**\nClick **Account** tab → **Live Account** → **"Open New Live Account"** button';
+              const safetyMessage = isDemo
+                ? '💰 No worries!\nA demo account uses virtual funds for practice trading. No real money is involved, so feel free to explore with confidence.'
+                : '💰 Important!\nA live account uses real funds for actual trading. Please ensure you understand the risks involved.';
+
               get().addMessageGroup([
                 {
                   id: 'step-4-title',
-                  content: 'Step 4: Open Demo Account',
+                  content: `Step 4: Open ${accountTypeTitle}`,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -690,7 +705,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-intro',
-                  content: 'Now let\'s create a demo account to experience AI investing!',
+                  content: stepIntro,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -698,7 +713,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-steps',
-                  content: '📌 **After logging in, follow these steps:**\nClick **Account** tab → **Demo Account** → **"Open New Demo Account"** button',
+                  content: stepInstructions,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -706,7 +721,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-safety',
-                  content: '💰 No worries!\nA demo account uses virtual funds for practice trading. No real money is involved, so feel free to explore with confidence.',
+                  content: safetyMessage,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -721,12 +736,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: "I've clicked the Live Account button",
+                      label: buttonText,
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: "I've clicked the Live Account button",
+                          content: buttonText,
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -744,8 +759,12 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 4, isProcessing: false });
               break;
+            }
 
-            case 5:
+            case 5: {
+              const { userData } = get();
+              const accountType = userData.accountType || 'demo';
+              
               get().addMessageGroup([
                 {
                   id: 'step-5-title',
@@ -770,6 +789,7 @@ export const useChatStore = create<ChatStore>()(
                   type: 'account_settings',
                   timestamp: new Date(),
                   animate: false,
+                  accountType: accountType,
                 },
                 {
                   id: 'step-5-warning',
@@ -811,6 +831,7 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 5, isProcessing: false });
               break;
+            }
 
             case 6:
               get().addMessageGroup([
