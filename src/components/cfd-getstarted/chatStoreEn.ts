@@ -840,7 +840,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-account-info',
-                  content: '📋 You can find this information on the Account page:\n\n• Account Number\n• Password\n• Server',
+                  content: '📋 You can find the following information on the Account page:\n• Account Number\n• Password\n• Server',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
