@@ -504,12 +504,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'I completed the application',
+                      label: 'Account application completed',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I completed the application',
+                          content: 'Account application completed',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
