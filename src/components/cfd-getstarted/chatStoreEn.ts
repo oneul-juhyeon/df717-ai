@@ -270,7 +270,7 @@ export const useChatStore = create<ChatStore>()(
               id: 'referrerName',
               label: 'Referred by (Optional)',
               type: 'text',
-              placeholder: 'Enter referrer name',
+              placeholder: 'Enter referral name',
               required: false,
               value: ''
             }
