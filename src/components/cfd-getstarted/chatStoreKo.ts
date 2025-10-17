@@ -681,13 +681,6 @@ export const useChatStore = create<ChatStore>()(
                             get().proceedToStep(2);
                           }, 800);
                         }
-                      },
-                      {
-                        label: '이미 계좌가 있으신가요?',
-                        type: 'secondary',
-                        action: () => {
-                          get().skipToAccountForm();
-                        }
                       }
                     ]
                   }
