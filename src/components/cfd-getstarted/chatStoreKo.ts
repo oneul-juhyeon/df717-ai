@@ -587,6 +587,8 @@ export const useChatStore = create<ChatStore>()(
             case 1: {
               const { userData } = get();
               const isDemo = userData.accountType === 'demo';
+              const brokerName = isDemo ? 'ICMarkets' : 'Vantage';
+              const accountTypeText = isDemo ? '데모' : '실거래';
               const brokerUrl = isDemo 
                 ? 'https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293'
                 : 'https://www.vantagemarkets.com/ko/open-live-account/?affid=NjEwNDAyODc0';
@@ -602,22 +604,30 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-1-info',
-                  content: `💡 **브로커란?**\n주식거래를 하기 위해 증권사에 계좌를 개설하거나, 코인거래를 하기 위해 거래소에 가입하는 것처럼, CFD거래를 위해서도 이런 중개 플랫폼이 필요해요. 그 중에서도 Vantage는 전 세계 트레이더들에게 신뢰받고 있는 글로벌 브로커예요.\n\n아래 정보를 정확히 입력해주세요:\n\n✓ **거주지**: Republic of Korea (대한민국)\n✓ **이메일 주소**: 실제 사용하는 이메일 입력\n✓ **비밀번호**: 8~16자, 대소문자/숫자/특수문자 조합 필수\n✓ **계정 유형 선택**: 개인 / 회사 중 해당 항목 선택\n✓ **약관 동의** 체크박스 확인 및 선택\n\n입력 완료 후 **라이브 계정 오픈하기** 버튼을 클릭해주세요.`,
+                  content: `**💡 브로커란?**\n주식거래를 하기 위해 증권사에 계좌를 개설하거나, 코인거래를 하기 위해 거래소에 가입하는 것처럼, CFD거래를 위해서도 이런 중개 플랫폼이 필요해요.\n그 중에서도 **${brokerName}**는 전 세계 트레이더들에게 신뢰받고 있는 **Tier-1 브로커** 중 하나예요.`,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
+                  id: 'step-1-critical-warning',
+                  content: "⚠️ **중요!**\n이름과 성은 꼭 **영어로** 작성해주세요.\n예시) 김자동 → First Name: **Jadong**, Last Name: **Kim**",
+                  sender: 'ai',
+                  type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: true,
+                },
+                {
                   id: 'step-1-action',
-                  content: '',
+                  content: '계좌 신청 페이지에서 필요한 정보를 정확히 입력하고 완료해주세요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                   buttons: [
                     {
-                      label: 'Vantage 실계좌 신청 홈페이지 열기 →',
+                      label: `${brokerName} ${accountTypeText}계좌 신청 홈페이지 열기 →`,
                       type: 'link',
                       action: () => {
                         window.open(brokerUrl, '_blank');
@@ -660,10 +670,15 @@ export const useChatStore = create<ChatStore>()(
             }
 
             case 2: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const brokerName = isDemo ? 'ICMarkets' : 'Vantage';
+              const clientAreaText = isDemo ? 'Secure Client Area' : 'Set Password';
+
               get().addMessageGroup([
                 {
                   id: 'step-2-title',
-                  content: '2단계: 이메일 인증',
+                  content: '2단계: 이메일 인증 및 비밀번호 설정',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -671,7 +686,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-intro',
-                  content: '잘하셨어요!\n\n이제 추가 본인 인증 절차를 진행해 볼게요.',
+                  content: '잘하셨어요! 이제 이메일을 확인해주세요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -679,7 +694,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-email',
-                  content: `1. 입력한 이메일로 **OTP 보내기** 버튼을 클릭하세요.\n\n2. 받은메일함에서 **인증 코드**를 확인하세요.\n\n3. 해당 이메일 인증 코드를 입력 후 **제출**버튼을 눌러주세요.`,
+                  content: `📧 메일에서 **"${clientAreaText}"** 버튼을 클릭하면\n비밀번호 설정 페이지로 이동해요.\n\n비밀번호를 설정하시면 **계좌 신청이 완료**됩니다!`,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -687,7 +702,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-2-tip',
-                  content: `💡 **Tip!**\n받은메일함에 안 보일 경우 **스팸메일함**을 확인해주세요.`,
+                  content: `💡 **Tip!**\n메일이 안 보이나요?\n**스팸함**도 확인해보세요. **${brokerName}** 메일이 가끔 스팸으로 분류될 수 있어요.`,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -702,12 +717,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: true,
                   buttons: [
                     {
-                      label: '이메일 인증을 완료했어요',
+                      label: '비밀번호 설정을 완료했어요',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '이메일 인증을 완료했어요',
+                          content: '비밀번호 설정을 완료했어요',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -728,10 +743,17 @@ export const useChatStore = create<ChatStore>()(
             }
 
             case 3: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const brokerName = isDemo ? 'ICMarkets' : 'Vantage';
+              const loginUrl = isDemo 
+                ? 'https://secure.icmarkets.com/Account/LogOn'
+                : 'https://trader.vantagemarkets.com/';
+
               get().addMessageGroup([
                 {
                   id: 'step-3-title',
-                  content: '3단계: 휴대폰 인증',
+                  content: '3단계: 로그인하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -739,25 +761,26 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-3-intro',
-                  content: '본인 확인을 위해 휴대폰 인증을 진행합니다.',
+                  content: `좋아요! 이제 다시 ${brokerName}에 로그인해볼게요.`,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
+                  buttons: [
+                    {
+                      label: `${brokerName} 로그인 페이지로 이동 →`,
+                      type: 'link',
+                      action: () => {
+                        window.open(loginUrl, '_blank');
+                      }
+                    }
+                  ]
                 },
                 {
                   id: 'step-3-info',
-                  content: '1. 국가코드(한국 +82)를 선택한 후 전화번호를 입력하세요.\n\n2. **OTP 보내기** 버튼을 클릭하세요.\n\n3. 문자메시지로 받은 인증 코드를 입력한 후 **제출**버튼을 눌러주세요.',
+                  content: '🔐 방금 가입하신 **이메일과 비밀번호**로 로그인해주세요.',
                   sender: 'ai',
                   type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-3-tip',
-                  content: '💡 **Tip!**\n문자메시지가 안 올 경우 **차단된(스팸) 메시지**를 확인해주세요.',
-                  sender: 'ai',
-                  type: 'warning_box',
                   timestamp: new Date(),
                   animate: false,
                 },
@@ -770,12 +793,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: '휴대폰 인증을 완료했어요',
+                      label: '로그인했어요',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '휴대폰 인증을 완료했어요',
+                          content: '로그인했어요',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -796,10 +819,24 @@ export const useChatStore = create<ChatStore>()(
             }
 
             case 4: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const accountTypeTitle = isDemo ? '데모계좌' : '실계좌';
+              const buttonText = isDemo ? '데모계좌 개설 버튼을 눌렀어요' : '실계좌 개설 버튼을 눌렀어요';
+              const stepIntro = isDemo 
+                ? '이제 AI 투자를 체험할 데모계좌를 만들어볼게요!'
+                : '이제 실제 투자를 시작할 실계좌를 만들어볼게요!';
+              const stepInstructions = isDemo
+                ? '📌 **로그인 후 다음 순서로 진행해주세요:**\n**Account** 탭 → **Demo Account** → **"Open New Demo Account"** 버튼 클릭'
+                : '📌 **로그인 후 다음 순서로 진행해주세요:**\n**Account** 탭 → **Live Account** → **"Open New Live Account"** 버튼 클릭';
+              const safetyMessage = isDemo
+                ? '💰 **안심하세요!**\n**데모계좌**는 가상의 돈으로 거래하는 연습계좌예요. 실제 돈이 들어가지 않으니 부담없이 체험하실 수 있어요.'
+                : '💰 **중요!**\n**실계좌**는 실제 자금으로 거래하는 계좌예요. 투자에 따른 위험을 충분히 이해하고 진행해주세요.';
+
               get().addMessageGroup([
                 {
                   id: 'step-4-title',
-                  content: '4단계: 개인정보 입력',
+                  content: `4단계: ${accountTypeTitle} 개설하기`,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -807,23 +844,23 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-4-intro',
-                  content: '아래 정보를 입력해주세요:',
+                  content: stepIntro,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-4-info',
-                  content: '✓ **이름, 성, 성별** (여권 기준 영문)\n✓ **생년월일** (일/월/년 순서)\n✓ **주요 거주국가, 국적**: 대한민국',
+                  id: 'step-4-steps',
+                  content: stepInstructions,
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-4-warning',
-                  content: '⚠️ **중요!**\n**모든 정보는 여권 기준으로 작성**해야 해요.\n잘못된 영문 이름 입력시 KYC 본인 인증\n및 출금이 지연될 수 있습니다.\n예시) 김자동 → First Name: Jadong, Last Name: Kim\n\n**계속** 버튼을 클릭하세요.',
+                  id: 'step-4-safety',
+                  content: safetyMessage,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -838,12 +875,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: '개인정보 입력을 완료했어요',
+                      label: buttonText,
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '개인정보 입력을 완료했어요',
+                          content: buttonText,
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -864,10 +901,13 @@ export const useChatStore = create<ChatStore>()(
             }
 
             case 5: {
+              const { userData } = get();
+              const accountType = userData.accountType || 'demo';
+              
               get().addMessageGroup([
                 {
                   id: 'step-5-title',
-                  content: '5단계: 신분 인증 (KYC Verification)',
+                  content: '5단계: 계좌 설정하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -875,39 +915,24 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-5-intro',
-                  content: '실거래 기능을 사용하기 위해 신분 인증을 진행합니다.',
+                  content: '아래 설정과 정확히 동일하게 계좌를 개설해주세요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-5-what',
-                  content: '💡 **신분 인증이란?**\n신분 인증을 통해 **보증금, 출금, 입금 한도**가 해제됩니다.',
+                  id: 'step-5-settings',
+                  content: '',
                   sender: 'ai',
-                  type: 'info_box',
+                  type: 'account_settings',
                   timestamp: new Date(),
                   animate: false,
-                },
-                {
-                  id: 'step-5-docs',
-                  content: '📋 **인증 가능한 신분증 유형**\n- 운전면허증\n- ID 카드/주민등록증\n- 거주 카드/외국인 등록증\n- 여권',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-5-steps',
-                  content: '1. 개인정보 처리방침 및 동의 항목을 읽고 확인합니다.\n\n2. "내 개인 데이터 처리에 동의합니다" 체크 후 **계속** 버튼을 클릭하세요.\n\n3. 이름, 성, 국적, 생년월일을 입력 후 계속 버튼을 클릭하세요. (이미 입력한 경우 자동 표시 됩니다.)\n\n4. 인증할 신분증의 유형을 선택한 후 계속 버튼을 클릭하세요.\n\n5. 신분증의 **앞면/뒷면 사진 업로드한 후 계속 버튼을 클릭하세요. (여권은 메인 정보 페이지를 올리면 됩니다.)',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
+                  accountType: accountType,
                 },
                 {
                   id: 'step-5-warning',
-                  content: '⚠️ **주의!**\n**정보 불일치, 흐릿한 사진, 조명 반사** 등은 인증 실패 원인이 될 수 있으니 주의해주세요.',
+                  content: '⚠️ **주의!**\n\n계좌설정이 다르면 **AI 프로그램이 작동하지 않아요**.\n꼭 위의 설정대로 만들어주세요!',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -922,12 +947,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: '신원 확인 서류를 업로드했어요',
+                      label: '설정대로 계좌를 개설했어요',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '신원 확인 서류를 업로드했어요',
+                          content: '설정대로 계좌를 개설했어요',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -947,11 +972,19 @@ export const useChatStore = create<ChatStore>()(
               break;
             }
 
-            case 6: {
+            case 6:
               get().addMessageGroup([
                 {
                   id: 'step-6-title',
-                  content: '6단계: 거래 계좌 개설',
+                  content: '6단계: 프로그램 시작 요청하기',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-6-celebration',
+                  content: '축하해요! 데모계좌 개설이 완료되었어요🎉',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -959,52 +992,67 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-intro',
-                  content: '거래 시작 준비가 거의 완료되었습니다.\n\n보증금, 출금, 입금 한도가 해제된 **계정 설정**을 진행할 거에요.',
+                  content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-6-settings',
-                  content: '아래 항목을 정확히 선택해주세요:\n\n**거래 플랫폼**: 메타트레이더 5 (첫 계좌 개설 시에는 변경 불가)\n\n**계좌 유형**: RAW ECN\n\n**계좌 통화**: USD\n\n**V-Wallet 연결**: 체크 (암호화폐 입출금 사용 가능)\n\n**제출** 후 설정 완료 메시지를 확인하세요.',
+                  id: 'step-6-account-info',
+                  content: '📋 **Account 페이지에서 다음 정보를 확인할 수 있어요:**\n\n• **Account ID** (계좌번호)\n• **Password** (비밀번호)\n• **Server** (서버명)',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-6-note',
-                  content: '💡 **참고!**\n최초 생성되는 실거래 계좌는 **메타트레이더 5(MT5) 플랫폼**으로 자동 설정됩니다.\n이후 **MT4 계좌, Copy Trading 전용 계좌**를 추가 개설할 수 있습니다.',
+                  id: 'step-6-security',
+                  content: '🔒 **안심하세요!**\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 **완전히 다른 거**예요.\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-6-action',
+                  id: 'step-6-form',
                   content: '',
                   sender: 'ai',
-                  type: 'action_button',
+                  type: 'form',
                   timestamp: new Date(),
                   animate: false,
+                  formFields: [
+                    {
+                      id: 'accountId',
+                      label: 'Account ID',
+                      type: 'tel',
+                      placeholder: '계좌번호를 입력하세요',
+                      required: true,
+                      value: ''
+                    },
+                    {
+                      id: 'password',
+                      label: 'Password',
+                      type: 'text',
+                      placeholder: '계좌 비밀번호를 입력하세요',
+                      required: true,
+                      value: ''
+                    },
+                    {
+                      id: 'server',
+                      label: 'Server',
+                      type: 'text',
+                      placeholder: '서버명을 입력하세요',
+                      required: true,
+                      value: ''
+                    }
+                  ],
                   buttons: [
                     {
-                      label: '거래 계좌 개설을 완료했어요',
+                      label: '프로그램 시작 요청하기',
                       type: 'primary',
                       action: () => {
-                        get().addMessage({
-                          id: `user-response-${Date.now()}`,
-                          content: '거래 계좌 개설을 완료했어요',
-                          sender: 'user',
-                          type: 'text',
-                          timestamp: new Date(),
-                          animate: false
-                        });
-                        
-                        setTimeout(() => {
-                          get().proceedToStep(7);
-                        }, 800);
+                        get().submitUserForm('step-6-form');
                       }
                     }
                   ]
@@ -1013,13 +1061,12 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 6, isProcessing: false });
               break;
-            }
 
-            case 7: {
+            case 7:
               get().addMessageGroup([
                 {
                   id: 'step-7-title',
-                  content: '7단계: Vantage 앱 설치',
+                  content: '7단계: MetaTrader 5 앱 설치하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1027,7 +1074,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-intro',
-                  content: 'Copy Trading을 진행하기 위해 Vantage 앱이 필요해요.',
+                  content: '그동안 투자 결과를 실시간으로 확인할 수 있는 앱을 설치해볼게요!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1035,17 +1082,9 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-info',
-                  content: '📱 앱스토어 또는 구글 플레이에서 **"Vantage"** 앱을 검색 후 설치합니다.\n\n설치 완료 후 앱을 실행해주세요.',
+                  content: '💡 **MetaTrader 5란?**\n쉽게 말해서 토스나 카카오페이라고 보면 돼요. 하나의 앱에 여러 은행 계좌를 연결해서 한 곳에서 송금하고 결제할 수 있는 것처럼, MetaTrader 5는 여러 브로커의 계좌를 한 앱에서 연결해 관리하고 실시간으로 확인할 수 있어요.',
                   sender: 'ai',
                   type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-7-warning',
-                  content: '⚠️ **중요!**\n**반드시 앱으로 진행**되어야 합니다.',
-                  sender: 'ai',
-                  type: 'warning_box',
                   timestamp: new Date(),
                   animate: false,
                 },
@@ -1058,17 +1097,17 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'Vantage 안드로이드 앱 다운로드 →',
+                      label: '안드로이드 앱 다운로드 →',
                       type: 'link',
                       action: () => {
-                        window.open('https://play.google.com/store/apps/details?id=cn.com.vau', '_blank');
+                        window.open('https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5&hl=ko', '_blank');
                       }
                     },
                     {
-                      label: 'Vantage 아이폰 앱 다운로드 →',
+                      label: '아이폰 앱 다운로드 →',
                       type: 'link',
                       action: () => {
-                        window.open('https://apps.apple.com/kr/app/vantage-all-in-one-trading-app/id1457929724', '_blank');
+                        window.open('https://apps.apple.com/kr/app/metatrader-5/id413251709', '_blank');
                       }
                     }
                   ]
@@ -1105,13 +1144,13 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 7, isProcessing: false });
               break;
-            }
 
-            case 8: {
+            case 8:
+              const { userData } = get();
               get().addMessageGroup([
                 {
                   id: 'step-8-title',
-                  content: '8단계: 로그인하기',
+                  content: '8단계: MetaTrader 5 로그인하기',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1119,17 +1158,33 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-intro',
-                  content: '좋아요! 이제 Vantage에 로그인해볼게요.',
+                  content: '설치한 MetaTrader 5 앱에 방금 생성한 계좌로 로그인해볼게요.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
                 {
-                  id: 'step-8-info',
-                  content: '🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.',
+                  id: 'step-8-instructions',
+                  content: '📱 **MetaTrader 5 앱에서 로그인 방법:**\n\n1. 우측 하단 ⚙️ **세팅** 클릭\n2. **새 계좌** 클릭\n3. **기존 계좌로 로그인** 클릭\n4. 서버 검색해서 선택\n5. 로그인, 비밀번호 입력 후 **로그인** 클릭',
                   sender: 'ai',
                   type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-8-userdata',
+                  content: `📋 **입력할 정보** (앞서 생성한 계좌 정보):\n\n• **서버:** ${userData.server || '[서버 정보 없음]'}\n• **로그인 (계좌번호):** ${userData.accountId || '[계좌번호 없음]'}\n• **비밀번호:** ${userData.password || '[비밀번호 없음]'}`,
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-8-tip',
+                  content: '💡 **Tip!**\n서버 이름이 정확히 보이지 않으면 검색창에 **"ICMarkets"**라고 입력해서 찾아보세요.\n\n⚠️ 로그인이 안 된다면 계좌 활성화까지 **몇 분 정도 걸릴 수 있어요**.',
+                  sender: 'ai',
+                  type: 'warning_box',
                   timestamp: new Date(),
                   animate: false,
                 },
@@ -1142,12 +1197,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: '로그인했어요',
+                      label: '로그인을 완료했어요',
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: '로그인했어요',
+                          content: '로그인을 완료했어요',
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -1165,227 +1220,98 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 8, isProcessing: false });
               break;
-            }
 
-            case 9: {
+            case 9:
               get().addMessageGroup([
                 {
                   id: 'step-9-title',
-                  content: '9단계: Copy Trading 계좌 개설',
+                  content: '✨ 모니터링 시작!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
                 },
+                {
+                  id: 'step-9-success',
+                   content: '✅ **모든 설정이 완료되었습니다!**\n\n• **데모계좌 개설** 완료\n• **AI 프로그램 연동 신청** 완료\n• **모니터링 앱 설치** 완료',
+                   sender: 'ai',
+                   type: 'success_box',
+                   timestamp: new Date(),
+                   animate: false,
+                 },
                 {
                   id: 'step-9-intro',
-                  content: '카피 트레이딩을 사용하려면 **별도의 전용 계좌**를 먼저 개설해야 합니다.',
+                  content: '축하합니다! 이제 실시간으로 거래 내역과 수익률을 확인하실 수 있어요.\n프로그램 운용이 시작되면 매니저를 통해 전달해드릴게요!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
                   animate: false,
-                },
-                {
-                  id: 'step-9-note',
-                  content: '💡 **참고!**\n계좌는 일반 거래계좌와 별도로 **카피트레이딩 전용**입니다.',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-9-steps',
-                  content: '📱 **Vantage 앱에서:**\n1. 상단의 Live 00000000 계좌번호 클릭\n2. 계정관리 섹션 하단의 "실계좌 추가" 클릭\n3. 동명계좌 개설 페이지에서 아래 설정 확인',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-9-settings',
-                  content: '📋 **계좌 설정:**\n- **계정 플랫폼**: Copy Trading\n- **계정 유형**: ECN\n- **계정 통화**: USD\n\n개인선언문 동의 후 **제출** 버튼을 클릭하세요.',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-9-action',
-                  content: '',
-                  sender: 'ai',
-                  type: 'action_button',
-                  timestamp: new Date(),
-                  animate: false,
-                  buttons: [
-                    {
-                      label: 'Copy Trading 계좌를 개설했어요',
-                      type: 'primary',
-                      action: () => {
-                        get().addMessage({
-                          id: `user-response-${Date.now()}`,
-                          content: 'Copy Trading 계좌를 개설했어요',
-                          sender: 'user',
-                          type: 'text',
-                          timestamp: new Date(),
-                          animate: false
-                        });
-                        
-                        setTimeout(() => {
-                          get().proceedToStep(10);
-                        }, 800);
-                      }
-                    }
-                  ]
                 }
-              ]);
-              
-              set({ currentStep: 9, isProcessing: false });
-              break;
-            }
-
-            case 10: {
-              get().addMessageGroup([
-                {
-                  id: 'step-10-title',
-                  content: '10단계: 투자금 입금',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-10-intro',
-                  content: '카피트레이딩을 시작하려면 계좌에 자금을 먼저 입금해야 합니다.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-10-minimum',
-                  content: '💰 **DF717 최소 투자금**: 3,000.00 USD 이상',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-10-warning',
-                  content: '⚠️ **입금 전 확인!**\n반드시 **"Copy Trading 계좌"**를 선택해주세요.',
-                  sender: 'ai',
-                  type: 'warning_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-10-steps',
-                  content: '📱 **Vantage 앱에서:**\n1. 홈 화면 "입금" 버튼 클릭\n2. **Copy Trading 계좌** 선택 확인\n3. 입금 금액 입력 후 계속 버튼 클릭\n4. 입금 방법 선택 (신용카드, 로컬 은행 송금, 암호화폐 등)\n5. **제출** 버튼 클릭',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-10-action',
-                  content: '',
-                  sender: 'ai',
-                  type: 'action_button',
-                  timestamp: new Date(),
-                  animate: false,
-                  buttons: [
-                    {
-                      label: '입금을 완료했어요',
-                      type: 'primary',
-                      action: () => {
-                        get().addMessage({
-                          id: `user-response-${Date.now()}`,
-                          content: '입금을 완료했어요',
-                          sender: 'user',
-                          type: 'text',
-                          timestamp: new Date(),
-                          animate: false
-                        });
-                        
-                        setTimeout(() => {
-                          get().proceedToStep(11);
-                        }, 800);
-                      }
-                    }
-                  ]
-                }
-              ]);
-              
-              set({ currentStep: 10, isProcessing: false });
-              break;
-            }
-
-            case 11: {
-              get().addMessageGroup([
-                {
-                  id: 'step-11-title',
-                  content: '11단계: AI 전략 선택 및 Copy Trading 설정',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-11-intro',
-                  content: '마지막 단계예요! AI 전략을 선택하고 카피 설정을 완료해볼게요.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-11-search',
-                  content: '🔍 **전략 검색:**\nVantage 앱 하단의 **"발견"** 탭\n→ 상단의 "시그널" 클릭\n→ 검색창에 **"DestinyFinance"** 입력\n→ **진입**을 클릭하세요.\n→ **카피** 버튼을 클릭하세요.',
-                  sender: 'ai',
-                  type: 'info_box',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-11-settings',
-                  content: '⚙️ **카피트레이딩 설정:**\n\n**복사 모드**: 등가 사용 증거금\n- 마스터와의 잔액에 비례하여 랏 사이즈 자동 설정\n\n**투자 금액**: 입금한 금액 입력\n- 예시: $3,000 입력 시 잔고+보너스=3,000 산출\n\n**위험 관리: 95%로 변경**\n- 신호제공자와 최대한 비슷한 수준으로 따라가기 위한 설정\n- 총 투자금 및 수익, 출금 등의 합산으로 매월 계산되는 잔고의 95%\n\n**익절**: 비활성화 유지\n- 신호제공자가 주문을 청산하기까지 계속 따라감\n\n**어시스턴트**: 활성화 유지\n- 최소 카피 랏수보다 높게 하여 거래 활동 극대화\n\n**포지션 오더**: 활성화 변경\n- 카피 시작과 동시에 현재 시장가 기준으로 주문 진입\n\n**제출** 버튼을 클릭하세요.',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-11-action',
-                  content: '',
-                  sender: 'ai',
-                  type: 'action_button',
-                  timestamp: new Date(),
-                  animate: false,
-                  buttons: [
-                    {
-                      label: 'Copy Trading 시작하기',
-                      type: 'primary',
-                      action: () => {
-                        get().addMessage({
-                          id: `user-response-${Date.now()}`,
-                          content: 'Copy Trading 시작하기',
-                          sender: 'user',
-                          type: 'text',
-                          timestamp: new Date(),
-                          animate: false
-                        });
-                        
-                        setTimeout(() => {
-                          get().showCompletionMessage();
-                        }, 800);
-                      }
-                    }
-                  ]
-                }
-              ]);
-              
-              set({ currentStep: 11, isProcessing: false });
-              break;
-            }
+                ]);
+                
+                setTimeout(() => {
+                  set(state => ({
+                    messages: [...state.messages, {
+                      id: 'step-9-additional-info',
+                      content: '더 자세한 정보는 아래 버튼을 통해 확인하실 수 있어요.',
+                      sender: 'ai',
+                      type: 'text',
+                      timestamp: new Date(),
+                      animate: true,
+                    }]
+                  }));
+                  
+                  setTimeout(() => {
+                    set(state => ({
+                      messages: [...state.messages, {
+                        id: 'final-buttons',
+                        content: '',
+                        sender: 'ai',
+                        type: 'final_cards',
+                        timestamp: new Date(),
+                        animate: false,
+                        buttons: [
+                          {
+                            label: '🏠 DF717 소개',
+                            description: '우리가 누구인지 알아보기',
+                            type: 'card',
+                            action: () => {
+                              window.open('https://www.df717.ai/', '_blank');
+                            }
+                          },
+                          {
+                            label: '📊 실시간 수익률',
+                            description: '8.3년 검증된 실계좌',
+                            type: 'card',
+                            action: () => {
+                              window.open('https://aiwow.notion.site/DF717-LIVE-ACCOUNT-20dc67e3da6880dfbc4cefa57ae38bf7', '_blank');
+                            }
+                          },
+                          {
+                            label: '📈 백테스트 결과',
+                            description: '20년 검증, 65.9% 수익률',
+                            type: 'card',
+                            action: () => {
+                              window.open('https://aiwow.notion.site/DF717-Backtest-20fc67e3da68809780c0f8302bfc12bf', '_blank');
+                            }
+                          },
+                          {
+                            label: '🔄 처음으로',
+                            description: '첫 화면으로 돌아가기',
+                            type: 'card',
+                            action: () => {
+                              get().resetChat();
+                              get().initializeChat();
+                            }
+                          }
+                        ]
+                      }]
+                    }));
+                  }, 400);
+                }, 800);
+                
+                set({ currentStep: 9, isProcessing: false });
+                break;
 
             default:
               set({ isProcessing: false });
