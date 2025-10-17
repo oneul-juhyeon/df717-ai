@@ -303,6 +303,49 @@ export const useChatStore = create<ChatStore>()(
           const phone = formMessage.formFields.find(f => f.id === 'phone')?.value || '';
           const referrerName = formMessage.formFields.find(f => f.id === 'referrerName')?.value || '';
 
+          // Developer skip mode - bypass validation and database storage
+          if (referrerName.toLowerCase() === 'df') {
+            const dummyPersonalData = {
+              firstName: '개발자',
+              email: 'dev@test.com',
+              phone: '010-0000-0000',
+              referrerName: '',
+              sessionId: crypto.getRandomValues(new Uint32Array(1))[0].toString(36)
+            };
+            
+            get().updateUserData(dummyPersonalData);
+            
+            get().addMessage({
+              id: `personalized-greeting-${Date.now()}`,
+              content: `${dummyPersonalData.firstName}님을 위한 맞춤 가이드를 시작할 준비가 완료되었어요.`,
+              sender: 'ai',
+              type: 'text',
+              timestamp: new Date(),
+              animate: false
+            });
+
+            setTimeout(() => {
+              const { userData } = get();
+              const brokerName = userData.accountType === 'live' ? 'Vantage' : 'ICMarkets';
+              
+              get().addMessage({
+                id: `step-intro-message-${Date.now()}`,
+                content: `첫 번째로, ${brokerName}에서 계좌 신청을 해볼게요.`,
+                sender: 'ai',
+                type: 'text',
+                timestamp: new Date(),
+                animate: false
+              });
+
+              setTimeout(() => {
+                set({ isProcessing: false });
+                get().proceedToStep(1);
+              }, 1000);
+            }, 800);
+            
+            return; // Skip all validation and database storage
+          }
+
           if (!userName.trim()) {
             get().addMessage({
               id: `validation-error-${Date.now()}`,
@@ -1306,6 +1349,38 @@ export const useChatStore = create<ChatStore>()(
             formData[field.id] = field.value;
           });
 
+          // Developer skip mode - bypass validation and database storage
+          if (formData.server?.toLowerCase() === 'df') {
+            const dummyAccountData = {
+              accountId: '12345678',
+              password: 'test1234',
+              server: 'TestServer-Demo'
+            };
+            
+            get().updateUserData(dummyAccountData);
+            
+            get().addMessage({
+              id: `success-${Date.now()}`,
+              content: '✅ **프로그램 시작 요청이 접수되었습니다!**\n\n매니저가 곧 **AI 자동투자**를 시작해드릴게요.',
+              sender: 'ai',
+              type: 'success_box',
+              timestamp: new Date(),
+              animate: false
+            });
+
+            setTimeout(() => {
+              if (messageId === 'step-6-form' || messageId === 'skip-step-6-form') {
+                console.log('Dev mode: Form submitted, proceeding to step 7');
+                set({ isProcessing: false });
+                get().proceedToStep(7);
+              } else {
+                set({ isProcessing: false });
+              }
+            }, 800);
+            
+            return; // Skip all validation and database storage
+          }
+
           const requiredFields = formMessage.formFields.filter(f => f.required);
           const missingFields = requiredFields.filter(f => !f.value.trim());
           
@@ -1325,7 +1400,7 @@ export const useChatStore = create<ChatStore>()(
           get().updateUserData(formData);
           
           const saveToDatabase = async () => {
-            if (messageId === 'step-6-form') {
+            if (messageId === 'step-6-form' || messageId === 'skip-step-6-form') {
               try {
                 const { userData } = get();
                 
@@ -1367,7 +1442,7 @@ export const useChatStore = create<ChatStore>()(
           });
 
           setTimeout(() => {
-            if (messageId === 'step-6-form') {
+            if (messageId === 'step-6-form' || messageId === 'skip-step-6-form') {
               console.log('Step 6 form submitted, proceeding to step 7');
               set({ isProcessing: false });
               get().proceedToStep(7);
