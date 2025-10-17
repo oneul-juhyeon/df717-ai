@@ -332,7 +332,7 @@ export const useChatStore = create<ChatStore>()(
 
             setTimeout(() => {
               const { userData } = get();
-              const brokerName = userData.accountType === 'live' ? 'Vantage' : 'ICMarketas';
+              const brokerName = userData.accountType === 'live' ? 'Vantage' : 'IC Markets';
               
               get().addMessage({
                 id: `step-intro-message-${Date.now()}`,
@@ -455,7 +455,7 @@ export const useChatStore = create<ChatStore>()(
 
             setTimeout(() => {
               const { userData } = get();
-              const brokerName = userData.accountType === 'live' ? 'Vantage' : 'ICMarketas';
+              const brokerName = userData.accountType === 'live' ? 'Vantage' : 'IC Markets';
               
               get().addMessage({
                 id: `step-intro-message-${Date.now()}`,
@@ -525,7 +525,7 @@ export const useChatStore = create<ChatStore>()(
             case 1: {
               const { userData } = get();
               const isDemo = userData.accountType === 'demo';
-              const brokerName = isDemo ? 'ICMarketas' : 'Vantage';
+              const brokerName = isDemo ? 'IC Markets' : 'Vantage';
               const accountTypeText = isDemo ? '데모' : '실거래';
               const brokerUrl = isDemo 
                 ? 'https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293'
@@ -694,7 +694,7 @@ export const useChatStore = create<ChatStore>()(
             case 2: {
               const { userData } = get();
               const isDemo = userData.accountType === 'demo';
-              const brokerName = isDemo ? 'ICMarketas' : 'Vantage';
+              const brokerName = isDemo ? 'IC Markets' : 'Vantage';
               const clientAreaText = isDemo ? 'Secure Client Area' : 'Set Password';
 
               if (isDemo) {
@@ -837,7 +837,7 @@ export const useChatStore = create<ChatStore>()(
 
               if (isDemo) {
                 // Demo flow - existing step 3 (Login)
-                const brokerName = 'ICMarketas';
+                const brokerName = 'IC Markets';
                 const loginUrl = 'https://secure.icmarkets.com/Account/LogOn';
                 get().addMessageGroup([
                   {
