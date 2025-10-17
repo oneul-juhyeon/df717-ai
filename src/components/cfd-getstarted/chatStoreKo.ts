@@ -850,7 +850,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: 'step-3-intro',
-                    content: `좋아요! 이제 다시 ${brokerName}에 로그인해볼게요.`,
+                    content: `완벽해요! 이제 ${brokerName}에 로그인해볼게요.`,
                     sender: 'ai',
                     type: 'text',
                     timestamp: new Date(),
