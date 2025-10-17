@@ -9,7 +9,7 @@ interface MessageBubbleProps {
 
 const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ message, useChatStore }) => {
   const storeHook = useChatStore || defaultUseChatStore;
-  const { updateFormField } = storeHook();
+  const { updateFormField, skipToAccountForm, locale } = storeHook();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleButtonClick = useCallback((action: unknown) => {
@@ -84,6 +84,18 @@ const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ messa
               <span className="text-center leading-6 break-keep" style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}>{button.label}</span>
             </button>
           ))}
+          
+          {/* Skip to account form link - only for initial personal info form */}
+          {message.id === 'personal-info-form' && (
+            <div className="text-center mt-3">
+              <button
+                onClick={() => skipToAccountForm()}
+                className="text-blue-500 text-sm hover:underline transition-all"
+              >
+                {locale === 'ko' ? '이미 계좌가 있으신가요?' : 'Already have an account?'}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

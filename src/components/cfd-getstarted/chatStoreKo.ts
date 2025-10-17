@@ -18,6 +18,7 @@ interface ChatStore extends ChatState {
   showPersonalInfoForm: () => void;
   showAccountTypeSelection: () => void;
   selectAccountType: (type: 'demo' | 'live') => void;
+  skipToAccountForm: () => void;
   setProcessing: (processing: boolean) => void;
   executedSteps: Set<number>;
   isStepExecuted: (step: number) => boolean;
@@ -425,6 +426,102 @@ export const useChatStore = create<ChatStore>()(
         } else {
           set({ isProcessing: false });
         }
+      },
+
+      skipToAccountForm: () => {
+        const { isProcessing } = get();
+        
+        if (isProcessing) return;
+        
+        set({ isProcessing: true });
+        
+        // Add user message acknowledging skip
+        get().addMessage({
+          id: `user-skip-${Date.now()}`,
+          content: '이미 계좌가 있습니다',
+          sender: 'user',
+          type: 'text',
+          timestamp: new Date(),
+          animate: false
+        });
+
+        // Add account information form messages directly
+        setTimeout(() => {
+          get().addMessageGroup([
+            {
+              id: 'skip-step-6-intro',
+              content: 'AI 자동투자 프로그램 시작을 위해 계좌 정보를 입력해주세요',
+              sender: 'ai',
+              type: 'text',
+              timestamp: new Date(),
+              animate: false,
+            },
+            {
+              id: 'skip-step-6-account-info',
+              content: '📋 **입력할 정보:**\n\n• **Account ID** (계좌번호)\n• **Password** (비밀번호)\n• **Server** (서버명)',
+              sender: 'ai',
+              type: 'info_box',
+              timestamp: new Date(),
+              animate: false,
+            },
+            {
+              id: 'skip-step-6-security',
+              content: '🔒 **안심하세요!**\n브로커 홈페이지 로그인 정보와 거래 계좌 정보는 **완전히 다른 거**예요.\n계좌 정보는 **AI 프로그램 연동에만** 사용됩니다.',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false,
+            },
+            {
+              id: 'skip-step-6-form',
+              content: '',
+              sender: 'ai',
+              type: 'form',
+              timestamp: new Date(),
+              animate: false,
+              formFields: [
+                {
+                  id: 'accountId',
+                  label: 'Account ID',
+                  type: 'tel',
+                  placeholder: '계좌번호를 입력하세요',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'password',
+                  label: 'Password',
+                  type: 'text',
+                  placeholder: '계좌 비밀번호를 입력하세요',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'server',
+                  label: 'Server',
+                  type: 'text',
+                  placeholder: '서버명을 입력하세요',
+                  required: true,
+                  value: ''
+                }
+              ],
+              buttons: [
+                {
+                  label: '프로그램 시작 요청하기',
+                  type: 'primary',
+                  action: () => {
+                    get().submitUserForm('skip-step-6-form');
+                  }
+                }
+              ]
+            }
+          ]);
+
+          set({ 
+            isProcessing: false,
+            currentStep: 6
+          });
+        }, 800);
       },
 
       proceedToStep: (step: number) => {

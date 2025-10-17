@@ -18,6 +18,7 @@ interface ChatStore extends ChatState {
   showPersonalInfoForm: () => void;
   showAccountTypeSelection: () => void;
   selectAccountType: (type: 'demo' | 'live') => void;
+  skipToAccountForm: () => void;
   setProcessing: (processing: boolean) => void;
   executedSteps: Set<number>;
   isStepExecuted: (step: number) => boolean;
@@ -425,6 +426,102 @@ export const useChatStore = create<ChatStore>()(
         } else {
           set({ isProcessing: false });
         }
+      },
+
+      skipToAccountForm: () => {
+        const { isProcessing } = get();
+        
+        if (isProcessing) return;
+        
+        set({ isProcessing: true });
+        
+        // Add user message acknowledging skip
+        get().addMessage({
+          id: `user-skip-${Date.now()}`,
+          content: 'I already have an account',
+          sender: 'user',
+          type: 'text',
+          timestamp: new Date(),
+          animate: false
+        });
+
+        // Add account information form messages directly
+        setTimeout(() => {
+          get().addMessageGroup([
+            {
+              id: 'skip-step-6-intro',
+              content: 'Please enter your account details to start the AI automated investing program',
+              sender: 'ai',
+              type: 'text',
+              timestamp: new Date(),
+              animate: false,
+            },
+            {
+              id: 'skip-step-6-account-info',
+              content: '📋 **Information to enter:**\n\n• **Account Number**\n• **Password**\n• **Server**',
+              sender: 'ai',
+              type: 'info_box',
+              timestamp: new Date(),
+              animate: false,
+            },
+            {
+              id: 'skip-step-6-security',
+              content: '🔒 **Rest assured!**\nYour broker login credentials and trading account details are completely separate.\nThese account details are used only for AI program integration.',
+              sender: 'ai',
+              type: 'warning_box',
+              timestamp: new Date(),
+              animate: false,
+            },
+            {
+              id: 'skip-step-6-form',
+              content: '',
+              sender: 'ai',
+              type: 'form',
+              timestamp: new Date(),
+              animate: false,
+              formFields: [
+                {
+                  id: 'accountId',
+                  label: 'Account Number',
+                  type: 'tel',
+                  placeholder: 'Enter account number',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'password',
+                  label: 'Password',
+                  type: 'text',
+                  placeholder: 'Enter account password',
+                  required: true,
+                  value: ''
+                },
+                {
+                  id: 'server',
+                  label: 'Server',
+                  type: 'text',
+                  placeholder: 'Enter server name',
+                  required: true,
+                  value: ''
+                }
+              ],
+              buttons: [
+                {
+                  label: 'Request Program Activation',
+                  type: 'primary',
+                  action: () => {
+                    get().submitUserForm('skip-step-6-form');
+                  }
+                }
+              ]
+            }
+          ]);
+
+          set({ 
+            isProcessing: false,
+            currentStep: 6
+          });
+        }, 800);
       },
 
       proceedToStep: (step: number) => {
