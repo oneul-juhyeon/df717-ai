@@ -120,8 +120,14 @@ export const useChatStore = create<ChatStore>()(
           return;
         }
         
-        // Skip if already initialized
-        if (state.messages.length > 0 || state.isStepExecuted(0)) {
+        // Fix: If executedSteps has data but messages is empty, reset the state
+        if (state.messages.length === 0 && state.executedSteps.size > 0) {
+          console.log('Inconsistent state detected (no messages but has executedSteps), resetting...');
+          get().resetChat();
+        }
+        
+        // Skip if already initialized with messages
+        if (state.messages.length > 0) {
           console.log('Chat already initialized, skipping');
           return;
         }
