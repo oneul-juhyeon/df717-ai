@@ -591,7 +591,7 @@ export const useChatStore = create<ChatStore>()(
               const accountTypeText = isDemo ? '데모' : '실거래';
               const brokerUrl = isDemo 
                 ? 'https://www.icmarkets.com/global/ko/open-trading-account/demo/?camp=83293'
-                : 'https://www.vantagemarkets.com/open-live-account/?affid=NjEwNDAyODc0';
+                : 'https://www.vantagemarkets.com/ko/open-live-account/?affid=NjEwNDAyODc0';
 
               get().addMessageGroup([
                 {
