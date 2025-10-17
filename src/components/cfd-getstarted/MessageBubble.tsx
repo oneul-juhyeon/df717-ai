@@ -387,7 +387,9 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) 
             {message.type === "text" && (
               <div className="whitespace-pre-wrap">
                 <div className="text-sm sm:text-sm text-left leading-6">
-                  {displayedText}
+                  {displayedText.split('**').map((part, index) => 
+                    index % 2 === 1 ? <strong key={index} className="font-semibold">{part}</strong> : part
+                  )}
                 </div>
               </div>
             )}
