@@ -628,7 +628,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-1-input-info",
-                    content: `**아래 정보를 정확히 입력해주세요:**\n\n✓ **거주지:** Republic of Korea (대한민국)\n✓ **이메일 주소:** 실제 사용하는 이메일 입력\n✓ **비밀번호:** 8~16자, 대소문자/숫자/특수문자 조합 필수\n✓ **계정 유형 선택:** 개인 / 회사 중 해당 항목 선택\n✓ **약관 동의 체크박스 확인** 및 선택`,
+                    content: `아래 정보를 정확히 입력해주세요:\n\n✓ 거주지: Republic of Korea (대한민국)\n✓ 이메일 주소: 실제 사용하는 이메일 입력\n✓ 비밀번호: 8~16자, 대소문자/숫자/특수문자 조합 필수\n✓ 계정 유형 선택: 개인 / 회사 중 해당 항목 선택\n✓ 약관 동의 체크박스 확인 및 선택`,
                     sender: "ai",
                     type: "info_box",
                     timestamp: new Date(),
@@ -777,7 +777,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-2-intro",
-                    content: "잘하셨어요!\n이제 추가 본인 인증 절차를 진행해 볼게요.",
+                    content: "잘하셨어요!\n\n이제 추가 본인 인증 절차를 진행해 볼게요.",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1392,7 +1392,7 @@ export const useChatStore = create<ChatStore>()(
                   {
                     id: "step-6-intro",
                     content:
-                      "거래 시작 준비가 거의 완료되었습니다.\n보증금, 출금, 입금 한도가 해제된 **계정 설정**을 진행할 거에요.",
+                      "거래 시작 준비가 거의 완료되었습니다.\n보증금, 출금, 입금 한도가 해제된 **계정 설정**을 진행할 거에요.\n아래 항목을 정확히 선택해주세요:",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1401,7 +1401,7 @@ export const useChatStore = create<ChatStore>()(
                   {
                     id: "step-6-settings",
                     content:
-                      "**아래 항목을 정확히 선택해주세요:**\n\n**거래 플랫폼**: 메타트레이더 5 (첫 계좌 개설 시에는 변경 불가)\n**계좌 유형**: RAW ECN\n**계좌 통화**: USD\n**V-Wallet 연결**: 체크 (암호화폐 입출금 사용 가능)\n\n**제출** 후 설정 완료 메시지를 확인하세요.",
+                      "**거래 플랫폼**: 메타트레이더 5 (첫 계좌 개설 시에는 변경 불가)\n**계좌 유형**: RAW ECN\n**계좌 통화**: USD\n**V-Wallet 연결**: 체크 (암호화폐 입출금 사용 가능)\n**제출** 후 설정 완료 메시지를 확인하세요.",
                     sender: "ai",
                     type: "info_box",
                     timestamp: new Date(),
@@ -1728,7 +1728,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-8-intro",
-                    content: "좋아요! 이제 Vantage에 방금 가입하신 이메일과 비밀번호로 로그인해주세요.",
+                    content: "좋아요! 이제 Vantage에 로그인해볼게요.",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1736,7 +1736,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-8-info",
-                    content: "🔐 최초 로그인 시에는 Google Authenticator 인증이 필요해요.",
+                    content: "🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.",
                     sender: "ai",
                     type: "info_box",
                     timestamp: new Date(),
@@ -2064,7 +2064,7 @@ export const useChatStore = create<ChatStore>()(
                 {
                   id: "step-11-settings",
                   content:
-                    "⚙️ **카피트레이딩 설정**:\n\n**복사 모드**: 등가 사용 증거금\n- 마스터와의 잔액에 비례하여 랏 사이즈 자동 설정\n**투자 금액: 입금한 금액 입력** ✅\n- 예시: $3,000 입력 시 잔고+보너스=3,000 산출\n**위험 관리: 95%로 변경** ✅\n- 신호제공자와 최대한 비슷한 수준으로 따라가기 위한 설정\n- 총 투자금 및 수익, 출금 등의 합산으로 매월 계산되는 잔고의 95%\n**익절**: 비활성화\n- 신호제공자가 주문을 청산하기까지 계속 따라감\n**어시스턴트**: 활성화\n- 최소 카피 랏수보다 높게 하여 거래 활동 극대화\n**포지션 오더: 활성화로 변경** ✅\n- 카피 시작과 동시에 현재 시장가 기준으로 주문 진입\n\n모든 설정 확인 후 **제출** 버튼을 클릭하세요.",
+                    "⚙️ **카피트레이딩 설정**:\n\n**복사 모드**: 등가 사용 증거금\n- 마스터와의 잔액에 비례하여 랏 사이즈 자동 설정\n\n**투자 금액**: 입금한 금액 입력\n- 예시: $3,000 입력 시 잔고+보너스=3,000 산출\n\n**위험 관리: 95%로 변경**\n- 신호제공자와 최대한 비슷한 수준으로 따라가기 위한 설정\n- 총 투자금 및 수익, 출금 등의 합산으로 매월 계산되는 잔고의 95%\n\n**익절**: 비활성화 유지\n- 신호제공자가 주문을 청산하기까지 계속 따라감\n\n**어시스턴트**: 활성화 유지\n- 최소 카피 랏수보다 높게 하여 거래 활동 극대화\n\n**포지션 오더**: 활성화 변경\n- 카피 시작과 동시에 현재 시장가 기준으로 주문 진입\n\n**제출** 버튼을 클릭하세요.",
                   sender: "ai",
                   type: "info_box",
                   timestamp: new Date(),
