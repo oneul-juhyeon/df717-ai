@@ -1090,7 +1090,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-info',
-                  content: '💡 **What is MetaTrader 4?**\nThink of it like a banking app. Mobile banking apps let you connect multiple bank accounts to transfer money and make payments in one place. Similarly, MetaTrader 4 allows you to connect and monitor multiple broker accounts in one app.',
+                  content: '💡 **What is MetaTrader 4?**\nMetaTrader 4 is like PayPal or Revolut — a single platform where you can connect multiple broker accounts, monitor your balances, and execute trades in one place.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -1129,12 +1129,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'I installed the app',
+                      label: "I've installed the app",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I installed the app',
+                          content: "I've installed the app",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -1166,7 +1166,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-intro',
-                  content: 'Now we will log in to the MetaTrader 4 app with the account you just created.',
+                  content: 'Now let us log in to the MetaTrader 4 app using the account you just created.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1205,12 +1205,12 @@ export const useChatStore = create<ChatStore>()(
                   animate: false,
                   buttons: [
                     {
-                      label: 'I logged in',
+                      label: "I've logged in",
                       type: 'primary',
                       action: () => {
                         get().addMessage({
                           id: `user-response-${Date.now()}`,
-                          content: 'I logged in',
+                          content: "I've logged in",
                           sender: 'user',
                           type: 'text',
                           timestamp: new Date(),
@@ -1233,7 +1233,7 @@ export const useChatStore = create<ChatStore>()(
               get().addMessageGroup([
                 {
                   id: 'step-9-title',
-                  content: '✨ Monitoring Started!',
+                  content: '✨ Start Monitoring!',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1241,7 +1241,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-9-success',
-                   content: '✅ **All setup complete!**\n\n• **Demo account created**\n• **AI program integration requested**\n• **Monitoring app installed**',
+                   content: '✅ **Setup complete!**\n\n• **Demo account created**\n• **AI program activation requested**\n• **Monitoring app installed**',
                    sender: 'ai',
                    type: 'success_box',
                    timestamp: new Date(),
@@ -1369,7 +1369,7 @@ export const useChatStore = create<ChatStore>()(
             
             get().addMessage({
               id: `success-${Date.now()}`,
-              content: '✅ **Program start request received!**\n\nOur manager will start your **AI automated investing** soon.',
+              content: '✅ **Program activation request received!**\n\nOur Program Manager shall start your AI automated investing soon.',
               sender: 'ai',
               type: 'success_box',
               timestamp: new Date(),
@@ -1442,7 +1442,7 @@ export const useChatStore = create<ChatStore>()(
           
           get().addMessage({
             id: `success-${Date.now()}`,
-            content: '✅ **Program start request received!**\n\nOur manager will start your **AI automated investing** soon.',
+            content: '✅ **Program activation request received!**\n\nOur Program Manager shall start your AI automated investing soon.',
             sender: 'ai',
             type: 'success_box',
             timestamp: new Date(),
