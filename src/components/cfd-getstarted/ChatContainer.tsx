@@ -25,18 +25,18 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
   }}>
       {/* Enhanced header with better back button and mobile alignment */}
       <div className="px-4 py-4 bg-white border-b border-gray-100 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center flex-1">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center flex-1 min-w-0">
             <button onClick={onBack} className="flex items-center justify-center w-10 h-10 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full transition-all duration-200 active:scale-95 -ml-2 flex-shrink-0" aria-label="뒤로 가기">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <h1 className="ml-3 text-lg font-medium text-gray-800 leading-6 word-break break-words text-left font-din">DF717 Start Guide</h1>
+            <h1 className="ml-3 text-lg font-medium text-gray-800 leading-none flex items-center h-10">DF717 Start Guide</h1>
           </div>
           <button 
             onClick={handleLanguageToggle}
-            className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-full shadow-sm border border-gray-200 transition-all duration-200 active:scale-95 flex-shrink-0"
+            className="px-4 h-10 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-full shadow-sm border border-gray-200 transition-all duration-200 active:scale-95 flex-shrink-0 flex items-center justify-center"
             aria-label={isKorean ? "Switch to English" : "한국어로 전환"}
           >
             {isKorean ? 'EN' : 'KO'}
