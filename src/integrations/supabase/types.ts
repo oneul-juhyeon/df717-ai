@@ -17,13 +17,13 @@ export type Database = {
       user_accounts: {
         Row: {
           account_id: string
-          account_password: string
+          account_password: string | null
           created_at: string | null
           email: string | null
           id: number
           phone: string | null
           referrer_name: string | null
-          server_name: string
+          server_name: string | null
           session_id: string | null
           status: string | null
           user_id: string | null
@@ -31,13 +31,13 @@ export type Database = {
         }
         Insert: {
           account_id: string
-          account_password: string
+          account_password?: string | null
           created_at?: string | null
           email?: string | null
           id?: number
           phone?: string | null
           referrer_name?: string | null
-          server_name: string
+          server_name?: string | null
           session_id?: string | null
           status?: string | null
           user_id?: string | null
@@ -45,13 +45,13 @@ export type Database = {
         }
         Update: {
           account_id?: string
-          account_password?: string
+          account_password?: string | null
           created_at?: string | null
           email?: string | null
           id?: number
           phone?: string | null
           referrer_name?: string | null
-          server_name?: string
+          server_name?: string | null
           session_id?: string | null
           status?: string | null
           user_id?: string | null
