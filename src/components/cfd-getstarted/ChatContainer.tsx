@@ -1,6 +1,5 @@
 import React from "react";
 import MessageList from "./MessageList";
-import { Languages } from "lucide-react";
 
 interface ChatContainerProps {
   onBack: () => void;
@@ -37,12 +36,10 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
           </div>
           <button 
             onClick={handleLanguageToggle}
-            className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200 active:scale-95 flex-shrink-0"
+            className="px-4 py-2 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-full shadow-sm border border-gray-200 transition-all duration-200 active:scale-95 flex-shrink-0"
             aria-label={isKorean ? "Switch to English" : "한국어로 전환"}
           >
-            <Languages className="w-4 h-4" />
-            <span className="hidden sm:inline">{isKorean ? 'EN' : '한국어'}</span>
-            <span className="sm:hidden">{isKorean ? 'EN' : 'KO'}</span>
+            {isKorean ? 'EN' : 'KO'}
           </button>
         </div>
       </div>
