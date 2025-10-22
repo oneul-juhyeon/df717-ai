@@ -32,8 +32,8 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <h1 className="ml-3 text-lg font-semibold text-gray-800 leading-none flex items-center h-10" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
-              DF717 Start Guide
+            <h1 className="ml-3 text-base font-semibold text-gray-800 leading-none flex items-center h-10" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+              {isKorean ? '시작 가이드' : 'DF717 Start Guide'}
             </h1>
           </div>
           <button 
