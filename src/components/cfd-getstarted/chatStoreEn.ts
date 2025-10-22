@@ -1155,6 +1155,9 @@ export const useChatStore = create<ChatStore>()(
 
             case 8:
               const { userData } = get();
+              const isLiveAccount = userData.accountType === 'live';
+              const serverSearchTerm = isLiveAccount ? 'Vantage International' : 'ICMarkets';
+              
               get().addMessageGroup([
                 {
                   id: 'step-8-title',
@@ -1190,7 +1193,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-tip',
-                  content: '💡 **Tip!**\nIf you cannot see the exact server name, try searching for **"ICMarkets"** in the search bar.\n\n⚠️ If login fails, account activation may take **a few minutes**.',
+                  content: `💡 **Tip!**\nIf you cannot see the exact server name, try searching for **"${serverSearchTerm}"** in the search bar.\n\n⚠️ If login fails, account activation may take **a few minutes**.`,
                   sender: 'ai',
                   type: 'warning_box',
                   timestamp: new Date(),
@@ -1230,6 +1233,10 @@ export const useChatStore = create<ChatStore>()(
               break;
 
             case 9:
+              const step9UserData = get().userData;
+              const isLiveAccountStep9 = step9UserData.accountType === 'live';
+              const accountTypeText = isLiveAccountStep9 ? 'Live account created' : 'Demo account created';
+              
               get().addMessageGroup([
                 {
                   id: 'step-9-title',
@@ -1241,7 +1248,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-9-success',
-                   content: '✅ **Setup complete!**\n\n• **Demo account created**\n• **AI program activation requested**\n• **Monitoring app installed**',
+                   content: `✅ **Setup complete!**\n\n• **${accountTypeText}**\n• **AI program activation requested**\n• **Monitoring app installed**`,
                    sender: 'ai',
                    type: 'success_box',
                    timestamp: new Date(),
