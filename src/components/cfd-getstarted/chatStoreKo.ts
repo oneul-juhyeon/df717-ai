@@ -1736,7 +1736,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-8-info",
-                    content: "🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.",
+                    content: "🔐 방금 가입하신 이메일과 비밀번호로 로그인해주세요.\n처음 로그인할 경우 Google Authenticator 앱을 통해 OTP 인증을 해야해요.",
                     sender: "ai",
                     type: "info_box",
                     timestamp: new Date(),
