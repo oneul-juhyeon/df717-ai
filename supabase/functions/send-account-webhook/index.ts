@@ -21,13 +21,30 @@ serve(async (req) => {
     console.log('Received webhook request body:', JSON.stringify(requestBody, null, 2));
 
     // Validate essential fields
-    const { account_id, account_password, server_name } = requestBody;
-    if (!account_id || !account_password || !server_name) {
-      console.error('Missing required fields:', { account_id, account_password: !!account_password, server_name });
+    const { account_id, account_password, server_name, account_type } = requestBody;
+    
+    // account_id is always required
+    if (!account_id) {
+      console.error('Missing required field: account_id');
       return new Response(
         JSON.stringify({ 
           success: false, 
-          error: 'Missing required fields: account_id, account_password, server_name' 
+          error: 'Missing required field: account_id' 
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
+    
+    // For demo accounts, password and server are required
+    if (account_type === 'demo' && (!account_password || !server_name)) {
+      console.error('Missing required fields for demo account:', { account_password: !!account_password, server_name });
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: 'Missing required fields for demo account: account_password, server_name' 
         }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
