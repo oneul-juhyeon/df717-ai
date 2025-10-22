@@ -973,7 +973,13 @@ export const useChatStore = create<ChatStore>()(
               break;
             }
 
-            case 6:
+            case 6: {
+              const { userData } = get();
+              const isDemo = userData.accountType === 'demo';
+              const celebrationText = isDemo 
+                ? 'Congratulations! Your demo account is ready 🎉'
+                : 'Congratulations! Your live account is ready 🎉';
+
               get().addMessageGroup([
                 {
                   id: 'step-6-title',
@@ -985,7 +991,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-6-celebration',
-                  content: 'Congratulations! Your live account is ready 🎉',
+                  content: celebrationText,
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1062,6 +1068,7 @@ export const useChatStore = create<ChatStore>()(
               
               set({ currentStep: 6, isProcessing: false });
               break;
+            }
 
             case 7:
               get().addMessageGroup([
