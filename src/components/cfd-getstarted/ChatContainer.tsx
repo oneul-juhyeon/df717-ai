@@ -33,7 +33,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
               </svg>
             </button>
             <h1 className="ml-3 text-lg font-medium text-gray-800 leading-none flex items-center h-10">
-              <span className="translate-y-[1px]">DF717 Start Guide</span>
+              <span className="font-din:translate-y-[2px]">DF717 Start Guide</span>
             </h1>
           </div>
           <button 
@@ -41,7 +41,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
             className="px-4 h-10 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-full shadow-sm border border-gray-200 transition-all duration-200 active:scale-95 flex-shrink-0 flex items-center justify-center leading-none"
             aria-label={isKorean ? "Switch to English" : "한국어로 전환"}
           >
-            <span className="translate-y-[1px]">{isKorean ? 'EN' : 'KO'}</span>
+            <span className="font-din:translate-y-[2px]">{isKorean ? 'EN' : 'KO'}</span>
           </button>
         </div>
       </div>
