@@ -36,11 +36,27 @@ serve(async (req) => {
     } = requestBody;
 
     // Validate required fields
-    if (!accountId || !password || !server) {
+    // For live accounts (Step 12), only accountId is required
+    // For demo accounts, accountId, password, and server are required
+    if (!accountId) {
       return new Response(
         JSON.stringify({
           success: false,
-          error: 'Missing required fields: accountId, password, server'
+          error: 'Missing required field: accountId'
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
+
+    // For demo accounts, validate password and server
+    if (accountType === 'demo' && (!password || !server)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Missing required fields for demo account: password, server'
         }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -50,14 +66,17 @@ serve(async (req) => {
     }
 
     // Hash the password before storing using SHA-256 (avoid DB extension dependency)
-    const sha256 = async (text: string) => {
-      const data = new TextEncoder().encode(text);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
-    };
-
-    const hashedPassword = await sha256(password);
+    // Only hash if password is provided (for demo accounts)
+    let hashedPassword = '';
+    if (password) {
+      const sha256 = async (text: string) => {
+        const data = new TextEncoder().encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
+      };
+      hashedPassword = await sha256(password);
+    }
 
     // Check if account already exists
     const { data: existingAccount } = await supabaseAdmin
@@ -71,38 +90,50 @@ serve(async (req) => {
 
     if (existingAccount) {
       // Update existing account
+      const updateData: any = {
+        user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
+        email: email || null,
+        phone: phone || null,
+        referrer_name: referrerName || null,
+        session_id: sessionId || null,
+        status: accountType === 'live' ? 'pending' : 'active',
+      };
+
+      // Only update password and server for demo accounts
+      if (accountType === 'demo' && password && server) {
+        updateData.account_password = hashedPassword;
+        updateData.server_name = server;
+      }
+
       const { error: updateError } = await supabaseAdmin
         .from('user_accounts')
-        .update({
-          account_password: hashedPassword,
-          server_name: server,
-          user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
-          email: email || null,
-          phone: phone || null,
-          referrer_name: referrerName || null,
-          session_id: sessionId || null,
-          status: accountType === 'live' ? 'pending' : 'active',
-        })
+        .update(updateData)
         .eq('account_id', accountId);
       
       dbError = updateError;
       dbOperation = 'update';
     } else {
       // Insert new account
+      const insertData: any = {
+        account_id: accountId,
+        user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
+        email: email || null,
+        phone: phone || null,
+        referrer_name: referrerName || null,
+        session_id: sessionId || null,
+        status: accountType === 'live' ? 'pending' : 'active',
+        created_at: new Date().toISOString()
+      };
+
+      // Only include password and server for demo accounts
+      if (accountType === 'demo' && password && server) {
+        insertData.account_password = hashedPassword;
+        insertData.server_name = server;
+      }
+
       const { error: insertError } = await supabaseAdmin
         .from('user_accounts')
-        .insert({
-          account_id: accountId,
-          account_password: hashedPassword,
-          server_name: server,
-          user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
-          email: email || null,
-          phone: phone || null,
-          referrer_name: referrerName || null,
-          session_id: sessionId || null,
-          status: accountType === 'live' ? 'pending' : 'active',
-          created_at: new Date().toISOString()
-        });
+        .insert(insertData);
       
       dbError = insertError;
       dbOperation = 'insert';
@@ -121,8 +152,8 @@ serve(async (req) => {
       const { data: webhookData, error: webhookError } = await supabaseAdmin.functions.invoke('send-account-webhook', {
         body: {
           account_id: accountId,
-          account_password: password, // Send original password to webhook
-          server_name: server,
+          account_password: password || '', // Send original password to webhook (empty for live)
+          server_name: server || '', // Empty for live accounts
           user_name: firstName && lastName ? `${firstName} ${lastName}` : (firstName || ''),
           email: email || null,
           phone: phone || null,

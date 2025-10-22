@@ -2354,15 +2354,15 @@ export const useChatStore = create<ChatStore>()(
 
                 // For live accounts from step 12, only accountId is entered
                 const accountData = {
-                  firstName: userData.firstName,
-                  lastName: userData.lastName,
-                  email: userData.email,
-                  phone: userData.phone,
+                  firstName: userData.firstName || "",
+                  lastName: userData.lastName || "",
+                  email: userData.email || "",
+                  phone: userData.phone || "",
                   accountId: formData.accountId,
                   password: formData.password || "", // Empty for live accounts
                   server: formData.server || "", // Empty for live accounts
                   sessionId: userData.sessionId || crypto.randomUUID(),
-                  referrerName: userData.referrerName,
+                  referrerName: userData.referrerName || "",
                   accountType: userData.accountType || "demo",
                 };
 
