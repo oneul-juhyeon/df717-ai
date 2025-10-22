@@ -1067,7 +1067,7 @@ export const useChatStore = create<ChatStore>()(
               get().addMessageGroup([
                 {
                   id: 'step-7-title',
-                  content: 'Step 7: Install MetaTrader 5 App',
+                  content: 'Step 7: Install MetaTrader 4 App',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1083,7 +1083,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-7-info',
-                  content: '💡 **What is MetaTrader 5?**\nThink of it like a banking app. Mobile banking apps let you connect multiple bank accounts to transfer money and make payments in one place. Similarly, MetaTrader 5 allows you to connect and monitor multiple broker accounts in one app.',
+                  content: '💡 **What is MetaTrader 4?**\nThink of it like a banking app. Mobile banking apps let you connect multiple bank accounts to transfer money and make payments in one place. Similarly, MetaTrader 4 allows you to connect and monitor multiple broker accounts in one app.',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),
@@ -1101,14 +1101,14 @@ export const useChatStore = create<ChatStore>()(
                       label: 'Download Android App →',
                       type: 'link',
                       action: () => {
-                        window.open('https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5', '_blank');
+                        window.open('https://play.google.com/store/apps/details?id=net.metaquotes.metatrader4', '_blank');
                       }
                     },
                     {
                       label: 'Download iPhone App →',
                       type: 'link',
                       action: () => {
-                        window.open('https://apps.apple.com/app/metatrader-5/id413251709', '_blank');
+                        window.open('https://apps.apple.com/us/app/metatrader-4/id496212596', '_blank');
                       }
                     }
                   ]
@@ -1151,7 +1151,7 @@ export const useChatStore = create<ChatStore>()(
               get().addMessageGroup([
                 {
                   id: 'step-8-title',
-                  content: 'Step 8: Log in to MetaTrader 5',
+                  content: 'Step 8: Log in to MetaTrader 4',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1159,7 +1159,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-intro',
-                  content: 'Now we will log in to the MetaTrader 5 app with the account you just created.',
+                  content: 'Now we will log in to the MetaTrader 4 app with the account you just created.',
                   sender: 'ai',
                   type: 'text',
                   timestamp: new Date(),
@@ -1167,7 +1167,7 @@ export const useChatStore = create<ChatStore>()(
                 },
                 {
                   id: 'step-8-instructions',
-                  content: '📱 **How to log in on MetaTrader 5:**\n\n1. Click ⚙️ **Settings** (bottom right)\n2. Click **New Account**\n3. Click **Log in to existing account**\n4. Search and select your server\n5. Enter login and password, then click **Login**',
+                  content: '📱 **How to log in on MetaTrader 4:**\n\n1. Click ⚙️ **Settings** (bottom right)\n2. Click **New Account**\n3. Click **Log in to existing account**\n4. Search and select your server\n5. Enter login and password, then click **Login**',
                   sender: 'ai',
                   type: 'info_box',
                   timestamp: new Date(),

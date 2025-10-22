@@ -1456,11 +1456,11 @@ export const useChatStore = create<ChatStore>()(
               const isDemo = userData.accountType === "demo";
 
               if (isDemo) {
-                // Demo flow - existing step 7 (MetaTrader 5 App Install)
+                // Demo flow - existing step 7 (MetaTrader 4 App Install)
                 get().addMessageGroup([
                   {
                     id: "step-7-title",
-                    content: "7단계: MetaTrader 5 앱 설치하기",
+                    content: "7단계: MetaTrader 4 앱 설치하기",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1477,7 +1477,7 @@ export const useChatStore = create<ChatStore>()(
                   {
                     id: "step-7-info",
                     content:
-                      "💡 **MetaTrader 5란?**\n쉽게 말해서 토스나 카카오페이라고 보면 돼요. 하나의 앱에 여러 은행 계좌를 연결해서 한 곳에서 송금하고 결제할 수 있는 것처럼, MetaTrader 5는 여러 브로커의 계좌를 한 앱에서 연결해 관리하고 실시간으로 확인할 수 있어요.",
+                      "💡 **MetaTrader 4란?**\n쉽게 말해서 토스나 카카오페이라고 보면 돼요. 하나의 앱에 여러 은행 계좌를 연결해서 한 곳에서 송금하고 결제할 수 있는 것처럼, MetaTrader 4는 여러 브로커의 계좌를 한 앱에서 연결해 관리하고 실시간으로 확인할 수 있어요.",
                     sender: "ai",
                     type: "info_box",
                     timestamp: new Date(),
@@ -1496,7 +1496,7 @@ export const useChatStore = create<ChatStore>()(
                         type: "link",
                         action: () => {
                           window.open(
-                            "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5&hl=ko",
+                            "https://play.google.com/store/apps/details?id=net.metaquotes.metatrader4",
                             "_blank",
                           );
                         },
@@ -1505,7 +1505,7 @@ export const useChatStore = create<ChatStore>()(
                         label: "아이폰 앱 다운로드 →",
                         type: "link",
                         action: () => {
-                          window.open("https://apps.apple.com/kr/app/metatrader-5/id413251709", "_blank");
+                          window.open("https://apps.apple.com/us/app/metatrader-4/id496212596", "_blank");
                         },
                       },
                     ],
@@ -1642,11 +1642,11 @@ export const useChatStore = create<ChatStore>()(
               const isDemo = userData.accountType === "demo";
 
               if (isDemo) {
-                // Demo flow - existing step 8 (MetaTrader 5 Login)
+                // Demo flow - existing step 8 (MetaTrader 4 Login)
                 get().addMessageGroup([
                   {
                     id: "step-8-title",
-                    content: "8단계: MetaTrader 5 로그인하기",
+                    content: "8단계: MetaTrader 4 로그인하기",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1654,7 +1654,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-8-intro",
-                    content: "설치한 MetaTrader 5 앱에 방금 생성한 계좌로 로그인해볼게요.",
+                    content: "설치한 MetaTrader 4 앱에 방금 생성한 계좌로 로그인해볼게요.",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1663,7 +1663,7 @@ export const useChatStore = create<ChatStore>()(
                   {
                     id: "step-8-instructions",
                     content:
-                      "📱 **MetaTrader 5 앱에서 로그인 방법:**\n\n1. 우측 하단 ⚙️ **세팅** 클릭\n2. **새 계좌** 클릭\n3. **기존 계좌로 로그인** 클릭\n4. 서버 검색해서 선택\n5. 로그인, 비밀번호 입력 후 **로그인** 클릭",
+                      "📱 **MetaTrader 4 앱에서 로그인 방법:**\n\n1. 우측 하단 ⚙️ **세팅** 클릭\n2. **새 계좌** 클릭\n3. **기존 계좌로 로그인** 클릭\n4. 서버 검색해서 선택\n5. 로그인, 비밀번호 입력 후 **로그인** 클릭",
                     sender: "ai",
                     type: "info_box",
                     timestamp: new Date(),

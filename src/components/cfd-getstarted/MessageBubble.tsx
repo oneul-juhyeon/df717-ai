@@ -282,7 +282,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) 
     // Demo accounts show 5 settings, Live accounts show only 3
     const isDemo = message.accountType === 'demo';
     const settings = isDemo ? [
-      { label: "Platform", value: "MetaTrader 5" },
+      { label: "Platform", value: "MetaTrader 4" },
       { label: "Account Type", value: "Raw Spread" },
       { label: "Currency", value: "USD" },
       { label: "Leverage", value: "1:1000" },
