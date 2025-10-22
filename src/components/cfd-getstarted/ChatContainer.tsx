@@ -32,16 +32,17 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <h1 className="ml-3 text-lg font-medium text-gray-800 leading-none flex items-center h-10">
-              <span className="font-din:translate-y-[2px]">DF717 Start Guide</span>
+            <h1 className="ml-3 text-lg font-semibold text-gray-800 leading-none flex items-center h-10" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+              DF717 Start Guide
             </h1>
           </div>
           <button 
             onClick={handleLanguageToggle}
-            className="px-4 h-10 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-full shadow-sm border border-gray-200 transition-all duration-200 active:scale-95 flex-shrink-0 flex items-center justify-center leading-none"
+            className="px-4 h-10 text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 rounded-full shadow-sm border border-gray-200 transition-all duration-200 active:scale-95 flex-shrink-0 flex items-center justify-center"
+            style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
             aria-label={isKorean ? "Switch to English" : "한국어로 전환"}
           >
-            <span className="font-din:translate-y-[2px]">{isKorean ? 'EN' : 'KO'}</span>
+            {isKorean ? 'EN' : 'KO'}
           </button>
         </div>
       </div>
