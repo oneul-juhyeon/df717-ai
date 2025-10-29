@@ -22,6 +22,7 @@ const Solution: React.FC = () => {
       <SEOHead
         title="DF717 Solution - Automated Trading Programs | DAP-Plus & DAP-Premium"
         description="Discover DF717's automated trading solutions powered by AI engine HANNAH. Choose between DAP-Plus and DAP-Premium programs with 20+ years of backtesting data and real-time monitoring."
+        keywords="DF717 솔루션, DAP-Plus, DAP-Premium, 자동매매 프로그램, AI 트레이딩, HANNAH AI, 자동투자 시스템, 백테스팅, 실시간 모니터링"
         canonical="https://www.df717.ai/solution"
         type="website"
         lang="en"
@@ -29,6 +30,18 @@ const Solution: React.FC = () => {
           en: "https://www.df717.ai/solution",
           ko: "https://www.df717.ai/ko/solution",
           default: "https://www.df717.ai/solution",
+        }}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "DF717 Automated Trading Solutions",
+          "description": "AI-powered automated trading programs with 20+ years of backtesting data",
+          "provider": {
+            "@type": "Organization",
+            "name": "DF717"
+          },
+          "serviceType": "Automated Investment Management",
+          "areaServed": "Worldwide"
         }}
       />
       <div className="min-h-screen bg-black">

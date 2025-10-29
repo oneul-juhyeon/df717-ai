@@ -12,6 +12,7 @@ const Index: React.FC = () => {
       <SEOHead
         title="DF717 | AI Investment Platform"
         description="Automate your investment with DF717's advanced AI engine. Trusted by 40+ year tech veterans for intelligent portfolio management."
+        keywords="DF717, DF717 AI, DF717 핀테크, DF717 투자, DF717 AI 자동투자, AI자동투자, 자동투자, 자동투자프로그램, 주식투자, AI 자동투자 프로그램, 자동매매, 자동매매 프로그램, 코인자동투자, 주식자동투자, 외환거래, CFD, 외환투자, FOREX, AI투자"
         canonical="https://df717.ai/"
         type="website"
         showOrganizationSchema={true}

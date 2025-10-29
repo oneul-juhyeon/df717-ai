@@ -5,9 +5,13 @@ import { Helmet } from "react-helmet-async";
 interface SEOHeadProps {
   title: string;
   description: string;
+  keywords?: string;
   canonical?: string;
   type?: "website" | "article";
   image?: string;
+  imageWidth?: string;
+  imageHeight?: string;
+  imageAlt?: string;
   article?: {
     publishedTime?: string;
     modifiedTime?: string;
@@ -27,9 +31,13 @@ interface SEOHeadProps {
 const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
+  keywords,
   canonical,
   type = "website",
   image = "https://df717.ai/lovable-uploads/df717_logo.png",
+  imageWidth = "1200",
+  imageHeight = "630",
+  imageAlt = "DF717 AI Investment Platform",
   article,
   showOrganizationSchema = false,
   structuredData: customStructuredData,
@@ -72,6 +80,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Basic Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
@@ -89,8 +98,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content={imageWidth} />
+      <meta property="og:image:height" content={imageHeight} />
+      <meta property="og:image:alt" content={imageAlt} />
       <meta property="og:site_name" content="DF717" />
       <meta property="og:locale" content={lang === "ko" ? "ko_KR" : "en_US"} />
+      <meta property="og:article:author" content="DF717" />
       
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />

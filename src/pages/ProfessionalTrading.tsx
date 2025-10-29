@@ -1,4 +1,5 @@
 import React from "react";
+import SEOHead from "@/components/seo/SEOHead";
 import ProfessionalTradingHeader from "@/components/professional-trading/ProfessionalTradingHeader";
 import ProfessionalTradingContent from "@/components/professional-trading/ProfessionalTradingContent";
 import CFDProductsSidebar from "@/components/cfd-safety/CFDProductsSidebar";
@@ -15,7 +16,26 @@ const ProfessionalTrading: React.FC = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-black financial-product-layout flex flex-col">
+    <>
+      <SEOHead
+        title="Professional Trading with ICMarkets - DF717"
+        description="Experience professional CFD trading with ICMarkets. Access raw spreads from 0.0 pips, lightning-fast execution, and institutional-grade infrastructure for serious traders."
+        keywords="ICMarkets, 프로페셔널 트레이딩, Raw Spread, MetaTrader 4, MetaTrader 5, cTrader, 0.0 pip, 기관급 거래, ASIC, CySEC"
+        canonical="https://df717.ai/professional-trading"
+        type="website"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "FinancialProduct",
+          "name": "ICMarkets Professional Trading",
+          "description": "Professional CFD trading platform with institutional-grade execution",
+          "provider": {
+            "@type": "Organization",
+            "name": "ICMarkets"
+          },
+          "feesAndCommissionsSpecification": "Raw spreads from 0.0 pips"
+        }}
+      />
+      <div className="w-full min-h-screen bg-black financial-product-layout flex flex-col">
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <ProfessionalTradingHeader scrollToTop={scrollToTop} />
         
@@ -38,6 +58,7 @@ const ProfessionalTrading: React.FC = () => {
       
       <Footer />
     </div>
+    </>
   );
 };
 
