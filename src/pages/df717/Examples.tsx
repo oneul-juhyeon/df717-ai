@@ -10,11 +10,19 @@ const Examples: React.FC = () => {
       <SEOHead
         title="DF717 Modular Strategy Examples - AI Trading Strategies"
         description="Explore DF717's modular strategy systems through selected examples. Learn about proprietary algorithms, market regime recognition, and dynamic risk parameters."
+        keywords="DF717, Trading Strategies, AI Algorithms, Modular Strategies, Market Analysis, Risk Management, Algorithmic Trading, Strategy Examples"
         canonical="https://df717.ai/df717/examples"
         type="article"
         article={{
           section: "DF717 Technology",
           tags: ["DF717", "Trading Strategies", "AI Algorithms", "Market Analysis", "Risk Management"]
+        }}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "DF717 Modular Strategy Examples",
+          "description": "Modular AI trading strategy systems with proprietary algorithms and market regime recognition.",
+          "url": "https://df717.ai/df717/examples"
         }}
       />
       <DF717Layout>

@@ -10,11 +10,19 @@ const Modeling: React.FC = () => {
       <SEOHead
         title="DF717 Quantitative Modeling Engine - Mathematical Finance Models"
         description="Discover how DF717 applies mathematical models to interpret financial markets using Monte Carlo simulation, Markowitz optimization, and performance ratios."
+        keywords="DF717, Quantitative Modeling, Monte Carlo Simulation, Portfolio Optimization, Markowitz, Sharpe Ratio, Financial Engineering, Mathematical Finance"
         canonical="https://df717.ai/df717/modeling"
         type="article"
         article={{
           section: "DF717 Technology",
           tags: ["DF717", "Quantitative Modeling", "Monte Carlo", "Portfolio Optimization", "Financial Engineering"]
+        }}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "DF717 Quantitative Modeling Engine",
+          "description": "Mathematical models for financial market interpretation using Monte Carlo simulation and portfolio optimization.",
+          "url": "https://df717.ai/df717/modeling"
         }}
       />
       <DF717Layout>

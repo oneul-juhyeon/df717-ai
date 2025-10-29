@@ -70,8 +70,17 @@ const Company: React.FC = () => {
       <SEOHead
         title="About DF717 - AI Investment Technology Company"
         description="Learn about DF717's mission to revolutionize investment management through AI technology. Discover our company values, leadership team, and commitment to innovative trading solutions."
+        keywords="DF717 Company, AI Investment, FinTech Company, Trading Technology, Investment Management, AI Innovation, Financial Technology Company, About DF717"
         canonical="https://df717.ai/company"
         type="website"
+        showOrganizationSchema={true}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About DF717",
+          "description": "DF717 revolutionizes investment management through AI technology and innovative trading solutions.",
+          "url": "https://df717.ai/company"
+        }}
       />
       <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">

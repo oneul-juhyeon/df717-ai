@@ -74,6 +74,7 @@ function App() {
               <Route path="/df717/ai-strategy" element={<Navigate to="/df717/engine" replace />} />
               <Route path="/df717/stability" element={<Navigate to="/df717/reliability" replace />} />
               <Route path="/robot" element={<Navigate to="/df717" replace />} />
+              <Route path="/axi-cfd" element={<Navigate to="/cfd-trading" replace />} />
               <Route path="/cfd-safety" element={<CFDSafety />} />
               <Route path="/cfd-trading" element={<CFDTrading />} />
               <Route path="/get-started" element={<GetStarted />} />

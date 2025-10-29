@@ -25,6 +25,9 @@ User-agent: *
 Allow: /
 Crawl-delay: 2
 
+# Block deprecated or redirected pages
+Disallow: /axi-cfd
+
 # Important pages for financial products
 Allow: /financial-products/
 Allow: /financial-products/forex

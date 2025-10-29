@@ -1,11 +1,31 @@
-
 import React from "react";
 import DF717Layout from "@/components/df717/DF717Layout";
 import DF717ArticleHeader from "@/components/df717/DF717ArticleHeader";
+import SEOHead from "@/components/seo/SEOHead";
 
 const DF717Main: React.FC = () => {
   return (
-    <DF717Layout>
+    <>
+      <SEOHead
+        title="DF717 - AI Algorithmic Trading System & Quantitative Platform"
+        description="Discover DF717, an advanced AI-powered algorithmic trading system for CFD markets. Learn about our quantitative platform, hybrid adaptive engine, and structured alpha process."
+        keywords="DF717, AI Trading System, Algorithmic Trading, Quantitative Trading, CFD Trading, AI Robot, Automated Trading, Quant Platform, Trading Algorithm"
+        canonical="https://df717.ai/df717"
+        type="website"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "DF717 AI Trading System",
+          "applicationCategory": "FinanceApplication",
+          "description": "AI-powered algorithmic trading system for CFD markets with quantitative modeling and hybrid adaptive intelligence.",
+          "url": "https://df717.ai/df717",
+          "offers": {
+            "@type": "Offer",
+            "category": "Algorithmic Trading Platform"
+          }
+        }}
+      />
+      <DF717Layout>
       <div className="prose prose-invert max-w-none text-left">
         <DF717ArticleHeader 
           title="DF717 Essence" 
@@ -65,6 +85,7 @@ const DF717Main: React.FC = () => {
         </div>
       </div>
     </DF717Layout>
+    </>
   );
 };
 

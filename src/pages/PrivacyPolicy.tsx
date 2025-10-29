@@ -1,8 +1,8 @@
-
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import Footer from "@/components/common/Footer";
+import SEOHead from "@/components/seo/SEOHead";
 
 const PrivacyPolicy: React.FC = () => {
   const scrollToTop = () => {
@@ -17,8 +17,16 @@ const PrivacyPolicy: React.FC = () => {
   }, []);
 
   return (
-    <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="flex-grow max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
+    <>
+      <SEOHead
+        title="Privacy Policy - DF717 Data Protection & User Privacy"
+        description="Read DF717's Privacy Policy to understand how we collect, use, and protect your personal information. Learn about our commitment to data security and GDPR compliance."
+        keywords="Privacy Policy, Data Protection, User Privacy, GDPR, Personal Information, Data Security, DF717 Privacy"
+        canonical="https://df717.ai/privacy-policy"
+        type="website"
+      />
+      <main className="w-full min-h-screen bg-black flex flex-col">
+        <div className="flex-grow max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <CompanyHeader scrollToTop={scrollToTop} />
 
         <motion.section 
@@ -72,6 +80,7 @@ const PrivacyPolicy: React.FC = () => {
       
       <Footer />
     </main>
+    </>
   );
 };
 

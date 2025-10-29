@@ -18,8 +18,17 @@ const Technology: React.FC = () => {
       <SEOHead
         title="Technology - AI-Powered Trading Systems & Innovation"
         description="Discover DF717's cutting-edge AI technology, algorithmic trading systems, and innovative solutions for financial market analysis and automated trading strategies."
+        keywords="AI Technology, Trading Systems, Algorithmic Trading, Machine Learning, Financial Technology, AI Innovation, Automated Trading, Market Analysis, DF717 Technology"
         canonical="https://df717.ai/technology"
         type="website"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "DF717 AI-Powered Trading Technology",
+          "description": "Cutting-edge AI technology and algorithmic trading systems for financial market analysis.",
+          "url": "https://df717.ai/technology",
+          "keywords": "AI Trading, Algorithmic Systems, Financial Technology"
+        }}
       />
       <main className="w-full min-h-screen bg-black flex flex-col">
         {/* Background effects that stop before the footer */}
