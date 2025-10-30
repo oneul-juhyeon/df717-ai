@@ -44,3 +44,6 @@ verify_jwt = false
 
 [functions.backfill-user-accounts]
 verify_jwt = false
+
+[functions.send-contact-email]
+verify_jwt = false
