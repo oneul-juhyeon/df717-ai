@@ -38,14 +38,14 @@ const Index: React.FC = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
         
-        <div className="relative z-20 max-w-none mx-auto px-5 sm:px-10 md:px-[154px] flex flex-col min-h-screen flex-grow">
-          <header className="pt-5 sm:pt-8 md:pt-14">
+        <div className="relative z-20 max-w-none mx-auto flex flex-col min-h-screen flex-grow">
+          <header className="pt-5 sm:pt-8 md:pt-14 pl-5 sm:pl-10 md:pl-[154px]">
             <Link to="/">
               <Logo as="h1" />
             </Link>
           </header>
 
-          <section className="mt-6 sm:mt-10 md:mt-14 flex-1 flex items-center">
+          <section className="mt-6 sm:mt-10 md:mt-14 flex-1 flex items-center px-5 sm:px-10 md:px-[154px]">
             <HeroSection className="w-full" />
           </section>
         </div>
@@ -63,7 +63,7 @@ const Index: React.FC = () => {
         </div>
         
         <div className="relative z-20">
-          <Footer />
+          <Footer noPadding />
         </div>
       </main>
     </>

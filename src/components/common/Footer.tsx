@@ -2,10 +2,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  noPadding?: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ noPadding = false }) => {
   return (
     <footer className="w-full bg-black text-white py-6 mt-auto relative z-20">
-      <div className="container mx-auto px-4 md:px-10 lg:px-[154px]">
+      <div className={`container mx-auto ${noPadding ? 'px-5 sm:px-10 md:px-[154px]' : 'px-4 md:px-10 lg:px-[154px]'}`}>
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between text-xs">
           {/* Left: Kakao Icon */}
