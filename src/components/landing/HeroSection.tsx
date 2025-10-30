@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </h3>
         
         <div className="flex">
-          <Button asChild className="bg-white text-black hover:bg-gray-200 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base md:text-lg rounded-full w-auto inline-flex items-center justify-center" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+          <Button asChild className="bg-white text-black hover:bg-gray-200 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base md:text-lg rounded-full w-auto inline-flex items-center justify-center">
             <Link to="/home-intro" className="flex items-center justify-center whitespace-nowrap h-full">
               <span>Explore DF717</span>
               <ChevronRight className="ml-1 h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0" />
