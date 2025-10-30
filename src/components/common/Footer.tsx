@@ -37,10 +37,10 @@ const Footer: React.FC = () => {
               SUPPLIERS
             </Link>
             <Link 
-              to="/contacts" 
+              to="/contact" 
               className="font-din font-bold text-white hover:text-gray-300 transition-colors"
             >
-              CONTACTS
+              CONTACT
             </Link>
           </div>
 
@@ -67,10 +67,10 @@ const Footer: React.FC = () => {
               SUPPLIERS
             </Link>
             <Link 
-              to="/contacts" 
+              to="/contact" 
               className="font-din font-bold text-white hover:text-gray-300 transition-colors"
             >
-              CONTACTS
+              CONTACT
             </Link>
           </div>
 
