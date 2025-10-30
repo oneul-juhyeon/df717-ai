@@ -63,7 +63,7 @@ const Index: React.FC = () => {
         </div>
         
         <div className="relative z-20">
-          <Footer noPadding />
+          <Footer />
         </div>
       </main>
     </>
