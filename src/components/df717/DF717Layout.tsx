@@ -53,14 +53,16 @@ const DF717Layout: React.FC<DF717LayoutProps> = ({
 
   return (
     <main className="w-full min-h-screen bg-black flex flex-col">
-      <div className="max-w-none mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
+      <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <DF717Header scrollToTop={scrollToTop} />
         
-        <div className="mt-16 mb-20 flex">
-          {showSidebar && <DF717Sidebar />}
-          
-          <div className={`w-full ${showSidebar ? 'lg:ml-10' : ''}`}>
-            {children}
+        <div className="mt-8 mb-12 flex justify-center">
+          <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
+            {showSidebar && <DF717Sidebar />}
+            
+            <div className={`w-full ${showSidebar ? 'lg:ml-8' : ''}`}>
+              {children}
+            </div>
           </div>
         </div>
       </div>
