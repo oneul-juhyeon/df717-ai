@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Logo from "@/components/landing/Logo";
 import HeroSection from "@/components/landing/HeroSection";
 import { Link } from "react-router-dom";
@@ -7,6 +7,28 @@ import Footer from "@/components/common/Footer";
 import SEOHead from "@/components/seo/SEOHead";
 
 const Index: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Force video to play on mobile
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Auto-play was prevented, try again on user interaction
+          const playOnInteraction = () => {
+            video.play();
+            document.removeEventListener('touchstart', playOnInteraction);
+            document.removeEventListener('click', playOnInteraction);
+          };
+          document.addEventListener('touchstart', playOnInteraction);
+          document.addEventListener('click', playOnInteraction);
+        });
+      }
+    }
+  }, []);
+
   return (
     <>
       <SEOHead
@@ -21,12 +43,13 @@ const Index: React.FC = () => {
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
             disablePictureInPicture
-            preload="metadata"
+            preload="auto"
             className="w-full h-full object-cover"
             style={{ objectPosition: "center" }}
           >
