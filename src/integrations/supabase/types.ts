@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          introducer_name: string | null
+          job_title: string
+          last_name: string
+          message: string
+          phone_number: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          introducer_name?: string | null
+          job_title: string
+          last_name: string
+          message: string
+          phone_number: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          introducer_name?: string | null
+          job_title?: string
+          last_name?: string
+          message?: string
+          phone_number?: string
+        }
+        Relationships: []
+      }
       user_accounts: {
         Row: {
           account_id: string
@@ -64,10 +100,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      hash_password: {
-        Args: { password: string }
-        Returns: string
-      }
+      hash_password: { Args: { password: string }; Returns: string }
       update_account_password: {
         Args: { account_id_param: string; new_password: string }
         Returns: boolean
