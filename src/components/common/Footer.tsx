@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Mobile Layout */}
-        <div className="flex md:hidden flex-col items-center space-y-4 text-sm">
+        <div className="flex md:hidden flex-col items-center space-y-4 text-xs">
           {/* Top: Links */}
           <div className="flex items-center space-x-6">
             <Link 
