@@ -62,7 +62,7 @@ const Index: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
         
         <div className="relative z-20 max-w-none mx-auto flex flex-col min-h-screen flex-grow">
-          <header className="pt-5 sm:pt-8 md:pt-14 pl-5 sm:pl-10 md:pl-[154px]">
+          <header className="pt-5 sm:pt-8 md:pt-14 pl-5 sm:pl-10 md:pl-[154px] w-full flex justify-start items-center">
             <Link to="/">
               <Logo as="h1" />
             </Link>
