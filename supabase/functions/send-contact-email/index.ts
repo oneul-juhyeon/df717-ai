@@ -68,21 +68,28 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to contact@df717.ai
     const emailResponse = await resend.emails.send({
-      from: "DF717 Contact Form <onboarding@resend.dev>",
+      from: "DF717 Contact Form <contact@df717.ai>",
       to: ["contact@df717.ai"],
       replyTo: email,
-      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+      subject: `New Contact Form from ${firstName} ${lastName} (${email})`,
       html: `
         <h2>New Contact Form Submission</h2>
+        <p><strong>📧 Reply to this email to respond directly to the user</strong></p>
+        <hr />
         <p><strong>Job Title:</strong> ${jobTitle}</p>
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
         <p><strong>Phone Number:</strong> ${phoneNumber}</p>
         <p><strong>Introducer Name:</strong> ${introducerName}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
     });
+
+    if (emailResponse.error) {
+      console.error("Resend error:", emailResponse.error);
+      throw new Error(`Failed to send email: ${emailResponse.error.message}`);
+    }
 
     console.log("Email sent successfully:", emailResponse);
 
