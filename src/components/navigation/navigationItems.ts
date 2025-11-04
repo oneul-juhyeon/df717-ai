@@ -45,7 +45,7 @@ export const getNavigationItems = (): NavigationItem[] => [
   },
   { 
     name: "CFD", 
-    path: "/cfd-safety",
+    path: "/cfd-trading",
     hasSubmenu: true,
     submenu: brokerSubmenu,
   },
