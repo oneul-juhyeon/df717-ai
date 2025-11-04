@@ -32,11 +32,13 @@ const Index: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="DF717 | AI Investment Solution"
-        description="Automate your investment with DF717's AI technology. Smart investing starts here."
+        title="DF717"
+        description="DF717 Official - AI Automated Investment Solution"
         keywords="DF717, DF717 AI, DF717 핀테크, DF717 투자, DF717 AI 자동투자, AI자동투자, 자동투자, 자동투자프로그램, 주식투자, AI 자동투자 프로그램, 자동매매, 자동매매 프로그램, 코인자동투자, 주식자동투자, 외환거래, CFD, 외환투자, FOREX, AI투자"
         canonical="https://df717.ai/"
         type="website"
+        ogTitle="DF717 | AI Investment Solution"
+        ogDescription="Automate your investment with DF717's AI technology. Smart investing starts here."
         showOrganizationSchema={true}
       />
       <main className="w-full min-h-screen relative overflow-hidden flex flex-col">

@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet-async";
 interface SEOHeadProps {
   title: string;
   description: string;
+  ogTitle?: string;
+  ogDescription?: string;
   keywords?: string;
   canonical?: string;
   type?: "website" | "article";
@@ -31,6 +33,8 @@ interface SEOHeadProps {
 const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
+  ogTitle,
+  ogDescription,
   keywords,
   canonical,
   type = "website",
@@ -93,8 +97,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {hreflang?.default && <link rel="alternate" hrefLang="x-default" href={hreflang.default} />}
       
       {/* Open Graph Tags */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={ogTitle || fullTitle} />
+      <meta property="og:description" content={ogDescription || description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={image} />
@@ -107,8 +111,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={ogTitle || fullTitle} />
+      <meta name="twitter:description" content={ogDescription || description} />
       <meta name="twitter:image" content={image} />
       
       {/* Article-specific meta tags */}
