@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CompanyHeader from "@/components/company/CompanyHeader";
 import Footer from "@/components/common/Footer";
+import SEOHead from "@/components/seo/SEOHead";
 
 const Suppliers: React.FC = () => {
   const scrollToTop = () => {
@@ -18,7 +19,23 @@ const Suppliers: React.FC = () => {
   }, []);
 
   return (
-    <main className="w-full min-h-screen bg-black flex flex-col">
+    <>
+      <SEOHead
+        title="Become a DF717 Supplier - Partnership Opportunities"
+        description="Join DF717's trusted supplier network. We work with diverse, qualified suppliers to deliver high-quality financial technology solutions globally."
+        keywords="DF717 협력사, 공급업체, 파트너십, B2B 협력, 금융 기술 파트너, Supplier Partnership, FinTech Supplier, Technology Vendor"
+        canonical="https://df717.ai/suppliers"
+        type="website"
+        image="https://df717.ai/lovable-uploads/54bee197-a2fd-4059-af3a-a621943e224a.png"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Become a DF717 Supplier",
+          "description": "Partner with DF717 as a supplier. We value diverse, qualified suppliers who help us deliver excellence.",
+          "url": "https://df717.ai/suppliers"
+        }}
+      />
+      <main className="w-full min-h-screen bg-black flex flex-col">
       <div className="flex-grow max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <CompanyHeader scrollToTop={scrollToTop} />
 
@@ -76,6 +93,7 @@ const Suppliers: React.FC = () => {
       
       <Footer />
     </main>
+    </>
   );
 };
 

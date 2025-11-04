@@ -11,7 +11,6 @@ import HomeIntro from "./pages/HomeIntro";
 import Company from "./pages/Company";
 import Technology from "./pages/Technology";
 import NotFound from "./pages/NotFound";
-import Robot from "./pages/Robot";
 import CFDSafety from "./pages/CFDSafety";
 import CFDTrading from "./pages/CFDTrading";
 import GetStarted from "./pages/GetStarted";
