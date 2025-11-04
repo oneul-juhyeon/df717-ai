@@ -38,7 +38,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords,
   canonical,
   type = "website",
-  image = "https://df717.ai/lovable-uploads/df717_logo.png",
+  image = "https://df717.ai/lovable-uploads/meta.png",
   imageWidth = "1200",
   imageHeight = "630",
   imageAlt = "DF717 AI Investment Platform",
