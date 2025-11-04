@@ -97,7 +97,7 @@ const FooterKo: React.FC = () => {
         <div className="mt-8 pt-6 border-t border-gray-800">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
             {/* Left: Logo */}
-            <div className="flex justify-center md:justify-start">
+            <div className="flex justify-start">
               <img 
                 src="/lovable-uploads/df717_logo.png" 
                 alt="DF717 Logo" 
@@ -106,7 +106,7 @@ const FooterKo: React.FC = () => {
             </div>
             
             {/* Right: Company Info */}
-            <div className="text-xs text-gray-400 space-y-1 text-center md:text-right">
+            <div className="text-xs text-gray-400 space-y-1 text-left md:text-right">
               <p className="font-medium">(주)DF717 Co. Ltd</p>
               <p>서울특별시 강남구 학동로31길 12, 7층 732호(논현동, 벤쳐캐슬빌딩)</p>
               <p>사업자등록번호 659-81-02573</p>
