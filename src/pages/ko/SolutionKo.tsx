@@ -7,7 +7,7 @@ import SolutionStepsKo from "@/components/solution/ko/SolutionStepsKo";
 import SolutionResultsKo from "@/components/solution/ko/SolutionResultsKo";
 import SolutionProductsKo from "@/components/solution/ko/SolutionProductsKo";
 import SolutionContactFormKo from "@/components/solution/ko/SolutionContactFormKo";
-import Footer from "@/components/common/Footer";
+import FooterKo from "@/components/common/FooterKo";
 
 const SolutionKo: React.FC = () => {
   const scrollToTop = () => {
@@ -56,7 +56,7 @@ const SolutionKo: React.FC = () => {
         <SolutionProductsKo />
         <SolutionContactFormKo />
         
-        <Footer />
+        <FooterKo />
       </div>
     </>
   );
