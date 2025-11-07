@@ -68,7 +68,7 @@ const HomeContent: React.FC = () => {
                 <p className="text-gray-300 mb-6">
                   Contract for Difference trading with enhanced accuracy and risk management.
                 </p>
-                <Link to="/axi-cfd">
+                <Link to="/cfd-trading">
                   <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
                     Explore
                   </Button>

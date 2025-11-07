@@ -22,7 +22,7 @@ const ProductCards: React.FC = () => {
     {
       title: "AXI CFD",
       description: "Contract for Difference trading with enhanced accuracy and risk management.",
-      link: "/axi-cfd"
+      link: "/cfd-trading"
     },
     {
       title: "API Integration",

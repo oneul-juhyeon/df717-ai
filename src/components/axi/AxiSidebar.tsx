@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const axiNavigationItems = [
-  { name: "CFD", path: "/axi-cfd" },
+  { name: "CFD", path: "/cfd-trading" },
   { name: "Our Edge", path: "/axi-edge" },
   { name: "Trade With Trust", path: "/axi-trust" },
   { name: "Best Pricing & Execution", path: "/axi-pricing" },
