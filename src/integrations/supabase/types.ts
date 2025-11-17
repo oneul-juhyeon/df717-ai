@@ -50,6 +50,54 @@ export type Database = {
         }
         Relationships: []
       }
+      orders: {
+        Row: {
+          amount: number
+          created_at: string | null
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id: string
+          order_id: string
+          paid_at: string | null
+          payment_key: string | null
+          product_type: string
+          refunded_at: string | null
+          status: string | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          id?: string
+          order_id: string
+          paid_at?: string | null
+          payment_key?: string | null
+          product_type: string
+          refunded_at?: string | null
+          status?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          id?: string
+          order_id?: string
+          paid_at?: string | null
+          payment_key?: string | null
+          product_type?: string
+          refunded_at?: string | null
+          status?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       user_accounts: {
         Row: {
           account_id: string
