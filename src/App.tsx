@@ -39,6 +39,8 @@ import Suppliers from "./pages/Suppliers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Solution from "./pages/Solution";
 import SolutionKo from "./pages/ko/SolutionKo";
+import PaymentSuccess from "./pages/ko/PaymentSuccess";
+import PaymentFail from "./pages/ko/PaymentFail";
 
 function App() {
   // Create a query client
@@ -84,6 +86,8 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/solution" element={<Solution />} />
               <Route path="/ko/solution" element={<SolutionKo />} />
+              <Route path="/ko/payment/success" element={<PaymentSuccess />} />
+              <Route path="/ko/payment/fail" element={<PaymentFail />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
