@@ -47,3 +47,12 @@ verify_jwt = false
 
 [functions.send-contact-email]
 verify_jwt = false
+
+[functions.create-payment]
+verify_jwt = false
+
+[functions.confirm-payment]
+verify_jwt = false
+
+[functions.cancel-payment]
+verify_jwt = false
