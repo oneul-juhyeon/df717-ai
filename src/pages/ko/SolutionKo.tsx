@@ -1,12 +1,12 @@
 import React from "react";
 import SEOHead from "@/components/seo/SEOHead";
 import SolutionHeaderKo from "@/components/solution/ko/SolutionHeaderKo";
-import SolutionHeroKo from "@/components/solution/ko/SolutionHeroKo";
-import SolutionFeaturesKo from "@/components/solution/ko/SolutionFeaturesKo";
-import SolutionStepsKo from "@/components/solution/ko/SolutionStepsKo";
-import SolutionResultsKo from "@/components/solution/ko/SolutionResultsKo";
-import SolutionProductsKo from "@/components/solution/ko/SolutionProductsKo";
-import SolutionContactFormKo from "@/components/solution/ko/SolutionContactFormKo";
+import { SalesHeroKo } from "@/components/solution/ko/SalesHeroKo";
+import { ProofSectionKo } from "@/components/solution/ko/ProofSectionKo";
+import { PurchaseSection } from "@/components/solution/ko/purchase/PurchaseSection";
+import { FAQSectionKo } from "@/components/solution/ko/FAQSectionKo";
+import { RefundPolicyKo } from "@/components/solution/ko/RefundPolicyKo";
+import { BusinessInfoKo } from "@/components/solution/ko/BusinessInfoKo";
 import FooterKo from "@/components/common/FooterKo";
 
 const SolutionKo: React.FC = () => {
@@ -49,12 +49,14 @@ const SolutionKo: React.FC = () => {
           <SolutionHeaderKo scrollToTop={scrollToTop} />
         </div>
         
-        <SolutionHeroKo />
-        <SolutionFeaturesKo />
-        <SolutionResultsKo />
-        <SolutionStepsKo />
-        <SolutionProductsKo />
-        <SolutionContactFormKo />
+        <SalesHeroKo />
+        <ProofSectionKo />
+        <div id="purchase-section">
+          <PurchaseSection />
+        </div>
+        <FAQSectionKo />
+        <RefundPolicyKo />
+        <BusinessInfoKo />
         
         <FooterKo />
       </div>
