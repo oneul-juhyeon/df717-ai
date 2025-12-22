@@ -32,7 +32,8 @@ serve(async (req) => {
       server,
       sessionId,
       referrerName,
-      accountType
+      accountType,
+      countryCode
     } = requestBody;
 
     // Validate required fields
@@ -97,6 +98,7 @@ serve(async (req) => {
         referrer_name: referrerName || null,
         session_id: sessionId || null,
         status: accountType === 'live' ? 'pending' : 'active',
+        country_code: countryCode || null,
       };
 
       // Only update password and server for demo accounts
@@ -122,6 +124,7 @@ serve(async (req) => {
         referrer_name: referrerName || null,
         session_id: sessionId || null,
         status: accountType === 'live' ? 'pending' : 'active',
+        country_code: countryCode || null,
         created_at: new Date().toISOString()
       };
 
@@ -159,7 +162,8 @@ serve(async (req) => {
           phone: phone || null,
           referrer_name: referrerName || null,
           session_id: sessionId || null,
-          account_type: accountType || 'demo'
+          account_type: accountType || 'demo',
+          country_code: countryCode || null
         }
       });
 
