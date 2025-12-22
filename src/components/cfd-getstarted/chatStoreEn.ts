@@ -1433,7 +1433,8 @@ export const useChatStore = create<ChatStore>()(
                     server: formData.server,
                     sessionId: userData.sessionId || crypto.randomUUID(),
                     referrerName: userData.referrerName,
-                    accountType: userData.accountType || 'demo'
+                    accountType: userData.accountType || 'demo',
+                    countryCode: userData.countryCode || ''
                   }
                 });
 

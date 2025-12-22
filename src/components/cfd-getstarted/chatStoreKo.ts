@@ -2367,6 +2367,7 @@ export const useChatStore = create<ChatStore>()(
                   sessionId: userData.sessionId || crypto.randomUUID(),
                   referrerName: userData.referrerName || "",
                   accountType: userData.accountType || "demo",
+                  countryCode: userData.countryCode || "",
                 };
 
                 const { data, error } = await supabase.functions.invoke("store-user-account", {

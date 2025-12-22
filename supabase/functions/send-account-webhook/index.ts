@@ -69,7 +69,11 @@ serve(async (req) => {
       session_id: requestBody.session_id || null,
       account_type: requestBody.account_type || 'demo',
       first_name: requestBody.first_name || null,
-      last_name: requestBody.last_name || null
+      last_name: requestBody.last_name || null,
+      
+      // New fields added
+      country_code: requestBody.country_code || null,
+      phone_number: requestBody.phone || null,
     };
 
     console.log('Sending webhook to:', 'https://df717.app.n8n.cloud/webhook/account-insert');
