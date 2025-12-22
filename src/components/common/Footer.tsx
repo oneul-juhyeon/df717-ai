@@ -8,19 +8,33 @@ const Footer: React.FC = () => {
       <div className="w-full px-5 sm:px-10 md:px-[154px]">
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between text-xs">
-          {/* Left: Kakao Icon */}
-          <a 
-            href="https://pf.kakao.com/_EAuxcn" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
-          >
-            <img 
-              src="/footer_kakao_icon.svg" 
-              alt="Kakao Channel" 
-              className="w-[60px] h-[60px]"
-            />
-          </a>
+          {/* Left: Social Icons */}
+          <div className="flex items-center space-x-3">
+            <a 
+              href="https://pf.kakao.com/_EAuxcn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/footer_kakao_channel_icon.svg" 
+                alt="Kakao Channel" 
+                className="w-[31px] h-[31px]"
+              />
+            </a>
+            <a 
+              href="https://t.me/your_telegram" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/footer_telegram_icon.svg" 
+                alt="Telegram" 
+                className="w-[31px] h-[31px]"
+              />
+            </a>
+          </div>
 
           {/* Center: Links */}
           <div className="flex items-center space-x-10">
@@ -79,19 +93,33 @@ const Footer: React.FC = () => {
             <span className="font-din text-white">DF717 © 2025</span>
           </div>
 
-          {/* Bottom: Kakao Icon */}
-          <a 
-            href="https://pf.kakao.com/_EAuxcn" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
-          >
-            <img 
-              src="/footer_kakao_icon.svg" 
-              alt="Kakao Channel" 
-              className="w-[60px] h-[60px]"
-            />
-          </a>
+          {/* Bottom: Social Icons */}
+          <div className="flex items-center space-x-3">
+            <a 
+              href="https://pf.kakao.com/_EAuxcn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/footer_kakao_channel_icon.svg" 
+                alt="Kakao Channel" 
+                className="w-[31px] h-[31px]"
+              />
+            </a>
+            <a 
+              href="https://t.me/your_telegram" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src="/footer_telegram_icon.svg" 
+                alt="Telegram" 
+                className="w-[31px] h-[31px]"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
