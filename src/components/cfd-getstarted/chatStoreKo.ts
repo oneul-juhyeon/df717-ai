@@ -1900,7 +1900,7 @@ export const useChatStore = create<ChatStore>()(
                   },
                   {
                     id: "step-9-intro",
-                    content: "투자 금액에 따라 계좌 유형이 다릅니다.\n\n• $50 ~ $999: 센트계좌\n• $1,000 이상: 일반계좌\n\n투자 예정 금액을 선택하세요:",
+                    content: "투자 금액에 따라 계좌 유형이 다릅니다.\n\n• $50 ~ $999: 센트계좌\n• $1,000 이상: 일반계좌\n\n투자 예정 금액을 선택해 주세요.",
                     sender: "ai",
                     type: "text",
                     timestamp: new Date(),
@@ -1915,7 +1915,7 @@ export const useChatStore = create<ChatStore>()(
                     animate: false,
                     buttons: [
                       {
-                        label: "$50~$999 센트계좌",
+                        label: "$50~$999",
                         type: "primary",
                         action: () => {
                           // Set account sub type to cent
@@ -1925,67 +1925,78 @@ export const useChatStore = create<ChatStore>()(
 
                           get().addMessage({
                             id: `user-response-${Date.now()}`,
-                            content: "$50~$999 센트계좌",
+                            content: "$50~$999",
                             sender: "user",
                             type: "text",
                             timestamp: new Date(),
                             animate: false,
                           });
 
-                          // Show cent account details
+                          // Show transition message and then cent account details
                           setTimeout(() => {
-                            get().addMessageGroup([
-                              {
-                                id: "step-9a-info",
-                                content: "💡 **센트계좌란?**\n소규모 자금으로 카피트레이딩을 시작할 수 있는 계좌입니다.\n100배 환산으로 운영됩니다.\n예: $50 입금 → 5,000 USC로 표시",
-                                sender: "ai",
-                                type: "info_box",
-                                timestamp: new Date(),
-                                animate: false,
-                              },
-                              {
-                                id: "step-9a-steps",
-                                content:
-                                  '📱 Vantage 앱에서:\n1. 상단의 Live 00000000 계좌번호 클릭\n2. 계정관리 섹션 하단의 "실계좌 추가" 클릭\n3. 동명계좌 개설 페이지에서 아래 설정 확인\n\n📋 계좌 설정:\n- **계정 플랫폼**: Copy Trading\n- **계정 유형**: Raw ECN Cent\n- **계정 통화**: USC\n\n💰 **최소 입금액**: $50 (5,000 USC)\n\n개인선언문 동의 후 **제출** 버튼을 클릭하세요.',
-                                sender: "ai",
-                                type: "info_box",
-                                timestamp: new Date(),
-                                animate: false,
-                              },
-                              {
-                                id: "step-9a-action",
-                                content: "",
-                                sender: "ai",
-                                type: "action_button",
-                                timestamp: new Date(),
-                                animate: false,
-                                buttons: [
-                                  {
-                                    label: "Copy Trading 계좌를 개설했어요",
-                                    type: "primary",
-                                    action: () => {
-                                      get().addMessage({
-                                        id: `user-response-${Date.now()}`,
-                                        content: "Copy Trading 계좌를 개설했어요",
-                                        sender: "user",
-                                        type: "text",
-                                        timestamp: new Date(),
-                                        animate: false,
-                                      });
+                            get().addMessage({
+                              id: "step-9-transition-cent",
+                              content: "카피 트레이딩을 사용하기 위한 전용 계좌를 개설해볼게요.",
+                              sender: "ai",
+                              type: "text",
+                              timestamp: new Date(),
+                              animate: false,
+                            });
 
-                                      setTimeout(() => {
-                                        get().proceedToStep(10);
-                                      }, 800);
+                            setTimeout(() => {
+                              get().addMessageGroup([
+                                {
+                                  id: "step-9a-info",
+                                  content: "💡 **센트계좌란?**\n소규모 자금으로 카피트레이딩을 시작할 수 있는 계좌입니다.\n100배 환산으로 운영됩니다.\n예: $50 입금 → 5,000 USC로 표시",
+                                  sender: "ai",
+                                  type: "info_box",
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: "step-9a-steps",
+                                  content:
+                                    '📱 Vantage 앱에서:\n1. 상단의 Live 00000000 계좌번호 클릭\n2. 계정관리 섹션 하단의 "실계좌 추가" 클릭\n3. 동명계좌 개설 페이지에서 아래 설정 확인\n\n📋 계좌 설정:\n- **계정 플랫폼**: Copy Trading\n- **계정 유형**: Raw ECN Cent\n- **계정 통화**: USC\n\n💰 **최소 입금액**: $50 (5,000 USC)\n\n개인선언문 동의 후 **제출** 버튼을 클릭하세요.',
+                                  sender: "ai",
+                                  type: "info_box",
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: "step-9a-action",
+                                  content: "",
+                                  sender: "ai",
+                                  type: "action_button",
+                                  timestamp: new Date(),
+                                  animate: false,
+                                  buttons: [
+                                    {
+                                      label: "Copy Trading 계좌를 개설했어요",
+                                      type: "primary",
+                                      action: () => {
+                                        get().addMessage({
+                                          id: `user-response-${Date.now()}`,
+                                          content: "Copy Trading 계좌를 개설했어요",
+                                          sender: "user",
+                                          type: "text",
+                                          timestamp: new Date(),
+                                          animate: false,
+                                        });
+
+                                        setTimeout(() => {
+                                          get().proceedToStep(10);
+                                        }, 800);
+                                      },
                                     },
-                                  },
-                                ],
-                              },
-                            ]);
+                                  ],
+                                },
+                              ]);
+                            }, 800);
                           }, 800);
                         },
                       },
                       {
-                        label: "$1,000 이상 일반계좌",
+                        label: "$1,000 이상",
                         type: "primary",
                         action: () => {
                           // Set account sub type to regular
@@ -1995,62 +2006,73 @@ export const useChatStore = create<ChatStore>()(
 
                           get().addMessage({
                             id: `user-response-${Date.now()}`,
-                            content: "$1,000 이상 일반계좌",
+                            content: "$1,000 이상",
                             sender: "user",
                             type: "text",
                             timestamp: new Date(),
                             animate: false,
                           });
 
-                          // Show regular account details
+                          // Show transition message and then regular account details
                           setTimeout(() => {
-                            get().addMessageGroup([
-                              {
-                                id: "step-9b-info",
-                                content: "💡 참고!\n계좌는 일반 거래계좌와 별도로 **카피트레이딩 전용**입니다.",
-                                sender: "ai",
-                                type: "info_box",
-                                timestamp: new Date(),
-                                animate: false,
-                              },
-                              {
-                                id: "step-9b-steps",
-                                content:
-                                  '📱 Vantage 앱에서:\n1. 상단의 Live 00000000 계좌번호 클릭\n2. 계정관리 섹션 하단의 "실계좌 추가" 클릭\n3. 동명계좌 개설 페이지에서 아래 설정 확인\n\n📋 계좌 설정:\n- **계정 플랫폼**: Copy Trading\n- **계정 유형**: ECN\n- **계정 통화**: USD\n\n💰 **최소 투자금**: $1,000\n\n개인선언문 동의 후 **제출** 버튼을 클릭하세요.',
-                                sender: "ai",
-                                type: "info_box",
-                                timestamp: new Date(),
-                                animate: false,
-                              },
-                              {
-                                id: "step-9b-action",
-                                content: "",
-                                sender: "ai",
-                                type: "action_button",
-                                timestamp: new Date(),
-                                animate: false,
-                                buttons: [
-                                  {
-                                    label: "Copy Trading 계좌를 개설했어요",
-                                    type: "primary",
-                                    action: () => {
-                                      get().addMessage({
-                                        id: `user-response-${Date.now()}`,
-                                        content: "Copy Trading 계좌를 개설했어요",
-                                        sender: "user",
-                                        type: "text",
-                                        timestamp: new Date(),
-                                        animate: false,
-                                      });
+                            get().addMessage({
+                              id: "step-9-transition-regular",
+                              content: "카피 트레이딩을 사용하기 위한 전용 계좌를 개설해볼게요.",
+                              sender: "ai",
+                              type: "text",
+                              timestamp: new Date(),
+                              animate: false,
+                            });
 
-                                      setTimeout(() => {
-                                        get().proceedToStep(10);
-                                      }, 800);
+                            setTimeout(() => {
+                              get().addMessageGroup([
+                                {
+                                  id: "step-9b-info",
+                                  content: "💡 참고!\n계좌는 일반 거래계좌와 별도로 **카피트레이딩 전용**입니다.",
+                                  sender: "ai",
+                                  type: "info_box",
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: "step-9b-steps",
+                                  content:
+                                    '📱 Vantage 앱에서:\n1. 상단의 Live 00000000 계좌번호 클릭\n2. 계정관리 섹션 하단의 "실계좌 추가" 클릭\n3. 동명계좌 개설 페이지에서 아래 설정 확인\n\n📋 계좌 설정:\n- **계정 플랫폼**: Copy Trading\n- **계정 유형**: ECN\n- **계정 통화**: USD\n\n💰 **최소 투자금**: $1,000\n\n개인선언문 동의 후 **제출** 버튼을 클릭하세요.',
+                                  sender: "ai",
+                                  type: "info_box",
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: "step-9b-action",
+                                  content: "",
+                                  sender: "ai",
+                                  type: "action_button",
+                                  timestamp: new Date(),
+                                  animate: false,
+                                  buttons: [
+                                    {
+                                      label: "Copy Trading 계좌를 개설했어요",
+                                      type: "primary",
+                                      action: () => {
+                                        get().addMessage({
+                                          id: `user-response-${Date.now()}`,
+                                          content: "Copy Trading 계좌를 개설했어요",
+                                          sender: "user",
+                                          type: "text",
+                                          timestamp: new Date(),
+                                          animate: false,
+                                        });
+
+                                        setTimeout(() => {
+                                          get().proceedToStep(10);
+                                        }, 800);
+                                      },
                                     },
-                                  },
-                                ],
-                              },
-                            ]);
+                                  ],
+                                },
+                              ]);
+                            }, 800);
                           }, 800);
                         },
                       },
