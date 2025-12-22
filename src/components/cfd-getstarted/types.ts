@@ -46,6 +46,7 @@ export interface UserData {
   sessionId?: string;
   referrerName?: string;
   accountType?: 'demo' | 'live';
+  accountSubType?: 'cent' | 'regular';
 }
 
 export interface ChatState {
