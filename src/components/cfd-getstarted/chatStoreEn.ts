@@ -1235,38 +1235,39 @@ export const useChatStore = create<ChatStore>()(
               set({ currentStep: 8, isProcessing: false });
               break;
 
-            case 9:
+            case 9: {
               const step9UserData = get().userData;
-              const isLiveAccountStep9 = step9UserData.accountType === 'live';
-              const accountTypeText = isLiveAccountStep9 ? 'Live account created' : 'Demo account created';
-              
-              get().addMessageGroup([
-                {
-                  id: 'step-9-title',
-                  content: '✨ Start Monitoring!',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                },
-                {
-                  id: 'step-9-success',
-                   content: `✅ **Setup complete!**\n\n• **${accountTypeText}**\n• **AI program activation requested**\n• **Monitoring app installed**`,
-                   sender: 'ai',
-                   type: 'success_box',
-                   timestamp: new Date(),
-                   animate: false,
-                 },
-                {
-                  id: 'step-9-intro',
-                  content: 'Congratulations! You can now monitor your trading history and returns in real-time.\nOur manager will notify you when the program starts running!',
-                  sender: 'ai',
-                  type: 'text',
-                  timestamp: new Date(),
-                  animate: false,
-                }
+              const isDemo = step9UserData.accountType === 'demo';
+
+              if (isDemo) {
+                // Demo flow - existing final completion
+                get().addMessageGroup([
+                  {
+                    id: 'step-9-title',
+                    content: '✨ Start Monitoring!',
+                    sender: 'ai',
+                    type: 'text',
+                    timestamp: new Date(),
+                    animate: false,
+                  },
+                  {
+                    id: 'step-9-success',
+                    content: '✅ **Setup complete!**\n\n• **Demo account created**\n• **AI program activation requested**\n• **Monitoring app installed**',
+                    sender: 'ai',
+                    type: 'success_box',
+                    timestamp: new Date(),
+                    animate: false,
+                  },
+                  {
+                    id: 'step-9-intro',
+                    content: 'Congratulations! You can now monitor your trading history and returns in real-time.\nOur manager will notify you when the program starts running!',
+                    sender: 'ai',
+                    type: 'text',
+                    timestamp: new Date(),
+                    animate: false,
+                  }
                 ]);
-                
+
                 setTimeout(() => {
                   set(state => ({
                     messages: [...state.messages, {
@@ -1278,7 +1279,7 @@ export const useChatStore = create<ChatStore>()(
                       animate: true,
                     }]
                   }));
-                  
+
                   setTimeout(() => {
                     set(state => ({
                       messages: [...state.messages, {
@@ -1327,9 +1328,500 @@ export const useChatStore = create<ChatStore>()(
                     }));
                   }, 400);
                 }, 800);
-                
-                set({ currentStep: 9, isProcessing: false });
-                break;
+              } else {
+                // Live flow - NEW Step 9: Investment Amount Selection & Copy Trading Account Creation
+                get().addMessageGroup([
+                  {
+                    id: 'step-9-title',
+                    content: 'Step 9: Open Copy Trading Account',
+                    sender: 'ai',
+                    type: 'text',
+                    timestamp: new Date(),
+                    animate: false,
+                  },
+                  {
+                    id: 'step-9-intro',
+                    content: 'The account type varies depending on your investment amount.\n\n• $50 ~ $999: Cent Account\n• $1,000 or more: Standard Account\n\nPlease select your planned investment amount.',
+                    sender: 'ai',
+                    type: 'text',
+                    timestamp: new Date(),
+                    animate: false,
+                  },
+                  {
+                    id: 'step-9-selection',
+                    content: '',
+                    sender: 'ai',
+                    type: 'action_button',
+                    timestamp: new Date(),
+                    animate: false,
+                    buttons: [
+                      {
+                        label: '$50~$999',
+                        type: 'primary',
+                        action: () => {
+                          // Set account sub type to cent
+                          set((state) => ({
+                            userData: { ...state.userData, accountSubType: 'cent' }
+                          }));
+
+                          get().addMessage({
+                            id: `user-response-${Date.now()}`,
+                            content: '$50~$999',
+                            sender: 'user',
+                            type: 'text',
+                            timestamp: new Date(),
+                            animate: false
+                          });
+
+                          // Show transition message and then cent account details
+                          setTimeout(() => {
+                            get().addMessage({
+                              id: 'step-9-transition-cent',
+                              content: "Let's open a dedicated account for copy trading.",
+                              sender: 'ai',
+                              type: 'text',
+                              timestamp: new Date(),
+                              animate: false
+                            });
+
+                            setTimeout(() => {
+                              get().addMessageGroup([
+                                {
+                                  id: 'step-9a-info',
+                                  content: '💡 **What is a Cent Account?**\nA Cent Account allows you to start copy trading with smaller funds.\nIt operates at 100x conversion.\nExample: $50 deposit → Displayed as 5,000 USC',
+                                  sender: 'ai',
+                                  type: 'info_box',
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: 'step-9a-steps',
+                                  content: '📱 In the Vantage app:\n1. Tap the Live 00000000 account number at the top\n2. Click "Add Live Account" at the bottom of Account Management\n3. Check the settings on the Add Account page\n\n📋 Account Settings:\n- **Account Platform**: Copy Trading\n- **Account Type**: Raw ECN Cent\n- **Account Currency**: USC\n\n💰 **Minimum Deposit**: $50 (5,000 USC)\n\nAgree to the personal declaration and click **Submit**.',
+                                  sender: 'ai',
+                                  type: 'info_box',
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: 'step-9a-action',
+                                  content: '',
+                                  sender: 'ai',
+                                  type: 'action_button',
+                                  timestamp: new Date(),
+                                  animate: false,
+                                  buttons: [
+                                    {
+                                      label: "I've opened the Copy Trading account",
+                                      type: 'primary',
+                                      action: () => {
+                                        get().addMessage({
+                                          id: `user-response-${Date.now()}`,
+                                          content: "I've opened the Copy Trading account",
+                                          sender: 'user',
+                                          type: 'text',
+                                          timestamp: new Date(),
+                                          animate: false
+                                        });
+
+                                        setTimeout(() => {
+                                          get().proceedToStep(10);
+                                        }, 800);
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]);
+                            }, 800);
+                          }, 800);
+                        }
+                      },
+                      {
+                        label: '$1,000 or more',
+                        type: 'primary',
+                        action: () => {
+                          // Set account sub type to regular
+                          set((state) => ({
+                            userData: { ...state.userData, accountSubType: 'regular' }
+                          }));
+
+                          get().addMessage({
+                            id: `user-response-${Date.now()}`,
+                            content: '$1,000 or more',
+                            sender: 'user',
+                            type: 'text',
+                            timestamp: new Date(),
+                            animate: false
+                          });
+
+                          // Show transition message and then regular account details
+                          setTimeout(() => {
+                            get().addMessage({
+                              id: 'step-9-transition-regular',
+                              content: "Let's open a dedicated account for copy trading.",
+                              sender: 'ai',
+                              type: 'text',
+                              timestamp: new Date(),
+                              animate: false
+                            });
+
+                            setTimeout(() => {
+                              get().addMessageGroup([
+                                {
+                                  id: 'step-9b-info',
+                                  content: '💡 Note!\nThis account is for Copy Trading only, separate from your regular trading account.',
+                                  sender: 'ai',
+                                  type: 'info_box',
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: 'step-9b-steps',
+                                  content: '📱 In the Vantage app:\n1. Tap the Live 00000000 account number at the top\n2. Click "Add Live Account" at the bottom of Account Management\n3. Check the settings on the Add Account page\n\n📋 Account Settings:\n- **Account Platform**: Copy Trading\n- **Account Type**: ECN\n- **Account Currency**: USD\n\n💰 **Minimum Investment**: $1,000\n\nAgree to the personal declaration and click **Submit**.',
+                                  sender: 'ai',
+                                  type: 'info_box',
+                                  timestamp: new Date(),
+                                  animate: false,
+                                },
+                                {
+                                  id: 'step-9b-action',
+                                  content: '',
+                                  sender: 'ai',
+                                  type: 'action_button',
+                                  timestamp: new Date(),
+                                  animate: false,
+                                  buttons: [
+                                    {
+                                      label: "I've opened the Copy Trading account",
+                                      type: 'primary',
+                                      action: () => {
+                                        get().addMessage({
+                                          id: `user-response-${Date.now()}`,
+                                          content: "I've opened the Copy Trading account",
+                                          sender: 'user',
+                                          type: 'text',
+                                          timestamp: new Date(),
+                                          animate: false
+                                        });
+
+                                        setTimeout(() => {
+                                          get().proceedToStep(10);
+                                        }, 800);
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]);
+                            }, 800);
+                          }, 800);
+                        }
+                      }
+                    ]
+                  }
+                ]);
+              }
+
+              set({ currentStep: 9, isProcessing: false });
+              break;
+            }
+
+            case 10: {
+              // Live flow only - NEW Step 10: Deposit (dynamic based on account sub type)
+              const step10UserData = get().userData;
+              const isCentAccount = step10UserData.accountSubType === 'cent';
+              const minAmountDisplay = isCentAccount ? '$50 (5,000 USC)' : '$1,000';
+
+              get().addMessageGroup([
+                {
+                  id: 'step-10-title',
+                  content: 'Step 10: Deposit Funds',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-intro',
+                  content: 'You need to deposit funds to start copy trading.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-info',
+                  content: `💰 **DF717 Minimum Investment**: ${minAmountDisplay} or more`,
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-warning',
+                  content: '⚠️ Before depositing!\nMake sure to select your **"Copy Trading Account"**.',
+                  sender: 'ai',
+                  type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-steps',
+                  content: '📱 In the Vantage app:\n1. Click "Deposit" on home screen\n2. Confirm **Copy Trading account** is selected\n3. Enter deposit amount and click Continue\n4. Select deposit method (Credit card, Bank transfer, Crypto, etc.)\n5. Click **Submit**',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-10-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: "I've completed the deposit",
+                      type: 'primary',
+                      action: () => {
+                        get().addMessage({
+                          id: `user-response-${Date.now()}`,
+                          content: "I've completed the deposit",
+                          sender: 'user',
+                          type: 'text',
+                          timestamp: new Date(),
+                          animate: false
+                        });
+
+                        setTimeout(() => {
+                          get().proceedToStep(11);
+                        }, 800);
+                      }
+                    }
+                  ]
+                }
+              ]);
+
+              set({ currentStep: 10, isProcessing: false });
+              break;
+            }
+
+            case 11: {
+              // Live flow only - NEW Step 11: Copy Trading Setup
+              get().addMessageGroup([
+                {
+                  id: 'step-11-title',
+                  content: 'Step 11: Configure Copy Trading',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-11-intro',
+                  content: "Last step! Let's complete the copy settings by selecting the AI strategy.",
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-11-search',
+                  content: '🔍 **Search for Strategy**:\nIn Vantage app bottom → "Discover" tab\n→ Click "Signals" at top\n→ Search "DestinyFinance"\n→ Click **Enter**\n→ Click **Copy**',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-11-settings',
+                  content: '⚙️ **Copy Trading Settings**:\n\n**Copy Mode**: Equal Margin Used\n- Lot size automatically set based on balance ratio with master\n\n**Investment Amount**: Enter your deposited amount\n- Example: Enter $3,000 → Balance + Bonus = 3,000\n\n**Risk Management**: Change to 95%\n- Settings to follow the signal provider as closely as possible\n\n**Take Profit**: Keep disabled\n- Continue following until signal provider closes the order\n\n**Assistant**: Keep enabled\n- Maximize trading activity by keeping above minimum copy lot\n\n**Position Order**: Change to enabled\n- Enter order at current market price when copy starts\n\nClick **Submit**.',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-11-action',
+                  content: '',
+                  sender: 'ai',
+                  type: 'action_button',
+                  timestamp: new Date(),
+                  animate: false,
+                  buttons: [
+                    {
+                      label: "I've completed Copy Trading setup",
+                      type: 'primary',
+                      action: () => {
+                        get().addMessage({
+                          id: `user-response-${Date.now()}`,
+                          content: "I've completed Copy Trading setup",
+                          sender: 'user',
+                          type: 'text',
+                          timestamp: new Date(),
+                          animate: false
+                        });
+
+                        setTimeout(() => {
+                          get().proceedToStep(12);
+                        }, 800);
+                      }
+                    }
+                  ]
+                }
+              ]);
+
+              set({ currentStep: 11, isProcessing: false });
+              break;
+            }
+
+            case 12: {
+              // Live flow only - NEW Step 12: Approval Request (Account Number only)
+              get().addMessageGroup([
+                {
+                  id: 'step-12-title',
+                  content: 'Step 12: Request Approval',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-12-intro',
+                  content: 'Now please enter your **Copy Trading account information** for approval.',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-12-account-info',
+                  content: '📋 You can find this information in the Vantage app:\n- Tap your Copy Trading account number at the top\n- Check the Account Number',
+                  sender: 'ai',
+                  type: 'info_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-12-security',
+                  content: '🔒 Rest assured!\nYour account information is only used for Copy Trading program approval.',
+                  sender: 'ai',
+                  type: 'warning_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-12-form',
+                  content: '',
+                  sender: 'ai',
+                  type: 'form',
+                  timestamp: new Date(),
+                  animate: false,
+                  formFields: [
+                    {
+                      id: 'accountId',
+                      label: 'Account Number',
+                      type: 'tel',
+                      placeholder: 'Enter account number',
+                      required: true,
+                      value: ''
+                    }
+                  ],
+                  buttons: [
+                    {
+                      label: 'Request Approval',
+                      type: 'primary',
+                      action: () => {
+                        get().submitUserForm('step-12-form');
+                      }
+                    }
+                  ]
+                }
+              ]);
+
+              set({ currentStep: 12, isProcessing: false });
+              break;
+            }
+
+            case 13: {
+              // Live flow only - Final completion message
+              get().addMessageGroup([
+                {
+                  id: 'step-13-title',
+                  content: '🎉 Congratulations!',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-13-success',
+                  content: '✅ **All setup is complete!**\n- Vantage live account opened\n- KYC verification complete\n- Copy Trading account opened\n- AI automated investing approval requested',
+                  sender: 'ai',
+                  type: 'success_box',
+                  timestamp: new Date(),
+                  animate: false,
+                },
+                {
+                  id: 'step-13-intro',
+                  content: '📱 You can check your returns in real-time on the Vantage app.\n\n💬 Have questions?\nAdd our KakaoTalk channel for manager support!\nhttp://pf.kakao.com/_EAuxcn',
+                  sender: 'ai',
+                  type: 'text',
+                  timestamp: new Date(),
+                  animate: false,
+                }
+              ]);
+
+              setTimeout(() => {
+                set(state => ({
+                  messages: [...state.messages, {
+                    id: 'final-buttons',
+                    content: '',
+                    sender: 'ai',
+                    type: 'final_cards',
+                    timestamp: new Date(),
+                    animate: false,
+                    buttons: [
+                      {
+                        label: '🏠 About DF717',
+                        description: 'Learn who we are',
+                        type: 'card',
+                        action: () => {
+                          window.open('https://www.df717.ai/', '_blank');
+                        }
+                      },
+                      {
+                        label: '📊 Live Returns',
+                        description: '8.3 years verified live account',
+                        type: 'card',
+                        action: () => {
+                          window.open('https://aiwow.notion.site/DF717-LIVE-ACCOUNT-20dc67e3da6880dfbc4cefa57ae38bf7', '_blank');
+                        }
+                      },
+                      {
+                        label: '📈 Backtest Results',
+                        description: '20 years verified, 65.9% return',
+                        type: 'card',
+                        action: () => {
+                          window.open('https://aiwow.notion.site/DF717-Backtest-20fc67e3da68809780c0f8302bfc12bf', '_blank');
+                        }
+                      },
+                      {
+                        label: '🔄 Start Over',
+                        description: 'Return to beginning',
+                        type: 'card',
+                        action: () => {
+                          get().resetChat();
+                          get().initializeChat();
+                        }
+                      }
+                    ]
+                  }]
+                }));
+              }, 800);
+
+              set({ currentStep: 13, isProcessing: false });
+              break;
+            }
 
             default:
               set({ isProcessing: false });
@@ -1368,11 +1860,12 @@ export const useChatStore = create<ChatStore>()(
           });
 
           // Developer skip mode - bypass validation and database storage
-          if (formData.server?.toLowerCase() === 'df') {
+          if (formData.server?.toLowerCase() === 'df' || formData.accountId === 'df') {
+            const { userData } = get();
             const dummyAccountData = {
               accountId: '12345678',
-              password: 'test1234',
-              server: 'TestServer-Demo'
+              password: formData.password || 'test1234',
+              server: formData.server || 'TestServer-Demo'
             };
             
             get().updateUserData(dummyAccountData);
@@ -1387,13 +1880,10 @@ export const useChatStore = create<ChatStore>()(
             });
 
             setTimeout(() => {
-              if (messageId === 'step-6-form' || messageId === 'skip-step-6-form') {
-                console.log('Dev mode: Form submitted, proceeding to step 7');
-                set({ isProcessing: false });
-                get().proceedToStep(7);
-              } else {
-                set({ isProcessing: false });
-              }
+              set({ isProcessing: false });
+              const isDemo = userData.accountType === 'demo';
+              const nextStep = isDemo ? 7 : 13;
+              get().proceedToStep(nextStep);
             }, 800);
             
             return; // Skip all validation and database storage
@@ -1418,24 +1908,28 @@ export const useChatStore = create<ChatStore>()(
           get().updateUserData(formData);
           
           const saveToDatabase = async () => {
-            if (messageId === 'step-6-form' || messageId === 'skip-step-6-form') {
+            if (messageId === 'step-6-form' || messageId === 'step-12-form' || messageId === 'skip-step-6-form') {
               try {
                 const { userData } = get();
+                const isLive = userData.accountType === 'live';
+                
+                // For live accounts from step 12, only accountId is entered
+                const accountData = {
+                  firstName: userData.firstName || '',
+                  lastName: userData.lastName || '',
+                  email: userData.email || '',
+                  phone: userData.phone || '',
+                  accountId: formData.accountId,
+                  password: formData.password || '', // Empty for live accounts
+                  server: formData.server || '', // Empty for live accounts
+                  sessionId: userData.sessionId || crypto.randomUUID(),
+                  referrerName: userData.referrerName || '',
+                  accountType: userData.accountType || 'demo',
+                  countryCode: userData.countryCode || ''
+                };
                 
                 const { data, error } = await supabase.functions.invoke('store-user-account', {
-                  body: {
-                    firstName: userData.firstName,
-                    lastName: userData.lastName,
-                    email: userData.email,
-                    phone: userData.phone,
-                    accountId: formData.accountId,
-                    password: formData.password,
-                    server: formData.server,
-                    sessionId: userData.sessionId || crypto.randomUUID(),
-                    referrerName: userData.referrerName,
-                    accountType: userData.accountType || 'demo',
-                    countryCode: userData.countryCode || ''
-                  }
+                  body: accountData
                 });
 
                 if (error) {
@@ -1461,12 +1955,19 @@ export const useChatStore = create<ChatStore>()(
           });
 
           setTimeout(() => {
+            const { userData } = get();
+            const isDemo = userData.accountType === 'demo';
+            
             if (messageId === 'step-6-form' || messageId === 'skip-step-6-form') {
               console.log('Step 6 form submitted, proceeding to step 7');
               set({ isProcessing: false });
               get().proceedToStep(7);
+            } else if (messageId === 'step-12-form') {
+              console.log('Step 12 form submitted, proceeding to step 13');
+              set({ isProcessing: false });
+              get().proceedToStep(13);
             } else {
-              console.log('Form submitted but not step-6-form:', messageId);
+              console.log('Form submitted but not recognized:', messageId);
               set({ isProcessing: false });
             }
           }, 800);
