@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
               />
             </a>
             <a 
-              href="https://t.me/your_telegram" 
+              href="https://t.me/DF717channel" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
               />
             </a>
             <a 
-              href="https://t.me/your_telegram" 
+              href="https://t.me/DF717channel" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
