@@ -61,7 +61,7 @@ const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ messa
             <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               {field.label} {field.required && <span className="text-red-500">*</span>}
             </label>
-            {field.type === 'tel' ? (
+            {field.type === 'tel' && field.id === 'phone' ? (
               <div className="flex gap-2">
                 <CountryCodeSelector
                   value={selectedCountryCode}

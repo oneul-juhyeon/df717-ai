@@ -528,7 +528,7 @@ export const useChatStore = create<ChatStore>()(
                 {
                   id: 'accountId',
                   label: 'Account Number',
-                  type: 'tel',
+                  type: 'text',
                   placeholder: 'Enter account number',
                   required: true,
                   value: ''
@@ -1035,7 +1035,7 @@ export const useChatStore = create<ChatStore>()(
                     {
                       id: 'accountId',
                       label: 'Account Number',
-                      type: 'tel',
+                      type: 'text',
                       placeholder: 'Enter account number',
                       required: true,
                       value: ''

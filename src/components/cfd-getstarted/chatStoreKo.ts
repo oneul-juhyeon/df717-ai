@@ -1348,7 +1348,7 @@ export const useChatStore = create<ChatStore>()(
                       {
                         id: "accountId",
                         label: "Account ID",
-                        type: "tel",
+                        type: "text",
                         placeholder: "계좌번호를 입력하세요",
                         required: true,
                         value: "",
