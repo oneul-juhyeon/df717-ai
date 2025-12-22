@@ -55,25 +55,17 @@ serve(async (req) => {
 
     // Construct the payload for the external webhook with all data
     const payload = {
-      // Keep existing format for n8n compatibility
       account_id,
       account_password,
       server_name,
       user_name: requestBody.user_name || '',
       referrer_name: requestBody.referrer_name || null,
       timestamp: new Date().toISOString(),
-      
-      // Add all additional data for complete logging
       email: requestBody.email || null,
       phone: requestBody.phone || null,
       session_id: requestBody.session_id || null,
       account_type: requestBody.account_type || 'demo',
-      first_name: requestBody.first_name || null,
-      last_name: requestBody.last_name || null,
-      
-      // New fields added
       country_code: requestBody.country_code || null,
-      phone_number: requestBody.phone || null,
     };
 
     console.log('Sending webhook to:', 'https://df717.app.n8n.cloud/webhook/account-insert');
