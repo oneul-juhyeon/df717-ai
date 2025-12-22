@@ -9,6 +9,7 @@ export interface Message {
   formFields?: FormField[];
   groupId?: string; // For grouping messages that should appear together
   accountType?: 'demo' | 'live'; // For differentiating account-specific settings
+  countryCode?: string; // For conditional initial deposit based on country
 }
 
 export interface MessageGroup {
@@ -38,6 +39,7 @@ export interface UserData {
   lastName: string;
   email: string;
   phone: string;
+  countryCode?: string;
   accountId: string;
   password: string;
   server: string;
