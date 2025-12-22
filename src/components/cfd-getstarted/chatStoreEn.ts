@@ -30,6 +30,7 @@ const initialUserData: UserData = {
   lastName: '',
   email: '',
   phone: '',
+  countryCode: '+82',
   accountId: '',
   password: '',
   server: '',
@@ -399,11 +400,12 @@ export const useChatStore = create<ChatStore>()(
             return;
           }
 
-          const phoneRegex = /^[0-9\s\-+()]+$/;
-          if (!phoneRegex.test(phone)) {
+          // Validate phone: only digits allowed (country code is separate)
+          const phoneRegex = /^[0-9]{6,15}$/;
+          if (!phoneRegex.test(phone.replace(/[\s-]/g, ''))) {
             get().addMessage({
               id: `validation-error-${Date.now()}`,
-              content: '⚠️ **Please enter a valid phone number format.**',
+              content: '⚠️ **Please enter a valid phone number (digits only).**',
               sender: 'ai',
               type: 'warning_box',
               timestamp: new Date(),
@@ -930,6 +932,7 @@ export const useChatStore = create<ChatStore>()(
                   timestamp: new Date(),
                   animate: false,
                   accountType: accountType,
+                  countryCode: userData.countryCode || '+82',
                 },
                 {
                   id: 'step-5-warning',

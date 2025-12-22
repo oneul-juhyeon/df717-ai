@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Message } from "./types";
 import { useChatStore as defaultUseChatStore } from "./chatStore";
+import CountryCodeSelector, { COUNTRY_CODES } from "./CountryCodeSelector";
 
 interface MessageBubbleProps {
   message: Message;
   useChatStore?: any;
+  countryCode?: string;
 }
 
 const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ message, useChatStore }) => {
   const storeHook = useChatStore || defaultUseChatStore;
-  const { updateFormField, skipToAccountForm, locale } = storeHook();
+  const { updateFormField, skipToAccountForm, locale, updateUserData, userData } = storeHook();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [selectedCountryCode, setSelectedCountryCode] = useState(userData?.countryCode || "+82");
 
   const handleButtonClick = useCallback((action: unknown) => {
     if (isButtonDisabled) return;
@@ -29,15 +32,23 @@ const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ messa
   }, [isButtonDisabled]);
 
   const handleInputChange = (fieldId: string, value: string) => {
-    // Check if this is the Account ID field (assuming it has 'account' in the id or label)
     const field = message.formFields?.find(f => f.id === fieldId);
     if (field && (field.id.toLowerCase().includes('account') || field.label.toLowerCase().includes('account id'))) {
       // Only allow numbers for Account ID field
       const numericValue = value.replace(/\D/g, '');
       updateFormField(message.id, fieldId, numericValue);
+    } else if (field && field.type === 'tel') {
+      // Only allow numbers for phone field
+      const numericValue = value.replace(/\D/g, '');
+      updateFormField(message.id, fieldId, numericValue);
     } else {
       updateFormField(message.id, fieldId, value);
     }
+  };
+
+  const handleCountryCodeChange = (dialCode: string) => {
+    setSelectedCountryCode(dialCode);
+    updateUserData({ countryCode: dialCode });
   };
 
   if (!message.formFields) return null;
@@ -50,14 +61,33 @@ const FormSection: React.FC<{ message: Message; useChatStore?: any }> = ({ messa
             <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               {field.label} {field.required && <span className="text-red-500">*</span>}
             </label>
-            <input
-              type={field.type}
-              placeholder={field.placeholder}
-              value={field.value}
-              onChange={(e) => handleInputChange(field.id, e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              required={field.required}
-            />
+            {field.type === 'tel' ? (
+              <div className="flex gap-2">
+                <CountryCodeSelector
+                  value={selectedCountryCode}
+                  onChange={handleCountryCodeChange}
+                />
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  placeholder={field.placeholder}
+                  value={field.value}
+                  onChange={(e) => handleInputChange(field.id, e.target.value)}
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  required={field.required}
+                />
+              </div>
+            ) : (
+              <input
+                type={field.type}
+                placeholder={field.placeholder}
+                value={field.value}
+                onChange={(e) => handleInputChange(field.id, e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                required={field.required}
+              />
+            )}
           </div>
         ))}
       </div>
@@ -281,12 +311,14 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message, useChatStore }) 
   if (message.type === "account_settings") {
     // Demo accounts show 5 settings, Live accounts show only 3
     const isDemo = message.accountType === 'demo';
+    // Conditional initial deposit: Philippines (+63) = 2500, others = 25000
+    const initialDeposit = message.countryCode === '+63' ? '2500' : '25000';
     const settings = isDemo ? [
       { label: "Platform", value: "MetaTrader 4" },
       { label: "Account Type", value: "Raw Spread" },
       { label: "Currency", value: "USD" },
       { label: "Leverage", value: "1:1000" },
-      { label: "Initial Deposit", value: "25000" }
+      { label: "Initial Deposit", value: initialDeposit }
     ] : [
       { label: "Platform", value: "MetaTrader 5" },
       { label: "Account Type", value: "Raw Spread" },

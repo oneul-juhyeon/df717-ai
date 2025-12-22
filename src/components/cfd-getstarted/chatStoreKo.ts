@@ -30,6 +30,7 @@ const initialUserData: UserData = {
   lastName: "",
   email: "",
   phone: "",
+  countryCode: "+82",
   accountId: "",
   password: "",
   server: "",
@@ -405,11 +406,12 @@ export const useChatStore = create<ChatStore>()(
             return;
           }
 
-          const phoneRegex = /^01[0-9]-?[0-9]{4}-?[0-9]{4}$/;
+          // Validate phone: only digits allowed (country code is separate)
+          const phoneRegex = /^[0-9]{6,15}$/;
           if (!phoneRegex.test(phone.replace(/[\s-]/g, ""))) {
             get().addMessage({
               id: `validation-error-${Date.now()}`,
-              content: "⚠️ **올바른 연락처 형식을 입력해주세요. (예: 010-1234-5678)**",
+              content: "⚠️ **올바른 연락처를 입력해주세요. (숫자만 입력)**",
               sender: "ai",
               type: "warning_box",
               timestamp: new Date(),
@@ -1157,6 +1159,7 @@ export const useChatStore = create<ChatStore>()(
                     timestamp: new Date(),
                     animate: false,
                     accountType: accountType,
+                    countryCode: userData.countryCode || "+82",
                   },
                   {
                     id: "step-5-warning",
