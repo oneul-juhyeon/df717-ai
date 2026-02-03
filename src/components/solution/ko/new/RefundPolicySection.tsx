@@ -13,7 +13,7 @@ export const RefundPolicySection: React.FC = () => {
       }} transition={{
         duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1]
-        }} viewport={{
+      }} viewport={{
         once: true
       }} className="max-w-[800px] mx-auto">
           <Card className="border-0 shadow-lg">
@@ -33,7 +33,7 @@ export const RefundPolicySection: React.FC = () => {
                   
                   <div className="pl-5 space-y-5">
                     <div>
-                      <p className="font-medium text-foreground mb-2 text-base leading-[1.4]">가. 정기 결제 회원:</p>
+                      <p className="font-medium text-foreground mb-2 text-base leading-[1.4] text-justify">가. 정기 결제 회원:</p>
                       <p className="text-sm leading-[1.7] text-justify">
                         환불은 서비스 이용료 일수를 계산하고 일할 계산으로 진행됩니다. 
                         월 기준은 30일로 월 이용료를 30일로 나눈 금액을 환불합니다. 
