@@ -16,7 +16,7 @@ export const RefundPolicySection: React.FC = () => {
           <Card className="border-0 shadow-lg">
             <CardContent className="p-8 lg:p-10">
               <h3 className="text-xl font-bold text-foreground mb-6 leading-[1.4]">
-                📋 환불 정책 (필독)
+                환불 정책 (필독)
               </h3>
               
               <div className="space-y-6 text-muted-foreground">
@@ -43,8 +43,8 @@ export const RefundPolicySection: React.FC = () => {
                         일할 계산은 카드 수수료와 할인금을 포함한 결제 금액의 20% 금액을 제외한 금액에, 
                         남은 일 수에 대한 일할 계산을 공제 처리됩니다.
                       </p>
-                      <p className="text-sm mt-4 bg-muted px-4 py-3 rounded-lg font-mono leading-[1.5]">
-                        계산 공식: ((전체금액*0.8/30)*남은 일수
+                      <p className="text-sm mt-3 leading-[1.7]">
+                        • 계산 공식: (전체금액 × 0.8 / 30) × 남은 일수
                       </p>
                     </div>
 
