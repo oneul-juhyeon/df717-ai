@@ -134,8 +134,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                   ) : (
                     <span className="text-lg text-muted-foreground line-through mb-2">₩800,000</span>
                   )}
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-[32px] md:text-[40px] font-bold text-primary">37%</span>
+                  <div className="flex items-baseline gap-2">
                     <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">
                       {plans[selectedPlan].displayPrice}
                     </span>
