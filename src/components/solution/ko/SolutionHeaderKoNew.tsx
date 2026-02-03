@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { User, LogOut, Menu, X } from 'lucide-react';
+import df717LogoBlack from '@/assets/df717-logo-black.png';
 
 interface SolutionHeaderKoNewProps {
   scrollToTop?: () => void;
@@ -56,7 +57,7 @@ export const SolutionHeaderKoNew: React.FC<SolutionHeaderKoNewProps> = ({ scroll
             onClick={scrollToTop}
             className="flex items-center gap-2"
           >
-            <span className="text-xl font-bold text-foreground">DF717</span>
+            <img src={df717LogoBlack} alt="DF717" className="h-6" />
           </Link>
 
           {/* Desktop Navigation */}
