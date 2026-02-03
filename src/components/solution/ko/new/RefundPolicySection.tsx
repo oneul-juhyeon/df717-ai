@@ -11,7 +11,7 @@ export const RefundPolicySection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
-          className="max-w-[800px] mx-auto"
+          className="max-w-[800px]"
         >
           <Card className="border-0 shadow-lg">
             <CardContent className="p-8 lg:p-10">
