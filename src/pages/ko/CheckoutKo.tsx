@@ -15,8 +15,9 @@ import { loadTossPayments, TossPaymentsWidgets, ANONYMOUS } from "@tosspayments/
 import { plans, getPlanFromSearchParams, PlanType } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
 
-// Toss Payments Client Key (Publishable - safe to expose)
-const TOSS_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX";
+// Toss Payments Client Keys (Publishable - safe to expose)
+const TOSS_WIDGET_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX"; // For one-time payments (widgets)
+const TOSS_BILLING_CLIENT_KEY = "test_ck_nRQoOaPz8Lx4G2b7RL5j8y47BMw6"; // For billing key (subscriptions)
 
 const CheckoutKo: React.FC = () => {
   const navigate = useNavigate();
@@ -103,7 +104,10 @@ const CheckoutKo: React.FC = () => {
       
       try {
         const customerKey = user?.id || ANONYMOUS;
-        const tossPayments = await loadTossPayments(TOSS_CLIENT_KEY);
+        
+        // Use different client keys for different payment types
+        const clientKey = planType === 'monthly' ? TOSS_BILLING_CLIENT_KEY : TOSS_WIDGET_CLIENT_KEY;
+        const tossPayments = await loadTossPayments(clientKey);
         tossInstanceRef.current = tossPayments;
 
         if (planType === 'yearly') {
