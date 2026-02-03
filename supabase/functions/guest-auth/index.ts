@@ -4,14 +4,15 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 interface GuestAuthRequest {
-  action: 'verify' | 'cancel_order';
+  action: 'verify' | 'cancel_order' | 'cancel_orders';
   email: string;
   password: string;
   orderId?: string;
+  orderIds?: string[];
 }
 
 serve(async (req: Request) => {
@@ -26,7 +27,7 @@ serve(async (req: Request) => {
     
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const { action, email, password, orderId }: GuestAuthRequest = await req.json();
+    const { action, email, password, orderId, orderIds }: GuestAuthRequest = await req.json();
 
     if (!email || !password) {
       return new Response(
@@ -54,22 +55,16 @@ serve(async (req: Request) => {
       }
 
       // Check if any order has a matching password
-      // For now, we use the hash_password function to verify
-      const { data: verified, error: verifyError } = await supabase
-        .rpc('verify_password', { password, hash: orders[0].guest_password });
+      if (orders[0].guest_password) {
+        const { data: verified, error: verifyError } = await supabase
+          .rpc('verify_password', { password, hash: orders[0].guest_password });
 
-      if (verifyError || !verified) {
-        // Fallback: if no password set yet, allow access (legacy orders)
-        if (!orders[0].guest_password) {
+        if (verifyError || !verified) {
           return new Response(
-            JSON.stringify({ success: true, orders }),
-            { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
+            JSON.stringify({ error: "비밀번호가 일치하지 않습니다." }),
+            { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
           );
         }
-        return new Response(
-          JSON.stringify({ error: "비밀번호가 일치하지 않습니다." }),
-          { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
       }
 
       return new Response(
@@ -78,67 +73,81 @@ serve(async (req: Request) => {
       );
     }
 
-    if (action === 'cancel_order') {
-      if (!orderId) {
+    if (action === 'cancel_order' || action === 'cancel_orders') {
+      const idsToCancel = orderIds || (orderId ? [orderId] : []);
+      
+      if (idsToCancel.length === 0) {
         return new Response(
           JSON.stringify({ error: "주문 ID가 필요합니다." }),
           { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
         );
       }
 
-      // First verify the guest password
-      const { data: order, error: fetchError } = await supabase
-        .from('orders')
-        .select('*')
-        .eq('order_id', orderId)
-        .single();
+      const results: { orderId: string; success: boolean; error?: string }[] = [];
 
-      if (fetchError || !order) {
-        return new Response(
-          JSON.stringify({ error: "주문을 찾을 수 없습니다." }),
-          { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
-      }
+      for (const id of idsToCancel) {
+        try {
+          // Fetch the order
+          const { data: order, error: fetchError } = await supabase
+            .from('orders')
+            .select('*')
+            .eq('order_id', id)
+            .maybeSingle();
 
-      // Verify email matches
-      if (order.customer_email !== email) {
-        return new Response(
-          JSON.stringify({ error: "권한이 없습니다." }),
-          { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
-      }
+          if (fetchError || !order) {
+            results.push({ orderId: id, success: false, error: "주문을 찾을 수 없습니다." });
+            continue;
+          }
 
-      // Verify password if set
-      if (order.guest_password) {
-        const { data: verified } = await supabase
-          .rpc('verify_password', { password, hash: order.guest_password });
-        
-        if (!verified) {
-          return new Response(
-            JSON.stringify({ error: "비밀번호가 일치하지 않습니다." }),
-            { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
-          );
+          // Verify email matches
+          if (order.customer_email !== email) {
+            results.push({ orderId: id, success: false, error: "권한이 없습니다." });
+            continue;
+          }
+
+          // Verify password if set
+          if (order.guest_password) {
+            const { data: verified } = await supabase
+              .rpc('verify_password', { password, hash: order.guest_password });
+            
+            if (!verified) {
+              results.push({ orderId: id, success: false, error: "비밀번호가 일치하지 않습니다." });
+              continue;
+            }
+          }
+
+          // Only pending orders can be cancelled
+          if (order.status !== 'pending') {
+            results.push({ orderId: id, success: false, error: "결제 대기 중인 주문만 취소할 수 있습니다." });
+            continue;
+          }
+
+          // Cancel the order
+          const { error: updateError } = await supabase
+            .from('orders')
+            .update({ status: 'cancelled' })
+            .eq('order_id', id);
+
+          if (updateError) {
+            results.push({ orderId: id, success: false, error: updateError.message });
+            continue;
+          }
+
+          results.push({ orderId: id, success: true });
+        } catch (err: any) {
+          results.push({ orderId: id, success: false, error: err.message });
         }
       }
 
-      // Only pending orders can be cancelled
-      if (order.status !== 'pending') {
-        return new Response(
-          JSON.stringify({ error: "결제 대기 중인 주문만 취소할 수 있습니다." }),
-          { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
-      }
-
-      // Cancel the order
-      const { error: updateError } = await supabase
-        .from('orders')
-        .update({ status: 'cancelled' })
-        .eq('order_id', orderId);
-
-      if (updateError) throw updateError;
+      const successCount = results.filter(r => r.success).length;
+      const failCount = results.filter(r => !r.success).length;
 
       return new Response(
-        JSON.stringify({ success: true, message: "주문이 취소되었습니다." }),
+        JSON.stringify({ 
+          success: failCount === 0, 
+          message: `${successCount}건 취소 완료${failCount > 0 ? `, ${failCount}건 실패` : ''}`,
+          results 
+        }),
         { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }

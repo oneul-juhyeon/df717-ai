@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,6 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -21,11 +25,13 @@ import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { 
-  Loader2, ArrowLeft, Package, User, LogOut, ShoppingBag, Calendar, 
+  Loader2, ArrowLeft, Package, User, LogOut, ShoppingBag, Calendar as CalendarIcon, 
   CreditCard, X, Edit2, Save, Monitor, Server, CheckCircle2, Clock, 
-  XCircle, RefreshCw, AlertTriangle
+  XCircle, RefreshCw, AlertTriangle, Filter, Trash2
 } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
+import { format, subDays, subMonths, startOfDay, endOfDay } from 'date-fns';
+import { ko } from 'date-fns/locale';
 
 interface Order {
   id: string;
@@ -76,6 +82,17 @@ const MyPageKo: React.FC = () => {
   // Cancel order dialog
   const [cancelOrderId, setCancelOrderId] = useState<string | null>(null);
   const [cancelling, setCancelling] = useState(false);
+  
+  // Bulk selection state
+  const [selectedOrderIds, setSelectedOrderIds] = useState<Set<string>>(new Set());
+  const [showBulkCancel, setShowBulkCancel] = useState(false);
+  
+  // Date filter state
+  const [dateFilter, setDateFilter] = useState<'all' | '7days' | '30days' | '90days' | 'custom'>('all');
+  const [customDateRange, setCustomDateRange] = useState<{ from: Date | undefined; to: Date | undefined }>({
+    from: undefined,
+    to: undefined
+  });
 
   // Fetch orders and accounts for authenticated user
   useEffect(() => {
@@ -237,6 +254,124 @@ const MyPageKo: React.FC = () => {
       setCancelOrderId(null);
     }
   };
+
+  // Bulk cancel orders
+  const handleBulkCancel = async () => {
+    if (selectedOrderIds.size === 0) return;
+    
+    setCancelling(true);
+    try {
+      const orderIdsArray = Array.from(selectedOrderIds);
+      
+      if (user) {
+        const { data, error } = await supabase.functions.invoke('cancel-order', {
+          body: { orderIds: orderIdsArray }
+        });
+        
+        if (error) throw error;
+        if (data.error) throw new Error(data.error);
+        
+        toast({
+          title: '일괄 취소 완료',
+          description: data.message
+        });
+      } else if (guestSession) {
+        const { data, error } = await supabase.functions.invoke('guest-auth', {
+          body: {
+            action: 'cancel_orders',
+            email: guestSession.email,
+            password: guestSession.password,
+            orderIds: orderIdsArray
+          }
+        });
+        
+        if (error) throw error;
+        if (data.error) throw new Error(data.error);
+        
+        toast({
+          title: '일괄 취소 완료',
+          description: data.message
+        });
+      }
+      
+      // Update local state
+      setOrders(prev => prev.map(order => 
+        selectedOrderIds.has(order.order_id) && order.status === 'pending'
+          ? { ...order, status: 'cancelled' }
+          : order
+      ));
+      setSelectedOrderIds(new Set());
+    } catch (error: any) {
+      console.error('Bulk cancel error:', error);
+      toast({
+        variant: 'destructive',
+        title: '일괄 취소 실패',
+        description: error.message || '주문 취소에 실패했습니다.'
+      });
+    } finally {
+      setCancelling(false);
+      setShowBulkCancel(false);
+    }
+  };
+
+  // Toggle order selection
+  const toggleOrderSelection = (orderId: string) => {
+    setSelectedOrderIds(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(orderId)) {
+        newSet.delete(orderId);
+      } else {
+        newSet.add(orderId);
+      }
+      return newSet;
+    });
+  };
+
+  // Select all pending orders
+  const selectAllPendingOrders = () => {
+    const pendingOrderIds = orders
+      .filter(o => o.status === 'pending')
+      .map(o => o.order_id);
+    setSelectedOrderIds(new Set(pendingOrderIds));
+  };
+
+  // Clear selection
+  const clearSelection = () => {
+    setSelectedOrderIds(new Set());
+  };
+
+  // Filter orders by date
+  const filteredOrders = useMemo(() => {
+    if (dateFilter === 'all') return orders;
+    
+    const now = new Date();
+    let startDate: Date;
+    let endDate: Date = endOfDay(now);
+    
+    switch (dateFilter) {
+      case '7days':
+        startDate = startOfDay(subDays(now, 7));
+        break;
+      case '30days':
+        startDate = startOfDay(subDays(now, 30));
+        break;
+      case '90days':
+        startDate = startOfDay(subDays(now, 90));
+        break;
+      case 'custom':
+        if (!customDateRange.from) return orders;
+        startDate = startOfDay(customDateRange.from);
+        endDate = customDateRange.to ? endOfDay(customDateRange.to) : endOfDay(now);
+        break;
+      default:
+        return orders;
+    }
+    
+    return orders.filter(order => {
+      const orderDate = new Date(order.created_at);
+      return orderDate >= startDate && orderDate <= endDate;
+    });
+  }, [orders, dateFilter, customDateRange]);
 
   const handleSaveName = async () => {
     if (!user || !editName.trim()) return;
@@ -594,59 +729,161 @@ const MyPageKo: React.FC = () => {
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      {orders.map((order) => (
-                        <Card key={order.id} className="border overflow-hidden">
-                          <CardContent className="p-0">
-                            <div className="flex flex-col lg:flex-row">
-                              {/* Order Info */}
-                              <div className="flex-1 p-4 lg:p-6">
-                                <div className="flex items-start justify-between mb-3">
-                                  <div>
-                                    <h4 className="font-semibold text-lg">{getProductName(order.product_type)}</h4>
-                                    <p className="text-xs text-muted-foreground mt-1">주문번호: {order.order_id}</p>
+                      {/* Filter & Bulk Actions Bar */}
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <Filter className="h-4 w-4 text-muted-foreground" />
+                          <Select value={dateFilter} onValueChange={(v) => setDateFilter(v as typeof dateFilter)}>
+                            <SelectTrigger className="w-[140px] h-9">
+                              <SelectValue placeholder="기간 선택" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="all">전체 기간</SelectItem>
+                              <SelectItem value="7days">최근 7일</SelectItem>
+                              <SelectItem value="30days">최근 30일</SelectItem>
+                              <SelectItem value="90days">최근 90일</SelectItem>
+                              <SelectItem value="custom">직접 설정</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          
+                          {dateFilter === 'custom' && (
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <Button variant="outline" size="sm" className="h-9">
+                                  <CalendarIcon className="h-4 w-4 mr-2" />
+                                  {customDateRange.from ? (
+                                    customDateRange.to ? (
+                                      <>
+                                        {format(customDateRange.from, 'MM/dd', { locale: ko })} - {format(customDateRange.to, 'MM/dd', { locale: ko })}
+                                      </>
+                                    ) : (
+                                      format(customDateRange.from, 'yyyy-MM-dd', { locale: ko })
+                                    )
+                                  ) : (
+                                    '날짜 선택'
+                                  )}
+                                </Button>
+                              </PopoverTrigger>
+                              <PopoverContent className="w-auto p-0" align="start">
+                                <Calendar
+                                  mode="range"
+                                  selected={{ from: customDateRange.from, to: customDateRange.to }}
+                                  onSelect={(range) => setCustomDateRange({ from: range?.from, to: range?.to })}
+                                  locale={ko}
+                                  numberOfMonths={2}
+                                />
+                              </PopoverContent>
+                            </Popover>
+                          )}
+                          
+                          <span className="text-sm text-muted-foreground">
+                            {filteredOrders.length}건
+                          </span>
+                        </div>
+                        
+                        {/* Bulk Actions */}
+                        <div className="flex items-center gap-2">
+                          {selectedOrderIds.size > 0 ? (
+                            <>
+                              <span className="text-sm text-muted-foreground">
+                                {selectedOrderIds.size}건 선택
+                              </span>
+                              <Button variant="ghost" size="sm" onClick={clearSelection}>
+                                선택 해제
+                              </Button>
+                              <Button 
+                                variant="destructive" 
+                                size="sm"
+                                onClick={() => setShowBulkCancel(true)}
+                              >
+                                <Trash2 className="h-4 w-4 mr-1" />
+                                일괄 취소
+                              </Button>
+                            </>
+                          ) : (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={selectAllPendingOrders}
+                              disabled={!orders.some(o => o.status === 'pending')}
+                            >
+                              결제 대기 전체 선택
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Order List */}
+                      {filteredOrders.length === 0 ? (
+                        <div className="text-center py-8">
+                          <p className="text-muted-foreground">선택한 기간에 주문 내역이 없습니다.</p>
+                        </div>
+                      ) : (
+                        filteredOrders.map((order) => (
+                          <Card key={order.id} className={`border overflow-hidden transition-colors ${selectedOrderIds.has(order.order_id) ? 'ring-2 ring-primary' : ''}`}>
+                            <CardContent className="p-0">
+                              <div className="flex flex-col lg:flex-row">
+                                {/* Checkbox for pending orders */}
+                                {order.status === 'pending' && (
+                                  <div className="flex items-center justify-center p-4 lg:p-6 lg:pr-0">
+                                    <Checkbox
+                                      checked={selectedOrderIds.has(order.order_id)}
+                                      onCheckedChange={() => toggleOrderSelection(order.order_id)}
+                                      aria-label={`주문 ${order.order_id} 선택`}
+                                    />
                                   </div>
-                                  {getStatusBadge(order.status || 'pending')}
+                                )}
+                                
+                                {/* Order Info */}
+                                <div className="flex-1 p-4 lg:p-6">
+                                  <div className="flex items-start justify-between mb-3">
+                                    <div>
+                                      <h4 className="font-semibold text-lg">{getProductName(order.product_type)}</h4>
+                                      <p className="text-xs text-muted-foreground mt-1">주문번호: {order.order_id}</p>
+                                    </div>
+                                    {getStatusBadge(order.status || 'pending')}
+                                  </div>
+                                  
+                                  <div className="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                      <p className="text-muted-foreground">주문일</p>
+                                      <p className="font-medium">{formatShortDate(order.created_at)}</p>
+                                    </div>
+                                    {order.paid_at && (
+                                      <div>
+                                        <p className="text-muted-foreground">결제일</p>
+                                        <p className="font-medium">{formatShortDate(order.paid_at)}</p>
+                                      </div>
+                                    )}
+                                  </div>
                                 </div>
                                 
-                                <div className="grid grid-cols-2 gap-4 text-sm">
-                                  <div>
-                                    <p className="text-muted-foreground">주문일</p>
-                                    <p className="font-medium">{formatShortDate(order.created_at)}</p>
+                                {/* Price & Actions */}
+                                <div className="bg-muted/30 p-4 lg:p-6 lg:w-64 flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 border-t lg:border-t-0 lg:border-l">
+                                  <div className="text-center">
+                                    <p className="text-sm text-muted-foreground">결제 금액</p>
+                                    <p className="text-2xl font-bold text-primary">
+                                      ₩{order.amount.toLocaleString()}
+                                    </p>
                                   </div>
-                                  {order.paid_at && (
-                                    <div>
-                                      <p className="text-muted-foreground">결제일</p>
-                                      <p className="font-medium">{formatShortDate(order.paid_at)}</p>
-                                    </div>
+                                  
+                                  {order.status === 'pending' && (
+                                    <Button 
+                                      variant="outline" 
+                                      size="sm"
+                                      className="text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground"
+                                      onClick={() => setCancelOrderId(order.order_id)}
+                                    >
+                                      <X className="h-4 w-4 mr-1" />
+                                      취소
+                                    </Button>
                                   )}
                                 </div>
                               </div>
-                              
-                              {/* Price & Actions */}
-                              <div className="bg-muted/30 p-4 lg:p-6 lg:w-64 flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 border-t lg:border-t-0 lg:border-l">
-                                <div className="text-center">
-                                  <p className="text-sm text-muted-foreground">결제 금액</p>
-                                  <p className="text-2xl font-bold text-primary">
-                                    ₩{order.amount.toLocaleString()}
-                                  </p>
-                                </div>
-                                
-                                {order.status === 'pending' && (
-                                  <Button 
-                                    variant="outline" 
-                                    size="sm"
-                                    className="text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground"
-                                    onClick={() => setCancelOrderId(order.order_id)}
-                                  >
-                                    <X className="h-4 w-4 mr-1" />
-                                    주문 취소
-                                  </Button>
-                                )}
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
+                            </CardContent>
+                          </Card>
+                        ))
+                      )}
                     </div>
                   )}
                 </TabsContent>
@@ -837,6 +1074,29 @@ const MyPageKo: React.FC = () => {
             >
               {cancelling ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
               주문 취소
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Bulk Cancel Dialog */}
+      <AlertDialog open={showBulkCancel} onOpenChange={setShowBulkCancel}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>선택한 주문을 일괄 취소하시겠습니까?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {selectedOrderIds.size}건의 결제 대기 중인 주문을 취소합니다. 이 작업은 되돌릴 수 없습니다.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={cancelling}>취소</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={handleBulkCancel}
+              disabled={cancelling}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              {cancelling ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
+              {selectedOrderIds.size}건 일괄 취소
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
