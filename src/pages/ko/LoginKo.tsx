@@ -162,6 +162,20 @@ const LoginKo: React.FC = () => {
                   </Link>
                 </p>
               </div>
+
+              {/* Guest Purchase Section */}
+              <div className="pt-4 border-t">
+                <Button
+                  variant="outline"
+                  onClick={() => navigate('/ko/checkout')}
+                  className="w-full h-12 text-base border-primary text-primary hover:bg-primary/5"
+                >
+                  비회원 구매
+                </Button>
+                <p className="text-sm text-muted-foreground text-center mt-3">
+                  비회원의 경우, 해당버튼을 통해 주문이 가능합니다.
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
