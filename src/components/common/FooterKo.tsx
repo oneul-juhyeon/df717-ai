@@ -107,9 +107,11 @@ const FooterKo: React.FC = () => {
             
             {/* Right: Company Info */}
             <div className="text-xs text-gray-400 space-y-1 text-left md:text-right">
-              <p className="font-medium">(주)DF717 Co. Ltd</p>
+              <p className="font-medium">주식회사 디에프717 (DF717 Co. Ltd.)</p>
+              <p>대표자명: 전다슬 외2</p>
+              <p>사업자등록번호: 359-81-02573</p>
               <p>서울특별시 강남구 학동로31길 12, 7층 732호(논현동, 벤쳐캐슬빌딩)</p>
-              <p>사업자등록번호 659-81-02573</p>
+              <p>유선번호: 010-2475-7172</p>
             </div>
           </div>
         </div>
