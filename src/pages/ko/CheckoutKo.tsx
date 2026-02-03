@@ -358,8 +358,8 @@ const CheckoutKo: React.FC = () => {
                       "font-semibold",
                       planType === 'yearly' ? "text-primary" : "text-foreground"
                     )}>연간 결제</span>
-                    <span className="text-sm text-muted-foreground">₩5,000,000/년</span>
-                    <span className="text-xs text-muted-foreground mt-1">월 ₩416,667</span>
+                    <span className="text-sm font-bold text-foreground">₩416,667/월</span>
+                    <span className="text-xs text-muted-foreground mt-1">₩5,000,000/년</span>
                   </button>
                 </div>
               </div>
