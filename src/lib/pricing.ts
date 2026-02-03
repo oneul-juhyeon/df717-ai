@@ -29,7 +29,7 @@ export const plans: Record<PlanType, PlanConfig> = {
     price: 5000000,
     displayPrice: '₩416,667',
     period: '/월',
-    description: '12개월 할부 시 (37% 할인)',
+    description: '12개월 할부 시',
     isSubscription: false,
     productType: 'dap-premium',
   },
