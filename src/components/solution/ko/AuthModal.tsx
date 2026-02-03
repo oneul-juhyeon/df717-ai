@@ -33,8 +33,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onGuestChec
 
   const handleGuestCheckout = () => {
     onClose();
-    // Navigate to login page which now handles guest verification
-    navigate('/ko/login');
+    // Navigate to login page with guest=true to show guest form directly
+    navigate('/ko/login?showGuest=true');
   };
 
   const handleLoginPage = () => {
