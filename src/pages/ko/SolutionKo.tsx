@@ -8,7 +8,7 @@ import { FeaturesSection } from "@/components/solution/ko/new/FeaturesSection";
 import { PricingSection } from "@/components/solution/ko/new/PricingSection";
 import { FAQSection } from "@/components/solution/ko/new/FAQSection";
 import { RefundPolicySection } from "@/components/solution/ko/new/RefundPolicySection";
-import { BusinessFooter } from "@/components/solution/ko/new/BusinessFooter";
+import FooterKo from "@/components/common/FooterKo";
 import { AuthModal } from "@/components/solution/ko/AuthModal";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -80,7 +80,7 @@ const SolutionKo: React.FC = () => {
         <FAQSection />
         <RefundPolicySection />
         
-        <BusinessFooter />
+        <FooterKo />
       </div>
 
       <AuthModal
