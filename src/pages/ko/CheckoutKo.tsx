@@ -33,7 +33,8 @@ const CheckoutKo: React.FC = () => {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    guestPassword: ''
   });
   
   const widgetsRef = useRef<TossPaymentsWidgets | null>(null);
@@ -119,6 +120,12 @@ const CheckoutKo: React.FC = () => {
       toast({ variant: 'destructive', title: '오류', description: '전화번호를 입력해주세요.' });
       return;
     }
+    
+    // Guest password validation (only for non-authenticated users)
+    if (!user && (!form.guestPassword.trim() || form.guestPassword.length < 6)) {
+      toast({ variant: 'destructive', title: '오류', description: '비회원 비밀번호는 6자리 이상이어야 합니다.' });
+      return;
+    }
 
     if (!widgetsRef.current) {
       toast({ variant: 'destructive', title: '오류', description: '결제 위젯이 준비되지 않았습니다.' });
@@ -129,6 +136,15 @@ const CheckoutKo: React.FC = () => {
 
     try {
       const orderId = `DF717-${nanoid(10)}`;
+      
+      // Hash password for guest users
+      let hashedPassword = null;
+      if (!user && form.guestPassword) {
+        const { data: hashData, error: hashError } = await supabase
+          .rpc('hash_password', { password: form.guestPassword });
+        if (hashError) throw hashError;
+        hashedPassword = hashData;
+      }
       
       // Create order in database first
       const { error: orderError } = await supabase
@@ -141,7 +157,8 @@ const CheckoutKo: React.FC = () => {
           customer_phone: form.phone.replace(/-/g, ''),
           product_type: 'dap-premium',
           amount: PRODUCT.price,
-          status: 'pending'
+          status: 'pending',
+          guest_password: hashedPassword
         });
 
       if (orderError) {
@@ -253,6 +270,25 @@ const CheckoutKo: React.FC = () => {
                     className="h-12"
                   />
                 </div>
+
+                {/* Guest password field - only shown for non-authenticated users */}
+                {!user && (
+                  <div className="space-y-2">
+                    <Label htmlFor="guestPassword">비회원 비밀번호 * (주문 조회용)</Label>
+                    <Input
+                      id="guestPassword"
+                      type="password"
+                      value={form.guestPassword}
+                      onChange={(e) => setForm({ ...form, guestPassword: e.target.value })}
+                      placeholder="6자리 이상 비밀번호"
+                      className="h-12"
+                      minLength={6}
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      주문 조회 시 사용할 비밀번호입니다. 꼭 기억해주세요.
+                    </p>
+                  </div>
+                )}
               </div>
 
               <Separator />
