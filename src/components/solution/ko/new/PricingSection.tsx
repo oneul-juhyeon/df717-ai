@@ -21,71 +21,73 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
   ];
 
   return (
-    <section id="pricing" className="py-20 md:py-32 bg-background">
-      <div className="max-w-content mx-auto px-4 md:px-6">
+    <section id="pricing" className="py-20 md:py-[120px] bg-background">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-foreground mb-4 leading-[1.2]">
             가격 안내
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-[640px] mx-auto leading-[1.6]">
             합리적인 가격으로 프리미엄 AI 자동매매 서비스를 경험하세요.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
-          className="max-w-lg mx-auto"
+          className="max-w-[480px] mx-auto"
         >
-          <Card className="shadow-2xl border-2 border-primary relative overflow-hidden">
+          <Card className="shadow-2xl border-2 border-primary relative overflow-hidden rounded-2xl">
             {/* Popular Badge */}
-            <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 text-sm font-medium">
+            <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-5 py-2 text-sm font-semibold rounded-bl-xl">
               추천
             </div>
             
-            <CardContent className="p-8">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
+            <CardContent className="p-8 lg:p-10">
+              <div className="text-center mb-10">
+                <h3 className="text-2xl font-bold text-foreground mb-2 leading-[1.3]">
                   DAP-Premium
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-8 leading-[1.5]">
                   연간 구독
                 </p>
                 
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-foreground">₩5,000,000</span>
-                  <span className="text-muted-foreground">/년</span>
+                <div className="flex items-baseline justify-center gap-2">
+                  <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">₩5,000,000</span>
+                  <span className="text-muted-foreground text-base">/년</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground mt-3 leading-[1.5]">
                   12개월 할부 시 월 ₩416,667
                 </p>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-10">
                 {features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-foreground">{feature}</span>
+                  <li key={index} className="flex items-center gap-4">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Check className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="text-foreground text-base leading-[1.5]">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Button 
                 onClick={onPurchaseClick}
-                className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90"
+                className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 rounded-lg"
               >
                 구매하기
               </Button>
 
-              <p className="text-xs text-center text-muted-foreground mt-4">
+              <p className="text-sm text-center text-muted-foreground mt-5 leading-[1.5]">
                 구매 후 즉시 서비스 이용 가능
               </p>
             </CardContent>
