@@ -1,128 +1,186 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Check, Bot, Shield, LineChart, Headphones, RefreshCw, Monitor } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import myfxbookImg from '@/assets/df717-myfxbook-9years-results.png';
+import advancedStatsImg from '@/assets/df717-myfxbook-advanced-statistics.png';
+import monthlyAnalyticsImg from '@/assets/df717-myfxbook-analytics-2025-9.png';
 
 export const ProductSection: React.FC = () => {
-  const features = [
-    { icon: Bot, text: 'AI 기반 자동매매 시스템' },
-    { icon: Monitor, text: 'MetaTrader 4, 5 연동' },
-    { icon: Shield, text: '실시간 리스크 관리' },
-    { icon: RefreshCw, text: '24/7 시스템 모니터링' },
-    { icon: Headphones, text: '전문가 지원 (이메일/채팅)' },
-    { icon: LineChart, text: '성과 분석 대시보드' },
-  ];
-
   return (
-    <section id="product" className="py-20 md:py-[120px] bg-background">
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20">
+    <section id="product" className="py-20 md:py-[120px] bg-muted/30">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 xl:px-24">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-[32px] md:text-[40px] font-bold text-foreground mb-4 leading-[1.2]">
-            상품 소개
+            왜 DF717일까요?
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-[640px] mx-auto leading-[1.6]">
-            DF717 AI 자동매매 프로그램 솔루션으로 스마트한 투자를 시작하세요.
+            MyfxBook 인증된 8년간의 검증된 실적을 확인하세요.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-          {/* Product Info Card */}
+        {/* Section 1 - MyfxBook Results (Text Left, Image Right) */}
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          {/* Left Side - Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            className="w-full lg:w-[40%] space-y-5"
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
-            className="h-full"
+            transition={{ duration: 0.5 }}
           >
-            <Card className="h-full shadow-lg border-0 bg-card">
-              <CardContent className="p-8 lg:p-10 h-full flex flex-col">
-                <div className="mb-8">
-                  <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-                    연간 구매
-                  </span>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground leading-[1.3]">
-                    DF717 AI 자동매매 프로그램 솔루션
-                  </h3>
-                </div>
+            <p className="text-sm uppercase tracking-wider text-primary font-semibold">
+              검증된 실적
+            </p>
+            
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+              MyfxBook
+            </h3>
 
-                <div className="mb-10">
-                  <div className="flex items-baseline gap-3 flex-wrap">
-                    <span className="text-xl text-muted-foreground line-through">₩8,000,000</span>
-                    <span className="text-[36px] md:text-[42px] font-bold text-foreground tracking-tight">₩5,000,000</span>
-                    <span className="text-muted-foreground text-base">/년</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-2 leading-[1.5]">
-                    12개월 할부 시 월 ₩416,667
-                  </p>
-                </div>
+            <p className="text-lg text-muted-foreground">
+              8년간 <span className="text-primary font-semibold">+187% CAGR</span> (연복리 수익률)
+            </p>
 
-                <div className="space-y-5 flex-1">
-                  <h4 className="font-semibold text-foreground text-base">서비스 내용:</h4>
-                  <ul className="space-y-4">
-                    {features.map((feature, index) => (
-                      <li key={index} className="flex items-center gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                          <feature.icon className="w-5 h-5 text-primary" />
-                        </div>
-                        <span className="text-foreground text-base leading-[1.5]">{feature.text}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
+            <p className="text-sm text-muted-foreground">
+              <span className="text-destructive">*</span>과거 실적이 미래 결과를 보장하지 않습니다.
+            </p>
+
+            <Button
+              asChild
+              variant="outline"
+              className="mt-4 gap-2"
+            >
+              <a
+                href="https://df717.notion.site/df717-monitoring-accounts?source"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                결과 보기
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </Button>
           </motion.div>
 
-          {/* Service Details */}
+          {/* Right Side - Image */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            className="w-full lg:w-[60%]"
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
-            className="flex flex-col gap-6 h-full"
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Card className="shadow-lg border-0 bg-muted/50 flex-1">
-              <CardContent className="p-8 lg:p-10 h-full">
-                <h4 className="text-lg font-semibold text-foreground mb-6 leading-[1.3]">
-                  서비스 제공기간
-                </h4>
-                <div className="space-y-4">
-                  <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>구매 즉시 이용 가능</span>
-                  </p>
-                  <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>연간: 12개월 (최대 제공기간)</span>
-                  </p>
-                  <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
-                    <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>자동 갱신 (해지 가능)</span>
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="rounded-lg overflow-hidden border border-border shadow-sm">
+              <img
+                src={myfxbookImg}
+                alt="MyfxBook 결과 - 9년간 +187% CAGR을 달성한 DF717 자동 트레이딩 성과"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </motion.div>
+        </div>
 
-            <Card className="shadow-lg border-0 bg-muted/50 flex-1">
-              <CardContent className="p-8 lg:p-10 h-full">
-                <h4 className="text-lg font-semibold text-foreground mb-6 leading-[1.3]">
-                  포함 사항
-                </h4>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="leading-[1.6]">• 프리미엄 AI 매매 알고리즘</li>
-                  <li className="leading-[1.6]">• 무제한 거래 실행</li>
-                  <li className="leading-[1.6]">• 실시간 알림 서비스</li>
-                  <li className="leading-[1.6]">• 월간 성과 리포트</li>
-                  <li className="leading-[1.6]">• 1:1 전담 매니저 배정</li>
-                </ul>
-              </CardContent>
-            </Card>
+        {/* Section 2 - Advanced Statistics (Image Left, Text Right) */}
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16 mt-20">
+          {/* Right Side - Text Content */}
+          <motion.div
+            className="w-full lg:w-[40%] space-y-5"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-sm uppercase tracking-wider text-primary font-semibold">
+              상세 지표
+            </p>
+
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+              고급 통계
+            </h3>
+
+            <p className="text-lg text-muted-foreground">
+              <span className="text-primary font-semibold">620회</span> 거래, 
+              <span className="text-primary font-semibold"> 92%</span> 승률, 
+              <span className="text-primary font-semibold"> 40.09</span> 수익 팩터
+            </p>
+
+            <p className="text-sm text-muted-foreground">
+              <span className="text-destructive">*</span>전략 효과성을 입증하는 상세 성과 지표
+            </p>
+          </motion.div>
+
+          {/* Left Side - Image */}
+          <motion.div
+            className="w-full lg:w-[60%]"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="rounded-lg overflow-hidden border border-border shadow-sm">
+              <img
+                src={advancedStatsImg}
+                alt="MyfxBook 고급 통계 - 620회 거래에서 92% 승률을 보여주는 상세 거래 지표"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Section 3 - Monthly Analytics (Text Left, Image Right) */}
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 mt-20">
+          {/* Left Side - Text Content */}
+          <motion.div
+            className="w-full lg:w-[40%] space-y-5"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-sm uppercase tracking-wider text-primary font-semibold">
+              성과 추적
+            </p>
+
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+              월간 분석
+            </h3>
+
+            <p className="text-lg text-muted-foreground">
+              2025년 9월 <span className="text-primary font-semibold">25.27%</span> 수익
+            </p>
+
+            <p className="text-sm text-muted-foreground">
+              <span className="text-destructive">*</span>연도별 월간 성과 추적
+            </p>
+          </motion.div>
+
+          {/* Right Side - Image */}
+          <motion.div
+            className="w-full lg:w-[60%]"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="rounded-lg overflow-hidden border border-border shadow-sm">
+              <img
+                src={monthlyAnalyticsImg}
+                alt="MyfxBook 월간 분석 - 2025년 9월 25.27% 월간 수익과 과거 성과를 보여주는 차트"
+                className="w-full h-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </motion.div>
         </div>
       </div>

@@ -94,6 +94,52 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
             </CardContent>
           </Card>
         </motion.div>
+
+        {/* Service Details Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-6 mt-12 max-w-[900px] mx-auto"
+        >
+          <Card className="shadow-lg border-0 bg-muted/50">
+            <CardContent className="p-8">
+              <h4 className="text-lg font-semibold text-foreground mb-6 leading-[1.3]">
+                서비스 제공기간
+              </h4>
+              <div className="space-y-4">
+                <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span>구매 즉시 이용 가능</span>
+                </p>
+                <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span>연간: 12개월 (최대 제공기간)</span>
+                </p>
+                <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span>자동 갱신 (해지 가능)</span>
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-lg border-0 bg-muted/50">
+            <CardContent className="p-8">
+              <h4 className="text-lg font-semibold text-foreground mb-6 leading-[1.3]">
+                포함 사항
+              </h4>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="leading-[1.6]">• 프리미엄 AI 매매 알고리즘</li>
+                <li className="leading-[1.6]">• 무제한 거래 실행</li>
+                <li className="leading-[1.6]">• 실시간 알림 서비스</li>
+                <li className="leading-[1.6]">• 월간 성과 리포트</li>
+                <li className="leading-[1.6]">• 1:1 전담 매니저 배정</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );
