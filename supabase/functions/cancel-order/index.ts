@@ -4,11 +4,12 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 interface CancelOrderRequest {
-  orderId: string;
+  orderId?: string;
+  orderIds?: string[];
 }
 
 serve(async (req: Request) => {
@@ -47,9 +48,12 @@ serve(async (req: Request) => {
 
     const userId = claimsData.user.id;
 
-    const { orderId }: CancelOrderRequest = await req.json();
+    const { orderId, orderIds }: CancelOrderRequest = await req.json();
 
-    if (!orderId) {
+    // Support both single and bulk cancellation
+    const idsToCancel = orderIds || (orderId ? [orderId] : []);
+
+    if (idsToCancel.length === 0) {
       return new Response(
         JSON.stringify({ error: "주문 ID가 필요합니다." }),
         { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
@@ -59,46 +63,60 @@ serve(async (req: Request) => {
     // Use service role for database operations
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Fetch the order
-    const { data: order, error: fetchError } = await supabase
-      .from('orders')
-      .select('*')
-      .eq('order_id', orderId)
-      .single();
+    const results: { orderId: string; success: boolean; error?: string }[] = [];
 
-    if (fetchError || !order) {
-      return new Response(
-        JSON.stringify({ error: "주문을 찾을 수 없습니다." }),
-        { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+    for (const id of idsToCancel) {
+      try {
+        // Fetch the order
+        const { data: order, error: fetchError } = await supabase
+          .from('orders')
+          .select('*')
+          .eq('order_id', id)
+          .maybeSingle();
+
+        if (fetchError || !order) {
+          results.push({ orderId: id, success: false, error: "주문을 찾을 수 없습니다." });
+          continue;
+        }
+
+        // Verify user owns this order
+        if (order.user_id !== userId) {
+          results.push({ orderId: id, success: false, error: "권한이 없습니다." });
+          continue;
+        }
+
+        // Only pending orders can be cancelled
+        if (order.status !== 'pending') {
+          results.push({ orderId: id, success: false, error: "결제 대기 중인 주문만 취소할 수 있습니다." });
+          continue;
+        }
+
+        // Cancel the order
+        const { error: updateError } = await supabase
+          .from('orders')
+          .update({ status: 'cancelled' })
+          .eq('order_id', id);
+
+        if (updateError) {
+          results.push({ orderId: id, success: false, error: updateError.message });
+          continue;
+        }
+
+        results.push({ orderId: id, success: true });
+      } catch (err: any) {
+        results.push({ orderId: id, success: false, error: err.message });
+      }
     }
 
-    // Verify user owns this order
-    if (order.user_id !== userId) {
-      return new Response(
-        JSON.stringify({ error: "권한이 없습니다." }),
-        { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
-
-    // Only pending orders can be cancelled
-    if (order.status !== 'pending') {
-      return new Response(
-        JSON.stringify({ error: "결제 대기 중인 주문만 취소할 수 있습니다." }),
-        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
-
-    // Cancel the order
-    const { error: updateError } = await supabase
-      .from('orders')
-      .update({ status: 'cancelled' })
-      .eq('order_id', orderId);
-
-    if (updateError) throw updateError;
+    const successCount = results.filter(r => r.success).length;
+    const failCount = results.filter(r => !r.success).length;
 
     return new Response(
-      JSON.stringify({ success: true, message: "주문이 취소되었습니다." }),
+      JSON.stringify({ 
+        success: failCount === 0, 
+        message: `${successCount}건 취소 완료${failCount > 0 ? `, ${failCount}건 실패` : ''}`,
+        results 
+      }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
 
