@@ -20,12 +20,13 @@ const PRODUCT = {
 };
 
 // Toss Payments Client Key (Publishable - safe to expose)
-const TOSS_CLIENT_KEY = "live_gck_df7171tglj";
+// NOTE: "상점번호"는 Toss의 merchant id 성격이라 위젯 초기화에 쓰지 않습니다. 위젯에는 Client Key가 필요합니다.
+const TOSS_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX";
 
 const CheckoutKo: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const { toast } = useToast();
   
   const [loading, setLoading] = useState(false);
@@ -44,9 +45,12 @@ const CheckoutKo: React.FC = () => {
   const guestEmail = searchParams.get('email') || '';
   const [verificationChecked, setVerificationChecked] = useState(false);
 
-  // Verify guest email authentication before allowing access
+  // Gate access: wait for auth to initialize, then allow members directly.
   useEffect(() => {
     const checkGuestVerification = async () => {
+      // Wait until auth state is resolved; otherwise user may be temporarily null
+      if (authLoading) return;
+
       // If user is logged in, no need to check
       if (user) {
         setVerificationChecked(true);
@@ -63,7 +67,7 @@ const CheckoutKo: React.FC = () => {
         toast({
           variant: 'destructive',
           title: '접근 불가',
-          description: '이메일 인증 후 결제가 가능합니다.'
+          description: '로그인하거나 비회원 구매를 진행해주세요.'
         });
         navigate('/ko/login');
         return;
@@ -79,7 +83,7 @@ const CheckoutKo: React.FC = () => {
           toast({
             variant: 'destructive',
             title: '인증 필요',
-            description: '이메일 인증 후 결제가 가능합니다.'
+            description: '비회원 정보 등록 후 결제가 가능합니다.'
           });
           navigate('/ko/login');
           return;
@@ -98,7 +102,7 @@ const CheckoutKo: React.FC = () => {
     };
 
     checkGuestVerification();
-  }, [user, isGuest, guestEmail, navigate, toast]);
+  }, [authLoading, user, isGuest, guestEmail, navigate, toast]);
 
   // Initialize Toss Payments Widget - only after verification is complete
   useEffect(() => {
