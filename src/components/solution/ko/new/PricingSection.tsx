@@ -57,7 +57,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                   DAP-Premium
                 </h3>
                 <p className="text-muted-foreground mb-8 leading-[1.5]">
-                  연간 구독
+                  연간 구매
                 </p>
                 
                 <div className="flex items-baseline justify-center gap-2">
