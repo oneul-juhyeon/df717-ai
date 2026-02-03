@@ -50,6 +50,36 @@ export type Database = {
         }
         Relationships: []
       }
+      guest_verifications: {
+        Row: {
+          code: string
+          created_at: string
+          email: string
+          expires_at: string
+          id: string
+          used: boolean
+          verified: boolean
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          email: string
+          expires_at?: string
+          id?: string
+          used?: boolean
+          verified?: boolean
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          email?: string
+          expires_at?: string
+          id?: string
+          used?: boolean
+          verified?: boolean
+        }
+        Relationships: []
+      }
       orders: {
         Row: {
           amount: number
