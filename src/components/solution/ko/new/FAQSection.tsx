@@ -33,7 +33,7 @@ export const FAQSection: React.FC = () => {
 
   return (
     <section id="faq" className="py-20 md:py-[120px] bg-muted/30">
-      <div className="w-full max-w-[1440px] mx-auto px-3 md:px-6 lg:px-8 xl:px-10">
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export const FAQSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
-          className="max-w-[800px] mx-auto"
+          className="max-w-[1000px] mx-auto"
         >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
