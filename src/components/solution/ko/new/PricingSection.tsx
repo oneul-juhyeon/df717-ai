@@ -128,14 +128,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                   {plans[selectedPlan].label}
                 </p>
                 
-                <div className="flex items-baseline justify-center gap-2 flex-wrap">
+                <div className="flex flex-col items-center">
                   {selectedPlan === 'yearly' && (
-                    <span className="text-xl text-muted-foreground line-through">₩666,667</span>
+                    <span className="text-xl text-muted-foreground line-through mb-1">₩8,000,000</span>
                   )}
-                  <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">
-                    {plans[selectedPlan].displayPrice}
-                  </span>
-                  <span className="text-muted-foreground text-base">{plans[selectedPlan].period}</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">
+                      {plans[selectedPlan].displayPrice}
+                    </span>
+                    <span className="text-muted-foreground text-base">{plans[selectedPlan].period}</span>
+                  </div>
                 </div>
                 <p className="text-sm text-muted-foreground mt-3 leading-[1.5]">
                   {plans[selectedPlan].description}
