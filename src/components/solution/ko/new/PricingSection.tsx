@@ -87,13 +87,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
             <button
               onClick={() => setSelectedPlan('yearly')}
               className={cn(
-                'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200',
+                'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 relative',
                 selectedPlan === 'yearly'
                   ? 'bg-background text-foreground shadow-sm'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
               연간 결제
+              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full font-semibold">
+                37% 할인
+              </span>
             </button>
           </div>
         </motion.div>
@@ -126,13 +129,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                 </p>
                 
                 <div className="flex flex-col items-center">
-                  {selectedPlan === 'yearly' && (
+                  {selectedPlan === 'yearly' ? (
                     <span className="text-lg text-muted-foreground line-through mb-2">₩8,000,000</span>
+                  ) : (
+                    <span className="text-lg text-muted-foreground line-through mb-2">₩800,000</span>
                   )}
                   <div className="flex items-baseline gap-3">
-                    {selectedPlan === 'yearly' && (
-                      <span className="text-[32px] md:text-[40px] font-bold text-primary">37%</span>
-                    )}
+                    <span className="text-[32px] md:text-[40px] font-bold text-primary">37%</span>
                     <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">
                       {plans[selectedPlan].displayPrice}
                     </span>
