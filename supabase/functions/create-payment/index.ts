@@ -3,14 +3,19 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
 
 interface PaymentRequest {
-  productType: 'light' | 'premium';
+  orderId: string;
+  amount: number;
+  orderName: string;
   customerName: string;
   customerEmail: string;
-  customerPhone: string;
+  customerMobilePhone: string;
+  successUrl: string;
+  failUrl: string;
+  productType?: string;
   userId?: string;
 }
 
@@ -20,55 +25,59 @@ serve(async (req) => {
   }
 
   try {
-    const supabase = createClient(
-      Deno.env.get('SUPABASE_URL')!,
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-    );
+    const { 
+      orderId, 
+      amount, 
+      orderName, 
+      customerName, 
+      customerEmail, 
+      customerMobilePhone,
+      successUrl,
+      failUrl
+    } = await req.json() as PaymentRequest;
 
-    const { productType, customerName, customerEmail, customerPhone, userId } = 
-      await req.json() as PaymentRequest;
+    console.log('Creating payment:', { orderId, amount, customerName, customerEmail });
 
-    console.log('Creating payment order:', { productType, customerName, customerEmail, userId });
-
-    // Product price mapping
-    const prices = {
-      light: 2800000,
-      premium: 3800000
-    };
-
-    const amount = prices[productType];
-    const orderId = `ORDER_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-
-    // Save order to database
-    const { data, error } = await supabase
-      .from('orders')
-      .insert({
-        order_id: orderId,
-        user_id: userId || null,
-        product_type: productType,
-        amount,
-        customer_name: customerName,
-        customer_email: customerEmail,
-        customer_phone: customerPhone,
-        status: 'pending'
-      })
-      .select()
-      .single();
-
-    if (error) {
-      console.error('Database error:', error);
-      return new Response(JSON.stringify({ error: error.message }), { 
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
+    const TOSS_SECRET_KEY = Deno.env.get('TOSS_SECRET_KEY');
+    if (!TOSS_SECRET_KEY) {
+      throw new Error('TOSS_SECRET_KEY not configured');
     }
 
-    console.log('Order created successfully:', data);
+    // Base64 encode the secret key for Toss API
+    const encodedSecretKey = btoa(`${TOSS_SECRET_KEY}:`);
+
+    // Call Toss Payments API to create checkout
+    const tossResponse = await fetch('https://api.tosspayments.com/v1/payments', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${encodedSecretKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        method: '카드',
+        amount,
+        orderId,
+        orderName,
+        successUrl,
+        failUrl,
+        customerName,
+        customerEmail,
+        customerMobilePhone
+      })
+    });
+
+    if (!tossResponse.ok) {
+      const errorData = await tossResponse.json();
+      console.error('Toss API error:', errorData);
+      throw new Error(errorData.message || 'Toss Payments API error');
+    }
+
+    const tossData = await tossResponse.json();
+    console.log('Toss payment created:', tossData.paymentKey);
 
     return new Response(JSON.stringify({ 
-      orderId,
-      amount,
-      orderName: productType === 'light' ? 'DF717 라이트 프로그램' : 'DF717 프리미엄 프로그램'
+      paymentKey: tossData.paymentKey,
+      checkoutUrl: tossData.checkout?.url || tossData.mobileUrl || tossData.url
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
