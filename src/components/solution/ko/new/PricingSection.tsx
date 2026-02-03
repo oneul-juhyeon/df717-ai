@@ -26,7 +26,7 @@ const plans = {
     price: 5000000,
     displayPrice: '₩416,667',
     period: '/월',
-    description: '12개월 할부 시 ₩5,000,000/년',
+    description: '12개월 할부 시 (37% 할인)',
     badge: '추천',
     highlight: true,
   },
