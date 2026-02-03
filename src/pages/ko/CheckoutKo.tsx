@@ -47,11 +47,11 @@ const CheckoutKo: React.FC = () => {
 
   // Gate access: wait for auth to initialize, then allow members directly.
   useEffect(() => {
-    const checkGuestVerification = async () => {
-      // Wait until auth state is resolved; otherwise user may be temporarily null
-      if (authLoading) return;
+    // Don't run until auth has finished loading
+    if (authLoading) return;
 
-      // If user is logged in, no need to check
+    const checkAccess = async () => {
+      // If user is logged in, allow access immediately
       if (user) {
         setVerificationChecked(true);
         setForm(prev => ({
@@ -62,46 +62,34 @@ const CheckoutKo: React.FC = () => {
         return;
       }
 
-      // If not a guest with email, redirect to login
-      if (!isGuest || !guestEmail) {
-        toast({
-          variant: 'destructive',
-          title: '접근 불가',
-          description: '로그인하거나 비회원 구매를 진행해주세요.'
-        });
-        navigate('/ko/login');
-        return;
-      }
-
-      // Verify the guest email is authenticated
-      try {
-        const { data, error } = await supabase.functions.invoke('guest-verification', {
-          body: { action: 'check', email: guestEmail }
-        });
-
-        if (error || !data?.verified) {
-          toast({
-            variant: 'destructive',
-            title: '인증 필요',
-            description: '비회원 정보 등록 후 결제가 가능합니다.'
+      // Not logged in - check if guest flow
+      if (isGuest && guestEmail) {
+        // Verify the guest email is registered
+        try {
+          const { data, error } = await supabase.functions.invoke('guest-verification', {
+            body: { action: 'check', email: guestEmail }
           });
-          navigate('/ko/login');
-          return;
-        }
 
-        // Email is verified, allow access
-        setForm(prev => ({
-          ...prev,
-          email: guestEmail
-        }));
-        setVerificationChecked(true);
-      } catch (error) {
-        console.error('Verification check error:', error);
-        navigate('/ko/login');
+          if (!error && data?.verified) {
+            setForm(prev => ({ ...prev, email: guestEmail }));
+            setVerificationChecked(true);
+            return;
+          }
+        } catch (error) {
+          console.error('Guest verification error:', error);
+        }
       }
+
+      // No valid access - redirect to login
+      toast({
+        variant: 'destructive',
+        title: '접근 불가',
+        description: '로그인하거나 비회원 구매를 진행해주세요.'
+      });
+      navigate('/ko/login');
     };
 
-    checkGuestVerification();
+    checkAccess();
   }, [authLoading, user, isGuest, guestEmail, navigate, toast]);
 
   // Initialize Toss Payments Widget - only after verification is complete
