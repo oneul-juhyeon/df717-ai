@@ -52,7 +52,8 @@ export const ProductSection: React.FC = () => {
                 </div>
 
                 <div className="mb-10">
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-baseline gap-3 flex-wrap">
+                    <span className="text-xl text-muted-foreground line-through">₩8,000,000</span>
                     <span className="text-[36px] md:text-[42px] font-bold text-foreground tracking-tight">₩5,000,000</span>
                     <span className="text-muted-foreground text-base">/년</span>
                   </div>
