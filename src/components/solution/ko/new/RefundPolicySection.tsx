@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 export const RefundPolicySection: React.FC = () => {
-  return <section id="refund" className="py-20 md:py-[120px] bg-muted/30">
+  return <section id="refund" className="pt-8 md:pt-12 pb-20 md:pb-[120px] bg-muted/30">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20">
         <motion.div initial={{
         opacity: 0,
@@ -13,9 +13,9 @@ export const RefundPolicySection: React.FC = () => {
       }} transition={{
         duration: 0.6,
         ease: [0.25, 0.1, 0.25, 1]
-      }} viewport={{
+        }} viewport={{
         once: true
-      }} className="max-w-[800px]">
+      }} className="max-w-[800px] mx-auto">
           <Card className="border-0 shadow-lg">
             <CardContent className="p-8 lg:p-10">
               <h3 className="text-xl font-bold text-foreground mb-6 leading-[1.4] text-justify">환불 정책</h3>
