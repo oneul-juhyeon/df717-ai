@@ -58,6 +58,7 @@ const CheckoutKo: React.FC = () => {
           ...prev,
           name: user.user_metadata?.full_name || '',
           email: user.email || '',
+          phone: user.user_metadata?.phone || '',
         }));
         return;
       }
