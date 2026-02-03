@@ -66,7 +66,7 @@ export const FeaturesSection: React.FC = () => {
               className="h-full"
             >
               <Card className="h-full shadow-md border-0 hover:shadow-xl transition-shadow duration-300 bg-background">
-                <CardContent className="p-8 h-full flex flex-col">
+                <CardContent className="p-8 h-full flex flex-col items-center text-center">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <feature.icon className="w-6 h-6 text-primary" />
                   </div>

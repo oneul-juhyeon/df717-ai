@@ -38,13 +38,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
             </h1>
             
             <p className="text-base text-muted-foreground mb-6 leading-[1.7] text-left">
-              AI 기반 자동매매 시스템으로 24시간 시장을 모니터링하고, 기관급 투자 전략을 실행하는 DAP-Premium을 소개합니다.
+              AI 기반 자동매매 시스템으로 24시간 시장을 모니터링하고,
+              <br />
+              기관급 투자 전략을 실행하는 DAP-Premium을 소개합니다.
             </p>
 
             {/* Primary CTA Button */}
             <Button 
               onClick={scrollToProduct}
-              className="h-11 px-6 text-[15px] font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-sm mb-4 w-full sm:w-auto"
+              className="h-11 px-6 text-[15px] font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-sm mb-4"
             >
               DAP-Premium 살펴보기
             </Button>
@@ -85,7 +87,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
             </h1>
             
             <p className="text-lg text-white/80 mb-8 leading-[1.7] max-w-[440px] text-left">
-              AI 기반 자동매매 시스템으로 24시간 시장을 모니터링하고, 기관급 투자 전략을 실행하는 DAP-Premium을 소개합니다.
+              AI 기반 자동매매 시스템으로 24시간 시장을 모니터링하고,
+              <br />
+              기관급 투자 전략을 실행하는 DAP-Premium을 소개합니다.
             </p>
 
             {/* Primary CTA Button */}
