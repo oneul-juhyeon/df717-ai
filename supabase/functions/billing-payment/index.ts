@@ -24,9 +24,10 @@ serve(async (req) => {
   }
 
   try {
-    const TOSS_SECRET_KEY = Deno.env.get("TOSS_SECRET_KEY");
-    if (!TOSS_SECRET_KEY) {
-      throw new Error("TOSS_SECRET_KEY is not configured");
+    // Use billing-specific secret key (pairs with test_ck_* client key)
+    const TOSS_BILLING_SECRET_KEY = Deno.env.get("TOSS_BILLING_SECRET_KEY");
+    if (!TOSS_BILLING_SECRET_KEY) {
+      throw new Error("TOSS_BILLING_SECRET_KEY is not configured");
     }
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -44,7 +45,7 @@ serve(async (req) => {
     }
 
     // Execute payment via Toss Payments Billing API
-    const basicAuth = btoa(`${TOSS_SECRET_KEY}:`);
+    const basicAuth = btoa(`${TOSS_BILLING_SECRET_KEY}:`);
     
     const paymentResponse = await fetch(
       `https://api.tosspayments.com/v1/billing/${billingKey}`,
