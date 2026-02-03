@@ -58,7 +58,7 @@ export const ProductSection: React.FC = () => {
               className="mt-4 gap-2"
             >
               <a
-                href="https://df717.notion.site/df717-monitoring-accounts?source"
+                href="https://df717.notion.site/df717-live-analytics"
                 target="_blank"
                 rel="noopener noreferrer"
               >
