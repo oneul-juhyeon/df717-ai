@@ -20,7 +20,7 @@ const PRODUCT = {
 };
 
 // Toss Payments Client Key (Publishable - safe to expose)
-const TOSS_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX";
+const TOSS_CLIENT_KEY = "live_gck_df7171tglj";
 
 const CheckoutKo: React.FC = () => {
   const navigate = useNavigate();
@@ -100,9 +100,23 @@ const CheckoutKo: React.FC = () => {
     checkGuestVerification();
   }, [user, isGuest, guestEmail, navigate, toast]);
 
-  // Initialize Toss Payments Widget
+  // Initialize Toss Payments Widget - only after verification is complete
   useEffect(() => {
+    // Don't initialize until verification is complete
+    if (!verificationChecked) return;
+
     const initializeWidget = async () => {
+      // Wait a bit for DOM to be ready
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      const paymentMethodEl = document.getElementById('payment-method');
+      const agreementEl = document.getElementById('agreement');
+      
+      if (!paymentMethodEl || !agreementEl) {
+        console.error('Payment widget container elements not found');
+        return;
+      }
+
       try {
         const customerKey = user?.id || `guest_${nanoid(10)}`;
         
@@ -146,7 +160,7 @@ const CheckoutKo: React.FC = () => {
       // Cleanup on unmount
       widgetsRef.current = null;
     };
-  }, [user?.id]);
+  }, [verificationChecked, user?.id, toast]);
 
   const handlePayment = async () => {
     // Validation
