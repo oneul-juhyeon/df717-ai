@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,13 +12,14 @@ import { supabase } from '@/integrations/supabase/client';
 
 const LoginKo: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { signInWithGoogle, signInWithEmail, user } = useAuth();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ email: '', password: '' });
   
-  // Guest registration state
-  const [showGuestFlow, setShowGuestFlow] = useState(false);
+  // Guest registration state - check URL param to auto-show guest form
+  const [showGuestFlow, setShowGuestFlow] = useState(searchParams.get('showGuest') === 'true');
   const [guestForm, setGuestForm] = useState({ email: '', password: '' });
   const [guestLoading, setGuestLoading] = useState(false);
 
