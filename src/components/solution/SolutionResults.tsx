@@ -41,7 +41,7 @@ const SolutionResults: React.FC = () => {
             </p>
 
             <motion.a
-              href="https://df717.notion.site/df717-monitoring-accounts?source"
+              href="https://df717.notion.site/df717-live-analytics"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 group"
