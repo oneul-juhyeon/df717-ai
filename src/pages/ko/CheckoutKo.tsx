@@ -7,20 +7,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, ArrowLeft, Check } from 'lucide-react';
+import { Loader2, ArrowLeft, Check, CreditCard, Calendar } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { nanoid } from 'nanoid';
 import SEOHead from '@/components/seo/SEOHead';
 import { loadTossPayments, TossPaymentsWidgets, ANONYMOUS } from "@tosspayments/tosspayments-sdk";
-
-const PRODUCT = {
-  name: 'DF717 AI 자동매매 프로그램 솔루션 (DAP-Premium)',
-  price: 5000000,
-  description: '연간 구매 (12개월)'
-};
+import { plans, getPlanFromSearchParams, PlanType } from '@/lib/pricing';
+import { cn } from '@/lib/utils';
 
 // Toss Payments Client Key (Publishable - safe to expose)
-// NOTE: "상점번호"는 Toss의 merchant id 성격이라 위젯 초기화에 쓰지 않습니다. 위젯에는 Client Key가 필요합니다.
 const TOSS_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX";
 
 const CheckoutKo: React.FC = () => {
@@ -31,6 +26,7 @@ const CheckoutKo: React.FC = () => {
   
   const [loading, setLoading] = useState(false);
   const [widgetReady, setWidgetReady] = useState(false);
+  const [planType, setPlanType] = useState<PlanType>(() => getPlanFromSearchParams(searchParams));
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -39,11 +35,14 @@ const CheckoutKo: React.FC = () => {
   });
   
   const widgetsRef = useRef<TossPaymentsWidgets | null>(null);
+  const tossInstanceRef = useRef<any>(null);
 
   // Check if coming from guest checkout with verified email
   const isGuest = searchParams.get('guest') === 'true';
   const guestEmail = searchParams.get('email') || '';
   const [verificationChecked, setVerificationChecked] = useState(false);
+
+  const selectedPlan = plans[planType];
 
   // Gate access: wait for auth to initialize, then allow members directly.
   useEffect(() => {
@@ -93,67 +92,78 @@ const CheckoutKo: React.FC = () => {
     checkAccess();
   }, [authLoading, user, isGuest, guestEmail, navigate, toast]);
 
-  // Initialize Toss Payments Widget - only after verification is complete
+  // Initialize Toss Payments - only after verification is complete
   useEffect(() => {
     // Don't initialize until verification is complete
     if (!verificationChecked) return;
 
-    const initializeWidget = async () => {
+    const initializePayment = async () => {
       // Wait a bit for DOM to be ready
       await new Promise(resolve => setTimeout(resolve, 100));
       
-      const paymentMethodEl = document.getElementById('payment-method');
-      const agreementEl = document.getElementById('agreement');
-      
-      if (!paymentMethodEl || !agreementEl) {
-        console.error('Payment widget container elements not found');
-        return;
-      }
-
       try {
         const customerKey = user?.id || ANONYMOUS;
-        
         const tossPayments = await loadTossPayments(TOSS_CLIENT_KEY);
-        const widgets = tossPayments.widgets({ customerKey });
-        
-        widgetsRef.current = widgets;
-        
-        // Set amount
-        await widgets.setAmount({
-          currency: "KRW",
-          value: PRODUCT.price
-        });
+        tossInstanceRef.current = tossPayments;
 
-        // Render payment methods widget
-        await widgets.renderPaymentMethods({
-          selector: "#payment-method",
-          variantKey: "DEFAULT"
-        });
+        if (planType === 'yearly') {
+          // One-time payment: use widgets
+          const paymentMethodEl = document.getElementById('payment-method');
+          const agreementEl = document.getElementById('agreement');
+          
+          if (!paymentMethodEl || !agreementEl) {
+            console.error('Payment widget container elements not found');
+            return;
+          }
 
-        // Render agreement widget
-        await widgets.renderAgreement({
-          selector: "#agreement",
-          variantKey: "AGREEMENT"
-        });
+          const widgets = tossPayments.widgets({ customerKey });
+          widgetsRef.current = widgets;
+          
+          await widgets.setAmount({
+            currency: "KRW",
+            value: selectedPlan.price
+          });
+
+          await widgets.renderPaymentMethods({
+            selector: "#payment-method",
+            variantKey: "DEFAULT"
+          });
+
+          await widgets.renderAgreement({
+            selector: "#agreement",
+            variantKey: "AGREEMENT"
+          });
+        }
+        // For monthly subscription, we'll use requestBillingAuth directly
 
         setWidgetReady(true);
       } catch (error) {
-        console.error('Failed to initialize payment widget:', error);
+        console.error('Failed to initialize payment:', error);
         toast({
           variant: 'destructive',
-          title: '결제 위젯 로드 실패',
+          title: '결제 초기화 실패',
           description: '잠시 후 다시 시도해주세요.'
         });
       }
     };
 
-    initializeWidget();
+    initializePayment();
 
     return () => {
-      // Cleanup on unmount
       widgetsRef.current = null;
+      tossInstanceRef.current = null;
     };
-  }, [verificationChecked, user?.id, toast]);
+  }, [verificationChecked, user?.id, planType, selectedPlan.price, toast]);
+
+  // Update amount when plan changes
+  useEffect(() => {
+    if (widgetsRef.current && planType === 'yearly') {
+      widgetsRef.current.setAmount({
+        currency: "KRW",
+        value: selectedPlan.price
+      });
+    }
+  }, [planType, selectedPlan.price]);
 
   const handlePayment = async () => {
     // Validation
@@ -176,15 +186,11 @@ const CheckoutKo: React.FC = () => {
       return;
     }
 
-    if (!widgetsRef.current) {
-      toast({ variant: 'destructive', title: '오류', description: '결제 위젯이 준비되지 않았습니다.' });
-      return;
-    }
-
     setLoading(true);
 
     try {
       const orderId = `DF717-${nanoid(10)}`;
+      const customerKey = user?.id || `guest_${nanoid(8)}`;
       
       // Hash password for guest users
       let hashedPassword = null;
@@ -204,8 +210,8 @@ const CheckoutKo: React.FC = () => {
           customer_name: form.name,
           customer_email: form.email,
           customer_phone: form.phone.replace(/-/g, ''),
-          product_type: 'dap-premium',
-          amount: PRODUCT.price,
+          product_type: selectedPlan.productType,
+          amount: selectedPlan.price,
           status: 'pending',
           guest_password: hashedPassword
         });
@@ -214,16 +220,35 @@ const CheckoutKo: React.FC = () => {
         throw orderError;
       }
 
-      // Request payment with Toss Payments Widget
-      await widgetsRef.current.requestPayment({
-        orderId,
-        orderName: PRODUCT.name,
-        customerName: form.name,
-        customerEmail: form.email,
-        customerMobilePhone: form.phone.replace(/-/g, ''),
-        successUrl: `${window.location.origin}/ko/payment/success`,
-        failUrl: `${window.location.origin}/ko/payment/fail`
-      });
+      if (planType === 'monthly') {
+        // Monthly subscription: request billing key authorization
+        if (!tossInstanceRef.current) {
+          throw new Error('Toss Payments not initialized');
+        }
+
+        const billing = tossInstanceRef.current.billing();
+        await billing.requestBillingAuth({
+          customerKey,
+          method: "CARD",
+          successUrl: `${window.location.origin}/ko/payment/billing-success?orderId=${orderId}&amount=${selectedPlan.price}&orderName=${encodeURIComponent(selectedPlan.name)}&customerEmail=${encodeURIComponent(form.email)}&customerName=${encodeURIComponent(form.name)}`,
+          failUrl: `${window.location.origin}/ko/payment/fail`
+        });
+      } else {
+        // Yearly: one-time payment with widgets
+        if (!widgetsRef.current) {
+          throw new Error('Payment widget not initialized');
+        }
+
+        await widgetsRef.current.requestPayment({
+          orderId,
+          orderName: selectedPlan.name,
+          customerName: form.name,
+          customerEmail: form.email,
+          customerMobilePhone: form.phone.replace(/-/g, ''),
+          successUrl: `${window.location.origin}/ko/payment/success`,
+          failUrl: `${window.location.origin}/ko/payment/fail`
+        });
+      }
 
     } catch (error: any) {
       console.error('Payment error:', error);
@@ -281,13 +306,73 @@ const CheckoutKo: React.FC = () => {
               <CardTitle className="text-2xl font-bold">결제 정보</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Plan Selection Toggle */}
+              <div className="space-y-3">
+                <Label className="text-base font-semibold">결제 방식 선택</Label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setPlanType('monthly')}
+                    className={cn(
+                      "flex flex-col items-center p-4 rounded-lg border-2 transition-all",
+                      planType === 'monthly'
+                        ? "border-primary bg-primary/5"
+                        : "border-border hover:border-primary/50"
+                    )}
+                  >
+                    <CreditCard className={cn(
+                      "h-6 w-6 mb-2",
+                      planType === 'monthly' ? "text-primary" : "text-muted-foreground"
+                    )} />
+                    <span className={cn(
+                      "font-semibold",
+                      planType === 'monthly' ? "text-primary" : "text-foreground"
+                    )}>월간 결제</span>
+                    <span className="text-sm text-muted-foreground">₩500,000/월</span>
+                    <span className="text-xs text-muted-foreground mt-1">정기구독</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPlanType('yearly')}
+                    className={cn(
+                      "flex flex-col items-center p-4 rounded-lg border-2 transition-all relative",
+                      planType === 'yearly'
+                        ? "border-primary bg-primary/5"
+                        : "border-border hover:border-primary/50"
+                    )}
+                  >
+                    <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] px-2 py-0.5 rounded-full font-semibold">
+                      17% 할인
+                    </span>
+                    <Calendar className={cn(
+                      "h-6 w-6 mb-2",
+                      planType === 'yearly' ? "text-primary" : "text-muted-foreground"
+                    )} />
+                    <span className={cn(
+                      "font-semibold",
+                      planType === 'yearly' ? "text-primary" : "text-foreground"
+                    )}>연간 결제</span>
+                    <span className="text-sm text-muted-foreground">₩5,000,000/년</span>
+                    <span className="text-xs text-muted-foreground mt-1">월 ₩416,667</span>
+                  </button>
+                </div>
+              </div>
+
+              <Separator />
+
               {/* Product Summary */}
               <div className="bg-muted/50 rounded-lg p-4">
-                <h3 className="font-semibold mb-2">{PRODUCT.name}</h3>
-                <p className="text-sm text-muted-foreground mb-2">{PRODUCT.description}</p>
+                <h3 className="font-semibold mb-2">{selectedPlan.name}</h3>
+                <p className="text-sm text-muted-foreground mb-2">{selectedPlan.description}</p>
                 <p className="text-2xl font-bold text-primary">
-                  ₩{PRODUCT.price.toLocaleString()}
+                  {selectedPlan.displayPrice}
+                  <span className="text-sm font-normal text-muted-foreground ml-1">{selectedPlan.period}</span>
                 </p>
+                {planType === 'monthly' && (
+                  <p className="text-xs text-primary mt-2">
+                    * 카드 등록 후 매월 자동 결제됩니다
+                  </p>
+                )}
               </div>
 
               <Separator />
@@ -354,22 +439,42 @@ const CheckoutKo: React.FC = () => {
 
               <Separator />
 
-              {/* Payment Widget Container */}
-              <div className="space-y-4">
-                <h3 className="font-semibold">결제 수단</h3>
-                <div id="payment-method" className="min-h-[200px]">
-                  {!widgetReady && (
-                    <div className="flex items-center justify-center h-[200px] bg-muted/30 rounded-lg">
-                      <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+              {/* Payment Widget Container - Only for yearly */}
+              {planType === 'yearly' && (
+                <>
+                  <div className="space-y-4">
+                    <h3 className="font-semibold">결제 수단</h3>
+                    <div id="payment-method" className="min-h-[200px]">
+                      {!widgetReady && (
+                        <div className="flex items-center justify-center h-[200px] bg-muted/30 rounded-lg">
+                          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </div>
+
+                  {/* Agreement Widget Container */}
+                  <div id="agreement" className="min-h-[50px]" />
+
+                  <Separator />
+                </>
+              )}
+
+              {/* Monthly subscription info */}
+              {planType === 'monthly' && (
+                <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+                  <h4 className="font-medium text-primary mb-2 flex items-center gap-2">
+                    <CreditCard className="h-4 w-4" />
+                    정기결제 안내
+                  </h4>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• 결제 버튼 클릭 시 카드 등록 화면으로 이동합니다</li>
+                    <li>• 카드 등록 완료 후 첫 결제가 즉시 진행됩니다</li>
+                    <li>• 이후 매월 같은 날짜에 자동 결제됩니다</li>
+                    <li>• 언제든지 구독 해지가 가능합니다</li>
+                  </ul>
                 </div>
-              </div>
-
-              {/* Agreement Widget Container */}
-              <div id="agreement" className="min-h-[50px]" />
-
-              <Separator />
+              )}
 
               {/* Features */}
               <div className="space-y-2">
@@ -392,7 +497,7 @@ const CheckoutKo: React.FC = () => {
               {/* Payment Button */}
               <Button
                 onClick={handlePayment}
-                disabled={loading || !widgetReady}
+                disabled={loading || (planType === 'yearly' && !widgetReady)}
                 className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90"
               >
                 {loading ? (
@@ -400,13 +505,17 @@ const CheckoutKo: React.FC = () => {
                     <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                     처리 중...
                   </>
+                ) : planType === 'monthly' ? (
+                  '카드 등록하고 결제하기'
                 ) : (
-                  `₩${PRODUCT.price.toLocaleString()} 결제하기`
+                  `${selectedPlan.displayPrice} 결제하기`
                 )}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
-                결제 버튼을 클릭하면 토스페이먼츠 결제창이 열립니다.
+                {planType === 'monthly' 
+                  ? '결제 버튼을 클릭하면 토스페이먼츠 카드 등록 화면이 열립니다.'
+                  : '결제 버튼을 클릭하면 토스페이먼츠 결제창이 열립니다.'}
               </p>
             </CardContent>
           </Card>

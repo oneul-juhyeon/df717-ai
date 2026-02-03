@@ -12,10 +12,13 @@ import FooterKo from "@/components/common/FooterKo";
 import { AuthModal } from "@/components/solution/ko/AuthModal";
 import { useAuth } from "@/hooks/useAuth";
 
+type PlanType = 'monthly' | 'yearly';
+
 const SolutionKo: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>('yearly');
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -24,10 +27,13 @@ const SolutionKo: React.FC = () => {
     });
   };
 
-  const handleCTAClick = () => {
+  const handleCTAClick = (planType?: PlanType) => {
+    const plan = planType || 'yearly';
+    setSelectedPlan(plan);
+    
     if (user) {
       // User is logged in, go directly to checkout
-      navigate('/ko/checkout');
+      navigate(`/ko/checkout?plan=${plan}`);
     } else {
       // Show auth modal
       setShowAuthModal(true);
@@ -35,8 +41,8 @@ const SolutionKo: React.FC = () => {
   };
 
   const handleGuestCheckout = (email: string, password: string) => {
-    // Navigate to checkout with guest info
-    navigate(`/ko/checkout?guest=true&email=${encodeURIComponent(email)}&pw=${encodeURIComponent(password)}`);
+    // Navigate to checkout with guest info and plan
+    navigate(`/ko/checkout?guest=true&email=${encodeURIComponent(email)}&pw=${encodeURIComponent(password)}&plan=${selectedPlan}`);
   };
 
   return (
@@ -76,7 +82,7 @@ const SolutionKo: React.FC = () => {
         <HeroSection onCTAClick={handleCTAClick} />
         <ProductSection />
         <FeaturesSection />
-        <PricingSection onPurchaseClick={handleCTAClick} />
+        <PricingSection onPurchaseClick={(planType) => handleCTAClick(planType)} />
         <FAQSection />
         <RefundPolicySection />
         

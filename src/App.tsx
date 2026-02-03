@@ -44,6 +44,7 @@ import SignupKo from "./pages/ko/SignupKo";
 import CheckoutKo from "./pages/ko/CheckoutKo";
 import PaymentSuccessKo from "./pages/ko/PaymentSuccessKo";
 import PaymentFailKo from "./pages/ko/PaymentFailKo";
+import BillingSuccessKo from "./pages/ko/BillingSuccessKo";
 import MyPageKo from "./pages/ko/MyPageKo";
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
               <Route path="/ko/checkout" element={<CheckoutKo />} />
               <Route path="/ko/payment/success" element={<PaymentSuccessKo />} />
               <Route path="/ko/payment/fail" element={<PaymentFailKo />} />
+              <Route path="/ko/payment/billing-success" element={<BillingSuccessKo />} />
               <Route path="/ko/mypage" element={<MyPageKo />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
