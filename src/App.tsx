@@ -42,8 +42,8 @@ import SolutionKo from "./pages/ko/SolutionKo";
 import LoginKo from "./pages/ko/LoginKo";
 import SignupKo from "./pages/ko/SignupKo";
 import CheckoutKo from "./pages/ko/CheckoutKo";
-import PaymentSuccess from "./pages/ko/PaymentSuccess";
-import PaymentFail from "./pages/ko/PaymentFail";
+import PaymentSuccessKo from "./pages/ko/PaymentSuccessKo";
+import PaymentFailKo from "./pages/ko/PaymentFailKo";
 
 function App() {
   // Create a query client
@@ -92,8 +92,8 @@ function App() {
               <Route path="/ko/login" element={<LoginKo />} />
               <Route path="/ko/signup" element={<SignupKo />} />
               <Route path="/ko/checkout" element={<CheckoutKo />} />
-              <Route path="/ko/payment/success" element={<PaymentSuccess />} />
-              <Route path="/ko/payment/fail" element={<PaymentFail />} />
+              <Route path="/ko/payment/success" element={<PaymentSuccessKo />} />
+              <Route path="/ko/payment/fail" element={<PaymentFailKo />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
