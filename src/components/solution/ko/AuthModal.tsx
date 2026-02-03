@@ -33,7 +33,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onGuestChec
 
   const handleGuestCheckout = () => {
     onClose();
-    navigate('/ko/checkout');
+    // Navigate to login page which now handles guest verification
+    navigate('/ko/login');
   };
 
   const handleLoginPage = () => {
@@ -100,7 +101,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, onGuestChec
             비회원으로 구매하기
           </Button>
           <p className="text-xs text-center text-muted-foreground">
-            비회원의 경우, 결제 페이지에서 정보를 입력합니다.
+            비회원은 이메일 인증 후 구매가 가능합니다.
           </p>
         </div>
       </DialogContent>

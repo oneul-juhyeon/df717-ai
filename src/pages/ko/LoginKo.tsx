@@ -4,10 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowLeft, Mail, CheckCircle } from 'lucide-react';
 import SEOHead from '@/components/seo/SEOHead';
+import { supabase } from '@/integrations/supabase/client';
+
+type GuestStep = 'email' | 'verify' | 'complete';
 
 const LoginKo: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +19,13 @@ const LoginKo: React.FC = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ email: '', password: '' });
+  
+  // Guest verification state
+  const [showGuestFlow, setShowGuestFlow] = useState(false);
+  const [guestStep, setGuestStep] = useState<GuestStep>('email');
+  const [guestEmail, setGuestEmail] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [guestLoading, setGuestLoading] = useState(false);
 
   // Redirect if already logged in
   React.useEffect(() => {
@@ -52,6 +63,259 @@ const LoginKo: React.FC = () => {
     }
     setLoading(false);
   };
+
+  // Guest email verification flow
+  const handleSendVerificationCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!guestEmail.trim()) {
+      toast({
+        variant: 'destructive',
+        title: '오류',
+        description: '이메일을 입력해주세요.'
+      });
+      return;
+    }
+
+    setGuestLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('guest-verification', {
+        body: { action: 'send', email: guestEmail }
+      });
+
+      if (error) throw error;
+      if (data.error) throw new Error(data.error);
+
+      toast({
+        title: '인증코드 발송',
+        description: '이메일로 6자리 인증코드가 발송되었습니다.'
+      });
+      setGuestStep('verify');
+    } catch (error: any) {
+      console.error('Send verification error:', error);
+      toast({
+        variant: 'destructive',
+        title: '발송 실패',
+        description: error.message || '인증코드 발송에 실패했습니다.'
+      });
+    } finally {
+      setGuestLoading(false);
+    }
+  };
+
+  const handleVerifyCode = async () => {
+    if (verificationCode.length !== 6) {
+      toast({
+        variant: 'destructive',
+        title: '오류',
+        description: '6자리 인증코드를 입력해주세요.'
+      });
+      return;
+    }
+
+    setGuestLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('guest-verification', {
+        body: { action: 'verify', email: guestEmail, code: verificationCode }
+      });
+
+      if (error) throw error;
+      if (data.error) throw new Error(data.error);
+
+      if (data.verified) {
+        toast({
+          title: '인증 완료',
+          description: '이메일 인증이 완료되었습니다.'
+        });
+        setGuestStep('complete');
+        
+        // Navigate to checkout with verified email
+        setTimeout(() => {
+          navigate(`/ko/checkout?guest=true&email=${encodeURIComponent(guestEmail)}`);
+        }, 1500);
+      }
+    } catch (error: any) {
+      console.error('Verify code error:', error);
+      toast({
+        variant: 'destructive',
+        title: '인증 실패',
+        description: error.message || '인증코드 확인에 실패했습니다.'
+      });
+    } finally {
+      setGuestLoading(false);
+    }
+  };
+
+  const handleResendCode = async () => {
+    setGuestLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('guest-verification', {
+        body: { action: 'send', email: guestEmail }
+      });
+
+      if (error) throw error;
+      if (data.error) throw new Error(data.error);
+
+      toast({
+        title: '재발송 완료',
+        description: '인증코드가 다시 발송되었습니다.'
+      });
+      setVerificationCode('');
+    } catch (error: any) {
+      toast({
+        variant: 'destructive',
+        title: '재발송 실패',
+        description: error.message || '인증코드 재발송에 실패했습니다.'
+      });
+    } finally {
+      setGuestLoading(false);
+    }
+  };
+
+  const resetGuestFlow = () => {
+    setShowGuestFlow(false);
+    setGuestStep('email');
+    setGuestEmail('');
+    setVerificationCode('');
+  };
+
+  // Guest verification flow UI
+  if (showGuestFlow) {
+    return (
+      <>
+        <SEOHead
+          title="비회원 구매 | DF717"
+          description="DF717 비회원 구매를 위한 이메일 인증"
+          canonical="https://www.df717.ai/ko/login"
+          lang="ko"
+        />
+        <div className="min-h-screen bg-muted flex items-center justify-center p-4">
+          <div className="w-full max-w-md">
+            <button 
+              onClick={resetGuestFlow}
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              로그인으로 돌아가기
+            </button>
+
+            <Card className="shadow-lg">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl font-bold">비회원 구매</CardTitle>
+                <CardDescription>
+                  {guestStep === 'email' && '이메일 인증 후 구매가 가능합니다'}
+                  {guestStep === 'verify' && '이메일로 발송된 인증코드를 입력하세요'}
+                  {guestStep === 'complete' && '인증이 완료되었습니다'}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {guestStep === 'email' && (
+                  <form onSubmit={handleSendVerificationCode} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="guest-email">이메일</Label>
+                      <Input
+                        id="guest-email"
+                        type="email"
+                        placeholder="이메일을 입력하세요"
+                        value={guestEmail}
+                        onChange={(e) => setGuestEmail(e.target.value)}
+                        required
+                        className="h-12"
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        주문 확인 및 조회에 사용될 이메일입니다.
+                      </p>
+                    </div>
+                    <Button
+                      type="submit"
+                      disabled={guestLoading}
+                      className="w-full h-12 text-base bg-primary hover:bg-primary/90"
+                    >
+                      {guestLoading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          발송 중...
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="mr-2 h-4 w-4" />
+                          인증코드 발송
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                )}
+
+                {guestStep === 'verify' && (
+                  <div className="space-y-6">
+                    <div className="text-center">
+                      <p className="text-sm text-muted-foreground mb-4">
+                        <span className="font-medium text-foreground">{guestEmail}</span>
+                        <br />으로 발송된 6자리 코드를 입력하세요.
+                      </p>
+                      
+                      <div className="flex justify-center mb-6">
+                        <InputOTP 
+                          maxLength={6} 
+                          value={verificationCode}
+                          onChange={(value) => setVerificationCode(value)}
+                        >
+                          <InputOTPGroup>
+                            <InputOTPSlot index={0} className="w-12 h-14 text-xl" />
+                            <InputOTPSlot index={1} className="w-12 h-14 text-xl" />
+                            <InputOTPSlot index={2} className="w-12 h-14 text-xl" />
+                            <InputOTPSlot index={3} className="w-12 h-14 text-xl" />
+                            <InputOTPSlot index={4} className="w-12 h-14 text-xl" />
+                            <InputOTPSlot index={5} className="w-12 h-14 text-xl" />
+                          </InputOTPGroup>
+                        </InputOTP>
+                      </div>
+                    </div>
+
+                    <Button
+                      onClick={handleVerifyCode}
+                      disabled={guestLoading || verificationCode.length !== 6}
+                      className="w-full h-12 text-base bg-primary hover:bg-primary/90"
+                    >
+                      {guestLoading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          확인 중...
+                        </>
+                      ) : (
+                        '인증 확인'
+                      )}
+                    </Button>
+
+                    <div className="text-center">
+                      <button
+                        onClick={handleResendCode}
+                        disabled={guestLoading}
+                        className="text-sm text-primary hover:underline"
+                      >
+                        인증코드 재발송
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {guestStep === 'complete' && (
+                  <div className="text-center py-8">
+                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                    <p className="text-lg font-medium mb-2">인증 완료!</p>
+                    <p className="text-sm text-muted-foreground">
+                      결제 페이지로 이동합니다...
+                    </p>
+                    <Loader2 className="h-5 w-5 animate-spin mx-auto mt-4 text-primary" />
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -167,13 +431,13 @@ const LoginKo: React.FC = () => {
               <div className="pt-4 border-t">
                 <Button
                   variant="outline"
-                  onClick={() => navigate('/ko/checkout')}
+                  onClick={() => setShowGuestFlow(true)}
                   className="w-full h-12 text-base border-primary text-primary hover:bg-primary/5"
                 >
                   비회원 구매
                 </Button>
                 <p className="text-sm text-muted-foreground text-center mt-3">
-                  비회원의 경우, 해당버튼을 통해 주문이 가능합니다.
+                  비회원의 경우, 이메일 인증 후 구매가 가능합니다.
                 </p>
               </div>
             </CardContent>
