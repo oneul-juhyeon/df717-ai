@@ -230,12 +230,14 @@ const CheckoutKo: React.FC = () => {
           throw new Error('Toss Payments not initialized');
         }
 
-        const billing = tossInstanceRef.current.billing();
-        await billing.requestBillingAuth({
-          customerKey,
+        // Use payment() method for billing key, not billing()
+        const payment = tossInstanceRef.current.payment({ customerKey });
+        await payment.requestBillingAuth({
           method: "CARD",
           successUrl: `${window.location.origin}/ko/payment/billing-success?orderId=${orderId}&amount=${selectedPlan.price}&orderName=${encodeURIComponent(selectedPlan.name)}&customerEmail=${encodeURIComponent(form.email)}&customerName=${encodeURIComponent(form.name)}`,
-          failUrl: `${window.location.origin}/ko/payment/fail`
+          failUrl: `${window.location.origin}/ko/payment/fail`,
+          customerEmail: form.email,
+          customerName: form.name,
         });
       } else {
         // Yearly: one-time payment with widgets
