@@ -9,6 +9,10 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
+  const scrollToPricing = () => {
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
   const scrollToProduct = () => {
     document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -54,7 +58,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
 
             {/* Secondary Link */}
             <button 
-              onClick={scrollToProduct}
+              onClick={scrollToPricing}
               className="flex items-center gap-1 text-primary hover:underline text-[15px] font-medium transition-colors"
             >
               지금 구매하기
@@ -103,7 +107,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
 
             {/* Secondary Link */}
             <button 
-              onClick={scrollToProduct}
+              onClick={scrollToPricing}
               className="flex items-center gap-1 text-white hover:underline text-[15px] font-medium transition-colors"
             >
               지금 구매하기
