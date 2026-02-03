@@ -9,7 +9,7 @@ import {
 
 export const RefundPolicySection: React.FC = () => {
   return (
-    <section className="py-20 md:py-[120px] bg-background">
+    <section id="refund" className="py-20 md:py-[120px] bg-background">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
