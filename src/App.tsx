@@ -39,6 +39,9 @@ import Suppliers from "./pages/Suppliers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Solution from "./pages/Solution";
 import SolutionKo from "./pages/ko/SolutionKo";
+import LoginKo from "./pages/ko/LoginKo";
+import SignupKo from "./pages/ko/SignupKo";
+import CheckoutKo from "./pages/ko/CheckoutKo";
 import PaymentSuccess from "./pages/ko/PaymentSuccess";
 import PaymentFail from "./pages/ko/PaymentFail";
 
@@ -86,6 +89,9 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/solution" element={<Solution />} />
               <Route path="/ko/solution" element={<SolutionKo />} />
+              <Route path="/ko/login" element={<LoginKo />} />
+              <Route path="/ko/signup" element={<SignupKo />} />
+              <Route path="/ko/checkout" element={<CheckoutKo />} />
               <Route path="/ko/payment/success" element={<PaymentSuccess />} />
               <Route path="/ko/payment/fail" element={<PaymentFail />} />
               <Route path="/suppliers" element={<Suppliers />} />

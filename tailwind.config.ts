@@ -20,9 +20,13 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['DIN Condensed', 'Arial Narrow', 'Franklin Gothic Medium', 'sans-serif'],
+				'sans': ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				'pretendard': ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 				'gotham': ['Gotham', 'sans-serif'],
 				'din': ['DIN Condensed', 'Arial Narrow', 'Franklin Gothic Medium', 'sans-serif'],
+			},
+			maxWidth: {
+				'content': '1200px',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
