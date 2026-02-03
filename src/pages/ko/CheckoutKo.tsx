@@ -39,24 +39,66 @@ const CheckoutKo: React.FC = () => {
   
   const widgetsRef = useRef<TossPaymentsWidgets | null>(null);
 
-  // Check if coming from guest checkout
+  // Check if coming from guest checkout with verified email
   const isGuest = searchParams.get('guest') === 'true';
   const guestEmail = searchParams.get('email') || '';
+  const [verificationChecked, setVerificationChecked] = useState(false);
 
+  // Verify guest email authentication before allowing access
   useEffect(() => {
-    if (user) {
-      setForm(prev => ({
-        ...prev,
-        name: user.user_metadata?.full_name || '',
-        email: user.email || '',
-      }));
-    } else if (isGuest && guestEmail) {
-      setForm(prev => ({
-        ...prev,
-        email: guestEmail
-      }));
-    }
-  }, [user, isGuest, guestEmail]);
+    const checkGuestVerification = async () => {
+      // If user is logged in, no need to check
+      if (user) {
+        setVerificationChecked(true);
+        setForm(prev => ({
+          ...prev,
+          name: user.user_metadata?.full_name || '',
+          email: user.email || '',
+        }));
+        return;
+      }
+
+      // If not a guest with email, redirect to login
+      if (!isGuest || !guestEmail) {
+        toast({
+          variant: 'destructive',
+          title: '접근 불가',
+          description: '이메일 인증 후 결제가 가능합니다.'
+        });
+        navigate('/ko/login');
+        return;
+      }
+
+      // Verify the guest email is authenticated
+      try {
+        const { data, error } = await supabase.functions.invoke('guest-verification', {
+          body: { action: 'check', email: guestEmail }
+        });
+
+        if (error || !data?.verified) {
+          toast({
+            variant: 'destructive',
+            title: '인증 필요',
+            description: '이메일 인증 후 결제가 가능합니다.'
+          });
+          navigate('/ko/login');
+          return;
+        }
+
+        // Email is verified, allow access
+        setForm(prev => ({
+          ...prev,
+          email: guestEmail
+        }));
+        setVerificationChecked(true);
+      } catch (error) {
+        console.error('Verification check error:', error);
+        navigate('/ko/login');
+      }
+    };
+
+    checkGuestVerification();
+  }, [user, isGuest, guestEmail, navigate, toast]);
 
   // Initialize Toss Payments Widget
   useEffect(() => {
@@ -196,6 +238,18 @@ const CheckoutKo: React.FC = () => {
       setLoading(false);
     }
   };
+
+  // Show loading until verification is checked
+  if (!verificationChecked) {
+    return (
+      <div className="min-h-screen bg-muted flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-primary" />
+          <p className="text-muted-foreground">인증 확인 중...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
