@@ -11,7 +11,7 @@ import { Loader2, ArrowLeft, Check } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { nanoid } from 'nanoid';
 import SEOHead from '@/components/seo/SEOHead';
-import { loadTossPayments, TossPaymentsWidgets } from "@tosspayments/tosspayments-sdk";
+import { loadTossPayments, TossPaymentsWidgets, ANONYMOUS } from "@tosspayments/tosspayments-sdk";
 
 const PRODUCT = {
   name: 'DF717 AI 자동매매 프로그램 솔루션 (DAP-Premium)',
@@ -110,7 +110,7 @@ const CheckoutKo: React.FC = () => {
       }
 
       try {
-        const customerKey = user?.id || `guest_${nanoid(10)}`;
+        const customerKey = user?.id || ANONYMOUS;
         
         const tossPayments = await loadTossPayments(TOSS_CLIENT_KEY);
         const widgets = tossPayments.widgets({ customerKey });
