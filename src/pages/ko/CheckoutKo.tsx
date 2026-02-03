@@ -20,7 +20,7 @@ const PRODUCT = {
 };
 
 // Toss Payments Client Key (Publishable - safe to expose)
-const TOSS_CLIENT_KEY = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
+const TOSS_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX";
 
 const CheckoutKo: React.FC = () => {
   const navigate = useNavigate();
