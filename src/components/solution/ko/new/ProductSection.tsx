@@ -44,7 +44,7 @@ export const ProductSection: React.FC = () => {
               <CardContent className="p-8 lg:p-10 h-full flex flex-col">
                 <div className="mb-8">
                   <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-                    연간 구독
+                    연간 구매
                   </span>
                   <h3 className="text-xl md:text-2xl font-bold text-foreground leading-[1.3]">
                     DF717 AI 자동매매 프로그램 솔루션
@@ -94,7 +94,7 @@ export const ProductSection: React.FC = () => {
                 <div className="space-y-4">
                   <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
                     <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>구독 즉시 이용 가능</span>
+                    <span>구매 즉시 이용 가능</span>
                   </p>
                   <p className="flex items-center gap-4 text-muted-foreground leading-[1.6]">
                     <Check className="w-5 h-5 text-primary flex-shrink-0" />
