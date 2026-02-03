@@ -32,6 +32,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="flex flex-col items-start"
           >
             <h1 className="text-[28px] font-bold text-foreground mb-4 leading-[1.15] tracking-tight text-left">
               DF717 Solution
