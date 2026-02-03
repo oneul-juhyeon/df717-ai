@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Check } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+type PlanType = 'monthly' | 'yearly';
 
 interface PricingSectionProps {
-  onPurchaseClick: () => void;
+  onPurchaseClick: (planType: PlanType) => void;
 }
 
+const plans = {
+  monthly: {
+    label: '월간 결제',
+    price: 500000,
+    displayPrice: '₩500,000',
+    period: '/월',
+    description: '매월 자동 결제',
+    badge: null,
+    highlight: false,
+  },
+  yearly: {
+    label: '연간 결제',
+    price: 5000000,
+    displayPrice: '₩5,000,000',
+    period: '/년',
+    description: '월 ₩416,667 (17% 할인)',
+    badge: '추천',
+    highlight: true,
+  },
+};
+
 export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick }) => {
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>('yearly');
+
   const features = [
     'AI 기반 자동매매 시스템',
     'MetaTrader 4, 5 연동',
@@ -38,6 +64,43 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
           </p>
         </motion.div>
 
+        {/* Plan Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true }}
+          className="flex justify-center mb-10"
+        >
+          <div className="inline-flex rounded-full bg-muted p-1.5">
+            <button
+              onClick={() => setSelectedPlan('monthly')}
+              className={cn(
+                'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200',
+                selectedPlan === 'monthly'
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              월간 결제
+            </button>
+            <button
+              onClick={() => setSelectedPlan('yearly')}
+              className={cn(
+                'px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 relative',
+                selectedPlan === 'yearly'
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              연간 결제
+              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full font-semibold">
+                17% 할인
+              </span>
+            </button>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,11 +108,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
           viewport={{ once: true }}
           className="max-w-[480px] mx-auto"
         >
-          <Card className="shadow-2xl border-2 border-primary relative overflow-hidden rounded-2xl">
-            {/* Popular Badge */}
-            <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-5 py-2 text-sm font-semibold rounded-bl-xl">
-              추천
-            </div>
+          <Card className={cn(
+            "shadow-2xl relative overflow-hidden rounded-2xl transition-all duration-300",
+            selectedPlan === 'yearly' ? 'border-2 border-primary' : 'border border-border'
+          )}>
+            {/* Badge */}
+            {plans[selectedPlan].badge && (
+              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-5 py-2 text-sm font-semibold rounded-bl-xl">
+                {plans[selectedPlan].badge}
+              </div>
+            )}
             
             <CardContent className="p-8 lg:p-10">
               <div className="text-center mb-10">
@@ -57,17 +125,26 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                   DAP-Premium
                 </h3>
                 <p className="text-muted-foreground mb-8 leading-[1.5]">
-                  연간 구매
+                  {plans[selectedPlan].label}
                 </p>
                 
-                <div className="flex items-baseline justify-center gap-3 flex-wrap">
-                  <span className="text-xl text-muted-foreground line-through">₩8,000,000</span>
-                  <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">₩5,000,000</span>
-                  <span className="text-muted-foreground text-base">/년</span>
+                <div className="flex items-baseline justify-center gap-2 flex-wrap">
+                  {selectedPlan === 'yearly' && (
+                    <span className="text-xl text-muted-foreground line-through">₩8,000,000</span>
+                  )}
+                  <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">
+                    {plans[selectedPlan].displayPrice}
+                  </span>
+                  <span className="text-muted-foreground text-base">{plans[selectedPlan].period}</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-3 leading-[1.5]">
-                  12개월 할부 시 월 ₩416,667
+                  {plans[selectedPlan].description}
                 </p>
+                {selectedPlan === 'monthly' && (
+                  <p className="text-xs text-primary mt-2">
+                    * 카드 등록 후 매월 자동 결제됩니다
+                  </p>
+                )}
               </div>
 
               <ul className="space-y-4 mb-10">
@@ -82,14 +159,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
               </ul>
 
               <Button 
-                onClick={onPurchaseClick}
+                onClick={() => onPurchaseClick(selectedPlan)}
                 className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 rounded-lg"
               >
-                구매하기
+                {selectedPlan === 'monthly' ? '월간 구독 시작하기' : '연간 구매하기'}
               </Button>
 
               <p className="text-sm text-center text-muted-foreground mt-5 leading-[1.5]">
-                구매 후 즉시 서비스 이용 가능
+                {selectedPlan === 'monthly' 
+                  ? '언제든지 구독 해지 가능' 
+                  : '구매 후 즉시 서비스 이용 가능'}
               </p>
             </CardContent>
           </Card>
@@ -115,7 +194,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground leading-[1.6]">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span>연간: 12개월 (최대 제공기간)</span>
+                  <span>월간: 1개월 / 연간: 12개월</span>
                 </li>
                 <li className="flex items-center gap-3 text-muted-foreground leading-[1.6]">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
