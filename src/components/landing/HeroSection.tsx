@@ -10,7 +10,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return <div className={className}>
       <div className="space-y-4 container mx-auto py-6 sm:py-10 md:py-14">
-        <h2 className="text-white leading-[1.1] tracking-tight mb-4 sm:mb-6 md:mb-10 font-extrabold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-left">
+        <h2 className="text-white leading-[1.1] tracking-tight mb-4 sm:mb-6 md:mb-10 font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-left">
           AI FINANCE<br />
         </h2>
         
@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </h3>
         
         <div className="flex">
-          <Button asChild className="bg-white text-black hover:bg-gray-200 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base md:text-lg rounded-full w-auto inline-flex items-center justify-center">
+          <Button asChild className="bg-white text-black hover:bg-gray-200 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base md:text-lg rounded-full w-auto inline-flex items-center justify-center font-medium">
             <Link to="/home-intro" className="flex items-center justify-center whitespace-nowrap h-full">
               <span>Explore DF717</span>
               <ChevronRight className="ml-1 h-4 sm:h-5 w-4 sm:w-5 flex-shrink-0" />

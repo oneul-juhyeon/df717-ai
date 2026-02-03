@@ -97,16 +97,16 @@
   }
 
   body {
-    @apply bg-background text-foreground font-din;
-    font-family: 'DIN Condensed', 'Arial Narrow', 'Franklin Gothic Medium', sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-din;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   button, a {
-    @apply font-din;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   @font-face {

@@ -40,19 +40,19 @@ const Footer: React.FC = () => {
           <div className="flex items-center space-x-10">
             <Link 
               to="/privacy-policy" 
-              className="font-din font-bold text-white hover:text-gray-300 transition-colors"
+              className="font-bold text-white hover:text-gray-300 transition-colors"
             >
               PRIVACY POLICY
             </Link>
             <Link 
               to="/suppliers" 
-              className="font-din font-bold text-white hover:text-gray-300 transition-colors"
+              className="font-bold text-white hover:text-gray-300 transition-colors"
             >
               SUPPLIERS
             </Link>
             <Link 
               to="/contact" 
-              className="font-din font-bold text-white hover:text-gray-300 transition-colors"
+              className="font-bold text-white hover:text-gray-300 transition-colors"
             >
               CONTACT
             </Link>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
 
           {/* Right: Copyright */}
           <div className="text-xs">
-            <span className="font-din text-white">DF717 © 2025</span>
+            <span className="text-white">DF717 © 2025</span>
           </div>
         </div>
 
@@ -70,19 +70,19 @@ const Footer: React.FC = () => {
           <div className="flex items-center space-x-6">
             <Link 
               to="/privacy-policy" 
-              className="font-din font-bold text-white hover:text-gray-300 transition-colors"
+              className="font-bold text-white hover:text-gray-300 transition-colors"
             >
               PRIVACY POLICY
             </Link>
             <Link 
               to="/suppliers" 
-              className="font-din font-bold text-white hover:text-gray-300 transition-colors"
+              className="font-bold text-white hover:text-gray-300 transition-colors"
             >
               SUPPLIERS
             </Link>
             <Link 
               to="/contact" 
-              className="font-din font-bold text-white hover:text-gray-300 transition-colors"
+              className="font-bold text-white hover:text-gray-300 transition-colors"
             >
               CONTACT
             </Link>
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
 
           {/* Middle: Copyright */}
           <div>
-            <span className="font-din text-white">DF717 © 2025</span>
+            <span className="text-white">DF717 © 2025</span>
           </div>
 
           {/* Bottom: Social Icons */}
