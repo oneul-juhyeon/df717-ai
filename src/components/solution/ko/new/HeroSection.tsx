@@ -80,7 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onCTAClick }) => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="max-w-[500px]"
+            className="max-w-[500px] flex flex-col items-start"
           >
             <h1 className="text-[44px] lg:text-[52px] font-bold text-white mb-5 leading-[1.15] tracking-tight text-left">
               DF717 Solution
