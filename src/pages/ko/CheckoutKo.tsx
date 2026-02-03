@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,12 +11,16 @@ import { Loader2, ArrowLeft, Check } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { nanoid } from 'nanoid';
 import SEOHead from '@/components/seo/SEOHead';
+import { loadTossPayments, TossPaymentsWidgets } from "@tosspayments/tosspayments-sdk";
 
 const PRODUCT = {
   name: 'DF717 AI 자동매매 프로그램 솔루션 (DAP-Premium)',
   price: 5000000,
-  description: '연간 구독 (12개월)'
+  description: '연간 구매 (12개월)'
 };
+
+// Toss Payments Client Key (Publishable - safe to expose)
+const TOSS_CLIENT_KEY = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
 
 const CheckoutKo: React.FC = () => {
   const navigate = useNavigate();
@@ -25,17 +29,18 @@ const CheckoutKo: React.FC = () => {
   const { toast } = useToast();
   
   const [loading, setLoading] = useState(false);
+  const [widgetReady, setWidgetReady] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
-    phone: '',
-    password: '' // For guest checkout
+    phone: ''
   });
+  
+  const widgetsRef = useRef<TossPaymentsWidgets | null>(null);
 
   // Check if coming from guest checkout
   const isGuest = searchParams.get('guest') === 'true';
   const guestEmail = searchParams.get('email') || '';
-  const guestPassword = searchParams.get('pw') || '';
 
   useEffect(() => {
     if (user) {
@@ -47,11 +52,58 @@ const CheckoutKo: React.FC = () => {
     } else if (isGuest && guestEmail) {
       setForm(prev => ({
         ...prev,
-        email: guestEmail,
-        password: guestPassword
+        email: guestEmail
       }));
     }
-  }, [user, isGuest, guestEmail, guestPassword]);
+  }, [user, isGuest, guestEmail]);
+
+  // Initialize Toss Payments Widget
+  useEffect(() => {
+    const initializeWidget = async () => {
+      try {
+        const customerKey = user?.id || `guest_${nanoid(10)}`;
+        
+        const tossPayments = await loadTossPayments(TOSS_CLIENT_KEY);
+        const widgets = tossPayments.widgets({ customerKey });
+        
+        widgetsRef.current = widgets;
+        
+        // Set amount
+        await widgets.setAmount({
+          currency: "KRW",
+          value: PRODUCT.price
+        });
+
+        // Render payment methods widget
+        await widgets.renderPaymentMethods({
+          selector: "#payment-method",
+          variantKey: "DEFAULT"
+        });
+
+        // Render agreement widget
+        await widgets.renderAgreement({
+          selector: "#agreement",
+          variantKey: "AGREEMENT"
+        });
+
+        setWidgetReady(true);
+      } catch (error) {
+        console.error('Failed to initialize payment widget:', error);
+        toast({
+          variant: 'destructive',
+          title: '결제 위젯 로드 실패',
+          description: '잠시 후 다시 시도해주세요.'
+        });
+      }
+    };
+
+    initializeWidget();
+
+    return () => {
+      // Cleanup on unmount
+      widgetsRef.current = null;
+    };
+  }, [user?.id]);
 
   const handlePayment = async () => {
     // Validation
@@ -68,12 +120,17 @@ const CheckoutKo: React.FC = () => {
       return;
     }
 
+    if (!widgetsRef.current) {
+      toast({ variant: 'destructive', title: '오류', description: '결제 위젯이 준비되지 않았습니다.' });
+      return;
+    }
+
     setLoading(true);
 
     try {
       const orderId = `DF717-${nanoid(10)}`;
       
-      // Create order in database
+      // Create order in database first
       const { error: orderError } = await supabase
         .from('orders')
         .insert({
@@ -81,7 +138,7 @@ const CheckoutKo: React.FC = () => {
           user_id: user?.id || null,
           customer_name: form.name,
           customer_email: form.email,
-          customer_phone: form.phone,
+          customer_phone: form.phone.replace(/-/g, ''),
           product_type: 'dap-premium',
           amount: PRODUCT.price,
           status: 'pending'
@@ -91,38 +148,33 @@ const CheckoutKo: React.FC = () => {
         throw orderError;
       }
 
-      // Call Toss Payments create-payment edge function
-      const { data: paymentData, error: paymentError } = await supabase.functions.invoke('create-payment', {
-        body: {
-          orderId,
-          amount: PRODUCT.price,
-          orderName: PRODUCT.name,
-          customerName: form.name,
-          customerEmail: form.email,
-          customerMobilePhone: form.phone.replace(/-/g, ''),
-          successUrl: `${window.location.origin}/ko/payment/success`,
-          failUrl: `${window.location.origin}/ko/payment/fail`
-        }
+      // Request payment with Toss Payments Widget
+      await widgetsRef.current.requestPayment({
+        orderId,
+        orderName: PRODUCT.name,
+        customerName: form.name,
+        customerEmail: form.email,
+        customerMobilePhone: form.phone.replace(/-/g, ''),
+        successUrl: `${window.location.origin}/ko/payment/success`,
+        failUrl: `${window.location.origin}/ko/payment/fail`
       });
-
-      if (paymentError) {
-        throw paymentError;
-      }
-
-      // Redirect to Toss payment page
-      if (paymentData?.checkoutUrl) {
-        window.location.href = paymentData.checkoutUrl;
-      } else {
-        throw new Error('결제 URL을 받지 못했습니다.');
-      }
 
     } catch (error: any) {
       console.error('Payment error:', error);
-      toast({
-        variant: 'destructive',
-        title: '결제 오류',
-        description: error.message || '결제 처리 중 오류가 발생했습니다.'
-      });
+      
+      // Handle user cancellation
+      if (error.code === 'USER_CANCEL') {
+        toast({
+          title: '결제 취소',
+          description: '결제가 취소되었습니다.'
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: '결제 오류',
+          description: error.message || '결제 처리 중 오류가 발생했습니다.'
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -205,6 +257,23 @@ const CheckoutKo: React.FC = () => {
 
               <Separator />
 
+              {/* Payment Widget Container */}
+              <div className="space-y-4">
+                <h3 className="font-semibold">결제 수단</h3>
+                <div id="payment-method" className="min-h-[200px]">
+                  {!widgetReady && (
+                    <div className="flex items-center justify-center h-[200px] bg-muted/30 rounded-lg">
+                      <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Agreement Widget Container */}
+              <div id="agreement" className="min-h-[50px]" />
+
+              <Separator />
+
               {/* Features */}
               <div className="space-y-2">
                 <h4 className="font-medium text-sm text-muted-foreground">포함 사항</h4>
@@ -226,7 +295,7 @@ const CheckoutKo: React.FC = () => {
               {/* Payment Button */}
               <Button
                 onClick={handlePayment}
-                disabled={loading}
+                disabled={loading || !widgetReady}
                 className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90"
               >
                 {loading ? (
@@ -240,7 +309,7 @@ const CheckoutKo: React.FC = () => {
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
-                결제 버튼을 클릭하면 토스페이먼츠 결제 페이지로 이동합니다.
+                결제 버튼을 클릭하면 토스페이먼츠 결제창이 열립니다.
               </p>
             </CardContent>
           </Card>
