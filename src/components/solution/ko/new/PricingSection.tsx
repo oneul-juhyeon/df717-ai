@@ -60,7 +60,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
                   연간 구매
                 </p>
                 
-                <div className="flex items-baseline justify-center gap-2">
+                <div className="flex items-baseline justify-center gap-3 flex-wrap">
+                  <span className="text-xl text-muted-foreground line-through">₩8,000,000</span>
                   <span className="text-[44px] md:text-[52px] font-bold text-foreground tracking-tight">₩5,000,000</span>
                   <span className="text-muted-foreground text-base">/년</span>
                 </div>
