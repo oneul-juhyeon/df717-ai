@@ -95,7 +95,7 @@ const SignupKo: React.FC = () => {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            솔루션 페이지로 돌아가기
+            이전 페이지로 돌아가기
           </Link>
 
           <Card className="shadow-lg">
