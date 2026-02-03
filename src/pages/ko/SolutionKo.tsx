@@ -42,7 +42,7 @@ const SolutionKo: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="DAP-Premium | DF717 - AI 자동매매 솔루션"
+        title="DF717 - AI 자동매매 솔루션"
         description="DF717의 AI 기반 자동매매 솔루션 DAP-Premium. MetaTrader 연동, 24/7 시스템 모니터링, 실시간 리스크 관리로 스마트한 투자를 시작하세요."
         keywords="DF717 솔루션, DAP-Premium, AI 자동매매, 자동투자 시스템, MetaTrader, HANNAH AI"
         canonical="https://www.df717.ai/ko/solution"
