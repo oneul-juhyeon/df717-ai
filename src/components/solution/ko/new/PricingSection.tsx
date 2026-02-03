@@ -123,11 +123,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onPurchaseClick 
           </Card>
 
           <Card className="shadow-lg border-0 bg-muted/50">
-            <CardContent className="p-8">
+            <CardContent className="p-8 text-center">
               <h4 className="text-lg font-semibold text-foreground mb-6 leading-[1.3]">
                 포함 사항
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-3 inline-block text-left">
                 <li className="flex items-center gap-3 text-muted-foreground leading-[1.6]">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
                   <span>프리미엄 AI 매매 알고리즘</span>
