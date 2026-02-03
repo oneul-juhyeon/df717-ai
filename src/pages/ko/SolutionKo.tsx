@@ -5,7 +5,6 @@ import { SolutionHeaderKoNew } from "@/components/solution/ko/SolutionHeaderKoNe
 import { HeroSection } from "@/components/solution/ko/new/HeroSection";
 import { ProductSection } from "@/components/solution/ko/new/ProductSection";
 import { FeaturesSection } from "@/components/solution/ko/new/FeaturesSection";
-import SolutionResultsKo from "@/components/solution/ko/SolutionResultsKo";
 import { PricingSection } from "@/components/solution/ko/new/PricingSection";
 import { FAQSection } from "@/components/solution/ko/new/FAQSection";
 import { RefundPolicySection } from "@/components/solution/ko/new/RefundPolicySection";
@@ -77,7 +76,6 @@ const SolutionKo: React.FC = () => {
         <HeroSection onCTAClick={handleCTAClick} />
         <ProductSection />
         <FeaturesSection />
-        <SolutionResultsKo />
         <PricingSection onPurchaseClick={handleCTAClick} />
         <FAQSection />
         <RefundPolicySection />
