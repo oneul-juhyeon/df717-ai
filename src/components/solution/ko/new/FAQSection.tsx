@@ -33,7 +33,7 @@ export const FAQSection: React.FC = () => {
 
   return (
     <section id="faq" className="py-20 md:py-[120px] bg-muted/30">
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 xl:px-20">
+      <div className="w-full max-w-[1440px] mx-auto px-3 md:px-6 lg:px-8 xl:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
