@@ -152,15 +152,17 @@ export const ProductSection: React.FC = () => {
             </p>
 
             <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-              월간 분석
+              월간 운용성과
             </h3>
 
-            <p className="text-lg text-muted-foreground">
-              2025년 9월 <span className="text-primary font-semibold">25.27%</span> 수익
-            </p>
+            <div className="text-lg text-muted-foreground space-y-1">
+              <p>4주간 수익률 <span className="text-primary font-semibold">30.94%</span></p>
+              <p>주간 평균 수익률 <span className="text-primary font-semibold">7.61%</span></p>
+              <p>최대 낙폭(Max DD) <span className="text-primary font-semibold">3.06%</span></p>
+            </div>
 
             <p className="text-sm text-muted-foreground">
-              <span className="text-destructive">*</span>연도별 월간 성과 추적
+              <span className="text-destructive">*</span>2025년 11월 17일 ~ 12월 12일 기준
             </p>
           </motion.div>
 
