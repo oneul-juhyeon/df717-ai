@@ -100,7 +100,7 @@ const PaymentSuccessKo: React.FC = () => {
                   onClick={() => navigate('/ko/solution')}
                   className="w-full"
                 >
-                  솔루션 페이지로 돌아가기
+                  이전 페이지로 돌아가기
                 </Button>
               </>
             )}
