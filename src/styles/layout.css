@@ -1,5 +1,8 @@
+/* ============================================
+   Professional Layout System - 8px Grid
+   ============================================ */
 
-/* Original styles from App.css */
+/* Root Layout */
 #root {
   width: 100%;
   margin: 0 auto;
@@ -12,8 +15,163 @@ body, html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background-color: #161616;
+  background-color: hsl(var(--background));
 }
+
+/* ============================================
+   Container System - Max 1440px
+   ============================================ */
+.max-w-content {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   Section Spacing - Vertical Rhythm
+   ============================================ */
+.section-spacing {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.section-spacing-lg {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  
+  .section-spacing-lg {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* ============================================
+   Container Padding - Symmetric
+   ============================================ */
+.container-padding {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .container-padding {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-padding {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+/* ============================================
+   Typography - Line Height 1.5-1.6
+   ============================================ */
+.text-body {
+  line-height: 1.6;
+}
+
+.text-heading {
+  line-height: 1.2;
+}
+
+.text-subheading {
+  line-height: 1.4;
+}
+
+/* ============================================
+   Button Standard - 48px Height
+   ============================================ */
+.btn-standard {
+  height: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-standard-lg {
+  height: 56px;
+  padding-left: 32px;
+  padding-right: 32px;
+  font-size: 18px;
+}
+
+/* ============================================
+   Card Equal Height Grid
+   ============================================ */
+.card-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.card-grid > * {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-grid .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   Icon + Text Optical Centering
+   ============================================ */
+.icon-text-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-text-group svg {
+  flex-shrink: 0;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   8px Grid Spacing Utilities
+   ============================================ */
+.gap-grid-1 { gap: 8px; }
+.gap-grid-2 { gap: 16px; }
+.gap-grid-3 { gap: 24px; }
+.gap-grid-4 { gap: 32px; }
+.gap-grid-5 { gap: 40px; }
+.gap-grid-6 { gap: 48px; }
+
+.space-y-grid-1 > * + * { margin-top: 8px; }
+.space-y-grid-2 > * + * { margin-top: 16px; }
+.space-y-grid-3 > * + * { margin-top: 24px; }
+.space-y-grid-4 > * + * { margin-top: 32px; }
 
 .logo {
   height: 6em;
