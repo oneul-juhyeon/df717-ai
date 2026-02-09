@@ -14,11 +14,6 @@ import SEOHead from '@/components/seo/SEOHead';
 import { loadTossPayments, TossPaymentsWidgets, ANONYMOUS } from "@tosspayments/tosspayments-sdk";
 import { plans, getPlanFromSearchParams, PlanType } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
-
-// Toss Payments Client Keys (Publishable - safe to expose)
-const TOSS_WIDGET_CLIENT_KEY = "test_gck_LlDJaYngroeYKAWl5KZK3ezGdRpX"; // For one-time payments (widgets)
-const TOSS_BILLING_CLIENT_KEY = "test_ck_nRQoOaPz8Lx4G2b7RL5j8y47BMw6"; // For billing key (subscriptions)
-
 const CheckoutKo: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -28,6 +23,7 @@ const CheckoutKo: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [widgetReady, setWidgetReady] = useState(false);
   const [planType, setPlanType] = useState<PlanType>(() => getPlanFromSearchParams(searchParams));
+  const [clientKeys, setClientKeys] = useState<{ widgetClientKey: string; billingClientKey: string } | null>(null);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -93,25 +89,45 @@ const CheckoutKo: React.FC = () => {
     checkAccess();
   }, [authLoading, user, isGuest, guestEmail, navigate, toast]);
 
-  // Initialize Toss Payments - only after verification is complete
+  // Fetch Toss client keys from edge function
   useEffect(() => {
-    // Don't initialize until verification is complete
     if (!verificationChecked) return;
 
+    const fetchKeys = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke('get-toss-client-keys');
+        if (error || !data?.widgetClientKey || !data?.billingClientKey) {
+          throw new Error('Failed to fetch payment keys');
+        }
+        setClientKeys(data);
+      } catch (error) {
+        console.error('Failed to fetch client keys:', error);
+        toast({
+          variant: 'destructive',
+          title: '결제 초기화 실패',
+          description: '잠시 후 다시 시도해주세요.'
+        });
+      }
+    };
+
+    fetchKeys();
+  }, [verificationChecked, toast]);
+
+  // Initialize Toss Payments - after keys are fetched
+  useEffect(() => {
+    if (!clientKeys) return;
+
     const initializePayment = async () => {
-      // Wait a bit for DOM to be ready
       await new Promise(resolve => setTimeout(resolve, 100));
       
       try {
         const customerKey = user?.id || ANONYMOUS;
         
-        // Use different client keys for different payment types
-        const clientKey = planType === 'monthly' ? TOSS_BILLING_CLIENT_KEY : TOSS_WIDGET_CLIENT_KEY;
+        const clientKey = planType === 'monthly' ? clientKeys.billingClientKey : clientKeys.widgetClientKey;
         const tossPayments = await loadTossPayments(clientKey);
         tossInstanceRef.current = tossPayments;
 
         if (planType === 'yearly') {
-          // One-time payment: use widgets
           const paymentMethodEl = document.getElementById('payment-method');
           const agreementEl = document.getElementById('agreement');
           
@@ -138,7 +154,6 @@ const CheckoutKo: React.FC = () => {
             variantKey: "AGREEMENT"
           });
         }
-        // For monthly subscription, we'll use requestBillingAuth directly
 
         setWidgetReady(true);
       } catch (error) {
@@ -157,7 +172,7 @@ const CheckoutKo: React.FC = () => {
       widgetsRef.current = null;
       tossInstanceRef.current = null;
     };
-  }, [verificationChecked, user?.id, planType, selectedPlan.price, toast]);
+  }, [clientKeys, user?.id, planType, selectedPlan.price, toast]);
 
   // Update amount when plan changes
   useEffect(() => {
