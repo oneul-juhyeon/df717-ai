@@ -102,11 +102,11 @@ const SolutionResultsKo: React.FC = () => {
               고급 통계
             </h3>
 
-            <p className="text-lg text-muted-foreground">
-              <span className="text-primary font-semibold">620회</span> 거래, 
-              <span className="text-primary font-semibold"> 92%</span> 승률, 
-              <span className="text-primary font-semibold"> 40.09</span> 수익 팩터
-            </p>
+            <div className="text-lg text-muted-foreground space-y-1">
+              <p><span className="text-primary font-semibold">620회</span> 거래</p>
+              <p><span className="text-primary font-semibold">92%</span> 승률</p>
+              <p><span className="text-primary font-semibold">40.09</span> PF</p>
+            </div>
 
             <p className="text-sm text-muted-foreground">
               <span className="text-destructive">*</span>전략 효과성을 입증하는 상세 성과 지표
