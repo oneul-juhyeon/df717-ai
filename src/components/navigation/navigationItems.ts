@@ -52,7 +52,7 @@ export const getNavigationItems = (): NavigationItem[] => [
   // { name: "Solution", path: "/solution", hasSubmenu: false }, // Temporarily hidden - uncomment to restore
   { name: "Contact", path: "/contact", hasSubmenu: false },
   { name: "Space", path: "https://df717.notion.site/space", hasSubmenu: false, external: true },
-  { name: "Backtest", path: "https://df717backtest.lovable.app", hasSubmenu: false, external: true },
+  { name: "Backtest", path: "https://backtest.df717.ai", hasSubmenu: false, external: true },
 ];
 
 /**
