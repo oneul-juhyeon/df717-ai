@@ -37,6 +37,7 @@ import Execution from "./pages/df717/Execution";
 import Examples from "./pages/df717/Examples";
 import Suppliers from "./pages/Suppliers";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import WeeklyReport from "./pages/WeeklyReport";
 import Solution from "./pages/Solution";
 import SolutionKo from "./pages/ko/SolutionKo";
 import LoginKo from "./pages/ko/LoginKo";
@@ -100,6 +101,7 @@ function App() {
               <Route path="/ko/mypage" element={<MyPageKo />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/weekly-report" element={<WeeklyReport />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
