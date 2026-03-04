@@ -14,7 +14,7 @@ interface BaseHeaderProps extends HeaderProps {
 }
 
 const BaseHeader: React.FC<BaseHeaderProps> = ({ 
-  scrollToTop, 
+  scrollToTop: _scrollToTop,
   navigationItems,
   className = "flex justify-between items-center pt-14 max-sm:pt-5 w-full gap-6",
   logoAs = "div" // Default to div for most pages
@@ -24,16 +24,16 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
   return (
     <header className={className}>
       <div className="flex-none">
-        <Link to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: "auto" }); }}>
+        <Link to="/">
           <Logo as={logoAs} />
         </Link>
       </div>
       
       <div className="flex-1 flex justify-end">
         {isMobile ? (
-          <MobileMenu navigationItems={navigationItems} scrollToTop={scrollToTop} />
+          <MobileMenu navigationItems={navigationItems} />
         ) : (
-          <DesktopMenu navigationItems={navigationItems} scrollToTop={scrollToTop} />
+          <DesktopMenu navigationItems={navigationItems} />
         )}
       </div>
     </header>

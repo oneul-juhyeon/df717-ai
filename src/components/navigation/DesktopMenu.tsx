@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { NavDropdown } from "@/components/ui/dropdown-nav";
 import { NavigationItem } from "./types";
@@ -7,16 +7,11 @@ import { isMenuActive } from "./navigationItems";
 
 interface DesktopMenuProps {
   navigationItems: NavigationItem[];
-  scrollToTop: () => void;
 }
 
-const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop }) => {
+const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems }) => {
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  const handleNavClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  };
 
   return (
     <div className="flex items-center gap-1">
@@ -34,7 +29,6 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
                   : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'} 
                 after:transition-transform after:duration-300
               `}
-              onClick={handleNavClick}
             >
               {item.name}
             </Link>
@@ -47,15 +41,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
             key={item.name}
             name={item.name}
             path={item.path}
-            items={item.submenu.map(subItem => ({
-              ...subItem,
-              scrollToTop: () => {
-                if ('id' in subItem && subItem.id) {
-                  setActiveSection(subItem.id);
-                }
-                window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-              }
-            }))}
+            items={item.submenu}
             isActive={isMenuActive(item, location.pathname)}
             textColor="text-white"
             hoverColor=""
@@ -79,7 +65,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
           <Link 
             key={item.name}
             to={item.path}
-            onClick={handleNavClick}
+            
             className={`text-white px-4 py-2 transition whitespace-nowrap relative 
               after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white
               ${location.pathname === item.path 
