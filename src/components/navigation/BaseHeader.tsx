@@ -24,7 +24,7 @@ const BaseHeader: React.FC<BaseHeaderProps> = ({
   return (
     <header className={className}>
       <div className="flex-none">
-        <Link to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: "auto" }); scrollToTop(); }}>
+        <Link to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: "auto" }); }}>
           <Logo as={logoAs} />
         </Link>
       </div>

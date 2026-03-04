@@ -36,8 +36,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
         // Navigate to the page
         navigate(path);
         
-        // Call the scrollToTop function
-        scrollToTop();
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
       }, 100);
     }
   };

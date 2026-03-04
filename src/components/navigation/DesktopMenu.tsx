@@ -16,7 +16,6 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
 
   const handleNavClick = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    scrollToTop();
   };
 
   return (
@@ -54,7 +53,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
                 if ('id' in subItem && subItem.id) {
                   setActiveSection(subItem.id);
                 }
-                scrollToTop();
+                window.scrollTo({ top: 0, left: 0, behavior: "auto" });
               }
             }))}
             isActive={isMenuActive(item, location.pathname)}
