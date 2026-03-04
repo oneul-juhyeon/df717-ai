@@ -42,15 +42,10 @@ const BibleVerseSection: React.FC = () => {
       }, 2100); // Earth image appears 0.2s after attribution (1900ms + 200ms)
     }
 
-    // Step 4-5: Scroll down and show arrow
+    // Step 4: Show arrow only (remove auto scroll to keep header/logo stable)
     const timer4 = setTimeout(() => {
-      if (sectionRef.current) {
-        sectionRef.current.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
       setArrowVisible(true);
-    }, 3100); // Scroll down and show arrow after image is visible (give extra time for image to fade in)
+    }, 3100);
 
     return () => {
       clearTimeout(timer1);
