@@ -41,7 +41,7 @@ export const AcademyHeroSection: React.FC = () => {
             <Button
               size="lg"
               variant="outline"
-              className="text-base px-8 py-6 border-slate-500 text-white hover:bg-white/10"
+              className="text-base px-8 py-6 border-primary text-primary bg-white/10 hover:bg-primary/10"
               onClick={() => document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <BookOpen className="mr-2 h-5 w-5" />
