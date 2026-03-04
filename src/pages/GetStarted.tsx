@@ -30,7 +30,7 @@ const GetStarted: React.FC = () => {
           "url": "https://df717.ai/get-started"
         }}
       />
-      <div className="w-full h-screen overflow-hidden">
+      <div className="w-full h-screen overflow-hidden font-din">
         <ChatContainer onBack={handleBackToHome} useChatStoreHook={useChatStore} />
       </div>
     </>

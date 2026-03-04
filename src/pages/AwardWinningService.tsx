@@ -39,7 +39,7 @@ const AwardWinningService: React.FC = () => {
           }
         }}
       />
-      <div className="w-full min-h-screen bg-black financial-product-layout flex flex-col">
+      <div className="w-full min-h-screen bg-black financial-product-layout flex flex-col font-din">
       <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <AwardWinningServiceHeader scrollToTop={scrollToTop} />
         

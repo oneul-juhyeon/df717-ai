@@ -35,7 +35,7 @@ const Suppliers: React.FC = () => {
           "url": "https://df717.ai/suppliers"
         }}
       />
-      <main className="w-full min-h-screen bg-black flex flex-col">
+      <main className="w-full min-h-screen bg-black flex flex-col font-din">
       <div className="flex-grow max-w-none mx-auto px-[154px] max-md:max-w-[991px] max-md:px-10 max-sm:max-w-screen-sm max-sm:px-5">
         <CompanyHeader scrollToTop={scrollToTop} />
 

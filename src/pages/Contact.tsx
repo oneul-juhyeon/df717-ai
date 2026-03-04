@@ -21,7 +21,7 @@ const Contact = () => {
         canonical="https://df717.ai/contact"
         type="website"
       />
-      <div className="min-h-screen bg-black text-white flex flex-col text-left">
+      <div className="min-h-screen bg-black text-white flex flex-col text-left font-din">
         <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px] z-10">
           <ContactHeader scrollToTop={scrollToTop} />
           
