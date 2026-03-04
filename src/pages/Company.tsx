@@ -82,7 +82,7 @@ const Company: React.FC = () => {
           "url": "https://df717.ai/company"
         }}
       />
-      <main className="w-full min-h-screen bg-black flex flex-col">
+      <main className="w-full min-h-screen bg-black flex flex-col font-din">
       <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         

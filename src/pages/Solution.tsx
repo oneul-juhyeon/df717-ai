@@ -44,7 +44,7 @@ const Solution: React.FC = () => {
           "areaServed": "Worldwide"
         }}
       />
-      <div className="min-h-screen bg-black">
+      <div className="min-h-screen bg-black font-din">
         <div className="w-full mx-auto px-4 md:px-10 lg:px-[154px]">
           <SolutionHeaderWithLang scrollToTop={scrollToTop} />
         </div>

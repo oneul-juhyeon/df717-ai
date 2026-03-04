@@ -41,7 +41,7 @@ const Index: React.FC = () => {
         ogDescription="Automate your investment with DF717's AI technology. Smart investing starts here."
         showOrganizationSchema={true}
       />
-      <main className="w-full min-h-screen relative overflow-hidden flex flex-col">
+      <main className="w-full min-h-screen relative overflow-hidden flex flex-col font-din">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video

@@ -18,7 +18,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <main className="w-full min-h-screen bg-black text-white flex flex-col">
+    <main className="w-full min-h-screen bg-black text-white flex flex-col font-din">
       {/* SEO H1 Tag */}
       <h1 className="sr-only">404: Page Not Found - DF717</h1>
 
