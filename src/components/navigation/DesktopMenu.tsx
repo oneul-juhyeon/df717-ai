@@ -14,6 +14,11 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
   const location = useLocation();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
+  const handleNavClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    scrollToTop();
+  };
+
   return (
     <div className="flex items-center gap-1">
       {navigationItems.map((item) => {
@@ -30,7 +35,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
                   : 'after:scale-x-0 hover:after:scale-x-100 after:origin-left hover:after:origin-left'} 
                 after:transition-transform after:duration-300
               `}
-              onClick={scrollToTop}
+              onClick={handleNavClick}
             >
               {item.name}
             </Link>
@@ -75,6 +80,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navigationItems, scrollToTop 
           <Link 
             key={item.name}
             to={item.path}
+            onClick={handleNavClick}
             className={`text-white px-4 py-2 transition whitespace-nowrap relative 
               after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white
               ${location.pathname === item.path 
