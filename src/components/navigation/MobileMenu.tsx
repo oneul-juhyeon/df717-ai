@@ -14,10 +14,9 @@ import "./mobileNavAnimation.css";
 
 interface MobileMenuProps {
   navigationItems: NavigationItem[];
-  scrollToTop: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +35,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navigationItems, scrollToTop })
         // Navigate to the page
         navigate(path);
         
-        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        
       }, 100);
     }
   };

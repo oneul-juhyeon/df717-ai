@@ -83,7 +83,7 @@ const Company: React.FC = () => {
         }}
       />
       <main className="w-full min-h-screen bg-black flex flex-col font-din">
-      <div className="relative z-10 w-full mx-auto px-6 md:px-10 lg:px-[154px] flex-grow">
+      <div className="relative z-10 w-full mx-auto px-4 md:px-10 lg:px-[154px] flex-grow">
         <CompanyHeader scrollToTop={scrollToTop} />
         
         <CompanyHero scrollToValues={scrollToValues} />
