@@ -41,6 +41,7 @@ import SolutionKo from "./pages/ko/SolutionKo";
 import LoginKo from "./pages/ko/LoginKo";
 import SignupKo from "./pages/ko/SignupKo";
 import CheckoutKo from "./pages/ko/CheckoutKo";
+import AcademyKo from "./pages/ko/AcademyKo";
 import PaymentSuccessKo from "./pages/ko/PaymentSuccessKo";
 import PaymentFailKo from "./pages/ko/PaymentFailKo";
 import BillingSuccessKo from "./pages/ko/BillingSuccessKo";
@@ -99,6 +100,7 @@ function App() {
               <Route path="/ko/payment/fail" element={<PaymentFailKo />} />
               <Route path="/ko/payment/billing-success" element={<BillingSuccessKo />} />
               <Route path="/ko/mypage" element={<MyPageKo />} />
+              <Route path="/ko/academy" element={<AcademyKo />} />
               <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/weekly-report" element={<WeeklyReport />} />
