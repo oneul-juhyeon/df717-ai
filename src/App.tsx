@@ -1,10 +1,10 @@
 
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import HomeIntro from "./pages/HomeIntro";
@@ -16,8 +16,6 @@ import CFDTrading from "./pages/CFDTrading";
 import GetStarted from "./pages/GetStarted";
 import GetStartedKo from "./pages/ko/GetStartedKo";
 import AdminBackfill from "./pages/AdminBackfill";
-
-
 import ProfessionalTrading from "./pages/ProfessionalTrading";
 import AwardWinningService from "./pages/AwardWinningService";
 import Contact from "./pages/Contact";
@@ -48,6 +46,16 @@ import PaymentFailKo from "./pages/ko/PaymentFailKo";
 import BillingSuccessKo from "./pages/ko/BillingSuccessKo";
 import MyPageKo from "./pages/ko/MyPageKo";
 
+const RouteScrollReset: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   // Create a query client
   const queryClient = React.useMemo(() => new QueryClient(), []);
@@ -59,6 +67,7 @@ function App() {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <RouteScrollReset />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/home-intro" element={<HomeIntro />} />
