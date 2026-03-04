@@ -1,23 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Brain, ShieldCheck, Users } from 'lucide-react';
+import { BarChart3, ShieldCheck, Handshake } from 'lucide-react';
 
 const cards = [
   {
-    icon: Brain,
+    icon: BarChart3,
     title: '원리 중심 교육',
-    description: '단순 매매 기법이 아닌 시장의 구조와 원리를 이해하여 스스로 판단할 수 있는 트레이더로 성장합니다.',
+    description: '프로그램 사용법이 아닌, 금융 시장과 가격 움직임의 본질적 구조를 가르칩니다.',
   },
   {
     icon: ShieldCheck,
     title: '리스크 관리 우선',
-    description: '수익보다 중요한 것은 자산을 지키는 것. 체계적인 리스크 관리 전략을 핵심으로 가르칩니다.',
+    description: '수익보다 손실을 먼저 제어하는 법. 장기 생존하는 트레이더의 핵심 역량입니다.',
   },
   {
-    icon: Users,
-    title: '1:1 맞춤 멘토링',
-    description: '수강생 개개인의 수준과 목표에 맞춘 1:1 멘토링으로 실질적인 성장을 이끕니다.',
+    icon: Handshake,
+    title: '1:1 멘토링 지원',
+    description: '강사와 수강생이 직접 소통하며, 3개월간 개인 맞춤 피드백을 받습니다.',
   },
 ];
 
@@ -32,12 +32,22 @@ export const WhySection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-6">
             왜 DF 트레이딩 아카데미인가?
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            검증된 전문가의 체계적인 교육으로, 지속 가능한 트레이딩 역량을 갖추세요.
-          </p>
+          <div className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed space-y-4">
+            <p>
+              많은 사람들이 트레이딩을 시작할 때 특정 프로그램이나 신호에 의존해
+              수익을 얻는 방법부터 찾습니다.
+            </p>
+            <p>
+              하지만 시장의 원리를 이해하지 못한 채 결과만 따라가는 방식은
+              장기적으로 안정적인 트레이딩 역량을 갖추기 어렵습니다.
+            </p>
+            <p className="text-foreground font-semibold">
+              DF 트레이딩 아카데미는 다릅니다.
+            </p>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

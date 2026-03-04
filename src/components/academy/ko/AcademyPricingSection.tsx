@@ -7,12 +7,10 @@ import { Check, ExternalLink } from 'lucide-react';
 const KAKAO_CHANNEL = 'https://pf.kakao.com/_EAuxcn';
 
 const benefits = [
-  '총 5개 모듈 체계적 커리큘럼',
-  '대면 또는 화상 수업 선택 가능',
-  '1:1 맞춤 멘토링 포함',
-  '실전 차트 실습 및 백테스팅',
-  '수료 후 지속 질의응답 지원',
-  '매매 전략 템플릿 제공',
+  '아카데미 전 과정 수강',
+  'DF717 프로그램 1개월 무료 체험',
+  '1:1 멘토링 3개월',
+  { text: '사업자 마케팅 플랜', sub: '선택 사항 — 상담 시 안내' },
 ];
 
 export const AcademyPricingSection: React.FC = () => {
@@ -26,9 +24,9 @@ export const AcademyPricingSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">수강료</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">수강 패키지</h2>
           <p className="text-muted-foreground text-lg">
-            투자 교육의 가치는 수익률로 증명됩니다
+            투자 교육의 가치는 결과로 증명됩니다
           </p>
         </motion.div>
 
@@ -43,7 +41,7 @@ export const AcademyPricingSection: React.FC = () => {
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/60" />
             <CardHeader className="text-center pb-4 pt-8">
               <p className="text-sm font-medium text-primary mb-2">COMPLETE PACKAGE</p>
-              <CardTitle className="text-2xl">트레이딩 마스터 과정</CardTitle>
+              <CardTitle className="text-2xl">DF 트레이딩 아카데미 수강권</CardTitle>
             </CardHeader>
             <CardContent className="text-center pb-8">
               <div className="mb-8">
@@ -52,12 +50,24 @@ export const AcademyPricingSection: React.FC = () => {
               </div>
 
               <ul className="text-left space-y-3 mb-8">
-                {benefits.map((b, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-foreground">{b}</span>
-                  </li>
-                ))}
+                {benefits.map((b, i) => {
+                  const isObj = typeof b === 'object';
+                  return (
+                    <li key={i} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-foreground">
+                        {isObj ? (
+                          <>
+                            <span className="font-medium">{b.text}</span>
+                            <span className="text-muted-foreground text-sm ml-1">({b.sub})</span>
+                          </>
+                        ) : (
+                          b
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
 
               <Button

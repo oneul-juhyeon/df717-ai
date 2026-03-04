@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import instructorImg from '@/assets/instructor-park.png';
 
 const career = [
-  '前 삼성증권 / 유안타증권 근무',
-  '해외선물 실전 트레이딩 15년+',
-  'CME, ICE 등 글로벌 거래소 파생상품 전문',
-  '기술적 분석 및 리스크 관리 전문가',
-  '다수의 개인/기관 투자자 교육 이력',
-  'DF717 트레이딩 전략 자문',
-  '트레이딩 심리 코칭 및 멘토링',
+  'AI 자동투자 핀테크 기업 (주)DF717 사업개발 총괄',
+  '국내 최대규모 AI 커뮤니티 지피터스 운영진',
+  '트릴리온 사업가 커뮤니티, AI 재테크 커뮤니티 운영',
+  'AI로 누구나 쉽게 일하게 돕는 @make_it_2asy 채널 운영',
+  'SK, 부산교육청 등 기업/기관 대상 AI 활용 강의 다수',
+  '前 한국전력공사 9년 경력 (변전 자동화, AI 분야 사내 직무 마이스터)',
+  '前 AI 자동화 쇼핑몰 리브제이 운영',
 ];
 
 export const InstructorSection: React.FC = () => {
@@ -53,7 +53,7 @@ export const InstructorSection: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <h3 className="text-2xl font-bold text-foreground mb-2">박주현</h3>
-            <p className="text-primary font-medium mb-6">수석 트레이딩 강사</p>
+            <p className="text-primary font-medium mb-6">DF717 사업개발 총괄 · 트레이딩 강사</p>
             <ul className="space-y-3">
               {career.map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-muted-foreground">

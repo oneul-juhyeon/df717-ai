@@ -1,13 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Monitor, MapPin, Video, MessageCircle } from 'lucide-react';
-
-const points = [
-  { icon: MapPin, text: '대면 교육 — 서울 강남 교육센터에서 직접 만나 실습 중심 수업' },
-  { icon: Video, text: '화상 교육 — 지방·해외 거주자를 위한 1:1 화상 수업 지원' },
-  { icon: Monitor, text: '실시간 차트 실습 — 이론과 실전을 동시에 경험하는 라이브 트레이딩' },
-  { icon: MessageCircle, text: '수강 후 지속 케어 — 수료 후에도 질의응답 및 멘토링 지원' },
-];
+import { Monitor, Users, CheckCircle } from 'lucide-react';
 
 export const HowWeTeachSection: React.FC = () => {
   return (
@@ -21,29 +14,37 @@ export const HowWeTeachSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
-              어떻게 가르치나요?
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-3">
+              단순 온라인 강의가 아닙니다
             </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              수강생의 환경과 수준에 맞춰 유연하게 교육 방식을 제공합니다.
+            <p className="text-primary font-medium text-lg mb-6">
+              강사와 수강생이 직접 소통하는 교육 환경
             </p>
-            <ul className="space-y-5">
-              {points.map((point, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="flex items-start gap-4"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <point.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <span className="text-foreground leading-relaxed">{point.text}</span>
-                </motion.li>
-              ))}
-            </ul>
+            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              DF 트레이딩 아카데미는 일방향 영상 시청 방식이 아닙니다.
+              대면 교육과 화상 교육 방식으로 진행되며,
+              강사가 수강생의 질문과 상황에 맞춰 직접 피드백합니다.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground">대면 교육</span>
+                  <span className="text-muted-foreground ml-2">— 직접 만나 집중적으로 학습</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground">화상 교육</span>
+                  <span className="text-muted-foreground ml-2">— 원격으로도 동일한 품질의 수업 제공</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Visual side */}
@@ -56,11 +57,16 @@ export const HowWeTeachSection: React.FC = () => {
           >
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 border border-border/50 flex items-center justify-center">
               <div className="text-center p-8">
-                <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
-                  <Monitor className="h-10 w-10 text-primary" />
+                <div className="flex justify-center gap-6 mb-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                    <Users className="h-8 w-8 text-primary" />
+                  </div>
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                    <Monitor className="h-8 w-8 text-primary" />
+                  </div>
                 </div>
                 <p className="text-2xl font-bold text-foreground mb-2">대면 + 화상</p>
-                <p className="text-muted-foreground">수강생 맞춤형 교육 방식</p>
+                <p className="text-muted-foreground">강사와 직접 소통하는 교육</p>
               </div>
             </div>
           </motion.div>
