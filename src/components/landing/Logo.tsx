@@ -1,4 +1,5 @@
 import React from "react";
+import logoSrc from "@/assets/df717-logo.png";
 
 interface LogoProps {
   className?: string;
@@ -11,7 +12,7 @@ const Logo: React.FC<LogoProps> = ({ className = "", as = "div" }) => {
   return (
     <Component className={className}>
       <img
-        src="/lovable-uploads/df717_logo.png"
+        src={logoSrc}
         alt="DF717 - AI Investment Automation Platform"
         title="DF717"
         width={168}
@@ -26,3 +27,4 @@ const Logo: React.FC<LogoProps> = ({ className = "", as = "div" }) => {
 };
 
 export default Logo;
+
