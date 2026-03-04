@@ -1,9 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
-
-const KAKAO_CHANNEL = 'https://pf.kakao.com/_EAuxcn';
 
 export const BottomCTASection: React.FC = () => {
   return (
@@ -20,17 +17,14 @@ export const BottomCTASection: React.FC = () => {
             지금 바로 시작하세요
           </h2>
           <p className="text-slate-300 text-lg mb-8">
-            트레이딩의 본질을 이해하는 것이 성공적인 투자의 첫 걸음입니다.
-            <br className="hidden md:block" />
-            DF 트레이딩 아카데미와 함께 시작하세요.
+            첫 번째 수업이 트레이딩을 바라보는 시각을 바꿉니다.
           </p>
           <Button
             size="lg"
             className="text-base px-10 py-6 bg-primary hover:bg-primary/90"
-            onClick={() => window.open(KAKAO_CHANNEL, '_blank')}
+            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            무료 상담 신청하기
-            <ExternalLink className="ml-2 h-4 w-4" />
+            수강 신청하기
           </Button>
         </motion.div>
       </div>
